@@ -22,11 +22,11 @@ export function VisitTimeline({
   return (
     <aside className="hidden shrink-0 lg:flex lg:w-64 xl:w-72 border-r border-slate-200 bg-slate-50/80 flex-col">
       <div className="border-b border-slate-200 p-4">
-        <h2 className="text-sm font-semibold text-slate-800">会谈时间线</h2>
+        <h2 className="text-sm font-semibold text-slate-800">Session Timeline</h2>
         <p className="mt-1 text-xs leading-5 text-slate-600">
           {currentCourse
-            ? `按时间回顾 ${currentCourse.title} 的每次会谈。`
-            : "先选择疗程后，再查看会谈时间线。"}
+            ? `Review timeline of sessions for ${currentCourse.title}.`
+            : "Select a course to view session history."}
         </p>
       </div>
 
@@ -34,14 +34,14 @@ export function VisitTimeline({
         {!currentCourse ? (
           <EmptyState
             icon={Milestone}
-            title="还未选择疗程"
-            description="请先在左侧选择一个疗程，再查看会谈进展。"
+            title="No Course Selected"
+            description="Please select a course from the left to view session progress."
           />
         ) : visits.length === 0 ? (
           <EmptyState
             icon={Clock3}
-            title="还没有会谈记录"
-            description="创建疗程后会自动生成第一次会谈，也可以稍后手动开始。"
+            title="No Sessions Recorded"
+            description="The initial session is generated with the course, or can be started manually below."
             action={
               canStartNextVisit ? (
                 <button
@@ -49,7 +49,7 @@ export function VisitTimeline({
                   className="inline-flex items-center rounded-lg bg-teal-600 px-3 py-2 text-xs font-semibold text-white hover:bg-teal-700"
                   onClick={onStartNextVisit}
                 >
-                  开始第 {nextVisitNo} 次会谈
+                  Start Session {nextVisitNo}
                 </button>
               ) : null
             }
@@ -69,7 +69,7 @@ export function VisitTimeline({
               <div className="flex items-start justify-between gap-2">
                 <div>
                   <p className="text-sm font-semibold text-slate-800">{formatVisitLabel(visit.visit_no)}</p>
-                  <p className="mt-1 text-xs text-slate-600">阶段：{visit.stage?.label || "未开始"}</p>
+                  <p className="mt-1 text-xs text-slate-600">Stage: {visit.stage?.label || "Not Started"}</p>
                 </div>
                 <StatusPill text={getVisitStatusText(visit.status)} tone={getVisitTone(visit.status)} />
               </div>
@@ -77,9 +77,9 @@ export function VisitTimeline({
               <div className="mt-3 flex items-center justify-between text-xs text-slate-600">
                 <span className="inline-flex items-center gap-1">
                   <MessageSquarePlus className="h-3.5 w-3.5" />
-                  {visit.message_count || 0} 条消息
+                  {visit.message_count || 0} messages
                 </span>
-                <span>{visit.ended_at ? "已结束" : "进行中"}</span>
+                <span>{visit.ended_at ? "Closed" : "Active"}</span>
               </div>
             </button>
           ))

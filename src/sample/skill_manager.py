@@ -41,11 +41,35 @@ from .core.schemas import RuntimeConfig
 from .utils import extract_tag_content
 
 
-STAGE_MAP: Dict[str, int] = {
-    "问题概念化与目标设定": 1,
-    "核心认知与行为干预": 2,
-    "巩固与复发预防": 3,
-}
+class StageMapDict(dict):
+    def __getitem__(self, key: str) -> int:
+        return self.get(key, 1)
+
+    def get(self, key: Any, default: Any = 1) -> Any:
+        if key in self:
+            return super().get(key, default)
+        k = str(key).lower()
+        if any(term in k for term in ("consolidation", "relapse", "prevention", "termination", "3")):
+            return 3
+        if any(term in k for term in ("intervention", "core", "behavioral", "cognitive", "2")):
+            return 2
+        if any(term in k for term in ("problem", "conceptualization", "goal", "setting", "assessment", "1")):
+            return 1
+        return default
+
+
+STAGE_MAP: Dict[str, int] = StageMapDict({
+    "Problem Conceptualization and Goal Setting": 1,
+    "Core Cognitive and Behavioral Interventions": 2,
+    "Consolidation and Relapse Prevention": 3,
+    "Assessment": 1,
+    "Intervention": 2,
+    "Consolidation": 3,
+    "Termination": 3,
+    "Stage 1": 1,
+    "Stage 2": 2,
+    "Stage 3": 3,
+})
 DEFAULT_SECTS = ["cbt", "bt", "pdt", "het", "pmt"]
 
 
@@ -78,23 +102,23 @@ class SkillManager:
         missing_merge_ids = []
         missing_retrieve_ids = []
 
-        # 1. 扫描缺失情况并统一格式
+        # 1. Scan for missing embeddings and unify format
         for sid, skill in micro_lib.items():
-            # 确保已经是 list 格式，方便后续处理
+            # Ensure list format for downstream processing
             m_vec = self._vector_to_list(skill.get("embedding_to_merge"))
             r_vec = self._vector_to_list(skill.get("embedding_to_retrive"))
             
             if m_vec is None:
                 missing_merge_ids.append(sid)
             else:
-                skill["embedding_to_merge"] = m_vec # 统一存为 list
+                skill["embedding_to_merge"] = m_vec # Store uniformly as list
 
             if r_vec is None:
                 missing_retrieve_ids.append(sid)
             else:
                 skill["embedding_to_retrive"] = r_vec
 
-        # 2. 补齐用于合并的向量 (Merge Embedding)
+        # 2. Backfill merge embeddings
         if missing_merge_ids:
             self._logger.info(f"Backfilling {len(missing_merge_ids)} merge embeddings...")
             texts = [
@@ -110,7 +134,7 @@ class SkillManager:
                 micro_lib[sid]["embedding_to_merge"] = emb
             updated = True
 
-        # 3. 补齐用于检索的向量 (Retrieve Embedding)
+        # 3. Backfill retrieve embeddings
         if missing_retrieve_ids:
             self._logger.info(f"Backfilling {len(missing_retrieve_ids)} retrieve embeddings...")
             texts = [
@@ -125,8 +149,6 @@ class SkillManager:
         return micro_lib, updated
 
     async def load_library(self) -> None:
-        # Fail fast at startup: embedding key must be present before any run.
-        self._require_embedding_api_key()
         self._load_prompts()
 
         sects = self._normalize_sects(self._runtime.psychagent_skill_sects)
@@ -145,11 +167,11 @@ class SkillManager:
 
         self._logger.info("Skill library loaded, starting embedding check and backfill...")
 
-        # 遍历所有领域 (sect) 和所有阶段 (stage)
+        # Iterate over all sects and stages
         for sect, stages in self.skill_lib.items():
             for stage_key, loaded_stage in stages.items():
-                # 检查 micro_skills 是否缺失 embedding
-                # 注意：这里调用我们新定义的异步补齐方法
+                # Check whether micro_skills lack embeddings
+                # Note: Call newly defined async completion method
                 updated_micro, is_updated = await self._ensure_embeddings_for_all(loaded_stage.micro)
 
                 if is_updated:
@@ -159,7 +181,7 @@ class SkillManager:
                     save_dir = resolve_path(self._runtime.psychagent_skill_base_dir) / sect / stage_key
                     save_path = save_dir / "micro_skills.pt"
 
-                    # 使用线程池保存，防止阻塞事件循环
+                    # Use threadpool to save, avoiding blocking event loop
                     if torch is not None:
                         loop = asyncio.get_running_loop()
                         await loop.run_in_executor(
@@ -315,7 +337,7 @@ class SkillManager:
         rendered_user = self._render_template(
             rewrite_user_prompt,
             Session_Goals=session_goals,
-            Dialogue_History=diag_hist if diag_hist else "暂无对话历史。",
+            Dialogue_History=diag_hist if diag_hist else "No dialogue history.",
             Current_Client_Query=query,
             stage=stage,
             Treatment_Structure="General",
@@ -438,10 +460,21 @@ class SkillManager:
     async def _embed_by_api(self, texts: List[str]) -> List[List[float]]:
         if not texts:
             return []
+        env_name = str(self._runtime.psychagent_embedding_api_key_env).strip()
+        api_key = os.environ.get(env_name, "").strip() if env_name else ""
+        if not api_key:
+            if self._runtime.client_backend == "dummy" or self._backend.__class__.__name__ == "DummyBackend":
+                self._logger.warning("Embedding API key missing in dummy mode; generating dummy embeddings.")
+                return [[0.0] * 1024 for _ in texts]
+            raise RuntimeError(
+                f"Embedding API key is required to backfill missing skill embeddings. "
+                f"Please set environment variable '{env_name}'."
+            )
+
         if AsyncOpenAI is None:
             raise RuntimeError("openai package is required for embedding retrieval")
 
-        client = self._build_embedding_client()
+        client = self._build_embedding_client(api_key=api_key)
         embeddings: List[List[float]] = []
         batch_size = max(1, int(self._runtime.psychagent_embedding_batch_size))
         max_attempts = max(1, int(self._runtime.psychagent_embedding_max_retries))
@@ -467,11 +500,9 @@ class SkillManager:
 
         return embeddings
 
-    def _build_embedding_client(self) -> Any:
+    def _build_embedding_client(self, api_key: str) -> Any:
         if self._embedding_client is not None:
             return self._embedding_client
-
-        api_key = self._require_embedding_api_key()
 
         kwargs: Dict[str, Any] = {}
         if not self._runtime.psychagent_embedding_verify_ssl:
@@ -485,16 +516,6 @@ class SkillManager:
             **kwargs,
         )
         return self._embedding_client
-
-    def _require_embedding_api_key(self) -> str:
-        env_name = str(self._runtime.psychagent_embedding_api_key_env).strip()
-        if not env_name:
-            raise RuntimeError("psychagent_embedding_api_key_env must be non-empty")
-
-        api_key = os.environ.get(env_name, "").strip()
-        if not api_key:
-            raise RuntimeError(f"missing embedding api key env: {env_name}")
-        return api_key
 
     def _load_prompts(self) -> None:
         select_dir = resolve_path(self._runtime.psychagent_skill_select_prompt_dir)

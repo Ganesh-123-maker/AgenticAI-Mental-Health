@@ -1,0 +1,13 @@
+Client Message:
+{current_message}
+
+State Assessment:
+Concern: {current_concern}
+Known Info: {known_information}
+Unknown Info: {unknown_information}
+
+Memory Context:
+Main Problem: {main_problem}
+Static Traits: {known_static_traits}
+
+Assess whether any safety/crisis signals are present. Categorize into NO EVIDENCE, UNCERTAIN, or EVIDENCE OF RISK. Return ONLY valid JSON adhering to the required schema.

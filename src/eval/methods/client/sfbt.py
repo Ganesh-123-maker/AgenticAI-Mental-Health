@@ -8,7 +8,7 @@ from jinja2 import Template
 import json
 
 from typing import List
-from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator # 👈 确保导入 ConfigDict
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 class Item(BaseModel):
     model_config = ConfigDict(extra="forbid", strict=True)
@@ -28,7 +28,7 @@ class Item(BaseModel):
         return s
 
 
-class Items(BaseModel):  # 用对象包一层
+class Items(BaseModel):
     model_config = ConfigDict(extra="forbid", strict=True)
 
     items: List[Item] = Field(min_length=20, max_length=20)
@@ -44,7 +44,7 @@ class Items(BaseModel):  # 用对象包一层
 class SFBT(EvaluationMethod):
 
     async def evaluate(self, gpt_api, dialogue: Any, profile: dict = None) -> dict[str, float]:
-        """评估对话质量"""
+        """Evaluate dialogue quality."""
         scores: list[Item] = []
         
         prompt = load_prompt("sfbt", "SFBT","cn")
@@ -68,7 +68,7 @@ class SFBT(EvaluationMethod):
                 messages = messages + [
                     {
                         "role": "user",
-                        "content": "上一次输出未通过格式校验。请严格只输出一个JSON对象，且只包含键 items；items 长度必须为 20；每项仅包含 item(“1”-“20”) 与 score(0-4整数)。",
+                        "content": "The previous output failed schema validation. Please strictly output a single JSON object containing only the key 'items'; items length must be 20; each containing only item ('1'-'20') and score (integer 0-4).",
                     }
                 ]
         else:  # pragma: no cover

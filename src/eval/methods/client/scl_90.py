@@ -61,7 +61,7 @@ class SCL_90(EvaluationMethod):
                 messages = messages + [
                     {
                         "role": "user",
-                        "content": "上一次输出未通过格式校验。请严格只输出一个JSON对象，且只包含键 items；items 长度必须为 90；每项仅包含 item(“1”-“90”) 与 score(0-4整数)。",
+                        "content": "The previous output failed schema validation. Please strictly output a single JSON object containing only the key 'items'; items length must be 90; each containing only item ('1'-'90') and score (integer 0-4).",
                     }
                 ]
         else:  # pragma: no cover

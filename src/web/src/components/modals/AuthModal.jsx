@@ -21,9 +21,9 @@ export function AuthModal({
         </button>
 
         <div className="text-center space-y-1">
-          <h2 className="text-xl font-bold text-slate-800">账户</h2>
+          <h2 className="text-xl font-bold text-slate-800">Account</h2>
           <p className="text-sm text-slate-500">
-            {user ? `当前登录：${user.username}` : "请输入用户名和密码，或注册新账号。"}
+            {user ? `Signed in as: ${user.username}` : "Enter your username and password, or register a new account."}
           </p>
         </div>
 
@@ -31,26 +31,26 @@ export function AuthModal({
           <div className="space-y-3">
             <input
               className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm"
-              placeholder="用户名"
+              placeholder="Username"
               value={authForm.username}
               onChange={(event) => onChangeForm({ ...authForm, username: event.target.value })}
             />
 
             <input
               className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm"
-              placeholder="密码"
+              placeholder="Password"
               type="password"
               value={authForm.password}
               onChange={(event) => onChangeForm({ ...authForm, password: event.target.value })}
             />
 
             <div className="flex items-center justify-between text-xs text-slate-500">
-              <div>当前模式：{authMode === "login" ? "登录" : "注册"}</div>
+              <div>Mode: {authMode === "login" ? "Sign In" : "Register"}</div>
               <button
                 className="text-teal-600 hover:text-teal-700"
                 onClick={() => onChangeMode(authMode === "login" ? "register" : "login")}
               >
-                切换到{authMode === "login" ? "注册" : "登录"}
+                Switch to {authMode === "login" ? "Register" : "Sign In"}
               </button>
             </div>
 
@@ -58,7 +58,7 @@ export function AuthModal({
               className="w-full bg-teal-600 text-white rounded-lg py-2 text-sm font-semibold hover:bg-teal-700 transition"
               onClick={() => onSubmit(authMode)}
             >
-              {authMode === "login" ? "登录" : "注册"}
+              {authMode === "login" ? "Sign In" : "Register"}
             </button>
           </div>
         )}
@@ -74,7 +74,7 @@ export function AuthModal({
               className="w-full bg-slate-800 text-white rounded-lg py-2 text-sm font-semibold hover:bg-slate-900 transition"
               onClick={onLogout}
             >
-              退出登录
+              Sign Out
             </button>
           </div>
         )}

@@ -10,17 +10,17 @@ import json
 from typing import List
 from typing import Literal
 
-from pydantic import BaseModel, ConfigDict, Field, model_validator # 👈 确保导入 ConfigDict
+from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 STAIItemName = Literal[
-    "1. 阻抗 (反向:开放度)",
-    "2. 同意 (认可度)",
-    "3. 恰当请求 (求助意愿)",
-    "4. 叙述 (反向:当下聚焦)",
-    "5. 认知探索 (深度)",
-    "6. 情感探索 (深度)",
-    "7. 领悟 (觉察度)",
-    "8. 治疗改变 (行动力)",
+    "1. Resistance (Reverse: Openness)",
+    "2. Agreement (Endorsement)",
+    "3. Appropriate Request (Willingness to seek help)",
+    "4. Narrative (Reverse: Present focus)",
+    "5. Cognitive Exploration (Depth)",
+    "6. Emotional Exploration (Depth)",
+    "7. Insight (Awareness)",
+    "8. Therapeutic Change (Actionability)",
 ]
 
 
@@ -34,7 +34,7 @@ class Item(BaseModel):
     thought: str = Field(max_length=24, pattern=r"^[^\n\r]{0,24}$")
 
 
-class Items(BaseModel):  # 用对象包一层
+class Items(BaseModel):
     model_config = ConfigDict(extra="forbid", strict=True)
 
     items: List[Item] = Field(min_length=8, max_length=8)
@@ -42,14 +42,14 @@ class Items(BaseModel):  # 用对象包一层
     @model_validator(mode="after")
     def _validate_order(self) -> "Items":
         expected: list[str] = [
-            "1. 阻抗 (反向:开放度)",
-            "2. 同意 (认可度)",
-            "3. 恰当请求 (求助意愿)",
-            "4. 叙述 (反向:当下聚焦)",
-            "5. 认知探索 (深度)",
-            "6. 情感探索 (深度)",
-            "7. 领悟 (觉察度)",
-            "8. 治疗改变 (行动力)",
+            "1. Resistance (Reverse: Openness)",
+            "2. Agreement (Endorsement)",
+            "3. Appropriate Request (Willingness to seek help)",
+            "4. Narrative (Reverse: Present focus)",
+            "5. Cognitive Exploration (Depth)",
+            "6. Emotional Exploration (Depth)",
+            "7. Insight (Awareness)",
+            "8. Therapeutic Change (Actionability)",
         ]
         actual = [it.item for it in self.items]
         if actual != expected:
@@ -59,7 +59,7 @@ class Items(BaseModel):  # 用对象包一层
 class STAI(EvaluationMethod):
 
     async def evaluate(self, gpt_api, dialogue: Any, profile: dict = None) -> dict[str, float]:
-        """评估对话质量"""
+        """Evaluate dialogue quality."""
         scores: list[Item] = []
         
         prompt = load_prompt("stai", "STAI","cn")
@@ -83,7 +83,7 @@ class STAI(EvaluationMethod):
                 messages = messages + [
                     {
                         "role": "user",
-                        "content": "上一次输出未通过格式校验。请严格按输出格式只输出 JSON：仅包含键 items；items 长度为 8；每项包含 item/evidence_pos/evidence_neg/thought/score。",
+                        "content": "The previous output failed schema validation. Please strictly output JSON containing only key 'items' with length 8; each item must contain item/evidence_pos/evidence_neg/thought/score.",
                     }
                 ]
         else:  # pragma: no cover

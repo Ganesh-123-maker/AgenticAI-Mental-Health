@@ -37,13 +37,13 @@ SessionClosePostprocessFn = Callable[
 ]
 
 SESSION_FOCUS_DEFAULT = [
-    "建立初始关系与咨询框架",
-    "收集稳定背景信息",
-    "了解当前主要困扰与近期变化",
-    "澄清来访动机与期待",
-    "进行基础身心与功能评估",
-    "识别潜在风险与可用资源",
-    "会谈总结与协作性反馈",
+    "Establish initial therapeutic relationship and counseling framework",
+    "Collect stable background information",
+    "Understand chief concerns and recent changes",
+    "Clarify counseling motivation and expectations",
+    "Conduct baseline psychosomatic and functional assessment",
+    "Identify potential risks and available resources",
+    "Session summary and collaborative feedback",
 ]
 
 GLOBAL_STATIC_TRAIT_KEYS = [
@@ -58,7 +58,7 @@ GLOBAL_STATIC_TRAIT_KEYS = [
     "medical_history",
 ]
 
-UNKNOWN_TEXT_VALUES = {"未知"}
+UNKNOWN_TEXT_VALUES = {"unknown", "unmentioned", "n/a", "none"}
 
 
 def utcnow() -> datetime:
@@ -67,15 +67,15 @@ def utcnow() -> datetime:
 
 def build_visit_prompt(school, stage, visit_no: int, planned_visit_count: Optional[int]) -> str:
     if planned_visit_count:
-        total_part = f"这是疗程中的第 {visit_no}/{planned_visit_count} 次会谈。"
+        total_part = f"This is session {visit_no}/{planned_visit_count} in the therapy course."
     else:
-        total_part = f"这是疗程中的第 {visit_no} 次会谈。"
+        total_part = f"This is session {visit_no} in the therapy course."
     return (
-        "你是一名专业心理咨询师，遵循伦理规范，提供共情、支持和结构化的对话。"
-        f"当前流派：{school.name}。"
-        f"当前阶段：{stage.label}（{stage.desc}）。"
-        f"{total_part}"
-        "保持简洁、温暖、尊重，避免给出医疗诊断或具体药物建议。"
+        "You are a professional psychological counselor adhering to ethical guidelines, providing empathy, support, and structured dialogue. "
+        f"Current modality: {school.name}. "
+        f"Current stage: {stage.label} ({stage.desc}). "
+        f"{total_part} "
+        "Maintain a warm, concise, and respectful tone; avoid making medical diagnoses or prescribing medication."
     )
 
 
@@ -90,23 +90,23 @@ def build_opening_messages(
 
     if visit_no == 1:
         assistant_text = (
-            f"你好。我是你的{school.name}咨询师。今天是我们的第 {visit_no} 次会谈，属于{stage.label}阶段。"
-            f"{school.desc}\n\n你今天想聊些什么？"
+            f"Hello. I am your {school.name} counselor. Today is our session {visit_no}, in the stage of {stage.label}. "
+            f"{school.desc}\n\nWhat would you like to explore today?"
         )
     else:
         assistant_text = (
-            f"欢迎回来。今天是我们的第 {visit_no} 次会谈，属于{stage.label}阶段。"
-            "我们可以继续上次的工作，也可以先从你现在最在意的感受开始。"
+            f"Welcome back. Today is our session {visit_no}, in the stage of {stage.label}. "
+            "We can continue from where we left off last time, or start with what is most on your mind right now."
         )
 
     if opening_note.strip():
-        assistant_text = f"{assistant_text}\n\n本次关注：{opening_note.strip()}"
+        assistant_text = f"{assistant_text}\n\nSession Focus: {opening_note.strip()}"
 
     return [
         VisitMessageRecord(
             visit_id="",
             role="system",
-            text=f"第 {visit_no} 次会谈已开始。当前阶段：{stage.label}",
+            text=f"Session {visit_no} started. Current stage: {stage.label}",
             created_at=now,
         ),
         VisitMessageRecord(
@@ -119,11 +119,11 @@ def build_opening_messages(
 
 
 def build_opening_seed_user_text(visit_no: int, opening_note: str = "") -> str:
-    base = f"这是第{visit_no}次会话"
+    base = f"This is session {visit_no}"
     note = opening_note.strip()
     if not note:
         return base
-    return f"{base}\n本次关注：{note}"
+    return f"{base}\nSession Focus: {note}"
 
 
 def _parse_assistant_payload(assistant_payload: Any) -> Tuple[str, bool]:
@@ -597,7 +597,7 @@ async def create_visit(
 ) -> VisitState:
     course = get_owned_course_record(db, course_id, user_id)
     if course.status != "active":
-        raise HTTPException(status_code=409, detail="只有进行中的疗程才能开始新会谈")
+        raise HTTPException(status_code=409, detail="Only in-progress therapy courses can start a new session")
 
     open_visit = db.exec(
         select(TherapyVisitRecord).where(
@@ -606,7 +606,7 @@ async def create_visit(
         )
     ).first()
     if open_visit:
-        raise HTTPException(status_code=409, detail="当前疗程已有未结束的会谈")
+        raise HTTPException(status_code=409, detail="The current course already has an ongoing session")
 
     next_visit_no = course.latest_visit_no + 1
     stage = resolve_stage_for_new_visit(db, course, next_visit_no)
@@ -677,7 +677,7 @@ async def create_visit(
     assistant_text = str(assistant_text or "").strip()
     if not assistant_text:
         db.rollback()
-        raise HTTPException(status_code=502, detail="会谈开场生成失败，请稍后重试")
+        raise HTTPException(status_code=502, detail="Failed to generate session opening; please try again later")
 
     now = utcnow()
     opening_assistant_message = VisitMessageRecord(
@@ -698,7 +698,7 @@ async def create_visit(
         db.commit()
     except IntegrityError:
         db.rollback()
-        raise HTTPException(status_code=409, detail="当前疗程已有未结束的会谈") from None
+        raise HTTPException(status_code=409, detail="The current course already has an ongoing session") from None
     db.refresh(visit)
     return build_visit_state(db, visit)
 
@@ -718,7 +718,7 @@ async def send_visit_message(
 ) -> SendVisitMessageResponse:
     visit, course = get_owned_visit_and_course(db, visit_id, user_id)
     if visit.status != "open":
-        raise HTTPException(status_code=409, detail="当前会谈已结束，无法继续发送消息")
+        raise HTTPException(status_code=409, detail="The current session has ended; cannot send further messages")
 
     now = utcnow()
     user_message = VisitMessageRecord(
@@ -756,12 +756,12 @@ async def send_visit_message(
         )
     except Exception as exc:
         db.rollback()
-        raise HTTPException(status_code=502, detail="大模型调用失败，请稍后重试") from exc
+        raise HTTPException(status_code=502, detail="LLM call failed; please try again later") from exc
 
     assistant_text, should_auto_close = _parse_assistant_payload(assistant_payload)
     if not assistant_text:
         db.rollback()
-        raise HTTPException(status_code=502, detail="大模型返回为空，请稍后重试")
+        raise HTTPException(status_code=502, detail="LLM returned an empty response; please try again later")
 
     now = utcnow()
     assistant_message = VisitMessageRecord(
@@ -813,7 +813,7 @@ async def close_visit(
 ) -> CloseVisitResponse:
     visit, course = get_owned_visit_and_course(db, visit_id, user_id)
     if visit.status != "open":
-        raise HTTPException(status_code=409, detail="当前会谈已结束")
+        raise HTTPException(status_code=409, detail="The current session has ended")
 
     visit_state_before_close = build_visit_state(db, visit)
     close_artifacts: Dict[str, Any] = {}
@@ -836,7 +836,7 @@ async def close_visit(
     closing_message = VisitMessageRecord(
         visit_id=visit.visit_id,
         role="system",
-        text="--- 本次会谈已结束，进度已保存 ---",
+        text="--- Current session ended, progress saved ---",
         created_at=now,
     )
     visit.status = "closed"

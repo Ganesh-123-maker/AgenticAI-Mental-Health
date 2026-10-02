@@ -1,13 +1,13 @@
 import { Activity, ShieldAlert, Target } from "lucide-react";
 
 const SESSION_FOCUS_DEFAULT = [
-  "建立初始关系与咨询框架",
-  "收集稳定背景信息",
-  "了解当前主要困扰与近期变化",
-  "澄清来访动机与期待",
-  "进行基础身心与功能评估",
-  "识别潜在风险与可用资源",
-  "会谈总结与协作性反馈",
+  "Establish initial rapport and counseling framework",
+  "Gather background history and demographics",
+  "Explore primary complaints and recent changes",
+  "Clarify counseling motivation and expectations",
+  "Conduct baseline psychosomatic and functional assessment",
+  "Identify safety risks and available coping resources",
+  "Summarize session and exchange collaborative feedback",
 ];
 
 function Section({ title, icon: Icon, children }) {
@@ -47,18 +47,18 @@ export function RightPanel({ currentCourse, currentVisit, embedded = false }) {
 
   return (
     <aside className={wrapperClassName}>
-      <Section title="当前阶段" icon={Activity}>
+      <Section title="Current Stage" icon={Activity}>
         {currentCourse ? (
           <div className="space-y-1">
-            <p className="font-semibold text-slate-800">{stage?.label || "未开始"}</p>
-            <p>当前处于第 {currentVisit?.visit_no || currentCourse?.latest_visit_no || 0} 次会谈。</p>
+            <p className="font-semibold text-slate-800">{stage?.label || "Not Started"}</p>
+            <p>Currently in session {currentVisit?.visit_no || currentCourse?.latest_visit_no || 0}.</p>
           </div>
         ) : (
-          <p>选择疗程后可查看当前阶段与进度。</p>
+          <p>Select a course to view its stage and progress.</p>
         )}
       </Section>
 
-      <Section title="咨询目标" icon={Target}>
+      <Section title="Counseling Goals" icon={Target}>
         {currentCourse ? (
           sessionFocus.length > 0 ? (
             <ul className="space-y-1">
@@ -70,18 +70,18 @@ export function RightPanel({ currentCourse, currentVisit, embedded = false }) {
               ))}
             </ul>
           ) : (
-            <p>当前会谈暂无目标信息。</p>
+            <p>No goal information for current session.</p>
           )
         ) : (
-          <p>创建疗程后可在此查看和维护咨询目标。</p>
+          <p>Create a course to view and maintain counseling goals.</p>
         )}
       </Section>
 
-      <Section title="支持与提醒" icon={ShieldAlert}>
+      <Section title="Support & Safety Notice" icon={ShieldAlert}>
         <ul className="space-y-1">
-          <li>AI 内容仅供参考，不替代专业医疗建议。</li>
-          <li>如遇紧急心理危机，请尽快联系当地急救资源或专业机构。</li>
-          <li>后续可扩展为会后任务与家庭练习模块，当前先提供提醒占位。</li>
+          <li>AI responses are for reference and do not replace professional clinical advice.</li>
+          <li>If experiencing a psychological crisis, contact local emergency services immediately.</li>
+          <li>Structured homework and between-session practice modules will appear here.</li>
         </ul>
       </Section>
     </aside>

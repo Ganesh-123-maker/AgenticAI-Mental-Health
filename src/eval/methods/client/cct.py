@@ -9,7 +9,7 @@ from jinja2 import Template
 import json
 
 from typing import List
-from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator # 👈 确保导入 ConfigDict
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 class Item(BaseModel):
     model_config = ConfigDict(extra="forbid", strict=True)
@@ -32,7 +32,7 @@ class Item(BaseModel):
         return s
 
 
-class Items(BaseModel):  # 用对象包一层
+class Items(BaseModel):
     model_config = ConfigDict(extra="forbid", strict=True)
 
     items: List[Item] = Field(min_length=3, max_length=3)
@@ -47,7 +47,7 @@ class Items(BaseModel):  # 用对象包一层
 
 class CCT(EvaluationMethod):
     async def evaluate(self, gpt_api, dialogue: Any, profile: dict = None) -> dict[str, float]:
-        """评估对话质量"""
+        """Evaluate dialogue quality."""
         criteria_list = ["current focus", "non critical", "real connection", "self awareness", "self exploration"]
         scores: list[Item] = []
 
@@ -68,7 +68,7 @@ class CCT(EvaluationMethod):
                     messages = messages + [
                         {
                             "role": "user",
-                            "content": "上一次输出未通过格式校验。请严格只输出一个JSON对象，且只包含键 items；items 长度必须为 3，每项仅包含 item/evidence_pos/evidence_neg/thought/score。",
+                            "content": "The previous output failed schema validation. Please strictly output a single JSON object containing only the key 'items'; items length must be 3, each containing only item/evidence_pos/evidence_neg/thought/score.",
                         }
                     ]
             raise RuntimeError(f"Failed to get valid CCT output: {last_err}")

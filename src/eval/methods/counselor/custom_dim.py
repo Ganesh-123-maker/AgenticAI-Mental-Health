@@ -9,7 +9,7 @@ from jinja2 import Template
 import json
 
 from typing import List
-from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator # 👈 确保导入 ConfigDict
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 class Item(BaseModel):
     model_config = ConfigDict(extra="forbid", strict=True)
@@ -26,7 +26,7 @@ class Item(BaseModel):
         return s
 
 
-class _ItemsBase(BaseModel):  # 用对象包一层
+class _ItemsBase(BaseModel):  # Wrapper schema
     model_config = ConfigDict(extra="forbid", strict=True)
 
     items: List[Item]
@@ -67,7 +67,7 @@ _ITEMS_MODEL_BY_CRITERIA: dict[str, type[_ItemsBase]] = {
 class Custom_Dim(EvaluationMethod):
 
     async def evaluate(self, gpt_api, dialogue: Any, profile: dict = None) -> dict[str, float]:
-        """评估对话质量"""
+        """Evaluate dialogue quality."""
         criteria_list = ["Ethics", "Interaction", "Intervention", "Perception"]
         scores: list[Item] = []
         
@@ -94,7 +94,7 @@ class Custom_Dim(EvaluationMethod):
                     messages = messages + [
                         {
                             "role": "user",
-                            "content": f"上一次输出未通过格式校验。请严格只输出一个JSON对象，且只包含键 items；items 长度必须为 {expected_len}；items 必须按顺序包含编号 '1'..'{expected_len}'；每项仅包含 item(编号字符串) 与 score(1-5整数)。",
+                            "content": f"The previous output failed schema validation. Please strictly output a single JSON object containing only key 'items'; items length must be {expected_len}; items must contain keys '1'..'{expected_len}' in order; each item only contains item and score (1-5 integer).",
                         }
                     ]
             raise RuntimeError(f"Failed to get valid Custom_Dim output: {last_err}")

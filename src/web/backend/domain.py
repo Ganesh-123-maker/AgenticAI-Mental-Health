@@ -24,21 +24,21 @@ class SchoolInfo(BaseModel):
 
 STAGES: Dict[str, Dict[str, object]] = {
     "assessment": {
-        "label": "问题概念化与目标设定",
+        "label": "Problem Conceptualization & Goal Setting",
         "range": [1, 2],
-        "desc": "聚焦问题定义、信息收集、关系建立与可执行目标设定",
+        "desc": "Focuses on problem definition, information gathering, rapport building, and actionable goal setting",
         "color": "text-blue-600 bg-blue-50",
     },
     "intervention": {
-        "label": "核心认知与行为干预",
+        "label": "Core Cognitive & Behavioral Intervention",
         "range": [3, 8],
-        "desc": "围绕关键认知与行为模式进行结构化干预与练习",
+        "desc": "Structured interventions and exercises targeting key cognitive and behavioral patterns",
         "color": "text-purple-600 bg-purple-50",
     },
     "consolidation": {
-        "label": "巩固与复发预防",
+        "label": "Consolidation & Relapse Prevention",
         "range": [9, 10],
-        "desc": "整合收获、迁移应用与复发预防，准备有序结束",
+        "desc": "Synthesizing gains, skill transfer, relapse prevention, and termination planning",
         "color": "text-green-600 bg-green-50",
     },
 }
@@ -47,38 +47,38 @@ STAGES: Dict[str, Dict[str, object]] = {
 SCHOOLS: List[SchoolInfo] = [
     SchoolInfo(
         id="behavioral",
-        name="行为疗法 (BT)",
+        name="Behavior Therapy (BT)",
         color="bg-amber-500",
-        desc="通过强化、脱敏和模仿来改变特定行为模式，强调可观察、可练习、可追踪的改变。",
-        style="直接、实用、训练导向",
+        desc="Modifies specific behavioral patterns via reinforcement, desensitization, and modeling; emphasizes observable, actionable, and trackable change.",
+        style="Direct, practical, training-oriented",
     ),
     SchoolInfo(
         id="cbt",
-        name="认知行为疗法 (CBT)",
+        name="Cognitive Behavioral Therapy (CBT)",
         color="bg-blue-500",
-        desc="关注想法、情绪和行为之间的关系，识别并修正带来痛苦的自动化思维。",
-        style="理性、结构化、以问题解决为导向",
+        desc="Focuses on connections between thoughts, emotions, and behaviors; identifies and restructures distressing automatic thoughts.",
+        style="Rational, structured, problem-solving focused",
     ),
     SchoolInfo(
         id="humanistic",
-        name="人本-存在主义疗法 (HET)",
+        name="Humanistic-Existential Therapy (HET)",
         color="bg-rose-500",
-        desc="强调真实关系、接纳与意义探索，帮助来访者理解当下体验并作出自主选择。",
-        style="温暖、接纳、以人为本",
+        desc="Emphasizes genuine relationship, acceptance, and meaning exploration; empowers clients to understand present experience and make autonomous choices.",
+        style="Warm, accepting, person-centered",
     ),
     SchoolInfo(
         id="psychodynamic",
-        name="心理动力学疗法 (PDT)",
+        name="Psychodynamic Therapy (PDT)",
         color="bg-indigo-600",
-        desc="探索潜意识冲突与早年经验对当前关系和情绪模式的影响，提升自我理解。",
-        style="深度探索、关注内在冲突与关系模式",
+        desc="Explores unconscious conflicts and early experiences impacting current relational and emotional patterns; fosters deep self-understanding.",
+        style="In-depth exploration, insight-oriented, focused on relational dynamics",
     ),
     SchoolInfo(
         id="postmodern",
-        name="后现代主义疗法 (PMT)",
+        name="Postmodern Therapy (PMT)",
         color="bg-teal-500",
-        desc="通过外化问题、重构叙事与发现例外时刻，帮助来访者重写更有力量的生命故事。",
-        style="合作、赋能、强调多元视角",
+        desc="Externalizes problems, deconstructs narratives, and identifies exceptions to help clients author empowering life stories.",
+        style="Collaborative, empowering, multi-perspective",
     ),
 ]
 
@@ -100,13 +100,16 @@ SUMMARY_STAGE_TO_STAGE_KEY: Dict[str, str] = {
     "assessment": "assessment",
     "intervention": "intervention",
     "consolidation": "consolidation",
-    "问题概念化与目标设定": "assessment",
-    "核心认知与行为干预": "intervention",
-    "巩固与复发预防": "consolidation",
+    "Problem Conceptualization & Goal Setting": "assessment",
+    "Core Cognitive & Behavioral Intervention": "intervention",
+    "Consolidation & Relapse Prevention": "consolidation",
+    "Problem conceptualization and goal setting": "assessment",
+    "Core cognitive and behavioral intervention": "intervention",
+    "Consolidation and relapse prevention": "consolidation",
     # Backward-compatible aliases from older UI copy.
-    "评估性会谈": "assessment",
-    "咨询性会谈": "intervention",
-    "巩固性会谈": "consolidation",
+    "assessment_meeting": "assessment",
+    "intervention_meeting": "intervention",
+    "consolidation_meeting": "consolidation",
 }
 
 

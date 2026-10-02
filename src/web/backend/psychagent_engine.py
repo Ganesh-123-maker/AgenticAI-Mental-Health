@@ -24,13 +24,13 @@ from .models import TherapyCourseRecord, TherapyVisitRecord
 from .schemas import VisitMessageOut, VisitPsychContextOut, VisitState
 
 SESSION_FOCUS_DEFAULT: List[str] = [
-    "建立初始关系与咨询框架",
-    "收集稳定背景信息",
-    "了解当前主要困扰与近期变化",
-    "澄清来访动机与期待",
-    "进行基础身心与功能评估",
-    "识别潜在风险与可用资源",
-    "会谈总结与协作性反馈",
+    "Establish initial therapeutic relationship and counseling framework",
+    "Collect stable background information",
+    "Understand chief concerns and recent changes",
+    "Clarify counseling motivation and expectations",
+    "Conduct baseline psychosomatic and functional assessment",
+    "Identify potential risks and available resources",
+    "Session summary and collaborative feedback",
 ]
 
 
@@ -401,7 +401,7 @@ class PsychAgentWebBackend:
                     item.get("session_stage")
                     or item.get("stage_label")
                     or item.get("stage_key")
-                    or "未知阶段"
+                    or "Unknown Stage"
                 ),
                 "session_summary_abstract": str(
                     item.get("session_summary_abstract")
@@ -409,7 +409,7 @@ class PsychAgentWebBackend:
                     or summary_payload.get("session_summary_abstract")
                     or ""
                 ).strip()
-                or "暂无摘要",
+                or "No summary available",
             }
 
             client_state_analysis = item.get("client_state_analysis")
@@ -448,21 +448,21 @@ class PsychAgentWebBackend:
 
         pure_profile: Dict[str, Any] = {
             "static_traits": {
-                "name": static_traits.get("name") or "来访者",
-                "age": static_traits.get("age") or raw_info.get("age") or "未知",
-                "gender": static_traits.get("gender") or raw_info.get("gender") or "未知",
-                "occupation": static_traits.get("occupation") or raw_info.get("occupation") or "未知",
-                "educational_background": static_traits.get("educational_background") or "未知",
-                "marital_status": static_traits.get("marital_status") or "未知",
+                "name": static_traits.get("name") or "Client",
+                "age": static_traits.get("age") or raw_info.get("age") or "Unknown",
+                "gender": static_traits.get("gender") or raw_info.get("gender") or "Unknown",
+                "occupation": static_traits.get("occupation") or raw_info.get("occupation") or "Unknown",
+                "educational_background": static_traits.get("educational_background") or "Unknown",
+                "marital_status": static_traits.get("marital_status") or "Unknown",
                 "family_status": static_traits.get("family_status")
                 or raw_info.get("family_status")
-                or (note_lines[0] if note_lines else "未知"),
-                "social_status": static_traits.get("social_status") or raw_info.get("social_status") or "未知",
-                "medical_history": static_traits.get("medical_history") or raw_info.get("medical_history") or "未知",
+                or (note_lines[0] if note_lines else "Unknown"),
+                "social_status": static_traits.get("social_status") or raw_info.get("social_status") or "Unknown",
+                "medical_history": static_traits.get("medical_history") or raw_info.get("medical_history") or "Unknown",
             },
-            "main_problem": raw_info.get("main_problem") or course.intake_note or course.goal_summary or "待澄清",
-            "topic": raw_info.get("topic") or course.title or course.goal_summary or "当前困扰",
-            "core_demands": raw_info.get("core_demands") or course.goal_summary or "待澄清",
+            "main_problem": raw_info.get("main_problem") or course.intake_note or course.goal_summary or "To be clarified",
+            "topic": raw_info.get("topic") or course.title or course.goal_summary or "Current Concern",
+            "core_demands": raw_info.get("core_demands") or course.goal_summary or "To be clarified",
             "growth_experiences": growth_experiences,
             # Modality-specific profile fields (kept pure: no course/workflow metadata).
             "target_behavior": raw_info.get("target_behavior") if isinstance(raw_info.get("target_behavior"), list) else [],

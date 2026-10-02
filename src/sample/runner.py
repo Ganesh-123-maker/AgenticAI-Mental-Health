@@ -25,13 +25,13 @@ from .utils import extract_tag_content, format_transcript, safe_json_loads, stri
 
 
 DEFAULT_SESSION_FOCUS = [
-    "建立初始关系与咨询框架：开场寒暄与关系建立，确认称呼，说明首会重点与会谈结构，澄清频率与时长，说明保密原则及其限度。",
-    "收集稳定背景信息：了解基本人口学信息、成长与家庭背景、居住与通学/工作情况、兴趣与优势等，以形成初步整体印象。",
-    "了解当前主要困扰与近期变化：围绕触发情境、核心困扰、主要情绪体验及显著行为/功能变化（学习、睡眠、人际等）进行探索。",
-    "澄清来访动机与期待：了解促成就诊的关键事件与动机，共同梳理表层问题清单，提出并协商最优先的改变方向及短—中期目标。",
-    "进行基础身心与功能评估：从情绪、睡眠、饮食、精力、学习/工作、人际功能等方面做初步评估，必要时了解身体健康状况与用药情况。",
-    "识别潜在风险与可用资源：评估自/他伤风险、人际冲突与危险物品接触等，盘点家庭、同伴与校园资源，必要时共拟初步安全与支持计划。",
-    "会谈总结与协作性反馈：共同回顾本次重点与收获，邀请来访者反馈体验与补充重要内容，确认联系与界限，并初步商定后续会谈安排。",
+    "Establish initial rapport and counseling framework: Greeting, confirm preferred address, outline first session structure, clarify frequency and duration, explain confidentiality and its limits.",
+    "Gather background history: Demographic details, developmental/family history, living/school/work environment, interests and strengths, forming an initial clinical impression.",
+    "Explore primary concerns and recent changes: Triggers, core complaints, prominent emotional experiences, and significant behavioral/functional changes (work, sleep, relationships).",
+    "Clarify counseling motivation and expectations: Key precipitating events, review presenting problems, collaborate on priority goals and short/mid-term treatment objectives.",
+    "Conduct baseline psychosomatic and functional assessment: Screening mood, sleep, diet, energy, occupational and social functioning, physical health, and medication history.",
+    "Identify safety risks and coping resources: Assess risk of harm to self/others, conflict, assess family and social support systems, develop safety plan if indicated.",
+    "Session summary and collaborative feedback: Review session takeaways, invite client feedback and clarification, establish boundaries, and agree on next session focus.",
 ]
 
 
@@ -154,6 +154,7 @@ class PsychAgentRunner:
                 session_focus=state["session_focus"],
                 stage=state["stage"],
                 homework_assigned=state["homework_assigned"],
+                public_memory=state.get("public_memory"),
             )
             self._save_session_record(case, session_index, session_record)
 
@@ -208,6 +209,7 @@ class PsychAgentRunner:
         session_focus: List[str],
         stage: str,
         homework_assigned: List[str],
+        public_memory: Optional[PublicMemory] = None,
     ) -> tuple[Dict[str, Any], Dict[str, Any]]:
         modality_lower = case.modality.lower()
         models = MODALITY_MODELS.get(modality_lower)
@@ -238,9 +240,13 @@ class PsychAgentRunner:
             homework_assigned=homework_assigned,
             prompt_mgr=prompt_mgr,
             candidate_skills=candidate_skills,
+            public_memory=public_memory,
         )
         transcript = dialogue_rollout["transcript"]
         each_turn_system = dialogue_rollout["each_turn_system"]
+        public_memory = dialogue_rollout.get("public_memory") or self._build_public_memory(
+            history_list, obtain_client_info, homework_assigned
+        )
 
         summary_txt = format_transcript(transcript, for_profile=False)
         summary_prompt = prompt_mgr.render(
@@ -301,6 +307,74 @@ class PsychAgentRunner:
             "stage": next_stage,
             "homework_assigned": next_homework,
         }
+
+        if getattr(self.runtime_config, "multi_agent_enabled", False) and getattr(
+            self.runtime_config, "longitudinal_enabled", True
+        ):
+            from .agents.base import AgentContext
+            from .agents.outcome_agent import OutcomeAgent
+            from .agents.memory_update_agent import MemoryUpdateAgent
+            from .agents.memory_agent import MemoryAgent
+
+            last_client_msg = ""
+            prior_counselor_msg = ""
+            for item in reversed(transcript):
+                if item.get("role") == "user" and not last_client_msg:
+                    last_client_msg = item.get("content", "")
+                elif item.get("role") == "assistant" and last_client_msg and not prior_counselor_msg:
+                    prior_counselor_msg = item.get("content", "")
+                if last_client_msg and prior_counselor_msg:
+                    break
+
+            outcome_ctx = AgentContext(
+                case_id=case.case_id,
+                modality=modality_lower,
+                therapy_stage=stage,
+                session_index=session_index,
+                current_message=last_client_msg,
+                prior_transcript=transcript,
+                history_list=history_list,
+                obtain_client_info=obtain_client_info,
+                homework_assigned=homework_assigned,
+                public_memory=public_memory,
+                full_profile=getattr(case, "profile", None) or getattr(case, "raw_profile", None),
+            )
+            outcome_ctx.memory_output = MemoryAgent().run(outcome_ctx).payload
+
+            outcome_agent = OutcomeAgent()
+            outcome_msg = outcome_agent.run(
+                outcome_ctx,
+                client_message=last_client_msg,
+                prior_counselor_response=prior_counselor_msg,
+            )
+            outcome_ctx.outcome_output = outcome_msg.payload
+
+            mem_update_agent = MemoryUpdateAgent()
+            mem_update_msg = mem_update_agent.run(
+                outcome_ctx,
+                outcome_output=outcome_msg.payload,
+                public_memory=public_memory,
+            )
+
+            updated_memory = mem_update_agent.apply_update(
+                public_memory=public_memory,
+                persistent_facts=mem_update_msg.payload.get("persistent", []),
+                homework=next_homework,
+                session_summary=summary_dict,
+            )
+
+            if not isinstance(next_state["obtain_client_info"], dict):
+                next_state["obtain_client_info"] = {}
+            if "static_traits" not in next_state["obtain_client_info"] or not isinstance(
+                next_state["obtain_client_info"].get("static_traits"), dict
+            ):
+                next_state["obtain_client_info"]["static_traits"] = {}
+            next_state["obtain_client_info"]["static_traits"].update(updated_memory.known_static_traits)
+
+            next_state["public_memory"] = updated_memory
+            next_state["outcome_evaluation"] = outcome_msg.payload
+            next_state["memory_update"] = mem_update_msg.payload
+
         return record, next_state
 
     async def _run_dialogue_rollout(
@@ -315,6 +389,7 @@ class PsychAgentRunner:
         homework_assigned: List[str],
         prompt_mgr: PsychAgentPromptManager,
         candidate_skills: List[Dict[str, Any]],
+        public_memory: Optional[PublicMemory] = None,
     ) -> Dict[str, Any]:
         modality_lower = case.modality.lower()
         session_goals = {"stage_title": "stage", "objective": session_focus}
@@ -337,7 +412,7 @@ class PsychAgentRunner:
         counselor_messages.append({"role": "system", "content": render_counselor_system()})
         transcript.append({"role": "system", "content": counselor_messages[0]["content"]})
 
-        opening_instr = f"这是第{session_index}次会话"
+        opening_instr = f"This is session {session_index}"
         transcript.append({"role": "user", "content": opening_instr})
         counselor_messages.append({"role": "user", "content": opening_instr})
 
@@ -367,7 +442,8 @@ class PsychAgentRunner:
         if c_open_clean:
             client_transcript.append({"role": "assistant", "content": c_open_clean})
 
-        public_memory = self._build_public_memory(history_list, obtain_client_info, homework_assigned)
+        if public_memory is None:
+            public_memory = self._build_public_memory(history_list, obtain_client_info, homework_assigned)
 
         c_turns = 1
         if not opening_end:
@@ -382,22 +458,54 @@ class PsychAgentRunner:
                 counselor_messages.append({"role": "user", "content": client_resp})
                 client_transcript.append({"role": "user", "content": client_resp})
 
-                skill_suggestion, _ = await self._retrieve_skill(
-                    modality=modality_lower,
-                    transcript=transcript,
-                    session_goals=session_goals,
-                    stage=stage,
-                    candidate_skills=candidate_skills,
-                    case_id=case.case_id,
-                )
-                counselor_messages[0]["content"] = render_counselor_system(skill_suggestion)
-                each_turn_system.append(counselor_messages[0]["content"])
+                if getattr(self.runtime_config, "multi_agent_enabled", False):
+                    from .agents.base import AgentContext
+                    from .agents.pipeline import run_pipeline_async
 
-                c_resp_pure, c_resp_raw = await self._chat_with_retry(
-                    self._counselor_backend,
-                    counselor_messages,
-                    f"[case={case.case_id}] counselor turn={c_turns}",
-                )
+                    pipeline_ctx = AgentContext(
+                        case_id=case.case_id,
+                        modality=modality_lower,
+                        therapy_stage=stage,
+                        session_index=session_index,
+                        current_message=client_resp,
+                        prior_transcript=transcript[:-1],
+                        history_list=history_list,
+                        obtain_client_info=obtain_client_info,
+                        homework_assigned=homework_assigned,
+                        public_memory=public_memory,
+                        full_profile=getattr(case, "profile", None) or getattr(case, "raw_profile", None),
+                    )
+                    pipeline_result = await run_pipeline_async(
+                        pipeline_ctx,
+                        runner_instance=self,
+                        transcript=transcript,
+                        counselor_messages=counselor_messages,
+                        session_goals=session_goals,
+                        stage=stage,
+                        candidate_skills=candidate_skills,
+                        case_id=case.case_id,
+                        turn_tag=f"[case={case.case_id}] counselor turn={c_turns}",
+                        render_counselor_system=render_counselor_system,
+                        each_turn_system=each_turn_system,
+                    )
+                    c_resp_pure, c_resp_raw = pipeline_result["response"]
+                else:
+                    skill_suggestion, _ = await self._retrieve_skill(
+                        modality=modality_lower,
+                        transcript=transcript,
+                        session_goals=session_goals,
+                        stage=stage,
+                        candidate_skills=candidate_skills,
+                        case_id=case.case_id,
+                    )
+                    counselor_messages[0]["content"] = render_counselor_system(skill_suggestion)
+                    each_turn_system.append(counselor_messages[0]["content"])
+
+                    c_resp_pure, c_resp_raw = await self._chat_with_retry(
+                        self._counselor_backend,
+                        counselor_messages,
+                        f"[case={case.case_id}] counselor turn={c_turns}",
+                    )
                 c_resp_clean, is_end = strip_end_token(c_resp_pure, self.baseline_config.end_token)
                 raw_resp_clean, _ = strip_end_token(c_resp_raw, self.baseline_config.end_token)
 
@@ -412,6 +520,7 @@ class PsychAgentRunner:
         return {
             "transcript": transcript,
             "each_turn_system": each_turn_system,
+            "public_memory": public_memory,
         }
 
     async def _build_summary(
@@ -626,7 +735,7 @@ class PsychAgentRunner:
                 "history_list": [],
                 "obtain_client_info": {},
                 "session_focus": copy.deepcopy(DEFAULT_SESSION_FOCUS),
-                "stage": "问题概念化与目标设定",
+                "stage": "Problem Conceptualization and Goal Setting",
                 "homework_assigned": [],
                 "next_session_index": 1,
             }
@@ -655,7 +764,7 @@ class PsychAgentRunner:
         last_summary = last.get("summary", {}) if isinstance(last.get("summary"), dict) else {}
         next_plan = last_summary.get("next_session_plan", {}) if isinstance(last_summary.get("next_session_plan"), dict) else {}
 
-        next_stage = str(next_plan.get("next_session_stage", "问题概念化与目标设定"))
+        next_stage = str(next_plan.get("next_session_stage", "Problem Conceptualization and Goal Setting"))
         next_focus = next_plan.get("next_session_focus", copy.deepcopy(DEFAULT_SESSION_FOCUS))
         if not isinstance(next_focus, list):
             next_focus = copy.deepcopy(DEFAULT_SESSION_FOCUS)

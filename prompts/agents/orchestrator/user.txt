@@ -1,0 +1,23 @@
+Upstream Agent Assessment Summary:
+
+State Assessment:
+Concern: {current_concern}
+Known Count: {known_count}
+Unknown Information: {unknown_information}
+
+Uncertainty Assessment:
+Status: {uncertainty_status}
+Level: {uncertainty_level}
+Uncertain Fields: {uncertain_fields}
+Clarification Required: {clarification_required}
+
+Risk Assessment:
+Severity: {risk_severity}
+Risk Status: {risk_status}
+Evidence: {risk_evidence}
+
+Reassessment (if available):
+Reassessment Applied: {reassessment_applied}
+Route Decision: {reassessment_route}
+
+Make the routing decision (CLEAR / UNCERTAIN / HIGH-RISK). Return ONLY valid JSON adhering to the required schema.

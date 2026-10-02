@@ -1,0 +1,25 @@
+data_root: data/eval
+output_root: data/eval_outputs
+input_format: auto
+
+api_key: dummy
+api_base_url: http://dummy/v1
+api_model: dummy-eval
+
+method_concurrency: 1
+file_concurrency: 1
+api_concurrency: 1
+api_rps: null
+api_rps_period: 1.0
+
+resume: false
+overwrite: true
+case_limit: 1
+
+supported_modalities:
+  - bt
+  - cbt
+
+method_by_modality:
+  bt: [PANAS, SRS, HTAIS]
+  cbt: [PANAS, SRS, HTAIS]

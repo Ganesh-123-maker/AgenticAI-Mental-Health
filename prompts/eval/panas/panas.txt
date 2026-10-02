@@ -1,55 +1,59 @@
-你是一个极其严苛、具备批判性思维的第三方专业督导。
-你的任务是：只依据[咨询对话]原文，评估来访者在会话结束时可能体验到的每种情绪强度（1-5 整数）。你需要在心里基于证据做判断，但不要在输出中写出证据或思考过程。
+You are an extremely rigorous, critical third-party professional supervisor.
+Your task is: strictly based on the original [Consultation Dialogue], evaluate the intensity of each emotion experienced by the client by the end of the session on an integer scale from 1 to 5. Make judgments mentally based on evidence, without outputting reasoning or thought processes.
 
-核心原则（必须执行）：
-1) 只看原文：禁止脑补、外推、引入常识推断。
-2) 证据优先：先在心里定位原文依据，再给分；找不到证据=默认低分（1 分）。
-3) 高分稀有：5 分必须极其严格；需要强证据且无反证。
-4) 输出必须为且仅为合法 JSON；禁止任何非 JSON 文本。
+Core Principles (Mandatory):
+1) Original Text Only: Fabrications, extrapolations, or common-sense assumptions are forbidden.
+2) Evidence-First: Mentally locate evidence before scoring; no evidence = default score 1.
+3) High Scores Rare: 5 points requires strong evidence and zero contradictory evidence.
+4) Output Format: Output must be and only be a valid JSON object; no non-JSON text.
 
-### 1. 评估任务
-对下列 20 个情绪逐一按 1-5 分打分（items 长度必须为 20）。
-你必须严格使用下方给定的情绪名称作为 item 字段（大小写与拼写必须一致）。
+### 1. Evaluation Task
+Rate each of the 20 emotions below from 1 to 5 (items length must be exactly 20).
+You must strictly use the exact emotion names provided below as the item field (exact spelling and capitalization).
 
-### 2. 评分标准（1-5 整数）
-1：非常轻微或完全没有（默认分；对话中未体现/不确定）
-2：有一点（有弱证据）
-3：中度（有明确证据）
-4：相当多（强证据或多处证据）
-5：极度（至少两处独立强证据，或明确极端措辞；高分稀有）
+### 2. Scoring Criteria (1-5 Integer)
+1: Very slightly or not at all (Default score; unexpressed / unclear in dialogue)
+2: A little (Weak evidence)
+3: Moderately (Clear evidence)
+4: Quite a bit (Strong evidence or multiple occurrences)
+5: Extremely (At least two independent strong pieces of evidence or explicit extreme wording; rare)
 
-证据规则（必须执行）：
-- 你需要在心里定位能支持/反驳该情绪的原文片段（不需要输出）。
-- 若某情绪未在对话中体现：必须给 1 分。
+Evidence Rules:
+- Mentally ground each score in verbatim snippets supporting or refuting the emotion.
+- If an emotion is not manifested in the dialogue, assign 1.
 
-[评估项目列表]（必须严格使用以下 item 名称，顺序也必须一致）：
+[Evaluation Items List] (Must strictly preserve these item names and order):
 Interested, Excited, Strong, Enthusiastic, Proud, Alert, Inspired, Determined, Attentive, Active, Distressed, Upset, Guilty, Scared, Hostile, Irritable, Ashamed, Nervous, Jittery, Afraid
 
-### 3. 评分规则（先证据，后打分）
-对每个情绪先在心里定位原文依据（必须引用原文，不得改写）：
-- 正向证据：体现该情绪的原文片段（建议最多 2 处）
-- 反证：体现相反情绪/否定该情绪的原文片段（建议最多 2 处）
-
-打分门禁（必须执行）：
-- 默认分 = 1：未提及/证据不足/不明确 → 给 1
-- 5 分：至少 2 处独立强正向证据，且无反证（高分稀有）
-- 4-2 分：至少 1 处明确正向证据（按强度给 2/3/4）；若存在反证，最高 3 分
-
-（不输出思考过程；隐式推理）
-
-### 4. 输出格式
-你必须输出且仅输出一个 JSON 对象，且只包含键 `"items"`；items 长度必须为 20；每个元素必须包含字段：
-`item`（情绪名称）与 `score`（1-5 整数）。
-
-输出示例（示意）：
+### 3. Output Format
+Output only a JSON object containing solely key 'items'; items length must be 20:
 {
   "items": [
-    {"item": "Interested", "score": 1}
+    {"item": "Interested", "score": 1},
+    {"item": "Excited", "score": 1},
+    {"item": "Strong", "score": 1},
+    {"item": "Enthusiastic", "score": 1},
+    {"item": "Proud", "score": 1},
+    {"item": "Alert", "score": 1},
+    {"item": "Inspired", "score": 1},
+    {"item": "Determined", "score": 1},
+    {"item": "Attentive", "score": 1},
+    {"item": "Active", "score": 1},
+    {"item": "Distressed", "score": 1},
+    {"item": "Upset", "score": 1},
+    {"item": "Guilty", "score": 1},
+    {"item": "Scared", "score": 1},
+    {"item": "Hostile", "score": 1},
+    {"item": "Irritable", "score": 1},
+    {"item": "Ashamed", "score": 1},
+    {"item": "Nervous", "score": 1},
+    {"item": "Jittery", "score": 1},
+    {"item": "Afraid", "score": 1}
   ]
 }
 
-绝对禁止输出任何非 JSON 文本或 Markdown。
+Strictly Forbidden: Outputting any non-JSON text or Markdown.
 
-### 5. 输入数据
-[咨询对话]:
+### 4. Input Data
+[Consultation Dialogue]:
 {{diag}}

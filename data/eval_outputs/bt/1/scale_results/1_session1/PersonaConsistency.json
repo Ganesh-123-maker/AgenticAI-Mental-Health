@@ -1,0 +1,16 @@
+{
+  "method_name": "PersonaConsistency",
+  "status": "failed",
+  "scores": {},
+  "error": "1 validation error for Items\nitems.0.item\n  Input should be 'PersonaConsistency', 'OverallGoalConsistency', 'ProcessDetailConsistency' or 'TreatmentOutcomeConsistency' [type=literal_error, input_value='1', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/literal_error",
+  "traceback": "Traceback (most recent call last):\n  File \"D:\\Academics\\Academic_Project\\Project\\PsychAgent\\src\\eval\\manager\\evaluation_orchestrator.py\", line 298, in _run_one\n    scores = await method.evaluate(output_client, dialogue, method_profile)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\Academics\\Academic_Project\\Project\\PsychAgent\\src\\eval\\methods\\counselor\\plan_consistency.py\", line 59, in evaluate\n    validated = Items.model_validate(json.loads(out))\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\Academics\\Academic_Project\\Project\\PsychAgent\\.venv\\Lib\\site-packages\\pydantic\\main.py\", line 732, in model_validate\n    return cls.__pydantic_validator__.validate_python(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\npydantic_core._pydantic_core.ValidationError: 1 validation error for Items\nitems.0.item\n  Input should be 'PersonaConsistency', 'OverallGoalConsistency', 'ProcessDetailConsistency' or 'TreatmentOutcomeConsistency' [type=literal_error, input_value='1', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/literal_error\n",
+  "raw_model_outputs": [
+    "{\"items\": [{\"item\": \"1\", \"score\": 4}]}",
+    "{\"items\": [{\"item\": \"1\", \"score\": 4}]}",
+    "{\"items\": [{\"item\": \"1\", \"score\": 4}]}"
+  ],
+  "started_at": "2026-09-25T13:49:33",
+  "finished_at": "2026-09-25T13:49:33",
+  "thread_name": "Task-23",
+  "model_name": "dummy-eval"
+}

@@ -1,124 +1,124 @@
-【当前治疗阶段】
+[Current Therapy Stage]
 {{session_stage}}
 
-【来访者背景信息】
+[Client Background Information]
 {% if client_info -%}
 {% set info = client_info.static_traits or {} -%}
 {% macro line(label, value) -%}
-- {{ label }}：{{ value | default('未知', true) }}
+- {{ label }}：{{ value | default('Unknown', true) }}
 {%- endmacro -%}
-一、基本信息
-{{ line('姓名', info.name) }}
-{{ line('年龄', info.age) }}
-{{ line('性别', info.gender) }}
-{{ line('职业', info.occupation) }}
-{{ line('教育背景', info.educational_background) }}
-{{ line('婚姻状况', info.marital_status) }}
+1. Basic Information
+{{ line('Name', info.name) }}
+{{ line('Age', info.age) }}
+{{ line('Gender', info.gender) }}
+{{ line('Occupation', info.occupation) }}
+{{ line('Educational Background', info.educational_background) }}
+{{ line('Marital Status', info.marital_status) }}
 
-二、家庭与社会关系
-{{ line('家庭情况', info.family_status) }}
-{{ line('社会关系状态', info.social_status) }}
+2. Family and Social Relationships
+{{ line('Family Background', info.family_status) }}
+{{ line('Social Relationship Status', info.social_status) }}
 
-三、身心状况
-{{ line('既往病史', info.medical_history) }}
+3. Physical and Mental Health
+{{ line('Medical History', info.medical_history) }}
 
-四、主诉与咨询目标
-{{ line('主诉', client_info.main_problem) }}
-{{ line('咨询主题', client_info.topic) }}
-{{ line('核心诉求', client_info.core_demands) }}
+4. Chief Complaint and Counseling Goals
+{{ line('Chief Complaint', client_info.main_problem) }}
+{{ line('Counseling Topic', client_info.topic) }}
+{{ line('Core Demands', client_info.core_demands) }}
 
-五、成长经历
+5. Growth Experiences
 {% if client_info.growth_experiences -%}
 {% for exp in client_info.growth_experiences -%}
   - {{ loop.index }}. {{ exp }}
 {% endfor -%}
 {% else -%}
-- 未知
+- Unknown
 {% endif %}
-六、存在性议题
+6. Existential Topics
 {%- if client_info.existentialism_topic -%}
 {%- for s in client_info.existentialism_topic -%}
   {% if s.theme is defined %}
-  - 议题 {{ loop.index }}：
-    - 议题主题：{{ s.theme | default('未知', true) }}
-    - 相关描述：
+  - Topic {{ loop.index }}:
+    - Topic Theme: {{ s.theme | default('Unknown', true) }}
+    - Related Description: 
     {%- if s.manifestations %}
       {%- for a in s.manifestations if a %}
       - {{ a }}
       {%- endfor %}
     {%- else %}
-      暂无记录
+      None recorded
     {% endif %}
-    - 结果：
+    - Outcomes: 
     {%- if s.outcomes %}
       {%- for a in s.outcomes if a %}
       - {{ a }}
       {%- endfor %}
     {%- else %}
-      暂无记录
+      None recorded
     {% endif %}
   {% else -%}
-  - 议题 {{ loop.index }}：{{ s }}
+  - Topic {{ loop.index }}:{{ s }}
   {% endif -%}
 {% endfor -%}
 {% else -%}
-- 议题：未知
+- Topic: Unknown
 {% endif %}
-七、接触模式
+7. Contact Boundary Styles
 {%- if client_info.contact_model -%}
 {%- for s in client_info.contact_model -%}
   {% if s.mode is defined %}
-  - 模式 {{ loop.index }}：{{ s.mode | default('未知', true) }}
-    - 定义：{{ s.definition | default('未知', true) }}
-    - 具体表现：
+  - Mode {{ loop.index }}:{{ s.mode | default('Unknown', true) }}
+    - Definition: {{ s.definition | default('Unknown', true) }}
+    - Specific Manifestations: 
     {%- if s.manifestations %}
       {%- for a in s.manifestations if a %}
       - {{ a }}
       {%- endfor %}
     {%- else %}
-      暂无记录
+      None recorded
     {% endif %}
   {% else -%}
-  - 模式 {{ loop.index }}：{{ s }}
+  - Mode {{ loop.index }}:{{ s }}
   {% endif -%}
 {% endfor -%}
 {% else -%}
-- 模式：未知
+- Mode: Unknown
 {% endif -%}
 {% else %}
-(当前档案为空)
+(Current profile is empty)
 {% endif %}
 ---
 
-【本次会话聚焦目标】{% for focus in session_focus %}
+[Session Focus Goals]{% for focus in session_focus %}
 - {{focus}}{% endfor %}
 
 ---
 
-【历史会话概览】
+[Historical Session Overview]
 {%- if history %}
 {%- for session in history %}
 
-【第{{ loop.index }}次会话】
-▶ 阶段：{{ session.session_stage }}
-▶ 对话摘要：{{ session.session_summary_abstract }}
+[Session {{ loop.index }}]
+▶ Stage：{{ session.session_stage }}
+▶ Dialogue Summary：{{ session.session_summary_abstract }}
 {%- if session.client_state_analysis %}
 
-▶ 来访者状态分析：
-- 情绪状态：{{ session.client_state_analysis.affective_state }}
-- 存在性议题：{{ session.client_state_analysis.existentialism_topic }}
-- 行为模式：{{ session.client_state_analysis.behavioral_patterns }}
-- 治疗关系：{{ session.client_state_analysis.therapeutic_alliance }}
-- 未解决议题/张力：{{ session.client_state_analysis.unresolved_points_or_tensions }}
+▶ Client State Analysis:
+- Affective State：{{ session.client_state_analysis.affective_state }}
+- Existential Topics: {{ session.client_state_analysis.existentialism_topic }}
+- Behavioral Patterns：{{ session.client_state_analysis.behavioral_patterns }}
+- Therapeutic Alliance：{{ session.client_state_analysis.therapeutic_alliance }}
+- Unresolved Points / Tensions：{{ session.client_state_analysis.unresolved_points_or_tensions }}
 {%- endif %}
 
 {%- endfor %}
 {%- else %}
 
-(暂无历史会话记录)
+(No prior session records)
 {%- endif %}
 
 ---
 
-【本次完整心理咨询对话】
+[Current Consultation Dialogue]
 {{ current_session_dialogue }}

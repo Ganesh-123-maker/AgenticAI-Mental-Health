@@ -42,7 +42,7 @@ class HUMAN_VS_LLM(EvaluationMethod):
                 messages = messages + [
                     {
                         "role": "user",
-                        "content": "上一次输出未通过格式校验。请严格按要求只输出一个合法 JSON 对象。",
+                        "content": "The previous output failed schema validation. Please strictly output a valid JSON object adhering to requirements.",
                     }
                 ]
 

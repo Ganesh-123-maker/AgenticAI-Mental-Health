@@ -32,7 +32,7 @@ export function FeedbackBanner({ feedback, onClose }) {
         onClick={onClose}
         className="ml-3 rounded px-2 py-0.5 text-xs font-medium text-current/80 hover:bg-white/70"
       >
-        关闭
+        Dismiss
       </button>
     </div>
   );

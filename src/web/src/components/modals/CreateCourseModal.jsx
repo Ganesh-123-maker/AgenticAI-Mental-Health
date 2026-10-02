@@ -11,7 +11,7 @@ export function CreateCourseModal({ open, currentSchool, onClose, onSubmit }) {
 
   const defaultTitle = useMemo(() => {
     if (!currentSchool?.name) return "";
-    return `${currentSchool.name} 疗程`;
+    return `${currentSchool.name} Course`;
   }, [currentSchool?.name]);
 
   useEffect(() => {
@@ -55,23 +55,23 @@ export function CreateCourseModal({ open, currentSchool, onClose, onSubmit }) {
         </button>
 
         <div className="mb-4">
-          <h3 className="text-lg font-bold text-slate-800">新建疗程</h3>
+          <h3 className="text-lg font-bold text-slate-800">New Therapy Course</h3>
           <p className="mt-1 text-sm text-slate-600">
-            填写疗程标题后将自动创建第一次会谈。
+            Enter a course title. The initial session will be generated automatically.
           </p>
         </div>
 
         <form className="space-y-4" onSubmit={handleSubmit}>
           <div>
             <label htmlFor="course-title" className="mb-1 block text-sm font-medium text-slate-700">
-              疗程标题
+              Course Title
             </label>
             <input
               id="course-title"
               className="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm focus:border-teal-400 focus:outline-none"
               value={form.title}
               onChange={(event) => setForm((prev) => ({ ...prev, title: event.target.value }))}
-              placeholder="例如：焦虑管理与认知重建"
+              placeholder="e.g., Anxiety Management & Cognitive Reframing"
               maxLength={80}
             />
           </div>
@@ -83,14 +83,14 @@ export function CreateCourseModal({ open, currentSchool, onClose, onSubmit }) {
               onClick={onClose}
               disabled={submitting}
             >
-              取消
+              Cancel
             </button>
             <button
               type="submit"
               className="flex-1 rounded-lg bg-teal-600 py-2 text-sm font-semibold text-white hover:bg-teal-700 disabled:cursor-not-allowed disabled:opacity-50"
               disabled={submitting}
             >
-              {submitting ? "创建中..." : "创建疗程"}
+              {submitting ? "Creating..." : "Create Course"}
             </button>
           </div>
         </form>

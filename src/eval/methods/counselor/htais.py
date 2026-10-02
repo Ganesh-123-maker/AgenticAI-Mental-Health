@@ -59,7 +59,7 @@ class HTAIS(EvaluationMethod):
                 messages = messages + [
                     {
                         "role": "user",
-                        "content": "上一次输出未通过格式校验。请严格只输出一个JSON对象，且只包含键 items；items 长度必须为 26；每项仅包含 item(“1”-“26”) 与 score(1-5整数)。",
+                        "content": "The previous output failed schema validation. Please strictly output a single JSON object containing only key 'items'; items length must be 26; each item only contains item ('1'-'26') and score (1-5 integer).",
                     }
                 ]
         else:  # pragma: no cover

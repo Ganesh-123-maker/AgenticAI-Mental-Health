@@ -115,7 +115,7 @@ export function useMindCareApp() {
 
   const onUnauthorized = () => {
     resetAuthState();
-    pushFeedback("info", "登录已过期，请重新登录后继续操作。", { sticky: true });
+    pushFeedback("info", "Session expired. Please sign in again to continue.", { sticky: true });
   };
 
   function syncCourseInList(nextCourse) {
@@ -178,7 +178,7 @@ export function useMindCareApp() {
       const data = await catalogApi.listSchools();
       setSchools(data);
     } catch (error) {
-      pushFeedback("error", error.message || "无法加载流派列表。", { sticky: true });
+      pushFeedback("error", error.message || "Failed to load counseling modalities.", { sticky: true });
     }
   }
 
@@ -211,7 +211,7 @@ export function useMindCareApp() {
         await loadCourse(targetCourseId, tokenOverride);
       }
     } catch (error) {
-      pushFeedback("error", error.message || "无法加载疗程列表。", { sticky: true });
+      pushFeedback("error", error.message || "Failed to load course list.", { sticky: true });
     }
   }
 
@@ -225,7 +225,7 @@ export function useMindCareApp() {
       syncCourseInList(course);
       await loadCourseVisits(course, tokenOverride);
     } catch (error) {
-      pushFeedback("error", error.message || "无法加载疗程信息。", { sticky: true });
+      pushFeedback("error", error.message || "Failed to load course details.", { sticky: true });
     }
   }
 
@@ -257,7 +257,7 @@ export function useMindCareApp() {
       setSelectedVisitId(targetVisit.visit_id);
       await loadVisit(targetVisit.visit_id, tokenOverride, true);
     } catch (error) {
-      pushFeedback("error", error.message || "无法加载会谈列表。", { sticky: true });
+      pushFeedback("error", error.message || "Failed to load session list.", { sticky: true });
     }
   }
 
@@ -272,7 +272,7 @@ export function useMindCareApp() {
         syncVisitInList(visit);
       }
     } catch (error) {
-      pushFeedback("error", error.message || "无法加载会谈。", { sticky: true });
+      pushFeedback("error", error.message || "Failed to load session.", { sticky: true });
     }
   }
 
@@ -281,12 +281,12 @@ export function useMindCareApp() {
       payload && typeof payload === "object" && "nativeEvent" in payload ? {} : payload;
 
     if (!token) {
-      pushFeedback("info", "请先登录。", { sticky: true });
+      pushFeedback("info", "Please sign in first.", { sticky: true });
       return null;
     }
 
     if (!selectedSchoolId) {
-      pushFeedback("info", "请先选择咨询流派。", { sticky: true });
+      pushFeedback("info", "Please select a counseling modality.", { sticky: true });
       return null;
     }
 
@@ -310,25 +310,25 @@ export function useMindCareApp() {
         await loadCourses(selectedSchoolId, token);
       }
 
-      pushFeedback("success", "疗程创建成功，已自动创建第一次会谈。");
+      pushFeedback("success", "Course created successfully. The initial session has been generated.");
       return data;
     } catch (error) {
-      pushFeedback("error", error.message || "创建疗程失败。", { sticky: true });
+      pushFeedback("error", error.message || "Failed to create course.", { sticky: true });
       return null;
     }
   }
 
   async function startNextVisit() {
     if (!currentCourse) {
-      pushFeedback("info", "请先选择一个疗程。", { sticky: true });
+      pushFeedback("info", "Please select a course first.", { sticky: true });
       return null;
     }
     if (currentCourse.status !== "active") {
-      pushFeedback("info", "只有进行中的疗程才能开始新会谈。", { sticky: true });
+      pushFeedback("info", "Only active courses can start new sessions.", { sticky: true });
       return null;
     }
     if (currentCourse.active_visit_id) {
-      pushFeedback("info", "当前疗程已有进行中的会谈。", { sticky: true });
+      pushFeedback("info", "An active session is already in progress for this course.", { sticky: true });
       return null;
     }
 
@@ -344,17 +344,17 @@ export function useMindCareApp() {
         setCurrentVisit(visit);
         setSelectedVisitId(visit.visit_id);
       }
-      pushFeedback("success", `已开始第 ${visit.visit_no || (currentCourse.latest_visit_no || 0) + 1} 次会谈。`);
+      pushFeedback("success", `Session ${visit.visit_no || (currentCourse.latest_visit_no || 0) + 1} started.`);
       return visit;
     } catch (error) {
-      pushFeedback("error", error.message || "创建会谈失败。", { sticky: true });
+      pushFeedback("error", error.message || "Failed to create session.", { sticky: true });
       return null;
     }
   }
 
   async function continueCurrentVisit() {
     if (!currentCourse?.active_visit_id) {
-      pushFeedback("info", "当前没有进行中的会谈。", { sticky: true });
+      pushFeedback("info", "There is no active session in progress.", { sticky: true });
       return;
     }
     await loadVisit(currentCourse.active_visit_id, token, true);
@@ -409,7 +409,7 @@ export function useMindCareApp() {
         };
       });
       setInput(text);
-      pushFeedback("error", error.message || "发送失败。", { sticky: true });
+      pushFeedback("error", error.message || "Failed to send message.", { sticky: true });
     } finally {
       setIsTyping(false);
     }
@@ -421,7 +421,7 @@ export function useMindCareApp() {
 
     if (!currentVisit) return false;
     if (currentVisit.status !== "open") {
-      pushFeedback("info", "当前会谈已结束。", { sticky: true });
+      pushFeedback("info", "The current session has already ended.", { sticky: true });
       return false;
     }
 
@@ -430,35 +430,35 @@ export function useMindCareApp() {
       if (currentCourse?.course_id) {
         await loadCourse(currentCourse.course_id, token);
       }
-      pushFeedback("success", "当前会谈已结束，可开始下一次会谈。");
+      pushFeedback("success", "Session concluded. You may now begin the next session.");
       return true;
     } catch (error) {
-      pushFeedback("error", error.message || "结束本次会谈失败。", { sticky: true });
+      pushFeedback("error", error.message || "Failed to end current session.", { sticky: true });
       return false;
     }
   }
 
   async function completeCurrentCourse() {
     if (!currentCourse) {
-      pushFeedback("info", "请先选择一个疗程。", { sticky: true });
+      pushFeedback("info", "Please select a course first.", { sticky: true });
       return false;
     }
     if (currentCourse.status !== "active") {
-      pushFeedback("info", "只有进行中的疗程才能完成。", { sticky: true });
+      pushFeedback("info", "Only active courses can be completed.", { sticky: true });
       return false;
     }
     if (currentCourse.active_visit_id) {
-      pushFeedback("info", "请先结束当前会谈，再完成疗程。", { sticky: true });
+      pushFeedback("info", "Please conclude the current session before completing the course.", { sticky: true });
       return false;
     }
 
     try {
       await coursesApi.complete(currentCourse.course_id, {}, { token, onUnauthorized });
       await loadCourse(currentCourse.course_id, token);
-      pushFeedback("success", "疗程已完成。");
+      pushFeedback("success", "Course completed successfully.");
       return true;
     } catch (error) {
-      pushFeedback("error", error.message || "完成疗程失败。", { sticky: true });
+      pushFeedback("error", error.message || "Failed to complete course.", { sticky: true });
       return false;
     }
   }
@@ -468,7 +468,7 @@ export function useMindCareApp() {
     const password = authForm.password;
 
     if (!username || !password) {
-      pushFeedback("info", "请输入用户名和密码。", { sticky: true });
+      pushFeedback("info", "Please enter your username and password.", { sticky: true });
       return;
     }
 
@@ -486,16 +486,16 @@ export function useMindCareApp() {
       setShowAuthModal(false);
 
       await loadCourses(selectedSchoolId || "", data.token);
-      pushFeedback("success", mode === "register" ? "注册成功，已自动登录。" : "登录成功。");
+      pushFeedback("success", mode === "register" ? "Registered successfully and signed in." : "Signed in successfully.");
     } catch (error) {
-      pushFeedback("error", error.message || "认证失败。", { sticky: true });
+      pushFeedback("error", error.message || "Authentication failed.", { sticky: true });
     }
   }
 
   function logout() {
     resetAuthState();
     setShowAuthModal(false);
-    pushFeedback("info", "已退出登录。");
+    pushFeedback("info", "Signed out successfully.");
   }
 
   const currentSchool = useMemo(() => {

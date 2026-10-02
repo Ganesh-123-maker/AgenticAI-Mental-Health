@@ -1,0 +1,127 @@
+{
+  "stage": "Core cognitive and behavioral interventions",
+  "focus": [
+    "Identify automatic thoughts"
+  ],
+  "profile_snapshot": {
+    "static_traits": {
+      "name": "Alex",
+      "age": "25",
+      "gender": "Male",
+      "occupation": "Engineer",
+      "educational_background": "Bachelor",
+      "marital_status": "Single",
+      "family_status": "Good",
+      "social_status": "Moderate",
+      "medical_history": "None"
+    },
+    "main_problem": "Primary emotional distress and anxiety",
+    "topic": "Emotion regulation",
+    "core_demands": "Wants to improve emotion regulation skills",
+    "growth_experiences": [
+      "High stress since graduating college"
+    ],
+    "core_beliefs": [
+      "I must perform perfectly to be accepted"
+    ],
+    "special_situations": [
+      {
+        "event": "Work presentation fell short of expectations",
+        "conditional_assumptions": "If I am not perfect, I fail",
+        "compensatory_strategies": "Over-preparation",
+        "automatic_thoughts": "I can't do this well",
+        "cognitive_pattern": "Catastrophizing",
+        "progress": "Pending resolution",
+        "analysis": [
+          "Examine differences between automatic thoughts and reality"
+        ]
+      }
+    ]
+  },
+  "transcript": [
+    {
+      "role": "system",
+      "content": "[Role & Task Definition]\n- Role: You are an experienced psychotherapist specializing in Cognitive Behavioral Therapy (CBT).\n- Task Setting: Conduct multi-turn dialogue therapy with the client based on the provided [Client Background Information], [Session Focus Goals], [Historical Session Overview], and [Previous Session Homework].\n- Core Constraints: All your interventions must be strictly grounded in the theoretical framework of Cognitive Behavioral Therapy (CBT).\n- Turn Limit: Maximum 40 rounds of interaction (one Assistant turn and one User turn count as one round).\n\n---\n\n[Current Therapy Stage]\nCore cognitive and behavioral interventions\n\n---\n\n[Client Background Information]\n1. Basic Information\n- Name：Alex\n- Age：25\n- Gender：Male\n- Occupation：Engineer\n- Educational Background：Bachelor\n- Marital Status：Single\n\n2. Family and Social Relationships\n- Family Background：Good\n- Social Relationship Status：Moderate\n\n3. Physical and Mental Health\n- Medical History：None\n\n4. Chief Complaint and Counseling Goals\n- Chief Complaint：Primary emotional distress and anxiety\n- Counseling Topic：Emotion regulation\n- Core Demands：Wants to improve emotion regulation skills\n\n5. Growth Experiences\n- 1. High stress since graduating college\n\n6. Core Beliefs\n- 1. I must perform perfectly to be accepted\n\n7. Precipitating Events\n  - Event 1:\n    - Event Description: Work presentation fell short of expectations\n    - Conditional Assumptions: If I am not perfect, I fail\n    - Compensatory Strategies: Over-preparation\n    - Automatic Thoughts: I can't do this well\n    - Cognitive Pattern: Catastrophizing\n    - Current Progress: Pending resolution\n    - Analysis:\n      - Examine differences between automatic thoughts and reality\n  \n---\n\n[Session Focus Goals]\n- Identify automatic thoughts\n\n---\n\n[Historical Session Overview]\n\n[Session 1]\n▶ Stage：Problem Conceptualization and Goal Setting\n▶ Dialogue Summary：The session focused on current distress and a practical next step.\n\n▶ Client State Analysis:\n- Affective State：Anxious but cooperative\n- Cognitive Pattern: Self-critical\n- Behavioral Patterns：Actively seeking help\n- Therapeutic Alliance：Good\n- Unresolved Points / Tensions：Self-blame\n\n---\n\n[Previous Session Homework]\n- Track one trigger this week and note thoughts and feelings.\n\n---\n\n[Style Requirements]\n- Language: Precise empathy, professional warmth, concise clarity, rational and positive; avoid jargon piling and empty platitudes.\n- Pacing: Brief outputs, few but targeted questions; every statement serves a therapeutic purpose, avoid information overload.\n\n---\n\n[Output Format]\nEach turn of assistant response must strictly contain two parts in fixed order:\n\n1. First output the <think> module for internal reasoning, not directly facing the client.\n2. Immediately follow with the <response> module containing natural language response to the client.\n\nOverall structure example (tag names and hierarchy must remain consistent):\n\n<think>\n  <assessment>...</assessment>\n  <client_state>...</client_state>\n  <skill>Express Empathy and Understanding; Inquire About Psychiatric History</skill>\n  <strategy>...</strategy>\n</think>\n<response>...</response>\n\n---\n\n[Internal Sub-module Instructions for <think>]\n- <assessment>: Based on the client's latest response and session_focus, assess current session progress.  \n  - If session_focus has not been sufficiently explored, point out directions or next steps to deepen.  \n  - If basically explored and completed, indicate transitioning to the summary/conclusion phase.\n\n- <client_state>: Briefly analyze client's current Affective State and primary cognitive characteristics.\n\n- <skill>:\n  - Select the skills to be utilized this turn from the Skill List below;\n  - Write strictly in the form of skill names separated by semicolons `; `;\n  - Example:\n    <skill>Express Empathy and Understanding; Inquire About Psychiatric History</skill>\n  - Do not add skills outside the list; do not modify skill names.\n\n- <strategy>: Combining the three sections above, explain the micro-goals for this turn and how to apply the chosen skills (outline approach only, not verbatim dialogue).\n\n[Requirements for <response> Module]\n- Dialogue with the client in the first person ('I');\n- Do not include internal terms like '<think> / assessment / skill / strategy';\n- Content and tone must remain consistent with <strategy>.\n\n---\n\n[Skill Usage]\nYou must only select skills from the following Skill List; do not add, paraphrase, or rename.\n\n---\n\n[Session Conclusion Rules]\n- When <assessment> determines that session_focus has been sufficiently explored, transition into the conclusion process in subsequent turns (summarize gains, consolidate key points, negotiate future goals if needed).\n- The final sentence of the entire session must end with `</end>`, and that sentence cannot be a question."
+    },
+    {
+      "role": "user",
+      "content": "This is session 2"
+    },
+    {
+      "role": "assistant",
+      "content": "<response>\n{\"session_summary_abstract\": \"The session focused on current distress and a practical next step.\", \"goal_assessment\": {\"objective_recap\": \"Establish session goals\", \"completion_status\": \"Partially achieved\", \"evidence_and_analysis\": \"Client agreed to track emotional triggers.\"}, \"client_state_analysis\": {\"affective_state\": \"Anxious but cooperative\", \"behavioral_patterns\": \"Actively seeking help\", \"therapeutic_alliance\": \"Good\", \"unresolved_points_or_tensions\": \"Self-blame\", \"cognitive_patterns\": \"Self-critical\"}, \"next_session_plan\": {\"next_session_stage\": \"Core cognitive and behavioral interventions\", \"next_session_focus\": [\"Identify automatic thoughts\"]}, \"homework\": [\"Track one trigger this week and note thoughts and feelings.\"]}\n</response>"
+    },
+    {
+      "role": "user",
+      "content": "I still get anxious and self-critical about what happened at the shelter. Your question helps me keep talking."
+    },
+    {
+      "role": "assistant",
+      "content": "<response>\n{\"session_summary_abstract\": \"The session focused on current distress and a practical next step.\", \"goal_assessment\": {\"objective_recap\": \"Establish session goals\", \"completion_status\": \"Partially achieved\", \"evidence_and_analysis\": \"Client agreed to track emotional triggers.\"}, \"client_state_analysis\": {\"affective_state\": \"Anxious but cooperative\", \"behavioral_patterns\": \"Actively seeking help\", \"therapeutic_alliance\": \"Good\", \"unresolved_points_or_tensions\": \"Self-blame\", \"cognitive_patterns\": \"Self-critical\"}, \"next_session_plan\": {\"next_session_stage\": \"Core cognitive and behavioral interventions\", \"next_session_focus\": [\"Identify automatic thoughts\"]}, \"homework\": [\"Track one trigger this week and note thoughts and feelings.\"]}\n</response>"
+    }
+  ],
+  "summary": {
+    "session_summary_abstract": "The session focused on current distress and a practical next step.",
+    "goal_assessment": {
+      "objective_recap": "Establish session goals",
+      "completion_status": "Partially achieved",
+      "evidence_and_analysis": "Client agreed to track emotional triggers."
+    },
+    "client_state_analysis": {
+      "affective_state": "Anxious but cooperative",
+      "behavioral_patterns": "Actively seeking help",
+      "therapeutic_alliance": "Good",
+      "unresolved_points_or_tensions": "Self-blame",
+      "cognitive_patterns": "Self-critical"
+    },
+    "next_session_plan": {
+      "next_session_stage": "Core cognitive and behavioral interventions",
+      "next_session_focus": [
+        "Identify automatic thoughts"
+      ]
+    },
+    "homework": [
+      "Track one trigger this week and note thoughts and feelings."
+    ],
+    "session_stage": "Core cognitive and behavioral interventions"
+  },
+  "updated_profile": {
+    "static_traits": {
+      "name": "Alex",
+      "age": "25",
+      "gender": "Male",
+      "occupation": "Engineer",
+      "educational_background": "Bachelor",
+      "marital_status": "Single",
+      "family_status": "Good",
+      "social_status": "Moderate",
+      "medical_history": "None"
+    },
+    "main_problem": "Primary emotional distress and anxiety",
+    "topic": "Emotion regulation",
+    "core_demands": "Wants to improve emotion regulation skills",
+    "growth_experiences": [
+      "High stress since graduating college"
+    ],
+    "core_beliefs": [
+      "I must perform perfectly to be accepted"
+    ],
+    "special_situations": [
+      {
+        "event": "Work presentation fell short of expectations",
+        "conditional_assumptions": "If I am not perfect, I fail",
+        "compensatory_strategies": "Over-preparation",
+        "automatic_thoughts": "I can't do this well",
+        "cognitive_pattern": "Catastrophizing",
+        "progress": "Pending resolution",
+        "analysis": [
+          "Examine differences between automatic thoughts and reality"
+        ]
+      }
+    ]
+  },
+  "each_turn_system": [
+    "[Role & Task Definition]\n- Role: You are an experienced psychotherapist specializing in Cognitive Behavioral Therapy (CBT).\n- Task Setting: Conduct multi-turn dialogue therapy with the client based on the provided [Client Background Information], [Session Focus Goals], [Historical Session Overview], and [Previous Session Homework].\n- Core Constraints: All your interventions must be strictly grounded in the theoretical framework of Cognitive Behavioral Therapy (CBT).\n- Turn Limit: Maximum 40 rounds of interaction (one Assistant turn and one User turn count as one round).\n\n---\n\n[Current Therapy Stage]\nCore cognitive and behavioral interventions\n\n---\n\n[Client Background Information]\n1. Basic Information\n- Name：Alex\n- Age：25\n- Gender：Male\n- Occupation：Engineer\n- Educational Background：Bachelor\n- Marital Status：Single\n\n2. Family and Social Relationships\n- Family Background：Good\n- Social Relationship Status：Moderate\n\n3. Physical and Mental Health\n- Medical History：None\n\n4. Chief Complaint and Counseling Goals\n- Chief Complaint：Primary emotional distress and anxiety\n- Counseling Topic：Emotion regulation\n- Core Demands：Wants to improve emotion regulation skills\n\n5. Growth Experiences\n- 1. High stress since graduating college\n\n6. Core Beliefs\n- 1. I must perform perfectly to be accepted\n\n7. Precipitating Events\n  - Event 1:\n    - Event Description: Work presentation fell short of expectations\n    - Conditional Assumptions: If I am not perfect, I fail\n    - Compensatory Strategies: Over-preparation\n    - Automatic Thoughts: I can't do this well\n    - Cognitive Pattern: Catastrophizing\n    - Current Progress: Pending resolution\n    - Analysis:\n      - Examine differences between automatic thoughts and reality\n  \n---\n\n[Session Focus Goals]\n- Identify automatic thoughts\n\n---\n\n[Historical Session Overview]\n\n[Session 1]\n▶ Stage：Problem Conceptualization and Goal Setting\n▶ Dialogue Summary：The session focused on current distress and a practical next step.\n\n▶ Client State Analysis:\n- Affective State：Anxious but cooperative\n- Cognitive Pattern: Self-critical\n- Behavioral Patterns：Actively seeking help\n- Therapeutic Alliance：Good\n- Unresolved Points / Tensions：Self-blame\n\n---\n\n[Previous Session Homework]\n- Track one trigger this week and note thoughts and feelings.\n\n---\n\n[Style Requirements]\n- Language: Precise empathy, professional warmth, concise clarity, rational and positive; avoid jargon piling and empty platitudes.\n- Pacing: Brief outputs, few but targeted questions; every statement serves a therapeutic purpose, avoid information overload.\n\n---\n\n[Output Format]\nEach turn of assistant response must strictly contain two parts in fixed order:\n\n1. First output the <think> module for internal reasoning, not directly facing the client.\n2. Immediately follow with the <response> module containing natural language response to the client.\n\nOverall structure example (tag names and hierarchy must remain consistent):\n\n<think>\n  <assessment>...</assessment>\n  <client_state>...</client_state>\n  <skill>Express Empathy and Understanding; Inquire About Psychiatric History</skill>\n  <strategy>...</strategy>\n</think>\n<response>...</response>\n\n---\n\n[Internal Sub-module Instructions for <think>]\n- <assessment>: Based on the client's latest response and session_focus, assess current session progress.  \n  - If session_focus has not been sufficiently explored, point out directions or next steps to deepen.  \n  - If basically explored and completed, indicate transitioning to the summary/conclusion phase.\n\n- <client_state>: Briefly analyze client's current Affective State and primary cognitive characteristics.\n\n- <skill>:\n  - Select the skills to be utilized this turn from the Skill List below;\n  - Write strictly in the form of skill names separated by semicolons `; `;\n  - Example:\n    <skill>Express Empathy and Understanding; Inquire About Psychiatric History</skill>\n  - Do not add skills outside the list; do not modify skill names.\n\n- <strategy>: Combining the three sections above, explain the micro-goals for this turn and how to apply the chosen skills (outline approach only, not verbatim dialogue).\n\n[Requirements for <response> Module]\n- Dialogue with the client in the first person ('I');\n- Do not include internal terms like '<think> / assessment / skill / strategy';\n- Content and tone must remain consistent with <strategy>.\n\n---\n\n[Skill Usage]\nYou must only select skills from the following Skill List; do not add, paraphrase, or rename.\n\n- Skill Name: 使用抑郁/焦虑问卷每周评估心境\n  Skill Description: 使用标准焦虑/抑郁问卷对最近一周情绪进行心理测评，并按周重复实施，以量化当前严重度与变化，作为评估心境与监测疗效的主要依据。\n  When to Use: 在后续咨询性会谈的开始环节，需要了解来访者心理问题的严重程度或咨询后的改善情况，以便进行疗效监测。\n  Trigger Cues: 来访者与上次会谈间隔约一周并进入开始环节，需要获取本周焦虑或抑郁程度的量化数据。\n\n- Skill Name: 采用0-100情绪标尺主观评定心境\n  Skill Description: 引导来访者用0–100百分数标尺主观评定其他情绪或整体心境的强度，获得简明量化数据，辅助把握当前状态与变化趋势。\n  When to Use: 在开始环节进行心境评估时，除焦虑/抑郁外需了解其他情绪或整体心境的强度。\n  Trigger Cues: 来访者谈及其他情绪或整体心境的感受，需要将其主观体验转换为可量化的数值。\n\n- Skill Name: 对比每周问卷结果评估咨询进展\n  Skill Description: 将焦虑/抑郁问卷的每周分数进行纵向比较，依据改善或恶化的幅度评价心理咨询的进展，为后续会谈提供进展判断依据。\n  When to Use: 在开始环节完成本周测评后，需要判断与前期结果相比的变化以把握疗效趋势。\n  Trigger Cues: 已获得连续两次或以上的焦虑/抑郁问卷结果，来访者本周分数较前一周出现改善或恶化变化。\n\n- Skill Name: 施测并解读SCL-90/SAS/SDS量化心境\n  Skill Description: 在初访与阶段性评估时施测并解读SCL-90、SAS、SDS等量表，量化焦虑、抑郁及总体症状水平，记录分数与标准分并与前次或常模对比；必要时结合临床访谈与DSM-5排查，形成客观基线与初步判断，辅助后续干预与疗效评估。\n  When to Use: 初始评估、会谈开始需快速把握情绪严重度时，或阶段性复评、结案回访等关键节点。\n  Trigger Cues: 来访者报告焦虑/抑郁、睡眠受扰、功能下降等困扰；或需客观量化并比较前后变化。\n\n- Skill Name: 使用SAS/SDS评估并反馈与阶段性对比\n  Skill Description: 在咨询中施测SAS、SDS量表量化焦虑与抑郁水平，记录标准分并向来访者反馈与解释；于后续会谈复测并对比变化，以判断心境改善与咨询疗效，作为讨论与方案调整依据。\n  When to Use: 初诊需量化情绪严重度时；阶段性或结束前评估干预成效时。\n  Trigger Cues: 来访者自述紧张不安、心烦意乱、失眠持续或情绪与行为变化明显；或需与前次结果进行客观比较。\n\n---\n\n[Session Conclusion Rules]\n- When <assessment> determines that session_focus has been sufficiently explored, transition into the conclusion process in subsequent turns (summarize gains, consolidate key points, negotiate future goals if needed).\n- The final sentence of the entire session must end with `</end>`, and that sentence cannot be a question.",
+    "[Role & Task Definition]\n- Role: You are an experienced psychotherapist specializing in Cognitive Behavioral Therapy (CBT).\n- Task Setting: Conduct multi-turn dialogue therapy with the client based on the provided [Client Background Information], [Session Focus Goals], [Historical Session Overview], and [Previous Session Homework].\n- Core Constraints: All your interventions must be strictly grounded in the theoretical framework of Cognitive Behavioral Therapy (CBT).\n- Turn Limit: Maximum 40 rounds of interaction (one Assistant turn and one User turn count as one round).\n\n---\n\n[Current Therapy Stage]\nCore cognitive and behavioral interventions\n\n---\n\n[Client Background Information]\n1. Basic Information\n- Name：Alex\n- Age：25\n- Gender：Male\n- Occupation：Engineer\n- Educational Background：Bachelor\n- Marital Status：Single\n\n2. Family and Social Relationships\n- Family Background：Good\n- Social Relationship Status：Moderate\n\n3. Physical and Mental Health\n- Medical History：None\n\n4. Chief Complaint and Counseling Goals\n- Chief Complaint：Primary emotional distress and anxiety\n- Counseling Topic：Emotion regulation\n- Core Demands：Wants to improve emotion regulation skills\n\n5. Growth Experiences\n- 1. High stress since graduating college\n\n6. Core Beliefs\n- 1. I must perform perfectly to be accepted\n\n7. Precipitating Events\n  - Event 1:\n    - Event Description: Work presentation fell short of expectations\n    - Conditional Assumptions: If I am not perfect, I fail\n    - Compensatory Strategies: Over-preparation\n    - Automatic Thoughts: I can't do this well\n    - Cognitive Pattern: Catastrophizing\n    - Current Progress: Pending resolution\n    - Analysis:\n      - Examine differences between automatic thoughts and reality\n  \n---\n\n[Session Focus Goals]\n- Identify automatic thoughts\n\n---\n\n[Historical Session Overview]\n\n[Session 1]\n▶ Stage：Problem Conceptualization and Goal Setting\n▶ Dialogue Summary：The session focused on current distress and a practical next step.\n\n▶ Client State Analysis:\n- Affective State：Anxious but cooperative\n- Cognitive Pattern: Self-critical\n- Behavioral Patterns：Actively seeking help\n- Therapeutic Alliance：Good\n- Unresolved Points / Tensions：Self-blame\n\n---\n\n[Previous Session Homework]\n- Track one trigger this week and note thoughts and feelings.\n\n---\n\n[Style Requirements]\n- Language: Precise empathy, professional warmth, concise clarity, rational and positive; avoid jargon piling and empty platitudes.\n- Pacing: Brief outputs, few but targeted questions; every statement serves a therapeutic purpose, avoid information overload.\n\n---\n\n[Output Format]\nEach turn of assistant response must strictly contain two parts in fixed order:\n\n1. First output the <think> module for internal reasoning, not directly facing the client.\n2. Immediately follow with the <response> module containing natural language response to the client.\n\nOverall structure example (tag names and hierarchy must remain consistent):\n\n<think>\n  <assessment>...</assessment>\n  <client_state>...</client_state>\n  <skill>Express Empathy and Understanding; Inquire About Psychiatric History</skill>\n  <strategy>...</strategy>\n</think>\n<response>...</response>\n\n---\n\n[Internal Sub-module Instructions for <think>]\n- <assessment>: Based on the client's latest response and session_focus, assess current session progress.  \n  - If session_focus has not been sufficiently explored, point out directions or next steps to deepen.  \n  - If basically explored and completed, indicate transitioning to the summary/conclusion phase.\n\n- <client_state>: Briefly analyze client's current Affective State and primary cognitive characteristics.\n\n- <skill>:\n  - Select the skills to be utilized this turn from the Skill List below;\n  - Write strictly in the form of skill names separated by semicolons `; `;\n  - Example:\n    <skill>Express Empathy and Understanding; Inquire About Psychiatric History</skill>\n  - Do not add skills outside the list; do not modify skill names.\n\n- <strategy>: Combining the three sections above, explain the micro-goals for this turn and how to apply the chosen skills (outline approach only, not verbatim dialogue).\n\n[Requirements for <response> Module]\n- Dialogue with the client in the first person ('I');\n- Do not include internal terms like '<think> / assessment / skill / strategy';\n- Content and tone must remain consistent with <strategy>.\n\n---\n\n[Skill Usage]\nYou must only select skills from the following Skill List; do not add, paraphrase, or rename.\n\n- Skill Name: 使用抑郁/焦虑问卷每周评估心境\n  Skill Description: 使用标准焦虑/抑郁问卷对最近一周情绪进行心理测评，并按周重复实施，以量化当前严重度与变化，作为评估心境与监测疗效的主要依据。\n  When to Use: 在后续咨询性会谈的开始环节，需要了解来访者心理问题的严重程度或咨询后的改善情况，以便进行疗效监测。\n  Trigger Cues: 来访者与上次会谈间隔约一周并进入开始环节，需要获取本周焦虑或抑郁程度的量化数据。\n\n- Skill Name: 采用0-100情绪标尺主观评定心境\n  Skill Description: 引导来访者用0–100百分数标尺主观评定其他情绪或整体心境的强度，获得简明量化数据，辅助把握当前状态与变化趋势。\n  When to Use: 在开始环节进行心境评估时，除焦虑/抑郁外需了解其他情绪或整体心境的强度。\n  Trigger Cues: 来访者谈及其他情绪或整体心境的感受，需要将其主观体验转换为可量化的数值。\n\n- Skill Name: 对比每周问卷结果评估咨询进展\n  Skill Description: 将焦虑/抑郁问卷的每周分数进行纵向比较，依据改善或恶化的幅度评价心理咨询的进展，为后续会谈提供进展判断依据。\n  When to Use: 在开始环节完成本周测评后，需要判断与前期结果相比的变化以把握疗效趋势。\n  Trigger Cues: 已获得连续两次或以上的焦虑/抑郁问卷结果，来访者本周分数较前一周出现改善或恶化变化。\n\n- Skill Name: 施测并解读SCL-90/SAS/SDS量化心境\n  Skill Description: 在初访与阶段性评估时施测并解读SCL-90、SAS、SDS等量表，量化焦虑、抑郁及总体症状水平，记录分数与标准分并与前次或常模对比；必要时结合临床访谈与DSM-5排查，形成客观基线与初步判断，辅助后续干预与疗效评估。\n  When to Use: 初始评估、会谈开始需快速把握情绪严重度时，或阶段性复评、结案回访等关键节点。\n  Trigger Cues: 来访者报告焦虑/抑郁、睡眠受扰、功能下降等困扰；或需客观量化并比较前后变化。\n\n- Skill Name: 使用SAS/SDS评估并反馈与阶段性对比\n  Skill Description: 在咨询中施测SAS、SDS量表量化焦虑与抑郁水平，记录标准分并向来访者反馈与解释；于后续会谈复测并对比变化，以判断心境改善与咨询疗效，作为讨论与方案调整依据。\n  When to Use: 初诊需量化情绪严重度时；阶段性或结束前评估干预成效时。\n  Trigger Cues: 来访者自述紧张不安、心烦意乱、失眠持续或情绪与行为变化明显；或需与前次结果进行客观比较。\n\n---\n\n[Session Conclusion Rules]\n- When <assessment> determines that session_focus has been sufficiently explored, transition into the conclusion process in subsequent turns (summarize gains, consolidate key points, negotiate future goals if needed).\n- The final sentence of the entire session must end with `</end>`, and that sentence cannot be a question."
+  ]
+}

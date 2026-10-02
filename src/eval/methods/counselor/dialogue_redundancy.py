@@ -11,7 +11,7 @@ from typing import Literal
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 
-DialogueRedundancyItemName = Literal["非重复与非模板化", "推进效率与信息密度"]
+DialogueRedundancyItemName = Literal["Non-repetitive and Non-templated", "Progression Efficiency and Information Density"]
 
 
 class Item(BaseModel):
@@ -31,7 +31,7 @@ class Items(BaseModel):
 
     @model_validator(mode="after")
     def _validate_order(self) -> "Items":
-        expected: list[str] = ["非重复与非模板化", "推进效率与信息密度"]
+        expected: list[str] = ["Non-repetitive and Non-templated", "Progression Efficiency and Information Density"]
         actual = [it.item for it in self.items]
         if actual != expected:
             raise ValueError("Dialogue_Redundancy items must be in the exact required order")
@@ -56,7 +56,7 @@ class Dialogue_Redundancy(EvaluationMethod):
                 messages = messages + [
                     {
                         "role": "user",
-                        "content": "上一次输出未通过格式校验。请严格按输出格式只输出 JSON：仅包含键 items；items 长度为 2；每项包含 item/evidence_pos/evidence_neg/thought/score。",
+                        "content": "The previous output failed schema validation. Please strictly output JSON: containing only key 'items' with length 2; each item must contain item/evidence_pos/evidence_neg/thought/score.",
                     }
                 ]
         else:  # pragma: no cover

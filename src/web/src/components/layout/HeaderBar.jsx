@@ -22,20 +22,20 @@ export function HeaderBar({
 
   const primaryAction = !currentCourse || currentCourse.status !== "active"
     ? {
-        label: "新建疗程",
+        label: "New Course",
         icon: PlusCircle,
         onClick: onOpenCreateCourseModal,
         disabled: !canCreateCourse || !selectedSchoolId || !token,
       }
     : hasOpenVisit
     ? {
-        label: "继续当前会谈",
+        label: "Resume Current Session",
         icon: PlayCircle,
         onClick: onContinueVisit,
         disabled: false,
       }
     : {
-        label: `开始第 ${nextVisitNo} 次会谈`,
+        label: `Start Session ${nextVisitNo}`,
         icon: CalendarPlus2,
         onClick: onStartNextVisit,
         disabled: !canStartNextVisit,
@@ -48,13 +48,13 @@ export function HeaderBar({
       <div className="flex items-center justify-between gap-4">
         <div className="ml-10 md:ml-0">
           <h1 className="text-base font-semibold text-slate-900">
-            {currentSchool ? `${getSchoolDisplayName(currentSchool)} 咨询工作台` : "心理咨询工作台"}
+            {currentSchool ? `${getSchoolDisplayName(currentSchool)} Workspace` : "Counseling Workspace"}
           </h1>
           <p className="mt-1 text-xs text-slate-600">
             {!currentCourse
-              ? "先创建疗程，再进入会谈流程。"
-              : `疗程状态：${getCourseStatusText(currentCourse.status)}${
-                  currentVisit ? ` · 会谈状态：${getVisitStatusText(currentVisit.status)}` : ""
+              ? "Create a course to begin the counseling workflow."
+              : `Course Status: ${getCourseStatusText(currentCourse.status)}${
+                  currentVisit ? ` · Session Status: ${getVisitStatusText(currentVisit.status)}` : ""
                 }`}
           </p>
         </div>
@@ -77,7 +77,7 @@ export function HeaderBar({
               className="inline-flex items-center gap-1 rounded-lg bg-rose-50 px-3 py-2 text-xs font-semibold text-rose-700 hover:bg-rose-100"
             >
               <XCircle className="h-3.5 w-3.5" />
-              结束本次会谈
+              End Current Session
             </button>
           ) : null}
 
@@ -88,7 +88,7 @@ export function HeaderBar({
               className="inline-flex items-center gap-1 rounded-lg bg-emerald-50 px-3 py-2 text-xs font-semibold text-emerald-700 hover:bg-emerald-100"
             >
               <CheckCircle2 className="h-3.5 w-3.5" />
-              完成疗程
+              Complete Course
             </button>
           ) : null}
         </div>

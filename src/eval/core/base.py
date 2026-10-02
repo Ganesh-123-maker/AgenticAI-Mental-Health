@@ -48,7 +48,7 @@ class EvaluationMethod(ABC):
         messages: List[Dict[str, Any]],
         response_format: Optional[Dict[str, Any]] = None,
     ) -> str:
-        """统一的模型调用入口：兼容不同后端的 JSON 限制并做一次 JSON 兜底修复。"""
+        """Unified model call entry point: accommodates JSON constraints across backends with fallback repair."""
         normalized_format = self._normalize_response_format(gpt_api, response_format)
 
         call_kwargs: Dict[str, Any] = {"response_format": normalized_format}
@@ -70,7 +70,7 @@ class EvaluationMethod(ABC):
             messages = [
                 {
                     "role": "system",
-                    "content": "你是一个严格的 JSON 修复器。只返回合法 JSON 对象文本。",
+                    "content": "You are a strict JSON repair tool. Return only valid JSON object text.",
                 },
                 {
                     "role": "user",

@@ -15,8 +15,8 @@ function ChatEmptyState({ hasToken, currentCourse }) {
     return (
       <EmptyState
         icon={LogIn}
-        title="登录后即可开始咨询"
-        description="请先登录账号，再选择咨询流派并创建疗程。"
+        title="Sign in to Begin Counseling"
+        description="Please sign in to select a counseling modality and create your therapy course."
       />
     );
   }
@@ -25,8 +25,8 @@ function ChatEmptyState({ hasToken, currentCourse }) {
     return (
       <EmptyState
         icon={FolderOpen}
-        title="先选择或创建疗程"
-        description="建议先在左侧选择流派并新建疗程，系统会自动创建第一次会谈。"
+        title="Select or Create a Course"
+        description="Select a modality from the sidebar and create a course. The initial session will be established automatically."
       />
     );
   }
@@ -34,8 +34,8 @@ function ChatEmptyState({ hasToken, currentCourse }) {
   return (
     <EmptyState
       icon={MessageSquare}
-      title="当前疗程还没有会谈内容"
-      description="点击“开始第 N 次会谈”后，即可在此查看完整对话记录。"
+      title="No Sessions in Current Course"
+      description='Click "Start Session N" to start and view the session conversation history.'
     />
   );
 }

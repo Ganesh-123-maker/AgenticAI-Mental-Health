@@ -12,8 +12,12 @@ from typing import List
 APP_DIR = Path(__file__).resolve().parent
 SRC_DIR = APP_DIR.parent
 PROJECT_ROOT = APP_DIR.parents[1]
+if str(APP_DIR) not in sys.path:
+    sys.path.insert(0, str(APP_DIR))
 if str(SRC_DIR) not in sys.path:
     sys.path.insert(0, str(SRC_DIR))
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
 from fastapi import Depends, FastAPI, Header, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -218,7 +222,7 @@ def health():
 def register(payload: AuthPayload, db: Session = Depends(get_db)):
     exists = db.exec(select(UserRecord).where(UserRecord.username == payload.username)).first()
     if exists:
-        raise HTTPException(status_code=400, detail="用户已存在")
+        raise HTTPException(status_code=400, detail="User already exists")
     user = UserRecord(username=payload.username, password_hash=hash_password(payload.password))
     db.add(user)
     db.commit()
@@ -237,7 +241,7 @@ def register(payload: AuthPayload, db: Session = Depends(get_db)):
 def login(payload: AuthPayload, db: Session = Depends(get_db)):
     user = db.exec(select(UserRecord).where(UserRecord.username == payload.username)).first()
     if not user or user.password_hash != hash_password(payload.password):
-        raise HTTPException(status_code=401, detail="用户名或密码错误")
+        raise HTTPException(status_code=401, detail="Invalid username or password")
 
     token_value = create_token()
     db.add(AuthTokenRecord(token=token_value, user_id=user.id))

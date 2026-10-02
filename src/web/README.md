@@ -1,44 +1,35 @@
 # PsychAgent Web
 
-PsychAgent Web 是一个用于体验 PsychAgent 多轮咨询流程的网页工作台。  
-PsychAgent Web is a browser-based workspace for experiencing the multi-session counseling flow of PsychAgent.
+PsychAgent Web is a browser-based workspace for experiencing and interacting with the multi-session counseling flow of PsychAgent.
 
-它提供了前端界面与本地联调后端，适合演示、试用和轻量开发。  
-It includes a user-facing frontend and a local backend for demo, usage, and lightweight development.
+It provides a modern user-facing frontend and a local backend suited for demonstrations, interactive evaluation, and lightweight development.
 
-## Features / 功能特性
+## Features
 
-- 注册与登录 / Sign up and sign in
-- 按咨询流派创建疗程 / Create courses by counseling school
-- 自动开始首次会谈 / Auto-start the first session
-- 在会谈中持续对话 / Chat continuously during a session
-- 结束当前会谈并开始下一次 / Close the current session and continue to the next
-- 完成整个疗程 / Complete a full course
+- User authentication: Sign up and sign in
+- Modality selection: Create counseling courses by therapeutic school (CBT, PDT, HET, etc.)
+- Session initialization: Auto-start initial intake sessions
+- Multi-turn interaction: Real-time dialogue during counseling sessions
+- Multi-session continuity: Close active sessions and transition to follow-up sessions
+- Full-course completion: Conclude entire multi-session counseling courses
 
-## Screenshots / 页面截图
+## Screenshots
 
-### 创建疗程 / Create Course
+### Create Course
+![Create course](../../paper/web/create_course.png)
 
-![Create course](../../paper/web/新建疗程.png)
+### Switch School
+![Switch school](../../paper/web/switch_school.png)
 
-### 切换流派 / Switch School
+### Consultation View
+![Consultation view](../../paper/web/consultation.png)
 
-![Switch school](../../paper/web/切换流派.png)
+### Follow-up Session
+![Follow-up session](../../paper/web/second_session.png)
 
-### 会谈界面 / Consultation View
+## Deploy Counselor Model
 
-![Consultation view](../../paper/web/咨询.png)
-
-### 后续会谈 / Follow-up Session
-
-![Follow-up session](../../paper/web/第二次咨询.png)
-
-## Deploy Counselor Model / 部署咨询师模型
-
-如果你需要先部署咨询师模型服务，再连接 Web 工作台，可以先启动 `sglang` 服务。  
-If you need to deploy the counselor model service before using the web app, start the `sglang` server first.
-
-示例命令如下：
+To deploy the counselor model service before connecting the Web workspace, launch an `sglang` server:
 
 ```bash
 nohup python -m sglang.launch_server \
@@ -50,23 +41,19 @@ nohup python -m sglang.launch_server \
     > /path/to/logs/sglang_server.log 2>&1 &
 ```
 
-请将 [`../../configs/baselines/psychagent_sglang_local.yaml`](../../configs/baselines/psychagent_sglang_local.yaml) 中的 `base_url` 修改为你的模型服务地址。  
-Update the `base_url` in [`../../configs/baselines/psychagent_sglang_local.yaml`](../../configs/baselines/psychagent_sglang_local.yaml) to match your model service endpoint.
+Update `base_url` in [`../../configs/baselines/psychagent_sglang_local.yaml`](../../configs/baselines/psychagent_sglang_local.yaml) to match your deployed model endpoint.
 
-## One-Click Start / 一键启动
+## Quick Start
 
-推荐从项目根目录启动。  
-The recommended way is to start from the project root.
-
-项目根目录：
+Launch directly from the repository root:
 
 ```bash
-cd PsychAgent_v0402
+cd PsychAgent
 ```
 
-### 1. 准备 `.env.local`
+### 1. Prepare Environment Variables (`.env.local`)
 
-你可以在项目根目录创建 `.env.local`：
+Create `.env.local` in the project root:
 
 ```bash
 SGLANG_API_KEY=your-sglang-key
@@ -76,21 +63,21 @@ FRONTEND_PORT=5173
 BACKEND_HOST=localhost
 ```
 
-### 2. 启动后端
+### 2. Start Backend
 
 ```bash
 ./run_backend.sh
 ```
 
-### 3. 启动前端
+### 3. Start Frontend
 
-新开一个终端窗口：
+In a separate terminal window:
 
 ```bash
 ./run_frontend.sh
 ```
 
-默认访问地址：
+Default access endpoints:
 
 ```text
 Frontend: http://localhost:5173
@@ -98,24 +85,23 @@ Backend:  http://localhost:8000
 Health:   http://localhost:8000/health
 ```
 
-## Manual Setup / 手动启动
+## Manual Setup
 
-如果你更习惯在 `src/web` 目录内手动运行，也可以使用下面的方式。  
-If you prefer running everything manually inside `src/web`, use the steps below.
+To run services manually inside `src/web`:
 
-### 1. 进入目录 / Enter the web directory
+### 1. Enter Directory
 
 ```bash
 cd src/web
 ```
 
-### 2. 安装前端依赖 / Install frontend dependencies
+### 2. Install Frontend Dependencies
 
 ```bash
 npm install
 ```
 
-### 3. 准备 Python 环境 / Prepare Python environment
+### 3. Prepare Python Environment
 
 ```bash
 python3 -m venv .venv
@@ -124,68 +110,62 @@ python3 -m pip install --upgrade pip
 python3 -m pip install -r requirements.txt
 ```
 
-### 4. 配置环境变量 / Configure environment variables
+### 4. Configure Environment Variables
 
 ```bash
 export SGLANG_API_KEY="your-sglang-key"
 export PSYCHAGENT_EMBEDDING_API_KEY="your-embedding-key"
 ```
 
-如需覆盖默认配置：
+To override configuration defaults:
 
 ```bash
 export PSYCHAGENT_WEB_BASELINE_CONFIG="configs/baselines/psychagent_sglang_local.yaml"
 export PSYCHAGENT_WEB_RUNTIME_CONFIG="configs/runtime/psychagent_sglang_local.yaml"
 ```
 
-### 5. 启动后端 / Start backend
+### 5. Start Backend
 
 ```bash
 uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
 
-### 6. 启动前端 / Start frontend
+### 6. Start Frontend
 
-新开一个终端窗口：
+In a separate terminal window:
 
 ```bash
 npm run dev
 ```
 
-## How To Use / 使用方式
+## Usage Workflow
 
-1. 打开网页并注册或登录。  
-   Open the web app and sign in.
-2. 选择咨询流派。  
-   Choose a counseling school.
-3. 创建新的疗程。  
-   Create a new course.
-4. 在聊天窗口中开始会谈。  
-   Start chatting in the session view.
-5. 当前会谈结束后，关闭本次会谈并进入下一次。  
-   Close the current session and move to the next one.
-6. 当整个疗程完成后，执行疗程完成操作。  
-   Mark the course as completed when the full process is done.
+1. Open the web interface and sign in.
+2. Select a counseling modality/school.
+3. Create a new therapeutic course.
+4. Interact with the counselor in the session dialogue view.
+5. Conclude the current session to trigger memory consolidation and progress to subsequent sessions.
+6. Complete the full course once therapeutic goals have been achieved.
 
-## Configuration / 配置说明
+## Configuration
 
-### Frontend / 前端
+### Frontend
 
-前端默认请求：
+The frontend defaults to connecting to:
 
 ```text
 http://localhost:8000
 ```
 
-如果后端地址不同，可在启动前覆盖：
+To configure a custom backend endpoint:
 
 ```bash
 VITE_API_BASE=http://127.0.0.1:8001 npm run dev
 ```
 
-### Backend / 后端
+### Backend
 
-常用环境变量：
+Key environment variables:
 
 - `PSYCHAGENT_WEB_BASELINE_CONFIG`
 - `PSYCHAGENT_WEB_RUNTIME_CONFIG`
@@ -193,77 +173,60 @@ VITE_API_BASE=http://127.0.0.1:8001 npm run dev
 - `SGLANG_API_KEY`
 - `PSYCHAGENT_EMBEDDING_API_KEY`
 
-默认数据库文件为 `data.db`。  
-The default local database file is `data.db`.
+The default SQLite database is saved as `data.db`.
 
-## Build / 构建
+## Production Build
 
-生产构建：
+Compile production assets:
 
 ```bash
 npm run build
 ```
 
-本地预览构建结果：
+Preview production build:
 
 ```bash
 npm run preview
 ```
 
-构建产物输出到：
+Artifacts are output to:
 
 ```text
 dist/
 ```
 
-## Requirements / 环境要求
+## System Requirements
 
 - Node.js 18+
 - npm
 - Python 3.10+
-- 可用的模型服务配置 / Available model service configuration
-- 对应的 API key 或 embedding key / Required API or embedding keys
+- Deployed model service endpoint
+- Required API or embedding service credentials
 
-## Troubleshooting / 常见问题
+## Troubleshooting
 
-### 页面能打开，但请求失败
+### Page loads but requests fail
+Check whether the backend is running on port 8000 and verify that `VITE_API_BASE` points to the correct backend host.
 
-通常是前后端地址没有对齐。优先检查：
+### Backend fails on startup with missing key
+Ensure `SGLANG_API_KEY` and `PSYCHAGENT_EMBEDDING_API_KEY` are exported in your environment or set in `.env.local`.
 
-- 后端是否运行在 `8000` 端口
-- 前端是否使用了正确的 `VITE_API_BASE`
-
-### 后端启动时报缺少 key
-
-默认配置依赖：
-
-- `SGLANG_API_KEY`
-- `PSYCHAGENT_EMBEDDING_API_KEY`
-
-如果不想使用默认链路，请改用自己的 baseline / runtime 配置。
-
-### 页面样式异常
-
-当前页面样式依赖 Tailwind CDN。若运行环境无法访问外网 CDN，页面可能能打开，但样式会不完整。
-
-### `npm install` 后仍然有原生依赖问题
-
-可以尝试：
+### Native dependency build issues on `npm install`
+Run:
 
 ```bash
 npm install --include=optional
 ```
 
-## Project Layout / 目录概览
+## Directory Structure
 
-- `src/`: 前端页面 / frontend app
-- `backend/`: Web API
-- `main.py`: 后端入口 / backend entry
-- `requirements.txt`: 后端依赖 / backend dependencies
-- `package.json`: 前端依赖与脚本 / frontend scripts and dependencies
+- `src/`: React frontend application
+- `backend/`: FastAPI Web service and persistence
+- `main.py`: Backend application entry point
+- `requirements.txt`: Python package requirements
+- `package.json`: Frontend npm scripts and dependencies
 
-## Related Docs / 相关文档
+## Related Documentation
 
 - [Project README](../../README.md)
-- [Project README CN](../../README_CN.md)
 - [Source Code Guide](../README.md)

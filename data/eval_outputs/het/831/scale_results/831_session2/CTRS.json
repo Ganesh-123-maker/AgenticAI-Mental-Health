@@ -1,0 +1,31 @@
+{
+  "method_name": "CTRS",
+  "status": "failed",
+  "scores": {},
+  "error": "1 validation error for Items\nitems.0.thought\n  String should have at most 24 characters [type=string_too_long, input_value='Good CTRS criteria demonstrated', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/string_too_long",
+  "traceback": "Traceback (most recent call last):\n  File \"D:\\Academics\\Academic_Project\\Project\\PsychAgent\\src\\eval\\manager\\evaluation_orchestrator.py\", line 298, in _run_one\n    scores = await method.evaluate(output_client, dialogue, method_profile)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\Academics\\Academic_Project\\Project\\PsychAgent\\src\\eval\\methods\\counselor\\ctrs.py\", line 72, in evaluate\n    items_lists = await asyncio.gather(*(run_one(c) for c in criteria_list))\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\Academics\\Academic_Project\\Project\\PsychAgent\\src\\eval\\methods\\counselor\\ctrs.py\", line 56, in run_one\n    validated = Items.model_validate(json.loads(criteria_output))\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\Academics\\Academic_Project\\Project\\PsychAgent\\.venv\\Lib\\site-packages\\pydantic\\main.py\", line 732, in model_validate\n    return cls.__pydantic_validator__.validate_python(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\npydantic_core._pydantic_core.ValidationError: 1 validation error for Items\nitems.0.thought\n  String should have at most 24 characters [type=string_too_long, input_value='Good CTRS criteria demonstrated', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/string_too_long\n",
+  "raw_model_outputs": [
+    "{\"items\": [{\"item\": \"understanding\", \"thought\": \"Good CTRS criteria demonstrated\", \"evidence_pos\": [\"Counselor showed empathy\"], \"evidence_neg\": [], \"score\": 4}]}",
+    "{\"items\": [{\"item\": \"understanding\", \"thought\": \"Good CTRS criteria demonstrated\", \"evidence_pos\": [\"Counselor showed empathy\"], \"evidence_neg\": [], \"score\": 4}]}",
+    "{\"items\": [{\"item\": \"understanding\", \"thought\": \"Good CTRS criteria demonstrated\", \"evidence_pos\": [\"Counselor showed empathy\"], \"evidence_neg\": [], \"score\": 4}]}",
+    "{\"items\": [{\"item\": \"interpersonal_effectiveness\", \"thought\": \"Good CTRS criteria demonstrated\", \"evidence_pos\": [\"Counselor showed empathy\"], \"evidence_neg\": [], \"score\": 4}]}",
+    "{\"items\": [{\"item\": \"interpersonal_effectiveness\", \"thought\": \"Good CTRS criteria demonstrated\", \"evidence_pos\": [\"Counselor showed empathy\"], \"evidence_neg\": [], \"score\": 4}]}",
+    "{\"items\": [{\"item\": \"interpersonal_effectiveness\", \"thought\": \"Good CTRS criteria demonstrated\", \"evidence_pos\": [\"Counselor showed empathy\"], \"evidence_neg\": [], \"score\": 4}]}",
+    "{\"items\": [{\"item\": \"collaboration\", \"thought\": \"Good CTRS criteria demonstrated\", \"evidence_pos\": [\"Counselor showed empathy\"], \"evidence_neg\": [], \"score\": 4}]}",
+    "{\"items\": [{\"item\": \"collaboration\", \"thought\": \"Good CTRS criteria demonstrated\", \"evidence_pos\": [\"Counselor showed empathy\"], \"evidence_neg\": [], \"score\": 4}]}",
+    "{\"items\": [{\"item\": \"collaboration\", \"thought\": \"Good CTRS criteria demonstrated\", \"evidence_pos\": [\"Counselor showed empathy\"], \"evidence_neg\": [], \"score\": 4}]}",
+    "{\"items\": [{\"item\": \"guided_discovery\", \"thought\": \"Good CTRS criteria demonstrated\", \"evidence_pos\": [\"Counselor showed empathy\"], \"evidence_neg\": [], \"score\": 4}]}",
+    "{\"items\": [{\"item\": \"guided_discovery\", \"thought\": \"Good CTRS criteria demonstrated\", \"evidence_pos\": [\"Counselor showed empathy\"], \"evidence_neg\": [], \"score\": 4}]}",
+    "{\"items\": [{\"item\": \"guided_discovery\", \"thought\": \"Good CTRS criteria demonstrated\", \"evidence_pos\": [\"Counselor showed empathy\"], \"evidence_neg\": [], \"score\": 4}]}",
+    "{\"items\": [{\"item\": \"focus\", \"thought\": \"Good CTRS criteria demonstrated\", \"evidence_pos\": [\"Counselor showed empathy\"], \"evidence_neg\": [], \"score\": 4}]}",
+    "{\"items\": [{\"item\": \"focus\", \"thought\": \"Good CTRS criteria demonstrated\", \"evidence_pos\": [\"Counselor showed empathy\"], \"evidence_neg\": [], \"score\": 4}]}",
+    "{\"items\": [{\"item\": \"focus\", \"thought\": \"Good CTRS criteria demonstrated\", \"evidence_pos\": [\"Counselor showed empathy\"], \"evidence_neg\": [], \"score\": 4}]}",
+    "{\"items\": [{\"item\": \"strategy\", \"thought\": \"Good CTRS criteria demonstrated\", \"evidence_pos\": [\"Counselor showed empathy\"], \"evidence_neg\": [], \"score\": 4}]}",
+    "{\"items\": [{\"item\": \"strategy\", \"thought\": \"Good CTRS criteria demonstrated\", \"evidence_pos\": [\"Counselor showed empathy\"], \"evidence_neg\": [], \"score\": 4}]}",
+    "{\"items\": [{\"item\": \"strategy\", \"thought\": \"Good CTRS criteria demonstrated\", \"evidence_pos\": [\"Counselor showed empathy\"], \"evidence_neg\": [], \"score\": 4}]}"
+  ],
+  "started_at": "2026-09-25T13:51:17",
+  "finished_at": "2026-09-25T13:51:17",
+  "thread_name": "Task-68",
+  "model_name": "dummy-eval"
+}

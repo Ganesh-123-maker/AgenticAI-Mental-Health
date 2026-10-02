@@ -3,9 +3,25 @@
 from __future__ import annotations
 
 import asyncio
+import json
 import os
 import re
 from typing import Any, Dict, List, Optional
+
+
+class _DummyMessage:
+    def __init__(self, content: str):
+        self.content = content
+
+
+class _DummyChoice:
+    def __init__(self, content: str):
+        self.message = _DummyMessage(content)
+
+
+class _DummyChatResponse:
+    def __init__(self, content: str):
+        self.choices = [_DummyChoice(content)]
 
 try:
     from aiolimiter import AsyncLimiter
@@ -139,6 +155,61 @@ class GPT5ChatClient:
             if self._closed:
                 raise RuntimeError("GPT5ChatClient is closed")
             await self._acquire_rate_limit()
+            if self.api_key == "dummy" or self.base_url in ("dummy", "http://dummy/v1"):
+                user_content = "".join([m.get("content", "") for m in messages if isinstance(m, dict)])
+                user_lower = user_content.lower()
+
+                if "understanding" in user_content or "ctrs" in user_lower:
+                    dummy_json = json.dumps({
+                        "items": [{
+                            "item": "understanding",
+                            "thought": "Good understanding demonstrated",
+                            "evidence_pos": ["Counselor showed empathy"],
+                            "evidence_neg": [],
+                            "score": 4
+                        }]
+                    })
+                elif "interested" in user_content or "panas" in user_lower:
+                    items = [
+                        {"item": name, "thought": "Good", "evidence_pos": ["Engaged"], "evidence_neg": [], "score": 4}
+                        for name in ['Interested', 'Excited', 'Strong', 'Enthusiastic', 'Proud', 'Alert', 'Inspired', 'Determined', 'Attentive', 'Active', 'Distressed', 'Upset', 'Guilty', 'Scared', 'Hostile', 'Irritable', 'Ashamed', 'Nervous', 'Jittery', 'Afraid']
+                    ]
+                    dummy_json = json.dumps({"items": items})
+                elif "cultivating change talk" in user_content or "miti" in user_lower:
+                    dummy_json = json.dumps({
+                        "items": [{
+                            "item": "empathy",
+                            "thought": "Good MITI criteria demonstrated",
+                            "evidence_pos": ["Counselor validated feelings"],
+                            "evidence_neg": [],
+                            "score": 4
+                        }]
+                    })
+                elif "htais" in user_lower or "htai" in user_lower:
+                    items = [{"item": str(i), "score": 3} for i in range(1, 27)]
+                    dummy_json = json.dumps({"items": items})
+                elif "ipo" in user_lower:
+                    items = [{"item": str(i), "score": 3} for i in range(1, 42)]
+                    dummy_json = json.dumps({"items": items})
+                elif "srs" in user_lower:
+                    items = [{"item": str(i), "score": 3} for i in range(1, 5)]
+                    dummy_json = json.dumps({"items": items})
+                elif "phq" in user_lower:
+                    items = [{"item": str(i), "thought": "Good", "evidence_pos": [], "evidence_neg": [], "score": 2} for i in range(1, 10)]
+                    dummy_json = json.dumps({"items": items})
+                elif "eft" in user_lower:
+                    items = [{"item": str(i), "thought": "Good", "evidence_pos": [], "evidence_neg": [], "score": 2} for i in range(1, 14)]
+                    dummy_json = json.dumps({"items": items})
+                elif "bdi" in user_lower:
+                    items = [{"item": str(i), "thought": "Good", "evidence_pos": [], "evidence_neg": [], "score": 2} for i in range(1, 22)]
+                    dummy_json = json.dumps({"items": items})
+                elif "scl" in user_lower:
+                    items = [{"item": str(i), "score": 2} for i in range(1, 91)]
+                    dummy_json = json.dumps({"items": items})
+                else:
+                    items = [{"item": str(i), "score": 3} for i in range(1, 30)]
+                    dummy_json = json.dumps({"items": items, "score": 4.0, "rating": 4.0})
+                return _DummyChatResponse(dummy_json)
             async with self._sem:
                 return await self._sdk.chat.completions.create(
                     model=self.model,

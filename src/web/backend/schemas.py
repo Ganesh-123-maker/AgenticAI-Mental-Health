@@ -83,14 +83,14 @@ class VisitState(VisitPreview):
 
 
 class CreateCourseRequest(BaseModel):
-    school_id: str = Field(..., description="咨询流派 ID")
-    title: str = Field("", description="疗程标题，可选")
-    planned_visit_count: Optional[int] = Field(None, ge=1, description="预估总次数")
-    goal_summary: str = Field("", description="疗程目标摘要")
-    intake_note: str = Field("", description="初始背景记录")
-    goals: List[str] = Field(default_factory=list, description="初始目标列表")
-    auto_start_first_visit: bool = Field(True, description="是否自动创建第一次会谈")
-    opening_note: str = Field("", description="第一次会谈的开场提示")
+    school_id: str = Field(..., description="Therapy modality ID")
+    title: str = Field("", description="Therapy course title, optional")
+    planned_visit_count: Optional[int] = Field(None, ge=1, description="Estimated total session count")
+    goal_summary: str = Field("", description="Therapy course goal summary")
+    intake_note: str = Field("", description="Initial intake background notes")
+    goals: List[str] = Field(default_factory=list, description="Initial list of goals")
+    auto_start_first_visit: bool = Field(True, description="Whether to automatically start the first session")
+    opening_note: str = Field("", description="Opening note for the first session")
 
 
 class CreateCourseResponse(BaseModel):
@@ -108,15 +108,15 @@ class UpdateCourseRequest(BaseModel):
 
 
 class CompleteCourseRequest(BaseModel):
-    summary: str = Field("", description="疗程总结")
+    summary: str = Field("", description="Therapy course summary")
 
 
 class CreateVisitRequest(BaseModel):
-    opening_note: str = Field("", description="新会谈开场提示")
+    opening_note: str = Field("", description="Opening note for the new session")
 
 
 class SendVisitMessageRequest(BaseModel):
-    text: str = Field(..., min_length=1, description="用户输入")
+    text: str = Field(..., min_length=1, description="User input text")
 
 
 class CourseMetaOut(BaseModel):
@@ -131,7 +131,7 @@ class SendVisitMessageResponse(BaseModel):
 
 
 class CloseVisitRequest(BaseModel):
-    summary: str = Field("", description="本次会谈摘要")
+    summary: str = Field("", description="Session summary")
 
 
 class CloseVisitResponse(BaseModel):

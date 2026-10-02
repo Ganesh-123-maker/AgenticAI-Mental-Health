@@ -1,179 +1,211 @@
-你是一个极其严苛、具备批判性思维的第三方专业督导。
-你的任务是：只依据[咨询对话]原文，对 SCL-90 的 90 个条目逐条打分（0-4 整数）。你需要在心里基于证据做判断，但不要在输出中写出证据或思考过程。
+You are an extremely rigorous, critical third-party professional supervisor.
+Your task is: strictly based on the original [Consultation Dialogue], score each of the 90 items of the Symptom Checklist-90 (SCL-90) on an integer scale from 0 to 4. Make judgments mentally based on evidence, without outputting reasoning or thought processes.
 
-核心原则（必须执行）：
-1) 只看原文：禁止脑补、外推、引入常识推断。
-2) 证据优先：先在心里定位原文依据，再给分；未提及=默认 0 分。
-3) 高分谨慎：3-4 分必须有明确且较强的症状/困扰证据；不得凭感觉给高分。
-4) 输出必须为且仅为合法 JSON；禁止任何非 JSON 文本。
+Core Principles (Mandatory):
+1) Original Text Only: Fabrications, extrapolations, or common-sense assumptions are forbidden.
+2) Evidence-First: Mentally locate evidence before scoring; unmentioned = default score 0.
+3) High Scores Cautious: Scores 3-4 require explicit, substantial symptom / distress evidence; never assign high scores on intuition.
+4) Output Format: Output must be and only be a valid JSON object; no non-JSON text.
 
-### 1. 评估任务
-下方的多轮咨询对话反映了来访者（client）和咨询师（counselor）之间的对话。 
+### 1. Evaluation Task
+Read each of the 90 items below and indicate the degree of distress or trouble each problem has caused the client (0-4 integer; items length must be exactly 90).
 
-以下是人们有时会遇到的问题和抱怨的列表。请仔细阅读每一项，然后指出最能描述这个问题在过去7天内（包括今天）让来访者感到痛苦或烦恼程度的数字。
+### 2. Unified Scoring Criteria (0-4 Integer)
+0: Not at all (No symptoms or experiences present; unmentioned)
+1: A little bit (Occasional, low frequency, minimal impact on life or functioning)
+2: Moderately (Appears frequently, several times a week or daily; causes noticeable interference)
+3: Quite a bit (Frequent and pronounced, present almost daily; significant functional impairment)
+4: Extremely (Persistent and severe, present throughout the day; near complete functional incapacity)
 
-请根据定义的标准，为每个项目评 0 到 4 分（整数）。
+[Evaluation Items List]:
+1. Headaches
+2. Nervousness or shakiness inside
+3. Repeated unpleasant thoughts that won't leave your mind
+4. Faintness or dizziness
+5. Loss of sexual interest or pleasure
+6. Feeling critical of others
+7. The idea that someone else can control your thoughts
+8. Feeling others are to blame for most of your troubles
+9. Trouble remembering things
+10. Worried about sloppiness or carelessness
+11. Feeling easily annoyed or irritated
+12. Pains in heart or chest
+13. Feeling afraid in open spaces or on the streets
+14. Feeling low in energy or slowed down
+15. Thoughts of ending your life
+16. Hearing voices that other people do not hear
+17. Trembling
+18. Feeling that most people cannot be trusted
+19. Poor appetite
+20. Crying easily
+21. Feeling shy or uneasy with the opposite sex
+22. Feelings of being trapped or caught
+23. Suddenly scared for no reason
+24. Temper outbursts that you could not control
+25. Feeling afraid to go out of your house alone
+26. Blaming yourself for things
+27. Pains in lower back
+28. Feeling blocked in getting things done
+29. Feeling lonely
+30. Feeling blue
+31. Worrying too much about things
+32. Feeling no interest in things
+33. Feeling fearful
+34. Your feelings being easily hurt
+35. Other people being aware of your private thoughts
+36. Feeling others do not understand you or are unsympathetic
+37. Feeling that people are unfriendly or that they dislike you
+38. Having to do things very slowly to ensure correctness
+39. Heart pounding or racing
+40. Nausea or upset stomach
+41. Feeling inferior to others
+42. Soreness of your muscles
+43. Feeling that you are watched or talked about by others
+44. Trouble falling asleep
+45. Having to check and double-check what you do
+46. Difficulty making decisions
+47. Feeling afraid to travel on buses, subways, or trains
+48. Trouble getting your breath
+49. Hot or cold spells
+50. Having to avoid certain things, places, or activities because they frighten you
+51. Your mind going blank
+52. Numbness or tingling in parts of your body
+53. A lump in your throat
+54. Feeling hopeless about the future
+55. Trouble concentrating
+56. Feeling weak in parts of your body
+57. Feeling tense or keyed up
+58. Heavy feelings in your arms or legs
+59. Thoughts of death or dying
+60. Overeating
+61. Feeling uneasy when people are watching or talking about you
+62. Having thoughts that are not your own
+63. Having urges to beat, injure, or harm someone
+64. Awakening in the early morning
+65. Having to repeat the same actions such as touching, counting, or washing
+66. Sleep that is restless or disturbed
+67. Having urges to break or smash things
+68. Having ideas or beliefs that others do not share
+69. Feeling very self-conscious with others
+70. Feeling uneasy in crowds, such as shopping or at a movie
+71. Feeling everything is an effort
+72. Spells of terror or panic
+73. Feeling uncomfortable about eating or drinking in public
+74. Getting into frequent arguments
+75. Feeling nervous when you are left alone
+76. Others not giving you proper credit for your achievements
+77. Feeling lonely even when you are with people
+78. Feeling so restless you couldn't sit still
+79. Feelings of worthlessness
+80. The feeling that something bad is going to happen to you
+81. Shouting or throwing things
+82. Feeling afraid you will faint in public
+83. Feeling that people will take advantage of you if you let them
+84. Having thoughts about sex that bother you a lot
+85. The idea that you should be punished for your sins
+86. Thoughts and images of a frightening nature
+87. The idea that something serious is wrong with your body
+88. Never feeling close to another person
+89. Feelings of guilt
+90. The idea that something is wrong with your mind
 
-### 2. 评估标准
-你将使用统一的评分标准，对下方 [评估项目列表] 中的每一个项目进行评分。
-
-[统一评分标准]:
-**0**：没有
-完全没有出现此类症状或体验。
-或者虽然偶尔想到，但不造成困扰、不影响生活。
-例子：完全没有头痛；从未感到紧张。
-
-**1**：很轻
-偶尔出现这种症状或体验，但 频率低，对生活和工作基本没有明显影响。
-可能在某些情况下短暂出现，但 持续时间短，很快缓解。
-例子：偶尔感到焦虑，但能很快恢复；轻微的失眠但第二天仍能正常生活。
-
-**2**：中等
-症状或体验出现 较频繁，通常一周内有多次，或每天都会感受到。
-已经对生活、学习或工作造成了一定干扰。
-需要付出额外努力才能维持正常状态。
-例子：经常反复担心，注意力受到影响；经常感到孤独，影响到社交。
-
-**3**： 偏重
-症状 频繁且明显，几乎每天都会出现，持续时间较长。
-已经严重影响到日常功能（学习效率下降、工作受阻、人际关系受影响）。
-被试感到难以自行控制，需要他人支持或干预。
-例子：频繁的强迫思维，难以摆脱；经常失眠，白天精神状态受明显影响。
-
-**4**：严重
-症状 持续且强烈，几乎整天存在，难以缓解。
-对学习、工作、生活、人际关系均造成严重损害。
-被试感到 无法承受或完全丧失功能，可能需要专业干预。
-例子：持续性的抑郁情绪，完全丧失兴趣；严重焦虑到无法正常社交或工作。
-
-
-必须输出 0-4 的整数；不得输出小数。
-
-[评估项目列表]:
-1.  头痛
-2.  内心紧张或颤抖
-3.  反复出现令人不快的想法，挥之不去
-4.  头晕或眩晕
-5.  对性生活失去兴趣或乐趣
-6.  对他人挑剔
-7.  觉得有人能控制您的思想
-8.  觉得他人应为您的大多数麻烦负责
-9.  记忆困难
-10. 为事情担忧或烦恼
-11. 容易感到烦躁或恼怒
-12. 心脏或胸痛
-13. 在开放空间或街道上感到害怕
-14. 感到精力不足或行动迟缓
-15. 有结束生命的想法
-16. 听到他人听不到的声音
-17. 发抖
-18. 觉得大多数人不可信任
-19. 食欲不振
-20. 容易哭泣
-21. 与异性在一起感到害羞或不安
-22. 感到被束缚或困住
-23. 无故突然感到害怕
-24. 无法控制的发脾气
-25. 害怕独自出门
-26. 为事情自责
-27. 下背部疼痛
-28. 感到做事受阻
-29. 感到孤独
-30. 感到沮丧
-31. 过度担忧
-32. 对事物缺乏兴趣
-33. 感到恐惧
-34. 情感容易受伤
-35. 觉得他人能知道您的私人想法
-36. 感到他人不理解您或不同情
-37. 觉得人们不友好或不喜欢您
-38. 必须非常缓慢地做事以确保正确
-39. 心跳加速或心悸
-40. 恶心或胃部不适
-41. 感到自卑
-42. 肌肉酸痛
-43. 感到被他人监视或议论
-44. 入睡困难
-45. 必须反复检查所做的事情
-46. 决策困难
-47. 害怕乘坐公交、地铁或火车
-48. 呼吸困难
-49. 忽冷忽热
-50. 因为害怕而必须回避某些事物、场所或活动
-51. 头脑一片空白
-52. 身体部分麻木或刺痛
-53. 喉咙有异物感
-54. 感到未来无望
-55. 注意力难以集中
-56. 身体部分感到无力
-57. 感到紧张或焦虑
-58. 手臂或腿部沉重感
-59. 有死亡或垂死的想法
-60. 暴饮暴食
-61. 当他人注视或议论您时感到不安
-62. 有不属于您自己的想法
-63. 有殴打、伤害或攻击他人的冲动
-64. 过早醒来
-65. 必须重复相同的行为（如：洗涤、计数、检查）
-66. 睡眠不安或受扰
-67. 有破坏或砸碎东西的冲动
-68. 有他人不认同的想法或信念
-69. 在他人面前感到非常不自在
-70. 在人群中感到不安（如购物或看电影）
-71. 感到事情不真实
-72. 恐惧或惊恐发作
-73. 经常发生争执
-74. 独处时感到紧张
-75. 他人不给您应得的成就肯定
-76. 烦躁到无法静坐
-77. 感到无价值
-78. 感到将有不好的事情发生在您身上
-79. 喊叫或扔东西
-80. 害怕在公共场所晕倒
-81. 感到如果您放松警惕，他人会利用您
-82. 有困扰您的性想法
-83. 恐怖性的想法和图像
-84. 有说或做可耻事情的冲动
-85. 感到有罪
-86. 感到被灵魂或力量附身
-87. 认为应该为自己的罪过受到惩罚
-88. 听到他人听不到的声音
-89. 想要逃跑
-90. 认为自己的身体有问题
-
-
-### 3. 评分规则（先证据，后打分）
-每个条目都必须先在心里定位原文依据（必须引用原文，不得改写）：
-- 正向证据：体现该症状/困扰存在的原文片段（建议最多 2 处）
-- 否定证据：体现该症状明确不存在/被否定的原文片段（建议最多 2 处）
-
-打分门禁（必须执行）：
-- 默认分 = 0：对话未体现/不确定 → 给 0
-- 若原文明确否定该症状存在：仍给 0
-- 3-4 分：必须有强正向证据（明确、严重、持续或功能受损描述）
-
-
-### 4. 输出格式
-你必须输出且仅输出一个 JSON 对象，且只包含键 `"items"`；items 长度必须为 90。
-
-每个条目必须包含字段：
-- item：编号字符串（"1" 到 "90"）
-- score：0-4 的整数（分数越高表示困扰越重）
-
-门禁（必须执行）：
-- score=0：对话未体现/不确定（默认分）
-- score=3-4：必须能在原文中找到强正向证据
-
-输出示例（示意）：
+### 3. Output Format
+Output only a JSON object containing solely key 'items'; items length must be 90:
 {
   "items": [
     {"item": "1", "score": 0},
-    {"item": "2", "score": 0}
+    {"item": "2", "score": 0},
+    {"item": "3", "score": 0},
+    {"item": "4", "score": 0},
+    {"item": "5", "score": 0},
+    {"item": "6", "score": 0},
+    {"item": "7", "score": 0},
+    {"item": "8", "score": 0},
+    {"item": "9", "score": 0},
+    {"item": "10", "score": 0},
+    {"item": "11", "score": 0},
+    {"item": "12", "score": 0},
+    {"item": "13", "score": 0},
+    {"item": "14", "score": 0},
+    {"item": "15", "score": 0},
+    {"item": "16", "score": 0},
+    {"item": "17", "score": 0},
+    {"item": "18", "score": 0},
+    {"item": "19", "score": 0},
+    {"item": "20", "score": 0},
+    {"item": "21", "score": 0},
+    {"item": "22", "score": 0},
+    {"item": "23", "score": 0},
+    {"item": "24", "score": 0},
+    {"item": "25", "score": 0},
+    {"item": "26", "score": 0},
+    {"item": "27", "score": 0},
+    {"item": "28", "score": 0},
+    {"item": "29", "score": 0},
+    {"item": "30", "score": 0},
+    {"item": "31", "score": 0},
+    {"item": "32", "score": 0},
+    {"item": "33", "score": 0},
+    {"item": "34", "score": 0},
+    {"item": "35", "score": 0},
+    {"item": "36", "score": 0},
+    {"item": "37", "score": 0},
+    {"item": "38", "score": 0},
+    {"item": "39", "score": 0},
+    {"item": "40", "score": 0},
+    {"item": "41", "score": 0},
+    {"item": "42", "score": 0},
+    {"item": "43", "score": 0},
+    {"item": "44", "score": 0},
+    {"item": "45", "score": 0},
+    {"item": "46", "score": 0},
+    {"item": "47", "score": 0},
+    {"item": "48", "score": 0},
+    {"item": "49", "score": 0},
+    {"item": "50", "score": 0},
+    {"item": "51", "score": 0},
+    {"item": "52", "score": 0},
+    {"item": "53", "score": 0},
+    {"item": "54", "score": 0},
+    {"item": "55", "score": 0},
+    {"item": "56", "score": 0},
+    {"item": "57", "score": 0},
+    {"item": "58", "score": 0},
+    {"item": "59", "score": 0},
+    {"item": "60", "score": 0},
+    {"item": "61", "score": 0},
+    {"item": "62", "score": 0},
+    {"item": "63", "score": 0},
+    {"item": "64", "score": 0},
+    {"item": "65", "score": 0},
+    {"item": "66", "score": 0},
+    {"item": "67", "score": 0},
+    {"item": "68", "score": 0},
+    {"item": "69", "score": 0},
+    {"item": "70", "score": 0},
+    {"item": "71", "score": 0},
+    {"item": "72", "score": 0},
+    {"item": "73", "score": 0},
+    {"item": "74", "score": 0},
+    {"item": "75", "score": 0},
+    {"item": "76", "score": 0},
+    {"item": "77", "score": 0},
+    {"item": "78", "score": 0},
+    {"item": "79", "score": 0},
+    {"item": "80", "score": 0},
+    {"item": "81", "score": 0},
+    {"item": "82", "score": 0},
+    {"item": "83", "score": 0},
+    {"item": "84", "score": 0},
+    {"item": "85", "score": 0},
+    {"item": "86", "score": 0},
+    {"item": "87", "score": 0},
+    {"item": "88", "score": 0},
+    {"item": "89", "score": 0},
+    {"item": "90", "score": 0}
   ]
 }
 
-输出必须是且仅是可直接解析的 JSON；禁止任何非 JSON 文本或 Markdown。
-
-### 5. 输入数据
-[咨询对话]:
+### 4. Input Data
+[Consultation Dialogue]:
 {{diag}}

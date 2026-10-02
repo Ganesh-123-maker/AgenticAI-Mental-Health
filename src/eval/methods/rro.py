@@ -84,7 +84,7 @@ class RRO(EvaluationMethod):
                 messages = messages + [
                     {
                         "role": "user",
-                        "content": "上一次输出未通过格式校验。请严格只输出一个JSON对象，且只包含键 items；items 长度必须为 24，每项仅包含 item(“1”-“24”) 与 score(1-5整数)。",
+                        "content": "The previous output failed schema validation. Please strictly output a single JSON object containing only key 'items'; items length must be 24; each item only contains item ('1'-'24') and score (1-5 integer).",
                     }
                 ]
         else:  # pragma: no cover

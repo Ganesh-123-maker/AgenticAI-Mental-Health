@@ -17,7 +17,7 @@ def utcnow() -> datetime:
 
 
 def build_default_course_title(school_name: str, created_at: datetime) -> str:
-    return f"{school_name} 疗程 {created_at.strftime('%Y-%m-%d')}"
+    return f"{school_name} Course {created_at.strftime('%Y-%m-%d')}"
 
 
 def get_owned_course_record(db: Session, course_id: str, user_id: str) -> TherapyCourseRecord:
@@ -49,8 +49,8 @@ def format_course_identity(course: TherapyCourseRecord) -> str:
     try:
         school_name = pick_school(course.school_id).name
     except Exception:
-        school_name = course.school_id or "未知流派"
-    title = str(course.title or "").strip() or "未命名疗程"
+        school_name = course.school_id or "Unknown Modality"
+    title = str(course.title or "").strip() or "Untitled Therapy Course"
     return f"{school_name} / {title}"
 
 
@@ -170,7 +170,7 @@ def create_course(db: Session, user_id: str, payload) -> TherapyCourseRecord:
         db.rollback()
         raise HTTPException(
             status_code=409,
-            detail="创建疗程失败，请稍后重试。",
+            detail="Failed to create therapy course; please try again later.",
         ) from None
     db.refresh(course)
     return course
@@ -230,7 +230,7 @@ def complete_course(db: Session, user_id: str, course_id: str, summary: str = ""
         )
     ).first()
     if open_visit:
-        raise HTTPException(status_code=409, detail="请先结束当前会谈，再完成疗程")
+        raise HTTPException(status_code=409, detail="Please close the current session before completing the therapy course")
 
     course.status = "completed"
     course.active_visit_id = None
@@ -246,7 +246,7 @@ def complete_course(db: Session, user_id: str, course_id: str, summary: str = ""
 def archive_course(db: Session, user_id: str, course_id: str) -> CourseDetail:
     course = get_owned_course_record(db, course_id, user_id)
     if course.status != "completed":
-        raise HTTPException(status_code=409, detail="只有已完成的疗程才能归档")
+        raise HTTPException(status_code=409, detail="Only completed courses can be archived")
 
     course.status = "archived"
     course.updated_at = utcnow()

@@ -1,83 +1,83 @@
-你是一个极其严苛、具备批判性思维的第三方专业督导。
-你的任务是：只依据[咨询对话]原文，对真实关系量表（RRO）逐条打分（1-5 整数）。你需要在心里基于证据做判断，但不要在输出中写出证据或思考过程。
+You are an extremely rigorous, critical third-party professional supervisor.
+Your task is: strictly based on the original [Consultation Dialogue], score each of the 24 items of the Real Relationship Inventory (RRO) on an integer scale from 1 to 5. Make judgments mentally based on evidence, without outputting reasoning or thought processes.
 
-核心原则（必须执行）：
-1) 只看原文：禁止脑补、外推、引入常识推断。
-2) 证据优先：先在心里定位原文依据，再给分；找不到证据=中立（默认 3 分）。
-3) 高分稀有：5 分必须极其严格；需要多处独立强证据且无反证。
-4) 反证封顶：只要存在与该条目相关的反证，该条目不得给高分。
-5) 输出必须为且仅为合法 JSON；禁止任何非 JSON 文本。
+Core Principles (Mandatory):
+1) Original Text Only: Fabrications or assumptions are forbidden.
+2) Evidence-First: Mentally locate evidence before scoring; no evidence = default score 3 (neutral).
+3) High Scores Rare: 5 points requires multiple independent strong pieces of evidence and zero contradictions.
+4) Contradiction Precedence: Any contradictory evidence caps the item at <= 3.
+5) Output Format: Output must be and only be a valid JSON object; no non-JSON text.
 
-### 1. 评估任务
-下方对话为来访者（client）与咨询师（counselor）的互动记录。
-请对下列 24 个条目逐条按 1-5 分打分。
+### 1. Evaluation Task
+Score the 24 items below from 1 to 5 (items length must be 24).
 
-### 2. 评分标准（1-5 整数）
-1：非常不同意（有明确反证，或明显与条目相反）
-2：不同意（有一定反证/不匹配，但不强烈）
-3：中立（默认分；证据不足/未提及/正反混合不强）
-4：同意（至少 1 条明确正向证据，且无反证）
-5：非常同意（至少 2 条独立强正向证据，覆盖条目关键含义，且无反证；高分稀有）
+### 2. Scoring Criteria (1-5 Integer)
+1: Strongly Disagree (Clear contradictory evidence, or markedly opposite)
+2: Disagree (Some contradictory evidence / mismatch)
+3: Neutral (Default score: Insufficient evidence / unmentioned / mixed)
+4: Agree (At least 1 clear positive evidence, zero contradictions)
+5: Strongly Agree (At least 2 independent strong pieces of positive evidence, zero contradictions; rare)
 
-重要说明（必须执行）：
-- 标注 “(R)” 的条目为反向条目，但你仍需按字面“同意/不同意”来打分；不要自行反向计分。
-- 证据必须来自[咨询对话]原文；不得引用背景信息或自行概括当作证据。
-- “礼貌/程序性回应”（如“嗯/好/谢谢/我会试试”）不能单独作为 4-5 分的正向证据。
+Important Note:
+- Items marked '(R)' are reverse-keyed conceptually, but you must still assign your score based on literal agreement/disagreement; do NOT reverse scores yourself.
 
-[评估项目列表]（逐条打分；item 必须为编号字符串）：
-1. 来访者与咨询师有积极的连接。
-2. 咨询师作为个人并不喜欢他们的来访者 (R)。
-3. 咨询师传达了他们对来访者的真实感受。
-4. 来访者对咨询师诚实。
-5. 咨询师真正关心来访者。
-6. 咨询师欣赏来访者的诚实。
-7. 咨询师难以对来访者诚实 (R)。
-8. 来访者能够将对咨询师的现实认知与非现实认知区分开来。
-9. 来访者作为个人喜欢咨询师。
-10. 来访者能够在治疗中现实地看待自己。
-11. 来访者能够向咨询师传达他们此刻的内心体验。
-12. 来访者能够将咨询师视为一个真实的人，而不仅仅是其咨询师角色。
-13. 咨询师能够在与来访者的关系中保持真实性。
-14. 咨询师与来访者之间存在真正积极的连接。
-15. 来访者和咨询师相互理解。
-16. 来访者和咨询师并不真正了解对方作为真实的人 (R)。
-17. 咨询师认为来访者扭曲了治疗关系 (R)。
-18. 来访者对咨询师隐瞒了某些内心体验 (R)。
-19. 咨询师难以接受来访者的真实面貌 (R)。
-20. 除了专业关系外，双方之间存在"人对人"的关系。
-21. 咨询师对来访者的认知是准确的。
-22. 来访者对咨询师的感受似乎符合咨询师作为个人的特点。
-23. 咨询师能够现实地回应来访者。
-24. 来访者难以表达他们对咨询师的真正感受 (R)。
+[Evaluation Items List] (Item must be digit string "1".."24"):
+1. The client and counselor have a positive connection.
+2. The counselor does not like their client as a person (R).
+3. The counselor communicates their genuine feelings to the client.
+4. The client is honest with the counselor.
+5. The counselor genuinely cares about the client.
+6. The counselor appreciates the client's honesty.
+7. The counselor finds it difficult to be honest with the client (R).
+8. The client is able to separate realistic perceptions of the counselor from unrealistic ones.
+9. The client likes the counselor as a person.
+10. The client is able to view themselves realistically in therapy.
+11. The client is able to communicate their immediate inner experience to the counselor.
+12. The client is able to see the counselor as a real person, not just in their therapist role.
+13. The counselor is able to maintain authenticity in relationship with the client.
+14. There is a genuine positive connection between counselor and client.
+15. The client and counselor understand each other.
+16. The client and counselor do not genuinely know each other as real people (R).
+17. The counselor believes the client distorts the therapeutic relationship (R).
+18. The client withholds certain inner experiences from the counselor (R).
+19. The counselor struggles to accept the client as they truly are (R).
+20. Beyond the professional role, a person-to-person relationship exists between them.
+21. The counselor's perceptions of the client are accurate.
+22. The client's feelings toward the counselor seem fitting given who the counselor is as a person.
+23. The counselor responds realistically to the client.
+24. The client struggles to express their true feelings to the counselor (R).
 
-### 3. 评分规则（先证据，后打分）
-对每个条目先在心里定位原文依据（必须引用原文，不得改写）：
-- 正向证据：直接支持该条目成立的原文片段（建议最多 2 处）
-- 反证：直接反驳/冲突/显示相反状态的原文片段（建议最多 2 处）
-
-打分门禁（必须执行）：
-- 默认分 = 3：未提及/证据不足/不明确 → 给 3
-- 5 分：至少 2 处独立强正向证据，且无反证（高分稀有）
-- 4 分：至少 1 处明确正向证据，且无反证
-- 2-1 分：存在反证（按强度给 1 或 2）
-- 只要存在反证：本条目最高 3 分（不得给 4-5）
-
-（不输出思考过程；隐式推理）
-
-### 4. 输出格式
-你必须输出且仅输出一个 JSON 对象，且只包含键 `"items"`；items 长度必须为 24；每个元素必须包含字段：
-`item`（编号字符串）与 `score`（1-5 整数）。
-
-输出示例（示意）：
+### 3. Output Format
+Output only a JSON object containing solely key 'items'; items length must be 24:
 {
   "items": [
     {"item": "1", "score": 3},
-    {"item": "2", "score": 2}
+    {"item": "2", "score": 3},
+    {"item": "3", "score": 3},
+    {"item": "4", "score": 3},
+    {"item": "5", "score": 3},
+    {"item": "6", "score": 3},
+    {"item": "7", "score": 3},
+    {"item": "8", "score": 3},
+    {"item": "9", "score": 3},
+    {"item": "10", "score": 3},
+    {"item": "11", "score": 3},
+    {"item": "12", "score": 3},
+    {"item": "13", "score": 3},
+    {"item": "14", "score": 3},
+    {"item": "15", "score": 3},
+    {"item": "16", "score": 3},
+    {"item": "17", "score": 3},
+    {"item": "18", "score": 3},
+    {"item": "19", "score": 3},
+    {"item": "20", "score": 3},
+    {"item": "21", "score": 3},
+    {"item": "22", "score": 3},
+    {"item": "23", "score": 3},
+    {"item": "24", "score": 3}
   ]
 }
 
-绝对禁止输出任何非 JSON 文本或 Markdown。
-
-### 5. 输入数据
-[咨询对话]:
+### 4. Input Data
+[Consultation Dialogue]:
 {{diag}}

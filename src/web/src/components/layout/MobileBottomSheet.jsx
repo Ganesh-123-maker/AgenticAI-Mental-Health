@@ -25,7 +25,7 @@ export function MobileBottomSheet({
   const primaryAction = useMemo(() => {
     if (!currentCourse) {
       return {
-        label: "新建疗程",
+        label: "New Course",
         onClick: onOpenCreateCourseModal,
         icon: CalendarPlus2,
         disabled: !canCreateCourse || !token || !selectedSchoolId,
@@ -33,7 +33,7 @@ export function MobileBottomSheet({
     }
     if (hasOpenVisit) {
       return {
-        label: "继续当前会谈",
+        label: "Resume Current Session",
         onClick: onContinueVisit,
         icon: PlayCircle,
         disabled: false,
@@ -41,14 +41,14 @@ export function MobileBottomSheet({
     }
     if (canStartNextVisit) {
       return {
-        label: `开始第 ${nextVisitNo} 次会谈`,
+        label: `Start Session ${nextVisitNo}`,
         onClick: onStartNextVisit,
         icon: CalendarPlus2,
         disabled: false,
       };
     }
     return {
-      label: "查看疗程信息",
+      label: "View Course Info",
       onClick: () => setPanelOpen(true),
       icon: ClipboardList,
       disabled: false,
@@ -86,7 +86,7 @@ export function MobileBottomSheet({
             className="rounded-lg border border-slate-200 px-3 py-2 text-xs font-medium text-slate-700 hover:bg-slate-50"
             onClick={() => setPanelOpen(true)}
           >
-            信息
+            Info
           </button>
 
           {canCloseCurrentVisit ? (
@@ -96,7 +96,7 @@ export function MobileBottomSheet({
               onClick={onCloseVisit}
             >
               <XCircle className="h-3.5 w-3.5" />
-              结束
+              End
             </button>
           ) : canCompleteCourse ? (
             <button
@@ -104,7 +104,7 @@ export function MobileBottomSheet({
               className="rounded-lg bg-emerald-50 px-3 py-2 text-xs font-semibold text-emerald-700 hover:bg-emerald-100"
               onClick={onOpenCompleteCourseModal}
             >
-              完成疗程
+              Complete Course
             </button>
           ) : (
             <div />
@@ -118,13 +118,13 @@ export function MobileBottomSheet({
             type="button"
             className="h-full w-full"
             onClick={() => setPanelOpen(false)}
-            aria-label="关闭疗程信息"
+            aria-label="Close course information"
           />
           <div className="absolute inset-x-0 bottom-0 max-h-[80vh] overflow-y-auto rounded-t-2xl border border-slate-200 bg-white p-4">
             <div className="mb-3 flex items-center justify-between">
               <div className="inline-flex items-center gap-1 text-xs font-medium text-slate-500">
                 <ChevronUp className="h-4 w-4" />
-                疗程信息
+                Course Information
               </div>
               <button
                 type="button"

@@ -5,7 +5,7 @@ export function StageBadge({ stage }) {
         stage?.color || "bg-slate-100 text-slate-600"
       }`}
     >
-      {stage?.label || "未知阶段"}
+      {stage?.label || "Unknown Stage"}
     </span>
   );
 }

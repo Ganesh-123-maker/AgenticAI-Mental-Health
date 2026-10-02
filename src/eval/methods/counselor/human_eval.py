@@ -56,7 +56,7 @@ class _HumanEvalBase(EvaluationMethod):
                 messages = messages + [
                     {
                         "role": "user",
-                        "content": f"上一次输出未通过格式校验。请严格只输出一个JSON对象，且只包含键 items；items 长度必须为 1；元素仅包含 item(必须为 {self.PROMPT_NAME}) 与 score(0-10整数)。",
+                        "content": f"The previous output failed schema validation. Please strictly output a single JSON object containing only key 'items'; items length must be 1; the element must contain item (must be {self.PROMPT_NAME}) and score (0-10 integer).",
                     }
                 ]
         else:  # pragma: no cover

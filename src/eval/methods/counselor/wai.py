@@ -8,7 +8,7 @@ from jinja2 import Template
 import json
 
 from typing import List
-from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator # 👈 确保导入 ConfigDict
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 class Item(BaseModel):
     model_config = ConfigDict(extra="forbid", strict=True)
@@ -31,7 +31,7 @@ class Item(BaseModel):
         return s
 
 
-class Items(BaseModel):  # 用对象包一层
+class Items(BaseModel):  # Wrapper schema
     model_config = ConfigDict(extra="forbid", strict=True)
 
     items: List[Item] = Field(min_length=12, max_length=12)
@@ -47,7 +47,7 @@ class Items(BaseModel):  # 用对象包一层
 class WAI(EvaluationMethod):
 
     async def evaluate(self, gpt_api, dialogue: Any, profile: dict = None) -> dict[str, float]:
-        """评估对话质量"""    
+        """Evaluate dialogue quality."""    
         
         scores: list[Item] = []
 
@@ -72,7 +72,7 @@ class WAI(EvaluationMethod):
                 messages = messages + [
                     {
                         "role": "user",
-                        "content": "上一次输出未通过格式校验。请严格按输出格式只输出 JSON：仅包含键 items；items 长度为 12；每项包含 item/evidence_pos/evidence_neg/thought/score。",
+                        "content": "The previous output failed schema validation. Please strictly output JSON containing only key 'items' with length 12; each item must contain item/evidence_pos/evidence_neg/thought/score.",
                     }
                 ]
         else:  # pragma: no cover

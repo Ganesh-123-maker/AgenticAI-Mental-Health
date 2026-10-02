@@ -1,0 +1,16 @@
+{
+  "method_name": "Dialogue_Redundancy",
+  "status": "failed",
+  "scores": {},
+  "error": "4 validation errors for Items\nitems.0.item\n  Input should be '非重复与非模板化' or '推进效率与信息密度' [type=literal_error, input_value='1', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/literal_error\nitems.0.evidence_pos\n  Field required [type=missing, input_value={'item': '1', 'score': 4}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nitems.0.evidence_neg\n  Field required [type=missing, input_value={'item': '1', 'score': 4}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nitems.0.thought\n  Field required [type=missing, input_value={'item': '1', 'score': 4}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing",
+  "traceback": "Traceback (most recent call last):\n  File \"D:\\Academics\\Academic_Project\\Project\\PsychAgent\\src\\eval\\manager\\evaluation_orchestrator.py\", line 298, in _run_one\n    scores = await method.evaluate(output_client, dialogue, method_profile)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\Academics\\Academic_Project\\Project\\PsychAgent\\src\\eval\\methods\\counselor\\dialogue_redundancy.py\", line 50, in evaluate\n    validated = Items.model_validate(json.loads(out))\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\Academics\\Academic_Project\\Project\\PsychAgent\\.venv\\Lib\\site-packages\\pydantic\\main.py\", line 732, in model_validate\n    return cls.__pydantic_validator__.validate_python(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\npydantic_core._pydantic_core.ValidationError: 4 validation errors for Items\nitems.0.item\n  Input should be '非重复与非模板化' or '推进效率与信息密度' [type=literal_error, input_value='1', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/literal_error\nitems.0.evidence_pos\n  Field required [type=missing, input_value={'item': '1', 'score': 4}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nitems.0.evidence_neg\n  Field required [type=missing, input_value={'item': '1', 'score': 4}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nitems.0.thought\n  Field required [type=missing, input_value={'item': '1', 'score': 4}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\n",
+  "raw_model_outputs": [
+    "{\"items\": [{\"item\": \"1\", \"score\": 4}]}",
+    "{\"items\": [{\"item\": \"1\", \"score\": 4}]}",
+    "{\"items\": [{\"item\": \"1\", \"score\": 4}]}"
+  ],
+  "started_at": "2026-09-25T13:51:17",
+  "finished_at": "2026-09-25T13:51:17",
+  "thread_name": "Task-87",
+  "model_name": "dummy-eval"
+}

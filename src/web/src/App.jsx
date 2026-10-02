@@ -90,13 +90,13 @@ export default function App() {
               {app.currentCourse ? (
                 <div className="flex flex-wrap items-center gap-2 text-xs text-slate-700">
                   <span className="rounded-md bg-slate-100 px-2 py-1">
-                    流派：{getSchoolDisplayName(app.currentSchool)}
+                    Modality: {getSchoolDisplayName(app.currentSchool)}
                   </span>
                   <span className="rounded-md bg-slate-100 px-2 py-1">
-                    疗程：{app.currentCourse.title || "未命名疗程"}
+                    Course: {app.currentCourse.title || "Untitled Course"}
                   </span>
                   <span className="rounded-md bg-slate-100 px-2 py-1">
-                    会谈：{app.currentVisit ? `第 ${app.currentVisit.visit_no} 次` : "尚未开始"}
+                    Session: {app.currentVisit ? `Session ${app.currentVisit.visit_no}` : "Not Started"}
                   </span>
                   <StatusPill
                     text={getCourseStatusText(app.currentCourse.status)}
@@ -111,7 +111,7 @@ export default function App() {
                 </div>
                 ) : (
                   <p className="text-sm text-slate-600">
-                    从“流派 -&gt; 疗程 -&gt; 会谈 -&gt; 消息”开始：先选择流派并创建疗程。
+                    Workflow: Modality -&gt; Course -&gt; Session -&gt; Dialogue. Please select a counseling modality and create a course to begin.
                   </p>
                 )}
             </div>

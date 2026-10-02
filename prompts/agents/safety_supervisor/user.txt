@@ -1,0 +1,15 @@
+Client Context / Message:
+{current_message}
+
+Upstream Assessment:
+- State Agent Summary: {state_summary}
+- Risk Agent Severity: {risk_severity}
+- Risk Signals: {risk_signals}
+- Uncertainty Status: {uncertainty_status}
+- Uncertain Fields: {uncertain_fields}
+- Orchestrator Route: {orchestrator_route}
+
+Proposed Counseling Response:
+{draft_response}
+
+Evaluate whether the proposed counseling response is safe to deliver. Return ONLY valid JSON adhering to the required schema.

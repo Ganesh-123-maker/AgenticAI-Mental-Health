@@ -50,7 +50,7 @@ export function Sidebar({
             <Brain className="h-5 w-5" />
           </div>
           <div className={desktopCollapsed ? "block md:hidden" : "block"}>
-            <p className="text-sm font-semibold text-slate-800">心理咨询工作台</p>
+            <p className="text-sm font-semibold text-slate-800">Counseling Workspace</p>
             <p className="text-xs text-slate-500">MindSpace</p>
           </div>
         </div>
@@ -60,8 +60,8 @@ export function Sidebar({
             type="button"
             className="hidden rounded-md p-1 text-slate-500 hover:bg-slate-100 md:inline-flex"
             onClick={onToggleCollapse}
-            aria-label={desktopCollapsed ? "展开左栏" : "收起左栏"}
-            title={desktopCollapsed ? "展开左栏" : "收起左栏"}
+            aria-label={desktopCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+            title={desktopCollapsed ? "Expand sidebar" : "Collapse sidebar"}
           >
             {desktopCollapsed ? <ChevronsRight className="h-4 w-4" /> : <ChevronsLeft className="h-4 w-4" />}
           </button>
@@ -79,7 +79,7 @@ export function Sidebar({
               type="button"
               onClick={onOpenSchoolModal}
               className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100"
-              title="切换流派"
+              title="Switch Modality"
             >
               <Activity className="h-4 w-4" />
             </button>
@@ -90,13 +90,13 @@ export function Sidebar({
           {currentSchool ? (
             <section className="rounded-xl border border-slate-200 bg-slate-50 p-4">
               <div className="mb-2 flex items-center justify-between">
-                <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">当前咨询流派</p>
+                <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Current Counseling Modality</p>
                 <button
                   type="button"
                   onClick={onOpenSchoolModal}
                   className="text-xs font-medium text-teal-600 hover:text-teal-700"
                 >
-                  切换
+                  Switch
                 </button>
               </div>
 
@@ -107,43 +107,43 @@ export function Sidebar({
                 <div>
                   <p className="text-sm font-semibold text-slate-800">{getSchoolDisplayName(currentSchool)}</p>
                   <p className="mt-1 text-xs leading-5 text-slate-600">
-                    当前阶段：{currentCourse?.current_stage?.label || "未开始"}
+                    Current Stage: {currentCourse?.current_stage?.label || "Not Started"}
                   </p>
                 </div>
               </div>
             </section>
           ) : (
             <section className="rounded-xl border border-dashed border-slate-300 bg-slate-50 p-4 text-sm text-slate-600">
-              <p>请先选择咨询流派，再创建疗程。</p>
+              <p>Please select a counseling modality before creating a course.</p>
               <button
                 type="button"
                 onClick={onOpenSchoolModal}
                 className="mt-3 text-xs font-medium text-teal-600 hover:text-teal-700"
               >
-                打开流派选择
+                Select Modality
               </button>
             </section>
           )}
 
           <section>
             <div className="mb-2 flex items-center justify-between">
-              <h2 className="text-sm font-semibold text-slate-800">疗程列表</h2>
+              <h2 className="text-sm font-semibold text-slate-800">Course List</h2>
               <div className="flex items-center gap-1">
                 <FolderTree className="h-4 w-4 text-slate-400" />
                 <button
                   type="button"
                   onClick={() => setCoursePanelOpen((prev) => !prev)}
                   className="inline-flex items-center gap-1 rounded-md px-2 py-1 text-xs font-medium text-slate-600 hover:bg-slate-100"
-                  aria-label={coursePanelOpen ? "收起疗程列表" : "展开疗程列表"}
+                  aria-label={coursePanelOpen ? "Collapse course list" : "Expand course list"}
                 >
                   {coursePanelOpen ? (
                     <>
-                      收起
+                      Collapse
                       <ChevronUp className="h-3.5 w-3.5" />
                     </>
                   ) : (
                     <>
-                      展开
+                      Expand
                       <ChevronDown className="h-3.5 w-3.5" />
                     </>
                   )}
@@ -165,16 +165,16 @@ export function Sidebar({
                     }`}
                   >
                     <div className="flex items-start justify-between gap-2">
-                      <p className="text-sm font-semibold text-slate-800">{course.title || "未命名疗程"}</p>
+                      <p className="text-sm font-semibold text-slate-800">{course.title || "Untitled Course"}</p>
                       <StatusPill text={getCourseStatusText(course.status)} tone={getCourseTone(course.status)} />
                     </div>
 
                     <div className="mt-2 space-y-1 text-xs text-slate-600">
-                      <p>当前阶段：{course.current_stage?.label || "未开始"}</p>
-                      <p>已进行会谈：{course.latest_visit_no || 0} 次</p>
+                      <p>Current Stage: {course.current_stage?.label || "Not Started"}</p>
+                      <p>Sessions Conducted: {course.latest_visit_no || 0}</p>
                       <p className="inline-flex items-center gap-1 text-slate-500">
                         <Sparkles className="h-3.5 w-3.5" />
-                        {course.active_visit_id ? "有进行中的会谈" : "暂无进行中的会谈"}
+                        {course.active_visit_id ? "Active session in progress" : "No active session"}
                       </p>
                     </div>
                   </button>
@@ -182,15 +182,15 @@ export function Sidebar({
 
                 {courses.length === 0 ? (
                   <div className="rounded-lg border border-dashed border-slate-300 bg-slate-50 p-3 text-xs leading-5 text-slate-600">
-                    当前流派下还没有疗程，请点击“新建疗程”开始。
+                    No courses in this modality yet. Click "New Course" to begin.
                   </div>
                 ) : null}
               </div>
             ) : (
               <div className="rounded-lg border border-dashed border-slate-300 bg-slate-50 p-3 text-xs leading-5 text-slate-600">
                 {currentCourse
-                  ? `当前已选：${currentCourse.title || "未命名疗程"}`
-                  : "疗程列表已收起，点击“展开”查看全部疗程。"}
+                  ? `Selected: ${currentCourse.title || "Untitled Course"}`
+                  : "Course list collapsed. Click Expand to view all courses."}
               </div>
             )}
           </section>
@@ -206,7 +206,7 @@ export function Sidebar({
           }`}
         >
           <User className="h-4 w-4" />
-          <span>{user ? `已登录：${user.username}` : "登录 / 注册"}</span>
+          <span>{user ? `Signed in as: ${user.username}` : "Sign In / Register"}</span>
         </button>
       </div>
     </aside>

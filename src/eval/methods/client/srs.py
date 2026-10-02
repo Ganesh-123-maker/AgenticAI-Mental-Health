@@ -10,38 +10,40 @@ import json
 from typing import List
 from typing import Literal
 
-from pydantic import BaseModel, ConfigDict, Field, model_validator # 👈 确保导入 ConfigDict
+from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 SRSItemName = Literal[
-    "关系维度 (Relationship)",
-    "目标与话题维度 (Goals and Topics)",
-    "方法与风格维度 (Approach or Method)",
-    "整体评价 (Overall)",
+    "Relationship",
+    "Goals and Topics",
+    "Approach or Method",
+    "Overall",
 ]
 
 
 class Item(BaseModel):
-    model_config = ConfigDict(extra="forbid", strict=True)
+    # extra="ignore" tolerates unexpected LLM fields;
+    # strict=False allows float JSON scores (e.g. 2.0) to be coerced to int.
+    model_config = ConfigDict(extra="ignore", strict=False)
 
     item: SRSItemName
     score: int = Field(ge=0, le=4)
     evidence_pos: List[str] = Field(max_length=2)
     evidence_neg: List[str] = Field(max_length=2)
-    thought: str = Field(max_length=24, pattern=r"^[^\n\r]{0,24}$")
+    thought: str = Field(max_length=200)
 
 
-class Items(BaseModel):  # 用对象包一层
-    model_config = ConfigDict(extra="forbid", strict=True)
+class Items(BaseModel):
+    model_config = ConfigDict(extra="forbid", strict=False)
 
     items: List[Item] = Field(min_length=4, max_length=4)
 
     @model_validator(mode="after")
     def _validate_order(self) -> "Items":
         expected: list[str] = [
-            "关系维度 (Relationship)",
-            "目标与话题维度 (Goals and Topics)",
-            "方法与风格维度 (Approach or Method)",
-            "整体评价 (Overall)",
+            "Relationship",
+            "Goals and Topics",
+            "Approach or Method",
+            "Overall",
         ]
         actual = [it.item for it in self.items]
         if actual != expected:
@@ -52,7 +54,7 @@ class Items(BaseModel):  # 用对象包一层
 class SRS(EvaluationMethod):
 
     async def evaluate(self, gpt_api, dialogue: Any, profile: dict = None) -> dict[str, float]:
-        """评估对话质量"""
+        """Evaluate dialogue quality."""
         scores: list[Item] = []
         
         prompt = load_prompt("srs", "srs","cn")
@@ -76,7 +78,7 @@ class SRS(EvaluationMethod):
                 messages = messages + [
                     {
                         "role": "user",
-                        "content": "上一次输出未通过格式校验。请严格按输出格式只输出 JSON：仅包含键 items；items 长度为 4；每项包含 item/evidence_pos/evidence_neg/thought/score。",
+                        "content": "The previous output failed schema validation. Please strictly output JSON according to the format: only key 'items'; items length is 4; each containing item/evidence_pos/evidence_neg/thought/score.",
                     }
                 ]
         else:  # pragma: no cover

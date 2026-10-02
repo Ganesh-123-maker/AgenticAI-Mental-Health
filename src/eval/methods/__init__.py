@@ -31,6 +31,10 @@ from .counselor.plan_consistency import (
 from .counselor.human_eval import Professionalism, Authenticity, Coherence, Depth
 from .counselor.human_vs_llm import HUMAN_VS_LLM
 from .rro import RRO
+from .multi_agent.coordination import Coordination
+from .multi_agent.uncertainty import Uncertainty
+from .multi_agent.safety import Safety
+from .multi_agent.longitudinal import Longitudinal
 
 
 METHOD_REGISTRY = {
@@ -64,6 +68,10 @@ METHOD_REGISTRY = {
     "Depth": Depth,
     "HUMAN_VS_LLM": HUMAN_VS_LLM,
     "RRO": RRO,
+    "Coordination": Coordination,
+    "Uncertainty": Uncertainty,
+    "Safety": Safety,
+    "Longitudinal": Longitudinal,
 }
 
 __all__ = tuple(METHOD_REGISTRY.keys())

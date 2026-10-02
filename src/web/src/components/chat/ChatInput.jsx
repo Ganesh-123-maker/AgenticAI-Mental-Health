@@ -7,7 +7,7 @@ export function ChatInput({ currentCourse, currentVisit, input, isTyping, onInpu
     if (!currentCourse) return null;
     return (
       <div className="mb-20 border-t border-slate-200 bg-white p-4 text-center text-sm text-slate-600 lg:mb-0">
-        当前疗程尚未开始会谈，请点击“开始第 {nextVisitNo} 次会谈”。
+        The current therapy course has not started. Please click "Start Session {nextVisitNo}".
       </div>
     );
   }
@@ -15,7 +15,7 @@ export function ChatInput({ currentCourse, currentVisit, input, isTyping, onInpu
   if (currentVisit.status !== "open") {
     return (
       <div className="mb-20 border-t border-slate-200 bg-white p-4 text-center text-sm text-slate-600 lg:mb-0">
-        当前会谈已结束，可开始下一次会谈。
+        The current session has concluded. You may begin the next session.
       </div>
     );
   }
@@ -32,7 +32,7 @@ export function ChatInput({ currentCourse, currentVisit, input, isTyping, onInpu
               onSend();
             }
           }}
-          placeholder="输入你的想法，按 Enter 发送，Shift + Enter 换行。"
+          placeholder="Type your message... Press Enter to send, Shift + Enter for a new line."
           className="min-h-[56px] w-full max-h-32 resize-none rounded-xl border border-slate-200 bg-slate-50 py-3 pl-4 pr-12 text-sm focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500/20 md:text-base"
           rows={1}
         />
@@ -48,7 +48,7 @@ export function ChatInput({ currentCourse, currentVisit, input, isTyping, onInpu
       </div>
 
       <p className="mt-2 text-center text-xs leading-5 text-slate-600">
-        AI 回答仅供参考，不替代专业医疗建议。如有紧急情况，请立即联系当地急救资源。
+        AI responses are for research and educational reference only and do not replace professional medical advice. If you are experiencing a crisis, please contact local emergency services immediately.
       </p>
     </div>
   );

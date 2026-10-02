@@ -11,7 +11,7 @@ import json
 from typing import List
 from typing import Literal
 
-from pydantic import BaseModel, ConfigDict, Field # 👈 确保导入 ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 
 TESItemName = Literal[
     "acceptance of feelings",
@@ -36,7 +36,7 @@ class Item(BaseModel):
     thought: str = Field(max_length=24, pattern=r"^[^\n\r]{0,24}$")
 
 
-class Items(BaseModel):  # 用对象包一层
+class Items(BaseModel):  # Wrapper schema
     model_config = ConfigDict(extra="forbid", strict=True)
 
     items: List[Item] = Field(min_length=1, max_length=1)
@@ -44,7 +44,7 @@ class Items(BaseModel):  # 用对象包一层
 class TES(EvaluationMethod):
 
     async def evaluate(self, gpt_api, dialogue: Any, profile: dict = None) -> dict[str, float]:
-        """评估对话质量"""
+        """Evaluate dialogue quality."""
         criteria_list = ["acceptance of feelings", "concern", "resonate or capture client feelings", "understanding cognitive framework", "warmth", "understanding feelings", "responsiveness", "expressiveness", "attuned to client‘s inner world"]
         scores: list[Item] = []
         
@@ -69,7 +69,7 @@ class TES(EvaluationMethod):
                     messages = messages + [
                         {
                             "role": "user",
-                            "content": "上一次输出未通过格式校验。请严格按输出格式只输出 JSON：仅包含键 items；items 长度为 1；每项包含 item/evidence_pos/evidence_neg/thought/score。",
+                            "content": "The previous output failed schema validation. Please strictly output JSON containing only key 'items' with length 1; each item must contain item/evidence_pos/evidence_neg/thought/score.",
                         }
                     ]
             raise RuntimeError(f"Failed to get valid TES output: {last_err}")

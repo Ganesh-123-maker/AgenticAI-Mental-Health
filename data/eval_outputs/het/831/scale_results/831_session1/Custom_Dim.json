@@ -1,0 +1,25 @@
+{
+  "method_name": "Custom_Dim",
+  "status": "failed",
+  "scores": {},
+  "error": "1 validation error for Items15\nitems\n  List should have at least 15 items after validation, not 1 [type=too_short, input_value=[{'item': '1', 'score': 4}], input_type=list]\n    For further information visit https://errors.pydantic.dev/2.13/v/too_short",
+  "traceback": "Traceback (most recent call last):\n  File \"D:\\Academics\\Academic_Project\\Project\\PsychAgent\\src\\eval\\manager\\evaluation_orchestrator.py\", line 298, in _run_one\n    scores = await method.evaluate(output_client, dialogue, method_profile)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\Academics\\Academic_Project\\Project\\PsychAgent\\src\\eval\\methods\\counselor\\custom_dim.py\", line 102, in evaluate\n    items_lists = await asyncio.gather(*(run_one(c) for c in criteria_list))\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\Academics\\Academic_Project\\Project\\PsychAgent\\src\\eval\\methods\\counselor\\custom_dim.py\", line 88, in run_one\n    validated = items_model.model_validate(json.loads(criteria_output))\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\Academics\\Academic_Project\\Project\\PsychAgent\\.venv\\Lib\\site-packages\\pydantic\\main.py\", line 732, in model_validate\n    return cls.__pydantic_validator__.validate_python(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\npydantic_core._pydantic_core.ValidationError: 1 validation error for Items15\nitems\n  List should have at least 15 items after validation, not 1 [type=too_short, input_value=[{'item': '1', 'score': 4}], input_type=list]\n    For further information visit https://errors.pydantic.dev/2.13/v/too_short\n",
+  "raw_model_outputs": [
+    "{\"items\": [{\"item\": \"1\", \"score\": 4}]}",
+    "{\"items\": [{\"item\": \"1\", \"score\": 4}]}",
+    "{\"items\": [{\"item\": \"1\", \"score\": 4}]}",
+    "{\"items\": [{\"item\": \"1\", \"score\": 4}]}",
+    "{\"items\": [{\"item\": \"1\", \"score\": 4}]}",
+    "{\"items\": [{\"item\": \"1\", \"score\": 4}]}",
+    "{\"items\": [{\"item\": \"1\", \"score\": 4}]}",
+    "{\"items\": [{\"item\": \"1\", \"score\": 4}]}",
+    "{\"items\": [{\"item\": \"1\", \"score\": 4}]}",
+    "{\"items\": [{\"item\": \"1\", \"score\": 4}]}",
+    "{\"items\": [{\"item\": \"1\", \"score\": 4}]}",
+    "{\"items\": [{\"item\": \"1\", \"score\": 4}]}"
+  ],
+  "started_at": "2026-09-25T13:51:17",
+  "finished_at": "2026-09-25T13:51:17",
+  "thread_name": "Task-13",
+  "model_name": "dummy-eval"
+}

@@ -1,0 +1,16 @@
+{
+  "method_name": "HUMAN_VS_LLM",
+  "status": "failed",
+  "scores": {},
+  "error": "missing score for dimension 'Ethics'",
+  "traceback": "Traceback (most recent call last):\n  File \"D:\\Academics\\Academic_Project\\Project\\PsychAgent\\src\\eval\\manager\\evaluation_orchestrator.py\", line 298, in _run_one\n    scores = await method.evaluate(output_client, dialogue, method_profile)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\Academics\\Academic_Project\\Project\\PsychAgent\\src\\eval\\methods\\counselor\\human_vs_llm.py\", line 31, in evaluate\n    raise ValueError(f\"missing score for dimension {key!r}\")\nValueError: missing score for dimension 'Ethics'\n",
+  "raw_model_outputs": [
+    "{\"items\": [{\"item\": \"1\", \"score\": 4}]}",
+    "{\"items\": [{\"item\": \"1\", \"score\": 4}]}",
+    "{\"items\": [{\"item\": \"1\", \"score\": 4}]}"
+  ],
+  "started_at": "2026-09-25T13:51:17",
+  "finished_at": "2026-09-25T13:51:17",
+  "thread_name": "Task-31",
+  "model_name": "dummy-eval"
+}

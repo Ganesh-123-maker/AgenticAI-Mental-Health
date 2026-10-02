@@ -20,9 +20,9 @@ export function SchoolModal({
         </button>
 
         <div>
-          <h3 className="text-lg font-bold text-slate-800">选择咨询流派</h3>
+          <h3 className="text-lg font-bold text-slate-800">Select Counseling Modality</h3>
           <p className="mt-1 text-sm text-slate-600">
-            选择后会自动切换疗程列表。当前：{getSchoolDisplayName(currentSchool)}
+            Selecting a modality updates the course list. Current: {getSchoolDisplayName(currentSchool)}
           </p>
         </div>
 
@@ -33,7 +33,7 @@ export function SchoolModal({
           disabled={!token}
         >
           <option value="" disabled>
-            请选择流派
+            Select a modality...
           </option>
           {schools.map((school) => (
             <option key={school.id} value={school.id}>
@@ -42,14 +42,14 @@ export function SchoolModal({
           ))}
         </select>
 
-        {!token ? <p className="text-xs text-amber-600">请先登录后再切换流派。</p> : null}
+        {!token ? <p className="text-xs text-amber-600">Please sign in before switching modalities.</p> : null}
 
         <button
           type="button"
           className="w-full rounded-lg bg-slate-100 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-200"
           onClick={onClose}
         >
-          关闭
+          Close
         </button>
       </div>
     </div>

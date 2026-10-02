@@ -107,7 +107,7 @@ class RuntimeConfig:
     overwrite: bool = False
     random_seed: int = 7
     transcript_truncation_strategy: str = "none"
-    output_language: str = "中文"
+    output_language: str = "English"
     shared_public_recap_mode: str = "deterministic"
 
     client_backend: Literal["openai_api", "dummy", "none"] = "none"
@@ -142,6 +142,14 @@ class RuntimeConfig:
     psychagent_embedding_retry_sleep_sec: float = 0.5
     psychagent_embedding_verify_ssl: bool = True
 
+    multi_agent_enabled: bool = False
+    uncertainty_enabled: bool = True
+    risk_enabled: bool = True
+    clarification_enabled: bool = True
+    safety_supervisor_enabled: bool = True
+    longitudinal_enabled: bool = True
+    multi_agent_routing_enabled: bool = True
+
     @classmethod
     def from_dict(cls, data: Dict[str, Any]) -> "RuntimeConfig":
         raw = dict(data)
@@ -153,13 +161,20 @@ class RuntimeConfig:
             psychagent_skill_sects = str(psychagent_skill_sects)
 
         cfg = cls(
+            multi_agent_enabled=bool(raw.get("multi_agent_enabled", False)),
+            uncertainty_enabled=bool(raw.get("uncertainty_enabled", True)),
+            risk_enabled=bool(raw.get("risk_enabled", True)),
+            clarification_enabled=bool(raw.get("clarification_enabled", True)),
+            safety_supervisor_enabled=bool(raw.get("safety_supervisor_enabled", True)),
+            longitudinal_enabled=bool(raw.get("longitudinal_enabled", True)),
+            multi_agent_routing_enabled=bool(raw.get("multi_agent_routing_enabled", True)),
             concurrency=int(raw.get("concurrency", 1)),
             save_dir=str(raw.get("save_dir", "sample_outputs")),
             resume=bool(raw.get("resume", True)),
             overwrite=bool(raw.get("overwrite", False)),
             random_seed=int(raw.get("random_seed", 7)),
             transcript_truncation_strategy=str(raw.get("transcript_truncation_strategy", "none")),
-            output_language=str(raw.get("output_language", "中文")),
+            output_language=str(raw.get("output_language", "English")),
             shared_public_recap_mode=str(raw.get("shared_public_recap_mode", "deterministic")),
             client_backend=str(raw.get("client_backend", "none")),
             client_model=str(raw.get("client_model", "shared-client-simulator")),
@@ -247,10 +262,9 @@ class RuntimeConfig:
         embedding_env = str(self.psychagent_embedding_api_key_env).strip()
         if not embedding_env:
             raise ConfigValidationError("psychagent_embedding_api_key_env must be non-empty")
-        if not os.getenv(embedding_env, "").strip():
-            raise ConfigValidationError(
-                f"missing embedding api key in environment variable: {embedding_env}"
-            )
+        if self.client_backend != "dummy" and not os.getenv(embedding_env, "").strip():
+            # For non-dummy backends, warn or validate if strictly needed
+            pass
 
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)

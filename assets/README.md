@@ -1,11 +1,9 @@
 # `assets/`
 
-`assets/` 保存的是随仓库分发、但不属于源码实现本身的静态资源。
+`assets/` contains static resources distributed with the repository that are separate from the core Python implementation.
 
-当前包含一类内容：
+Currently, it contains:
 
-- `profiles/`：供 `sample` / `rft` 复用的人物画像资产
+- `profiles/`: Client persona and profile assets reused by `sample` and `rft` pipelines.
 
-说明：初始化技能库位于 [`assets/skills/sect/`](../assets/skills/sect/)。
-
-如果你想找“通用资产”而不是“最小可运行样例”，优先从这里看。
+Note: Initial counseling skill library definitions are located under [`assets/skills/sect/`](../assets/skills/sect/).

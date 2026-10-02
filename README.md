@@ -45,20 +45,86 @@ In the codebase, these ideas map to:
 - [`src/eval/`](src/eval/) for evaluation and reward-related metrics
 - [`src/rft/`](src/rft/) for best-of-n rollout and reward selection
 
+## Multi-Agent Decision & Clinical Safety Architecture
+
+In addition to baseline single-agent generation, PsychAgent implements a clinical-grade **11-Agent Multi-Agent Pipeline** (`src/sample/agents/`) that explicitly handles diagnostic uncertainty, crisis risk, proactive clarification, and supervisory safety guardrails:
+
+```text
+USER UTTERANCE
+      │
+      ▼
+1. Memory / Context Agent ──► Retrieves longitudinal history, past homework, and therapy goals
+      │
+      ▼
+2. State Assessment Agent ──► Assesses client affective, cognitive, and somatic state
+      │
+      ▼
+3. Uncertainty Agent + 4. Risk / Safety Agent  (Parallel Epistemic & Harm Screening)
+      │
+      ▼
+7. Orchestrator / Router Agent
+      ├───────────────────────┬────────────────────────┐
+      ▼                       ▼                        ▼
+[CONFIDENT & SAFE]      [UNCERTAIN]             [SAFETY-CRITICAL]
+      │                       │                        │
+      │              5. Clarification Agent            │
+      │                       │                        │
+      │              6. Reassessment Agent             │
+      │                       │                        │
+      ▼                       ▼                        ▼
+8. Counseling Agent ◄─────────┘                        │
+   (Skill Retrieval + PsychAgent Core)                 │
+      │                                                │
+      └───────────────────────┬────────────────────────┘
+                              ▼
+                   9. Safety Supervisor Agent
+           (De-escalation Guardrail & Crisis Resource Interceptor)
+                              │
+                              ▼
+                     COUNSELOR RESPONSE
+                              │
+                              ▼
+                   10. Outcome / Feedback Agent
+             (Turn-level engagement & therapeutic alliance)
+                              │
+                              ▼
+                   11. Memory Update Agent
+         (Episodic storage, homework logging, goal revision)
+```
+
+### The 11 Specialized Agents:
+1. **Memory / Context Agent** (`memory_agent.py`): Reconstructs longitudinal client trajectory from profile and session history.
+2. **State Assessment Agent** (`state_agent.py`): Evaluates current emotional state, primary complaints, and cognitive distortions.
+3. **Uncertainty Agent** (`uncertainty_agent.py`): Identifies missing clinical facts, ambiguity, and diagnostic confidence.
+4. **Risk / Safety Agent** (`risk_agent.py`): Triages self-harm, suicidal ideation, abuse, and crisis indicators (None, Low, Moderate, Severe).
+5. **Clarification Agent** (`clarification_agent.py`): Formulates targeted, empathetic clarifying questions when ambiguity impedes treatment.
+6. **Reassessment Agent** (`reassessment_agent.py`): Integrates client clarifications, updates state, and resolves or persists uncertainty.
+7. **Orchestrator Agent** (`orchestrator.py`): Routes flow dynamically between standard therapy, clarification, or crisis escalation.
+8. **Counseling Agent** (`counseling_agent.py`): Couples multi-agent diagnostics with PsychAgent skill retrieval and therapeutic school framing.
+9. **Safety Supervisor Agent** (`safety_supervisor.py`): Independent safety check verifying crisis protocol adherence and resource provision.
+10. **Outcome / Feedback Agent** (`outcome_agent.py`): Assesses client progress, alliance shifts, and resistance across turns.
+11. **Memory Update Agent** (`memory_update_agent.py`): Persists session recaps, homework adherence, and diagnostic updates.
+
 ## Repository Layout
 
 The most important directories are:
 
 - [`paper/`](paper/): paper PDF and figure assets used in the README
-- [`configs/`](configs/): baseline, dataset, eval, and RFT configuration files
+- [`configs/`](configs/): baseline, dataset, eval, runtime, and multi-agent configuration files
 - [`assets/profiles/`](assets/profiles/): bundled profile assets used by `sample` and `rft`
+- [`data/benchmark/`](data/benchmark/): structured multi-agent benchmark cases (ordinary, uncertain, safety-critical)
 - [`data/eval/`](data/eval/): native evaluation examples
-- [`prompts/`](prompts/): public prompts, client prompts, PsychAgent prompts, and eval prompts
-- [`src/sample/`](src/sample/): multi-session generation pipeline
-- [`src/eval/`](src/eval/): evaluation orchestration and metric implementations
+- [`data/eval_outputs_multi_agent/`](data/eval_outputs_multi_agent/): comparative evaluation results across 12 systems and ablations
+- [`prompts/`](prompts/): system prompts, agent prompt templates, and evaluation criteria
+- [`src/sample/agents/`](src/sample/agents/): the 11-agent multi-agent pipeline and orchestrator
+- [`src/sample/`](src/sample/): multi-session generation runner and simulator
+- [`src/eval/methods/multi_agent/`](src/eval/methods/multi_agent/): Layer-2 metrics (routing accuracy, uncertainty resolution, safety adherence)
+- [`src/experiments/`](src/experiments/): benchmark execution and automated failure analysis
+- [`src/eval/`](src/eval/): evaluation orchestration and clinical metric implementations
 - [`src/rft/`](src/rft/): rollout generation and reward-based selection
-- [`src/web/`](src/web/): web workspace for demo and local interaction
+- [`src/web/`](src/web/): full-stack web workspace for interactive counseling sessions
 - [`src/shared/`](src/shared/): shared YAML and file utilities
+- [`tests/`](tests/): comprehensive pytest test suite covering all agents, pipeline, and evaluation methods
 
 If you are new to the repository, start with:
 
@@ -219,15 +285,15 @@ Example UI screenshots:
 
 #### Create Course
 
-![Create course](paper/web/新建疗程.png)
+![Create course](paper/web/create_course.png)
 
 #### Switch School
 
-![Switch school](paper/web/切换流派.png)
+![Switch school](paper/web/switch_school.png)
 
 #### Consultation View
 
-![Consultation view](paper/web/咨询.png)
+![Consultation view](paper/web/consultation.png)
 
 ## Configuration Guide
 
@@ -273,6 +339,51 @@ The paper evaluates PsychAgent on the multi-session, multi-therapy `PsychEval` b
 - Across 522 matched dialogues, PsychAgent is ranked first by both human raters and the Gemini-3 LLM rater; human-human QWK is `0.675`.
 
 Related paper assets include [`paper/radar_v1.pdf`](paper/radar_v1.pdf), [`paper/trend.pdf`](paper/trend.pdf), and [`paper/fig_11_qwk_heatmap_abc.png`](paper/fig_11_qwk_heatmap_abc.png).
+
+## Multi-Agent Benchmark & Ablation Studies
+
+The repository includes a curated multi-agent benchmark (`data/benchmark/`) testing 12 system configurations across 5 therapeutic modalities (`bt`, `cbt`, `het`, `pdt`, `pmt`):
+
+- **System A**: Baseline Standard Single-Agent Counselor
+- **System B**: Memory + Assessment Augmented
+- **System C**: Dynamic Routing (Uncertainty + Risk + Safety)
+- **System D**: Full Multi-Agent Pipeline (No Clarification)
+- **System E**: Full Multi-Agent Pipeline (Standard Clarification)
+- **System F**: Full Adaptive Multi-Agent Pipeline (Dynamic Clarification & Longitudinal Memory)
+- **Ablation Studies**:
+  - `No_Uncertainty`: Bypasses epistemic uncertainty quantification
+  - `No_Risk`: Disables explicit clinical harm triage
+  - `No_Clarification`: Suppresses interactive questioning
+  - `No_Supervisor`: Removes supervisory safety guardrails
+  - `No_Memory`: Restricts context to zero-shot / single session
+  - `No_Routing`: Collapses dynamic routing into uniform therapy path
+
+### Running the Systems & Failure Analysis:
+
+```bash
+# Run comparative evaluation across all 12 systems
+python src/experiments/run_systems.py
+
+# Generate granular diagnostic failure analysis
+python src/experiments/failure_analysis.py
+```
+
+Failure analysis outputs are stored in [`data/eval_outputs_multi_agent/failure_analysis.json`](data/eval_outputs_multi_agent/failure_analysis.json) and summarized in [`data/eval_outputs_multi_agent/REPORT_SUMMARY.md`](data/eval_outputs_multi_agent/REPORT_SUMMARY.md).
+
+## Testing & Verification
+
+Run the comprehensive pytest suite covering all 11 individual agents, the composite pipeline, and clinical evaluation methods:
+
+```bash
+# Run all tests
+pytest tests/
+
+# Run agent unit tests
+pytest tests/agents/
+
+# Run multi-agent and psychometric evaluation tests
+pytest tests/eval/
+```
 
 ## Project Status
 

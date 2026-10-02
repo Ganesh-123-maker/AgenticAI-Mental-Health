@@ -174,7 +174,7 @@ def _normalize_theory_info(theory_info: Dict[str, Any], *, modality: str, path: 
                         )
                 progress = fixed.get("progress")
                 if not isinstance(progress, str) or not progress.strip():
-                    fixed["progress"] = "待解决"
+                    fixed["progress"] = "In progress"
                 analysis = fixed.get("analysis")
                 if not isinstance(analysis, list):
                     fixed["analysis"] = []

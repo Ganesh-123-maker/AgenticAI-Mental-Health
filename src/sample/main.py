@@ -64,6 +64,14 @@ def build_arg_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Fail on runtime unknown/unused(deprecated/removed) config keys.",
     )
+    parser.add_argument(
+        "--multi-agent",
+        "--multi_agent",
+        dest="multi_agent",
+        action="store_true",
+        default=None,
+        help="Enable multi-agent pipeline.",
+    )
     parser.add_argument("--log_level", default="INFO", help="Logging level.")
     return parser
 
@@ -92,6 +100,7 @@ async def run_from_args(args: argparse.Namespace) -> int:
         overwrite_override=args.overwrite,
         concurrency_override=args.concurrency,
         save_dir_override=args.save_dir,
+        multi_agent_override=args.multi_agent,
     )
 
     baseline_cfg = _apply_baseline_runtime_overrides(baseline_cfg, runtime_cfg)
@@ -148,6 +157,7 @@ def _apply_runtime_overrides(
     overwrite_override: bool,
     concurrency_override: Optional[int],
     save_dir_override: Optional[str],
+    multi_agent_override: Optional[bool] = None,
 ) -> RuntimeConfig:
     overwrite_value = overwrite_override or runtime_cfg.overwrite
     resume_value = runtime_cfg.resume if resume_override is None else bool(resume_override)
@@ -160,6 +170,7 @@ def _apply_runtime_overrides(
         save_dir=save_dir_override if save_dir_override is not None else runtime_cfg.save_dir,
         resume=resume_value,
         overwrite=overwrite_value,
+        multi_agent_enabled=multi_agent_override if multi_agent_override is not None else runtime_cfg.multi_agent_enabled,
     )
     merged.validate()
     return merged

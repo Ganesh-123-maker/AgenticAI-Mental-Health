@@ -9,65 +9,131 @@
   <a href="https://huggingface.co/ecnu-icalk/PsychAgent-Qwen3-32B"><img src="https://img.shields.io/badge/Hugging%20Face-PsychAgent--Qwen3--32B-FFD21E?logo=huggingface&logoColor=000" alt="Hugging Face PsychAgent-Qwen3-32B" /></a>
 </p>
 
-[English README](README.md)
+Documentation: [README.md](README.md)
 
-PsychAgent 是一个面向多 session AI 心理咨询的研究型代码仓库。它关注长期咨询场景中的三件事：跨会话记忆与规划、咨询过程中的技能检索，以及基于 reward 的多轨迹选优。
+PsychAgent is a research codebase for multi-session AI psychological counseling. It focuses on longitudinal interaction: carrying memory across sessions, retrieving explicit skills during counseling, and using reward-guided rollouts to select stronger trajectories.
 
-论文材料：[PDF](paper/PsychAgent.pdf) | [arXiv 2604.00931](https://arxiv.org/abs/2604.00931)  
-模型地址：[ecnu-icalk/PsychAgent-Qwen3-32B](https://huggingface.co/ecnu-icalk/PsychAgent-Qwen3-32B)
+Paper: [PDF](paper/PsychAgent.pdf) | [arXiv 2604.00931](https://arxiv.org/abs/2604.00931)  
+Model: [ecnu-icalk/PsychAgent-Qwen3-32B](https://huggingface.co/ecnu-icalk/PsychAgent-Qwen3-32B)
 
 <p align="center">
   <img src="paper/Framework.png" alt="PsychAgent framework" width="88%">
 </p>
 
-## 项目简介
+## Overview
 
-这个仓库是 PsychAgent 的公开研究代码版本，包含可运行的：
+This repository is the public research release of PsychAgent. It includes runnable pipelines for:
 
-- 多 session 咨询生成流程
-- 咨询师侧与来访者侧指标评测流程
-- 基于 reward 的 best-of-n rollout 选优流程
-- prompts、configs、论文材料和最小样例数据
+- multi-session dialogue generation
+- evaluation on counselor-side and client-side metrics
+- reward-driven best-of-n rollout selection
+- prompts, configs, paper assets, and minimal example data
 
-当前版本已经覆盖公开的生成、评测和 RFT 工作流。论文中的全量训练资产，以及完整的 post-session skill evolution 闭环，不在这次公开快照中。
+The current release is enough to run the public generation, evaluation, and RFT workflows. Full paper-scale training assets and the complete post-session skill evolution pipeline are not included in this snapshot.
 
-## 框架说明
+## How PsychAgent Works
 
-从 README 角度看，PsychAgent 可以理解成三个可落地的模块：
+PsychAgent is organized around three practical components:
 
-- **记忆与规划**：保持跨 session 连续性，让后续会话建立在已有过程之上。
-- **技能检索**：在对话过程中调用显式技能，辅助咨询生成。
-- **Reward 选优**：对同一会话生成多条候选轨迹，再基于 reward 选出更好的结果。
+- **Memory and planning** keep cross-session continuity so later sessions build on earlier ones instead of restarting from scratch.
+- **Skill retrieval** surfaces explicit counseling skills during interaction.
+- **Reward-guided rollouts** generate multiple candidate trajectories and keep the better ones for downstream selection and internalization.
 
-在代码里，它们主要对应：
+In the codebase, these ideas map to:
 
-- [`src/sample/`](src/sample/)：多 session 生成
-- [`src/eval/`](src/eval/)：评测与 reward 相关指标
-- [`src/rft/`](src/rft/)：rollout 与 reward-based selection
+- [`src/sample/`](src/sample/) for multi-session generation
+- [`src/eval/`](src/eval/) for evaluation and reward-related metrics
+- [`src/rft/`](src/rft/) for best-of-n rollout and reward selection
 
-## 仓库结构
+## Multi-Agent Decision & Clinical Safety Architecture
 
-建议优先关注这些目录：
+In addition to baseline single-agent generation, PsychAgent implements a clinical-grade **11-Agent Multi-Agent Pipeline** (`src/sample/agents/`) that explicitly handles diagnostic uncertainty, crisis risk, proactive clarification, and supervisory safety guardrails:
 
-- [`paper/`](paper/)：论文 PDF 和 README 使用的图表材料
-- [`configs/`](configs/)：baseline、dataset、eval、RFT 配置
-- [`assets/profiles/`](assets/profiles/)：`sample` 和 `rft` 使用的内置画像资产
-- [`data/eval/`](data/eval/)：原生评测样例
-- [`prompts/`](prompts/)：公共 prompt、来访者 prompt、PsychAgent prompt 和评测 prompt
-- [`src/sample/`](src/sample/)：多 session 生成主流程
-- [`src/eval/`](src/eval/)：评测编排与指标实现
-- [`src/rft/`](src/rft/)：rollout 与 reward 选优
-- [`src/web/`](src/web/)：面向体验和联调的 Web 工作台
-- [`src/shared/`](src/shared/)：共享 YAML 与文件工具
+```text
+USER UTTERANCE
+      │
+      ▼
+1. Memory / Context Agent ──► Retrieves longitudinal history, past homework, and therapy goals
+      │
+      ▼
+2. State Assessment Agent ──► Assesses client affective, cognitive, and somatic state
+      │
+      ▼
+3. Uncertainty Agent + 4. Risk / Safety Agent  (Parallel Epistemic & Harm Screening)
+      │
+      ▼
+7. Orchestrator / Router Agent
+      ├───────────────────────┬────────────────────────┐
+      ▼                       ▼                        ▼
+[CONFIDENT & SAFE]      [UNCERTAIN]             [SAFETY-CRITICAL]
+      │                       │                        │
+      │              5. Clarification Agent            │
+      │                       │                        │
+      │              6. Reassessment Agent             │
+      │                       │                        │
+      ▼                       ▼                        ▼
+8. Counseling Agent ◄─────────┘                        │
+   (Skill Retrieval + PsychAgent Core)                 │
+      │                                                │
+      └───────────────────────┬────────────────────────┘
+                              ▼
+                   9. Safety Supervisor Agent
+           (De-escalation Guardrail & Crisis Resource Interceptor)
+                              │
+                              ▼
+                     COUNSELOR RESPONSE
+                              │
+                              ▼
+                   10. Outcome / Feedback Agent
+             (Turn-level engagement & therapeutic alliance)
+                              │
+                              ▼
+                   11. Memory Update Agent
+         (Episodic storage, homework logging, goal revision)
+```
 
-如果你第一次进入仓库，推荐先看：
+### The 11 Specialized Agents:
+1. **Memory / Context Agent** (`memory_agent.py`): Reconstructs longitudinal client trajectory from profile and session history.
+2. **State Assessment Agent** (`state_agent.py`): Evaluates current emotional state, primary complaints, and cognitive distortions.
+3. **Uncertainty Agent** (`uncertainty_agent.py`): Identifies missing clinical facts, ambiguity, and diagnostic confidence.
+4. **Risk / Safety Agent** (`risk_agent.py`): Triages self-harm, suicidal ideation, abuse, and crisis indicators (None, Low, Moderate, Severe).
+5. **Clarification Agent** (`clarification_agent.py`): Formulates targeted, empathetic clarifying questions when ambiguity impedes treatment.
+6. **Reassessment Agent** (`reassessment_agent.py`): Integrates client clarifications, updates state, and resolves or persists uncertainty.
+7. **Orchestrator Agent** (`orchestrator.py`): Routes flow dynamically between standard therapy, clarification, or crisis escalation.
+8. **Counseling Agent** (`counseling_agent.py`): Couples multi-agent diagnostics with PsychAgent skill retrieval and therapeutic school framing.
+9. **Safety Supervisor Agent** (`safety_supervisor.py`): Independent safety check verifying crisis protocol adherence and resource provision.
+10. **Outcome / Feedback Agent** (`outcome_agent.py`): Assesses client progress, alliance shifts, and resistance across turns.
+11. **Memory Update Agent** (`memory_update_agent.py`): Persists session recaps, homework adherence, and diagnostic updates.
 
-- [`src/README.md`](src/README.md)：代码入口说明
-- [`configs/README.md`](configs/README.md)：配置文件说明
+## Repository Layout
 
-## 安装
+The most important directories are:
 
-PsychAgent 目前还没有提供锁定依赖的环境文件。下面这组命令适合作为当前公开版本的推荐安装方式：
+- [`paper/`](paper/): paper PDF and figure assets used in the README
+- [`configs/`](configs/): baseline, dataset, eval, runtime, and multi-agent configuration files
+- [`assets/profiles/`](assets/profiles/): bundled profile assets used by `sample` and `rft`
+- [`data/benchmark/`](data/benchmark/): structured multi-agent benchmark cases (ordinary, uncertain, safety-critical)
+- [`data/eval/`](data/eval/): native evaluation examples
+- [`data/eval_outputs_multi_agent/`](data/eval_outputs_multi_agent/): comparative evaluation results across 12 systems and ablations
+- [`prompts/`](prompts/): system prompts, agent prompt templates, and evaluation criteria
+- [`src/sample/agents/`](src/sample/agents/): the 11-agent multi-agent pipeline and orchestrator
+- [`src/sample/`](src/sample/): multi-session generation runner and simulator
+- [`src/eval/methods/multi_agent/`](src/eval/methods/multi_agent/): Layer-2 metrics (routing accuracy, uncertainty resolution, safety adherence)
+- [`src/experiments/`](src/experiments/): benchmark execution and automated failure analysis
+- [`src/eval/`](src/eval/): evaluation orchestration and clinical metric implementations
+- [`src/rft/`](src/rft/): rollout generation and reward-based selection
+- [`src/web/`](src/web/): full-stack web workspace for interactive counseling sessions
+- [`src/shared/`](src/shared/): shared YAML and file utilities
+- [`tests/`](tests/): comprehensive pytest test suite covering all agents, pipeline, and evaluation methods
+
+If you are new to the repository, start with:
+
+- [`src/README.md`](src/README.md) for the main code entry points
+- [`configs/README.md`](configs/README.md) for configuration responsibilities
+
+## Setup
+
+PsychAgent does not ship with a pinned environment file yet. The following setup is a good starting point for the current public release:
 
 ```bash
 python -m venv .venv
@@ -76,25 +142,25 @@ pip install --upgrade pip
 pip install openai httpx jinja2 pydantic PyYAML aiolimiter tenacity pytest
 ```
 
-- 建议使用 **Python 3.10+**。
-- 如果你需要 embedding 技能库加载或回填，再额外安装 `torch`。
-- 仓库里的示例配置默认指向内部 OpenAI-compatible endpoint，实际运行前请替换成你自己的服务地址。
-- 已发布模型可从 Hugging Face 获取：[ecnu-icalk/PsychAgent-Qwen3-32B](https://huggingface.co/ecnu-icalk/PsychAgent-Qwen3-32B)。
+- Python **3.10+** is recommended.
+- Install `torch` only if you need embedding-based skill library loading or backfilling.
+- The bundled configs point to internal OpenAI-compatible endpoints. Replace them with your own service settings before running.
+- The released checkpoint is available on Hugging Face: [ecnu-icalk/PsychAgent-Qwen3-32B](https://huggingface.co/ecnu-icalk/PsychAgent-Qwen3-32B).
 
-## 必需环境变量
+## Required Environment Variables
 
-默认示例主要依赖以下环境变量：
+The default examples rely on a few environment variables:
 
-- `SGLANG_API_KEY`：`sample` 和 `rft` 使用的咨询师后端密钥
-- `API_KEY`：`sample` 的来访者模拟器密钥，或 `rft` 的 client / reward 密钥
-- `CHAT_API_KEY`：`eval` 的默认评测密钥，也可作为 reward 评测的回退配置
-- `CHAT_API_BASE`：`eval` 使用的默认 base URL
-- `CHAT_MODEL_NAME`：可选的 `eval` 模型覆盖项
-- `PSYCHAGENT_EMBEDDING_API_KEY`：当前技能检索链路需要的 embedding 密钥
+- `SGLANG_API_KEY`: counselor backend key used by the sample and RFT examples
+- `API_KEY`: client simulator key for `sample`, or client/reward key for `rft`
+- `CHAT_API_KEY`: fallback key used by `eval`, and optionally by reward evaluation
+- `CHAT_API_BASE`: base URL used by `eval` when it is not set in config or CLI
+- `CHAT_MODEL_NAME`: optional eval model override
+- `PSYCHAGENT_EMBEDDING_API_KEY`: required by the current skill retrieval setup
 
-## 快速开始
+## Quick Start
 
-### 1. 运行多 session 生成
+### 1. Run multi-session generation
 
 ```bash
 export SGLANG_API_KEY=your_key_here
@@ -108,17 +174,17 @@ python -m src.sample \
   --strict-config
 ```
 
-默认输出目录为：
+Outputs are written to:
 
 ```text
 sample_outputs/before_rft/<modality>/<case_id>/
 ```
 
-每个 case 目录通常包含 `course.json` 和 `session_*.json`。
+Each case directory typically contains `course.json` and `session_*.json`.
 
-### 2. 运行评测
+### 2. Run evaluation
 
-评测仓库内置的 eval 样例：
+To evaluate the built-in eval examples:
 
 ```bash
 export CHAT_API_KEY=your_eval_key_here
@@ -130,7 +196,7 @@ python -m src.eval \
   --modalities bt,cbt,het,pdt,pmt
 ```
 
-评测 `sample` 生成结果：
+To evaluate outputs generated by `sample`:
 
 ```bash
 python -m src.eval \
@@ -141,7 +207,7 @@ python -m src.eval \
   --modalities cbt
 ```
 
-### 3. 运行 reward-driven best-of-n rollouts
+### 3. Run reward-driven best-of-n rollouts
 
 ```bash
 export SGLANG_API_KEY=your_key_here
@@ -156,19 +222,19 @@ python -m src.rft \
   --strict-config
 ```
 
-如果你想直接基于仓库内置画像资产运行 `rft`，可以把 `--dataset` 改成 [`configs/datasets/profiles_rft.yaml`](configs/datasets/profiles_rft.yaml)。
+To run `rft` on the bundled profile assets, switch `--dataset` to [`configs/datasets/profiles_rft.yaml`](configs/datasets/profiles_rft.yaml).
 
-### 4. 体验 Web 工作台
+### 4. Try the Web workspace
 
-如果你希望直接在浏览器中体验多 session 咨询流程，可以使用 [`src/web/`](src/web/) 下的 Web 工作台。更完整的页面说明见 [`src/web/README.md`](src/web/README.md)。
+If you want to experience the multi-session counseling flow in a browser, use the Web workspace under [`src/web/`](src/web/). For the full usage guide, see [`src/web/README.md`](src/web/README.md).
 
-推荐启动顺序如下：
+The recommended startup order is:
 
-1. 先部署咨询师模型服务
-2. 再启动 Web 后端
-3. 最后启动前端页面
+1. deploy the counselor model service
+2. start the web backend
+3. start the frontend
 
-咨询师模型可按下面的方式启动：
+You can launch the counselor model service with `sglang` like this:
 
 ```bash
 nohup python -m sglang.launch_server \
@@ -180,9 +246,9 @@ nohup python -m sglang.launch_server \
     > /path/to/logs/sglang_server.log 2>&1 &
 ```
 
-请将 [`configs/baselines/psychagent_sglang_local.yaml`](configs/baselines/psychagent_sglang_local.yaml) 中的 `base_url` 修改为你的模型服务地址。
+Update `base_url` in [`configs/baselines/psychagent_sglang_local.yaml`](configs/baselines/psychagent_sglang_local.yaml) so it matches your model service endpoint.
 
-然后可以在项目根目录准备一个简单的 `.env.local`：
+Then create a minimal `.env.local` in the project root:
 
 ```bash
 SGLANG_API_KEY=your-sglang-key
@@ -192,103 +258,146 @@ FRONTEND_PORT=5173
 BACKEND_HOST=localhost
 ```
 
-在项目根目录启动：
+From the project root, start:
 
 ```bash
 ./run_backend.sh
 ./run_frontend.sh
 ```
 
-默认访问地址：
+Default endpoints:
 
 ```text
-前端：http://localhost:5173
-后端：http://localhost:8000
-健康检查：http://localhost:8000/health
+Frontend: http://localhost:5173
+Backend:  http://localhost:8000
+Health:   http://localhost:8000/health
 ```
 
-页面使用顺序通常是：
+Typical usage flow:
 
-1. 登录或注册
-2. 选择咨询流派
-3. 创建疗程
-4. 开始会谈
-5. 结束当前会谈并继续下一次
+1. sign in or register
+2. choose a counseling school
+3. create a course
+4. start the session
+5. close the current session and continue to the next
 
-下面是 Web 工作台的几个界面示意：
+Example UI screenshots:
 
-#### 创建疗程
+#### Create Course
 
-![创建疗程](paper/web/新建疗程.png)
+![Create course](paper/web/create_course.png)
 
-#### 切换流派
+#### Switch School
 
-![切换流派](paper/web/切换流派.png)
+![Switch school](paper/web/switch_school.png)
 
-#### 会谈界面
+#### Consultation View
 
-![会谈界面](paper/web/咨询.png)
+![Consultation view](paper/web/consultation.png)
 
-## 配置说明
+## Configuration Guide
 
-三个主工作流使用的配置组合不同：
+The three main workflows use different config combinations:
 
-- `sample`：`baseline + runtime + dataset`
-- `eval`：`runtime`
-- `rft`：`baseline + runtime + dataset + rft-config`
+- `sample`: `baseline + runtime + dataset`
+- `eval`: `runtime`
+- `rft`: `baseline + runtime + dataset + rft-config`
 
-如果你需要进一步了解：
+Use [`configs/README.md`](configs/README.md) when you need field-level detail, such as:
 
-- 模型端点和 API key 改在哪里
-- 输出语言、并发、续跑参数改在哪里
-- dataset、split、modality 怎么切换
-- reward 端点和 rollout 数量怎么配置
+- where to change model endpoints and API keys
+- how to change output language, concurrency, or resume behavior
+- how to switch datasets, splits, and modality coverage
+- how to configure reward endpoints and rollout counts
 
-请直接看 [`configs/README.md`](configs/README.md)。
+## Included Data and Resources
 
-## 已包含的资源
+This repository already includes:
 
-仓库当前已经包含：
+- an initialization skill library under [`assets/skills/sect/`](assets/skills/sect/)
+- bundled profile assets under [`assets/profiles/`](assets/profiles/)
+- native evaluation examples under [`data/eval/`](data/eval/)
+- prompts for `bt`, `cbt`, `het`, `pdt`, and `pmt`
+- evaluation prompts and method implementations for shared and therapy-specific metrics
+- paper assets under [`paper/`](paper/)
+- the released checkpoint on Hugging Face
 
-- [`assets/skills/sect/`](assets/skills/sect/) 下的初始化技能库
-- [`assets/profiles/`](assets/profiles/) 下的内置画像资产
-- [`data/eval/`](data/eval/) 下的评测样例
-- `bt`、`cbt`、`het`、`pdt`、`pmt` 五种 modality 的 prompt
-- 共享指标与 therapy-specific 指标的评测方法与 prompt
-- [`paper/`](paper/) 下的论文与图表材料
-- Hugging Face 上已发布的模型权重
+This release does not include:
 
-本次公开版本不包含：
+- the full `PsychEval` training and evaluation assets used in the paper
+- the complete post-session skill extraction and evolution pipeline
+- a full end-to-end post-training recipe for reinforced internalization
+- a repository license file
 
-- 论文使用的完整 `PsychEval` 训练与评测资产
-- 完整的 post-session skill extraction / evolution pipeline
-- 完整的 end-to-end internalization 后训练流程
-- 仓库许可证文件
+## Results Snapshot
 
-## 结果摘要
+The paper evaluates PsychAgent on the multi-session, multi-therapy `PsychEval` benchmark.
 
-论文在多 therapy、多 session 的 `PsychEval` 基准上评测 PsychAgent。
+- `PsychAgent` (Qwen3-32B) reports `7.32 / 7.91 / 5.92 / 8.24` on counselor-shared, counselor-specific, client-shared, and client-specific metrics.
+- Against `Qwen3-Max`, the reported gains are `+1.44 / +0.17 / +0.51 / +0.43`.
+- Against `TheraMind`, the reported gains are `+1.07 / +0.97 / +0.44 / +0.41`.
+- Across 522 matched dialogues, PsychAgent is ranked first by both human raters and the Gemini-3 LLM rater; human-human QWK is `0.675`.
 
-- `PsychAgent`（Qwen3-32B）在 counselor-shared、counselor-specific、client-shared、client-specific 四类指标上报告 `7.32 / 7.91 / 5.92 / 8.24`
-- 相较 `Qwen3-Max`，论文报告提升为 `+1.44 / +0.17 / +0.51 / +0.43`
-- 相较 `TheraMind`，论文报告提升为 `+1.07 / +0.97 / +0.44 / +0.41`
-- 在 522 条对齐对话上，PsychAgent 被两位人工标注者和 Gemini-3 LLM rater 一致排为第一；human-human QWK 为 `0.675`
+Related paper assets include [`paper/radar_v1.pdf`](paper/radar_v1.pdf), [`paper/trend.pdf`](paper/trend.pdf), and [`paper/fig_11_qwk_heatmap_abc.png`](paper/fig_11_qwk_heatmap_abc.png).
 
-相关论文材料见 [`paper/radar_v1.pdf`](paper/radar_v1.pdf)、[`paper/trend.pdf`](paper/trend.pdf) 和 [`paper/fig_11_qwk_heatmap_abc.png`](paper/fig_11_qwk_heatmap_abc.png)。
+## Multi-Agent Benchmark & Ablation Studies
 
-## 项目状态
+The repository includes a curated multi-agent benchmark (`data/benchmark/`) testing 12 system configurations across 5 therapeutic modalities (`bt`, `cbt`, `het`, `pdt`, `pmt`):
 
-PsychAgent 当前更适合作为研究代码仓库来使用，而不是一个已经完全产品化的发布版本。现有仓库已经覆盖公开的生成、评测和 best-of-n reward selection 工作流；如果要进一步面向更广泛用户发布，仍建议补充：
+- **System A**: Baseline Standard Single-Agent Counselor
+- **System B**: Memory + Assessment Augmented
+- **System C**: Dynamic Routing (Uncertainty + Risk + Safety)
+- **System D**: Full Multi-Agent Pipeline (No Clarification)
+- **System E**: Full Multi-Agent Pipeline (Standard Clarification)
+- **System F**: Full Adaptive Multi-Agent Pipeline (Dynamic Clarification & Longitudinal Memory)
+- **Ablation Studies**:
+  - `No_Uncertainty`: Bypasses epistemic uncertainty quantification
+  - `No_Risk`: Disables explicit clinical harm triage
+  - `No_Clarification`: Suppresses interactive questioning
+  - `No_Supervisor`: Removes supervisory safety guardrails
+  - `No_Memory`: Restricts context to zero-shot / single session
+  - `No_Routing`: Collapses dynamic routing into uniform therapy path
 
-- 仓库许可证
-- 锁定依赖的环境文件
-- 对外可直接复用的服务模板配置
-- 更完整的 paper-scale 复现实验说明
-- 已发布 checkpoint 的推理和部署建议
+### Running the Systems & Failure Analysis:
 
-## 引用
+```bash
+# Run comparative evaluation across all 12 systems
+python src/experiments/run_systems.py
 
-论文页面：[arXiv:2604.00931](https://arxiv.org/abs/2604.00931)
+# Generate granular diagnostic failure analysis
+python src/experiments/failure_analysis.py
+```
+
+Failure analysis outputs are stored in [`data/eval_outputs_multi_agent/failure_analysis.json`](data/eval_outputs_multi_agent/failure_analysis.json) and summarized in [`data/eval_outputs_multi_agent/REPORT_SUMMARY.md`](data/eval_outputs_multi_agent/REPORT_SUMMARY.md).
+
+## Testing & Verification
+
+Run the comprehensive pytest suite covering all 11 individual agents, the composite pipeline, and clinical evaluation methods:
+
+```bash
+# Run all tests
+pytest tests/
+
+# Run agent unit tests
+pytest tests/agents/
+
+# Run multi-agent and psychometric evaluation tests
+pytest tests/eval/
+```
+
+## Project Status
+
+PsychAgent should currently be read as a research code release rather than a polished production package. The repository already provides runnable public workflows for generation, evaluation, and best-of-n reward selection. A few items are still best treated as follow-up work for a broader public release:
+
+- a repository license
+- a pinned environment file
+- public-ready service templates in the example configs
+- fuller reproduction notes for paper-scale experiments
+- more explicit deployment guidance for the released checkpoint
+
+## Citation
+
+Paper page: [arXiv:2604.00931](https://arxiv.org/abs/2604.00931)
 
 ```bibtex
 @misc{yang2026psychagent,
@@ -303,14 +412,14 @@ PsychAgent 当前更适合作为研究代码仓库来使用，而不是一个已
 }
 ```
 
-## 安全说明
+## Safety Notice
 
-- 本仓库仅供**研究和实验用途**使用。
-- 它**不能替代**持证心理健康专业人员、医学诊断、紧急干预或危机处理服务。
-- 如需真实部署，还需要额外补充安全、隐私、知情同意、监控、升级处置和临床治理等工作。
-- 如果有人可能面临即时伤害风险，请联系当地紧急服务或危机支持渠道，而不是依赖自动化系统。
+- This repository is for **research and experimental use only**.
+- It is **not** a substitute for licensed mental-health professionals, medical diagnosis, emergency response, or crisis intervention.
+- Real-world deployment would require additional work on safety, privacy, informed consent, monitoring, escalation, and clinical governance.
+- If someone may be at immediate risk of harm, contact local emergency or crisis-support services rather than relying on an automated system.
 
-## 致谢
+## Acknowledgements
 
-- [`PsychEval`](configs/datasets/psycheval_bt_cbt_het_pdt_pmt.yaml) 提供了论文采用的基准设定与评测协议
-- 本仓库中使用的 OpenAI-compatible API 工具链、Jinja2 模板，以及基于 Pydantic 的校验逻辑
+- [`PsychEval`](configs/datasets/psycheval_bt_cbt_het_pdt_pmt.yaml) for the benchmark setting and evaluation protocol adopted in the paper
+- OpenAI-compatible API tooling, Jinja2 templating, and Pydantic-based validation used throughout the released code

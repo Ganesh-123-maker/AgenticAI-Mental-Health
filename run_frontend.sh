@@ -13,9 +13,9 @@ if [ -f "${ENV_FILE}" ]; then
 fi
 
 if [ ! -f "${WEB_DIR}/package.json" ]; then
-  echo "[ERROR] 未找到前端工程: ${WEB_DIR}/package.json"
-  echo "[HINT] 可通过 WEB_DIR 指定 web 目录，例如:"
-  echo "       WEB_DIR=/path/to/PsychAgent_v0402/src/web ./run_frontend.sh"
+  echo "[ERROR] Frontend project not found: ${WEB_DIR}/package.json"
+  echo "[HINT] You can specify the web directory via WEB_DIR, for example:"
+  echo "       WEB_DIR=/path/to/PsychAgent/src/web ./run_frontend.sh"
   exit 1
 fi
 
@@ -54,7 +54,7 @@ ensure_rollup_native_pkg() {
   fi
 
   if ! node -e "require.resolve('${pkg}')" >/dev/null 2>&1; then
-    echo "[WARN] 缺少 Rollup 平台包 ${pkg}，尝试自动安装（npm optionalDependencies bug 兼容）..."
+    echo "[WARN] Missing Rollup platform package ${pkg}, attempting automatic installation (npm optionalDependencies compatibility)..."
     npm install --no-save "${pkg}"
   fi
 }
