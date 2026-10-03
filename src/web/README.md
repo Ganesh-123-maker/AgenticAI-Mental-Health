@@ -13,19 +13,6 @@ It provides a modern user-facing frontend and a local backend suited for demonst
 - Multi-session continuity: Close active sessions and transition to follow-up sessions
 - Full-course completion: Conclude entire multi-session counseling courses
 
-## Screenshots
-
-### Create Course
-![Create course](../../paper/web/create_course.png)
-
-### Switch School
-![Switch school](../../paper/web/switch_school.png)
-
-### Consultation View
-![Consultation view](../../paper/web/consultation.png)
-
-### Follow-up Session
-![Follow-up session](../../paper/web/second_session.png)
 
 ## Deploy Counselor Model
 
