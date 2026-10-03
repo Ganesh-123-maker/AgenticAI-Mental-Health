@@ -1,0 +1,49 @@
+max_sessions: 20
+max_counselor_turns: 45
+end_token: "</end>"
+concurrency: 1
+resume: true
+overwrite: false
+random_seed: 42
+output_language: English
+
+# Client simulator backend (not used in web demo directly)
+client_backend: dummy
+client_model: dummy-client
+client_base_url: ""
+client_api_key_env: ""
+client_timeout_sec: 10
+client_max_retries: 1
+client_retry_sleep_sec: 0.1
+client_max_tokens: 512
+client_temperature: 0.7
+
+# PsychAgent session controls
+psychagent_max_turns: 45
+psychagent_max_retries: 1
+psychagent_retry_sleep_sec: 0.1
+psychagent_counselor_system_filename: system.jinja2
+
+# Skill retrieval assets
+psychagent_skill_base_dir: assets/skills/sect
+psychagent_skill_select_prompt_dir: prompts/psychagent/skill/select_skill
+psychagent_skill_rewrite_prompt_dir: prompts/psychagent/skill/rewrite
+psychagent_skill_sects: all
+
+# Embedding API (disabled in offline mode)
+psychagent_embedding_base_url: https://api.siliconflow.cn/v1
+psychagent_embedding_api_key_env: PSYCHAGENT_EMBEDDING_API_KEY
+psychagent_embedding_model: BAAI/bge-m3
+psychagent_embedding_batch_size: 16
+psychagent_embedding_max_retries: 1
+psychagent_embedding_retry_sleep_sec: 0.1
+psychagent_embedding_verify_ssl: false
+
+# Multi-Agent Pipeline flags
+multi_agent_enabled: true
+uncertainty_enabled: true
+risk_enabled: true
+clarification_enabled: true
+safety_supervisor_enabled: true
+longitudinal_enabled: true
+multi_agent_routing_enabled: true

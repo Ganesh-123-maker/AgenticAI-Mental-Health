@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import json
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Any, Awaitable, Callable, Dict, List, Optional, Tuple
 
 from fastapi import HTTPException
@@ -62,7 +62,7 @@ UNKNOWN_TEXT_VALUES = {"unknown", "unmentioned", "n/a", "none"}
 
 
 def utcnow() -> datetime:
-    return datetime.utcnow()
+    return datetime.now(timezone.utc)
 
 
 def build_visit_prompt(school, stage, visit_no: int, planned_visit_count: Optional[int]) -> str:
@@ -436,13 +436,17 @@ def build_derived_psych_context_snapshot(
         _normalize_text_list(previous_context.homework, limit=12) if previous_context else []
     )
 
+    current_visit_context = get_visit_psych_context_snapshot(db, visit.visit_id)
+    existing_profile = dict(current_visit_context.profile_payload) if current_visit_context and isinstance(current_visit_context.profile_payload, dict) else {}
+    existing_summary = dict(current_visit_context.summary_payload) if current_visit_context and isinstance(current_visit_context.summary_payload, dict) else {}
+
     return {
         "client_info": client_info,
         "session_focus": session_focus,
         "history": history,
         "homework": homework,
-        "summary_payload": {},
-        "profile_payload": {},
+        "summary_payload": existing_summary,
+        "profile_payload": existing_profile,
         "source": "derived_from_course_data_v2",
     }
 
@@ -692,6 +696,13 @@ async def create_visit(
     course.last_message_at = now
     db.add_all([opening_assistant_message, visit, course])
     snapshot = build_derived_psych_context_snapshot(db, course, visit)
+    if isinstance(assistant_payload, dict):
+        if not isinstance(snapshot.get("profile_payload"), dict):
+            snapshot["profile_payload"] = {}
+        if "agent_trace" in assistant_payload:
+            snapshot["profile_payload"]["latest_agent_trace"] = assistant_payload["agent_trace"]
+        if "route" in assistant_payload:
+            snapshot["profile_payload"]["latest_route"] = "CLEAR"
     save_visit_psych_context_snapshot(db, visit.visit_id, snapshot)
 
     try:
@@ -776,6 +787,13 @@ async def send_visit_message(
     course.last_message_at = now
     db.add_all([assistant_message, visit, course])
     snapshot = build_derived_psych_context_snapshot(db, course, visit)
+    if isinstance(assistant_payload, dict):
+        if not isinstance(snapshot.get("profile_payload"), dict):
+            snapshot["profile_payload"] = {}
+        if "agent_trace" in assistant_payload:
+            snapshot["profile_payload"]["latest_agent_trace"] = assistant_payload["agent_trace"]
+        if "route" in assistant_payload:
+            snapshot["profile_payload"]["latest_route"] = assistant_payload["route"]
     save_visit_psych_context_snapshot(db, visit.visit_id, snapshot)
 
     if should_auto_close:

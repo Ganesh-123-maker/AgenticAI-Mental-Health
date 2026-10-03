@@ -348,6 +348,13 @@ pytest tests/eval/ -v
 pytest tests/agents/test_agents_standalone.py -v
 ```
 
+### Running the End-to-End Demonstration Scenario
+To verify the full 11-phase runtime pipeline (including multi-session continuity, longitudinal memory, ambiguity clarification, contradiction handling, crisis escalation, and multi-user isolation):
+```bash
+# Execute the comprehensive 11-phase integration verification
+python scratch/test_demo_flow.py
+```
+
 ### Running Experiments & Ablation Benchmarks
 To run the automated benchmark across system configurations:
 ```bash
@@ -408,6 +415,13 @@ This repository is maintained as an academic research project at the Indian Inst
   year         = {2026},
   howpublished = {\url{https://github.com/Ganesh-123-maker/AgenticAI-Mental-Health}},
   institution  = {Indian Institute of Information Technology Guwahati}
+}
+
+@article{zheng2024psychagent,
+  author       = {Zheng, et al.},
+  title        = {PsychAgent: A Multi-Agent Framework for Dynamic Psychological Counseling via Modular Clinical Expertise},
+  journal      = {arXiv preprint},
+  year         = {2024}
 }
 ```
 

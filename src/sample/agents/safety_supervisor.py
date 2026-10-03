@@ -31,11 +31,12 @@ from .base import Agent, AgentContext, AgentError, AgentMessage
 
 logger = logging.getLogger(__name__)
 
-# Standard crisis fallback response from SOP-1 library (no fabricated phone numbers or clinics)
+# Standard crisis fallback response (no fabricated clinics; only well-known public helplines)
 _STANDARD_SAFE_FALLBACK = (
     "I care deeply about your safety and current well-being. Facing such intense distress and crisis, "
     "please do not face it alone. We prioritize your life and safety above all else. Please contact your family, "
-    "friends, a trusted person, or a professional crisis hotline immediately (e.g., 988 or 400-161-9995). "
+    "friends, a trusted person, your local emergency number, or a crisis helpline right now "
+    "(for example, Tele-MANAS 14416 in India or 988 in the United States). "
     "We can pause other discussions and focus first and foremost on ensuring your safety right now."
 )
 
@@ -114,7 +115,8 @@ class SafetySupervisor(Agent):
             raise
         except Exception as exc:
             logger.exception("[%s] unexpected error: %s", self.name, exc)
-            # Fail-safe fallback: mark as blocked or fail-safe
+            # Fail-closed: an unreviewed draft must never be delivered. Escalate to
+            # the standard safe fallback (verdict is consistent with BLOCK status).
             payload = {
                 "approved": False,
                 "safety_status": "BLOCK",
@@ -123,17 +125,17 @@ class SafetySupervisor(Agent):
                 "revised_response": _STANDARD_SAFE_FALLBACK,
                 "reasoning_summary": f"Evaluation error: {exc}",
                 # Backward compatibility
-                "verdict": "ALLOW",
-                "rationale": f"Fail-safe bypass: {exc}",
+                "verdict": "ESCALATE",
+                "rationale": f"Fail-closed after supervisor error: {exc}",
                 "checks": {
-                    "risk_congruence": True,
-                    "uncertainty_congruence": True,
-                    "route_congruence": True,
+                    "risk_congruence": False,
+                    "uncertainty_congruence": False,
+                    "route_congruence": False,
                 },
                 "suggested_revision": None,
                 "safe_fallback": _STANDARD_SAFE_FALLBACK,
             }
-            return AgentMessage(agent=self.name, status="ok", payload=payload)
+            return AgentMessage(agent=self.name, status="error", error=str(exc), payload=payload)
 
     def _run(self, ctx: AgentContext, draft_response: Optional[str] = None) -> AgentMessage:
         # 1. Resolve response text
@@ -211,22 +213,26 @@ class SafetySupervisor(Agent):
             safety_status = "REVISE"
             verdict = "RE-ROUTE"
         elif route == "HIGH-RISK" or risk_severity == "HIGH":
+            response_lower = response_text.lower()
+            utterance_lower = client_utterance.lower()
+            signals_lower = " ".join(str(s) for s in risk_signals).lower()
+
             # Check for dismissal
-            has_dismissal = any(p in response_text for p in _UNSAFE_DISMISSAL_PHRASES)
+            has_dismissal = any(p in response_lower for p in _UNSAFE_DISMISSAL_PHRASES)
 
             # Check for safety-oriented awareness
             has_safety_awareness = any(
-                kw in response_text
+                kw in response_lower
                 for kw in [
-                    "safety", "support", "concern", "accompany you", "life", "crisis", "seek help", "professional help", "hospital", "hotline", "friends", "protect"
+                    "safety", "support", "concern", "accompany you", "life", "crisis", "seek help", "professional help", "hospital", "hotline", "helpline", "friends", "protect"
                 ]
             )
 
             # Check if acute crisis signals are present
             is_acute_crisis = any(
-                kw in client_utterance or kw in " ".join(risk_signals)
+                kw in utterance_lower or kw in signals_lower
                 for kw in [
-                    "suicide", "self-harm", "despair", "want to die", "don't want to live", "end life", "cutting wrists", "jump off building", "kill myself"
+                    "suicide", "self-harm", "despair", "want to die", "don't want to live", "end life", "cutting wrists", "jump off building", "kill myself", "end my life", "take my own life"
                 ]
             )
 

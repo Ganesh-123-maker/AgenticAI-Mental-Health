@@ -102,13 +102,20 @@ class MemoryAgent(Agent):
             raw_theory_info = (
                 ctx.full_profile.get("theory", {}) or {}
             ).get(ctx.modality, {}) or {}
+        elif isinstance(ctx.obtain_client_info, dict) and ctx.obtain_client_info:
+            # No raw profile (e.g. live web sessions): use the counselor-visible
+            # profile carried in runner/web state. Placeholder values are dropped
+            # so that genuinely unknown fields stay unknown.
+            raw_basic_info = _basic_info_from_client_info(ctx.obtain_client_info)
 
         # Merge known_static_traits: public_memory wins over raw profile
         known_static_traits: Dict[str, Any] = {}
         if isinstance(raw_basic_info.get("static_traits"), dict):
             known_static_traits.update(raw_basic_info["static_traits"])
         if isinstance(mem.known_static_traits, dict) and mem.known_static_traits:
-            known_static_traits.update(mem.known_static_traits)
+            known_static_traits.update(
+                {k: v for k, v in mem.known_static_traits.items() if not _is_placeholder(v)}
+            )
 
         # -------------------------------------------------------------------
         # Step 3: extract previous interventions and outcomes from summaries
@@ -253,3 +260,34 @@ class MemoryAgent(Agent):
             session_recaps=recaps,
             last_homework=homework_assigned,
         )
+
+
+# Values the web/runner layers use as "not yet known" placeholders.
+_PLACEHOLDER_VALUES = {
+    "", "unknown", "unmentioned", "not_mentioned", "not mentioned", "n/a", "none",
+    "to be clarified", "current concern", "client", "(unavailable)",
+}
+
+
+def _is_placeholder(value: Any) -> bool:
+    return str(value or "").strip().lower() in _PLACEHOLDER_VALUES
+
+
+def _basic_info_from_client_info(client_info: Dict[str, Any]) -> Dict[str, Any]:
+    """Build a ``basic_info``-shaped dict from obtain_client_info without placeholders."""
+    basic: Dict[str, Any] = {}
+    traits = client_info.get("static_traits")
+    if isinstance(traits, dict):
+        clean_traits = {k: v for k, v in traits.items() if not _is_placeholder(v)}
+        if clean_traits:
+            basic["static_traits"] = clean_traits
+    for key in ("main_problem", "core_demands", "topic"):
+        value = client_info.get(key)
+        if isinstance(value, str) and not _is_placeholder(value):
+            basic[key] = value.strip()
+    growth = client_info.get("growth_experiences")
+    if isinstance(growth, list):
+        clean_growth = [str(g).strip() for g in growth if not _is_placeholder(g)]
+        if clean_growth:
+            basic["growth_experiences"] = clean_growth
+    return basic

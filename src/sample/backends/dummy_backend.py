@@ -26,7 +26,7 @@ class DummyBackend:
                     "I still get anxious and self-critical about what happened at the shelter. "
                     "Your question helps me keep talking."
                 )
-            if "session_summary" in system_text or "summarizer" in system_text or "summary" in system_text:
+            if "session_summary_abstract" in system_text:
                 state_analysis = {
                     "affective_state": "Anxious but cooperative",
                     "behavioral_patterns": "Actively seeking help",
@@ -60,7 +60,7 @@ class DummyBackend:
                 }
                 return f"<response>\n{json.dumps(payload, ensure_ascii=False)}\n</response>"
 
-            if "static_traits" in system_text or "profile" in system_text:
+            if "profile merging and update" in system_text:
                 static_traits = {
                     "name": "Alex", "age": "25", "gender": "Male", "occupation": "Engineer",
                     "educational_background": "Bachelor", "marital_status": "Single",

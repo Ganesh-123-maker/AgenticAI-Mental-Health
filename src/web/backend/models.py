@@ -1,11 +1,15 @@
 from __future__ import annotations
 
 import uuid
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Optional
 
 from sqlalchemy import UniqueConstraint
 from sqlmodel import Field as SQLField, SQLModel
+
+
+def utcnow() -> datetime:
+    return datetime.now(timezone.utc)
 
 
 class TherapyCourseRecord(SQLModel, table=True):
@@ -23,9 +27,9 @@ class TherapyCourseRecord(SQLModel, table=True):
     goal_summary: str = SQLField(default="", nullable=False)
     intake_note: str = SQLField(default="", nullable=False)
     summary: str = SQLField(default="", nullable=False)
-    last_message_at: datetime = SQLField(default_factory=datetime.utcnow, nullable=False)
-    created_at: datetime = SQLField(default_factory=datetime.utcnow, nullable=False)
-    updated_at: datetime = SQLField(default_factory=datetime.utcnow, nullable=False)
+    last_message_at: datetime = SQLField(default_factory=utcnow, nullable=False)
+    created_at: datetime = SQLField(default_factory=utcnow, nullable=False)
+    updated_at: datetime = SQLField(default_factory=utcnow, nullable=False)
 
 
 class TherapyVisitRecord(SQLModel, table=True):
@@ -37,12 +41,12 @@ class TherapyVisitRecord(SQLModel, table=True):
     visit_no: int = SQLField(nullable=False)
     stage_key_snapshot: str = SQLField(nullable=False)
     status: str = SQLField(default="open", index=True, nullable=False)
-    started_at: datetime = SQLField(default_factory=datetime.utcnow, nullable=False)
+    started_at: datetime = SQLField(default_factory=utcnow, nullable=False)
     ended_at: Optional[datetime] = SQLField(default=None, nullable=True)
     summary: str = SQLField(default="", nullable=False)
     message_count: int = SQLField(default=0, nullable=False)
-    created_at: datetime = SQLField(default_factory=datetime.utcnow, nullable=False)
-    updated_at: datetime = SQLField(default_factory=datetime.utcnow, nullable=False)
+    created_at: datetime = SQLField(default_factory=utcnow, nullable=False)
+    updated_at: datetime = SQLField(default_factory=utcnow, nullable=False)
     legacy_session_id: Optional[str] = SQLField(default=None, nullable=True)
 
 
@@ -53,7 +57,7 @@ class VisitMessageRecord(SQLModel, table=True):
     visit_id: str = SQLField(index=True, nullable=False)
     role: str = SQLField(nullable=False)
     text: str = SQLField(nullable=False)
-    created_at: datetime = SQLField(default_factory=datetime.utcnow, nullable=False)
+    created_at: datetime = SQLField(default_factory=utcnow, nullable=False)
 
 
 class VisitPsychContextRecord(SQLModel, table=True):
@@ -67,8 +71,8 @@ class VisitPsychContextRecord(SQLModel, table=True):
     summary_payload_json: str = SQLField(default="{}", nullable=False)
     profile_payload_json: str = SQLField(default="{}", nullable=False)
     source: str = SQLField(default="derived_from_course_data_v1", nullable=False)
-    created_at: datetime = SQLField(default_factory=datetime.utcnow, nullable=False)
-    updated_at: datetime = SQLField(default_factory=datetime.utcnow, nullable=False)
+    created_at: datetime = SQLField(default_factory=utcnow, nullable=False)
+    updated_at: datetime = SQLField(default_factory=utcnow, nullable=False)
 
 
 class CourseGoalRecord(SQLModel, table=True):
@@ -79,8 +83,8 @@ class CourseGoalRecord(SQLModel, table=True):
     content: str = SQLField(nullable=False)
     sort_order: int = SQLField(default=0, nullable=False)
     status: str = SQLField(default="active", nullable=False)
-    created_at: datetime = SQLField(default_factory=datetime.utcnow, nullable=False)
-    updated_at: datetime = SQLField(default_factory=datetime.utcnow, nullable=False)
+    created_at: datetime = SQLField(default_factory=utcnow, nullable=False)
+    updated_at: datetime = SQLField(default_factory=utcnow, nullable=False)
 
 
 class MigrationStateRecord(SQLModel, table=True):
@@ -89,7 +93,7 @@ class MigrationStateRecord(SQLModel, table=True):
     migration_key: str = SQLField(primary_key=True, index=True)
     status: str = SQLField(default="completed", nullable=False)
     details_json: str = SQLField(default="{}", nullable=False)
-    applied_at: datetime = SQLField(default_factory=datetime.utcnow, nullable=False)
+    applied_at: datetime = SQLField(default_factory=utcnow, nullable=False)
 
 
 class UserRecord(SQLModel, table=True):
@@ -98,7 +102,7 @@ class UserRecord(SQLModel, table=True):
     id: str = SQLField(default_factory=lambda: str(uuid.uuid4()), primary_key=True, index=True)
     username: str = SQLField(unique=True, index=True, nullable=False)
     password_hash: str = SQLField(nullable=False)
-    created_at: datetime = SQLField(default_factory=datetime.utcnow, nullable=False)
+    created_at: datetime = SQLField(default_factory=utcnow, nullable=False)
 
 
 class AuthTokenRecord(SQLModel, table=True):
@@ -106,7 +110,7 @@ class AuthTokenRecord(SQLModel, table=True):
 
     token: str = SQLField(primary_key=True, index=True)
     user_id: str = SQLField(index=True, nullable=False)
-    created_at: datetime = SQLField(default_factory=datetime.utcnow, nullable=False)
+    created_at: datetime = SQLField(default_factory=utcnow, nullable=False)
 
 
 class UserGlobalProfileRecord(SQLModel, table=True):
@@ -115,5 +119,5 @@ class UserGlobalProfileRecord(SQLModel, table=True):
     user_id: str = SQLField(primary_key=True, index=True)
     base_profile_json: str = SQLField(default="{}", nullable=False)
     source: str = SQLField(default="profile_sync_v1", nullable=False)
-    created_at: datetime = SQLField(default_factory=datetime.utcnow, nullable=False)
-    updated_at: datetime = SQLField(default_factory=datetime.utcnow, nullable=False)
+    created_at: datetime = SQLField(default_factory=utcnow, nullable=False)
+    updated_at: datetime = SQLField(default_factory=utcnow, nullable=False)

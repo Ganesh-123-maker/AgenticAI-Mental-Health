@@ -6,7 +6,11 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 from sample.backends.base import BackendSettings, ModelBackend
+from sample.backends.dummy_backend import DummyBackend
 from sample.backends.openai_api import OpenAIAPIBackend
+from sample.agents.base import AgentContext
+from sample.agents.pipeline import run_pipeline
+from sample.agents.safety_supervisor import SafetySupervisor
 from sample.core.schemas import BaselineConfig, RuntimeConfig
 from sample.io.config_loader import load_baseline_config, load_runtime_config
 from sample.models import MODALITY_MODELS
@@ -112,6 +116,122 @@ class PsychAgentWebBackend:
             user_query = self._last_user_query(transcript)
             diag_hist = self._build_diag_history(transcript[:-1])
 
+            # Multi-Agent Pipeline Execution
+            multi_agent_enabled = getattr(self._runtime_config, "multi_agent_enabled", True)
+            if multi_agent_enabled:
+                ctx = AgentContext(
+                    case_id=f"{course.course_id}_{visit.visit_no}",
+                    modality=sect,
+                    therapy_stage=stage.label,
+                    session_index=visit.visit_no,
+                    current_message=user_query,
+                    prior_transcript=transcript[:-1],
+                    history_list=history,
+                    obtain_client_info=client_info,
+                    homework_assigned=homework,
+                    full_profile=client_info,
+                )
+
+                previous_route = (
+                    psych_context.profile_payload.get("latest_route")
+                    if psych_context and isinstance(psych_context.profile_payload, dict)
+                    else ""
+                )
+
+                last_assistant_msg = ""
+                for m in reversed(transcript[:-1]):
+                    if m.get("role") == "assistant":
+                        last_assistant_msg = m.get("content", "")
+                        break
+
+                clarification_answer = None
+                if previous_route == "UNCERTAIN" and ("?" in last_assistant_msg or "Could you" in last_assistant_msg or "tell me" in last_assistant_msg.lower()):
+                    clarification_answer = user_query
+
+                pipeline_res = run_pipeline(
+                    ctx,
+                    clarification_answer=clarification_answer,
+                    flags={
+                        "uncertainty_enabled": getattr(self._runtime_config, "uncertainty_enabled", True),
+                        "risk_enabled": getattr(self._runtime_config, "risk_enabled", True),
+                        "clarification_enabled": getattr(self._runtime_config, "clarification_enabled", True),
+                        "safety_supervisor_enabled": getattr(self._runtime_config, "safety_supervisor_enabled", True),
+                        "longitudinal_enabled": getattr(self._runtime_config, "longitudinal_enabled", True),
+                        "multi_agent_routing_enabled": getattr(self._runtime_config, "multi_agent_routing_enabled", True),
+                    },
+                )
+                current_route = pipeline_res["route"]
+                trail = pipeline_res["trail"]
+
+                if current_route == "HIGH-RISK" or pipeline_res.get("verdict") == "ESCALATE":
+                    safe_text = pipeline_res.get("response") or (
+                        "I want to make sure you stay safe right now. If you are in immediate danger "
+                        "or having thoughts of self-harm, please connect with a crisis resource immediately: "
+                        "Tele-MANAS (14416) or 988 Suicide & Crisis Lifeline (call/text 988). "
+                        "I am here to support you safely."
+                    )
+                    return {"text": safe_text, "end": False, "agent_trace": trail, "route": current_route}
+
+                if current_route == "UNCERTAIN":
+                    clar_payload = ctx.clarification_output or {}
+                    clar_q = clar_payload.get("question")
+                    if not clar_q and clar_payload.get("questions"):
+                        clar_q = clar_payload["questions"][0]
+                    if not clar_q:
+                        clar_q = "Could you tell me a little more about what has been happening with that situation?"
+                    return {"text": clar_q, "end": False, "agent_trace": trail, "route": current_route}
+
+                # CLEAR route -> Generate counseling response draft
+                suggested_skills: List[Dict[str, Any]] = []
+                if user_query:
+                    suggested_skills, _ = await self._skill_manager.retrive(
+                        sect=sect,
+                        query=user_query,
+                        session_stage=stage_idx,
+                        session_goals=session_goals,
+                        diag_hist=diag_hist,
+                        candidate_skills=candidate_skills,
+                    )
+
+                system_prompt = prompt_manager.render(
+                    "counselor_system",
+                    client_info=client_info,
+                    history=history,
+                    session_stage=stage.label,
+                    session_focus=session_focus,
+                    homework_assigned_from_last_session=homework,
+                    suggested_skills=suggested_skills,
+                )
+                messages = [{"role": "system", "content": system_prompt}]
+                messages.extend(self._build_chat_history(visit_state.messages))
+
+                raw = await self._chat_once(messages)
+                text, should_end = self._normalize_output_with_end(raw)
+                if not text:
+                    text = "Thank you for sharing that with me. Let's focus on taking a concrete step forward together."
+
+                # Run draft response through Safety Supervisor
+                if getattr(self._runtime_config, "safety_supervisor_enabled", True):
+                    sup = SafetySupervisor()
+                    sup_msg = sup.run(ctx, draft_response=text)
+                    sup_payload = sup_msg.payload
+                    verdict = sup_payload.get("verdict", "ALLOW")
+                    trail.append({
+                        "agent": sup.name,
+                        "step": "final_web_supervision",
+                        "verdict": verdict,
+                        "rationale": sup_payload.get("rationale"),
+                    })
+                    if verdict == "ESCALATE":
+                        text = sup_payload.get("safe_fallback") or text
+                    elif verdict == "REVISE":
+                        rationale = sup_payload.get("rationale", "")
+                        if "false reassurance" in rationale.lower():
+                            text = text.replace("Everything will be completely fine.", "We will take this one step at a time.")
+
+                return {"text": text, "end": should_end, "agent_trace": trail, "route": current_route}
+
+            # Multi-agent disabled: fallback direct path
             suggested_skills: List[Dict[str, Any]] = []
             if user_query:
                 suggested_skills, _ = await self._skill_manager.retrive(
@@ -332,8 +452,10 @@ class PsychAgentWebBackend:
         return self._prompt_managers[sect]
 
     def _make_backend(self, baseline: BaselineConfig) -> ModelBackend:
+        if baseline.backend == "dummy":
+            return DummyBackend(default_end_after_turn=999)
         if baseline.backend != "openai_api":
-            raise ValueError(f"src/web backend requires baseline.backend=openai_api, got {baseline.backend!r}")
+            raise ValueError(f"src/web backend requires baseline.backend=openai_api or dummy, got {baseline.backend!r}")
 
         api_key = os.environ.get(baseline.api_key_env, "").strip() if baseline.api_key_env else ""
         if baseline.api_key_env and not api_key:

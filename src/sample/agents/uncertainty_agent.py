@@ -53,18 +53,27 @@ _CONCERN_RELEVANT_PATTERNS = [
     (r"\b(main_problem|chief_complaint|primary_concern)\b", "main_problem", "primary_concern"),
 ]
 
-# Keywords that indicate referential ambiguity in client statements
+# Keywords that indicate referential ambiguity or low-specificity client statements
+# (matched case-insensitively)
 _AMBIGUOUS_KEYWORDS = [
     "that matter", "that person", "certain reason", "some event", "that situation", "vaguely",
-    "that thing", "someone", "some reason"
+    "that thing", "someone", "some reason", "don't know what to do", "do not know what to do",
+    "everything going on", "it's all too much", "something happened",
 ]
 
-# Patterns that indicate contradictory statements
+# Patterns that indicate contradictory statements (matched case-insensitively,
+# within the current message or between the previous and current client turn)
 _CONTRADICTORY_PATTERNS = [
     r"(both|on one hand).*(contradictory|conflicting)",
     r"(want to|wish to).*(but don't want|but hate)",
     r"(feel great|good).*(but feel terrible|awful)",
+    r"(doing (fine|well|okay|ok|good)|i'?m (fine|okay|ok|good)|feeling (fine|better|good)).*"
+    r"\b(actually|but|though)\b.*\b(barely|not|overwhelmed|struggling|can't|cannot|terrible|awful|anxious|stressed|exhausted)\b",
 ]
+
+# Missing-information items that describe system/configuration gaps rather than
+# facts a client could supply; they must not drive clarification.
+_NON_CLIENT_FIELDS = ("theory_info",)
 
 
 class UncertaintyAgent(Agent):
@@ -126,6 +135,8 @@ class UncertaintyAgent(Agent):
             item_str = str(item)
             if "prior_session" in item_str.lower() or "session_recap" in item_str.lower() or "first session" in item_str.lower():
                 continue
+            if any(f in item_str.lower() for f in _NON_CLIENT_FIELDS):
+                continue
             if item_str not in missing_info:
                 missing_info.append(item_str)
             # Map item to fields
@@ -141,7 +152,7 @@ class UncertaintyAgent(Agent):
         if isinstance(mem_payload, dict):
             static_traits = mem_payload.get("known_static_traits", {}) or {}
             med_hist = str(static_traits.get("medical_history", "")).strip()
-            if not med_hist or med_hist in ("(unavailable)", "not_mentioned", "unknown"):
+            if not med_hist or med_hist.lower() in ("(unavailable)", "not_mentioned", "not mentioned", "unknown"):
                 if "medical_history (safety status absent)" not in missing_info:
                     missing_info.append("medical_history (safety status absent)")
                     if "medical_history" not in uncertain_fields:
@@ -150,7 +161,7 @@ class UncertaintyAgent(Agent):
                         uncertainty_types.append("safety_status")
 
         # 2. Check client's latest message / current concern for AMBIGUITY
-        text_to_check = f"{current_concern} {ctx.current_message or ''}".strip()
+        text_to_check = f"{current_concern} {ctx.current_message or ''}".strip().lower()
         for kw in _AMBIGUOUS_KEYWORDS:
             if kw in text_to_check:
                 is_ambiguous = True
@@ -158,9 +169,18 @@ class UncertaintyAgent(Agent):
                     uncertainty_types.append("ambiguous_expression")
                 evidence.append(f"Ambiguous expression detected: '{kw}' in client expression")
 
-        # 3. Check for CONTRADICTORY information
+        # 3. Check for CONTRADICTORY information (current message, and previous
+        #    client turn followed by the current one)
+        previous_client_turn = ""
+        for turn in reversed(ctx.prior_transcript or []):
+            if isinstance(turn, dict) and turn.get("role") == "user":
+                previous_client_turn = str(turn.get("content") or "")
+                break
+        contradiction_texts = [text_to_check]
+        if previous_client_turn:
+            contradiction_texts.append(f"{previous_client_turn} {ctx.current_message or ''}".lower())
         for pat in _CONTRADICTORY_PATTERNS:
-            if re.search(pat, text_to_check):
+            if any(re.search(pat, t) for t in contradiction_texts):
                 is_contradictory = True
                 if "contradictory_information" not in uncertainty_types:
                     uncertainty_types.append("contradictory_information")

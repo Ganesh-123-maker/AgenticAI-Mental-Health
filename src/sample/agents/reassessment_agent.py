@@ -43,6 +43,27 @@ _UNINFORMATIVE_ANSWERS = [
     "i don't know", "not clear", "not sure", "nothing", "not much", "just so-so", "don't want to say", "whatever", "can't remember"
 ]
 
+_FILLER_WORDS = {
+    "i", "i'm", "im", "um", "uh", "well", "just", "so", "yeah", "no", "maybe", "the", "a", "it", "is", "that",
+    "really", "mean", "and", "or", "to", "of", "my", "me", "you", "know",
+}
+
+
+def _is_uninformative_answer(answer: str) -> bool:
+    """True when the answer carries (almost) no new content.
+
+    Evasive phrases are removed first; the answer is uninformative if fewer
+    than 4 non-filler words remain. Comparison is case-insensitive.
+    """
+    text = str(answer or "").strip().lower()
+    if len(text) < 4:
+        return True
+    for phrase in _UNINFORMATIVE_ANSWERS:
+        text = text.replace(phrase, " ")
+    words = [w.strip(".,!?;:'\"()") for w in text.split()]
+    content_words = [w for w in words if w and w not in _FILLER_WORDS]
+    return len(content_words) < 4
+
 
 class ReassessmentAgent(Agent):
     """Reassesses client state, uncertainty, and risk after receiving clarification."""
@@ -130,11 +151,7 @@ class ReassessmentAgent(Agent):
             )
 
         # 4. Check if clarification answer is informative or uninformative
-        is_uninformative = (
-            not answer
-            or len(answer) < 4
-            or any(uninf in answer for uninf in _UNINFORMATIVE_ANSWERS)
-        )
+        is_uninformative = _is_uninformative_answer(answer)
 
         resolved_information: List[str] = []
         remaining_uncertainty: List[str] = []

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import List, Optional
 
 from fastapi import HTTPException
@@ -13,7 +13,7 @@ from ..schemas import CourseDetail, CourseGoalOut, CoursePreview, CourseStats
 
 
 def utcnow() -> datetime:
-    return datetime.utcnow()
+    return datetime.now(timezone.utc)
 
 
 def build_default_course_title(school_name: str, created_at: datetime) -> str:

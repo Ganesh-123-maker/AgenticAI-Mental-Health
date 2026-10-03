@@ -28,24 +28,59 @@ payload:
 from __future__ import annotations
 
 import logging
+import re
 from typing import Any, Dict, List, Optional
 
 from .base import Agent, AgentContext, AgentError, AgentMessage
 
 logger = logging.getLogger(__name__)
 
-# Explicit high-risk crisis signals
+# Explicit high-risk crisis signals (matched case-insensitively)
 _HIGH_RISK_SIGNALS = [
-    "suicide", "self-harm", "self-injury", "don't want to live", "end my life", "end life",
+    "suicide", "suicidal", "self-harm", "self harm", "self-injury", "don't want to live", "end my life", "end life",
     "jump off building", "slit wrists", "want to die", "can't go on", "hopeless want to die", "leave this world",
     "cannot survive", "psychiatric emergency", "involuntary hospitalization", "severe mental disorder", "severe violence",
+    "kill myself", "killing myself", "take my own life", "hurt myself", "harm myself", "better off dead",
 ]
 
-# Moderate distress / impairment signals
+# Moderate distress / impairment signals (matched case-insensitively)
 _MODERATE_DISTRESS_SIGNALS = [
     "insomnia all night", "severe insomnia", "unable to work", "cannot work", "extreme panic", "panic attack",
     "verge of collapse", "feeling broken", "completely hopeless", "no hope", "perishing", "destruction",
 ]
+
+# Negation cues that, when they precede a signal within the same clause, mark the
+# mention as explicitly denied (e.g. "I have never had thoughts of suicide").
+_NEGATION_CUES = (
+    "no", "not", "never", "without", "denies", "denied", "deny", "don't", "do not", "didn't",
+    "haven't", "have not", "hasn't", "wouldn't", "won't", "none", "nor",
+)
+_CLAUSE_BREAK = re.compile(r"[.,;!?]|\bbut\b|\bhowever\b|\balthough\b", re.IGNORECASE)
+_NEGATION_RE = re.compile(r"\b(" + "|".join(re.escape(c) for c in _NEGATION_CUES) + r")\b", re.IGNORECASE)
+
+
+def _find_signal(text: str, signal: str) -> Optional[str]:
+    """Return "affirmed", "negated" or None for a signal in text (case-insensitive).
+
+    A mention counts as negated only if a negation cue appears earlier in the
+    same clause (up to 6 words before the signal) and the signal itself does
+    not already contain a negation (e.g. "don't want to live"). Ambiguous
+    cases are resolved towards "affirmed" (i.e. towards flagging risk).
+    """
+    lowered = text.lower()
+    sig = signal.lower()
+    found_negated = False
+    start = lowered.find(sig)
+    while start != -1:
+        prefix = lowered[:start]
+        breaks = list(_CLAUSE_BREAK.finditer(prefix))
+        clause = prefix[breaks[-1].end():] if breaks else prefix
+        window = " ".join(clause.split()[-6:])
+        if _NEGATION_RE.search(sig) or not _NEGATION_RE.search(window):
+            return "affirmed"
+        found_negated = True
+        start = lowered.find(sig, start + len(sig))
+    return "negated" if found_negated else None
 
 
 class RiskAgent(Agent):
@@ -96,18 +131,22 @@ class RiskAgent(Agent):
         medical_history = str(static_traits.get("medical_history", "")).strip()
         unknown_info = state_payload.get("unknown_information", []) or []
 
-        # 1. Scan for explicit HIGH-RISK signals
+        # 1. Scan for explicit HIGH-RISK signals (case-insensitive, negation-aware
+        #    for client-authored text)
         high_signals: List[str] = []
+        negated_signals: List[str] = []
         for sig in _HIGH_RISK_SIGNALS:
-            if sig in raw_message:
-                high_signals.append(f"client_message:'{sig}'")
-            if current_concern and sig in current_concern:
-                high_signals.append(f"current_concern:'{sig}'")
-            if main_problem and sig in main_problem:
-                high_signals.append(f"main_problem:'{sig}'")
+            for label, text in (("client_message", raw_message), ("current_concern", current_concern), ("main_problem", main_problem)):
+                if not text:
+                    continue
+                hit = _find_signal(text, sig)
+                if hit == "affirmed":
+                    high_signals.append(f"{label}:'{sig}'")
+                elif hit == "negated":
+                    negated_signals.append(f"negated:{label}:'{sig}'")
             # Note: in medical_history, check if it's an affirmative risk (e.g. past attempt)
             # rather than "no prior psychological problems"
-            if medical_history and sig in medical_history and not any(
+            if medical_history and sig in medical_history.lower() and not any(
                 neg in medical_history.lower() for neg in ("no ", "none", "denies", "without", "never", "not mentioned", "unknown")
             ):
                 high_signals.append(f"medical_history:'{sig}'")
@@ -147,12 +186,9 @@ class RiskAgent(Agent):
         # 3. Scan for MODERATE distress / functional impairment signals
         moderate_signals: List[str] = []
         for sig in _MODERATE_DISTRESS_SIGNALS:
-            if sig in raw_message:
-                moderate_signals.append(f"client_message:'{sig}'")
-            if current_concern and sig in current_concern:
-                moderate_signals.append(f"current_concern:'{sig}'")
-            if main_problem and sig in main_problem:
-                moderate_signals.append(f"main_problem:'{sig}'")
+            for label, text in (("client_message", raw_message), ("current_concern", current_concern), ("main_problem", main_problem)):
+                if text and _find_signal(text, sig) == "affirmed":
+                    moderate_signals.append(f"{label}:'{sig}'")
 
         if safety_status_missing:
             evidence = ["Safety status unverified: medical/psychiatric history missing from intake evidence"]
@@ -196,12 +232,17 @@ class RiskAgent(Agent):
 
         # 4. NO EVIDENCE
         evidence = ["NO EVIDENCE: No risk or crisis signals detected in current message, state, or memory context"]
+        if negated_signals:
+            evidence.append(
+                "Safety-related terms appeared only in explicitly negated form and were not treated as risk: "
+                + ", ".join(sorted(set(negated_signals)))
+            )
         payload = {
             "severity": "LOW",
             "risk_status": "NO_EVIDENCE",
             "evidence": evidence,
             "confidence": 0.90,
-            "signals_detected": [],
+            "signals_detected": sorted(set(negated_signals)),
         }
         _validate_risk_payload(payload)
         return AgentMessage(
