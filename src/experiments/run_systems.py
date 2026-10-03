@@ -12,8 +12,13 @@ import asyncio
 import json
 import logging
 import os
+import sys
 from pathlib import Path
 from typing import Any, Dict, List, Optional
+
+repo_root = Path(__file__).resolve().parents[2]
+if str(repo_root) not in sys.path:
+    sys.path.insert(0, str(repo_root))
 
 from src.sample.agents.base import AgentContext
 from src.sample.agents.pipeline import run_pipeline
@@ -564,7 +569,7 @@ def aggregate_metrics(case_eval_list: List[Dict[str, Any]]) -> Dict[str, float]:
 async def main_async(args: argparse.Namespace) -> None:
     repo_root = Path(__file__).resolve().parents[2]
     bench_dir = repo_root / "data" / "benchmark" / "ambiguous_cases"
-    out_base_dir = repo_root / "data" / "eval_outputs_multi_agent"
+    out_base_dir = Path(args.out_dir) if args.out_dir else repo_root / "data" / "eval_outputs_multi_agent"
     out_base_dir.mkdir(parents=True, exist_ok=True)
 
     modalities = ["bt", "cbt", "het", "pdt", "pmt"]
@@ -714,6 +719,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Run systems and ablations against benchmark")
     parser.add_argument("--scale", choices=["reduced", "full"], default="reduced", help="Scale of benchmark run (reduced=5/mod, full=20/mod)")
     parser.add_argument("--cases-per-modality", type=int, default=5, help="Cases per modality for reduced run")
+    parser.add_argument("--out-dir", type=str, default=None, help="Output directory for system evaluations")
     args = parser.parse_args()
     asyncio.run(main_async(args))
 

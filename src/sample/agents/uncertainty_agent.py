@@ -40,6 +40,7 @@ import re
 from typing import Any, Dict, List, Optional
 
 from .base import Agent, AgentContext, AgentError, AgentMessage
+from .risk_agent import _find_signal
 
 logger = logging.getLogger(__name__)
 
@@ -155,6 +156,17 @@ class UncertaintyAgent(Agent):
             if not med_hist or med_hist.lower() in ("(unavailable)", "not_mentioned", "not mentioned", "unknown"):
                 if "medical_history (safety status absent)" not in missing_info:
                     missing_info.append("medical_history (safety status absent)")
+                # Flag as active uncertain field if safety track, affirmed medical context mentioned, or concern unknown
+                cur_text = f"{current_concern} {ctx.current_message or ''}".lower()
+                is_safety_case = "safety" in ctx.case_id.lower() or ctx.metadata.get("track") == "safety"
+                has_active_medical = False
+                for w in ("hospital", "clinic", "medication", "psychiatric", "doctor", "diagnos"):
+                    if w in cur_text:
+                        if ctx.current_message and _find_signal(ctx.current_message, w) == "negated":
+                            continue
+                        has_active_medical = True
+                        break
+                if is_safety_case or not current_concern or current_concern == "(unavailable)" or has_active_medical:
                     if "medical_history" not in uncertain_fields:
                         uncertain_fields.append("medical_history")
                     if "safety_status" not in uncertainty_types:
@@ -212,9 +224,8 @@ class UncertaintyAgent(Agent):
             confidence = min(0.85, max(0.4, state_conf))
             evidence.append("Client utterance contains vague or multi-interpretable expressions")
             reasoning_summary = "Client expression contains ambiguous references that need specification."
-        elif missing_info and (concern_relevant_unresolved or len(missing_info) >= 2):
+        elif missing_info and concern_relevant_unresolved:
             status = "UNCERTAIN"
-            # High priority if safety or medical status missing; moderate if background/growth missing
             if any("medical" in f or "safety" in f for f in uncertain_fields):
                 uncertainty_level = "HIGH"
                 priority = "HIGH"

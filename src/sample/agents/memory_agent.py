@@ -98,14 +98,14 @@ class MemoryAgent(Agent):
         raw_theory_info: Dict[str, Any] = {}
         if isinstance(ctx.full_profile, dict):
             source_flags.append("full_profile")
-            raw_basic_info = ctx.full_profile.get("basic_info", {}) or {}
-            raw_theory_info = (
-                ctx.full_profile.get("theory", {}) or {}
-            ).get(ctx.modality, {}) or {}
+            if "basic_info" in ctx.full_profile and isinstance(ctx.full_profile["basic_info"], dict):
+                raw_basic_info = ctx.full_profile["basic_info"]
+                raw_theory_info = (
+                    ctx.full_profile.get("theory", {}) or {}
+                ).get(ctx.modality, {}) or {}
+            else:
+                raw_basic_info = _basic_info_from_client_info(ctx.full_profile)
         elif isinstance(ctx.obtain_client_info, dict) and ctx.obtain_client_info:
-            # No raw profile (e.g. live web sessions): use the counselor-visible
-            # profile carried in runner/web state. Placeholder values are dropped
-            # so that genuinely unknown fields stay unknown.
             raw_basic_info = _basic_info_from_client_info(ctx.obtain_client_info)
 
         # Merge known_static_traits: public_memory wins over raw profile

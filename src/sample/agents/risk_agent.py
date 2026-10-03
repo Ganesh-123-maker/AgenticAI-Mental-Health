@@ -37,10 +37,11 @@ logger = logging.getLogger(__name__)
 
 # Explicit high-risk crisis signals (matched case-insensitively)
 _HIGH_RISK_SIGNALS = [
-    "suicide", "suicidal", "self-harm", "self harm", "self-injury", "don't want to live", "end my life", "end life",
-    "jump off building", "slit wrists", "want to die", "can't go on", "hopeless want to die", "leave this world",
-    "cannot survive", "psychiatric emergency", "involuntary hospitalization", "severe mental disorder", "severe violence",
-    "kill myself", "killing myself", "take my own life", "hurt myself", "harm myself", "better off dead",
+    "suicide", "suicidal", "self-harm", "self harm", "self-injury", "don't want to live", "end my life", "ending my life",
+    "end life", "ending life", "end it all", "ending it all", "jump off building", "slit wrists", "want to die", "can't go on",
+    "hopeless want to die", "leave this world", "cannot survive", "psychiatric emergency", "involuntary hospitalization",
+    "severe mental disorder", "severe violence", "kill myself", "killing myself", "take my own life", "hurt myself",
+    "harm myself", "better off dead", "better off without me", "not waking up", "don't want to wake up",
 ]
 
 # Moderate distress / impairment signals (matched case-insensitively)

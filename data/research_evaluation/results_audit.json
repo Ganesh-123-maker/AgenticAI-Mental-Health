@@ -1,0 +1,308 @@
+{
+  "audit_metadata": {
+    "title": "PsychAgent Scientific Results Audit & Traceability Matrix",
+    "date": "2026-10-03",
+    "auditor": "Antigravity Scientific Validation Engine",
+    "python_version": "3.11.9",
+    "platform": "Windows-10-10.0.26300-SP0",
+    "target_directory": "data/research_evaluation"
+  },
+  "result_inventory": [
+    {
+      "result": "Comparative Systems Summary Matrix (Layer 1 & Layer 2)",
+      "source_file": "data/research_evaluation/metrics/all_systems_summary.json",
+      "system": "All 12 Systems & Ablations",
+      "metric": "PANAS, SRS, WAI, Routing Accuracy, Uncertainty F1, Clarification Relevance, Safety F1, Escalation Accuracy, Memory Consistency",
+      "cases": 25,
+      "reproducible": true,
+      "status": "PASS"
+    },
+    {
+      "result": "Failure Analysis Error Taxonomy",
+      "source_file": "data/research_evaluation/failure_analysis/failure_analysis.json",
+      "system": "All 12 Systems & Ablations",
+      "metric": "13 Standardized Failure Categories (545 total records)",
+      "cases": 25,
+      "reproducible": true,
+      "status": "PASS"
+    },
+    {
+      "result": "Live End-to-End Browser & Session QA Validation",
+      "source_file": "data/live_project_demo_validation.json",
+      "system": "System_F (Full Web Runtime)",
+      "metric": "Live Clinical Intake, 10-turn dialogue, Multi-session transitions, Hotline Escalation",
+      "cases": 13,
+      "reproducible": true,
+      "status": "PASS"
+    }
+  ],
+  "number_traceability": [
+    {
+      "claim": "System_F Working Alliance (WAI) = 10.00",
+      "source": "System_F/summary.json",
+      "match": true,
+      "status": "PASS"
+    },
+    {
+      "claim": "System_A Working Alliance (WAI) = 5.00",
+      "source": "System_A/summary.json",
+      "match": true,
+      "status": "PASS"
+    },
+    {
+      "claim": "System_F Routing Accuracy = 0.76",
+      "source": "System_F/summary.json",
+      "match": true,
+      "status": "PASS"
+    },
+    {
+      "claim": "System_C Routing Accuracy = 0.64",
+      "source": "System_C/summary.json",
+      "match": true,
+      "status": "PASS"
+    },
+    {
+      "claim": "System_F Safety F1 = 1.00",
+      "source": "System_F/summary.json",
+      "match": true,
+      "status": "PASS"
+    },
+    {
+      "claim": "ablation_no_risk Safety F1 = 0.88",
+      "source": "ablation_no_risk/summary.json",
+      "match": true,
+      "status": "PASS"
+    },
+    {
+      "claim": "ablation_no_clarification handoff_correctness = 0.62",
+      "source": "ablation_no_clarification/summary.json",
+      "match": true,
+      "status": "PASS"
+    },
+    {
+      "claim": "Total failure records = 545",
+      "source": "failure_analysis.json",
+      "match": true,
+      "status": "PASS"
+    }
+  ],
+  "sample_count_checks": [
+    {
+      "system": "System_A",
+      "expected_cases": 25,
+      "actual_cases": 25,
+      "status": "PASS"
+    },
+    {
+      "system": "System_B",
+      "expected_cases": 25,
+      "actual_cases": 25,
+      "status": "PASS"
+    },
+    {
+      "system": "System_C",
+      "expected_cases": 25,
+      "actual_cases": 25,
+      "status": "PASS"
+    },
+    {
+      "system": "System_D",
+      "expected_cases": 25,
+      "actual_cases": 25,
+      "status": "PASS"
+    },
+    {
+      "system": "System_E",
+      "expected_cases": 25,
+      "actual_cases": 25,
+      "status": "PASS"
+    },
+    {
+      "system": "System_F",
+      "expected_cases": 25,
+      "actual_cases": 25,
+      "status": "PASS"
+    },
+    {
+      "system": "ablation_no_uncertainty",
+      "expected_cases": 25,
+      "actual_cases": 25,
+      "status": "PASS"
+    },
+    {
+      "system": "ablation_no_risk",
+      "expected_cases": 25,
+      "actual_cases": 25,
+      "status": "PASS"
+    },
+    {
+      "system": "ablation_no_clarification",
+      "expected_cases": 25,
+      "actual_cases": 25,
+      "status": "PASS"
+    },
+    {
+      "system": "ablation_no_safety_supervisor",
+      "expected_cases": 25,
+      "actual_cases": 25,
+      "status": "PASS"
+    },
+    {
+      "system": "ablation_no_longitudinal",
+      "expected_cases": 25,
+      "actual_cases": 25,
+      "status": "PASS"
+    },
+    {
+      "system": "ablation_no_routing",
+      "expected_cases": 25,
+      "actual_cases": 25,
+      "status": "PASS"
+    }
+  ],
+  "system_fairness_checks": [
+    {
+      "check": "Identical benchmark inputs provided to all 12 configurations",
+      "status": "PASS"
+    },
+    {
+      "check": "No hidden profile ground truth leaked into counselor visible prompts",
+      "status": "PASS"
+    },
+    {
+      "check": "Identical evaluation prompts and evaluators used across all conditions",
+      "status": "PASS"
+    },
+    {
+      "check": "No forward leakage of future session states into earlier sessions",
+      "status": "PASS"
+    }
+  ],
+  "ground_truth_checks": [
+    {
+      "check": "Clause-level negation parsing preserves non-suicidal historical statements as LOW risk",
+      "status": "PASS"
+    },
+    {
+      "check": "Ambiguous expressions correctly annotated without false diagnosis",
+      "status": "PASS"
+    },
+    {
+      "check": "Contradictory sleep statements flag uncertainty rather than hallucinated reconciliations",
+      "status": "PASS"
+    }
+  ],
+  "metric_checks": [
+    {
+      "metric": "routing_accuracy",
+      "formula": "correct_route_decisions / total_decisions",
+      "status": "PASS"
+    },
+    {
+      "metric": "uncertainty_f1",
+      "formula": "harmonic mean of uncertainty precision and recall",
+      "status": "PASS"
+    },
+    {
+      "metric": "safety_f1",
+      "formula": "harmonic mean of safety precision and recall",
+      "status": "PASS"
+    },
+    {
+      "metric": "escalation_accuracy",
+      "formula": "high_risk_cases_escalated / total_high_risk_cases",
+      "status": "PASS"
+    },
+    {
+      "metric": "memory_consistency",
+      "formula": "retained_durable_facts / total_durable_facts",
+      "status": "PASS"
+    }
+  ],
+  "failure_analysis_checks": [
+    {
+      "check": "All 545 failures categorized into one of 13 standardized failure types",
+      "status": "PASS"
+    },
+    {
+      "check": "No double counting of identical failure instances within a single turn",
+      "status": "PASS"
+    },
+    {
+      "check": "Responsible component mappings supported by agent execution trail",
+      "status": "PASS"
+    }
+  ],
+  "longitudinal_checks": [
+    {
+      "check": "OutcomeAgent correctly evaluates observable engagement markers (ENGAGED/WITHDRAWN/NEUTRAL)",
+      "status": "PASS"
+    },
+    {
+      "check": "MemoryUpdateAgent filters temporary details (e.g. daily weather) from PublicMemory",
+      "status": "PASS"
+    },
+    {
+      "check": "Multi-session carry-over verified across 2-session runner pipeline",
+      "status": "PASS"
+    }
+  ],
+  "safety_checks": [
+    {
+      "check": "Tele-MANAS (14416) and 988 Lifeline injected on all HIGH-RISK escalations",
+      "status": "PASS"
+    },
+    {
+      "check": "SafetySupervisor successfully intercepts unverified medical promises (REVISE verdict)",
+      "status": "PASS"
+    },
+    {
+      "check": "Zero false positive crisis alarms triggered on colloquial hyperbole",
+      "status": "PASS"
+    }
+  ],
+  "reproducibility_checks": [
+    {
+      "case_id": "cbt_412_ordinary",
+      "reproduced_exact": true,
+      "status": "PASS"
+    },
+    {
+      "case_id": "bt_176_ordinary",
+      "reproduced_exact": true,
+      "status": "PASS"
+    },
+    {
+      "case_id": "cbt_412_safety",
+      "reproduced_exact": true,
+      "status": "PASS"
+    },
+    {
+      "case_id": "pmt_1719_ordinary",
+      "reproduced_exact": true,
+      "status": "PASS"
+    },
+    {
+      "case_id": "longitudinal_2_session",
+      "reproduced_exact": true,
+      "status": "PASS"
+    }
+  ],
+  "issues": [
+    {
+      "issue": "Slide 16 in PRESENTATION_CONTENT.md previously listed 609 cases from pre-fix run instead of audited 545 cases",
+      "severity": "LOW",
+      "evidence": "PRESENTATION_CONTENT.md line 162",
+      "action": "Corrected Slide 16 heading and breakdown to exact 545 audited cases",
+      "status": "RESOLVED"
+    }
+  ],
+  "corrections": [
+    {
+      "file": "docs/PRESENTATION_CONTENT.md",
+      "description": "Updated failure taxonomy count from 609 to 545",
+      "status": "APPLIED"
+    }
+  ],
+  "final_status": "AUDIT_PASSED_100_PERCENT"
+}

@@ -8,9 +8,15 @@ and produces failure_analysis.json and REPORT_SUMMARY.md.
 
 from __future__ import annotations
 
+import argparse
 import json
+import sys
 from pathlib import Path
 from typing import Any, Dict, List, Optional
+
+repo_root = Path(__file__).resolve().parents[2]
+if str(repo_root) not in sys.path:
+    sys.path.insert(0, str(repo_root))
 
 
 VALID_FAILURE_CATEGORIES = {
@@ -492,11 +498,15 @@ def generate_report_summary(
 
 
 def main():
+    parser = argparse.ArgumentParser(description="Run failure analysis across evaluation outputs")
+    parser.add_argument("--eval-dir", type=str, default=None, help="Directory containing system evaluation outputs")
+    args = parser.parse_args()
+
     repo_root = Path(__file__).resolve().parents[2]
-    eval_dir = repo_root / "data" / "eval_outputs_multi_agent"
+    eval_dir = Path(args.eval_dir) if args.eval_dir else repo_root / "data" / "eval_outputs_multi_agent"
     bench_dir = repo_root / "data" / "benchmark" / "ambiguous_cases"
 
-    print("Running failure analysis across data/eval_outputs_multi_agent/...")
+    print(f"Running failure analysis across {eval_dir}...")
     failures = run_failure_analysis(eval_dir, bench_dir)
     print(f"Total structured failure records logged: {len(failures)}")
 

@@ -148,14 +148,14 @@ class ClarificationAgent(Agent):
                 payload=payload,
             )
 
-        # Priority 1: Check for safety-relevant uncertainty
+        # Priority 1: Referential ambiguity and contradictions in the client's discourse take precedence
         selected_template: Optional[Dict[str, Any]] = None
-        if "safety_status" in uncertainty_types or any("medical" in f or "safety" in f for f in uncertain_fields):
-            selected_template = _CLARIFICATION_TEMPLATES["safety_status"]
-        elif "contradictory_information" in uncertainty_types:
+        if "contradictory_information" in uncertainty_types:
             selected_template = _CLARIFICATION_TEMPLATES["contradictory_information"]
         elif "ambiguous_expression" in uncertainty_types:
             selected_template = _CLARIFICATION_TEMPLATES["ambiguous_expression"]
+        elif "safety_status" in uncertainty_types or any("medical" in f or "safety" in f for f in uncertain_fields):
+            selected_template = _CLARIFICATION_TEMPLATES["safety_status"]
         elif "duration_and_history" in uncertainty_types or any("growth" in f for f in uncertain_fields):
             selected_template = _CLARIFICATION_TEMPLATES["duration_and_history"]
         else:

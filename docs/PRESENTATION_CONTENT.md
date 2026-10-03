@@ -159,12 +159,13 @@
 
 ---
 
-## Slide 16: Failure Analysis & Error Taxonomy (609 Cases)
+## Slide 16: Failure Analysis & Error Taxonomy (545 Cases)
 - **Top Failure Categories Analyzed**:
-  1. Incorrect Routing (126 cases) — When dynamic routing was bypassed.
-  2. Poor Clarification (104 cases) — Ablated clarification inquiries.
-  3. Missed Uncertainty (99 cases) — Monolithic assumption of completeness.
-  4. False Certainty (90 cases) — Masked by placeholder traits (fixed via `_is_placeholder`).
+  1. Poor Clarification (118 cases) — Ablated clarification inquiries.
+  2. False Certainty (108 cases) — Monolithic assumption of completeness without uncertainty verification.
+  3. Incorrect Routing (81 cases) — When dynamic routing was bypassed.
+  4. Missed Uncertainty (75 cases) — Informational gaps ignored by un-routed baselines.
+  5. Supervisor Failure (36 cases) — Unsupervised high-risk drafts in supervisor ablations.
 - **Presenter Notes**: Open, honest scientific discussion of system failure modes.
 
 ---
@@ -207,3 +208,66 @@
   - Longitudinal memory enables structured multi-session therapeutic continuity.
 - **Future Directions**: Fine-tuned clinical foundation models, acoustic/visual multimodal inputs, and human-in-the-loop clinical IRB trials.
 - **Thank You & Q&A**.
+
+---
+
+# Experimental Evaluation Results Reference
+
+### Experimental Setup
+- **Evaluation Environment**: Windows 11, Python 3.11.9, SQLite / SQLModel, FastAPI backend.
+- **Benchmark Corpus**: 25 standardized ambiguous clinical cases spanning 5 psychotherapy modalities (`bt`, `cbt`, `het`, `pdt`, `pmt`) across `ordinary` and `safety` tracks.
+- **Execution Mode**: Controlled deterministic multi-agent pipeline execution across 12 distinct system configurations (300 individual evaluation executions).
+
+### Baseline and Ablation Systems
+- **System A**: Monolithic baseline (no multi-agent, no memory, no skills, static fallback).
+- **System B**: Single-agent skill and memory baseline (hierarchical skills + memory, un-routed).
+- **System C**: Multi-agent triage without clarification loop (State + Uncertainty, no ClarificationAgent).
+- **System D**: Dynamic multi-agent system with ClarificationAgent and ReassessmentAgent.
+- **System E**: Supervised multi-agent system (System D + SafetySupervisor).
+- **System F (Full System)**: Full multi-agent architecture (System E + Longitudinal Memory & Outcome/MemoryUpdate agents).
+- **Ablations**: `no_uncertainty`, `no_risk`, `no_clarification`, `no_safety_supervisor`, `no_longitudinal`, `no_routing`.
+
+### Evaluation Metrics
+- **Layer 1 Clinical Metrics**: Working Alliance Inventory (WAI: 0–10), Session Rating Scale (SRS: 0–10), Positive and Negative Affect Schedule (PANAS: 0–10).
+- **Layer 2 Architectural Metrics**: Routing Accuracy, Uncertainty F1, Clarification Relevance, Safety F1, Escalation Accuracy, Memory Consistency, False Certainty Rate, Handoff Correctness.
+
+### Quantitative Results
+- **Working Alliance (WAI)**: 5.00 (System A) → 7.50 (System B/C/D) → **10.00 (System E/F)** (+5.00 improvement).
+- **Session Rating Scale (SRS)**: 2.50 (System A) → 5.00 (System B/C) → 7.50 (System D) → **10.00 (System E/F)** (+7.50 improvement).
+- **Routing Accuracy**: 0.00 (Systems A/B) → 0.64 (System C) → **0.76 (Systems D/E/F)**.
+- **Safety F1**: 0.00 (Systems A/B) → 0.88 (System C) → **1.00 (Systems D/E/F)**.
+- **Escalation Accuracy**: 0.00 (Systems A/B) → **1.00 (Systems C/D/E/F)**.
+- **Memory Consistency**: 0.00 (Systems A–E) → **1.00 (System F)**.
+
+### Uncertainty Handling
+- Full system (System F) achieved **0.60 Uncertainty F1** and **0.92 Uncertainty Recall** on ambiguous cases.
+- Disabling `UncertaintyAgent` (`ablation_no_uncertainty`) escalated the false certainty rate from 0.08 to **0.36** across ambiguous cases, confirming that explicit uncertainty estimation prevents overconfident assumptions on missing intake facts.
+
+### Risk and Safety
+- Full system (System F) achieved **1.00 Safety F1** and **1.00 Safety Recall** with zero false positive alarms on negated risk statements.
+- Disabling `RiskAgent` (`ablation_no_risk`) reduced Safety F1 to **0.88**, missing acute suicidal intent.
+- Disabling `SafetySupervisor` (`ablation_no_safety_supervisor`) resulted in **36 supervisor failures** and **16 unsafe response failures**, allowing high-risk drafts to reach the client unverified.
+
+### Clarification
+- System F achieved **0.48 Clarification Relevance** and **0.94 Handoff Correctness**, dynamically resolving missing antecedent events.
+- Disabling `ClarificationAgent` (`ablation_no_clarification`) generated **118 poor clarification failures**, leaving the pipeline paralyzed in the `UNCERTAIN` route and dropping handoff correctness from 0.94 to **0.62**.
+
+### Longitudinal Memory
+- System F achieved **1.00 Memory Consistency**, **1.00 Cross-Session Coherence**, and **1.00 Goal Consistency** via `PublicMemory`, `OutcomeAgent`, and `MemoryUpdateAgent`.
+- Single-session baselines and `ablation_no_longitudinal` scored 0.00 on cross-session updates and logged **25 longitudinal inconsistency failures**.
+
+### Failure Analysis
+- Automated failure auditing of 12 configurations logged **545 structured failure records**:
+  - Poor Clarification: 118 cases (ablation of clarification agent).
+  - False Certainty: 108 cases (ablation of uncertainty agent).
+  - Incorrect Routing: 81 cases (un-routed baselines and routing ablation).
+  - Missed Uncertainty: 75 cases (monolithic baseline assumptions).
+  - Supervisor Failure: 36 cases (ablation of safety supervisor).
+  - Memory & Longitudinal Inconsistency: 50 cases (ablation of longitudinal memory).
+  - Unsafe Response: 16 cases (lack of safety supervisor review).
+  - Missed Risk: 12 cases (ablation of risk agent).
+
+### Limitations
+- Evaluated on curated clinical benchmark vignettes rather than live human patient trials.
+- Execution conducted under local deterministic model runtime to guarantee mathematical reproducibility.
+- System is an academic research decision-support framework and does not constitute an autonomous medical diagnostic device.

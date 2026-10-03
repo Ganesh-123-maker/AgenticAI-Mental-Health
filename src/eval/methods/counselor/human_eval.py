@@ -12,7 +12,7 @@ from ...core.base import EvaluationMethod
 from ...utils import load_prompt
 
 
-HumanEvalItemName = Literal["Professionalism", "Authenticity", "Coherence", "Depth"]
+HumanEvalItemName = Literal["Professionalism","Authenticity", "Coherence", "Depth"]
 
 
 class Item(BaseModel):

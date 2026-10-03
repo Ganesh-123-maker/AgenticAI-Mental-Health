@@ -98,7 +98,11 @@ class StateAgent(Agent):
 
         def _list(key: str) -> List[Any]:
             val = mem_payload.get(key)
-            return list(val) if isinstance(val, list) else []
+            if isinstance(val, list):
+                return list(val)
+            if isinstance(val, str) and val.strip() and val.strip() != "(unavailable)":
+                return [val.strip()]
+            return []
 
         def _dict(key: str) -> Dict[str, Any]:
             val = mem_payload.get(key)
@@ -230,9 +234,11 @@ class StateAgent(Agent):
         # -------------------------------------------------------------------
         longitudinal_relevance: str
         if recaps:
+            last_recap = recaps[-1]
+            last_idx = last_recap.get("session_index", "?") if isinstance(last_recap, dict) else len(recaps)
             longitudinal_relevance = (
                 f"Total of {len(recaps)} historical session records. "
-                f"Most recent is Session {recaps[-1].get('session_index', '?')}."
+                f"Most recent is Session {last_idx}."
             )
             if prev_interventions:
                 longitudinal_relevance += f" Recorded {len(prev_interventions)} past intervention steps."
