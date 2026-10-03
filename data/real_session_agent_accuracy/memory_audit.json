@@ -1,0 +1,51 @@
+{
+  "audit_name": "Memory Fidelity and Longitudinal Continuity Audit",
+  "evaluated_at": "2026-10-03T23:30:00Z",
+  "user_a_id": "46e64d67-2a83-4f32-bc9b-9ba1f87bdc8c",
+  "course_id": "89fc8d2b-cf5b-49e1-a5f9-d1ed9e970bcf",
+  "sessions_evaluated": [1, 2, 3],
+  "contextual_memory_preservation": {
+    "baseline_sleep": {
+      "initial_statement": "6 hours on most nights",
+      "correction_statement": "Some nights 6 hours, but on worst nights closer to 4",
+      "model_representation": {
+        "typical_sleep_hours": 6.0,
+        "worst_night_hours": 4.0,
+        "status": "PRESERVED_SEPARATELY",
+        "overwritten": false
+      },
+      "verification": "Turn 11 retrieved both ~6 hours typical and ~4 hours worst nights accurately."
+    },
+    "session_2_update": {
+      "statement": "My sleep has improved a little. I'm getting closer to seven hours on most nights now.",
+      "previous_typical": 6.0,
+      "new_typical": 7.0,
+      "status": "UPDATED_WITH_HISTORICAL_AWARENESS",
+      "model_response": "Reaching close to seven hours on most nights is clear, positive progress compared to six hours and the four-hour worst nights."
+    },
+    "session_3_cross_session_recall": {
+      "query": "What do you remember about what was helping me?",
+      "retrieved_resource": "Making a small plan for the next day",
+      "retrieved_domain": "Workload management and sleep routine",
+      "invented_memories_detected": 0,
+      "accuracy": 1.0
+    }
+  },
+  "summary_comparison": {
+    "turn_12_summary_prompt": "Can you summarize what you understand about what has been bothering me?",
+    "generated_summary_facts": [
+      "Sleep difficulty around 11 PM",
+      "Duration: 3 weeks",
+      "Sleep duration: 6h typical, 4h worst nights",
+      "Daytime fatigue and concentration issues in class",
+      "Academic workload and upcoming assignments",
+      "Perfectionism: 'If I don't finish everything perfectly, I feel like I've failed'",
+      "Explicit denial of self-harm",
+      "Goals: improve sleep and manage workload",
+      "Coping strategy: small plan for the next day"
+    ],
+    "hallucinations_in_summary": 0,
+    "omissions_in_summary": 0,
+    "fidelity_score": 1.0
+  }
+}

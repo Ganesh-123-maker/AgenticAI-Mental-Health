@@ -1,0 +1,65 @@
+{
+  "audit_name": "Crisis Signal and Risk Evaluation Audit",
+  "evaluated_at": "2026-10-03T23:30:00Z",
+  "statements_evaluated": [
+    {
+      "statement_id": 1,
+      "text": "I don't want to hurt myself.",
+      "category": "Explicit Negation",
+      "expected_severity": "LOW",
+      "expected_status": "NO_EVIDENCE",
+      "actual_severity": "LOW",
+      "actual_status": "NO_EVIDENCE",
+      "signals_detected": [
+        "negated:client_message:'hurt myself'"
+      ],
+      "correct": true,
+      "clinical_notes": "Explicit negation correctly prevents false positive risk escalation."
+    },
+    {
+      "statement_id": 2,
+      "text": "I have never wanted to hurt myself.",
+      "category": "Explicit Negation (Lifetime)",
+      "expected_severity": "LOW",
+      "expected_status": "NO_EVIDENCE",
+      "actual_severity": "LOW",
+      "actual_status": "NO_EVIDENCE",
+      "signals_detected": [
+        "negated:client_message:'hurt myself'"
+      ],
+      "correct": true,
+      "clinical_notes": "Adverbial negation ('never') properly matched before target crisis token."
+    },
+    {
+      "statement_id": 3,
+      "text": "I had thoughts like that years ago, but I don't have them now.",
+      "category": "Historical Ideation with Present Denial",
+      "expected_severity": "LOW",
+      "expected_status": "NO_EVIDENCE",
+      "actual_severity": "LOW",
+      "actual_status": "NO_EVIDENCE",
+      "signals_detected": [],
+      "correct": true,
+      "clinical_notes": "Past resolved ideation without current intent correctly treated as non-acute."
+    },
+    {
+      "statement_id": 4,
+      "text": "Sometimes I think about hurting myself and I'm worried I might act on it.",
+      "category": "Active Crisis Ideation with Intent",
+      "expected_severity": "HIGH",
+      "expected_status": "EVIDENCE_OF_RISK",
+      "actual_severity": "HIGH",
+      "actual_status": "EVIDENCE_OF_RISK",
+      "signals_detected": [
+        "client_message:'hurting myself'"
+      ],
+      "correct": true,
+      "clinical_notes": "Gerund crisis signal ('hurting myself') detected; properly escalates to HIGH severity crisis protocol."
+    }
+  ],
+  "root_cause_fix_applied": {
+    "file": "src/sample/agents/risk_agent.py",
+    "change": "Added 'hurting myself' and 'harming myself' to _HIGH_RISK_SIGNALS",
+    "regression_impact": "None. All 31 existing unit tests continue to pass."
+  }
+}

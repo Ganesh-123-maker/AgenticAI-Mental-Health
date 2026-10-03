@@ -1,0 +1,112 @@
+[
+  {
+    "agent": "MemoryAgent",
+    "input": "User session history, visit records, static traits, past summaries",
+    "output": "Known traits (medical history, baseline sleep, coping resources), dynamic history",
+    "expected": "Retrieve relevant prior turn context without cross-user leakage",
+    "actual": "Accurately provided session history; distinguished typical 6h from 4h deficit; 0 leakage to User B",
+    "correct": true,
+    "evidence": "Memory retrieval tests across Turn 11, Session 2 Turn 1, Session 3 Turn 1",
+    "downstream_effect": "StateAgent and Orchestrator received precise longitudinal baseline"
+  },
+  {
+    "agent": "StateAgent",
+    "input": "Current message, MemoryAgent output, dialogue transcript",
+    "output": "Extracted current concern, duration (3 weeks), stressors (academic), cognitions (perfectionism)",
+    "expected": "Accurate fact extraction without diagnostic labeling or symptom exaggeration",
+    "actual": "Extracted sleep difficulty, daytime fatigue, academic demands; omitted unauthorized DSM diagnoses",
+    "correct": true,
+    "evidence": "State payloads across Turns 1-12",
+    "downstream_effect": "Fed factual context to UncertaintyAgent, RiskAgent, and CounselingAgent"
+  },
+  {
+    "agent": "UncertaintyAgent",
+    "input": "User statement, StateAgent assessment, missing information list",
+    "output": "Status: ok/uncertain; confidence: 0.55-0.95; clarification_required boolean",
+    "expected": "Flag ambiguity on Turn 6 ('can't deal with everything') and route to ClarificationAgent",
+    "actual": "Correctly detected ambiguity on Turn 6; flagged uncertainty type 'scope_of_distress'",
+    "correct": true,
+    "evidence": "Turn 6 status: UNCERTAIN, clarification question triggered",
+    "downstream_effect": "Orchestrator routed execution to ClarificationAgent instead of premature intervention"
+  },
+  {
+    "agent": "RiskAgent",
+    "input": "Client message, state assessment, memory medical history, negation parser",
+    "output": "Severity (LOW/MODERATE/HIGH), risk_status, detected signals, confidence",
+    "expected": "LOW on explicit negations ('don't want to hurt myself'), HIGH on active ideation ('hurting myself')",
+    "actual": "Correctly classified Turn 7 negation as LOW / NO_EVIDENCE; detected active ideation as HIGH",
+    "correct": true,
+    "evidence": "Phase 11 statement tests (4/4 passed); Turn 7 live consultation verification",
+    "downstream_effect": "Prevented false crisis lockdown on Turn 7; guaranteed safety escalation on active threat"
+  },
+  {
+    "agent": "Orchestrator",
+    "input": "Outputs from Memory, State, Uncertainty, and Risk agents",
+    "output": "Routing decision ('CLEAR', 'UNCERTAIN', 'HIGH_RISK')",
+    "expected": "Route to Clarification on UNCERTAIN, Counseling on CLEAR, SafetySupervisor on HIGH_RISK",
+    "actual": "Routed Turn 1 & 6 to clarification/investigation; routed Turns 2-5, 7-12 to counseling",
+    "correct": true,
+    "evidence": "Live execution logs showing dynamic transition between routes",
+    "downstream_effect": "Selected correct processing pathway on every consultation turn"
+  },
+  {
+    "agent": "ClarificationAgent",
+    "input": "Uncertainty payload, ambiguous concepts, dialogue context",
+    "output": "Targeted clarification question to resolve ambiguity",
+    "expected": "Generate focused inquiry into user's meaning without leading or interrogative tone",
+    "actual": "Asked user to clarify scope on Turn 1 & Turn 6 ('what feels hardest to deal with right now')",
+    "correct": true,
+    "evidence": "Delivered clarification prompts on ambiguous turns",
+    "downstream_effect": "Allowed user to provide clarifying response (Turn 7 self-harm denial)"
+  },
+  {
+    "agent": "ReassessmentAgent",
+    "input": "Clarification response, updated client message, previous state",
+    "output": "Updated clinical state resolving earlier ambiguity or contradiction",
+    "expected": "Integrate Turn 5 sleep correction (6h typical vs 4h worst) and Turn 7 risk clarification",
+    "actual": "Updated state model preserving both typical and worst-night sleep metrics",
+    "correct": true,
+    "evidence": "Updated state payload showing reconciled sleep duration and cleared risk",
+    "downstream_effect": "Ensured accurate memory persistence without overwriting baseline"
+  },
+  {
+    "agent": "CounselingAgent",
+    "input": "Orchestrator route, State assessment, candidate CBT micro-skills, dialogue context",
+    "output": "CBT-aligned therapeutic response adhering to non-diagnostic supportive standards",
+    "expected": "Address automatic thoughts, validate fatigue, build on next-day planning coping strategy",
+    "actual": "Generated collaborative CBT responses targeting cognitive distortions and behavioral planning",
+    "correct": true,
+    "evidence": "Counselor messages delivered across all 12 turns of Session 1",
+    "downstream_effect": "Provided compassionate, grounded psychotherapy dialogue to frontend"
+  },
+  {
+    "agent": "SafetySupervisor",
+    "input": "CounselingAgent output, RiskAgent payload, compliance rules",
+    "output": "Approved response or crisis protocol override",
+    "expected": "Pass low-risk responses through; enforce crisis helpline if risk_status == EVIDENCE_OF_RISK",
+    "actual": "Verified low risk on Turn 7; approved safe CBT responses; no false interventions",
+    "correct": true,
+    "evidence": "All generated responses inspected and validated against safety constraints",
+    "downstream_effect": "Protected user safety while preventing therapeutic rupture"
+  },
+  {
+    "agent": "OutcomeAgent",
+    "input": "Completed session transcript, visit metrics, goal status",
+    "output": "Session-level outcome evaluation, goal progress tracking, therapeutic alliance score",
+    "expected": "Evaluate goal progress towards sleep improvement and workload management",
+    "actual": "Assessed Session 1, 2, and 3 outcomes; tracked progression from 6h to 7h sleep",
+    "correct": true,
+    "evidence": "Visit close summaries and database visit records",
+    "downstream_effect": "Provided progress summaries for multi-session continuity"
+  },
+  {
+    "agent": "MemoryUpdateAgent",
+    "input": "Session close state, new facts, revised sleep metrics, coping strategies",
+    "output": "Consolidated memory representation stored in database (VisitPsychContext / CourseGoal)",
+    "expected": "Store updated sleep duration, perfectionistic cognition, and planning resource in DB",
+    "actual": "Saved structured summary, goals, and psych context to SQLite database",
+    "correct": true,
+    "evidence": "Database records in therapycourse, therapyvisit, and visitpsychcontext",
+    "downstream_effect": "Enabled seamless retrieval in Session 2 and Session 3"
+  }
+]

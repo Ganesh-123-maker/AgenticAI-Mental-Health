@@ -41,7 +41,7 @@ _HIGH_RISK_SIGNALS = [
     "end life", "ending life", "end it all", "ending it all", "jump off building", "slit wrists", "want to die", "can't go on",
     "hopeless want to die", "leave this world", "cannot survive", "psychiatric emergency", "involuntary hospitalization",
     "severe mental disorder", "severe violence", "kill myself", "killing myself", "take my own life", "hurt myself",
-    "harm myself", "better off dead", "better off without me", "not waking up", "don't want to wake up",
+    "hurting myself", "harm myself", "harming myself", "better off dead", "better off without me", "not waking up", "don't want to wake up",
 ]
 
 # Moderate distress / impairment signals (matched case-insensitively)

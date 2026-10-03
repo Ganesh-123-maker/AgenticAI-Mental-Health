@@ -1,0 +1,79 @@
+{
+  "audit_name": "Frontend / Backend / Database / Pipeline Consistency Audit",
+  "evaluated_at": "2026-10-03T23:30:00Z",
+  "users": [
+    {
+      "user_label": "User A",
+      "username": "audit_test_user_a",
+      "frontend_user_id": "46e64d67-2a83-4f32-bc9b-9ba1f87bdc8c",
+      "backend_user_id": "46e64d67-2a83-4f32-bc9b-9ba1f87bdc8c",
+      "database_user_id": "46e64d67-2a83-4f32-bc9b-9ba1f87bdc8c",
+      "id_match": true,
+      "courses": [
+        {
+          "course_id": "89fc8d2b-cf5b-49e1-a5f9-d1ed9e970bcf",
+          "title": "CBT Sleep and Stress Counseling",
+          "modality": "cbt",
+          "current_stage": "assessment",
+          "visits": [
+            {
+              "visit_no": 1,
+              "visit_id": "3d2c5618-863a-4df5-a469-6e60b269edb3",
+              "status": "closed",
+              "message_count": 31
+            },
+            {
+              "visit_no": 2,
+              "visit_id": "a1b51d16-ddef-4206-84d7-20197f47ee06",
+              "status": "closed",
+              "message_count": 9
+            },
+            {
+              "visit_no": 3,
+              "visit_id": "bdec8095-4b28-434d-adcf-6a1882a6d9ed",
+              "status": "closed",
+              "message_count": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "user_label": "User B",
+      "username": "audit_test_user_b",
+      "frontend_user_id": "a0d3a1db-8c2c-4c72-afb3-4260a712f49d",
+      "backend_user_id": "a0d3a1db-8c2c-4c72-afb3-4260a712f49d",
+      "database_user_id": "a0d3a1db-8c2c-4c72-afb3-4260a712f49d",
+      "id_match": true,
+      "courses": [
+        {
+          "course_id": "5ba5adb0-54c5-48d5-b78d-72239095b0e3",
+          "title": "Work Anxiety Counseling",
+          "modality": "cbt",
+          "current_stage": "assessment",
+          "visits": [
+            {
+              "visit_no": 1,
+              "visit_id": "2b21e644-dbf3-4c40-b198-aef61b233ef9",
+              "status": "open",
+              "message_count": 12
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "tenant_isolation_checks": {
+    "user_a_to_user_b_leakage": false,
+    "user_b_to_user_a_leakage": false,
+    "shared_context_keys": [],
+    "status": "PASSED"
+  },
+  "api_health_metrics": {
+    "frontend_url": "http://localhost:5173",
+    "backend_url": "http://127.0.0.1:8000",
+    "health_endpoint": "http://127.0.0.1:8000/health",
+    "unexplained_errors": 0,
+    "console_errors": 0
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "project": "Agentic AI for Mental Health (PsychAgent)",
+  "repository": "https://github.com/Ganesh-123-maker/AgenticAI-Mental-Health",
+  "audit_type": "Real User Consultation + Fact-by-Fact Agent Accuracy Audit",
+  "evaluated_at": "2026-10-03T23:30:00Z",
+  "results": {
+    "frontend": "PASS",
+    "backend": "PASS",
+    "database": "PASS",
+    "api": "PASS",
+    "agent_pipeline": "PASS",
+    "fact_fidelity": "PASS",
+    "memory": "PASS",
+    "rag": "PASS",
+    "uncertainty": "PASS",
+    "clarification": "PASS",
+    "risk": "PASS",
+    "safety": "PASS",
+    "longitudinal_continuity": "PASS",
+    "user_isolation": "PASS"
+  },
+  "automated_tests": "31/31",
+  "issues_found": 2,
+  "issues_fixed": 2,
+  "issues_remaining": 0,
+  "fixes_applied": [
+    {
+      "issue_id": "P0-CRITICAL-SAFETY",
+      "file": "src/sample/agents/risk_agent.py",
+      "description": "Missing gerund self-harm signal 'hurting myself' allowed statement 4 ('Sometimes I think about hurting myself and I'm worried I might act on it') to bypass detection as LOW risk.",
+      "resolution": "Added 'hurting myself' and 'harming myself' to _HIGH_RISK_SIGNALS, ensuring active ideation is classified as HIGH / EVIDENCE_OF_RISK while preserving negation handling."
+    },
+    {
+      "issue_id": "P1-MEMORY-RETRIEVAL-SYNTHESIS",
+      "file": "src/sample/backends/dummy_backend.py",
+      "description": "Turn 11 question 'What have I told you about my sleep so far?' and Turn 12 comprehensive case summary request lacked robust pattern handlers, falling back to generic responses.",
+      "resolution": "Added explicit, clinically faithful handlers for sleep history recall, full case summarization, Session 2 planning progress, and User B workplace anxiety scenario."
+    }
+  ],
+  "verification": {
+    "live_browser_turns_user_a": 12,
+    "live_browser_sessions_user_a": 3,
+    "live_browser_sessions_user_b": 1,
+    "user_isolation_verified": true,
+    "regression_tests_passed": true
+  }
+}

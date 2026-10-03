@@ -1,0 +1,137 @@
+[
+  {
+    "fact_id": 1,
+    "user_fact": "Sleep problem: difficulty falling asleep",
+    "agent_extraction": "Identified by StateAgent as primary current concern (sleep onset difficulty)",
+    "stored_state": "intake_note/current_concern includes sleep onset difficulty",
+    "retrieved_state": "Retrieved in Turn 11 & Turn 12 as sleep onset difficulty",
+    "final_response": "Mentioned difficulty falling asleep and staying awake for a long time",
+    "correct": true
+  },
+  {
+    "fact_id": 2,
+    "user_fact": "11 PM bedtime",
+    "agent_extraction": "StateAgent extracted 'usually go to bed around 11 PM'",
+    "stored_state": "Stored in session state details (bedtime approx 11 PM)",
+    "retrieved_state": "Retrieved in Turn 11 & Turn 12 as bedtime around 11 PM",
+    "final_response": "Explicitly cited 11 PM bedtime in Turn 11 recall and Turn 12 summary",
+    "correct": true
+  },
+  {
+    "fact_id": 3,
+    "user_fact": "3-week duration",
+    "agent_extraction": "Extracted as symptom duration: approximately 3 weeks",
+    "stored_state": "Stored in temporal context: 3 weeks duration",
+    "retrieved_state": "Retrieved in Turn 11 & Turn 12 temporal state",
+    "final_response": "Faithfully reported duration as 'about three weeks' / 'for the past three weeks'",
+    "correct": true
+  },
+  {
+    "fact_id": 4,
+    "user_fact": "Approximately 6 hours typical sleep",
+    "agent_extraction": "Extracted baseline sleep duration: ~6 hours on most nights",
+    "stored_state": "Preserved in memory as typical/baseline sleep duration (6 hours)",
+    "retrieved_state": "Retrieved in Turn 11, Turn 12, and Session 2 baseline comparison",
+    "final_response": "Reflected as usually getting around six hours on most nights",
+    "correct": true
+  },
+  {
+    "fact_id": 5,
+    "user_fact": "Approximately 4 hours worst-night sleep",
+    "agent_extraction": "MemoryUpdateAgent / ReassessmentAgent distinguished worst nights (~4h) from typical (~6h)",
+    "stored_state": "Explicitly segregated: typical (6h) vs worst-night deficit (4h)",
+    "retrieved_state": "Retrieved in Turn 11, Turn 12 summary, and Session 2 comparison",
+    "final_response": "Accurately noted 'on your worst nights it can drop closer to four hours'",
+    "correct": true
+  },
+  {
+    "fact_id": 6,
+    "user_fact": "Daytime fatigue",
+    "agent_extraction": "Identified daytime functional impairment: fatigue / feeling tired",
+    "stored_state": "Recorded under daytime psychosomatic impairment",
+    "retrieved_state": "Retrieved in Turn 12 comprehensive summary",
+    "final_response": "Reflected as 'daytime fatigue' without medical diagnosis",
+    "correct": true
+  },
+  {
+    "fact_id": 7,
+    "user_fact": "Concentration difficulty",
+    "agent_extraction": "Cognitive functional impact: trouble concentrating in class",
+    "stored_state": "Recorded in intake note under academic cognitive impact",
+    "retrieved_state": "Retrieved in Turn 12 summary",
+    "final_response": "Reflected as 'difficulty concentrating in class'",
+    "correct": true
+  },
+  {
+    "fact_id": 8,
+    "user_fact": "Academic workload",
+    "agent_extraction": "Environmental stressor: several upcoming assignments",
+    "stored_state": "Preserved under external stressors: academic workload / assignments",
+    "retrieved_state": "Retrieved in Turn 11, 12, and Session 2 bridge",
+    "final_response": "Referenced as upcoming assignments and heavy schoolwork",
+    "correct": true
+  },
+  {
+    "fact_id": 9,
+    "user_fact": "Academic stress",
+    "agent_extraction": "Emotional state: feeling stressed by upcoming academic demands",
+    "stored_state": "Distinguished as stressor reaction rather than depressive pathology",
+    "retrieved_state": "Retrieved in Turn 12 summary and Session 2 focus",
+    "final_response": "Framed as academic pressure and workload stress",
+    "correct": true
+  },
+  {
+    "fact_id": 10,
+    "user_fact": "Ambiguous overwhelm ('can't deal with everything')",
+    "agent_extraction": "UncertaintyAgent flagged high ambiguity and triggered clarification",
+    "stored_state": "Flagged as ambiguous distress requiring scope clarification",
+    "retrieved_state": "Resolved via Turn 7 clarification",
+    "final_response": "Clarified as academic workload overwhelm, not suicidal crisis",
+    "correct": true
+  },
+  {
+    "fact_id": 11,
+    "user_fact": "Explicit self-harm denial ('I don't want to hurt myself')",
+    "agent_extraction": "RiskAgent detected negated self-harm; classified as LOW severity / NO_EVIDENCE",
+    "stored_state": "Safety status verified LOW; no false safety lockdown triggered",
+    "retrieved_state": "Retrieved in Turn 12 summary safety verification",
+    "final_response": "Explicitly recognized: 'you clearly clarified that you do not want to hurt yourself'",
+    "correct": true
+  },
+  {
+    "fact_id": 12,
+    "user_fact": "Sleep improvement goal",
+    "agent_extraction": "CourseGoal: 'improve sleep'",
+    "stored_state": "Stored in course goals table as primary collaborative target",
+    "retrieved_state": "Retrieved in Turn 8, 12, and Session 2 progress tracking",
+    "final_response": "Affirmed as core goal to improve sleep routine",
+    "correct": true
+  },
+  {
+    "fact_id": 13,
+    "user_fact": "Workload-management goal",
+    "agent_extraction": "CourseGoal: 'manage workload better'",
+    "stored_state": "Stored in course goals table alongside sleep goal",
+    "retrieved_state": "Retrieved in Turn 8, 12, and Session 2/3 continuity",
+    "final_response": "Affirmed as goal to organize workload into manageable pieces",
+    "correct": true
+  },
+  {
+    "fact_id": 14,
+    "user_fact": "Perfectionistic thought ('If I don't finish everything perfectly, I feel like I've failed')",
+    "agent_extraction": "Cognitive distortion identified: all-or-nothing thinking / perfectionistic rule",
+    "stored_state": "Recorded in CBT thought analysis schema",
+    "retrieved_state": "Retrieved in Turn 9 and Turn 12 summary",
+    "final_response": "Reflected verbatim in CBT cognitive reframing context",
+    "correct": true
+  },
+  {
+    "fact_id": 15,
+    "user_fact": "Next-day planning strategy",
+    "agent_extraction": "Identified as user's existing behavioral coping resource",
+    "stored_state": "Recorded in client resources: making a small plan for next day",
+    "retrieved_state": "Retrieved in Turn 10, Turn 12, Session 2, and Session 3 recall",
+    "final_response": "Consistently recognized across all 3 sessions as effective coping resource",
+    "correct": true
+  }
+]

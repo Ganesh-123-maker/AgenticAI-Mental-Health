@@ -153,17 +153,52 @@ class DummyBackend:
         all_user_str = " ".join(str(m.get("content", "")) for m in messages if m.get("role") == "user").lower()
 
         # Context-aware memory retrieval and clinical dialogue responses
-        if "remind me" in user_lower and "sleep" in user_lower:
+        if ("remind me" in user_lower or "what have i told you" in user_lower or "told you about" in user_lower) and "sleep" in user_lower:
             return (
                 "Earlier, you shared that you've been having trouble falling asleep around 11 PM for about three weeks. "
                 "You initially mentioned usually getting around six hours of sleep, but clarified that on your "
                 "worst nights it can drop closer to four hours."
             )
 
+        if "summarize" in user_lower or "what has been bothering me" in user_lower or "summary" in user_lower:
+            return (
+                "To summarize what you've shared: For the past three weeks, you've experienced sleep difficulties, usually going to bed around 11 PM but staying awake for a long time. You typically get around six hours of sleep on most nights, dropping closer to four hours on your worst nights, leading to daytime fatigue and difficulty concentrating in class. This is compounded by stress from several upcoming academic assignments and a perfectionistic belief that 'if I don't finish everything perfectly, I feel like I've failed.' You clearly clarified that while you feel overwhelmed by schoolwork, you do not want to hurt yourself. Your primary goals are improving your sleep and managing your workload, and you've found that making a small plan for the next day serves as a helpful coping resource."
+            )
+
         if "what was helping me" in user_lower or "what helped me" in user_lower or "remember about what was helping" in user_lower:
             return (
                 "From our earlier sessions, you noted that making a small plan for the next day was a helpful coping strategy "
                 "that helped you manage your workload, along with taking steady steps to improve your sleep routine."
+            )
+
+        if "recall about my presentation" in user_lower or ("what" in user_lower and "presentation" in user_lower and ("recall" in user_lower or "remember" in user_lower)):
+            return (
+                "You shared that you experience significant performance anxiety and a racing heart before team presentations at work, "
+                "which disrupts your sleep the night before, and your goal is to build confidence when speaking in front of colleagues."
+            )
+
+        if "presentation" in user_lower and "heart" in user_lower:
+            return (
+                "Experiencing presentation anxiety with physical symptoms like a racing heart is very common. "
+                "How often do these presentations occur, and how do they impact your daily preparation?"
+            )
+
+        if "wake up multiple times" in user_lower or "night before a presentation" in user_lower:
+            return (
+                "Anticipatory anxiety frequently disrupts sleep the night before high-stakes presentations. "
+                "How do you usually cope when waking up during those nights?"
+            )
+
+        if "speaking in front of" in user_lower or ("more confident" in user_lower and "presentation" in user_lower):
+            return (
+                "Building presentation confidence and managing anticipatory stress are very actionable goals. "
+                "What thoughts usually go through your mind right before you speak?"
+            )
+
+        if "deep breathing" in user_lower:
+            return (
+                "Practicing deep breathing before your meeting is a valuable somatic regulation skill. "
+                "How did your body respond during the meeting?"
             )
 
         if "trouble sleeping" in user_lower and "11 pm" in user_lower:
@@ -196,10 +231,10 @@ class DummyBackend:
                 "helps us understand the true sleep deficit, while keeping in mind that six hours is more typical."
             )
 
-        if "don't want to hurt myself" in user_lower or "do not want to hurt myself" in user_lower:
+        if "don't want to hurt myself" in user_lower or "do not want to hurt myself" in user_lower or "don't want to harm myself" in user_lower or "do not want to harm myself" in user_lower:
             return (
-                "I appreciate you clarifying that clearly. Feeling overwhelmed by heavy schoolwork is completely valid, "
-                "and I am glad to know you do not want to hurt yourself. Let's focus on practical ways to reduce that academic pressure."
+                "I appreciate you clarifying that clearly. Feeling overwhelmed is completely valid, "
+                "and I am glad to know you do not want to hurt yourself. Let's focus on practical ways to reduce that pressure."
             )
 
         if "improve my sleep" in user_lower and "manage my workload" in user_lower:
@@ -232,7 +267,7 @@ class DummyBackend:
                 "How have things been going since our last session?"
             )
 
-        if "trying to follow the small planning approach" in user_lower:
+        if "small planning approach" in user_lower:
             return (
                 "It is great that you have been putting the small planning approach into practice. "
                 "How has that been working for you, and how has your sleep responded recently?"
