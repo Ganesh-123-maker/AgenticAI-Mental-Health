@@ -463,12 +463,14 @@ class SkillManager:
         env_name = str(self._runtime.psychagent_embedding_api_key_env).strip()
         api_key = os.environ.get(env_name, "").strip() if env_name else ""
         if not api_key:
+            api_key = os.environ.get("OPENAI_API_KEY", "").strip()
+        if not api_key:
             if self._runtime.client_backend == "dummy" or self._backend.__class__.__name__ == "DummyBackend":
                 self._logger.warning("Embedding API key missing in dummy mode; generating dummy embeddings.")
                 return [[0.0] * 1024 for _ in texts]
             raise RuntimeError(
                 f"Embedding API key is required to backfill missing skill embeddings. "
-                f"Please set environment variable '{env_name}'."
+                f"Please set environment variable '{env_name}' or 'OPENAI_API_KEY'."
             )
 
         if AsyncOpenAI is None:

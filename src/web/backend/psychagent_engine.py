@@ -458,8 +458,10 @@ class PsychAgentWebBackend:
             raise ValueError(f"src/web backend requires baseline.backend=openai_api or dummy, got {baseline.backend!r}")
 
         api_key = os.environ.get(baseline.api_key_env, "").strip() if baseline.api_key_env else ""
+        if not api_key:
+            api_key = os.environ.get("OPENAI_API_KEY", "").strip() or os.environ.get("CHAT_API_KEY", "").strip()
         if baseline.api_key_env and not api_key:
-            raise RuntimeError(f"missing model api key env: {baseline.api_key_env}")
+            raise RuntimeError(f"missing model api key env: {baseline.api_key_env} (or OPENAI_API_KEY)")
 
         settings = BackendSettings(
             model=baseline.model,

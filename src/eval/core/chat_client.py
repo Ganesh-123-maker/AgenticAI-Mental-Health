@@ -76,12 +76,12 @@ class GPT5ChatClient:
         if _IMPORT_ERROR is not None:
             raise RuntimeError("GPT5ChatClient requires dependencies: openai, aiolimiter, tenacity") from _IMPORT_ERROR
 
-        base_url = base_url or os.getenv("CHAT_API_BASE", None)
-        api_key = api_key or os.getenv("CHAT_API_KEY", None)
+        base_url = base_url or os.getenv("CHAT_API_BASE", None) or "https://api.openai.com/v1"
+        api_key = api_key or os.getenv("CHAT_API_KEY", None) or os.getenv("OPENAI_API_KEY", None)
         model = os.getenv("CHAT_MODEL_NAME", None) or model
 
         if not api_key:
-            raise ValueError("api_key must be provided explicitly or via CHAT_API_KEY")
+            raise ValueError("api_key must be provided explicitly or via CHAT_API_KEY or OPENAI_API_KEY")
         if not base_url:
             raise ValueError("base_url must be provided explicitly or via CHAT_API_BASE")
         if max_concurrency <= 0:
