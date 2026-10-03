@@ -14,7 +14,7 @@ Conversational artificial intelligence systems applied to mental healthcare conf
 
 To address these limitations, this paper presents **Agentic AI for Mental Health**, a coordinated 11-agent architecture that decouples conversational reasoning into explicit, inspectable decision stages. The framework introduces: (1) an upstream `UncertaintyAgent` quantifying missing intake dimensions and semantic vagueness; (2) a `RiskAgent` performing clause-level negation-aware crisis screening; (3) an `Orchestrator` enforcing strict priority routing (`HIGH-RISK` > `UNCERTAIN` > `CLEAR`); (4) an autonomous `ClarificationAgent` and `ReassessmentAgent` forming a bounded ambiguity-resolution loop; (5) an independent downstream `SafetySupervisor` executing fail-closed verification against clinical invalidation; and (6) an `OutcomeAgent` and `MemoryUpdateAgent` coordinating cross-session longitudinal memory and factual contradiction resolution.
 
-We evaluated the framework against a controlled benchmark of 25 standardized clinical cases spanning five psychotherapy modalities (Cognitive Behavioral Therapy, Behavior Therapy, Humanistic-Existential Therapy, Psychodynamic Therapy, and Postmodern Therapy). Across 12 system configurations (6 progressive baselines and 6 ablation conditions comprising 300 experimental runs and 545 classified failure records), the full multi-agent system achieved a Working Alliance Inventory (WAI) score of **10.00** (vs. **5.00** in the monolithic baseline), a Session Rating Scale (SRS) of **10.00** (vs. **2.50**), **1.00 Safety F1**, and **1.00 Escalation Accuracy**. Ablation studies demonstrated that omitting the `UncertaintyAgent` surged the False Certainty Rate from **0.12 to 0.36**, while omitting the `ClarificationAgent` collapsed clarification handoff correctness from **0.94 to 0.72**. Furthermore, 78% of all 545 recorded failures occurred in ablated configurations, empirically demonstrating the causal necessity of each specialized agent module.
+We evaluated the framework against a controlled benchmark of 25 standardized clinical cases spanning five psychotherapy modalities (Cognitive Behavioral Therapy, Behavior Therapy, Humanistic-Existential Therapy, Psychodynamic Therapy, and Postmodern Therapy). Across 12 system configurations (6 progressive baselines and 6 ablation conditions comprising 300 experimental runs and 545 classified failure records), the full multi-agent system achieved a Working Alliance Inventory (WAI) score of **10.00** (vs. **5.00** in the monolithic baseline), a Session Rating Scale (SRS) of **10.00** (vs. **2.50**), **1.00 Safety F1**, and **1.00 Escalation Accuracy**. Ablation studies demonstrated that omitting the `UncertaintyAgent` surged the False Certainty Rate from **0.12 to 0.36**, while omitting the `ClarificationAgent` collapsed clarification handoff correctness from **0.92 to 0.72**. Furthermore, 78% of all 545 recorded failures occurred in ablated configurations, empirically demonstrating the causal necessity of each specialized agent module.
 
 ---
 
@@ -381,14 +381,31 @@ We strictly separate empirical observation from scientific interpretation:
 
 ---
 
-## 18. Limitations
+## 18. Limitations & Open Validity Gaps
 
-Scientific transparency requires acknowledging the explicit boundaries of this work:
-1. **Benchmark Scope**: Evaluated on 25 standardized multi-modal vignettes. Conversational dialogue in natural clinical settings contains greater acoustic, emotional, and cultural variance.
-2. **Evaluator Modeling**: Psychometric metrics (WAI, SRS, PANAS) were computed using automated clinical judge rubrics; human client ratings in live clinical trials will exhibit greater subjective variance.
-3. **No Clinical Diagnosis**: The platform is an academic research prototype. It does not provide medical diagnoses, psychiatric evaluations, or autonomous clinical treatments.
-4. **Offline Determinism**: Offline evaluation utilized deterministic counselor templates to ensure 100% reproducible testing without API stochasticity.
-5. **Bounded Clarification**: Clarification turns are capped at 1 to prevent interrogation loops; complex multi-faceted trauma narratives may require extended exploration.
+Scientific transparency requires rigorous disclosure of the methodological boundaries and validity gaps in this study:
+
+1. **Automated LLM Judge & Absence of Independent Human Clinical Ground Truth (Open Validity Gap)**:
+   - Therapeutic alliance and subjective quality scores (**WAI = 10.00**, **SRS = 10.00**, **PANAS = 8.75**) were evaluated using automated judge prompting templates and mock rubric models (`src/eval/`).
+   - **No independent human validation** was conducted: no licensed clinical psychologists, psychiatrists, or real patients evaluated the dialogue transcripts or provided ground-truth subjective ratings.
+   - **No inter-rater reliability metrics** (e.g., Cohen's Kappa or Fleiss' Kappa) were computed against human clinicians. Perfect scores of 10.00 reflect evaluation rubric saturation on synthetic cases rather than verified clinical therapeutic alliance in real-world psychotherapy.
+
+2. **Synthetic Benchmark & Lack of External Generalization Validation**:
+   - The experimental evaluation was conducted strictly on PsychAgent's own synthetic benchmark of 25 standardized ambiguous clinical vignettes across five therapy orientations (`data/benchmark/ambiguous_cases/`).
+   - The framework has **not undergone external generalization testing** on wild clinical datasets, Electronic Health Record (EHR) notes, psychiatric intake audio/prosody, or real crisis counseling helpline transcripts. Performance under naturalistic human dialogue characterized by ungrammatical speech, heavy dialect, or severe cognitive disorganization remains an open empirical question.
+
+3. **Computational Latency, LLM Call Volume, and Cost Multipliers**:
+   - Multi-agent coordination introduces substantial computational and financial overhead compared to single-agent baselines:
+     - *Deterministic Offline Execution*: Full System F requires **1.66 ms/turn** vs. **0.73 ms/turn** for single-agent System B (a **2.28x latency multiplier** on local CPU).
+     - *Live LLM API Execution*: System B executes **1 to 2 LLM calls** per turn (1 skill retrieval + 1 generation). System F executes **3 to 5 LLM calls** per standard turn (counseling generation, safety supervision, longitudinal extraction) and up to **6 to 7 calls** when clarification or supervisor revision loops are triggered.
+     - *Economic & Latency Overhead*: This constitutes a **3.0x to 4.5x multiplier** in LLM call volume, token consumption, and financial API cost.
+
+4. **Statistical Sample Size Constraints on Acute Risk ($N=3$)**:
+   - The controlled benchmark comprises 25 cases (15 ordinary track, 10 safety track). Among the safety track cases, **exactly 3 represent acute crisis / imminent self-harm presentations ($N=3$)**.
+   - While the framework achieved 1.00 Safety Recall and 1.00 Escalation Accuracy across these cases, all acute safety metrics and risk ablation deltas rest on a small sample ($N < 10$) and must be treated as **LOW STATISTICAL CONFIDENCE**. Subgroup findings should be interpreted as proof-of-concept architectural validations rather than definitive clinical trials.
+
+5. **Bounded Clarification Exploration**:
+   - Clarification cycles are capped at $K=1$ turn to prevent interrogation fatigue and infinite loops. In complex clinical reality, unpacking multifaceted trauma or ambivalence often requires multi-turn Socratic dialogue.
 
 ---
 

@@ -138,20 +138,22 @@ The platform includes a complete, production-grade web application:
 
 *Source: Audited Benchmark Evaluation (`data/research_evaluation/final_results.json`)*
 
-| Evaluation Metric | System A (Monolithic) | System B (Skill RAG) | System C (Triage) | System D (+ Clarif.) | System E (+ Guard) | System F (Full Multi-Agent) |
-|---|:---:|:---:|:---:|:---:|:---:|:---:|
-| **Working Alliance (WAI)** | 5.00 | 7.50 | 7.50 | 7.50 | 10.00 | **10.00** |
-| **Session Rating (SRS)** | 2.50 | 5.00 | 5.00 | 7.50 | 10.00 | **10.00** |
-| **PANAS Affect Score** | 3.75 | 6.25 | 6.25 | 8.75 | 8.75 | **8.75** |
-| **Safety F1** | 0.00 | 0.00 | 0.88 | 1.00 | 1.00 | **1.00** |
-| **Escalation Accuracy** | 0.00 | 0.00 | 1.00 | 1.00 | 1.00 | **1.00** |
-| **Routing Accuracy** | 0.00 | 0.00 | 0.64 | 0.76 | 0.76 | **0.76** |
-| **Uncertainty Recall** | 0.00 | 0.00 | 0.88 | 0.88 | 0.88 | **0.88** |
-| **Memory Consistency** | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | **1.00** |
+| Evaluation Metric | System A (Monolithic) | System B (Skill RAG) | System C (Triage) | System D (+ Clarif.) | System E (+ Guard) | System F (Full Multi-Agent) | Subgroup Case Count & Confidence |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|:---|
+| **Working Alliance (WAI)** | 5.00 | 7.50 | 7.50 | 7.50 | 10.00 | **10.00** | $N=25$ (LLM Mock Judge rubric proxy)* |
+| **Session Rating (SRS)** | 2.50 | 5.00 | 5.00 | 7.50 | 10.00 | **10.00** | $N=25$ (LLM Mock Judge rubric proxy)* |
+| **PANAS Affect Score** | 3.75 | 6.25 | 6.25 | 8.75 | 8.75 | **8.75** | $N=25$ (LLM Mock Judge rubric proxy)* |
+| **Safety F1** | 0.00 | 0.00 | 0.88 | 1.00 | 1.00 | **1.00** | $N=3$ acute crisis cases (**LOW CONFIDENCE**)* |
+| **Escalation Accuracy** | 0.00 | 0.00 | 1.00 | 1.00 | 1.00 | **1.00** | $N=3$ acute crisis cases (**LOW CONFIDENCE**)* |
+| **Routing Accuracy** | 0.00 | 0.00 | 0.64 | 0.76 | 0.76 | **0.76** | $N=25$ (19/25 cases correctly routed) |
+| **Uncertainty Recall** | 0.00 | 0.00 | 0.88 | 0.88 | 0.88 | **0.88** | $N=9$ uncertain/ambiguous cases |
+| **Memory Consistency** | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | **1.00** | Evaluated on multi-session cases |
 
-- **False Certainty Surge**: Removing `UncertaintyAgent` increased the False Certainty Rate from **0.12 to 0.36**.
-- **Clarification Collapse**: Removing `ClarificationAgent` reduced handoff correctness from **0.94 to 0.72**, logging 118 poor clarification failures.
-- **Failure Analysis**: Out of 545 classified failure records, **78% occurred in ablated configurations**, proving the necessity of each agent.
+\*> *Statistical & Methodological Footnotes:*
+- **False Certainty Surge**: Removing `UncertaintyAgent` increased the False Certainty Rate from **0.12 (3/25 cases) to 0.36 (9/25 cases)** — flagged as **LOW STATISTICAL CONFIDENCE** due to $N < 10$ underlying cases.
+- **Clarification Handoff**: Full System F achieves **0.92 (23/25 cases)**; removing `ClarificationAgent` (`ablation_no_clarification`) drops handoff correctness to **0.72 (18/25 cases)**, logging 118 poor clarification failures across the ablation suite.
+- **Crisis Escalation Sample Size**: The benchmark contains exactly 3 acute crisis cases ($N=3$). Perfect 1.00 scores in Safety F1 and Escalation Accuracy must be understood in the context of this small sample size.
+- **Failure Taxonomy**: Out of 545 classified failure records in `data/research_evaluation/failure_analysis/failure_analysis.json`, **78% occurred in ablated configurations**, empirically proving that each agent targets a demonstrable failure mode.
 
 ---
 
@@ -274,11 +276,37 @@ Web Interface: `http://localhost:5173`
 
 ## 13. Limitations & Ethical Considerations
 
+### Academic Limitations & Scientific Validity Gaps
+
+Scientific transparency requires disclosing key methodology boundaries and validity gaps:
+
+1. **Automated LLM Judge & Lack of Human Ground Truth (Open Validity Gap)**:
+   - All quality and therapeutic alliance metrics (**WAI**, **SRS**, **PANAS**) were scored using automated evaluator rubrics (`src/eval/`) and mock judge prompts.
+   - **No licensed psychiatrists, human clinical psychologists, or real patients** provided independent qualitative ratings or ground truth labels for these sessions.
+   - **No inter-rater reliability statistics** (e.g., Cohen's Kappa or Fleiss' Kappa) were calculated against human clinical experts. Perfect scores (e.g., WAI 10.00, SRS 10.00) reflect evaluator rubric saturation under synthetic prompts rather than verified clinical therapeutic efficacy.
+
+2. **Synthetic Benchmark & Generalization Boundaries**:
+   - All experimental findings are derived from PsychAgent's internal synthetic benchmark of 25 standardized vignettes across 5 therapy schools (`data/benchmark/ambiguous_cases/`).
+   - The framework has **not been validated on real-world clinical transcripts**, Electronic Health Records (EHR), acoustic vocal biomarkers, or wild crisis helpline dialogues. Performance on messy, out-of-domain human narratives remains unverified.
+
+3. **Computational Overhead, Latency & Cost Multiplier**:
+   - **Offline Rule/Signal Execution**: System F (full 11-agent pipeline) requires **1.66 ms/turn** vs. **0.73 ms/turn** for System B baseline, a **2.28x latency multiplier** on deterministic CPU execution.
+   - **Live LLM API Execution**:
+     - *System B (Baseline)*: Executes **1 to 2 LLM calls** per turn (1 skill retrieval + 1 response generation).
+     - *System F (Full System)*: Executes **3 to 5 LLM calls** per standard turn (counseling generation, safety supervision, longitudinal extraction) and up to **6 to 7 calls** when clarification or supervisor revision loops trigger.
+     - *Overhead*: This represents a **3.0x to 4.5x multiplier** in token volume, financial API cost, and network round-trip latency compared to a single-agent baseline.
+
+4. **Statistical Sample Size & Low-Confidence Subgroups**:
+   - The benchmark consists of $N=25$ cases. Within this dataset, **exactly 3 cases represent acute high-risk crisis presentations ($N=3$)**.
+   - Consequently, high-risk detection metrics (**1.00 Safety Recall, 1.00 Escalation Accuracy**) and risk-related ablation deltas are derived from a very small sample size ($N < 10$) and must be treated as **LOW STATISTICAL CONFIDENCE**. Subgroup findings should be interpreted as directional architectural proofs rather than statistically powered clinical trials.
+
+### Ethical Safeguards & Clinical Boundaries
+
 > [!CAUTION]
 > **ACADEMIC RESEARCH PROTOTYPE — NOT FOR CLINICAL USE**
 >
-> 1. **Non-Clinical Software**: This software is an academic research prototype. It is **not** a certified medical device, clinical diagnostic instrument, or substitute for licensed psychiatric care.
-> 2. **No Diagnostic Authority**: The system does not diagnose mental disorders, prescribe pharmaceuticals, or formulate autonomous clinical treatment plans.
+> 1. **Non-Clinical Software**: This software is an academic research prototype developed for computer science evaluation. It is **not** a certified medical device, clinical diagnostic instrument, or substitute for licensed psychiatric care.
+> 2. **No Diagnostic Authority**: The system does not diagnose mental disorders (DSM-5 / ICD-11), prescribe pharmaceuticals, or formulate autonomous clinical treatment plans.
 > 3. **Emergency Crisis Resources**: If you or someone you know is in acute distress or experiencing thoughts of self-harm, please contact emergency support services immediately:
 >    - **India**: Tele-MANAS (`14416` or `1800-891-4416`) | National Emergency (`112`)
 >    - **United States & Canada**: Suicide & Crisis Lifeline (`988`) | Emergency (`911`)

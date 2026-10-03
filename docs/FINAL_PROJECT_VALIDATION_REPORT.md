@@ -324,13 +324,13 @@ Empirical findings from the 6 systematic ablation conditions in `data/eval_outpu
 
 ## 17. Structured Failure Analysis & Error Taxonomy
 
-Extracted from `data/eval_outputs_multi_agent/failure_analysis.json` (609 total documented failures):
+Extracted from canonical audited failure taxonomy `data/research_evaluation/failure_analysis/failure_analysis.json` (545 total documented failures across 12 configurations; 78% in ablated models):
 
-1. **Incorrect Routing (126 occurrences)**: Occurred when dynamic routing was bypassed or disabled, routing cases statically to N/A.
-2. **Poor Clarification (104 occurrences)**: Occurred in ablated configurations where uncertainty was flagged but no clarification question was generated.
-3. **Missed Uncertainty (99 occurrences)**: Occurred when the Uncertainty Agent was disabled, proceeding under false completeness.
-4. **False Certainty (90 occurrences)**: Occurred when placeholder strings masked unpopulated intake fields. Resolved by adding `_is_placeholder()` in MemoryAgent.
-5. **Agent Disagreement (44 occurrences)**: Occurred when Orchestrator priority rules were ambiguous. Resolved by establishing strict priority hierarchy: HIGH-RISK > UNCERTAIN > CLEAR.
+1. **Poor Clarification (118 occurrences)**: Occurred in ablated configurations where uncertainty was flagged but no clarification inquiries were generated.
+2. **False Certainty (108 occurrences)**: Occurred when placeholder strings or unverified fields masked missing intake dimensions. Resolved by adding `_is_placeholder()` in MemoryAgent.
+3. **Incorrect Routing (81 occurrences)**: Occurred when dynamic routing was bypassed or disabled, forcing static execution.
+4. **Missed Uncertainty (75 occurrences)**: Occurred when the Uncertainty Agent was disabled, proceeding under false completeness.
+5. **Supervisor Failure (36 occurrences)**: Occurred in uninspected configurations lacking downstream supervision.
 
 ---
 

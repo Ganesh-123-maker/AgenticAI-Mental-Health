@@ -22,7 +22,7 @@ We evaluated **12 distinct system configurations** to test whether a coordinated
 ## 2. Why Was It Compared?
 
 In AI for mental health, a common skepticism from professors and clinicians is:
-> *"Why build a complex 10-agent system when you can just prompt a single large language model?"*
+> *"Why build a complex 11-agent system when you can just prompt a single large language model?"*
 
 This experiment directly tests the hypothesis that **explicit modular decision-making**—separating uncertainty assessment, risk triage, clarification, clinical counseling, and safety supervision—solves critical failure modes (such as hallucinations, missed crisis signals, and conversational drift) that monolithic systems cannot reliably avoid.
 

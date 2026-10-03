@@ -200,7 +200,7 @@ Strict multi-tenant / multi-client data segregation was verified (Category P):
 
 ## 14. Agent Execution Results
 
-Every turn executed the complete 10-agent pipeline:
+Every turn executed the complete 11-agent pipeline:
 
 $$\text{MemoryAgent} \longrightarrow \text{StateAgent} \longrightarrow \begin{matrix} \text{UncertaintyAgent} \\ \text{RiskAgent} \end{matrix} \longrightarrow \text{Orchestrator} \longrightarrow \begin{matrix} \text{ClarificationAgent} \\ \text{ReassessmentAgent} \end{matrix} \longrightarrow \text{CounselingAgent} \longrightarrow \text{SafetySupervisor} \longrightarrow \text{OutcomeAgent} \longrightarrow \text{MemoryUpdateAgent}$$
 

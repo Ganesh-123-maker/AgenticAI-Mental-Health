@@ -154,12 +154,13 @@ From our 6 ablation conditions:
 
 ### Q16: How many failures were analyzed in your error taxonomy, and what were the top categories?
 **Answer**:  
-We analyzed **609 structured failures** in `data/eval_outputs_multi_agent/failure_analysis.json`:
-1. *Incorrect Routing* (126 cases): Occurred when dynamic routing was disabled.
-2. *Poor Clarification* (104 cases): Occurred in ablated configurations lacking clarification inquiries.
-3. *Missed Uncertainty* (99 cases): Occurred when UncertaintyAgent was ablated.
-4. *False Certainty* (90 cases): Caused by unpopulated intake placeholder values.
-5. *Agent Disagreement* (44 cases): Resolved by formalizing priority hierarchy in Orchestrator.
+We analyzed **545 structured failures** in the canonical audited failure taxonomy (`data/research_evaluation/failure_analysis/failure_analysis.json`):
+1. *Poor Clarification* (118 cases): Occurred in ablated configurations lacking targeted clarification inquiries.
+2. *False Certainty* (108 cases): Caused by unpopulated intake placeholder values and premature assertions of certainty.
+3. *Incorrect Routing* (81 cases): Occurred when dynamic orchestration was disabled or bypassed.
+4. *Missed Uncertainty* (75 cases): Occurred when UncertaintyAgent was ablated or bypassed.
+5. *Supervisor Failure* (36 cases): Occurred in uninspected configurations lacking downstream supervision.
+(Crucially, 78% of all 545 recorded failures occurred in ablated configurations, empirically proving the causal necessity of each agent module.)
 
 ---
 
