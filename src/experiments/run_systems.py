@@ -531,14 +531,16 @@ async def evaluate_case(
             except Exception as e:
                 logger.debug(f"Longitudinal eval skipped: {e}")
     else:
-        # Baselines without multi-agent trail
+        # Baselines without multi-agent trail: layer-2 multi-agent metrics are
+        # NOT APPLICABLE (not 0.0). A missing orchestrator route must not be
+        # reported as "0% routing accuracy".
         l2_metrics.update({
-            "routing_accuracy": 0.0,
-            "unnecessary_invocation_rate": 0.0,
-            "handoff_correctness": 0.0,
-            "uncertainty_f1": 0.0,
-            "safety_f1": 0.0,
-            "escalation_accuracy": 0.0,
+            "routing_accuracy": None,
+            "unnecessary_invocation_rate": None,
+            "handoff_correctness": None,
+            "uncertainty_f1": None,
+            "safety_f1": None,
+            "escalation_accuracy": None,
         })
 
     return {
@@ -547,8 +549,14 @@ async def evaluate_case(
     }
 
 
-def aggregate_metrics(case_eval_list: List[Dict[str, Any]]) -> Dict[str, float]:
-    aggregated: Dict[str, float] = {}
+def aggregate_metrics(case_eval_list: List[Dict[str, Any]]) -> Dict[str, Any]:
+    """Aggregate per-case metrics, skipping None (not-applicable) values.
+
+    Each aggregate is the mean over cases where the metric was actually
+    measured. ``n_cases`` records how many cases were aggregated; per-metric
+    counts may be smaller when a metric is not applicable to some cases.
+    """
+    aggregated: Dict[str, Any] = {}
     all_keys = set()
     for item in case_eval_list:
         all_keys.update(item.get("layer1", {}).keys())
@@ -557,12 +565,13 @@ def aggregate_metrics(case_eval_list: List[Dict[str, Any]]) -> Dict[str, float]:
     for k in sorted(all_keys):
         vals = []
         for item in case_eval_list:
-            if k in item.get("layer1", {}):
-                vals.append(item["layer1"][k])
-            elif k in item.get("layer2", {}):
-                vals.append(item["layer2"][k])
+            v = item.get("layer1", {}).get(k, item.get("layer2", {}).get(k))
+            if v is not None:
+                vals.append(v)
         if vals:
             aggregated[k] = round(sum(vals) / len(vals), 4)
+            aggregated[f"{k}_n"] = len(vals)
+    aggregated["n_cases"] = len(case_eval_list)
     return aggregated
 
 
@@ -688,28 +697,32 @@ async def main_async(args: argparse.Namespace) -> None:
     print(header_fmt.format(*headers))
     print("-" * 120)
 
+    def _fmt(v: Any) -> str:
+        # Not-applicable metrics (None) render as N/A, never as 0.00.
+        return "N/A" if v is None else f"{v:.2f}"
+
     for sys_name, agg in all_summaries.items():
-        panas_val = agg.get("PANAS", 0.0)
-        srs_val = agg.get("SRS", 0.0)
-        wai_val = agg.get("WAI", 0.0)
-        route_acc = agg.get("routing_accuracy", 0.0)
-        unc_f1 = agg.get("uncertainty_f1", 0.0)
-        clar_rel = agg.get("clarification_relevance", 0.0)
-        safe_f1 = agg.get("safety_f1", 0.0)
-        esc_acc = agg.get("escalation_accuracy", 0.0)
-        mem_cons = agg.get("memory_consistency", 0.0)
+        panas_val = agg.get("PANAS")
+        srs_val = agg.get("SRS")
+        wai_val = agg.get("WAI")
+        route_acc = agg.get("routing_accuracy")
+        unc_f1 = agg.get("uncertainty_f1")
+        clar_rel = agg.get("clarification_relevance")
+        safe_f1 = agg.get("safety_f1")
+        esc_acc = agg.get("escalation_accuracy")
+        mem_cons = agg.get("memory_consistency")
 
         print(header_fmt.format(
             sys_name,
-            f"{panas_val:.2f}",
-            f"{srs_val:.2f}",
-            f"{wai_val:.2f}",
-            f"{route_acc:.2f}",
-            f"{unc_f1:.2f}",
-            f"{clar_rel:.2f}",
-            f"{safe_f1:.2f}",
-            f"{esc_acc:.2f}",
-            f"{mem_cons:.2f}",
+            _fmt(panas_val),
+            _fmt(srs_val),
+            _fmt(wai_val),
+            _fmt(route_acc),
+            _fmt(unc_f1),
+            _fmt(clar_rel),
+            _fmt(safe_f1),
+            _fmt(esc_acc),
+            _fmt(mem_cons),
         ))
     print("=" * 120)
 

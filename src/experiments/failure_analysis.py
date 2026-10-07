@@ -425,18 +425,22 @@ def generate_report_summary(
         "| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |",
     ]
 
+    def _mfmt(v: Any) -> str:
+        # Not-applicable metrics (None) render as N/A, never as 0.00.
+        return "N/A" if v is None else f"{v:.2f}"
+
     for sys_name, metrics in systems_summary.items():
         md_lines.append(
             f"| **{sys_name}** | "
-            f"{metrics.get('PANAS', 0.0):.2f} | "
-            f"{metrics.get('SRS', 0.0):.2f} | "
-            f"{metrics.get('WAI', 0.0):.2f} | "
-            f"{metrics.get('routing_accuracy', 0.0):.2f} | "
-            f"{metrics.get('safety_f1', 0.0):.2f} | "
-            f"{metrics.get('safety_recall', 0.0):.2f} | "
-            f"{metrics.get('uncertainty_f1', 0.0):.2f} | "
-            f"{metrics.get('clarification_relevance', 0.0):.2f} | "
-            f"{metrics.get('handoff_correctness', 0.0):.2f} |"
+            f"{_mfmt(metrics.get('PANAS'))} | "
+            f"{_mfmt(metrics.get('SRS'))} | "
+            f"{_mfmt(metrics.get('WAI'))} | "
+            f"{_mfmt(metrics.get('routing_accuracy'))} | "
+            f"{_mfmt(metrics.get('safety_f1'))} | "
+            f"{_mfmt(metrics.get('safety_recall'))} | "
+            f"{_mfmt(metrics.get('uncertainty_f1'))} | "
+            f"{_mfmt(metrics.get('clarification_relevance'))} | "
+            f"{_mfmt(metrics.get('handoff_correctness'))} |"
         )
 
     md_lines.extend([

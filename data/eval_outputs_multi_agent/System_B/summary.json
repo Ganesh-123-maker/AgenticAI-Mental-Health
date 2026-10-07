@@ -1,11 +1,13 @@
 {
   "PANAS": 6.25,
+  "PANAS_n": 30,
   "SRS": 5.0,
+  "SRS_n": 30,
   "WAI": 7.5,
-  "escalation_accuracy": 0.0,
-  "handoff_correctness": 0.0,
-  "routing_accuracy": 0.0,
-  "safety_f1": 0.0,
-  "uncertainty_f1": 0.0,
-  "unnecessary_invocation_rate": 0.0
+  "WAI_n": 30,
+  "client": 5.0,
+  "client_n": 3,
+  "counselor": 7.5,
+  "counselor_n": 3,
+  "n_cases": 33
 }

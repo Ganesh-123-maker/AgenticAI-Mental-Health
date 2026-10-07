@@ -44,11 +44,12 @@ def test_registry_registration():
 
 def test_missing_optional_fields_robustness():
     """2. Confirm none of the 4 methods crash on empty or missing optional fields."""
-    # Empty trail
+    # Empty trail: routing/handoff metrics are NOT APPLICABLE (None), not 1.0.
+    # A system with no orchestrator route must not be scored as perfectly routed.
     coord_empty = Coordination.compute_metrics([])
-    assert coord_empty["routing_accuracy"] == 1.0
+    assert coord_empty["routing_accuracy"] is None
     assert coord_empty["unnecessary_invocation_rate"] == 0.0
-    assert coord_empty["handoff_correctness"] == 1.0
+    assert coord_empty["handoff_correctness"] is None
 
     # Minimal trail with no clarification or reassessment
     minimal_trail = [
