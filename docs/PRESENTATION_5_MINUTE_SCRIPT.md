@@ -47,10 +47,10 @@ When user input enters:
 ### 3:30 – 4:15 | Audited Results
 "Our audited findings confirm our hypothesis:
 - **Therapeutic Alliance**: Working Alliance Inventory (WAI) doubled from **5.00** in monolithic System A to **10.00** in our full system, while Session Rating Scale improved from **2.50 to 10.00**.
-- **Safety**: Safety F1 and Escalation Accuracy reached **1.00** in System F versus **0.00** in un-augmented baselines.
+- **Safety**: Safety F1 and Escalation Accuracy reached **1.00** in System F. Un-augmented baselines (Systems A/B) produce no multi-agent trail, so these metrics are **not applicable (N/A)** to them — not 0%.
 - **Epistemic Humility**: When the `UncertaintyAgent` was ablated, the False Certainty Rate surged from **0.12 to 0.36**.
-- **Clarification**: When the `ClarificationAgent` was ablated, handoff correctness collapsed from **0.94 to 0.72**, with 118 poor clarification failures logged.
-- **Failure Taxonomy**: 78% of all 545 recorded failures occurred in ablated configurations, proving the causal necessity of each agent."
+- **Clarification**: When the `ClarificationAgent` was ablated, handoff correctness fell from **0.92 to 0.72**, with 25 'poor clarification' failures logged for that configuration.
+- **Failure Taxonomy**: Of all 545 recorded failure entries, 44.4% occurred in ablated configurations (242 of 545)."
 
 ---
 

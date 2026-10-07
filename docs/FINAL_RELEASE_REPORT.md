@@ -31,16 +31,16 @@
 
 1. **Therapeutic Working Alliance (WAI)**: Increased from **5.00** (Monolithic System A) to **10.00** (Full Multi-Agent System F).
 2. **Session Rating Scale (SRS)**: Improved from **2.50** (System A) to **10.00** (System F).
-3. **Safety F1 & Recall**: Achieved **1.00** in System F versus **0.00** in un-augmented baselines.
+3. **Safety F1 & Recall**: Achieved **1.00** in System F. Un-augmented baselines (Systems A/B) produce no multi-agent trail, so these metrics are **not applicable (N/A)** to them — not 0.00.
 4. **Escalation Accuracy**: **1.00** in System F, delivering verified emergency resources (Tele-MANAS `14416` and 988 Lifeline).
 5. **Epistemic Uncertainty Calibration**:
-   - Uncertainty Recall: **0.88** (audit benchmark) / **0.92** (extended).
-   - False Certainty Rate: Surges threefold from **0.12 to 0.36** when `UncertaintyAgent` is ablated.
+   - Uncertainty Recall: **0.88** (N=25) / **0.88** (N=33).
+   - False Certainty Rate: Surges threefold from **0.12 to 0.36** when `UncertaintyAgent` is ablated (N=25; 0.12 → 0.39 at N=33).
 6. **Clarification Resolution**:
-   - Handoff Correctness: Collapses from **0.94 to 0.72** when `ClarificationAgent` is ablated.
-   - Poor Clarification Failures: 118 cases logged in ablated models.
-7. **Longitudinal Memory Consistency**: Achieved **1.00** in System F vs. **0.00** in non-longitudinal baselines, successfully updating factual sleep contradictions across sessions.
-8. **Failure Taxonomy (545 Cases)**: **78% of all recorded failures occurred in ablated configurations**, empirically proving the causal necessity of each agent.
+   - Handoff Correctness: Drops from **0.92 to 0.72** when `ClarificationAgent` is ablated.
+   - Poor Clarification Failures: 25 logged for the ablated configuration (118 is the cross-system total).
+7. **Longitudinal Memory Consistency**: Achieved **1.00** in System F (not measured for non-longitudinal baselines, so N/A there), successfully updating factual sleep contradictions across sessions.
+8. **Failure Taxonomy (545 Cases)**: **44.4% of all recorded failures occurred in ablated configurations** (242 of 545), consistent with each agent's necessity.
 
 ---
 

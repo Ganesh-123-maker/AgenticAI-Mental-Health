@@ -160,12 +160,12 @@
 ---
 
 ## Slide 16: Failure Analysis & Error Taxonomy (545 Cases)
-- **Top Failure Categories Analyzed**:
-  1. Poor Clarification (118 cases) — Ablated clarification inquiries.
-  2. False Certainty (108 cases) — Monolithic assumption of completeness without uncertainty verification.
-  3. Incorrect Routing (81 cases) — When dynamic routing was bypassed.
-  4. Missed Uncertainty (75 cases) — Informational gaps ignored by un-routed baselines.
-  5. Supervisor Failure (36 cases) — Unsupervised high-risk drafts in supervisor ablations.
+- **Top Failure Categories Analyzed** (cross-system totals across all 12 configurations; per-ablation counts are smaller — see `docs/RESEARCH_CLAIMS.md`):
+  1. Poor Clarification (118 cases)
+  2. False Certainty (108 cases)
+  3. Incorrect Routing (81 cases)
+  4. Missed Uncertainty (75 cases)
+  5. Supervisor Failure (36 cases)
 - **Presenter Notes**: Open, honest scientific discussion of system failure modes.
 
 ---
@@ -246,23 +246,23 @@
 ### Risk and Safety
 - Full system (System F) achieved **1.00 Safety F1** and **1.00 Safety Recall** with zero false positive alarms on negated risk statements.
 - Disabling `RiskAgent` (`ablation_no_risk`) reduced Safety F1 to **0.88**, missing acute suicidal intent.
-- Disabling `SafetySupervisor` (`ablation_no_safety_supervisor`) resulted in **36 supervisor failures** and **16 unsafe response failures**, allowing high-risk drafts to reach the client unverified.
+- Disabling `SafetySupervisor` (`ablation_no_safety_supervisor`) left **3 'supervisor failure'** and **3 'unsafe response'** entries in the failure log for that configuration (36 and 16 are cross-system totals), allowing high-risk drafts to reach the client unverified.
 
 ### Clarification
 - System F achieved **0.48 Clarification Relevance** and **0.94 Handoff Correctness**, dynamically resolving missing antecedent events.
-- Disabling `ClarificationAgent` (`ablation_no_clarification`) generated **118 poor clarification failures**, leaving the pipeline paralyzed in the `UNCERTAIN` route and dropping handoff correctness from 0.94 to **0.62**.
+- Disabling `ClarificationAgent` (`ablation_no_clarification`) generated **25 'poor clarification'** failure entries for that configuration (118 is the cross-system total), leaving the pipeline in the `UNCERTAIN` route and dropping handoff correctness from 0.92 to **0.72**.
 
 ### Longitudinal Memory
 - System F achieved **1.00 Memory Consistency**, **1.00 Cross-Session Coherence**, and **1.00 Goal Consistency** via `PublicMemory`, `OutcomeAgent`, and `MemoryUpdateAgent`.
 - Single-session baselines and `ablation_no_longitudinal` scored 0.00 on cross-session updates and logged **25 longitudinal inconsistency failures**.
 
 ### Failure Analysis
-- Automated failure auditing of 12 configurations logged **545 structured failure records**:
-  - Poor Clarification: 118 cases (ablation of clarification agent).
-  - False Certainty: 108 cases (ablation of uncertainty agent).
-  - Incorrect Routing: 81 cases (un-routed baselines and routing ablation).
-  - Missed Uncertainty: 75 cases (monolithic baseline assumptions).
-  - Supervisor Failure: 36 cases (ablation of safety supervisor).
+- Automated failure auditing of 12 configurations logged **545 structured failure records** (cross-system totals; per-configuration counts are smaller):
+  - Poor Clarification: 118 cases.
+  - False Certainty: 108 cases.
+  - Incorrect Routing: 81 cases.
+  - Missed Uncertainty: 75 cases.
+  - Supervisor Failure: 36 cases.
   - Memory & Longitudinal Inconsistency: 50 cases (ablation of longitudinal memory).
   - Unsafe Response: 16 cases (lack of safety supervisor review).
   - Missed Risk: 12 cases (ablation of risk agent).

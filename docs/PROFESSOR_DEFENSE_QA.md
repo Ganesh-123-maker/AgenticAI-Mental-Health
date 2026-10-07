@@ -36,7 +36,7 @@ The Orchestrator enforces strict clinical priority rules:
 1. `HIGH-RISK` strictly overrides all other branches, immediately routing to crisis escalation.
 2. `UNCERTAIN` takes precedence over therapeutic intervention, preventing premature counseling.
 3. `CLEAR` is only reached when both risk is low and context is verified.  
-In our ablation study (`ablation_no_routing`), disabling dynamic orchestration caused routing accuracy to collapse from **0.76 to 0.64** and produced **81 incorrect routing failures**.
+In our ablation study (`ablation_no_routing`), disabling dynamic orchestration caused routing accuracy to drop from **0.76 to 0.64** and produced **9 routing-related failure entries** for that configuration (81 is the cross-system total across all 12 configurations).
 
 ---
 
@@ -185,7 +185,7 @@ Safety was evaluated via:
 
 ### Q20: What were the major failure modes?
 **Answer**:  
-Across 300 runs, **545 failure records** were identified in our failure analysis taxonomy (`data/research_evaluation/failure_analysis/`):
+Across 300 runs, **545 failure records** were identified in our failure analysis taxonomy (`data/research_evaluation/failure_analysis/`). Counts below are cross-system totals (all 12 configurations), not per-ablation counts:
 - *Poor Clarification* (118 cases): Clarification ablated or inquiry too generic.
 - *False Certainty* (108 cases): Uncertainty ablated; system proceeded on unverified assumptions.
 - *Incorrect Routing* (81 cases): Orchestrator ablated; static fallback used.

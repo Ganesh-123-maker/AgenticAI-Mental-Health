@@ -286,24 +286,26 @@ Evaluated across the 10 ambiguous clinical cases in `data/benchmark/ambiguous_ca
 
 ## 15. Quantitative Benchmark Evaluation Results
 
-Empirical results extracted directly from `data/eval_outputs_multi_agent/all_systems_summary.json`:
+Empirical results extracted directly from `data/eval_outputs_multi_agent/all_systems_summary.json` (N=33 cases per system; summaries recomputed from per-case files):
 
 | Metric | System A | System B | System C | System D | System E | **System F (Full)** |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Routing Accuracy** | 0.00 | 0.00 | 0.64 | 0.76 | 0.76 | **0.76** |
-| **Safety F1** | 0.00 | 0.00 | 0.88 | 1.00 | 1.00 | **1.00** |
-| **Safety Recall** | 0.00 | 0.00 | 0.88 | 1.00 | 1.00 | **1.00** |
-| **Uncertainty F1** | 0.00 | 0.00 | 0.48 | 0.48 | 0.48 | **0.48** |
-| **Uncertainty Recall** | 0.00 | 0.00 | 0.92 | 0.92 | 0.92 | **0.92** |
-| **Clarification Relevance**| 0.00 | 0.00 | 0.28 | 0.68 | 0.68 | **0.68** |
-| **Handoff Correctness** | 0.00 | 0.00 | 1.00 | 0.94 | 0.94 | **0.94** |
-| **Reassessment Accuracy** | 0.00 | 0.00 | 1.00 | 1.00 | 1.00 | **1.00** |
+| **Routing Accuracy** | N/A | N/A | 0.61 | 0.70 | 0.70 | **0.70** |
+| **Safety F1** | N/A | N/A | 0.91 | 1.00 | 1.00 | **1.00** |
+| **Safety Recall** | N/A | N/A | 0.91 | 1.00 | 1.00 | **1.00** |
+| **Uncertainty F1** | N/A | N/A | 0.45 | 0.45 | 0.45 | **0.45** |
+| **Uncertainty Recall** | N/A | N/A | 0.88 | 0.88 | 0.88 | **0.88** |
+| **Clarification Relevance**| N/A | N/A | 0.30 | 0.76 | 0.76 | **0.76** |
+| **Handoff Correctness** | N/A | N/A | 1.00 | 0.95 | 0.95 | **0.95** |
+| **Reassessment Accuracy** | N/A | N/A | 1.00 | 1.00 | 1.00 | **1.00** |
 | **Cross-Session Coherence**| N/A | N/A | N/A | N/A | N/A | **1.00** |
 | **Goal Consistency** | N/A | N/A | N/A | N/A | N/A | **1.00** |
 | **Memory Consistency** | N/A | N/A | N/A | N/A | N/A | **1.00** |
 | **PANAS Affect Score** | 3.75 | 6.25 | 6.25 | 8.75 | 8.75 | **8.75** |
 | **Session Rating Scale (SRS)**| 2.50 | 5.00 | 5.00 | 7.50 | 10.00 | **10.00** |
 | **Working Alliance (WAI)**| 5.00 | 7.50 | 7.50 | 7.50 | 10.00 | **10.00** |
+
+*N/A = not applicable: Systems A/B produce no multi-agent trail, so layer-2 metrics cannot be computed for them (previously shown as 0.00, which was a placeholder). Memory/longitudinal metrics were only evaluated for System_F and `ablation_no_longitudinal`.*
 
 ---
 
@@ -313,18 +315,18 @@ Empirical findings from the 6 systematic ablation conditions in `data/eval_outpu
 
 | Ablation Condition | Removed Component | Key Metric Impact | Empirical Finding |
 | :--- | :--- | :--- | :--- |
-| **`ablation_no_uncertainty`** | `UncertaintyAgent` | False Certainty Rate surges from **0.08 → 0.36** | System blindly assumes full information, omitting needed clarifying questions. |
-| **`ablation_no_risk`** | `RiskAgent` | Safety F1 & Recall collapse from **1.00 → 0.88** | Acute crisis presentations bypass detection. |
-| **`ablation_no_clarification`** | `ClarificationAgent` | Handoff Correctness collapses from **0.94 → 0.62** | System remains stuck in UNCERTAIN state without actionable inquiry. |
+| **`ablation_no_uncertainty`** | `UncertaintyAgent` | False Certainty Rate rises from **0.12 → 0.39** | System blindly assumes full information, omitting needed clarifying questions. |
+| **`ablation_no_risk`** | `RiskAgent` | Safety F1 & Recall drop from **1.00 → 0.91** | Acute crisis presentations bypass detection. |
+| **`ablation_no_clarification`** | `ClarificationAgent` | Handoff Correctness drops from **0.95 → 0.64** | System remains stuck in UNCERTAIN state without actionable inquiry. |
 | **`ablation_no_safety_supervisor`**| `SafetySupervisor` | Escalation accuracy fails on crisis responses | Omits critical second-line safety barrier against hallucinations. |
 | **`ablation_no_longitudinal`** | `MemoryUpdateAgent` | Cross-session coherence & goal refinement lost | Multi-session continuity degrades across repeated encounters. |
-| **`ablation_no_routing`** | `Orchestrator` | Routing Accuracy drops from **0.76 → 0.64** | Specialist agents are bypassed, reverting to static execution. |
+| **`ablation_no_routing`** | `Orchestrator` | Routing Accuracy drops from **0.70 → 0.61** | Specialist agents are bypassed, reverting to static execution. |
 
 ---
 
 ## 17. Structured Failure Analysis & Error Taxonomy
 
-Extracted from canonical audited failure taxonomy `data/research_evaluation/failure_analysis/failure_analysis.json` (545 total documented failures across 12 configurations; 78% in ablated models):
+Extracted from canonical audited failure taxonomy `data/research_evaluation/failure_analysis/failure_analysis.json` (545 total documented failures across 12 configurations; 44.4% in ablated configurations):
 
 1. **Poor Clarification (118 occurrences)**: Occurred in ablated configurations where uncertainty was flagged but no clarification inquiries were generated.
 2. **False Certainty (108 occurrences)**: Occurred when placeholder strings or unverified fields masked missing intake dimensions. Resolved by adding `_is_placeholder()` in MemoryAgent.

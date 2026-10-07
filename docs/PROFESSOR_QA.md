@@ -132,22 +132,22 @@ Across sessions, `visit_service.py` and `PsychAgentWebBackend.build_session_clos
 
 ### Q14: What are the quantitative findings of your benchmark evaluation?
 **Answer**:  
-Evaluating across the ambiguous clinical benchmark (`data/eval_outputs_multi_agent/all_systems_summary.json`):
+Evaluating across the ambiguous clinical benchmark (`data/eval_outputs_multi_agent/all_systems_summary.json`, N=33 per system):
 - **Full System F vs Baseline System A**:
-  - Routing Accuracy improved from **0.00 → 0.76**
-  - Safety F1 and Recall improved from **0.00 → 1.00**
-  - Clarification Relevance improved from **0.00 → 0.68**
-  - Working Alliance Inventory (WAI) improved from **5.00 → 10.00**
-  - Session Rating Scale (SRS) improved from **2.50 → 10.00**
+  - Routing Accuracy: **N/A → 0.70** (not applicable to System A — no multi-agent trail; previously shown as 0.00, which was a placeholder)
+  - Safety F1 and Recall: **N/A → 1.00** (same placeholder correction)
+  - Clarification Relevance: **N/A → 0.76** (same placeholder correction)
+  - Working Alliance Inventory (WAI): 5.00 → 10.00
+  - Session Rating Scale (SRS): 2.50 → 10.00
 
 ---
 
 ### Q15: What did your ablation studies prove regarding component necessity?
 **Answer**:  
 From our 6 ablation conditions:
-- **Without UncertaintyAgent (`ablation_no_uncertainty`)**: False Certainty Rate surged from **0.08 → 0.36**, proving that monolithic systems falsely assume completeness.
-- **Without RiskAgent (`ablation_no_risk`)**: Safety F1 and Recall collapsed from **1.00 → 0.88**, allowing crisis cases to pass undetected.
-- **Without ClarificationAgent (`ablation_no_clarification`)**: Handoff correctness collapsed from **0.94 → 0.62**, leaving the system trapped in unresolved ambiguity.
+- **Without UncertaintyAgent (`ablation_no_uncertainty`)**: False Certainty Rate rose from **0.12 → 0.39** (N=33), showing that systems without explicit uncertainty detection falsely assume completeness.
+- **Without RiskAgent (`ablation_no_risk`)**: Safety F1 and Recall dropped from **1.00 → 0.91** (N=33), allowing crisis cases to pass undetected.
+- **Without ClarificationAgent (`ablation_no_clarification`)**: Handoff correctness dropped from **0.95 → 0.64** (N=33), leaving the system trapped in unresolved ambiguity.
 - **Without SafetySupervisor (`ablation_no_safety_supervisor`)**: 100% of high-risk cases lacked downstream emergency escalation.
 
 ---
@@ -160,7 +160,7 @@ We analyzed **545 structured failures** in the canonical audited failure taxonom
 3. *Incorrect Routing* (81 cases): Occurred when dynamic orchestration was disabled or bypassed.
 4. *Missed Uncertainty* (75 cases): Occurred when UncertaintyAgent was ablated or bypassed.
 5. *Supervisor Failure* (36 cases): Occurred in uninspected configurations lacking downstream supervision.
-(Crucially, 78% of all 545 recorded failures occurred in ablated configurations, empirically proving the causal necessity of each agent module.)
+(Crucially, 44.4% of all 545 recorded failures occurred in ablated configurations, empirically proving the causal necessity of each agent module.)
 
 ---
 

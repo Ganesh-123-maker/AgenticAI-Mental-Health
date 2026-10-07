@@ -54,8 +54,8 @@ The psychometric scales (WAI, SRS, PANAS) were used solely as secondary indicato
 ### Q6: "How do you know the improvement comes from multi-agent coordination rather than just having more parameters or tokens?"
 **Defensible Answer**:  
 "Our **ablation study** proves this causally. 
-In `ablation_no_routing`, all 11 agents were present in the codebase, but dynamic orchestration was disabled, forcing a static sequential flow. Performance degraded: routing accuracy dropped from 0.76 to 0.64, and 81 routing failures occurred. 
-Similarly, in `ablation_no_uncertainty` and `ablation_no_clarification`, the exact same base model was used, yet False Certainty surged from 0.12 to 0.36, and handoff correctness collapsed from 0.94 to 0.72. The gains stem directly from the **conditional branching logic and supervisory gating**, not extra parameters."
+In `ablation_no_routing`, all 11 agents were present in the codebase, but dynamic orchestration was disabled, forcing a static sequential flow. Performance degraded: routing accuracy dropped from 0.76 to 0.64, and 9 routing-related failure entries were logged for that configuration (35 total entries; 81 is the cross-system total across all 12 configurations). 
+Similarly, in `ablation_no_uncertainty` and `ablation_no_clarification`, the exact same base model was used, yet False Certainty surged from 0.12 to 0.36, and handoff correctness fell from 0.92 to 0.72. The gains stem directly from the **conditional branching logic and supervisory gating**, not extra parameters."
 
 ---
 

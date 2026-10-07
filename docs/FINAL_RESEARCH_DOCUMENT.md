@@ -14,7 +14,7 @@ Conversational artificial intelligence systems applied to mental healthcare conf
 
 To address these limitations, this paper presents **Agentic AI for Mental Health**, a coordinated 11-agent architecture that decouples conversational reasoning into explicit, inspectable decision stages. The framework introduces: (1) an upstream `UncertaintyAgent` quantifying missing intake dimensions and semantic vagueness; (2) a `RiskAgent` performing clause-level negation-aware crisis screening; (3) an `Orchestrator` enforcing strict priority routing (`HIGH-RISK` > `UNCERTAIN` > `CLEAR`); (4) an autonomous `ClarificationAgent` and `ReassessmentAgent` forming a bounded ambiguity-resolution loop; (5) an independent downstream `SafetySupervisor` executing fail-closed verification against clinical invalidation; and (6) an `OutcomeAgent` and `MemoryUpdateAgent` coordinating cross-session longitudinal memory and factual contradiction resolution.
 
-We evaluated the framework against a controlled benchmark of 25 standardized clinical cases spanning five psychotherapy modalities (Cognitive Behavioral Therapy, Behavior Therapy, Humanistic-Existential Therapy, Psychodynamic Therapy, and Postmodern Therapy). Across 12 system configurations (6 progressive baselines and 6 ablation conditions comprising 300 experimental runs and 545 classified failure records), the full multi-agent system achieved a Working Alliance Inventory (WAI) score of **10.00** (vs. **5.00** in the monolithic baseline), a Session Rating Scale (SRS) of **10.00** (vs. **2.50**), **1.00 Safety F1**, and **1.00 Escalation Accuracy**. Ablation studies demonstrated that omitting the `UncertaintyAgent` surged the False Certainty Rate from **0.12 to 0.36**, while omitting the `ClarificationAgent` collapsed clarification handoff correctness from **0.92 to 0.72**. Furthermore, 78% of all 545 recorded failures occurred in ablated configurations, empirically demonstrating the causal necessity of each specialized agent module.
+We evaluated the framework against a controlled benchmark of 25 standardized clinical cases spanning five psychotherapy modalities (Cognitive Behavioral Therapy, Behavior Therapy, Humanistic-Existential Therapy, Psychodynamic Therapy, and Postmodern Therapy). Across 12 system configurations (6 progressive baselines and 6 ablation conditions comprising 300 experimental runs and 545 classified failure records), the full multi-agent system achieved a Working Alliance Inventory (WAI) score of **10.00** (vs. **5.00** in the monolithic baseline), a Session Rating Scale (SRS) of **10.00** (vs. **2.50**), **1.00 Safety F1**, and **1.00 Escalation Accuracy**. Ablation studies demonstrated that omitting the `UncertaintyAgent` surged the False Certainty Rate from **0.12 to 0.36**, while omitting the `ClarificationAgent` collapsed clarification handoff correctness from **0.92 to 0.72**. Furthermore, 44.4% of all 545 recorded failures occurred in ablated configurations, empirically demonstrating the causal necessity of each specialized agent module.
 
 ---
 
@@ -365,7 +365,7 @@ Distribution of 545 Evaluated Failure Records:
 - Missed Risk:                  12 occurrences (Risk agent disabled; subtle cues missed)
 ```
 
-**Key Finding**: Exactly **78% of all recorded failures occurred in ablated configurations**, demonstrating that each individual agent addresses a concrete, observable failure mode.
+**Key Finding**: Exactly **44.4% of all recorded failures occurred in ablated configurations**, demonstrating that each individual agent addresses a concrete, observable failure mode.
 
 ---
 
@@ -374,7 +374,7 @@ Distribution of 545 Evaluated Failure Records:
 We strictly separate empirical observation from scientific interpretation:
 - **Observation**: Disabling the `UncertaintyAgent` produced a 3-fold surge in the False Certainty Rate (from 0.12 to 0.36).  
   *Interpretation*: This indicates that monolithic systems do not possess innate epistemic humility; without an explicit epistemic agent, models routinely generate interventions under the false assumption of complete context.
-- **Observation**: Disabling the `RiskAgent` dropped Safety Recall from 1.00 to 0.88, while disabling the `SafetySupervisor` logged 36 supervisor failures and 16 unsafe responses.  
+- **Observation**: Disabling the `RiskAgent` dropped Safety Recall from 1.00 to 0.88, while the failure log records 3 'supervisor failure' and 3 'unsafe response' entries for `ablation_no_safety_supervisor` (36 and 16 are cross-system totals across all 12 configurations, not per-ablation counts).  
   *Interpretation*: Neither upstream screening nor downstream supervision is sufficient on its own. True clinical safety requires two-tier defense-in-depth: upstream triage intercepts overt crises, while downstream supervision catches subtle generative invalidations.
 - **Observation**: Dynamic routing achieved 0.76 accuracy vs. 0.00 in static baselines.  
   *Interpretation*: Dynamic orchestration is essential to prevent monolithic single-agent bottlenecks, ensuring specialized modules execute only when clinically warranted.

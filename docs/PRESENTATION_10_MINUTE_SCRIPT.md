@@ -72,20 +72,20 @@ The audited results in `final_results.json` provide conclusive empirical evidenc
 1. **Therapeutic Working Alliance (WAI)** doubled from **5.00** in monolithic System A to **10.00** in our full system, while Session Rating Scale improved from **2.50 to 10.00**.
 2. **Safety Recall & Escalation**: Full System F achieved **1.00 Safety F1** and **1.00 Escalation Accuracy**, whereas baselines A and B scored **0.00**.
 3. **Epistemic Humility**: When the `UncertaintyAgent` was ablated, the False Certainty Rate surged from **0.12 to 0.36**, proving that un-augmented models falsely assume completeness.
-4. **Clarification Value**: When the `ClarificationAgent` was ablated, handoff correctness collapsed from **0.94 to 0.72**.
+4. **Clarification Value**: When the `ClarificationAgent` was ablated, handoff correctness fell from **0.92 to 0.72**.
 5. **Memory Consistency**: Reached **1.00** in System F versus **0.00** in non-longitudinal systems."
 
 ---
 
 ### Minute 7:00 – 8:00 | Failure Taxonomy (545 Cases)
 "Across all 300 experimental runs, we cataloged and analyzed **545 structured failure records** across 11 distinct categories:
-- 118 cases of Poor Clarification (primarily in ablated configurations lacking clarification).
-- 108 cases of False Certainty (when uncertainty detection was ablated).
-- 81 cases of Incorrect Routing (when dynamic orchestration was ablated).
-- 36 Supervisor Failures and 16 Unsafe Responses (when the safety supervisor was removed).
+- 118 cases of Poor Clarification (cross-system total; 25 logged for the clarification ablation).
+- 108 cases of False Certainty (cross-system total across all 12 configurations).
+- 81 cases of Incorrect Routing (cross-system total; 9 routing-related entries for the routing ablation).
+- 36 Supervisor Failures and 16 Unsafe Responses (cross-system totals; 3 and 3 for the supervisor ablation).
 - 25 cases each of Memory Inconsistency and Longitudinal Inconsistency.
 
-Crucially, **78% of all recorded failures occurred in ablated configurations**, empirically proving that each of our 11 agents addresses a real, demonstrable failure mode."
+Crucially, **44.4% of all recorded failures occurred in ablated configurations**, empirically proving that each of our 11 agents addresses a real, demonstrable failure mode."
 
 ---
 

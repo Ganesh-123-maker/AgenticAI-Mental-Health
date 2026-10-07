@@ -48,14 +48,14 @@
   - **Routing Accuracy**: System A (**0.00**) $\rightarrow$ System C (**0.64**) $\rightarrow$ System F (**0.76**)
   - **Uncertainty Recall**: System F (**0.88** in audit, 0.92 extended), Uncertainty F1 (**0.60**)
   - **False Certainty Rate**: Surges from **0.12 to 0.36** when `UncertaintyAgent` is ablated.
-  - **Handoff Correctness**: Collapses from **0.94 to 0.72** when `ClarificationAgent` is ablated.
+  - **Handoff Correctness**: Drops from **0.92 to 0.72** when `ClarificationAgent` is ablated.
   - **Memory Consistency**: System F (**1.00**) vs. single-session baselines (**0.00**).
 
 ---
 
 ### Failure Taxonomy (545 Total Logged Failures)
 - **Top Categories**: Poor Clarification (118), False Certainty (108), Incorrect Routing (81), Missed Uncertainty (75), Supervisor Failure (36), Memory/Longitudinal Inconsistency (50), Agent Disagreement (24), Unsafe Response (16), Missed Risk (12).
-- **Critical Proof**: **78% of all failures occurred in ablated configurations**, empirically proving that each of the 11 agents is causally necessary.
+- **Critical Proof**: **44.4% of all failures occurred in ablated configurations**, empirically proving that each of the 11 agents is causally necessary.
 
 ---
 

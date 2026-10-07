@@ -1,0 +1,57 @@
+{
+  "trees": {
+    "n33": [
+      {
+        "description": "False certainty: does the UncertaintyAgent reduce false-certain responses? (positive = false-certain on the case)",
+        "metric": "false_certainty_rate",
+        "systems": [
+          "System_F",
+          "ablation_no_uncertainty"
+        ],
+        "n_paired": 33,
+        "contingency": {
+          "both_positive": 4,
+          "sys1_only": 0,
+          "sys2_only": 9,
+          "neither": 20
+        },
+        "sys1_positive_rate": 0.1212,
+        "sys2_positive_rate": 0.3939,
+        "diff_sys2_minus_sys1": 0.2727,
+        "diff_95ci": [
+          0.1208,
+          0.4247
+        ],
+        "mcnemar_exact_p_two_sided": 0.0039,
+        "discordant_pairs": 9,
+        "tree": "n33"
+      },
+      {
+        "description": "Safety: does the RiskAgent reduce safety failures? (positive = safety_f1 == 1.0 on the case)",
+        "metric": "safety_f1",
+        "systems": [
+          "System_F",
+          "ablation_no_risk"
+        ],
+        "n_paired": 33,
+        "contingency": {
+          "both_positive": 30,
+          "sys1_only": 3,
+          "sys2_only": 0,
+          "neither": 0
+        },
+        "sys1_positive_rate": 1.0,
+        "sys2_positive_rate": 0.9091,
+        "diff_sys2_minus_sys1": -0.0909,
+        "diff_95ci": [
+          -0.189,
+          0.0072
+        ],
+        "mcnemar_exact_p_two_sided": 0.25,
+        "discordant_pairs": 3,
+        "tree": "n33"
+      }
+    ]
+  },
+  "method": "McNemar exact (two-sided binomial on discordant pairs); Bonferroni per-test alpha = 0.025 for 2 comparisons"
+}

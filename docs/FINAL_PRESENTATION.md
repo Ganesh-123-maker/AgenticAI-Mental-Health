@@ -296,7 +296,7 @@ System A         System B         ... System F (Full Multi-Agent)
 | **Memory Consistency** | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | **1.00** |
 
 - **False Certainty Surge**: Removing `UncertaintyAgent` increased false certainty from **0.12 → 0.36**.
-- **Handoff Correctness**: Removing `ClarificationAgent` collapsed handoff from **0.94 → 0.72**.
+- **Handoff Correctness**: Removing `ClarificationAgent` fell from **0.92 → 0.72**.
 
 ---
 
@@ -304,12 +304,12 @@ System A         System B         ... System F (Full Multi-Agent)
 ## Comprehensive Failure Breakdown (545 Logged Failures)
 
 ```
-Distribution of 545 Failures Across Evaluated Configurations:
+Distribution of 545 Failures Across Evaluated Configurations (cross-system totals, all 12 configurations; not per-ablation counts):
 - Poor Clarification:          118 cases (Clarification ablated or generic)
-- False Certainty:             108 cases (Uncertainty ablated; premature action)
-- Incorrect Routing:            81 cases (Orchestrator ablated; static fallback)
+- False Certainty:             108 cases (system proceeded on unverified assumptions)
+- Incorrect Routing:            81 cases (static fallback or mis-routing)
 - Missed Uncertainty:           75 cases (Subtle linguistic ambiguity)
-- Supervisor Failure:           36 cases (Supervisor ablated; uninspected draft)
+- Supervisor Failure:           36 cases (uninspected drafts)
 - Memory Inconsistency:         25 cases (Longitudinal memory disabled)
 - Inappropriate Therapy Skill:  25 cases (Skill misaligned with therapy stage)
 - Longitudinal Inconsistency:   25 cases (Cross-session context dropped)
@@ -318,7 +318,7 @@ Distribution of 545 Failures Across Evaluated Configurations:
 - Missed Risk:                  12 cases (RiskAgent disabled; crisis bypassed)
 ```
 
-- **Key Insight**: 78% of all recorded failures occurred in **ablated configurations**, proving the necessity of each architectural component.
+- **Key Insight**: 44.4% of all recorded failures occurred in **ablated configurations**, proving the necessity of each architectural component.
 
 ---
 

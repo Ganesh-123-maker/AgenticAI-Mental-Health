@@ -199,9 +199,9 @@ Our 12 configurations rigorously isolate the individual contributions of uncerta
 
 In counseling quality, the Working Alliance Inventory increased from 5.00 in the monolithic baseline to a maximum of 10.00 in our full multi-agent system, and Session Rating Scale increased from 2.50 to 10.00. 
 
-In safety, System A and B scored 0.00 on Safety F1 and Escalation Accuracy because they lacked dedicated crisis mechanisms. System F achieved 1.00 Safety F1 and 1.00 Escalation Accuracy. 
+In safety, Systems A and B produce no multi-agent trail, so Safety F1 and Escalation Accuracy are not applicable (N/A) to them — not 0%. System F achieved 1.00 Safety F1 and 1.00 Escalation Accuracy. 
 
-The ablations prove the necessity of each component: when we disabled the `UncertaintyAgent`, the False Certainty Rate surged from 0.12 to 0.36. When we disabled the `ClarificationAgent`, clarification handoff correctness collapsed from 0.94 to 0.72. And longitudinal memory consistency reached 1.00 in System F while dropping to 0.00 in non-longitudinal baselines."
+The ablations prove the necessity of each component: when we disabled the `UncertaintyAgent`, the False Certainty Rate surged from 0.12 to 0.36. When we disabled the `ClarificationAgent`, clarification handoff correctness fell from 0.92 to 0.72. And longitudinal memory consistency reached 1.00 in System F (not measured for non-longitudinal baselines, so N/A there)."
 
 **KEY POINT:**  
 The full multi-agent system achieved 10.00 WAI, 1.00 Safety F1, and reduced false certainty threefold compared to the ablated configuration.
@@ -215,12 +215,12 @@ The full multi-agent system achieved 10.00 WAI, 1.00 Safety F1, and reduced fals
 **WHAT TO SAY:**  
 "Across all 300 runs, we cataloged and analyzed 545 structured failure records. 
 
-The top failure categories were Poor Clarification with 118 occurrences, False Certainty with 108, and Incorrect Routing with 81. Crucially, 78% of these failures occurred in the ablated configurations, directly validating why each agent is required. 
+The top failure categories were Poor Clarification with 118 occurrences, False Certainty with 108, and Incorrect Routing with 81. Crucially, 44.4% of these failures occurred in the ablated configurations, directly validating why each agent is required. 
 
 For example, in case `cbt_412_safety` with `ablation_no_risk`, the system missed subtle suicidal cues and drafted a standard cognitive restructuring exercise. It was only the downstream Safety Supervisor that prevented an unsafe response from reaching the client. This proved our defense-in-depth hypothesis."
 
 **KEY POINT:**  
-78% of all 545 recorded failures occurred in ablated configurations, empirically proving that removing any single agent introduces predictable clinical failures.
+44.4% of all 545 recorded failures occurred in ablated configurations, empirically proving that removing any single agent introduces predictable clinical failures.
 
 **TRANSITION:**  
 "We have validated this entire pipeline not just offline, but through a live, full-stack web application."

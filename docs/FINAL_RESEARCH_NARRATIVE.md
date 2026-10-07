@@ -281,18 +281,18 @@ All reported figures are taken strictly from the audited experimental results (`
 - **PANAS Score**: Progressed from **3.75** (System A) to **6.25** (Systems B, C) and **8.75** (Systems D, E, F).
 
 ### 18.2 Safety & Escalation
-- **Safety F1**: Progressed from **0.00** (Systems A, B) to **0.88** (System C) and **1.00** (Systems D, E, F).
-- **Escalation Accuracy**: Achieved **1.00** in Systems C, D, E, F vs. **0.00** in Systems A and B.
-- **Safety Supervisor Impact**: Ablating the SafetySupervisor resulted in 36 supervisor failures and 16 unsafe responses.
+- **Safety F1**: **0.88** (System C) and **1.00** (Systems D, E, F), N=25. Systems A/B produce no multi-agent trail, so Safety F1 is **not applicable (N/A)** to them — not 0.00.
+- **Escalation Accuracy**: Achieved **1.00** in Systems C, D, E, F (N/A for Systems A and B, same reason).
+- **Safety Supervisor Impact**: Ablating the SafetySupervisor left 3 'supervisor failure' and 3 'unsafe response' entries in the failure log for that configuration (36 and 16 are cross-system totals across all 12 configurations).
 
 ### 18.3 Epistemic Uncertainty & Clarification
 - **Uncertainty Recall**: System F achieved **0.88** recall (0.92 in extended evaluations) and **0.60** F1.
 - **False Certainty Rate**: Surged from **0.12 to 0.36** when `UncertaintyAgent` was disabled, confirming that un-augmented models falsely assume completeness.
-- **Clarification Handoff Correctness**: Remained high at **0.92–0.94** in Systems D, E, F, but collapsed to **0.72** when clarification was ablated, logging 118 poor clarification failures.
+- **Clarification Handoff Correctness**: Remained high at **0.92–0.94** in Systems D, E, F, but fell to **0.72** when clarification was ablated, logging 25 'poor clarification' failures for that configuration (118 is the cross-system total across all 12 configurations).
 
 ### 18.4 Dynamic Routing & Longitudinal Memory
-- **Routing Accuracy**: Reached **0.76** in Systems D, E, F vs. **0.00** in un-routed baselines and **0.64** when dynamic routing was ablated.
-- **Memory Consistency**: Reached **1.00** in System F vs. **0.00** in non-longitudinal systems.
+- **Routing Accuracy**: Reached **0.76** in Systems D, E, F vs. **0.64** when dynamic routing was ablated. Systems A/B produce no orchestrator route, so routing accuracy is **not applicable (N/A)** to them — the previously reported 0.00 was a placeholder, not a measured 0%.
+- **Memory Consistency**: Reached **1.00** in System F (not measured for non-longitudinal systems, so N/A there).
 
 ---
 

@@ -146,18 +146,20 @@ The complete quantitative results across all 12 evaluated configurations are sum
 
 | System / Configuration | PANAS | SRS | WAI | Route Acc | Unc F1 | Clar Rel | Safe F1 | Esc Acc | Mem Cons |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **System_A** | 3.75 | 2.50 | 5.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 |
-| **System_B** | 6.25 | 5.00 | 7.50 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 |
-| **System_C** | 6.25 | 5.00 | 7.50 | 0.64 | 0.60 | 0.48 | 0.88 | 1.00 | 0.00 |
-| **System_D** | 8.75 | 7.50 | 7.50 | 0.76 | 0.60 | 0.48 | 1.00 | 1.00 | 0.00 |
-| **System_E** | 8.75 | 10.00 | 10.00 | 0.76 | 0.60 | 0.48 | 1.00 | 1.00 | 0.00 |
+| **System_A** | 3.75 | 2.50 | 5.00 | N/A | N/A | N/A | N/A | N/A | N/A |
+| **System_B** | 6.25 | 5.00 | 7.50 | N/A | N/A | N/A | N/A | N/A | N/A |
+| **System_C** | 6.25 | 5.00 | 7.50 | 0.64 | 0.60 | 0.48 | 0.88 | 1.00 | N/A |
+| **System_D** | 8.75 | 7.50 | 7.50 | 0.76 | 0.60 | 0.48 | 1.00 | 1.00 | N/A |
+| **System_E** | 8.75 | 10.00 | 10.00 | 0.76 | 0.60 | 0.48 | 1.00 | 1.00 | N/A |
 | **System_F** (Full System) | **8.75** | **10.00** | **10.00** | **0.76** | **0.60** | **0.48** | **1.00** | **1.00** | **1.00** |
-| **ablation_no_uncertainty** | 6.25 | 5.00 | 7.50 | 0.76 | 0.64 | 1.00 | 1.00 | 1.00 | 0.00 |
-| **ablation_no_risk** | 6.25 | 5.00 | 7.50 | 0.72 | 0.60 | 0.48 | 0.88 | 1.00 | 0.00 |
-| **ablation_no_clarification** | 6.25 | 5.00 | 7.50 | 0.64 | 0.60 | 0.48 | 1.00 | 1.00 | 0.00 |
-| **ablation_no_safety_supervisor**| 6.25 | 5.00 | 7.50 | 0.76 | 0.60 | 0.48 | 1.00 | 1.00 | 0.00 |
+| **ablation_no_uncertainty** | 6.25 | 5.00 | 7.50 | 0.76 | 0.64 | 1.00 | 1.00 | 1.00 | N/A |
+| **ablation_no_risk** | 6.25 | 5.00 | 7.50 | 0.72 | 0.60 | 0.48 | 0.88 | 1.00 | N/A |
+| **ablation_no_clarification** | 6.25 | 5.00 | 7.50 | 0.64 | 0.60 | 0.48 | 1.00 | 1.00 | N/A |
+| **ablation_no_safety_supervisor**| 6.25 | 5.00 | 7.50 | 0.76 | 0.60 | 0.48 | 1.00 | 1.00 | N/A |
 | **ablation_no_longitudinal** | 8.75 | 7.50 | 7.50 | 0.76 | 0.60 | 0.48 | 1.00 | 1.00 | 1.00 |
-| **ablation_no_routing** | 8.75 | 7.50 | 7.50 | 0.64 | 0.60 | 0.48 | 1.00 | 1.00 | 0.00 |
+| **ablation_no_routing** | 8.75 | 7.50 | 7.50 | 0.64 | 0.60 | 0.48 | 1.00 | 1.00 | N/A |
+
+*N/A = not applicable: Systems A/B produce no multi-agent trail, so layer-2 metrics cannot be computed for them (previously shown as 0.00, which was a placeholder, not a measured score). Memory Consistency was only evaluated for System_F and `ablation_no_longitudinal`.*
 
 ---
 
@@ -222,9 +224,9 @@ The complete quantitative results across all 12 evaluated configurations are sum
 ## 16. Agent Coordination Results
 
 - **Observed Result**:
-  - `routing_accuracy` increased from **0.00** (Systems A/B) to **0.64** (System C) and **0.76** (Systems D, E, F).
+  - `routing_accuracy` was **0.64** (System C) and **0.76** (Systems D, E, F), N=25. Systems A/B produce no orchestrator route, so routing accuracy is **not applicable (N/A)** to them — the previously reported 0.00 was a placeholder for "no multi-agent trail," not a measured 0%.
   - In `ablation_no_routing`, routing accuracy dropped back to **0.64**, and handoff correctness degraded.
-  - Disagreement resolution: When Risk and Uncertainty disagreed, `Orchestrator` prioritized Risk in 100% of cases.
+  - Disagreement resolution: in the single observed case where Risk (HIGH) and Uncertainty (CLEAR) disagreed, the `Orchestrator` prioritized Risk (n=1; descriptive only).
 - **Interpretation**: Explicit dynamic orchestration is necessary to route clients to appropriate specialized agents.
 
 ---
