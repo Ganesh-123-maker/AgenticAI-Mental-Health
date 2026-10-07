@@ -15,6 +15,7 @@ Caps:
 from __future__ import annotations
 
 import logging
+import time
 from typing import Any, Dict, List, Optional, Tuple
 
 from .base import AgentContext, AgentMessage
@@ -29,6 +30,21 @@ from .state_agent import StateAgent
 from .uncertainty_agent import UncertaintyAgent
 
 logger = logging.getLogger(__name__)
+
+
+def _timed_run(agent: Any, ctx: AgentContext, **kwargs: Any) -> Tuple[AgentMessage, float]:
+    """Run one agent and return (message, wall-clock duration in milliseconds).
+
+    Latency instrumentation for the research question's cost half ("at what
+    latency/token cost?"). The agents are rule-based/deterministic and make no
+    LLM calls themselves, so this measures real agent compute time; token
+    costs only arise in live-LLM runner/evaluation paths and are not
+    estimated here.
+    """
+    start = time.perf_counter()
+    msg = agent.run(ctx, **kwargs)
+    duration_ms = round((time.perf_counter() - start) * 1000, 3)
+    return msg, duration_ms
 
 
 def _resolve_flags(
@@ -87,22 +103,22 @@ def run_pipeline(
 
     # 1. Memory Agent
     mem_agent = MemoryAgent()
-    mem_msg = mem_agent.run(ctx)
+    mem_msg, mem_ms = _timed_run(mem_agent, ctx)
     ctx.memory_output = mem_msg.payload
-    trail.append({"agent": mem_agent.name, "status": mem_msg.status, "payload": mem_msg.payload})
+    trail.append({"agent": mem_agent.name, "status": mem_msg.status, "payload": mem_msg.payload, "duration_ms": mem_ms})
 
     # 2. State Assessment Agent
     state_agent = StateAgent()
-    state_msg = state_agent.run(ctx)
+    state_msg, state_ms = _timed_run(state_agent, ctx)
     ctx.state_output = state_msg.payload
-    trail.append({"agent": state_agent.name, "status": state_msg.status, "payload": state_msg.payload})
+    trail.append({"agent": state_agent.name, "status": state_msg.status, "payload": state_msg.payload, "duration_ms": state_ms})
 
     # 3. Uncertainty Agent & Risk Agent (parallel assessment)
     if active_flags["uncertainty_enabled"]:
         unc_agent = UncertaintyAgent()
-        unc_msg = unc_agent.run(ctx)
+        unc_msg, unc_ms = _timed_run(unc_agent, ctx)
         ctx.uncertainty_output = unc_msg.payload
-        trail.append({"agent": unc_agent.name, "status": unc_msg.status, "payload": unc_msg.payload})
+        trail.append({"agent": unc_agent.name, "status": unc_msg.status, "payload": unc_msg.payload, "duration_ms": unc_ms})
     else:
         unc_payload = {
             "status": "CLEAR",
@@ -112,13 +128,13 @@ def run_pipeline(
             "bypassed": True,
         }
         ctx.uncertainty_output = unc_payload
-        trail.append({"agent": "uncertainty_agent", "status": "BYPASSED", "payload": unc_payload})
+        trail.append({"agent": "uncertainty_agent", "status": "BYPASSED", "payload": unc_payload, "duration_ms": 0.0})
 
     if active_flags["risk_enabled"]:
         risk_agent = RiskAgent()
-        risk_msg = risk_agent.run(ctx)
+        risk_msg, risk_ms = _timed_run(risk_agent, ctx)
         ctx.risk_output = risk_msg.payload
-        trail.append({"agent": risk_agent.name, "status": risk_msg.status, "payload": risk_msg.payload})
+        trail.append({"agent": risk_agent.name, "status": risk_msg.status, "payload": risk_msg.payload, "duration_ms": risk_ms})
     else:
         risk_payload = {
             "severity": "LOW",
@@ -128,7 +144,7 @@ def run_pipeline(
             "bypassed": True,
         }
         ctx.risk_output = risk_payload
-        trail.append({"agent": "risk_agent", "status": "BYPASSED", "payload": risk_payload})
+        trail.append({"agent": "risk_agent", "status": "BYPASSED", "payload": risk_payload, "duration_ms": 0.0})
 
     # Orchestrator & Safety Supervisor loop with capped re-routes
     orchestrator = Orchestrator()
@@ -148,13 +164,13 @@ def run_pipeline(
     while reroute_count <= max_reroutes:
         # 4. Orchestrator Routing
         if active_flags["multi_agent_routing_enabled"]:
-            orch_msg = orchestrator.run(ctx)
+            orch_msg, orch_ms = _timed_run(orchestrator, ctx)
             current_route = orch_msg.payload.get("route", "UNCERTAIN")
             trail.append({
                 "agent": orchestrator.name,
                 "step": f"routing_turn_{reroute_count}",
                 "route": current_route,
-                "payload": orch_msg.payload,
+                "payload": orch_msg.payload, "duration_ms": orch_ms,
             })
         else:
             orch_msg = None
@@ -163,41 +179,41 @@ def run_pipeline(
                 "agent": "orchestrator",
                 "step": f"routing_turn_{reroute_count}",
                 "route": "CLEAR",
-                "payload": {"route": "CLEAR", "next_agent": "counseling_agent", "bypassed": True},
+                "payload": {"route": "CLEAR", "next_agent": "counseling_agent", "bypassed": True}, "duration_ms": 0.0,
             })
 
         # 5. Clarify -> Reassess Loop (if UNCERTAIN, clarification permitted, and re-evaluation permitted)
         while current_route == "UNCERTAIN" and active_flags["clarification_enabled"] and reassess_count < max_reassess_turns:
             reassess_count += 1
-            clar_msg = clar_agent.run(ctx)
+            clar_msg, clar_ms = _timed_run(clar_agent, ctx)
             ctx.clarification_output = clar_msg.payload
             ctx.metadata["clarification_output"] = clar_msg.payload
-            trail.append({"agent": clar_agent.name, "turn": reassess_count, "payload": clar_msg.payload})
+            trail.append({"agent": clar_agent.name, "turn": reassess_count, "payload": clar_msg.payload, "duration_ms": clar_ms})
 
             if clarification_answer is not None:
-                reassess_msg = reassess_agent.run(ctx, clarification_answer=clarification_answer)
+                reassess_msg, reassess_ms = _timed_run(reassess_agent, ctx, clarification_answer=clarification_answer)
                 ctx.reassessment_output = reassess_msg.payload
                 ctx.metadata["reassessment_output"] = reassess_msg.payload
-                trail.append({"agent": reassess_agent.name, "turn": reassess_count, "payload": reassess_msg.payload})
+                trail.append({"agent": reassess_agent.name, "turn": reassess_count, "payload": reassess_msg.payload, "duration_ms": reassess_ms})
 
                 if active_flags["multi_agent_routing_enabled"]:
-                    orch_msg = orchestrator.run(ctx)
+                    orch_msg, orch_ms = _timed_run(orchestrator, ctx)
                     current_route = orch_msg.payload.get("route", "UNCERTAIN")
-                    trail.append({"agent": orchestrator.name, "step": f"reassessment_routing_{reassess_count}", "route": current_route, "payload": orch_msg.payload})
+                    trail.append({"agent": orchestrator.name, "step": f"reassessment_routing_{reassess_count}", "route": current_route, "payload": orch_msg.payload, "duration_ms": orch_ms})
                 else:
                     current_route = "CLEAR"
             else:
                 break
 
         # 6. Counseling Agent Draft
-        counsel_msg = counseling_agent.run(ctx)
+        counsel_msg, counseling_ms = _timed_run(counseling_agent, ctx)
         draft_response = counsel_msg.payload.get("response_text", "")
         ctx.counseling_output = counsel_msg.payload
-        trail.append({"agent": counseling_agent.name, "step": "initial_draft", "payload": counsel_msg.payload})
+        trail.append({"agent": counseling_agent.name, "step": "initial_draft", "payload": counsel_msg.payload, "duration_ms": counseling_ms})
 
         # 7. Safety Supervisor Evaluation
         if active_flags["safety_supervisor_enabled"]:
-            sup_msg = supervisor.run(ctx, draft_response=draft_response)
+            sup_msg, sup_ms = _timed_run(supervisor, ctx, draft_response=draft_response)
             sup_payload = sup_msg.payload
             supervisor_verdict = sup_payload.get("verdict", "ALLOW")
             trail.append({
@@ -205,7 +221,7 @@ def run_pipeline(
                 "step": f"supervision_turn_{reroute_count}",
                 "verdict": supervisor_verdict,
                 "rationale": sup_payload.get("rationale"),
-                "payload": sup_payload,
+                "payload": sup_payload, "duration_ms": sup_ms,
             })
 
             if supervisor_verdict == "ALLOW":
@@ -213,14 +229,14 @@ def run_pipeline(
                 break
             elif supervisor_verdict == "ESCALATE":
                 final_response = sup_payload.get("safe_fallback") or draft_response
-                trail.append({"agent": supervisor.name, "action": "escalate_fallback_applied"})
+                trail.append({"agent": supervisor.name, "action": "escalate_fallback_applied", "duration_ms": 0.0})
                 break
             elif supervisor_verdict == "REVISE":
                 # Cap at 1 revision: send back to counseling agent once with rationale
                 ctx.metadata["supervisor_revision_rationale"] = sup_payload.get("rationale")
-                revised_counsel_msg = counseling_agent.run(ctx)
+                revised_counsel_msg, counseling_rev_ms = _timed_run(counseling_agent, ctx)
                 final_response = revised_counsel_msg.payload.get("response_text", draft_response)
-                trail.append({"agent": counseling_agent.name, "step": "revision", "payload": revised_counsel_msg.payload})
+                trail.append({"agent": counseling_agent.name, "step": "revision", "payload": revised_counsel_msg.payload, "duration_ms": counseling_rev_ms})
                 break
             elif supervisor_verdict == "RE-ROUTE":
                 reroute_count += 1
@@ -239,7 +255,7 @@ def run_pipeline(
                 "agent": "safety_supervisor",
                 "step": f"supervision_turn_{reroute_count}",
                 "verdict": "ALLOW",
-                "payload": {"verdict": "ALLOW", "bypassed": True},
+                "payload": {"verdict": "ALLOW", "bypassed": True}, "duration_ms": 0.0,
             })
             final_response = draft_response
             break
@@ -290,22 +306,22 @@ async def run_pipeline_async(
 
     # 1. Memory Agent
     mem_agent = MemoryAgent()
-    mem_msg = mem_agent.run(ctx)
+    mem_msg, mem_ms = _timed_run(mem_agent, ctx)
     ctx.memory_output = mem_msg.payload
-    trail.append({"agent": mem_agent.name, "status": mem_msg.status, "payload": mem_msg.payload})
+    trail.append({"agent": mem_agent.name, "status": mem_msg.status, "payload": mem_msg.payload, "duration_ms": mem_ms})
 
     # 2. State Assessment Agent
     state_agent = StateAgent()
-    state_msg = state_agent.run(ctx)
+    state_msg, state_ms = _timed_run(state_agent, ctx)
     ctx.state_output = state_msg.payload
-    trail.append({"agent": state_agent.name, "status": state_msg.status, "payload": state_msg.payload})
+    trail.append({"agent": state_agent.name, "status": state_msg.status, "payload": state_msg.payload, "duration_ms": state_ms})
 
     # 3. Uncertainty Agent & Risk Agent (parallel assessment)
     if active_flags["uncertainty_enabled"]:
         unc_agent = UncertaintyAgent()
-        unc_msg = unc_agent.run(ctx)
+        unc_msg, unc_ms = _timed_run(unc_agent, ctx)
         ctx.uncertainty_output = unc_msg.payload
-        trail.append({"agent": unc_agent.name, "status": unc_msg.status, "payload": unc_msg.payload})
+        trail.append({"agent": unc_agent.name, "status": unc_msg.status, "payload": unc_msg.payload, "duration_ms": unc_ms})
     else:
         unc_payload = {
             "status": "CLEAR",
@@ -315,13 +331,13 @@ async def run_pipeline_async(
             "bypassed": True,
         }
         ctx.uncertainty_output = unc_payload
-        trail.append({"agent": "uncertainty_agent", "status": "BYPASSED", "payload": unc_payload})
+        trail.append({"agent": "uncertainty_agent", "status": "BYPASSED", "payload": unc_payload, "duration_ms": 0.0})
 
     if active_flags["risk_enabled"]:
         risk_agent = RiskAgent()
-        risk_msg = risk_agent.run(ctx)
+        risk_msg, risk_ms = _timed_run(risk_agent, ctx)
         ctx.risk_output = risk_msg.payload
-        trail.append({"agent": risk_agent.name, "status": risk_msg.status, "payload": risk_msg.payload})
+        trail.append({"agent": risk_agent.name, "status": risk_msg.status, "payload": risk_msg.payload, "duration_ms": risk_ms})
     else:
         risk_payload = {
             "severity": "LOW",
@@ -331,7 +347,7 @@ async def run_pipeline_async(
             "bypassed": True,
         }
         ctx.risk_output = risk_payload
-        trail.append({"agent": "risk_agent", "status": "BYPASSED", "payload": risk_payload})
+        trail.append({"agent": "risk_agent", "status": "BYPASSED", "payload": risk_payload, "duration_ms": 0.0})
 
     orchestrator = Orchestrator()
     clar_agent = ClarificationAgent()
@@ -351,13 +367,13 @@ async def run_pipeline_async(
     while reroute_count <= max_reroutes:
         # 4. Orchestrator Routing
         if active_flags["multi_agent_routing_enabled"]:
-            orch_msg = orchestrator.run(ctx)
+            orch_msg, orch_ms = _timed_run(orchestrator, ctx)
             current_route = orch_msg.payload.get("route", "UNCERTAIN")
             trail.append({
                 "agent": orchestrator.name,
                 "step": f"routing_turn_{reroute_count}",
                 "route": current_route,
-                "payload": orch_msg.payload,
+                "payload": orch_msg.payload, "duration_ms": orch_ms,
             })
         else:
             orch_msg = None
@@ -366,33 +382,34 @@ async def run_pipeline_async(
                 "agent": "orchestrator",
                 "step": f"routing_turn_{reroute_count}",
                 "route": "CLEAR",
-                "payload": {"route": "CLEAR", "next_agent": "counseling_agent", "bypassed": True},
+                "payload": {"route": "CLEAR", "next_agent": "counseling_agent", "bypassed": True}, "duration_ms": 0.0,
             })
 
         # 5. Clarify -> Reassess Loop (if UNCERTAIN and answer provided)
         while current_route == "UNCERTAIN" and active_flags["clarification_enabled"] and reassess_count < max_reassess_turns:
             reassess_count += 1
-            clar_msg = clar_agent.run(ctx)
+            clar_msg, clar_ms = _timed_run(clar_agent, ctx)
             ctx.clarification_output = clar_msg.payload
             ctx.metadata["clarification_output"] = clar_msg.payload
-            trail.append({"agent": clar_agent.name, "turn": reassess_count, "payload": clar_msg.payload})
+            trail.append({"agent": clar_agent.name, "turn": reassess_count, "payload": clar_msg.payload, "duration_ms": clar_ms})
 
             if clarification_answer is not None:
-                reassess_msg = reassess_agent.run(ctx, clarification_answer=clarification_answer)
+                reassess_msg, reassess_ms = _timed_run(reassess_agent, ctx, clarification_answer=clarification_answer)
                 ctx.reassessment_output = reassess_msg.payload
                 ctx.metadata["reassessment_output"] = reassess_msg.payload
-                trail.append({"agent": reassess_agent.name, "turn": reassess_count, "payload": reassess_msg.payload})
+                trail.append({"agent": reassess_agent.name, "turn": reassess_count, "payload": reassess_msg.payload, "duration_ms": reassess_ms})
 
                 if active_flags["multi_agent_routing_enabled"]:
-                    orch_msg = orchestrator.run(ctx)
+                    orch_msg, orch_ms = _timed_run(orchestrator, ctx)
                     current_route = orch_msg.payload.get("route", "UNCERTAIN")
-                    trail.append({"agent": orchestrator.name, "step": f"reassessment_routing_{reassess_count}", "route": current_route, "payload": orch_msg.payload})
+                    trail.append({"agent": orchestrator.name, "step": f"reassessment_routing_{reassess_count}", "route": current_route, "payload": orch_msg.payload, "duration_ms": orch_ms})
                 else:
                     current_route = "CLEAR"
             else:
                 break
 
         # 6. Counseling Agent Draft (via existing SkillManager & PromptManager)
+        _counsel_start = time.perf_counter()
         c_resp_pure, c_resp_raw = await counseling_agent.generate_response(
             ctx,
             runner_instance=runner_instance,
@@ -406,12 +423,13 @@ async def run_pipeline_async(
             render_counselor_system=render_counselor_system,
             each_turn_system=each_turn_system,
         )
+        counseling_ms = round((time.perf_counter() - _counsel_start) * 1000, 3)
         ctx.counseling_output = {"response": c_resp_pure, "route": current_route}
-        trail.append({"agent": counseling_agent.name, "step": "initial_draft", "route": current_route})
+        trail.append({"agent": counseling_agent.name, "step": "initial_draft", "route": current_route, "duration_ms": counseling_ms})
 
         # 7. Safety Supervisor Evaluation
         if active_flags["safety_supervisor_enabled"]:
-            sup_msg = supervisor.run(ctx, draft_response=c_resp_pure)
+            sup_msg, sup_ms = _timed_run(supervisor, ctx, draft_response=c_resp_pure)
             sup_payload = sup_msg.payload
             supervisor_verdict = sup_payload.get("verdict", "ALLOW")
             trail.append({
@@ -419,7 +437,7 @@ async def run_pipeline_async(
                 "step": f"supervision_turn_{reroute_count}",
                 "verdict": supervisor_verdict,
                 "rationale": sup_payload.get("rationale"),
-                "payload": sup_payload,
+                "payload": sup_payload, "duration_ms": sup_ms,
             })
 
             if supervisor_verdict == "ALLOW":
@@ -428,11 +446,12 @@ async def run_pipeline_async(
             elif supervisor_verdict == "ESCALATE":
                 safe_text = sup_payload.get("safe_fallback") or c_resp_pure
                 final_pure, final_raw = safe_text, safe_text
-                trail.append({"agent": supervisor.name, "action": "escalate_fallback_applied"})
+                trail.append({"agent": supervisor.name, "action": "escalate_fallback_applied", "duration_ms": 0.0})
                 break
             elif supervisor_verdict == "REVISE":
                 # Cap at 1 revision: re-generate with revision rationale guidance
                 ctx.metadata["supervisor_revision_rationale"] = sup_payload.get("rationale")
+                _rev_start = time.perf_counter()
                 rev_pure, rev_raw = await counseling_agent.generate_response(
                     ctx,
                     runner_instance=runner_instance,
@@ -446,8 +465,9 @@ async def run_pipeline_async(
                     render_counselor_system=render_counselor_system,
                     each_turn_system=each_turn_system,
                 )
+                counseling_rev_ms = round((time.perf_counter() - _rev_start) * 1000, 3)
                 final_pure, final_raw = rev_pure, rev_raw
-                trail.append({"agent": counseling_agent.name, "step": "revision"})
+                trail.append({"agent": counseling_agent.name, "step": "revision", "duration_ms": counseling_rev_ms})
                 break
             elif supervisor_verdict == "RE-ROUTE":
                 reroute_count += 1
@@ -466,7 +486,7 @@ async def run_pipeline_async(
                 "agent": "safety_supervisor",
                 "step": f"supervision_turn_{reroute_count}",
                 "verdict": "ALLOW",
-                "payload": {"verdict": "ALLOW", "bypassed": True},
+                "payload": {"verdict": "ALLOW", "bypassed": True}, "duration_ms": 0.0,
             })
             break
 

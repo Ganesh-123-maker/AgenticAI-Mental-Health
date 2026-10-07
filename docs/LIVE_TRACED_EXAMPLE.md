@@ -6,6 +6,8 @@
 > **Initial Route Status**: `UNCERTAIN` | **Post-Clarification Route**: `CLEAR`  
 > **Verification Status**: Fresh Session Execution (Not Cached)
 
+> **Note on language in the trace below.** The JSON execution payloads reproduce, verbatim, the agent outputs for benchmark case `cbt_412_ordinary`, whose source client profile is in Chinese (original dataset content under `assets/profiles/`). The Chinese strings are preserved intentionally as faithful execution evidence — translating them would falsify the trace. All project-authored prose in this document is in English.
+
 ---
 
 ## 1. Clinical Context & Case Background

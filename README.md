@@ -325,11 +325,12 @@ Scientific transparency requires disclosing key methodology boundaries and valid
   howpublished = {\url{https://github.com/Ganesh-123-maker/AgenticAI-Mental-Health}}
 }
 
-@article{zheng2024psychagent,
-  author       = {Zheng, et al.},
-  title        = {PsychAgent: A Multi-Agent Framework for Dynamic Psychological Counseling via Modular Clinical Expertise},
-  journal      = {arXiv preprint},
-  year         = {2024}
+@article{yang2026psychagent,
+  author       = {Yang, Yutao and Li, Junsong and Pan, Qianjun and Zhou, Jie and Chen, Kai and Chen, Qin and Zhao, Jingyuan and Zhou, Ningning and Li, Xin and He, Liang},
+  title        = {PsychAgent: An Experience-Driven Lifelong Learning Agent for Self-Evolving Psychological Counselor},
+  journal      = {arXiv preprint arXiv:2604.00931 [cs.AI]},
+  year         = {2026},
+  url          = {https://arxiv.org/abs/2604.00931}
 }
 ```
 

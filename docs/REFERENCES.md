@@ -9,11 +9,11 @@
 
 ### Research Literature
 
-1. **PsychAgent Framework**:
-   - **Title**: *PsychAgent: A Multi-Agent Framework for Dynamic Psychological Counseling via Modular Clinical Expertise*
-   - **Authors**: Zheng, et al.
-   - **Year**: 2024
-   - **Venue**: arXiv preprint
+1. **PsychAgent Framework** (foundational codebase; our work extends it, see `src/sample/agents/`):
+   - **Title**: *PsychAgent: An Experience-Driven Lifelong Learning Agent for Self-Evolving Psychological Counselor*
+   - **Authors**: Yutao Yang, Junsong Li, Qianjun Pan, Jie Zhou, Kai Chen, Qin Chen, Jingyuan Zhao, Ningning Zhou, Xin Li, Liang He
+   - **Year**: 2026
+   - **Venue**: arXiv preprint arXiv:2604.00931 [cs.AI] (verified against the live arXiv page)
    - **Role in Project**: Foundational architecture providing hierarchical meta-skill and micro-skill taxonomies and clinical prompt structures.
 
 2. **Working Alliance Inventory (WAI)**:
