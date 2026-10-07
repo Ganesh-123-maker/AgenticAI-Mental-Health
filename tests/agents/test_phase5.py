@@ -78,6 +78,39 @@ def test_uninformative_clarification_stays_uncertain():
     print("[PASS] Uninformative clarification remains UNCERTAIN as expected.")
 
 
+def test_irrelevant_answer_does_not_resolve_safety_question():
+    """Regression test: asking about X must not count as resolving X.
+
+    An informative clarification answer that does not address the asked safety
+    question (medical_history) must leave the item in remaining_uncertainty and
+    keep the route UNCERTAIN. Previously the item was marked resolved merely
+    because the clarification question targeted it, producing false certainty.
+    """
+    data = json.loads(pathlib.Path("data/benchmark/ambiguous_cases/bt/bt_176_safety.json").read_text(encoding="utf-8"))
+    client_msg = (
+        data.get("ambiguous_context", {}).get("basic_info", {}).get("main_problem")
+        or "I have been feeling anxious about my garden lately."
+    )
+    ctx = AgentContext(
+        case_id="bt_176_safety_irrelevant_answer",
+        modality="bt",
+        therapy_stage=data.get("therapy_stage"),
+        full_profile=data.get("ambiguous_context"),
+        current_message=client_msg,
+    )
+    # Informative answer that does NOT address the medical_history question
+    result = run_pipeline(ctx, clarification_answer="This started about six months ago.")
+    trail = {s["agent"]: s for s in result["trail"]}
+    assert "reassessment_agent" in trail, "expected the clarify->reassess loop to run"
+    reassess = trail["reassessment_agent"]["payload"]
+    assert not any("medical_history" in r for r in reassess["resolved_information"]), \
+        f"medical_history falsely marked resolved: {reassess['resolved_information']}"
+    assert any("medical_history" in r for r in reassess["remaining_uncertainty"]), \
+        f"medical_history should remain unresolved: {reassess['remaining_uncertainty']}"
+    assert result["route"] == "UNCERTAIN"
+    print("[PASS] Irrelevant answer does not falsely resolve the safety question.")
+
+
 def test_clarification_reveals_high_risk():
     """Verify that if risk/crisis appears during clarification, reassessment routes to HIGH-RISK."""
     data = json.loads(pathlib.Path("data/benchmark/ambiguous_cases/cbt/cbt_412_safety.json").read_text(encoding="utf-8"))

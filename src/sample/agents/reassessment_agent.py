@@ -30,6 +30,7 @@ from __future__ import annotations
 
 import copy
 import logging
+import re
 from typing import Any, Dict, List, Optional
 
 from .base import Agent, AgentContext, AgentError, AgentMessage
@@ -63,6 +64,78 @@ def _is_uninformative_answer(answer: str) -> bool:
     words = [w.strip(".,!?;:'\"()") for w in text.split()]
     content_words = [w for w in words if w and w not in _FILLER_WORDS]
     return len(content_words) < 4
+
+
+# Missing-information items no client answer can resolve (system/memory gaps,
+# not client-answerable facts). They are tracked for transparency but must not
+# keep the route UNCERTAIN on their own.
+_NON_CLIENT_ANSWERABLE = ("prior_session_recaps", "session_recaps", "last_homework", "theory_info")
+
+# Canonical concern topics -> keywords indicating a client's answer actually
+# addresses that topic. Used to verify resolution against the ANSWER's content,
+# so that merely asking about X never counts as resolving X.
+_TOPIC_KEYWORDS = {
+    "medical_history": {"medical", "health", "treatment", "therapy", "therapist", "therapies",
+                        "medication", "medicine", "meds", "doctor", "hospital", "clinic",
+                        "psychiatric", "psychiatrist", "diagnosis", "diagnosed", "counseling",
+                        "counselor", "prescription", "safety"},
+    "growth_experiences": {"childhood", "grew", "grow", "growing", "family", "parents",
+                           "school", "history", "past", "timeline", "onset", "duration",
+                           "started", "begin", "began", "months", "years", "weeks", "ago",
+                           "since", "long"},
+    "automatic_thoughts": {"thought", "thoughts", "think", "thinking", "believe", "mind",
+                           "cognitive", "negative", "distortion"},
+    "conditional_assumptions": {"believe", "belief", "beliefs", "assume", "assumption",
+                                "rule", "rules", "should", "must", "always", "never"},
+    "consequence": {"impact", "impacts", "affect", "affects", "effect", "effects", "work",
+                    "job", "sleep", "daily", "life", "functioning", "struggle", "struggling"},
+    "main_problem": {"problem", "issue", "concern", "trouble", "worried", "worry", "anxiety",
+                     "anxious", "stress", "stressed", "depressed", "sad"},
+}
+
+# Field-name fragments identifying the canonical topic of a missing-information item
+_TOPIC_FIELD_HINTS = {
+    "medical_history": ("medical_history", "prior_treatment", "prior_therapy", "medication", "health_status"),
+    "growth_experiences": ("growth_experiences", "timeline", "onset", "duration", "how_long"),
+    "automatic_thoughts": ("automatic_thoughts", "negative_thoughts", "cognitive_distortion", "special_situations"),
+    "conditional_assumptions": ("conditional_assumptions", "core_beliefs", "underlying_assumptions"),
+    "consequence": ("consequence", "functional_impairment", "daily_impact"),
+    "main_problem": ("main_problem", "chief_complaint", "primary_concern"),
+}
+
+_GENERIC_FIELD_TOKENS = {"basic", "info", "static", "traits", "empty", "not", "provided",
+                         "absent", "or", "the", "a", "of", "and", "no", "first"}
+
+
+def _is_system_gap(item: str) -> bool:
+    """True for missing-information items a client answer cannot resolve."""
+    text = str(item or "").lower()
+    return any(hint in text for hint in _NON_CLIENT_ANSWERABLE)
+
+
+def _answer_addresses_item(answer: str, item: str) -> bool:
+    """True when the answer's content is topically related to the missing item.
+
+    This is the guard against circular resolution: the clarification question
+    targeting X must not, by itself, mark X resolved. Only an answer that
+    actually contains X-related content resolves the item. When in doubt (e.g.
+    non-English answers with no keyword overlap), returns False so the route
+    stays UNCERTAIN rather than falsely clearing.
+    """
+    item_lc = str(item or "").lower()
+    keywords: set = set()
+    for topic, hints in _TOPIC_FIELD_HINTS.items():
+        if any(h in item_lc for h in hints):
+            keywords.update(_TOPIC_KEYWORDS[topic])
+    # literal tokens from the field-path part of the item label
+    field_part = re.split(r"\s*\(", item_lc, maxsplit=1)[0]
+    for tok in re.split(r"[_\W]+", field_part):
+        if tok and tok not in _GENERIC_FIELD_TOKENS:
+            keywords.add(tok)
+    if not keywords:
+        return False
+    answer_words = re.findall(r"[a-z']+", str(answer or "").lower())
+    return any(kw in w or w in kw for w in answer_words for kw in keywords)
 
 
 class ReassessmentAgent(Agent):
@@ -115,10 +188,7 @@ class ReassessmentAgent(Agent):
         prior_state = copy.deepcopy(ctx.state_output or {})
         prior_unc = copy.deepcopy(ctx.uncertainty_output or {})
         prior_risk = copy.deepcopy(ctx.risk_output or {})
-        clar_payload = getattr(ctx, "clarification_output", {}) or ctx.metadata.get("clarification_output", {})
 
-        target_info = clar_payload.get("target_information", [])
-        uncertain_fields = prior_unc.get("uncertain_fields", [])
         missing_info = prior_unc.get("missing_information", [])
 
         # 3. Check for new RISK signals in the clarification answer
@@ -167,21 +237,16 @@ class ReassessmentAgent(Agent):
                 known_info.append(new_fact)
             updated_state["known_information"] = known_info
 
-            # Identify which missing information items were resolved by the answer
+            # Identify which missing information items the ANSWER actually resolves.
+            # Asking about X does not resolve X: the answer itself must contain
+            # X-related content (see _answer_addresses_item). System gaps that no
+            # client answer can resolve are tracked but never block the route.
             for item in missing_info:
                 item_str = str(item)
-                resolved = False
-                for t in target_info:
-                    if t.lower() in item_str.lower() or item_str.lower() in t.lower():
-                        resolved = True
-                        break
-                if not resolved:
-                    for f in uncertain_fields:
-                        if f.lower() in item_str.lower():
-                            resolved = True
-                            break
-
-                if resolved:
+                if _is_system_gap(item_str):
+                    remaining_uncertainty.append(item_str)
+                    continue
+                if _answer_addresses_item(answer, item_str):
                     resolved_information.append(item_str)
                     if item in unknown_info:
                         unknown_info.remove(item)
@@ -214,23 +279,31 @@ class ReassessmentAgent(Agent):
         unc_msg = self._uncertainty_agent.run(temp_ctx)
         reassessed_unc = unc_msg.payload
 
-        # 6. Determine final status and route_decision
+        # 6. Determine final status and route_decision.
+        # Any remaining CLIENT-ANSWERABLE item keeps the route UNCERTAIN: if
+        # the client did not answer a question we asked, declaring CLEAR would
+        # be false certainty. System gaps (e.g. no prior sessions exist yet)
+        # are tracked for transparency but never block the route on their own.
+        remaining_client_items = [r for r in remaining_uncertainty if not _is_system_gap(r)]
         if is_uninformative:
             status = "UNCERTAIN"
             route_decision = "UNCERTAIN"
             reasoning = "Clarification answer was uninformative or absent; uncertainty remains unresolved."
-        elif remaining_uncertainty:
-            # Partial resolution
-            status = "UNCERTAIN" if len(remaining_uncertainty) >= 2 else "CLEAR"
-            route_decision = status
-            reasoning = f"Clarification resolved {len(resolved_information)} items; {len(remaining_uncertainty)} items remain."
+        elif remaining_client_items:
+            status = "UNCERTAIN"
+            route_decision = "UNCERTAIN"
+            reasoning = (f"Client answer did not address {len(remaining_client_items)} question(s) "
+                         f"({', '.join(remaining_client_items)}); uncertainty remains.")
         else:
             status = "CLEAR"
             route_decision = "CLEAR"
             reassessed_unc["status"] = "CLEAR"
             reassessed_unc["clarification_required"] = False
             reassessed_unc["clarification_needed"] = False
-            reasoning = f"Clarification successfully resolved priority informational uncertainty ({', '.join(resolved_information)})."
+            if resolved_information:
+                reasoning = f"Clarification successfully resolved priority informational uncertainty ({', '.join(resolved_information)})."
+            else:
+                reasoning = "No client-answerable questions remain unanswered; proceeding."
 
         payload = {
             "updated_state": updated_state,
