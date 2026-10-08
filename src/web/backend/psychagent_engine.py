@@ -138,14 +138,13 @@ class PsychAgentWebBackend:
                     else ""
                 )
 
-                last_assistant_msg = ""
-                for m in reversed(transcript[:-1]):
-                    if m.get("role") == "assistant":
-                        last_assistant_msg = m.get("content", "")
-                        break
-
+                # Explicit clarification-pending state: the next user message is
+                # a clarification answer only if the previous turn routed
+                # UNCERTAIN *and* the persisted pipeline trace shows the
+                # clarification agent actually produced a required question.
+                # No string heuristics on message text.
                 clarification_answer = None
-                if previous_route == "UNCERTAIN" and ("?" in last_assistant_msg or "Could you" in last_assistant_msg or "tell me" in last_assistant_msg.lower()):
+                if self._clarification_pending(psych_context):
                     clarification_answer = user_query
 
                 pipeline_res = run_pipeline(
@@ -621,6 +620,38 @@ class PsychAgentWebBackend:
                 continue
             transcript.append({"role": message.role, "content": content})
         return transcript
+
+    @staticmethod
+    def _clarification_pending(psych_context: Optional[VisitPsychContextOut]) -> bool:
+        """Whether the next user message should be treated as a clarification answer.
+
+        Explicit conversation state, not a string heuristic: returns True only
+        when the previous turn routed UNCERTAIN *and* the persisted pipeline
+        trace shows the clarification agent produced a required question.
+
+        The state self-clears: after the answer is consumed, the new turn's
+        route and trace are persisted, so a subsequent message is only treated
+        as an answer if clarification is still genuinely pending.
+        """
+        if not psych_context or not isinstance(psych_context.profile_payload, dict):
+            return False
+        payload = psych_context.profile_payload
+        if payload.get("latest_route") != "UNCERTAIN":
+            return False
+        trace = payload.get("latest_agent_trace") or []
+        if not isinstance(trace, list):
+            return False
+        for step in reversed(trace):
+            if not isinstance(step, dict):
+                continue
+            if step.get("agent") == "clarification_agent":
+                clar_payload = step.get("payload") or {}
+                if not isinstance(clar_payload, dict):
+                    return False
+                return bool(clar_payload.get("clarification_required")) and bool(
+                    clar_payload.get("question") or clar_payload.get("questions")
+                )
+        return False
 
     @staticmethod
     def _build_chat_history(messages: List[VisitMessageOut]) -> List[Dict[str, str]]:
