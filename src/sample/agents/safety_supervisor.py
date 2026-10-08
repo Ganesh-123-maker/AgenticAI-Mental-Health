@@ -28,6 +28,7 @@ import re
 from typing import Any, Dict, List, Optional
 
 from .base import Agent, AgentContext, AgentError, AgentMessage
+from .risk_agent import ZH_HIGH_CRISIS_FORMS
 
 logger = logging.getLogger(__name__)
 
@@ -228,11 +229,14 @@ class SafetySupervisor(Agent):
                 ]
             )
 
-            # Check if acute crisis signals are present
+            # Check if acute crisis signals are present (English keywords plus the
+            # Chinese HIGH-severity forms from the RiskAgent concept table, so
+            # a Chinese acute crisis is not downgraded relative to English).
             is_acute_crisis = any(
                 kw in utterance_lower or kw in signals_lower
                 for kw in [
-                    "suicide", "self-harm", "despair", "want to die", "don't want to live", "end life", "cutting wrists", "jump off building", "kill myself", "end my life", "take my own life"
+                    "suicide", "self-harm", "despair", "want to die", "don't want to live", "end life", "cutting wrists", "jump off building", "kill myself", "end my life", "take my own life",
+                    *ZH_HIGH_CRISIS_FORMS,
                 ]
             )
 
