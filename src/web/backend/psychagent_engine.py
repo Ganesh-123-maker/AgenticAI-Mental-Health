@@ -147,6 +147,13 @@ class PsychAgentWebBackend:
                 if self._clarification_pending(psych_context):
                     clarification_answer = user_query
 
+                # Longitudinal risk carry-forward: a HIGH/MODERATE severity
+                # from a previous turn in this visit floors the fresh
+                # assessment so it cannot be downgraded by a benign message.
+                carried_severity = self._carried_risk_severity(psych_context)
+                if carried_severity:
+                    ctx.metadata["carried_risk_severity"] = carried_severity
+
                 pipeline_res = run_pipeline(
                     ctx,
                     clarification_answer=clarification_answer,
@@ -161,6 +168,7 @@ class PsychAgentWebBackend:
                 )
                 current_route = pipeline_res["route"]
                 trail = pipeline_res["trail"]
+                longitudinal_risk = self._updated_longitudinal_risk(pipeline_res)
 
                 if current_route == "HIGH-RISK" or pipeline_res.get("verdict") == "ESCALATE":
                     safe_text = pipeline_res.get("response") or (
@@ -169,7 +177,8 @@ class PsychAgentWebBackend:
                         "Tele-MANAS (14416) or 988 Suicide & Crisis Lifeline (call/text 988). "
                         "I am here to support you safely."
                     )
-                    return {"text": safe_text, "end": False, "agent_trace": trail, "route": current_route}
+                    return {"text": safe_text, "end": False, "agent_trace": trail, "route": current_route,
+                            "longitudinal_risk": longitudinal_risk}
 
                 if current_route == "UNCERTAIN":
                     clar_payload = ctx.clarification_output or {}
@@ -178,7 +187,8 @@ class PsychAgentWebBackend:
                         clar_q = clar_payload["questions"][0]
                     if not clar_q:
                         clar_q = "Could you tell me a little more about what has been happening with that situation?"
-                    return {"text": clar_q, "end": False, "agent_trace": trail, "route": current_route}
+                    return {"text": clar_q, "end": False, "agent_trace": trail, "route": current_route,
+                            "longitudinal_risk": longitudinal_risk}
 
                 # CLEAR route -> Generate counseling response draft
                 suggested_skills: List[Dict[str, Any]] = []
@@ -228,7 +238,8 @@ class PsychAgentWebBackend:
                         if "false reassurance" in rationale.lower():
                             text = text.replace("Everything will be completely fine.", "We will take this one step at a time.")
 
-                return {"text": text, "end": should_end, "agent_trace": trail, "route": current_route}
+                return {"text": text, "end": should_end, "agent_trace": trail, "route": current_route,
+                        "longitudinal_risk": longitudinal_risk}
 
             # Multi-agent disabled: fallback direct path
             suggested_skills: List[Dict[str, Any]] = []
@@ -652,6 +663,47 @@ class PsychAgentWebBackend:
                     clar_payload.get("question") or clar_payload.get("questions")
                 )
         return False
+
+    @staticmethod
+    def _carried_risk_severity(psych_context: Optional[VisitPsychContextOut]) -> Optional[str]:
+        """Highest trustworthy risk severity carried from prior turns in this visit.
+
+        Returns "HIGH" or "MODERATE" if persisted, else None. Only confirmed
+        severities are carried; LOW needs no floor and UNCERTAIN (unverified)
+        is per-turn and must not permanently block ordinary conversations.
+        Scoped to the visit via profile_payload (per-visit snapshot).
+        """
+        if not psych_context or not isinstance(psych_context.profile_payload, dict):
+            return None
+        longitudinal = psych_context.profile_payload.get("longitudinal_risk") or {}
+        if not isinstance(longitudinal, dict):
+            return None
+        severity = str(longitudinal.get("severity", "")).upper()
+        return severity if severity in ("HIGH", "MODERATE") else None
+
+    @staticmethod
+    def _updated_longitudinal_risk(pipeline_res: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+        """Build the longitudinal risk summary to persist after this turn.
+
+        Monotonic: persists HIGH/MODERATE (the pipeline already applied the
+        carried floor, so this is the max of prior and current). Returns None
+        when there is nothing worth carrying (LOW/UNCERTAIN), keeping
+        ordinary conversations unblocked.
+        """
+        from datetime import datetime, timezone
+
+        ctx = pipeline_res.get("context")
+        risk_payload = (getattr(ctx, "risk_output", None) or {}) if ctx else {}
+        if not isinstance(risk_payload, dict):
+            return None
+        severity = str(risk_payload.get("severity", "LOW")).upper()
+        if severity not in ("HIGH", "MODERATE"):
+            return None
+        return {
+            "severity": severity,
+            "updated_at": datetime.now(timezone.utc).isoformat(),
+            "source": "pipeline_risk_assessment",
+        }
 
     @staticmethod
     def _build_chat_history(messages: List[VisitMessageOut]) -> List[Dict[str, str]]:

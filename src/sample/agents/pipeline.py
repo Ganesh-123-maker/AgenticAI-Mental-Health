@@ -86,6 +86,33 @@ def _resolve_flags(
     return resolved
 
 
+_CARRIED_RISK_RANK = {"LOW": 0, "UNCERTAIN": 1, "MODERATE": 2, "HIGH": 3}
+
+
+def _apply_carried_risk_floor(ctx: AgentContext) -> None:
+    """Prevent risk downgrading across conversation turns.
+
+    If the backend carried forward a HIGH/MODERATE severity from a previous
+    turn (ctx.metadata["carried_risk_severity"]), the fresh RiskAgent
+    assessment cannot downgrade below it merely because the latest message
+    is benign. New evidence can still raise the severity. This is a
+    max-severity floor, not a re-implementation of risk detection.
+    """
+    floor = (ctx.metadata or {}).get("carried_risk_severity")
+    if not isinstance(floor, str) or not floor:
+        return
+    floor = floor.upper()
+    if floor not in ("HIGH", "MODERATE"):
+        return
+    risk_payload = ctx.risk_output or {}
+    if not isinstance(risk_payload, dict):
+        return
+    fresh = str(risk_payload.get("severity", "LOW")).upper()
+    if _CARRIED_RISK_RANK.get(fresh, 0) < _CARRIED_RISK_RANK[floor]:
+        risk_payload["severity"] = floor
+        risk_payload["carried_from_prior_turn"] = True
+
+
 def _normalize_answer_sequence(clarification_answer: Optional[Union[str, List[str]]]) -> List[str]:
     """Normalize the clarification answer(s) to a per-turn sequence.
 
@@ -186,6 +213,10 @@ def run_pipeline(
         }
         ctx.risk_output = risk_payload
         trail.append({"agent": "risk_agent", "status": "BYPASSED", "payload": risk_payload, "duration_ms": 0.0})
+
+    # Longitudinal floor: a carried HIGH/MODERATE from a prior turn cannot be
+    # downgraded by a benign latest message.
+    _apply_carried_risk_floor(ctx)
 
     # Orchestrator & Safety Supervisor loop with capped re-routes
     orchestrator = Orchestrator()
@@ -397,6 +428,10 @@ async def run_pipeline_async(
         }
         ctx.risk_output = risk_payload
         trail.append({"agent": "risk_agent", "status": "BYPASSED", "payload": risk_payload, "duration_ms": 0.0})
+
+    # Longitudinal floor: a carried HIGH/MODERATE from a prior turn cannot be
+    # downgraded by a benign latest message.
+    _apply_carried_risk_floor(ctx)
 
     orchestrator = Orchestrator()
     clar_agent = ClarificationAgent()

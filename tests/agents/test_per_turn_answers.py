@@ -159,3 +159,29 @@ def test_prioritization_intact_across_turns():
         f"turn 2 lost safety prioritization: {clars[1]['payload']['target_information']}"
     )
     print("[PASS] Risk-aware prioritization intact across turns.")
+
+
+def test_carried_risk_floor_unit():
+    """Pipeline-level: carried HIGH/MODERATE floors the fresh assessment."""
+    from sample.agents.base import AgentContext
+    from sample.agents.pipeline import _apply_carried_risk_floor
+
+    def _ctx_with(sev, carried):
+        ctx = AgentContext(case_id="f", modality="cbt", current_message="hi")
+        ctx.risk_output = {"severity": sev}
+        ctx.metadata = {"carried_risk_severity": carried} if carried else {}
+        return ctx
+
+    c = _ctx_with("LOW", "HIGH"); _apply_carried_risk_floor(c)
+    assert c.risk_output["severity"] == "HIGH"
+    c = _ctx_with("LOW", "MODERATE"); _apply_carried_risk_floor(c)
+    assert c.risk_output["severity"] == "MODERATE"
+    c = _ctx_with("HIGH", "MODERATE"); _apply_carried_risk_floor(c)
+    assert c.risk_output["severity"] == "HIGH"  # new evidence raises
+    c = _ctx_with("UNCERTAIN", "MODERATE"); _apply_carried_risk_floor(c)
+    assert c.risk_output["severity"] == "MODERATE"  # confirmed dominates unverified
+    c = _ctx_with("LOW", None); _apply_carried_risk_floor(c)
+    assert c.risk_output["severity"] == "LOW"  # no floor, unchanged
+    c = _ctx_with("LOW", "LOW"); _apply_carried_risk_floor(c)
+    assert c.risk_output["severity"] == "LOW"  # LOW is not a floor
+    print("[PASS] Carried risk floor unit behavior.")
