@@ -237,6 +237,7 @@ def run_pipeline(
         # 4. Orchestrator Routing
         if active_flags["multi_agent_routing_enabled"]:
             orch_msg, orch_ms = _timed_run(orchestrator, ctx)
+            ctx.routing_output = orch_msg.payload
             current_route = orch_msg.payload.get("route", "UNCERTAIN")
             trail.append({
                 "agent": orchestrator.name,
@@ -277,6 +278,7 @@ def run_pipeline(
 
                 if active_flags["multi_agent_routing_enabled"]:
                     orch_msg, orch_ms = _timed_run(orchestrator, ctx)
+                    ctx.routing_output = orch_msg.payload
                     current_route = orch_msg.payload.get("route", "UNCERTAIN")
                     trail.append({"agent": orchestrator.name, "step": f"reassessment_routing_{reassess_count}", "route": current_route, "payload": orch_msg.payload, "duration_ms": orch_ms})
                 else:
@@ -329,10 +331,16 @@ def run_pipeline(
             elif supervisor_verdict == "RE-ROUTE":
                 reroute_count += 1
                 if reroute_count <= max_reroutes:
-                    # Update context with safety findings and re-route
+                    # Keep the human-readable rationale for traceability.
                     ctx.metadata["supervisor_reroute_rationale"] = sup_payload.get("rationale")
-                    if "High risk" in sup_payload.get("rationale", ""):
-                        ctx.risk_output["severity"] = "HIGH"
+                    # Structured risk/route mismatch signal (not rationale text
+                    # parsing). If the supervisor flagged risk_consistency=False
+                    # and our assessed risk is HIGH, ensure the orchestrator
+                    # sees HIGH on re-route. Fail closed: missing/invalid
+                    # risk_consistency -> no escalation.
+                    if sup_payload.get("risk_consistency") is False:
+                        if str((ctx.risk_output or {}).get("severity", "LOW")).upper() == "HIGH":
+                            ctx.risk_output["severity"] = "HIGH"
                     continue
                 else:
                     final_response = draft_response
@@ -461,6 +469,7 @@ async def run_pipeline_async(
         # 4. Orchestrator Routing
         if active_flags["multi_agent_routing_enabled"]:
             orch_msg, orch_ms = _timed_run(orchestrator, ctx)
+            ctx.routing_output = orch_msg.payload
             current_route = orch_msg.payload.get("route", "UNCERTAIN")
             trail.append({
                 "agent": orchestrator.name,
@@ -501,6 +510,7 @@ async def run_pipeline_async(
 
                 if active_flags["multi_agent_routing_enabled"]:
                     orch_msg, orch_ms = _timed_run(orchestrator, ctx)
+                    ctx.routing_output = orch_msg.payload
                     current_route = orch_msg.payload.get("route", "UNCERTAIN")
                     trail.append({"agent": orchestrator.name, "step": f"reassessment_routing_{reassess_count}", "route": current_route, "payload": orch_msg.payload, "duration_ms": orch_ms})
                 else:
@@ -580,9 +590,16 @@ async def run_pipeline_async(
             elif supervisor_verdict == "RE-ROUTE":
                 reroute_count += 1
                 if reroute_count <= max_reroutes:
+                    # Keep the human-readable rationale for traceability.
                     ctx.metadata["supervisor_reroute_rationale"] = sup_payload.get("rationale")
-                    if "High risk" in sup_payload.get("rationale", ""):
-                        ctx.risk_output["severity"] = "HIGH"
+                    # Structured risk/route mismatch signal (not rationale text
+                    # parsing). If the supervisor flagged risk_consistency=False
+                    # and our assessed risk is HIGH, ensure the orchestrator
+                    # sees HIGH on re-route. Fail closed: missing/invalid
+                    # risk_consistency -> no escalation.
+                    if sup_payload.get("risk_consistency") is False:
+                        if str((ctx.risk_output or {}).get("severity", "LOW")).upper() == "HIGH":
+                            ctx.risk_output["severity"] = "HIGH"
                     continue
                 else:
                     final_pure, final_raw = c_resp_pure, c_resp_raw
