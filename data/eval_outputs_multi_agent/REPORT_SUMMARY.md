@@ -19,6 +19,8 @@ Data directly pulled from `data/eval_outputs_multi_agent/all_systems_summary.jso
 | **ablation_no_longitudinal** | 8.75 | 7.50 | 7.50 | 0.76 | 1.00 | 1.00 | 0.48 | 0.68 | 0.94 |
 | **ablation_no_routing** | 8.75 | 7.50 | 7.50 | 0.64 | 1.00 | 1.00 | 0.48 | 0.28 | 1.00 |
 
+> **Note on System_A / System_B zeros:** The `0.00` values for Routing Acc, Safety F1/Recall, Uncertainty F1, Clarification Rel, and Handoff Corr for Systems A and B are **N/A (not applicable), not measured 0%**. Trail inspection confirms these systems emit no `route` field at all (`multi_agent_routing_enabled: False` and all multi-agent features disabled), so the metrics cannot be computed. The source JSON (`all_systems_summary.json`) correctly records `null` for these fields; the table renders them as `0.00`. All metrics in this table are computed over n=33 cases per system.
+
 ## 2. Top Failure Categories & Concrete Example Cases
 
 A total of **609 structured failures** were detected across all 12 evaluation configurations. The top categories by frequency are:
