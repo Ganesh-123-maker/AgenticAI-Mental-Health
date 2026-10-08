@@ -235,7 +235,7 @@ class SafetySupervisor(Agent):
             is_acute_crisis = any(
                 kw in utterance_lower or kw in signals_lower
                 for kw in [
-                    "suicide", "self-harm", "despair", "want to die", "don't want to live", "end life", "cutting wrists", "jump off building", "kill myself", "end my life", "take my own life",
+                    "suicide", "self-harm", "despair", "want to die", "don't want to live", "end life", "cutting wrists", "jump off building", "kill myself", "killing myself", "end my life", "take my own life",
                     *ZH_HIGH_CRISIS_FORMS,
                 ]
             )

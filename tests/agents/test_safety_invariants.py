@@ -115,3 +115,16 @@ def test_invariant_8_crisis_resources_from_configured_set():
     assert "988" in _STANDARD_SAFE_FALLBACK
     # No invented resources.
     print("[PASS] Invariant 8: crisis resources from configured set.")
+
+
+def test_invariant_9_acute_verb_forms_escalate():
+    """Present-participle crisis verbs ('killing myself') trigger acute fallback."""
+    ctx = _ctx("I am thinking about killing myself.")
+    ctx.risk_output = {"severity": "HIGH", "signals_detected": ["killing myself"]}
+    ctx.uncertainty_output = {"status": "CLEAR"}
+    ctx.routing_output = {"route": "HIGH-RISK"}
+    p = SafetySupervisor().run(ctx, draft_response="Let's talk about coping.").payload
+    assert p["verdict"] == "ESCALATE", f"verdict={p['verdict']}"
+    assert p.get("safe_fallback"), "acute crisis must produce safe_fallback"
+    assert "14416" in p["safe_fallback"] or "988" in p["safe_fallback"]
+    print("[PASS] Invariant 9: 'killing myself' triggers acute escalation.")

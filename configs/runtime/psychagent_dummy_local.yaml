@@ -38,3 +38,13 @@ psychagent_embedding_batch_size: 64
 psychagent_embedding_max_retries: 2
 psychagent_embedding_retry_sleep_sec: 0.1
 psychagent_embedding_verify_ssl: true
+
+# Multi-Agent Pipeline flags (11-agent architecture runs in dummy mode;
+# only the LLM counselor/client are stubbed)
+multi_agent_enabled: true
+uncertainty_enabled: true
+risk_enabled: true
+clarification_enabled: true
+safety_supervisor_enabled: true
+longitudinal_enabled: true
+multi_agent_routing_enabled: true
