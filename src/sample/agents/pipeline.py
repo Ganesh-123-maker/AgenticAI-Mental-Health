@@ -16,7 +16,7 @@ from __future__ import annotations
 
 import logging
 import time
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional, Tuple, Union
 
 from .base import AgentContext, AgentMessage
 from .clarification_agent import ClarificationAgent
@@ -86,6 +86,22 @@ def _resolve_flags(
     return resolved
 
 
+def _normalize_answer_sequence(clarification_answer: Optional[Union[str, List[str]]]) -> List[str]:
+    """Normalize the clarification answer(s) to a per-turn sequence.
+
+    Backward compatible: a single string is treated as a one-turn sequence;
+    None means no answers. Each turn consumes the next answer in order, so
+    turn 2+ can process a genuinely new client response instead of replaying
+    turn 1's. The pipeline never fabricates answers: when the sequence is
+    exhausted, the loop breaks.
+    """
+    if clarification_answer is None:
+        return []
+    if isinstance(clarification_answer, str):
+        return [clarification_answer]
+    return [a for a in clarification_answer if isinstance(a, str)]
+
+
 def _propagate_reassessment_state(ctx: AgentContext, reassess_payload: Dict[str, Any]) -> None:
     """Make the reassessment's refreshed assessments current for the next turn.
 
@@ -107,18 +123,24 @@ def _propagate_reassessment_state(ctx: AgentContext, reassess_payload: Dict[str,
 
 def run_pipeline(
     ctx: AgentContext,
-    clarification_answer: Optional[str] = None,
+    clarification_answer: Optional[Union[str, List[str]]] = None,
     max_reassess_turns: int = 1,
     flags: Optional[Dict[str, bool]] = None,
     **kwargs: Any,
 ) -> Dict[str, Any]:
     """Execute the multi-agent pipeline synchronously (for unit/offline testing).
 
+    clarification_answer may be a single string (one answer, backward
+    compatible) or a list of strings (one per clarification turn). Each turn
+    consumes the next answer; ctx.current_message is updated to the latest
+    client message before reassessment.
+
     Returns:
         Dict with "response", "route", "next_agent", "verdict", "trail", and "context".
     """
     active_flags = _resolve_flags(flags, ctx=ctx, **kwargs)
     trail: List[Dict[str, Any]] = []
+    answer_sequence = _normalize_answer_sequence(clarification_answer)
 
     # 1. Memory Agent
     mem_agent = MemoryAgent()
@@ -209,13 +231,18 @@ def run_pipeline(
             ctx.metadata["clarification_output"] = clar_msg.payload
             trail.append({"agent": clar_agent.name, "turn": reassess_count, "payload": clar_msg.payload, "duration_ms": clar_ms})
 
-            if clarification_answer is not None:
-                reassess_msg, reassess_ms = _timed_run(reassess_agent, ctx, clarification_answer=clarification_answer)
+            # This turn's client answer (None when the sequence is exhausted).
+            turn_answer = answer_sequence[reassess_count - 1] if reassess_count - 1 < len(answer_sequence) else None
+            if turn_answer is not None:
+                # The latest client message is this turn's answer.
+                ctx.current_message = turn_answer
+                reassess_msg, reassess_ms = _timed_run(reassess_agent, ctx, clarification_answer=turn_answer)
                 ctx.reassessment_output = reassess_msg.payload
                 ctx.metadata["reassessment_output"] = reassess_msg.payload
                 # Refresh ctx state for the next clarification turn (if any).
                 _propagate_reassessment_state(ctx, reassess_msg.payload)
-                trail.append({"agent": reassess_agent.name, "turn": reassess_count, "payload": reassess_msg.payload, "duration_ms": reassess_ms})
+                trail.append({"agent": reassess_agent.name, "turn": reassess_count, "payload": reassess_msg.payload,
+                              "clarification_answer": turn_answer, "duration_ms": reassess_ms})
 
                 if active_flags["multi_agent_routing_enabled"]:
                     orch_msg, orch_ms = _timed_run(orchestrator, ctx)
@@ -307,7 +334,7 @@ async def run_pipeline_async(
     turn_tag: str,
     render_counselor_system: Any,
     each_turn_system: Optional[List[str]] = None,
-    clarification_answer: Optional[str] = None,
+    clarification_answer: Optional[Union[str, List[str]]] = None,
     max_reassess_turns: int = 1,
     flags: Optional[Dict[str, bool]] = None,
     **kwargs: Any,
@@ -324,6 +351,7 @@ async def run_pipeline_async(
     """
     active_flags = _resolve_flags(flags, ctx=ctx, runner_instance=runner_instance, **kwargs)
     trail: List[Dict[str, Any]] = []
+    answer_sequence = _normalize_answer_sequence(clarification_answer)
 
     # 1. Memory Agent
     mem_agent = MemoryAgent()
@@ -414,13 +442,18 @@ async def run_pipeline_async(
             ctx.metadata["clarification_output"] = clar_msg.payload
             trail.append({"agent": clar_agent.name, "turn": reassess_count, "payload": clar_msg.payload, "duration_ms": clar_ms})
 
-            if clarification_answer is not None:
-                reassess_msg, reassess_ms = _timed_run(reassess_agent, ctx, clarification_answer=clarification_answer)
+            # This turn's client answer (None when the sequence is exhausted).
+            turn_answer = answer_sequence[reassess_count - 1] if reassess_count - 1 < len(answer_sequence) else None
+            if turn_answer is not None:
+                # The latest client message is this turn's answer.
+                ctx.current_message = turn_answer
+                reassess_msg, reassess_ms = _timed_run(reassess_agent, ctx, clarification_answer=turn_answer)
                 ctx.reassessment_output = reassess_msg.payload
                 ctx.metadata["reassessment_output"] = reassess_msg.payload
                 # Refresh ctx state for the next clarification turn (if any).
                 _propagate_reassessment_state(ctx, reassess_msg.payload)
-                trail.append({"agent": reassess_agent.name, "turn": reassess_count, "payload": reassess_msg.payload, "duration_ms": reassess_ms})
+                trail.append({"agent": reassess_agent.name, "turn": reassess_count, "payload": reassess_msg.payload,
+                              "clarification_answer": turn_answer, "duration_ms": reassess_ms})
 
                 if active_flags["multi_agent_routing_enabled"]:
                     orch_msg, orch_ms = _timed_run(orchestrator, ctx)
