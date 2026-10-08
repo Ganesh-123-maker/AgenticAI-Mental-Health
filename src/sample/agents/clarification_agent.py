@@ -122,12 +122,16 @@ class ClarificationAgent(Agent):
         unc_payload = ctx.uncertainty_output or {}
         if not isinstance(unc_payload, dict):
             unc_payload = {}
+        risk_payload = ctx.risk_output or {}
+        if not isinstance(risk_payload, dict):
+            risk_payload = {}
 
         clarification_required = bool(unc_payload.get("clarification_required", False))
         uncertainty_types = unc_payload.get("uncertainty_types", []) or []
         uncertain_fields = unc_payload.get("uncertain_fields", []) or []
         missing_info = unc_payload.get("missing_information", []) or []
         unc_priority = unc_payload.get("priority", "LOW")
+        risk_severity = str(risk_payload.get("severity", "LOW")).upper()
 
         # If clarification is NOT required, return valid non-empty schema indicating not needed
         if not clarification_required or unc_payload.get("status") == "CLEAR":
@@ -148,26 +152,89 @@ class ClarificationAgent(Agent):
                 payload=payload,
             )
 
-        # Priority 1: Referential ambiguity and contradictions in the client's discourse take precedence
-        selected_template: Optional[Dict[str, Any]] = None
+        # Items genuinely resolved in a previous clarification turn must not be
+        # asked again. This uses resolved_information (answers that actually
+        # addressed the item), never target_information: merely asking does
+        # not count as answering.
+        reassess_payload = getattr(ctx, "reassessment_output", None) or {}
+        if not isinstance(reassess_payload, dict):
+            reassess_payload = {}
+        resolved_items = reassess_payload.get("resolved_information", []) or []
+
+        def _target_resolved(target_fields: List[str]) -> bool:
+            """True if any target field is covered by a resolved item.
+
+            A template's targets are facets of a single question; if the
+            client answered any facet, re-asking the template is repetitive.
+            """
+            return any(
+                any(t.lower() in str(r).lower() for r in resolved_items)
+                for t in target_fields
+            )
+
+        has_safety_gap = (
+            "safety_status" in uncertainty_types
+            or any("medical" in f or "safety" in f for f in uncertain_fields)
+        )
+
+        # Ordered candidate templates. At elevated risk, a safety-relevant gap
+        # jumps to first priority (it materially affects the safety decision);
+        # at LOW risk the standard discourse order applies. Deterministic:
+        # identical inputs always yield the same question.
+        candidates: List[str] = []
+        if risk_severity in ("HIGH", "MODERATE", "UNCERTAIN") and has_safety_gap:
+            candidates.append("safety_status")
         if "contradictory_information" in uncertainty_types:
-            selected_template = _CLARIFICATION_TEMPLATES["contradictory_information"]
-        elif "ambiguous_expression" in uncertainty_types:
-            selected_template = _CLARIFICATION_TEMPLATES["ambiguous_expression"]
-        elif "safety_status" in uncertainty_types or any("medical" in f or "safety" in f for f in uncertain_fields):
-            selected_template = _CLARIFICATION_TEMPLATES["safety_status"]
-        elif "duration_and_history" in uncertainty_types or any("growth" in f for f in uncertain_fields):
-            selected_template = _CLARIFICATION_TEMPLATES["duration_and_history"]
-        else:
-            # Fall back to matching any recognized uncertainty type
-            for utype in uncertainty_types:
-                if utype in _CLARIFICATION_TEMPLATES:
-                    selected_template = _CLARIFICATION_TEMPLATES[utype]
-                    break
+            candidates.append("contradictory_information")
+        if "ambiguous_expression" in uncertainty_types:
+            candidates.append("ambiguous_expression")
+        if has_safety_gap and "safety_status" not in candidates:
+            candidates.append("safety_status")
+        if "duration_and_history" in uncertainty_types or any("growth" in f for f in uncertain_fields):
+            candidates.append("duration_and_history")
+        # Fall back to any other recognized uncertainty type, in order
+        for utype in uncertainty_types:
+            if utype in _CLARIFICATION_TEMPLATES and utype not in candidates:
+                candidates.append(utype)
+
+        # Pick the first candidate with at least one unresolved target.
+        selected_name: Optional[str] = None
+        selected_template: Optional[Dict[str, Any]] = None
+        for name in candidates:
+            tmpl = _CLARIFICATION_TEMPLATES[name]
+            if not _target_resolved(tmpl["target"]):
+                selected_name = name
+                selected_template = tmpl
+                break
 
         if selected_template is None:
-            # Generic fallback targeted question
-            target_str = uncertain_fields[0] if uncertain_fields else (missing_info[0] if missing_info else "relevant background")
+            # Generic fallback: first field that is not already resolved.
+            candidate_fields = [
+                f for f in uncertain_fields if not _target_resolved([str(f)])
+            ]
+            if not candidate_fields:
+                candidate_fields = [
+                    m for m in missing_info if not _target_resolved([str(m)])
+                ]
+            if not candidate_fields:
+                # Everything is already resolved: nothing left to clarify.
+                payload = {
+                    "question": "",
+                    "questions": [],
+                    "target_information": [],
+                    "priority": "LOW",
+                    "clarification_required": False,
+                    "reasoning_summary": "All identified gaps were resolved in a previous turn; no clarification needed.",
+                }
+                _validate_clarification_payload(payload)
+                return AgentMessage(
+                    agent=self.name,
+                    status="not_required",
+                    evidence=["No unresolved gaps remain"],
+                    confidence=1.0,
+                    payload=payload,
+                )
+            target_str = candidate_fields[0]
             questions = [f"Regarding what you mentioned, could you tell me more about the background concerning {target_str}?"]
             target_info = [str(target_str)]
             priority = unc_priority
@@ -177,7 +244,12 @@ class ClarificationAgent(Agent):
             priority = selected_template["priority"]
 
         primary_question = questions[0] if questions else ""
-        reasoning = f"Clarification targets priority gap '{', '.join(target_info)}' to resolve informational uncertainty."
+        reasoning = (
+            f"Clarification targets priority gap '{', '.join(target_info)}' "
+            f"to resolve informational uncertainty."
+        )
+        if risk_severity in ("HIGH", "MODERATE", "UNCERTAIN") and selected_name == "safety_status":
+            reasoning += f" Safety prioritized at {risk_severity} risk."
 
         payload = {
             "question": primary_question,
