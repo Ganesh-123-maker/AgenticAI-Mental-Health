@@ -343,7 +343,44 @@ def run_pipeline(
                             ctx.risk_output["severity"] = "HIGH"
                     continue
                 else:
-                    final_response = draft_response
+                    # Retry exhausted with the mismatch unresolved: never
+                    # silently deliver the flagged draft. Prefer the
+                    # supervisor's safe fallback/revision; fail closed to
+                    # ESCALATE with a neutral safe message otherwise.
+                    # sup_payload here is from the latest supervisor run.
+                    # Guard: the supervisor's "revision" must differ from the
+                    # flagged draft (its suggester can echo the input).
+                    safe_text = None
+                    if isinstance(sup_payload, dict):
+                        for key in ("safe_fallback", "revised_response", "suggested_revision"):
+                            candidate = sup_payload.get(key)
+                            if isinstance(candidate, str) and candidate.strip() \
+                                    and candidate.strip() != draft_response.strip():
+                                safe_text = candidate
+                                break
+                    if safe_text:
+                        final_response = safe_text
+                        trail.append({
+                            "agent": supervisor.name,
+                            "action": "reroute_exhausted_safe_fallback_applied",
+                            "verdict": supervisor_verdict,
+                            "duration_ms": 0.0,
+                        })
+                    else:
+                        final_response = (
+                            "I want to make sure I support you safely and accurately. "
+                            "Let's pause here for now — if you need immediate support, "
+                            "please reach out to a trusted person, a mental health "
+                            "professional, or a crisis helpline (Tele-MANAS 14416 in "
+                            "India, 988 in the US)."
+                        )
+                        supervisor_verdict = "ESCALATE"
+                        trail.append({
+                            "agent": supervisor.name,
+                            "action": "reroute_exhausted_escalated",
+                            "verdict": "ESCALATE",
+                            "duration_ms": 0.0,
+                        })
                     break
         else:
             supervisor_verdict = "ALLOW"
@@ -602,7 +639,43 @@ async def run_pipeline_async(
                             ctx.risk_output["severity"] = "HIGH"
                     continue
                 else:
-                    final_pure, final_raw = c_resp_pure, c_resp_raw
+                    # Retry exhausted with the mismatch unresolved: never
+                    # silently deliver the flagged draft. Prefer the
+                    # supervisor's safe fallback/revision; fail closed to
+                    # ESCALATE with a neutral safe message otherwise.
+                    # Guard: the "revision" must differ from the flagged draft
+                    # (the supervisor's suggester can echo the input).
+                    safe_text = None
+                    if isinstance(sup_payload, dict):
+                        for key in ("safe_fallback", "revised_response", "suggested_revision"):
+                            candidate = sup_payload.get(key)
+                            if isinstance(candidate, str) and candidate.strip() \
+                                    and candidate.strip() != c_resp_pure.strip():
+                                safe_text = candidate
+                                break
+                    if safe_text:
+                        final_pure, final_raw = safe_text, safe_text
+                        trail.append({
+                            "agent": supervisor.name,
+                            "action": "reroute_exhausted_safe_fallback_applied",
+                            "verdict": supervisor_verdict,
+                            "duration_ms": 0.0,
+                        })
+                    else:
+                        final_pure = final_raw = (
+                            "I want to make sure I support you safely and accurately. "
+                            "Let's pause here for now — if you need immediate support, "
+                            "please reach out to a trusted person, a mental health "
+                            "professional, or a crisis helpline (Tele-MANAS 14416 in "
+                            "India, 988 in the US)."
+                        )
+                        supervisor_verdict = "ESCALATE"
+                        trail.append({
+                            "agent": supervisor.name,
+                            "action": "reroute_exhausted_escalated",
+                            "verdict": "ESCALATE",
+                            "duration_ms": 0.0,
+                        })
                     break
         else:
             supervisor_verdict = "ALLOW"
