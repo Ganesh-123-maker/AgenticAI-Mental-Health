@@ -86,6 +86,25 @@ def _resolve_flags(
     return resolved
 
 
+def _propagate_reassessment_state(ctx: AgentContext, reassess_payload: Dict[str, Any]) -> None:
+    """Make the reassessment's refreshed assessments current for the next turn.
+
+    State ownership: the ReassessmentAgent PRODUCES the updated uncertainty
+    and risk state (payload["uncertainty"], payload["risk"]); the pipeline
+    PROPAGATES them onto the context between clarification turns. Without
+    this, the next ClarificationAgent invocation would reason from the
+    original (stale) UncertaintyAgent output.
+    """
+    if not isinstance(reassess_payload, dict):
+        return
+    refreshed_unc = reassess_payload.get("uncertainty")
+    if isinstance(refreshed_unc, dict) and refreshed_unc:
+        ctx.uncertainty_output = refreshed_unc
+    refreshed_risk = reassess_payload.get("risk")
+    if isinstance(refreshed_risk, dict) and refreshed_risk:
+        ctx.risk_output = refreshed_risk
+
+
 def run_pipeline(
     ctx: AgentContext,
     clarification_answer: Optional[str] = None,
@@ -194,6 +213,8 @@ def run_pipeline(
                 reassess_msg, reassess_ms = _timed_run(reassess_agent, ctx, clarification_answer=clarification_answer)
                 ctx.reassessment_output = reassess_msg.payload
                 ctx.metadata["reassessment_output"] = reassess_msg.payload
+                # Refresh ctx state for the next clarification turn (if any).
+                _propagate_reassessment_state(ctx, reassess_msg.payload)
                 trail.append({"agent": reassess_agent.name, "turn": reassess_count, "payload": reassess_msg.payload, "duration_ms": reassess_ms})
 
                 if active_flags["multi_agent_routing_enabled"]:
@@ -397,6 +418,8 @@ async def run_pipeline_async(
                 reassess_msg, reassess_ms = _timed_run(reassess_agent, ctx, clarification_answer=clarification_answer)
                 ctx.reassessment_output = reassess_msg.payload
                 ctx.metadata["reassessment_output"] = reassess_msg.payload
+                # Refresh ctx state for the next clarification turn (if any).
+                _propagate_reassessment_state(ctx, reassess_msg.payload)
                 trail.append({"agent": reassess_agent.name, "turn": reassess_count, "payload": reassess_msg.payload, "duration_ms": reassess_ms})
 
                 if active_flags["multi_agent_routing_enabled"]:
