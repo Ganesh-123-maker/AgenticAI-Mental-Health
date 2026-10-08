@@ -311,11 +311,20 @@ def run_pipeline(
                 trail.append({"agent": supervisor.name, "action": "escalate_fallback_applied", "duration_ms": 0.0})
                 break
             elif supervisor_verdict == "REVISE":
-                # Cap at 1 revision: send back to counseling agent once with rationale
-                ctx.metadata["supervisor_revision_rationale"] = sup_payload.get("rationale")
-                revised_counsel_msg, counseling_rev_ms = _timed_run(counseling_agent, ctx)
-                final_response = revised_counsel_msg.payload.get("response_text", draft_response)
-                trail.append({"agent": counseling_agent.name, "step": "revision", "payload": revised_counsel_msg.payload, "duration_ms": counseling_rev_ms})
+                # The supervisor already produced a revised_response addressing
+                # the flagged issues. Use it directly: the counseling agent
+                # does not consume revision rationales, so re-running it
+                # would return the identical flagged draft. Fall back to a
+                # counseling re-run only if no structured revision exists.
+                revised_response = sup_payload.get("revised_response") or sup_payload.get("suggested_revision")
+                if revised_response:
+                    final_response = revised_response
+                    trail.append({"agent": supervisor.name, "action": "supervisor_revision_applied", "duration_ms": 0.0})
+                else:
+                    ctx.metadata["supervisor_revision_rationale"] = sup_payload.get("rationale")
+                    revised_counsel_msg, counseling_rev_ms = _timed_run(counseling_agent, ctx)
+                    final_response = revised_counsel_msg.payload.get("response_text", draft_response)
+                    trail.append({"agent": counseling_agent.name, "step": "revision", "payload": revised_counsel_msg.payload, "duration_ms": counseling_rev_ms})
                 break
             elif supervisor_verdict == "RE-ROUTE":
                 reroute_count += 1
@@ -540,25 +549,33 @@ async def run_pipeline_async(
                 trail.append({"agent": supervisor.name, "action": "escalate_fallback_applied", "duration_ms": 0.0})
                 break
             elif supervisor_verdict == "REVISE":
-                # Cap at 1 revision: re-generate with revision rationale guidance
-                ctx.metadata["supervisor_revision_rationale"] = sup_payload.get("rationale")
-                _rev_start = time.perf_counter()
-                rev_pure, rev_raw = await counseling_agent.generate_response(
-                    ctx,
-                    runner_instance=runner_instance,
-                    transcript=transcript,
-                    counselor_messages=counselor_messages,
-                    session_goals=session_goals,
-                    stage=stage,
-                    candidate_skills=candidate_skills,
-                    case_id=case_id,
-                    turn_tag=f"{turn_tag}_revision",
-                    render_counselor_system=render_counselor_system,
-                    each_turn_system=each_turn_system,
-                )
-                counseling_rev_ms = round((time.perf_counter() - _rev_start) * 1000, 3)
-                final_pure, final_raw = rev_pure, rev_raw
-                trail.append({"agent": counseling_agent.name, "step": "revision", "duration_ms": counseling_rev_ms})
+                # Prefer the supervisor's structured revision: the counseling
+                # agent does not consume revision rationales, so regenerating
+                # without it returns the identical flagged draft.
+                revised_response = sup_payload.get("revised_response") or sup_payload.get("suggested_revision")
+                if revised_response:
+                    final_pure, final_raw = revised_response, revised_response
+                    trail.append({"agent": supervisor.name, "action": "supervisor_revision_applied", "duration_ms": 0.0})
+                else:
+                    # No structured revision: re-generate with revision rationale guidance
+                    ctx.metadata["supervisor_revision_rationale"] = sup_payload.get("rationale")
+                    _rev_start = time.perf_counter()
+                    rev_pure, rev_raw = await counseling_agent.generate_response(
+                        ctx,
+                        runner_instance=runner_instance,
+                        transcript=transcript,
+                        counselor_messages=counselor_messages,
+                        session_goals=session_goals,
+                        stage=stage,
+                        candidate_skills=candidate_skills,
+                        case_id=case_id,
+                        turn_tag=f"{turn_tag}_revision",
+                        render_counselor_system=render_counselor_system,
+                        each_turn_system=each_turn_system,
+                    )
+                    counseling_rev_ms = round((time.perf_counter() - _rev_start) * 1000, 3)
+                    final_pure, final_raw = rev_pure, rev_raw
+                    trail.append({"agent": counseling_agent.name, "step": "revision", "duration_ms": counseling_rev_ms})
                 break
             elif supervisor_verdict == "RE-ROUTE":
                 reroute_count += 1
