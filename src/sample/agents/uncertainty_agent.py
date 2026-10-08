@@ -156,9 +156,15 @@ class UncertaintyAgent(Agent):
             if not med_hist or med_hist.lower() in ("(unavailable)", "not_mentioned", "not mentioned", "unknown"):
                 if "medical_history (safety status absent)" not in missing_info:
                     missing_info.append("medical_history (safety status absent)")
-                # Flag as active uncertain field if safety track, affirmed medical context mentioned, or concern unknown
+                # Flag as active uncertain field if safety track, affirmed medical context mentioned, or concern unknown.
+                # The safety-track signal comes ONLY from structured metadata
+                # (ctx.metadata["track"], propagated by the eval harness from
+                # the case's `track` field). Never infer it from the case_id
+                # or filenames. When unavailable (production runtime), the
+                # remaining clauses still fail safe towards flagging.
                 cur_text = f"{current_concern} {ctx.current_message or ''}".lower()
-                is_safety_case = "safety" in ctx.case_id.lower() or ctx.metadata.get("track") == "safety"
+                track = str((ctx.metadata or {}).get("track") or "").lower()
+                is_safety_case = track == "safety"
                 has_active_medical = False
                 for w in ("hospital", "clinic", "medication", "psychiatric", "doctor", "diagnos"):
                     if w in cur_text:

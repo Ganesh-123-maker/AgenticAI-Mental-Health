@@ -376,6 +376,9 @@ def run_single_case(
         prior_transcript=[],
         obtain_client_info=obtain_info,
         full_profile=full_profile,
+        # Structured safety-track signal for the UncertaintyAgent (it must
+        # not infer this from the case_id). Propagated from the case data.
+        metadata={"track": case_data.get("track")},
     )
 
     clar_answer = case_data.get("ground_truth_evidence", {}).get("basic_info.growth_experiences")

@@ -27,14 +27,18 @@ from sample.agents.reassessment_agent import (
 )
 
 
-def _safety_ctx(message, case_id="ra_safety_case"):
+def _safety_ctx(message, case_id="arbitrary_case_001"):
+    """Safety-track context via STRUCTURED metadata, with a deliberately
+    non-safety-looking case_id to prove the case_id heuristic is gone."""
     data = json.loads(pathlib.Path("data/benchmark/ambiguous_cases/bt/bt_176_safety.json").read_text(encoding="utf-8"))
+    assert "safety" not in case_id.lower(), "test case_id must not contain 'safety'"
     return AgentContext(
         case_id=case_id,
         modality="bt",
         therapy_stage=data.get("therapy_stage"),
         full_profile=data.get("ambiguous_context"),
         current_message=message,
+        metadata={"track": "safety"},
     )
 
 
@@ -45,7 +49,7 @@ def _payload(result):
 def test_high_risk_unanswered_safety_goes_high_risk():
     """HIGH risk + safety question: clarification answer with crisis -> HIGH-RISK."""
     data = json.loads(pathlib.Path("data/benchmark/ambiguous_cases/bt/bt_176_safety.json").read_text(encoding="utf-8"))
-    ctx = _safety_ctx(data["ambiguous_context"]["basic_info"]["main_problem"], "ra_high_safety")
+    ctx = _safety_ctx(data["ambiguous_context"]["basic_info"]["main_problem"], "case_alpha_101")
     result = run_pipeline(ctx, clarification_answer="其实我有时候想自杀，觉得活不下去了。")
     assert result["route"] == "HIGH-RISK"
     print("[PASS] HIGH risk + safety question -> HIGH-RISK.")
@@ -55,7 +59,7 @@ def test_moderate_risk_unanswered_safety_stays_uncertain():
     """MODERATE risk + unanswered safety question -> UNCERTAIN (blocking)."""
     data = json.loads(pathlib.Path("data/benchmark/ambiguous_cases/bt/bt_176_safety.json").read_text(encoding="utf-8"))
     msg = "我最近不堪重负，整夜失眠。" + data["ambiguous_context"]["basic_info"]["main_problem"]
-    ctx = _safety_ctx(msg, "ra_mod_safety_case")
+    ctx = _safety_ctx(msg, "case_alpha_102")
     result = run_pipeline(ctx, clarification_answer="This started about six months ago.")
     p = _payload(result)
     assert p["risk_agent"]["severity"] == "MODERATE"
@@ -70,7 +74,7 @@ def test_low_risk_unanswered_non_safety_clears():
     """LOW risk + unanswered non-safety question -> CLEAR (no over-clarification)."""
     data = json.loads(pathlib.Path("data/benchmark/ambiguous_cases/cbt/cbt_412_ordinary.json").read_text(encoding="utf-8"))
     ctx = AgentContext(
-        case_id="ra_low_nonsafety",
+        case_id="ra_low_plain",
         modality="cbt",
         therapy_stage=data.get("therapy_stage"),
         full_profile=data.get("ambiguous_context"),
@@ -85,7 +89,7 @@ def test_moderate_irrelevant_answer_never_resolves():
     """MODERATE risk + irrelevant answer: safety item stays unresolved, stays UNCERTAIN."""
     data = json.loads(pathlib.Path("data/benchmark/ambiguous_cases/bt/bt_176_safety.json").read_text(encoding="utf-8"))
     msg = "我最近不堪重负，整夜失眠。" + data["ambiguous_context"]["basic_info"]["main_problem"]
-    ctx = _safety_ctx(msg, "ra_mod_irrelevant_safety")
+    ctx = _safety_ctx(msg, "case_alpha_103")
     result = run_pipeline(ctx, clarification_answer="The weather has been quite nice for gardening.")
     p = _payload(result)
     reassess = p["reassessment_agent"]
@@ -98,7 +102,7 @@ def test_moderate_genuine_answer_resolves_without_risk_downgrade():
     """Answering the safety question resolves it AND preserves prior MODERATE distress."""
     data = json.loads(pathlib.Path("data/benchmark/ambiguous_cases/bt/bt_176_safety.json").read_text(encoding="utf-8"))
     msg = "我最近不堪重负，整夜失眠。" + data["ambiguous_context"]["basic_info"]["main_problem"]
-    ctx = _safety_ctx(msg, "ra_mod_genuine_safety")
+    ctx = _safety_ctx(msg, "case_alpha_104")
     result = run_pipeline(
         ctx,
         clarification_answer="No, I have never received any mental health treatment or counseling before.",
@@ -128,7 +132,7 @@ def test_english_risk_cases_unchanged():
 def test_chinese_negation_not_flagged_in_reassessment():
     """Negated Chinese crisis in clarification answer must not trigger HIGH-RISK."""
     data = json.loads(pathlib.Path("data/benchmark/ambiguous_cases/bt/bt_176_safety.json").read_text(encoding="utf-8"))
-    ctx = _safety_ctx(data["ambiguous_context"]["basic_info"]["main_problem"], "ra_zh_neg_safety")
+    ctx = _safety_ctx(data["ambiguous_context"]["basic_info"]["main_problem"], "case_alpha_105")
     result = run_pipeline(ctx, clarification_answer="我没有自杀的想法，只是最近压力比较大。")
     p = _payload(result)
     assert p["reassessment_agent"]["route_decision"] != "HIGH-RISK"
@@ -142,6 +146,52 @@ def test_system_gaps_never_block():
     assert _is_safety_relevant("medical_history (safety status absent)")
     assert not _is_safety_relevant("growth_experiences (empty or not provided)")
     print("[PASS] System-gap / safety-relevance classification correct.")
+
+
+def test_safety_track_from_metadata_not_case_id():
+    """A safety case with an arbitrary case_id is still flagged via metadata."""
+    from sample.agents.uncertainty_agent import UncertaintyAgent
+    data = json.loads(pathlib.Path("data/benchmark/ambiguous_cases/bt/bt_176_safety.json").read_text(encoding="utf-8"))
+    ctx = AgentContext(
+        case_id="totally_ordinary_looking_id_999",
+        modality="bt",
+        therapy_stage=data.get("therapy_stage"),
+        full_profile=data.get("ambiguous_context"),
+        current_message=data["ambiguous_context"]["basic_info"]["main_problem"],
+        metadata={"track": "safety"},
+    )
+    from sample.agents.memory_agent import MemoryAgent
+    from sample.agents.state_agent import StateAgent
+    ctx.memory_output = MemoryAgent().run(ctx).payload
+    ctx.state_output = StateAgent().run(ctx).payload
+    unc = UncertaintyAgent().run(ctx).payload
+    assert "medical_history" in unc["uncertain_fields"], (
+        f"safety track not detected from metadata: {unc['uncertain_fields']}"
+    )
+    print("[PASS] Safety track detected from metadata with arbitrary case_id.")
+
+
+def test_safety_string_in_case_id_not_treated_as_safety_case():
+    """A non-safety case whose case_id contains 'safety' must NOT be flagged."""
+    from sample.agents.uncertainty_agent import UncertaintyAgent
+    from sample.agents.memory_agent import MemoryAgent
+    from sample.agents.state_agent import StateAgent
+    data = json.loads(pathlib.Path("data/benchmark/ambiguous_cases/cbt/cbt_412_ordinary.json").read_text(encoding="utf-8"))
+    ctx = AgentContext(
+        case_id="my_safety_net_is_strong",
+        modality="cbt",
+        therapy_stage=data.get("therapy_stage"),
+        full_profile=data.get("ambiguous_context"),
+        current_message="I have been under heavy work pressure recently.",
+        metadata={"track": "ordinary"},
+    )
+    ctx.memory_output = MemoryAgent().run(ctx).payload
+    ctx.state_output = StateAgent().run(ctx).payload
+    unc = UncertaintyAgent().run(ctx).payload
+    assert "medical_history" not in unc["uncertain_fields"], (
+        f"case_id heuristic leaked: {unc['uncertain_fields']}"
+    )
+    print("[PASS] 'safety' in case_id does not trigger safety handling.")
 
 
 def test_effective_severity_never_downgrades():
