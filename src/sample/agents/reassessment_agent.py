@@ -71,6 +71,34 @@ def _is_uninformative_answer(answer: str) -> bool:
 # keep the route UNCERTAIN on their own.
 _NON_CLIENT_ANSWERABLE = ("prior_session_recaps", "session_recaps", "last_homework", "theory_info")
 
+# Field-name fragments identifying safety-relevant missing items: questions
+# whose answers materially affect the safety decision (e.g. whether the
+# client has a history that changes risk handling).
+_SAFETY_TOPIC_HINTS = ("medical_history", "medical history", "safety",
+                       "suicide", "self_harm", "self-harm", "crisis")
+
+
+def _is_safety_relevant(item: str) -> bool:
+    """True when the missing item concerns client safety."""
+    text = str(item or "").lower()
+    return any(h in text for h in _SAFETY_TOPIC_HINTS)
+
+
+# Severity caution ranking for the blocking rule. UNCERTAIN ("safety status
+# unverified") outranks MODERATE: when safety cannot be verified, unresolved
+# safety questions block like an elevated risk would.
+_SEVERITY_RANK = {"LOW": 0, "MODERATE": 1, "UNCERTAIN": 2, "HIGH": 3}
+
+
+def _effective_severity(*payloads: Dict[str, Any]) -> str:
+    """Most cautious severity across the given risk payloads (never downgrades)."""
+    best = "LOW"
+    for p in payloads:
+        sev = str((p or {}).get("severity", "LOW")).upper()
+        if _SEVERITY_RANK.get(sev, 0) > _SEVERITY_RANK.get(best, 0):
+            best = sev
+    return best
+
 # Canonical concern topics -> keywords indicating a client's answer actually
 # addresses that topic. Used to verify resolution against the ANSWER's content,
 # so that merely asking about X never counts as resolving X.
@@ -135,7 +163,11 @@ def _answer_addresses_item(answer: str, item: str) -> bool:
     if not keywords:
         return False
     answer_words = re.findall(r"[a-z']+", str(answer or "").lower())
-    return any(kw in w or w in kw for w in answer_words for kw in keywords)
+    # One-directional: a keyword must appear within an answer word (covers
+    # morphological variants like "therapies"). The reverse direction
+    # (answer word inside keyword) is deliberately excluded: common words
+    # like "the" are substrings of "therapy" and would falsely resolve.
+    return any(kw in w for w in answer_words for kw in keywords if len(kw) > 2)
 
 
 class ReassessmentAgent(Agent):
@@ -265,35 +297,42 @@ class ReassessmentAgent(Agent):
         # 5. Re-run Uncertainty Assessment on the updated state
         temp_ctx.state_output = updated_state
         temp_mem = copy.deepcopy(ctx.memory_output or {})
-        # If safety information was resolved and no other risk detected, update risk status and traits
+        # If safety information was GENUINELY supplied (in resolved_information,
+        # i.e. the answer actually addressed it -- not merely because the
+        # question was asked), record it in memory BEFORE re-assessing risk so
+        # the risk agent evaluates with complete information. Never manually
+        # force LOW here: prior distress evidence must survive reassessment.
         if any("medical" in r or "safety" in r for r in resolved_information):
-            reassessed_risk["severity"] = "LOW"
-            reassessed_risk["risk_status"] = "NO_EVIDENCE"
-            reassessed_risk["evidence"] = [f"Clarified safety status: {answer}"]
             if isinstance(temp_mem, dict):
                 traits = temp_mem.setdefault("known_static_traits", {})
                 traits["medical_history"] = answer
+            temp_ctx.memory_output = temp_mem
+            reassessed_risk = self._risk_agent.run(temp_ctx).payload
 
         temp_ctx.risk_output = reassessed_risk
         temp_ctx.memory_output = temp_mem
         unc_msg = self._uncertainty_agent.run(temp_ctx)
         reassessed_unc = unc_msg.payload
 
-        # 6. Determine final status and route_decision.
-        # Any remaining CLIENT-ANSWERABLE item keeps the route UNCERTAIN: if
-        # the client did not answer a question we asked, declaring CLEAR would
-        # be false certainty. System gaps (e.g. no prior sessions exist yet)
-        # are tracked for transparency but never block the route on their own.
+        # 6. Determine final status and route_decision, calibrated by risk.
+        # An unanswered question blocks only when it matters: at MODERATE or
+        # unverified (UNCERTAIN) risk, an unresolved SAFETY-relevant question
+        # means the safety decision is compromised -> stay UNCERTAIN. At LOW
+        # risk the safety decision stands on actual evidence, so unanswered
+        # questions (safety or not) are recorded but do not block the
+        # conversation. System gaps never block on their own.
         remaining_client_items = [r for r in remaining_uncertainty if not _is_system_gap(r)]
+        blocking_safety_items = [r for r in remaining_client_items if _is_safety_relevant(r)]
+        eff_severity = _effective_severity(prior_risk, reassessed_risk)
         if is_uninformative:
             status = "UNCERTAIN"
             route_decision = "UNCERTAIN"
             reasoning = "Clarification answer was uninformative or absent; uncertainty remains unresolved."
-        elif remaining_client_items:
+        elif eff_severity in ("MODERATE", "UNCERTAIN", "HIGH") and blocking_safety_items:
             status = "UNCERTAIN"
             route_decision = "UNCERTAIN"
-            reasoning = (f"Client answer did not address {len(remaining_client_items)} question(s) "
-                         f"({', '.join(remaining_client_items)}); uncertainty remains.")
+            reasoning = (f"At {eff_severity} risk, safety-relevant questions remain unanswered "
+                         f"({', '.join(blocking_safety_items)}); cannot declare the state clear.")
         else:
             status = "CLEAR"
             route_decision = "CLEAR"
@@ -302,6 +341,9 @@ class ReassessmentAgent(Agent):
             reassessed_unc["clarification_needed"] = False
             if resolved_information:
                 reasoning = f"Clarification successfully resolved priority informational uncertainty ({', '.join(resolved_information)})."
+            elif remaining_client_items:
+                reasoning = (f"Risk is {eff_severity}; {len(remaining_client_items)} unanswered question(s) "
+                             f"({', '.join(remaining_client_items)}) recorded but not blocking.")
             else:
                 reasoning = "No client-answerable questions remain unanswered; proceeding."
 

@@ -82,9 +82,10 @@ def test_irrelevant_answer_does_not_resolve_safety_question():
     """Regression test: asking about X must not count as resolving X.
 
     An informative clarification answer that does not address the asked safety
-    question (medical_history) must leave the item in remaining_uncertainty and
-    keep the route UNCERTAIN. Previously the item was marked resolved merely
-    because the clarification question targeted it, producing false certainty.
+    question (medical_history) must leave the item in remaining_uncertainty.
+    At LOW assessed risk the unanswered question is recorded but does not
+    block the conversation (risk-aware routing); it must never be marked
+    resolved.
     """
     data = json.loads(pathlib.Path("data/benchmark/ambiguous_cases/bt/bt_176_safety.json").read_text(encoding="utf-8"))
     client_msg = (
@@ -107,7 +108,8 @@ def test_irrelevant_answer_does_not_resolve_safety_question():
         f"medical_history falsely marked resolved: {reassess['resolved_information']}"
     assert any("medical_history" in r for r in reassess["remaining_uncertainty"]), \
         f"medical_history should remain unresolved: {reassess['remaining_uncertainty']}"
-    assert result["route"] == "UNCERTAIN"
+    # LOW assessed risk: recorded but not blocking.
+    assert result["route"] == "CLEAR"
     print("[PASS] Irrelevant answer does not falsely resolve the safety question.")
 
 
