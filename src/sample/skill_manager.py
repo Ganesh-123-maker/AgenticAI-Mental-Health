@@ -112,7 +112,7 @@ class SkillManager:
             # Ensure list format for downstream processing
             m_vec = self._vector_to_list(skill.get("embedding_to_merge"))
             r_vec = self._vector_to_list(skill.get("embedding_to_retrive"))
-            
+
             if m_vec is None:
                 missing_merge_ids.append(sid)
             else:
@@ -128,7 +128,7 @@ class SkillManager:
             self._logger.info(f"Backfilling {len(missing_merge_ids)} merge embeddings...")
             texts = [
                 json.dumps(
-                    {k: v for k, v in micro_lib[sid].items() 
+                    {k: v for k, v in micro_lib[sid].items()
                      if k in {"skill_id", "skill_name", "skill_description", "trigger", "when_to_use", "parent_ids"}},
                     ensure_ascii=False
                 )
@@ -465,47 +465,50 @@ class SkillManager:
     async def _embed_by_api(self, texts: List[str]) -> List[List[float]]:
         if not texts:
             return []
-        env_name = str(self._runtime.psychagent_embedding_api_key_env).strip()
-        api_key = os.environ.get(env_name, "").strip() if env_name else ""
-        if not api_key:
-            api_key = os.environ.get("OPENAI_API_KEY", "").strip()
-        if not api_key:
-            if self._runtime.client_backend == "dummy" or self._backend.__class__.__name__ == "DummyBackend":
-                self._logger.warning("Embedding API key missing in dummy mode; generating dummy embeddings.")
-                return [[0.0] * 1024 for _ in texts]
-            raise RuntimeError(
-                f"Embedding API key is required to backfill missing skill embeddings. "
-                f"Please set environment variable '{env_name}' or 'OPENAI_API_KEY'."
-            )
 
-        if AsyncOpenAI is None:
-            raise RuntimeError("openai package is required for embedding retrieval")
+        if genai is None:
+            raise RuntimeError("google-genai package is required for Gemini embeddings")
 
-        client = self._build_embedding_client(api_key=api_key)
+        api_key = os.environ.get("GEMINI_API_KEY", "").strip()
+        if not api_key:
+            raise RuntimeError("GEMINI_API_KEY environment variable is required for Gemini embeddings")
+
+        client = genai.Client(api_key=api_key)
+        model = "gemini-embedding-001"
         embeddings: List[List[float]] = []
         batch_size = max(1, int(self._runtime.psychagent_embedding_batch_size))
         max_attempts = max(1, int(self._runtime.psychagent_embedding_max_retries))
         sleep_sec = float(self._runtime.psychagent_embedding_retry_sleep_sec)
 
-        for start in range(0, len(texts), batch_size):
-            batch = texts[start : start + batch_size]
-            for attempt in range(1, max_attempts + 1):
-                try:
-                    resp = await client.embeddings.create(
-                        input=batch,
-                        model=self._runtime.psychagent_embedding_model,
-                    )
-                    embeddings.extend([list(item.embedding) for item in resp.data])
-                    break
-                except Exception as exc:
-                    if attempt >= max_attempts:
-                        raise RuntimeError(
-                            f"embedding request failed after {max_attempts} attempts: {exc}"
-                        ) from exc
-                    backoff = sleep_sec * attempt
-                    await asyncio.sleep(backoff)
+        try:
+            for start in range(0, len(texts), batch_size):
+                batch = texts[start : start + batch_size]
 
-        return embeddings
+                for attempt in range(1, max_attempts + 1):
+                    try:
+                        response = await asyncio.to_thread(
+                            client.models.embed_content,
+                            model=model,
+                            contents=batch,
+                            config={"output_dimensionality": 768},
+                        )
+                        if not response.embeddings:
+                            raise RuntimeError("Gemini returned no embeddings")
+
+                        vectors = [item.values for item in response.embeddings]
+                        if len(vectors) != len(batch):
+                            raise RuntimeError("Gemini returned an unexpected number of embeddings")
+
+                        embeddings.extend([[float(value) for value in vector] for vector in vectors])
+                        break
+                    except Exception:
+                        if attempt >= max_attempts:
+                            raise
+                        await asyncio.sleep(sleep_sec * attempt)
+
+            return embeddings
+        finally:
+            await asyncio.to_thread(client.close)
 
     def _build_embedding_client(self, api_key: str) -> Any:
         if self._embedding_client is not None:
