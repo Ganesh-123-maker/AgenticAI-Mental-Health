@@ -1,0 +1,15 @@
+name: gemini_live
+family: specific_llm
+backend: openai_api
+model: gemini-3-flash-preview
+base_url: https://generativelanguage.googleapis.com/v1beta/openai/
+api_key_env: GEMINI_API_KEY
+temperature: 0.7
+max_tokens: 1024
+memory_mode: public_recap
+max_sessions: 10
+max_counselor_turns: 30
+end_token: "</end>"
+timeout_sec: 60
+max_retries: 3
+retry_sleep_sec: 1.0

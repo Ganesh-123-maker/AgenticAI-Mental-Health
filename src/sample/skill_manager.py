@@ -27,6 +27,11 @@ except ImportError:  # pragma: no cover
     AsyncOpenAI = None  # type: ignore[assignment]
 
 try:
+    from google import genai
+except ImportError:  # pragma: no cover
+    genai = None
+
+try:
     import torch
 except ImportError:  # pragma: no cover
     torch = None  # type: ignore[assignment]
