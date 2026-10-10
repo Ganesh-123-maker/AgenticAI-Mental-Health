@@ -207,6 +207,16 @@ async def on_startup() -> None:
     LOGGER.info("PsychAgent web startup complete db=%s", DB_URL)
 
 
+@app.on_event("shutdown")
+async def on_shutdown() -> None:
+    backend = get_psychagent_backend()
+    try:
+        await backend.shutdown()
+    except Exception as exc:  # noqa: BLE001 - shutdown must not fail
+        LOGGER.warning("backend shutdown: %s", type(exc).__name__)
+    LOGGER.info("PsychAgent web shutdown complete")
+
+
 @app.get("/health")
 def health():
     backend = get_psychagent_backend()

@@ -74,6 +74,14 @@ class PsychAgentWebBackend:
     def runtime_config(self) -> RuntimeConfig:
         return self._runtime_config
 
+    async def shutdown(self) -> None:
+        """Release cached HTTP/embedding clients (avoids unclosed-client warnings)."""
+        try:
+            await self._skill_manager.aclose()
+        except Exception as exc:  # noqa: BLE001 - shutdown must not fail
+            self._logger.warning("skill manager shutdown: %s", type(exc).__name__)
+        self._started = False
+
     async def startup(self) -> None:
         if self._started:
             return

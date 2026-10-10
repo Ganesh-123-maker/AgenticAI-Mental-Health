@@ -30,13 +30,18 @@ psychagent_skill_select_prompt_dir: prompts/psychagent/skill/select_skill
 psychagent_skill_rewrite_prompt_dir: prompts/psychagent/skill/rewrite
 psychagent_skill_sects: all
 
-# Gemini Embedding API
+# Gemini Embedding API (native SDK). Regenerated vectors live in a separate
+# provenance-keyed store (micro_skills.<model>.<dims>.pt); the original
+# artifacts are never overwritten. See scripts/migrate_skill_embeddings.py.
+psychagent_embedding_provider: gemini
 psychagent_embedding_base_url: https://generativelanguage.googleapis.com/v1beta
 psychagent_embedding_api_key_env: GEMINI_API_KEY
 psychagent_embedding_model: gemini-embedding-001
-psychagent_embedding_batch_size: 16
-psychagent_embedding_max_retries: 3
-psychagent_embedding_retry_sleep_sec: 1.0
+psychagent_embedding_dimensions: 768
+psychagent_embedding_batch_size: 4
+psychagent_embedding_max_retries: 5
+psychagent_embedding_retry_sleep_sec: 10.0
+psychagent_embedding_timeout_sec: 60
 psychagent_embedding_verify_ssl: true
 
 # Multi-Agent Pipeline ablation flags

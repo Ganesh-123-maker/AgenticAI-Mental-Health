@@ -2,10 +2,12 @@ from __future__ import annotations
 
 import asyncio
 import copy
+import hashlib
 import json
 import logging
 import math
 import os
+import random
 import re
 from dataclasses import dataclass
 from pathlib import Path
@@ -124,6 +126,33 @@ class SkillManager:
                 skill["embedding_to_retrive"] = r_vec
 
         # 2. Backfill merge embeddings
+
+        # 1b. Guard against stale vectors from a different embedding model.
+        # Stored vectors (e.g. 1024-dim bge-m3) must never be mixed with a newly
+        # configured dimensionality (e.g. 768-dim gemini-embedding-001): cosine
+        # similarity silently returns -1.0 on dimension mismatch. Re-embed all.
+        expected_dim = max(1, int(self._runtime.psychagent_embedding_dimensions))
+        stale_found = False
+        for _sid, _skill in micro_lib.items():
+            for _field in ("embedding_to_merge", "embedding_to_retrive"):
+                _vec = _skill.get(_field)
+                if isinstance(_vec, list) and _vec and len(_vec) != expected_dim:
+                    stale_found = True
+                    break
+            if stale_found:
+                break
+        if stale_found:
+            self._logger.warning(
+                "Stored skill embeddings have dimension != %d (embedding model/dim changed); "
+                "re-embedding all %d skills with model '%s'.",
+                expected_dim, len(micro_lib), self._runtime.psychagent_embedding_model,
+            )
+            for _sid in micro_lib:
+                micro_lib[_sid]["embedding_to_merge"] = None
+                micro_lib[_sid]["embedding_to_retrive"] = None
+            missing_merge_ids = list(micro_lib.keys())
+            missing_retrieve_ids = list(micro_lib.keys())
+
         if missing_merge_ids:
             self._logger.info(f"Backfilling {len(missing_merge_ids)} merge embeddings...")
             texts = [
@@ -134,7 +163,7 @@ class SkillManager:
                 )
                 for sid in missing_merge_ids
             ]
-            embs = await self._embed_by_api(texts)
+            embs = await self._embed_by_api(texts, task_type="RETRIEVAL_DOCUMENT")
             for sid, emb in zip(missing_merge_ids, embs):
                 micro_lib[sid]["embedding_to_merge"] = emb
             updated = True
@@ -146,7 +175,7 @@ class SkillManager:
                 f"Trigger:{micro_lib[sid].get('trigger', '')}\nWhen_to_Use:{micro_lib[sid].get('when_to_use', '')}"
                 for sid in missing_retrieve_ids
             ]
-            embs = await self._embed_by_api(texts)
+            embs = await self._embed_by_api(texts, task_type="RETRIEVAL_DOCUMENT")
             for sid, emb in zip(missing_retrieve_ids, embs):
                 micro_lib[sid]["embedding_to_retrive"] = emb
             updated = True
@@ -184,14 +213,27 @@ class SkillManager:
                     loaded_stage.micro = updated_micro
 
                     save_dir = resolve_path(self._runtime.psychagent_skill_base_dir) / sect / stage_key
-                    save_path = save_dir / "micro_skills.pt"
+                    # Never overwrite the original artifacts: persist to the
+                    # provenance-keyed store for the configured embedding space.
+                    keyed_name = f"micro_skills.{self._embedding_store_key()}.pt"
+                    save_path = save_dir / keyed_name
+                    base_pt = save_dir / "micro_skills.pt"
+                    source_hash = self._sha256_file(base_pt) if base_pt.exists() else ""
+                    payload = dict(loaded_stage.micro)
+                    payload["_provenance"] = self._build_provenance(
+                        source_hash, len(loaded_stage.micro)
+                    )
 
-                    # Use threadpool to save, avoiding blocking event loop
+                    # Atomic write: temp file then rename, avoiding a torn store.
                     if torch is not None:
                         loop = asyncio.get_running_loop()
-                        await loop.run_in_executor(
-                            None, lambda: torch.save(loaded_stage.micro, str(save_path))
-                        )
+
+                        def _atomic_save() -> None:
+                            tmp = save_path.with_suffix(".pt.tmp")
+                            torch.save(payload, str(tmp))
+                            os.replace(str(tmp), str(save_path))
+
+                        await loop.run_in_executor(None, _atomic_save)
                         self._logger.info(f"Saved updated skills to {save_path}")
 
         self._logger.info("Skill library embedding check complete.")
@@ -296,7 +338,7 @@ class SkillManager:
             model_kwgs=model_kwgs,
         )
         query_text = extract_tag_content(rewritten_query, "response") or rewritten_query
-        query_embedding = (await self._embed_by_api([query_text]))[0]
+        query_embedding = (await self._embed_by_api([query_text], task_type="RETRIEVAL_QUERY"))[0]
 
         await self._ensure_embeddings_for_candidates(candidate_skills)
 
@@ -449,7 +491,7 @@ class SkillManager:
                 )
                 for skill in missing_merge
             ]
-            merge_vecs = await self._embed_by_api(merge_texts)
+            merge_vecs = await self._embed_by_api(merge_texts, task_type="RETRIEVAL_DOCUMENT")
             for skill, vec in zip(missing_merge, merge_vecs):
                 skill["embedding_to_merge"] = vec
 
@@ -458,59 +500,260 @@ class SkillManager:
                 f"Trigger:{skill.get('trigger', '')}\nWhen_to_Use:{skill.get('when_to_use', '')}"
                 for skill in missing_retrieve
             ]
-            retrieve_vecs = await self._embed_by_api(retrieve_texts)
+            retrieve_vecs = await self._embed_by_api(retrieve_texts, task_type="RETRIEVAL_DOCUMENT")
             for skill, vec in zip(missing_retrieve, retrieve_vecs):
                 skill["embedding_to_retrive"] = vec
 
-    async def _embed_by_api(self, texts: List[str]) -> List[List[float]]:
+    def _is_offline_embedding_mode(self) -> bool:
+        """True when the run is explicitly offline.
+
+        The signal is the backend instance itself: backends that never touch
+        the network declare ``is_offline = True`` (see DummyBackend). This is
+        checked BEFORE any API-key lookup or SDK construction so offline tests
+        are hermetic even if embedding keys happen to be set in the
+        environment. A live backend never degrades to offline silently.
+        """
+        backend = getattr(self, "_backend", None)
+        return bool(getattr(backend, "is_offline", False))
+
+    @staticmethod
+    def _is_retryable_embedding_error(exc: BaseException) -> bool:
+        """Fail fast on auth/invalid-request errors; retry transient ones."""
+        code = getattr(exc, "status_code", None) or getattr(exc, "code", None)
+        try:
+            code_int = int(code) if code is not None else None
+        except (TypeError, ValueError):
+            code_int = None
+        if code_int in (400, 401, 403, 404):
+            return False
+        msg = str(exc).lower()
+        for token in ("unauthorized", "forbidden", "invalid api key", "api key not valid",
+                      "permission denied", "bad request", "not found"):
+            if token in msg:
+                return False
+        return True
+
+    @staticmethod
+    def _retry_after_seconds(exc: BaseException) -> Optional[float]:
+        """Extract Retry-After (seconds) from a provider error, if present."""
+        headers = getattr(exc, "headers", None)
+        if headers is None:
+            resp = getattr(exc, "response", None)
+            headers = getattr(resp, "headers", None) if resp is not None else None
+        if headers:
+            try:
+                get = getattr(headers, "get", None)
+                if callable(get):
+                    ra = get("retry-after") or get("Retry-After")
+                    if ra is not None:
+                        return max(0.0, float(str(ra).split(",")[0].strip()))
+            except (TypeError, ValueError):
+                pass
+        return None
+
+    @staticmethod
+    def _is_rate_limit_error(exc: BaseException) -> bool:
+        code = getattr(exc, "status_code", None) or getattr(exc, "code", None)
+        try:
+            if int(code) == 429:
+                return True
+        except (TypeError, ValueError):
+            pass
+        return "rate limit" in str(exc).lower() or "429" in str(exc)
+
+    def _backoff_delay(self, attempt: int, sleep_sec: float, exc: BaseException) -> float:
+        """Exponential backoff with jitter, honoring Retry-After; capped at 60s."""
+        base = max(0.0, float(sleep_sec)) * (2.0 ** max(0, attempt - 1))
+        delay = base + random.uniform(0, base * 0.25 + 0.001)
+        retry_after = self._retry_after_seconds(exc)
+        if retry_after is not None:
+            delay = min(max(delay, retry_after), 120.0)
+        return min(delay, 60.0)
+
+    def _exhaustion_message(self, provider: str, max_attempts: int,
+                            exc: BaseException, api_key: str) -> str:
+        safe = self._redact_key(f"{type(exc).__name__}: {exc}", api_key)
+        if self._is_rate_limit_error(exc):
+            return (
+                f"{provider} embedding failed after {max_attempts} attempts: "
+                f"rate limit / quota exhausted ({safe[:200]}). "
+                f"Reduce batch size or retry later."
+            )
+        return f"{provider} embedding request failed after {max_attempts} attempts: {safe[:300]}"
+
+    async def _embed_by_api(self, texts: List[str], *,
+                            task_type: Optional[str] = None) -> List[List[float]]:
         if not texts:
             return []
-
-        if genai is None:
-            raise RuntimeError("google-genai package is required for Gemini embeddings")
-
-        api_key = os.environ.get("GEMINI_API_KEY", "").strip()
+        if self._is_offline_embedding_mode():
+            # Explicitly configured offline: deterministic zero vectors, no
+            # network access even if an embedding API key is set in the environment.
+            dim = max(1, int(self._runtime.psychagent_embedding_dimensions))
+            self._logger.warning(
+                "offline embedding mode: returning zero vectors (dim=%d); "
+                "offline-deterministic, not semantic",
+                dim,
+            )
+            return [[0.0] * dim for _ in texts]
+        env_name = str(self._runtime.psychagent_embedding_api_key_env).strip()
+        api_key = os.environ.get(env_name, "").strip() or os.environ.get("OPENAI_API_KEY", "").strip()
         if not api_key:
-            raise RuntimeError("GEMINI_API_KEY environment variable is required for Gemini embeddings")
+            raise RuntimeError(
+                f"Embedding API key is required to backfill missing skill embeddings. "
+                f"Please set environment variable '{env_name}'."
+            )
 
-        client = genai.Client(api_key=api_key)
-        model = "gemini-embedding-001"
+        provider = str(self._runtime.psychagent_embedding_provider).strip().lower()
+        if provider == "gemini":
+            return await self._embed_by_gemini(api_key=api_key, texts=texts,
+                                               task_type=task_type)
+        return await self._embed_by_openai_compatible(api_key=api_key, texts=texts)
+
+    @staticmethod
+    def _redact_key(message: str, api_key: str) -> str:
+        # Never leak the key in logs/errors even if an SDK echoes it back.
+        if api_key and api_key in message:
+            return message.replace(api_key, "<redacted>")
+        return message
+
+    async def _embed_by_gemini(self, api_key: str, texts: List[str], *,
+                             task_type: Optional[str] = None) -> List[List[float]]:
+        """Embed via the native Gemini SDK (google-genai).
+
+        Model, output dimensionality, batch size, retry policy and timeout all
+        come from the runtime config; nothing is hardcoded here.
+
+        Task-type convention (documented choice): skill texts embedded at
+        index/backfill time use ``RETRIEVAL_DOCUMENT``; the user query embedded
+        at retrieval time uses ``RETRIEVAL_QUERY``. Both are passed explicitly
+        by the callers; ``None`` leaves the SDK default in place.
+
+        Note on normalization: this module scores with cosine similarity,
+        which divides by both vector norms, so ranking is magnitude-invariant
+        and no L2 normalization of stored vectors is required.
+        """
+        if genai is None:
+            raise RuntimeError(
+                "google-genai package is required for Gemini embeddings "
+                "(psychagent_embedding_provider='gemini')"
+            )
+        model = str(self._runtime.psychagent_embedding_model).strip()
+        if not model:
+            raise RuntimeError("psychagent_embedding_model must be non-empty for Gemini embeddings")
+        dimensions = max(1, int(self._runtime.psychagent_embedding_dimensions))
+        batch_size = max(1, int(self._runtime.psychagent_embedding_batch_size))
+        max_attempts = max(1, int(self._runtime.psychagent_embedding_max_retries))
+        sleep_sec = float(self._runtime.psychagent_embedding_retry_sleep_sec)
+        timeout_sec = max(1, int(self._runtime.psychagent_embedding_timeout_sec))
+
+        from google.genai import types as genai_types
+
+        embed_config = genai_types.EmbedContentConfig(
+            output_dimensionality=dimensions,
+            task_type=task_type,
+        )
+        # Timeout in ms; guards against hangs during client setup/TLS/handshake.
+        http_options = genai_types.HttpOptions(timeout=timeout_sec * 1000)
+
+        def _make_client() -> Any:
+            return genai.Client(api_key=api_key, http_options=http_options)
+
+        embeddings: List[List[float]] = []
+        client = await asyncio.to_thread(_make_client)
+        try:
+            for start_idx in range(0, len(texts), batch_size):
+                batch = texts[start_idx : start_idx + batch_size]
+                for attempt in range(1, max_attempts + 1):
+                    try:
+                        resp = await asyncio.to_thread(
+                            client.models.embed_content,
+                            model=model,
+                            contents=batch,
+                            config=embed_config,
+                        )
+                        embeddings.extend(self._parse_gemini_embedding_response(resp, len(batch)))
+                        break
+                    except Exception as exc:
+                        safe = self._redact_key(f"{type(exc).__name__}: {exc}", api_key)
+                        if not self._is_retryable_embedding_error(exc):
+                            raise RuntimeError(
+                                f"Gemini embedding failed (not retryable): {safe[:300]}"
+                            ) from exc
+                        if attempt >= max_attempts:
+                            raise RuntimeError(
+                                self._exhaustion_message("Gemini", max_attempts, exc, api_key)
+                            ) from exc
+                        await asyncio.sleep(self._backoff_delay(attempt, sleep_sec, exc))
+        finally:
+            # The SDK always creates an internal httpx AsyncClient; close both
+            # the sync and async clients to avoid 'aclose() never awaited'.
+            # Shutdown is idempotent: each close is guarded and failures here
+            # must not mask the original error.
+            try:
+                close = getattr(client, "close", None)
+                if callable(close):
+                    await asyncio.to_thread(close)
+            finally:
+                aclose = getattr(getattr(client, "aio", None), "aclose", None)
+                if callable(aclose):
+                    await aclose()
+        return embeddings
+
+    @staticmethod
+    def _parse_gemini_embedding_response(resp: Any, expected_n: int) -> List[List[float]]:
+        raw_embs = list(getattr(resp, "embeddings", None) or [])
+        if len(raw_embs) != expected_n:
+            raise ValueError(
+                f"Gemini returned {len(raw_embs)} embeddings for {expected_n} input texts"
+            )
+        out: List[List[float]] = []
+        for emb in raw_embs:
+            vec = SkillManager._vector_to_list(getattr(emb, "values", None))
+            if not vec:
+                raise ValueError("Gemini returned an empty or malformed embedding vector")
+            out.append(vec)
+        return out
+
+    async def _embed_by_openai_compatible(self, api_key: str, texts: List[str]) -> List[List[float]]:
+        """Embed via an OpenAI-compatible /embeddings endpoint (e.g. SiliconFlow)."""
+        if AsyncOpenAI is None:
+            raise RuntimeError("openai package is required for embedding retrieval")
+
+        timeout_sec = max(1, int(self._runtime.psychagent_embedding_timeout_sec))
+        client = self._build_embedding_client(api_key=api_key, timeout_sec=timeout_sec)
         embeddings: List[List[float]] = []
         batch_size = max(1, int(self._runtime.psychagent_embedding_batch_size))
         max_attempts = max(1, int(self._runtime.psychagent_embedding_max_retries))
         sleep_sec = float(self._runtime.psychagent_embedding_retry_sleep_sec)
 
-        try:
-            for start in range(0, len(texts), batch_size):
-                batch = texts[start : start + batch_size]
+        for start_idx in range(0, len(texts), batch_size):
+            batch = texts[start_idx : start_idx + batch_size]
+            for attempt in range(1, max_attempts + 1):
+                try:
+                    resp = await client.embeddings.create(
+                        input=batch,
+                        model=self._runtime.psychagent_embedding_model,
+                    )
+                    batch_vecs = [self._vector_to_list(item.embedding) for item in resp.data]
+                    if len(batch_vecs) != len(batch) or any(v is None for v in batch_vecs):
+                        raise ValueError("embedding endpoint returned malformed vectors")
+                    embeddings.extend([v for v in batch_vecs if v is not None])
+                    break
+                except Exception as exc:
+                    safe = self._redact_key(f"{type(exc).__name__}: {exc}", api_key)
+                    if not self._is_retryable_embedding_error(exc):
+                        raise RuntimeError(
+                            f"embedding failed (not retryable): {safe[:300]}"
+                        ) from exc
+                    if attempt >= max_attempts:
+                        raise RuntimeError(
+                            self._exhaustion_message("embedding", max_attempts, exc, api_key)
+                        ) from exc
+                    await asyncio.sleep(self._backoff_delay(attempt, sleep_sec, exc))
 
-                for attempt in range(1, max_attempts + 1):
-                    try:
-                        response = await asyncio.to_thread(
-                            client.models.embed_content,
-                            model=model,
-                            contents=batch,
-                            config={"output_dimensionality": 768},
-                        )
-                        if not response.embeddings:
-                            raise RuntimeError("Gemini returned no embeddings")
+        return embeddings
 
-                        vectors = [item.values for item in response.embeddings]
-                        if len(vectors) != len(batch):
-                            raise RuntimeError("Gemini returned an unexpected number of embeddings")
-
-                        embeddings.extend([[float(value) for value in vector] for vector in vectors])
-                        break
-                    except Exception:
-                        if attempt >= max_attempts:
-                            raise
-                        await asyncio.sleep(sleep_sec * attempt)
-
-            return embeddings
-        finally:
-            await asyncio.to_thread(client.close)
-
-    def _build_embedding_client(self, api_key: str) -> Any:
+    def _build_embedding_client(self, api_key: str, timeout_sec: int = 60) -> Any:
         if self._embedding_client is not None:
             return self._embedding_client
 
@@ -523,9 +766,21 @@ class SkillManager:
         self._embedding_client = AsyncOpenAI(
             api_key=api_key,
             base_url=self._runtime.psychagent_embedding_base_url,
+            timeout=timeout_sec,
             **kwargs,
         )
         return self._embedding_client
+
+    async def aclose(self) -> None:
+        """Close cached embedding clients. Call when the SkillManager is retired."""
+        client, self._embedding_client = self._embedding_client, None
+        if client is not None:
+            aclose = getattr(client, "close", None)
+            if callable(aclose):
+                res = aclose()
+                if asyncio.iscoroutine(res):
+                    await res
+
 
     def _load_prompts(self) -> None:
         select_dir = resolve_path(self._runtime.psychagent_skill_select_prompt_dir)
@@ -573,19 +828,89 @@ class SkillManager:
             return {}
         return {str(k): v for k, v in raw.items() if isinstance(v, dict)}
 
+    def _embedding_store_key(self) -> str:
+        """Filesystem-safe key identifying the configured embedding space.
+
+        Regenerated vectors live in ``micro_skills.<key>.pt`` next to the
+        originals, so earlier benchmark artifacts (e.g. bge-m3 vectors) are
+        never overwritten and stay reproducible.
+        """
+        model = str(self._runtime.psychagent_embedding_model).strip() or "unknown-model"
+        safe_model = re.sub(r"[^A-Za-z0-9_.-]", "_", model)
+        dim = max(1, int(self._runtime.psychagent_embedding_dimensions))
+        return f"{safe_model}.{dim}"
+
+    def _provenance_matches(self, provenance: Any) -> bool:
+        if not isinstance(provenance, dict):
+            return False
+        try:
+            return (
+                str(provenance.get("embedding_model")) == str(self._runtime.psychagent_embedding_model).strip()
+                and int(provenance.get("embedding_dimensions"))
+                == max(1, int(self._runtime.psychagent_embedding_dimensions))
+            )
+        except (TypeError, ValueError):
+            return False
+
+    def _build_provenance(self, source_hash: str, skill_count: int) -> Dict[str, Any]:
+        import datetime as _dt
+
+        return {
+            "embedding_provider": str(self._runtime.psychagent_embedding_provider),
+            "embedding_model": str(self._runtime.psychagent_embedding_model),
+            "embedding_dimensions": int(self._runtime.psychagent_embedding_dimensions),
+            "index_task_type": "RETRIEVAL_DOCUMENT",
+            "query_task_type": "RETRIEVAL_QUERY",
+            # Vectors are stored raw (not L2-normalized): this module scores
+            # with cosine similarity, which normalizes explicitly, so ranking
+            # is magnitude-invariant.
+            "l2_normalized": False,
+            "created_at_utc": _dt.datetime.now(_dt.timezone.utc).isoformat(),
+            "source_file_sha256": source_hash,
+            "skill_count": int(skill_count),
+            "vector_fields": ["embedding_to_merge", "embedding_to_retrive"],
+        }
+
+    @staticmethod
+    def _sha256_file(path: Path) -> str:
+        h = hashlib.sha256()
+        with open(path, "rb") as fh:
+            for chunk in iter(lambda: fh.read(1 << 20), b""):
+                h.update(chunk)
+        return h.hexdigest()
+
     def _load_micro_skills(self, stage_dir: Path) -> Dict[str, Dict[str, Any]]:
-        pt_path = stage_dir / "micro_skills.pt"
+        base_pt_path = stage_dir / "micro_skills.pt"
+        keyed_pt_path = stage_dir / f"micro_skills.{self._embedding_store_key()}.pt"
         json_path = stage_dir / "micro_skills.json"
 
         raw: Dict[str, Any] = {}
-        if pt_path.exists() and torch is not None:
-            loaded = torch.load(str(pt_path), weights_only=False)
+        # 1. Prefer the provenance-keyed store for the configured space.
+        if keyed_pt_path.exists() and torch is not None:
+            loaded = torch.load(str(keyed_pt_path), weights_only=False)
             if isinstance(loaded, dict):
-                raw = loaded
-        elif json_path.exists():
-            loaded = json.loads(json_path.read_text(encoding="utf-8"))
-            if isinstance(loaded, dict):
-                raw = loaded
+                provenance = loaded.pop("_provenance", None)
+                if self._provenance_matches(provenance):
+                    raw = loaded
+                else:
+                    self._logger.warning(
+                        "Ignoring %s: provenance %s does not match configured %s/%s",
+                        keyed_pt_path.name, provenance,
+                        self._runtime.psychagent_embedding_model,
+                        self._runtime.psychagent_embedding_dimensions,
+                    )
+        # 2. Fall back to the original artifacts (dimension guard downstream
+        #    re-embeds on mismatch instead of mixing vector spaces).
+        if not raw:
+            if base_pt_path.exists() and torch is not None:
+                loaded = torch.load(str(base_pt_path), weights_only=False)
+                if isinstance(loaded, dict):
+                    loaded.pop("_provenance", None)
+                    raw = loaded
+            elif json_path.exists():
+                loaded = json.loads(json_path.read_text(encoding="utf-8"))
+                if isinstance(loaded, dict):
+                    raw = loaded
 
         cleaned: Dict[str, Dict[str, Any]] = {}
         for key, value in raw.items():

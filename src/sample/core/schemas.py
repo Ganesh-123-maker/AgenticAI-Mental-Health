@@ -136,10 +136,13 @@ class RuntimeConfig:
 
     psychagent_embedding_base_url: str = "https://api.siliconflow.cn/v1"
     psychagent_embedding_api_key_env: str = "PSYCHAGENT_EMBEDDING_API_KEY"
+    psychagent_embedding_provider: str = "siliconflow"
     psychagent_embedding_model: str = "BAAI/bge-m3"
+    psychagent_embedding_dimensions: int = 1024
     psychagent_embedding_batch_size: int = 64
     psychagent_embedding_max_retries: int = 16
     psychagent_embedding_retry_sleep_sec: float = 0.5
+    psychagent_embedding_timeout_sec: int = 60
     psychagent_embedding_verify_ssl: bool = True
 
     multi_agent_enabled: bool = False
@@ -213,10 +216,13 @@ class RuntimeConfig:
             psychagent_skill_sects=psychagent_skill_sects,
             psychagent_embedding_base_url=str(raw.get("psychagent_embedding_base_url", "https://api.siliconflow.cn/v1")),
             psychagent_embedding_api_key_env=str(raw.get("psychagent_embedding_api_key_env", "PSYCHAGENT_EMBEDDING_API_KEY")),
+            psychagent_embedding_provider=str(raw.get("psychagent_embedding_provider", "siliconflow")),
             psychagent_embedding_model=str(raw.get("psychagent_embedding_model", "BAAI/bge-m3")),
+            psychagent_embedding_dimensions=int(raw.get("psychagent_embedding_dimensions", 1024)),
             psychagent_embedding_batch_size=int(raw.get("psychagent_embedding_batch_size", 64)),
             psychagent_embedding_max_retries=int(raw.get("psychagent_embedding_max_retries", 16)),
             psychagent_embedding_retry_sleep_sec=float(raw.get("psychagent_embedding_retry_sleep_sec", 0.5)),
+            psychagent_embedding_timeout_sec=int(raw.get("psychagent_embedding_timeout_sec", 60)),
             psychagent_embedding_verify_ssl=bool(raw.get("psychagent_embedding_verify_ssl", True)),
         )
         cfg.validate()
@@ -256,9 +262,12 @@ class RuntimeConfig:
         if not str(self.psychagent_skill_rewrite_prompt_dir).strip():
             raise ConfigValidationError("psychagent_skill_rewrite_prompt_dir must be non-empty")
         _ensure_positive_int("psychagent_embedding_batch_size", self.psychagent_embedding_batch_size)
+        _ensure_enum("psychagent_embedding_provider", self.psychagent_embedding_provider, {"siliconflow", "gemini"})
+        _ensure_positive_int("psychagent_embedding_dimensions", self.psychagent_embedding_dimensions)
         _ensure_positive_int("psychagent_embedding_max_retries", self.psychagent_embedding_max_retries)
         if self.psychagent_embedding_retry_sleep_sec < 0:
             raise ConfigValidationError("psychagent_embedding_retry_sleep_sec must be >= 0")
+        _ensure_positive_int("psychagent_embedding_timeout_sec", self.psychagent_embedding_timeout_sec)
         embedding_env = str(self.psychagent_embedding_api_key_env).strip()
         if not embedding_env:
             raise ConfigValidationError("psychagent_embedding_api_key_env must be non-empty")

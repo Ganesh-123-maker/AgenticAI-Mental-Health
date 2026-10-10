@@ -12,6 +12,11 @@ from .base import Message
 class DummyBackend:
     """Deterministic text backend that can emit an end token."""
 
+    # Explicit offline signal: this backend never touches the network.
+    # SkillManager checks ``getattr(backend, "is_offline", False)`` before any
+    # API-key lookup so offline runs stay hermetic.
+    is_offline = True
+
     def __init__(self, *, default_end_after_turn: int = 2) -> None:
         self._default_end_after_turn = default_end_after_turn
 
