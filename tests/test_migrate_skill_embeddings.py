@@ -366,3 +366,55 @@ def test_compute_demand_matches_actual_batching(mig, tmp_path):
     # Exact: 2*ceil(17/16) + 2*ceil(10/16) = 4 + 2 = 6
     assert total == 6
     assert opt > 0 and cons > 0
+
+
+# ---------------------------------------------------------------------------
+# v6 regression: completed keyed stores must be skipped, not re-embedded
+# ---------------------------------------------------------------------------
+
+def test_completed_store_with_provenance_is_skipped(mig, tmp_path):
+    """A valid keyed store (with its _provenance entry) must be skipped.
+
+    v5 iterated ``existing.values()`` and hit the ``_provenance`` dict, so
+    ``s["embedding_to_merge"]`` raised KeyError -- swallowed by
+    ``except Exception: pass`` -- and every completed file was silently
+    re-embedded on every run, burning daily quota.
+    """
+    import torch
+    pt = _tiny_pt(tmp_path)  # 3 skills: s0, s1, s2
+    keyed = tmp_path / "micro_skills.gemini-embedding-001.4.pt"
+    store = {
+        f"s{i}": {"embedding_to_merge": [0.1] * 4,
+                  "embedding_to_retrive": [0.2] * 4}
+        for i in range(3)
+    }
+    store["_provenance"] = {"embedding_provider": "gemini",
+                            "embedding_model": "gemini-embedding-001",
+                            "embedding_dimensions": 4}
+    torch.save(store, str(keyed))
+    mgr = _FakeManager()
+    result = asyncio.run(
+        mig._migrate_one(mgr, pt, False, mig.RatePacer(6000, None, 0), "K"))
+    assert result["status"] == "skipped (valid store present)"
+    assert mgr._calls == 0, "skip path must not call the embedding API"
+
+
+def test_completed_store_missing_skill_is_regenerated(mig, tmp_path):
+    """A keyed store missing a skill must NOT be skipped (count mismatch)."""
+    import torch
+    pt = _tiny_pt(tmp_path)  # 3 skills: s0, s1, s2
+    keyed = tmp_path / "micro_skills.gemini-embedding-001.4.pt"
+    store = {
+        f"s{i}": {"embedding_to_merge": [0.1] * 4,
+                  "embedding_to_retrive": [0.2] * 4}
+        for i in range(2)  # s2 missing
+    }
+    store["_provenance"] = {"embedding_provider": "gemini",
+                            "embedding_model": "gemini-embedding-001",
+                            "embedding_dimensions": 4}
+    torch.save(store, str(keyed))
+    mgr = _FakeManager()
+    result = asyncio.run(
+        mig._migrate_one(mgr, pt, False, mig.RatePacer(6000, None, 0), "K"))
+    assert result["status"] == "regenerated"
+    assert mgr._calls > 0
