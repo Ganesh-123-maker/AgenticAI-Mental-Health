@@ -534,8 +534,48 @@ class SkillManager:
         return True
 
     @staticmethod
+    def _retry_delay_from_details(exc: BaseException) -> Optional[float]:
+        """Extract server-requested retry delay from a 429 error body.
+
+        The Gemini API returns google.rpc.RetryInfo with e.g. "retryDelay": "22s"
+        (free tier asks callers to wait before retrying). Honoring it is the
+        difference between a brief pause and a retry death-spiral.
+        """
+        payload = getattr(exc, "response_json", None) or getattr(exc, "details", None)
+        details = []
+        if isinstance(payload, dict):
+            try:
+                details = payload.get("error", {}).get("details", []) or []
+            except AttributeError:
+                details = []
+        for d in details:
+            if not isinstance(d, dict):
+                continue
+            rd = d.get("retryDelay")
+            if rd:
+                try:
+                    val = str(rd).strip()
+                    if val.endswith("s"):
+                        val = val[:-1]
+                    return max(0.0, float(val))
+                except (TypeError, ValueError):
+                    pass
+        # Fallback: scan the message text for a RetryInfo block.
+        m = re.search(r"retryDelay['\"]\s*:\s*['\"]([\d.]+)s['\"]", str(exc))
+        if m:
+            try:
+                return max(0.0, float(m.group(1)))
+            except (TypeError, ValueError):
+                pass
+        return None
+
+    @staticmethod
     def _retry_after_seconds(exc: BaseException) -> Optional[float]:
-        """Extract Retry-After (seconds) from a provider error, if present."""
+        """Extract Retry-After (seconds) from a provider error, if present.
+
+        Checks HTTP headers first, then the Gemini RetryInfo retryDelay in the
+        error body.
+        """
         headers = getattr(exc, "headers", None)
         if headers is None:
             resp = getattr(exc, "response", None)
@@ -549,25 +589,90 @@ class SkillManager:
                         return max(0.0, float(str(ra).split(",")[0].strip()))
             except (TypeError, ValueError):
                 pass
-        return None
+        return SkillManager._retry_delay_from_details(exc)
+
+    @staticmethod
+    def _quota_violations(exc: BaseException) -> list[dict]:
+        """Extract structured quota-violation entries from a 429 error.
+
+        Returns a list of {"quota_id": ..., "quota_metric": ...} from the
+        google.rpc.QuotaFailure details. Empty list if none present.
+        """
+        out: list[dict] = []
+        # Real google-genai APIError exposes the body as .details;
+        # our fakes/tests use .response_json. Accept both.
+        payload = getattr(exc, "response_json", None) or getattr(exc, "details", None)
+        if isinstance(payload, dict):
+            try:
+                details = payload.get("error", {}).get("details", []) or []
+            except AttributeError:
+                details = []
+            for d in details:
+                if not isinstance(d, dict):
+                    continue
+                # QuotaFailure violations list, or a direct violation dict.
+                violations = d.get("violations", [d] if "quotaId" in d else [])
+                for v in violations:
+                    if isinstance(v, dict) and (v.get("quotaId") or v.get("quotaMetric")):
+                        out.append({
+                            "quota_id": str(v.get("quotaId", "")),
+                            "quota_metric": str(v.get("quotaMetric", "")),
+                        })
+        return out
+
+    @staticmethod
+    def _is_daily_quota_error(exc: BaseException) -> bool:
+        """True if the 429 is a daily (or zero) quota exhaustion, not per-minute.
+
+        Daily quota must NOT be retried: it resets at midnight Pacific.
+        Classification uses structured quotaId/quotaMetric first
+        (e.g. '...PerDay...'), falling back to message text only when no
+        structured details exist.
+        """
+        if not SkillManager._is_rate_limit_error(exc):
+            return False
+        violations = SkillManager._quota_violations(exc)
+        if violations:
+            for v in violations:
+                hay = (v["quota_id"] + " " + v["quota_metric"]).lower()
+                if "perday" in hay or "per_day" in hay or "daily" in hay:
+                    return True
+            return False
+        text = str(exc).lower()
+        return ("perday" in text or "per_day" in text or "daily" in text
+                or "per day" in text)
 
     @staticmethod
     def _is_rate_limit_error(exc: BaseException) -> bool:
+        """True for HTTP 429 / RESOURCE_EXHAUSTED style errors.
+
+        Uses the structured status code first; falls back to specific
+        phrases. The bare "429" substring check was removed: it misclassified
+        unrelated messages merely mentioning the number.
+        """
         code = getattr(exc, "status_code", None) or getattr(exc, "code", None)
         try:
             if int(code) == 429:
                 return True
         except (TypeError, ValueError):
             pass
-        return "rate limit" in str(exc).lower() or "429" in str(exc)
+        text = str(exc).lower()
+        return ("rate limit" in text or "resource_exhausted" in text
+                or "too many requests" in text or "quota exceeded" in text)
 
     def _backoff_delay(self, attempt: int, sleep_sec: float, exc: BaseException) -> float:
-        """Exponential backoff with jitter, honoring Retry-After; capped at 60s."""
-        base = max(0.0, float(sleep_sec)) * (2.0 ** max(0, attempt - 1))
-        delay = base + random.uniform(0, base * 0.25 + 0.001)
+        """Delay before the next retry attempt.
+
+        A provider-requested delay (Retry-After header or RetryInfo
+        retryDelay) is honored EXACTLY and never shortened: cutting it
+        short re-triggers the quota and causes a retry death-spiral.
+        Otherwise, bounded exponential backoff with jitter (cap 60s).
+        """
         retry_after = self._retry_after_seconds(exc)
         if retry_after is not None:
-            delay = min(max(delay, retry_after), 120.0)
+            return max(0.0, float(retry_after))
+        base = max(0.0, float(sleep_sec)) * (2.0 ** max(0, attempt - 1))
+        delay = base + random.uniform(0, base * 0.25 + 0.001)
         return min(delay, 60.0)
 
     def _exhaustion_message(self, provider: str, max_attempts: int,
@@ -582,7 +687,8 @@ class SkillManager:
         return f"{provider} embedding request failed after {max_attempts} attempts: {safe[:300]}"
 
     async def _embed_by_api(self, texts: List[str], *,
-                            task_type: Optional[str] = None) -> List[List[float]]:
+                            task_type: Optional[str] = None,
+                            on_rate_limit=None) -> List[List[float]]:
         if not texts:
             return []
         if self._is_offline_embedding_mode():
@@ -606,7 +712,8 @@ class SkillManager:
         provider = str(self._runtime.psychagent_embedding_provider).strip().lower()
         if provider == "gemini":
             return await self._embed_by_gemini(api_key=api_key, texts=texts,
-                                               task_type=task_type)
+                                               task_type=task_type,
+                                               on_rate_limit=on_rate_limit)
         return await self._embed_by_openai_compatible(api_key=api_key, texts=texts)
 
     @staticmethod
@@ -617,7 +724,8 @@ class SkillManager:
         return message
 
     async def _embed_by_gemini(self, api_key: str, texts: List[str], *,
-                             task_type: Optional[str] = None) -> List[List[float]]:
+                             task_type: Optional[str] = None,
+                             on_rate_limit=None) -> List[List[float]]:
         """Embed via the native Gemini SDK (google-genai).
 
         Model, output dimensionality, batch size, retry policy and timeout all
@@ -652,8 +760,16 @@ class SkillManager:
             output_dimensionality=dimensions,
             task_type=task_type,
         )
-        # Timeout in ms; guards against hangs during client setup/TLS/handshake.
-        http_options = genai_types.HttpOptions(timeout=timeout_sec * 1000)
+        # Own all retrying in one place: disable SDK-internal retries so a
+        # single logical attempt never fans out into multiple HTTP requests
+        # (which would multiply quota consumption). Our retry loop below is
+        # the only retry logic; it honors server retry delays.
+        http_options_kwargs: dict = {"timeout": timeout_sec * 1000}
+        try:
+            http_options_kwargs["retry_options"] = genai_types.HttpRetryOptions(attempts=1)
+        except (AttributeError, TypeError):
+            pass  # older SDK without HttpRetryOptions; default behavior applies
+        http_options = genai_types.HttpOptions(**http_options_kwargs)
 
         def _make_client() -> Any:
             return genai.Client(api_key=api_key, http_options=http_options)
@@ -679,6 +795,18 @@ class SkillManager:
                             raise RuntimeError(
                                 f"Gemini embedding failed (not retryable): {safe[:300]}"
                             ) from exc
+                        if self._is_daily_quota_error(exc):
+                            raise RuntimeError(
+                                "Gemini embedding daily quota exhausted (not retryable now): "
+                                f"{safe[:300]}. Quota resets at midnight Pacific; "
+                                "re-run the migration afterwards to resume."
+                            ) from exc
+                        if self._is_rate_limit_error(exc) and on_rate_limit is not None:
+                            # Adaptive signal: let the caller widen its pacing.
+                            try:
+                                on_rate_limit()
+                            except Exception:
+                                pass
                         if attempt >= max_attempts:
                             raise RuntimeError(
                                 self._exhaustion_message("Gemini", max_attempts, exc, api_key)
