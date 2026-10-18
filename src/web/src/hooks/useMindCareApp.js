@@ -373,8 +373,10 @@ export function useMindCareApp() {
     setSidebarOpen(false);
   }
 
-  async function sendMessage() {
-    const text = input.trim();
+  // Core send logic shared by sendMessage (composer) and sendTextMessage
+  // (quick-prompt chips). Behavior is identical to the previous sendMessage.
+  async function postMessageText(rawText) {
+    const text = String(rawText ?? "").trim();
     if (!text || !currentVisit) return;
 
     const optimisticMessage = buildOptimisticMessage(text);
@@ -413,6 +415,16 @@ export function useMindCareApp() {
     } finally {
       setIsTyping(false);
     }
+  }
+
+  async function sendMessage() {
+    return postMessageText(input);
+  }
+
+  // Sends an explicit text (used by quick-prompt chips). Additive only;
+  // does not change sendMessage or any other existing behavior.
+  async function sendTextMessage(text) {
+    return postMessageText(text);
   }
 
   async function closeCurrentVisit(payload = {}) {
@@ -557,6 +569,7 @@ export function useMindCareApp() {
     closeCurrentVisit,
     completeCurrentCourse,
     sendMessage,
+    sendTextMessage,
     selectCourse,
     selectVisit,
     loadCourses,

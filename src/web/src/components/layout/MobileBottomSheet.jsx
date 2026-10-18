@@ -1,6 +1,10 @@
 import { useMemo, useState } from "react";
-import { CalendarPlus2, ChevronUp, ClipboardList, PlayCircle, X, XCircle } from "lucide-react";
+import { CalendarPlus2, ClipboardList, PlayCircle, X, XCircle } from "lucide-react";
 
+/**
+ * Mobile action bar + info bottom sheet. Same props and behavior as before,
+ * restyled for the new design. The info panel content is passed as children.
+ */
 export function MobileBottomSheet({
   token,
   selectedSchoolId,
@@ -33,7 +37,7 @@ export function MobileBottomSheet({
     }
     if (hasOpenVisit) {
       return {
-        label: "Resume Current Session",
+        label: "Resume Session",
         onClick: onContinueVisit,
         icon: PlayCircle,
         disabled: false,
@@ -48,7 +52,7 @@ export function MobileBottomSheet({
       };
     }
     return {
-      label: "View Course Info",
+      label: "Course Info",
       onClick: () => setPanelOpen(true),
       icon: ClipboardList,
       disabled: false,
@@ -68,12 +72,12 @@ export function MobileBottomSheet({
   const PrimaryIcon = primaryAction.icon;
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-40 border-t border-slate-200 bg-white/95 p-3 backdrop-blur lg:hidden">
+    <div className="fixed inset-x-0 bottom-0 z-40 border-t border-[#F3E2CF] bg-[#FDF6EC]/95 p-3 backdrop-blur lg:hidden">
       <div className="mx-auto max-w-5xl">
         <div className="grid grid-cols-[1fr_auto_auto] gap-2">
           <button
             type="button"
-            className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-teal-600 px-3 py-2 text-sm font-semibold text-white hover:bg-teal-700 disabled:cursor-not-allowed disabled:opacity-50"
+            className="inline-flex items-center justify-center gap-1.5 rounded-full bg-[#0E5F6B] px-3 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#0A4A55] disabled:cursor-not-allowed disabled:opacity-50"
             onClick={primaryAction.onClick}
             disabled={primaryAction.disabled}
           >
@@ -83,7 +87,7 @@ export function MobileBottomSheet({
 
           <button
             type="button"
-            className="rounded-lg border border-slate-200 px-3 py-2 text-xs font-medium text-slate-700 hover:bg-slate-50"
+            className="rounded-full border border-[#EBD9C2] bg-white/80 px-4 py-2.5 text-xs font-semibold text-[#5B3A1E] transition hover:bg-white"
             onClick={() => setPanelOpen(true)}
           >
             Info
@@ -92,7 +96,7 @@ export function MobileBottomSheet({
           {canCloseCurrentVisit ? (
             <button
               type="button"
-              className="inline-flex items-center justify-center gap-1 rounded-lg bg-rose-50 px-3 py-2 text-xs font-semibold text-rose-700 hover:bg-rose-100"
+              className="inline-flex items-center justify-center gap-1 rounded-full bg-[#FBE3E0] px-4 py-2.5 text-xs font-semibold text-[#A33B2E] transition hover:bg-[#F8D5D0]"
               onClick={onCloseVisit}
             >
               <XCircle className="h-3.5 w-3.5" />
@@ -101,10 +105,10 @@ export function MobileBottomSheet({
           ) : canCompleteCourse ? (
             <button
               type="button"
-              className="rounded-lg bg-emerald-50 px-3 py-2 text-xs font-semibold text-emerald-700 hover:bg-emerald-100"
+              className="rounded-full bg-[#E4F3E4] px-4 py-2.5 text-xs font-semibold text-[#2E7D32] transition hover:bg-[#D5EBD5]"
               onClick={onOpenCompleteCourseModal}
             >
-              Complete Course
+              Complete
             </button>
           ) : (
             <div />
@@ -113,23 +117,23 @@ export function MobileBottomSheet({
       </div>
 
       {panelOpen ? (
-        <div className="fixed inset-0 z-[75] bg-slate-900/50">
+        <div className="fixed inset-0 z-[75]">
           <button
             type="button"
-            className="h-full w-full"
+            className="absolute inset-0 bg-slate-900/50"
             onClick={() => setPanelOpen(false)}
-            aria-label="Close course information"
+            aria-label="Close session information"
           />
-          <div className="absolute inset-x-0 bottom-0 max-h-[80vh] overflow-y-auto rounded-t-2xl border border-slate-200 bg-white p-4">
+          <div className="absolute inset-x-0 bottom-0 max-h-[80vh] overflow-y-auto rounded-t-[28px] border border-[#F3E2CF] bg-[#FDF6EC] p-4">
             <div className="mb-3 flex items-center justify-between">
-              <div className="inline-flex items-center gap-1 text-xs font-medium text-slate-500">
-                <ChevronUp className="h-4 w-4" />
-                Course Information
-              </div>
+              <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#A08B6D]">
+                Session Information
+              </p>
               <button
                 type="button"
-                className="rounded p-1 text-slate-400 hover:bg-slate-100 hover:text-slate-600"
+                className="rounded-full p-1.5 text-[#8A7B66] transition hover:bg-[#F6E8D5]"
                 onClick={() => setPanelOpen(false)}
+                aria-label="Close session information"
               >
                 <X className="h-5 w-5" />
               </button>
