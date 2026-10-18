@@ -36,7 +36,9 @@ export function Composer({ currentCourse, currentVisit, input, isTyping, onInput
             onKeyDown={(event) => {
               if (event.key === "Enter" && !event.shiftKey) {
                 event.preventDefault();
-                onSend();
+                if (canSend) {
+                  onSend();
+                }
               }
             }}
             placeholder="Share what's on your mind..."
