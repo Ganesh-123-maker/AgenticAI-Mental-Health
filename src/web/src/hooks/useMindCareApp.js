@@ -377,7 +377,7 @@ export function useMindCareApp() {
   // (quick-prompt chips). Behavior is identical to the previous sendMessage.
   async function postMessageText(rawText) {
     const text = String(rawText ?? "").trim();
-    if (!text || !currentVisit) return;
+    if (!text || !currentVisit || isTyping) return;
 
     const optimisticMessage = buildOptimisticMessage(text);
     setInput("");
