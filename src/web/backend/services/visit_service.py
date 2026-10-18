@@ -724,7 +724,7 @@ async def create_visit(
         if "agent_trace" in assistant_payload:
             snapshot["profile_payload"]["latest_agent_trace"] = assistant_payload["agent_trace"]
         if "route" in assistant_payload:
-            snapshot["profile_payload"]["latest_route"] = "CLEAR"
+            snapshot["profile_payload"]["latest_route"] = assistant_payload.get("route", "CLEAR")
     save_visit_psych_context_snapshot(db, visit.visit_id, snapshot)
 
     try:
@@ -753,11 +753,15 @@ async def send_visit_message(
     if visit.status != "open":
         raise HTTPException(status_code=409, detail="The current session has ended; cannot send further messages")
 
+    trimmed_text = str(text or "").strip()
+    if not trimmed_text:
+        raise HTTPException(status_code=400, detail="Message text cannot be empty or whitespace only")
+
     now = utcnow()
     user_message = VisitMessageRecord(
         visit_id=visit.visit_id,
         role="user",
-        text=text,
+        text=trimmed_text,
         created_at=now,
     )
     visit.updated_at = now
