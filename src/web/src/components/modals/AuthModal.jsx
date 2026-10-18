@@ -14,15 +14,20 @@ export function AuthModal({
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-[70] p-4">
-      <div className="bg-white border border-slate-200 shadow-2xl rounded-2xl w-full max-w-md p-6 space-y-4 relative">
-        <button className="absolute top-3 right-3 text-slate-400 hover:text-slate-600" onClick={onClose}>
-          <X className="w-5 h-5" />
+    <div className="fixed inset-0 z-[70] flex items-center justify-center bg-slate-900/60 p-4 backdrop-blur-sm">
+      <div className="relative w-full max-w-md space-y-4 rounded-3xl border border-[#F3E2CF] bg-[#FDF6EC] p-6 shadow-2xl">
+        <button
+          type="button"
+          className="absolute right-4 top-4 rounded-full p-1.5 text-[#8A7B66] transition hover:bg-[#F6E8D5]"
+          onClick={onClose}
+          aria-label="Close account dialog"
+        >
+          <X className="h-5 w-5" />
         </button>
 
-        <div className="text-center space-y-1">
-          <h2 className="text-xl font-bold text-slate-800">Account</h2>
-          <p className="text-sm text-slate-500">
+        <div className="space-y-1 text-center">
+          <h2 className="text-xl font-bold text-[#123B43]">Account</h2>
+          <p className="text-sm text-[#6B7C7C]">
             {user ? `Signed in as: ${user.username}` : "Enter your username and password, or register a new account."}
           </p>
         </div>
@@ -30,24 +35,27 @@ export function AuthModal({
         {!user && (
           <div className="space-y-3">
             <input
-              className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm"
+              className="w-full rounded-2xl border border-[#EBD9C2] bg-white px-4 py-2.5 text-sm text-[#33484D] placeholder:text-[#B39B7D] focus:border-[#0E5F6B]/60 focus:outline-none"
               placeholder="Username"
               value={authForm.username}
               onChange={(event) => onChangeForm({ ...authForm, username: event.target.value })}
+              aria-label="Username"
             />
 
             <input
-              className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm"
+              className="w-full rounded-2xl border border-[#EBD9C2] bg-white px-4 py-2.5 text-sm text-[#33484D] placeholder:text-[#B39B7D] focus:border-[#0E5F6B]/60 focus:outline-none"
               placeholder="Password"
               type="password"
               value={authForm.password}
               onChange={(event) => onChangeForm({ ...authForm, password: event.target.value })}
+              aria-label="Password"
             />
 
-            <div className="flex items-center justify-between text-xs text-slate-500">
+            <div className="flex items-center justify-between text-xs text-[#8A7B66]">
               <div>Mode: {authMode === "login" ? "Sign In" : "Register"}</div>
               <button
-                className="text-teal-600 hover:text-teal-700"
+                type="button"
+                className="font-semibold text-[#0E5F6B] hover:text-[#0A4A55]"
                 onClick={() => onChangeMode(authMode === "login" ? "register" : "login")}
               >
                 Switch to {authMode === "login" ? "Register" : "Sign In"}
@@ -55,7 +63,8 @@ export function AuthModal({
             </div>
 
             <button
-              className="w-full bg-teal-600 text-white rounded-lg py-2 text-sm font-semibold hover:bg-teal-700 transition"
+              type="button"
+              className="w-full rounded-full bg-[#0E5F6B] py-2.5 text-sm font-semibold text-white transition hover:bg-[#0A4A55]"
               onClick={() => onSubmit(authMode)}
             >
               {authMode === "login" ? "Sign In" : "Register"}
@@ -64,14 +73,15 @@ export function AuthModal({
         )}
 
         {user && (
-          <div className="space-y-3 text-sm text-slate-600">
-            <div className="flex items-center gap-2">
-              <User className="w-4 h-4 text-slate-500" />
-              <span>{user.username}</span>
+          <div className="space-y-3 text-sm text-[#5B6B6B]">
+            <div className="flex items-center gap-2 rounded-2xl bg-white/70 px-4 py-3">
+              <User className="h-4 w-4 text-[#0E5F6B]" />
+              <span className="font-medium text-[#33484D]">{user.username}</span>
             </div>
 
             <button
-              className="w-full bg-slate-800 text-white rounded-lg py-2 text-sm font-semibold hover:bg-slate-900 transition"
+              type="button"
+              className="w-full rounded-full bg-[#33484D] py-2.5 text-sm font-semibold text-white transition hover:bg-[#22333a]"
               onClick={onLogout}
             >
               Sign Out

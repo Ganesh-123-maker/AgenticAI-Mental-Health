@@ -25,30 +25,37 @@ export function CompleteCourseModal({ open, currentCourse, onClose, onConfirm })
   }
 
   return (
-    <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-[80] p-4">
-      <div className="bg-white border border-slate-200 shadow-2xl rounded-2xl w-full max-w-lg p-6 space-y-4 relative">
-        <button className="absolute top-3 right-3 text-slate-400 hover:text-slate-600" onClick={onClose}>
-          <X className="w-5 h-5" />
+    <div className="fixed inset-0 z-[80] flex items-center justify-center bg-slate-900/60 p-4 backdrop-blur-sm">
+      <div className="relative w-full max-w-lg space-y-4 rounded-3xl border border-[#F3E2CF] bg-[#FDF6EC] p-6 shadow-2xl">
+        <button
+          type="button"
+          className="absolute right-4 top-4 rounded-full p-1.5 text-[#8A7B66] transition hover:bg-[#F6E8D5]"
+          onClick={onClose}
+          aria-label="Close complete course dialog"
+        >
+          <X className="h-5 w-5" />
         </button>
 
         <div>
-          <h3 className="text-lg font-bold text-slate-800">Complete Course</h3>
-          <p className="text-sm text-slate-500 mt-1">
+          <h3 className="text-lg font-bold text-[#123B43]">Complete Course</h3>
+          <p className="mt-1 text-sm text-[#6B7C7C]">
             The current therapy course will be marked as completed. Course: {currentCourse?.title || "Untitled Course"}
           </p>
         </div>
 
         <div className="flex gap-2">
           <button
+            type="button"
             onClick={onClose}
-            className="flex-1 bg-slate-100 text-slate-700 rounded-lg py-2 text-sm hover:bg-slate-200 transition"
+            className="flex-1 rounded-full bg-[#F6E8D5] py-2.5 text-sm font-semibold text-[#5B3A1E] transition hover:bg-[#F3DDC2]"
             disabled={submitting}
           >
             Cancel
           </button>
           <button
+            type="button"
             onClick={handleConfirm}
-            className="flex-1 bg-emerald-600 text-white rounded-lg py-2 text-sm font-semibold hover:bg-emerald-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex-1 rounded-full bg-emerald-600 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-50"
             disabled={submitting}
           >
             {submitting ? "Processing..." : "Confirm Completion"}

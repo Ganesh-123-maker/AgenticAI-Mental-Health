@@ -1,68 +1,126 @@
-import { Menu, X } from "lucide-react";
-import { ChatInput } from "./components/chat/ChatInput";
-import { ChatMessages } from "./components/chat/ChatMessages";
+import { useEffect, useRef, useState } from "react";
 import { FeedbackBanner } from "./components/common/FeedbackBanner";
-import { StatusPill } from "./components/common/StatusPill";
-import { HeaderBar } from "./components/layout/HeaderBar";
+import { AppSidebar } from "./components/layout/AppSidebar";
+import { InfoPanel } from "./components/layout/InfoPanel";
 import { MobileBottomSheet } from "./components/layout/MobileBottomSheet";
-import { RightPanel } from "./components/layout/RightPanel";
-import { Sidebar } from "./components/layout/Sidebar";
-import { VisitTimeline } from "./components/layout/VisitTimeline";
+import { TopBar } from "./components/layout/TopBar";
 import { AuthModal } from "./components/modals/AuthModal";
 import { CompleteCourseModal } from "./components/modals/CompleteCourseModal";
 import { CreateCourseModal } from "./components/modals/CreateCourseModal";
+import { HelpModal } from "./components/modals/HelpModal";
 import { SchoolModal } from "./components/modals/SchoolModal";
-import { getCourseStatusText, getVisitStatusText } from "./components/common/statusText";
-import { getSchoolDisplayName } from "./components/common/schoolText";
+import { NotificationsPanel } from "./components/panels/NotificationsPanel";
+import { ProgressView } from "./components/views/ProgressView";
+import { SessionsView } from "./components/views/SessionsView";
+import { SettingsView } from "./components/views/SettingsView";
+import { SkillsView } from "./components/views/SkillsView";
+import { useBackendStatus } from "./hooks/useBackendStatus";
 import { useMindCareApp } from "./hooks/useMindCareApp";
 
-function getCourseTone(status) {
-  if (status === "active") return "active";
-  if (status === "completed") return "success";
-  if (status === "archived") return "neutral";
-  return "warning";
-}
-
-function getVisitTone(status) {
-  if (status === "open") return "active";
-  if (status === "closed") return "neutral";
-  return "warning";
-}
+const MAX_NOTIFICATIONS = 20;
 
 export default function App() {
   const app = useMindCareApp();
+  const { online: backendOnline, lastChecked } = useBackendStatus(30000);
+
+  const [view, setView] = useState("sessions");
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [showHelpModal, setShowHelpModal] = useState(false);
+  const [showNotifications, setShowNotifications] = useState(false);
+  const [notifications, setNotifications] = useState([]);
+  const [notifReadAt, setNotifReadAt] = useState(0);
+  const lastFeedbackTs = useRef(0);
+
+  // Feed the notifications panel from app feedback (session) events.
+  useEffect(() => {
+    const fb = app.feedback;
+    if (fb?.message && fb.timestamp !== lastFeedbackTs.current) {
+      lastFeedbackTs.current = fb.timestamp;
+      setNotifications((prev) => {
+        if (prev[0]?.message === fb.message) return prev;
+        return [{ id: `${fb.timestamp}`, type: fb.type || "info", message: fb.message, timestamp: fb.timestamp }, ...prev].slice(
+          0,
+          MAX_NOTIFICATIONS
+        );
+      });
+    }
+  }, [app.feedback]);
+
+  const unreadCount = notifications.filter((n) => n.timestamp > notifReadAt).length;
+
+  function handleSelectView(nextView) {
+    setView(nextView);
+    setDrawerOpen(false);
+  }
+
+  function handleOpenNotifications() {
+    setShowNotifications(true);
+    setNotifReadAt(Date.now());
+  }
+
+  const sessionInfoPanel = <InfoPanel currentCourse={app.currentCourse} currentVisit={app.currentVisit} />;
 
   return (
-    <div className="flex h-screen w-full bg-white font-sans text-slate-900 selection:bg-teal-100">
-      <button
-        type="button"
-        className="fixed left-4 top-4 z-40 rounded-lg border border-slate-200 bg-white p-2 shadow-md md:hidden"
-        onClick={() => app.setSidebarOpen(!app.sidebarOpen)}
-      >
-        {app.sidebarOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-      </button>
-
-      <Sidebar
-        sidebarOpen={app.sidebarOpen}
-        sidebarCollapsed={app.sidebarCollapsed}
-        onClose={() => app.setSidebarOpen(false)}
-        onToggleCollapse={() => app.setSidebarCollapsed(!app.sidebarCollapsed)}
-        currentSchool={app.currentSchool}
-        currentCourse={app.currentCourse}
-        courses={app.courses}
-        onSelectCourse={app.selectCourse}
-        onOpenSchoolModal={() => app.setShowSchoolModal(true)}
-        onOpenAuthModal={() => app.setShowAuthModal(true)}
+    <div className="flex h-screen w-full flex-col bg-gradient-to-br from-[#FDF1E7] to-[#FBE9DB] font-sans text-[#33484D] selection:bg-[#FBE3C8]">
+      <TopBar
         user={app.user}
+        unreadCount={unreadCount}
+        onToggleSidebar={() => setDrawerOpen((v) => !v)}
+        onOpenNotifications={handleOpenNotifications}
+        onOpenHelp={() => setShowHelpModal(true)}
+        onOpenAuth={() => app.setShowAuthModal(true)}
       />
 
-      <div className="flex min-w-0 flex-1 flex-col">
-        <HeaderBar
-          currentSchool={app.currentSchool}
+      <div className="flex min-h-0 flex-1">
+        <AppSidebar
+          view={view}
+          onSelectView={handleSelectView}
+          backendOnline={backendOnline}
+          drawerOpen={drawerOpen}
+          onCloseDrawer={() => setDrawerOpen(false)}
+        />
+
+        <div className="flex min-w-0 flex-1 flex-col">
+          <FeedbackBanner feedback={app.feedback} onClose={app.clearFeedback} />
+
+          <div className="flex min-h-0 flex-1 flex-col">
+            {view === "sessions" ? <SessionsView app={app} /> : null}
+            {view === "skills" ? <SkillsView schools={app.schools} /> : null}
+            {view === "progress" ? (
+              <ProgressView
+                courses={app.courses}
+                currentCourse={app.currentCourse}
+                visits={app.visits}
+                hasToken={Boolean(app.token)}
+                onSelectCourse={(courseId) => {
+                  app.selectCourse(courseId);
+                  handleSelectView("sessions");
+                }}
+              />
+            ) : null}
+            {view === "settings" ? (
+              <SettingsView
+                user={app.user}
+                backendOnline={backendOnline}
+                lastChecked={lastChecked}
+                onOpenAuth={() => app.setShowAuthModal(true)}
+                onLogout={app.logout}
+              />
+            ) : null}
+          </div>
+
+          <footer className="shrink-0 px-4 pb-24 pt-1 text-center text-[11px] leading-5 text-[#A08B6D] lg:pb-3">
+            Research prototype — not medical advice. In crisis, contact local emergency services.
+          </footer>
+        </div>
+      </div>
+
+      {view === "sessions" ? (
+        <MobileBottomSheet
+          token={app.token}
+          selectedSchoolId={app.selectedSchoolId}
           currentCourse={app.currentCourse}
           currentVisit={app.currentVisit}
-          selectedSchoolId={app.selectedSchoolId}
-          token={app.token}
           canCreateCourse={app.canCreateCourse}
           canStartNextVisit={app.canStartNextVisit}
           canCompleteCourse={app.canCompleteCourse}
@@ -71,90 +129,18 @@ export default function App() {
           onContinueVisit={app.continueCurrentVisit}
           onCloseVisit={app.closeCurrentVisit}
           onOpenCompleteCourseModal={() => app.setShowCompleteCourseModal(true)}
-        />
+        >
+          {sessionInfoPanel}
+        </MobileBottomSheet>
+      ) : null}
 
-        <FeedbackBanner feedback={app.feedback} onClose={app.clearFeedback} />
+      <NotificationsPanel
+        open={showNotifications}
+        notifications={notifications}
+        onClose={() => setShowNotifications(false)}
+      />
 
-        <div className="flex min-h-0 flex-1">
-          <VisitTimeline
-            currentCourse={app.currentCourse}
-            visits={app.visits}
-            currentVisit={app.currentVisit}
-            canStartNextVisit={app.canStartNextVisit}
-            onStartNextVisit={app.startNextVisit}
-            onSelectVisit={app.selectVisit}
-          />
-
-          <main className="flex min-w-0 flex-1 flex-col">
-            <div className="border-b border-slate-200 bg-white px-4 py-3 sm:px-6">
-              {app.currentCourse ? (
-                <div className="flex flex-wrap items-center gap-2 text-xs text-slate-700">
-                  <span className="rounded-md bg-slate-100 px-2 py-1">
-                    Modality: {getSchoolDisplayName(app.currentSchool)}
-                  </span>
-                  <span className="rounded-md bg-slate-100 px-2 py-1">
-                    Course: {app.currentCourse.title || "Untitled Course"}
-                  </span>
-                  <span className="rounded-md bg-slate-100 px-2 py-1">
-                    Session: {app.currentVisit ? `Session ${app.currentVisit.visit_no}` : "Not Started"}
-                  </span>
-                  <StatusPill
-                    text={getCourseStatusText(app.currentCourse.status)}
-                    tone={getCourseTone(app.currentCourse.status)}
-                  />
-                  {app.currentVisit ? (
-                    <StatusPill
-                      text={getVisitStatusText(app.currentVisit.status)}
-                      tone={getVisitTone(app.currentVisit.status)}
-                    />
-                  ) : null}
-                </div>
-                ) : (
-                  <p className="text-sm text-slate-600">
-                    Workflow: Modality -&gt; Course -&gt; Session -&gt; Dialogue. Please select a counseling modality and create a course to begin.
-                  </p>
-                )}
-            </div>
-
-            <ChatMessages
-              currentCourse={app.currentCourse}
-              currentVisit={app.currentVisit}
-              currentSchool={app.currentSchool}
-              isTyping={app.isTyping}
-              chatEndRef={app.chatEndRef}
-              hasToken={Boolean(app.token)}
-            />
-
-            <ChatInput
-              currentCourse={app.currentCourse}
-              currentVisit={app.currentVisit}
-              input={app.input}
-              isTyping={app.isTyping}
-              onInputChange={app.setInput}
-              onSend={app.sendMessage}
-            />
-          </main>
-
-          <RightPanel currentCourse={app.currentCourse} currentVisit={app.currentVisit} />
-        </div>
-      </div>
-
-      <MobileBottomSheet
-        token={app.token}
-        selectedSchoolId={app.selectedSchoolId}
-        currentCourse={app.currentCourse}
-        currentVisit={app.currentVisit}
-        canCreateCourse={app.canCreateCourse}
-        canStartNextVisit={app.canStartNextVisit}
-        canCompleteCourse={app.canCompleteCourse}
-        onOpenCreateCourseModal={() => app.setShowCreateCourseModal(true)}
-        onStartNextVisit={app.startNextVisit}
-        onContinueVisit={app.continueCurrentVisit}
-        onCloseVisit={app.closeCurrentVisit}
-        onOpenCompleteCourseModal={() => app.setShowCompleteCourseModal(true)}
-      >
-        <RightPanel currentCourse={app.currentCourse} currentVisit={app.currentVisit} embedded />
-      </MobileBottomSheet>
+      <HelpModal open={showHelpModal} onClose={() => setShowHelpModal(false)} />
 
       <AuthModal
         open={app.showAuthModal}
