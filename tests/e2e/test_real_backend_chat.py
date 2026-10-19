@@ -89,9 +89,7 @@ def main() -> int:
         page.screenshot(path=str(outdir / "05_course.png"))
 
         def send_and_capture(text, tag):
-            box = page.get_by_placeholder("Type your message", exact=False)
-            if not box.count():
-                box = page.locator("textarea").last
+            box = page.get_by_placeholder("Share what's on your mind...", exact=False)
             box.click()
             box.fill(text)
             page.screenshot(path=str(outdir / f"{tag}_typed.png"))
