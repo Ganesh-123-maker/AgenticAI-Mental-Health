@@ -87,6 +87,17 @@ class OpenAIStyleBackend:
             )
             response_json = self._to_response_dict(response)
             text = self._extract_text(response_json).strip()
+            # Observability: log raw model output + finish reason (truncated).
+            # Added 2026-10-19 to diagnose truncated/off-topic replies.
+            try:
+                _choices = response_json.get("choices") or []
+                _finish = _choices[0].get("finish_reason") if _choices else None
+            except Exception:
+                _finish = None
+            self._logger.info(
+                "llm raw output model=%s finish_reason=%s chars=%d text=%.2000s",
+                model, _finish, len(text), text,
+            )
             if not text:
                 raise RetryableError("empty model output")
             return text
