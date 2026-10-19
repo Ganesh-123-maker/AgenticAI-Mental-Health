@@ -187,3 +187,35 @@ def test_full_loop_still_routes_correctly():
     )
     assert r2["route"] == "CLEAR"
     print("[PASS] Full clarify -> reassess -> routing loop correct.")
+
+
+def test_no_repeat_of_already_asked_template():
+    """Already-asked template is skipped; agent stands down instead of repeating.
+
+    Regression: the pipeline asked 'Around when did this feeling start to
+    emerge?' 3 turns in a row because duration_onset stayed unresolved while
+    the user asked for something else (breathing exercise).
+    """
+    ctx = AgentContext(
+        case_id="clar_norepeat",
+        modality="cbt",
+        current_message="Walk me through a breathing exercise",
+    )
+    ctx.prior_transcript = [
+        {"role": "user", "content": "I'm worried about my finals"},
+        {"role": "assistant", "content": "Around when did this feeling start to emerge? Did anything specific happen at that time?"},
+        {"role": "user", "content": "Walk me through a breathing exercise"},
+    ]
+    ctx.uncertainty_output = {
+        "clarification_required": True,
+        "uncertainty_types": ["duration_and_history"],
+        "uncertain_fields": ["duration_onset"],
+        "missing_information": [],
+        "priority": "MEDIUM",
+        "status": "UNCERTAIN",
+    }
+    ctx.risk_output = {"severity": "LOW"}
+    out = ClarificationAgent().run(ctx).payload
+    assert out["clarification_required"] is False, f"got {out}"
+    assert "duration_onset" not in out.get("target_information", [])
+    print("[PASS] already-asked template not repeated.")

@@ -88,6 +88,27 @@ _CLARIFICATION_TEMPLATES: Dict[str, Dict[str, Any]] = {
 }
 
 
+def _template_already_asked(tmpl: Dict[str, Any], transcript: List[Dict[str, Any]]) -> bool:
+    """True if any of the template's questions was asked in recent assistant turns.
+
+    Prevents the pipeline from repeating the same clarification question when
+    the client didn't answer it (e.g. they asked for something else instead).
+    Template questions are used verbatim, so a prefix substring match is reliable.
+    """
+    if not transcript:
+        return False
+    questions = [q.strip().lower() for q in tmpl.get("questions", []) if q.strip()]
+    if not questions:
+        return False
+    recent = [t for t in transcript[-6:] if isinstance(t, dict) and t.get("role") == "assistant"]
+    for turn in recent:
+        content = str(turn.get("content", "")).lower()
+        for q in questions:
+            if q[:60] and q[:60] in content:
+                return True
+    return False
+
+
 class ClarificationAgent(Agent):
     """Generates focused, non-leading clarifying questions for priority informational gaps."""
 
@@ -188,20 +209,34 @@ class ClarificationAgent(Agent):
 
         selected_name: Optional[str] = None
         selected_template: Optional[Dict[str, Any]] = None
+        prior_transcript = ctx.prior_transcript or []
+        asked_targets: List[str] = []
         for name in candidates:
             tmpl = _CLARIFICATION_TEMPLATES[name]
-            if not _target_resolved(tmpl["target"]):
-                selected_name = name
-                selected_template = tmpl
-                break
+            if _target_resolved(tmpl["target"]):
+                continue
+            if _template_already_asked(tmpl, prior_transcript):
+                asked_targets.extend(tmpl["target"])
+                continue
+            selected_name = name
+            selected_template = tmpl
+            break
+
+        def _field_asked(field: str) -> bool:
+            return any(
+                str(field).lower() == str(at).lower() or str(field).lower() in str(at).lower()
+                for at in asked_targets
+            )
 
         if selected_template is None:
             candidate_fields = [
-                f for f in uncertain_fields if not _target_resolved([str(f)])
+                f for f in uncertain_fields
+                if not _target_resolved([str(f)]) and not _field_asked(str(f))
             ]
             if not candidate_fields:
                 candidate_fields = [
-                    m for m in missing_info if not _target_resolved([str(m)])
+                    m for m in missing_info
+                    if not _target_resolved([str(m)]) and not _field_asked(str(m))
                 ]
             if not candidate_fields:
                 payload = {
