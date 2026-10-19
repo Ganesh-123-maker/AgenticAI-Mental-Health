@@ -192,57 +192,72 @@ def _lock_token() -> str:
     return f"{os.getpid()}-{uuid.uuid4().hex[:8]}"
 
 
-# A lock whose heartbeat (mtime) is older than this is treated as stale and
-# may be taken over. The owner touches the mtime after every completed
-# batch, so a healthy run never goes stale. Ten minutes comfortably covers
-# the slowest single batch (API latency + retries) without letting a dead
-# run squat on the quota indefinitely.
-_LOCK_STALE_AFTER_SEC = 600.0
+def _pid_is_running(pid: object) -> bool:
+    """True if pid refers to a currently-running process. No signal is sent.
 
-
-def _lock_is_stale(lock_path: Path) -> bool:
-    """True if the lock's heartbeat is older than _LOCK_STALE_AFTER_SEC.
-
-    Liveness is decided purely by the lock file's mtime, which the owner
-    refreshes after every completed batch. No PID check is performed:
-    os.kill(pid, 0) is not an existence probe on Windows (signal 0 is the
-    Ctrl+C event), so PID liveness is never consulted.
+    Windows: os.kill(pid, 0) is NOT used — on Windows signal 0 goes down the
+    Ctrl+C event path instead of acting as an existence check, and has been
+    observed killing the calling pytest process with KeyboardInterrupt.
+    Uses the native process API instead: OpenProcess with
+    PROCESS_QUERY_LIMITED_INFORMATION (0x1000), then GetExitCodeProcess;
+    only STILL_ACTIVE (259) counts as running. A process that exists but
+    cannot be opened (ERROR_ACCESS_DENIED = 5) is treated as alive.
+    POSIX: os.kill(pid, 0) delivers no signal; PermissionError means the
+    process exists but we may not signal it, so it counts as alive.
     """
+    if not isinstance(pid, int) or pid <= 0:
+        return False
+    if os.name == "nt":
+        import ctypes
+        kernel32 = ctypes.WinDLL("kernel32", use_last_error=True)
+        kernel32.OpenProcess.restype = ctypes.wintypes.HANDLE
+        kernel32.OpenProcess.argtypes = (ctypes.wintypes.DWORD,
+                                         ctypes.wintypes.BOOL,
+                                         ctypes.wintypes.DWORD)
+        kernel32.GetExitCodeProcess.restype = ctypes.wintypes.BOOL
+        kernel32.GetExitCodeProcess.argtypes = (
+            ctypes.wintypes.HANDLE,
+            ctypes.POINTER(ctypes.wintypes.DWORD))
+        kernel32.CloseHandle.restype = ctypes.wintypes.BOOL
+        kernel32.CloseHandle.argtypes = (ctypes.wintypes.HANDLE,)
+        handle = kernel32.OpenProcess(0x1000, False, pid)
+        if not handle:
+            # Process does not exist, or exists but we cannot query it.
+            return ctypes.get_last_error() == 5  # ERROR_ACCESS_DENIED
+        try:
+            code = ctypes.wintypes.DWORD()
+            if not kernel32.GetExitCodeProcess(handle, ctypes.byref(code)):
+                return False
+            return code.value == 259  # STILL_ACTIVE
+        finally:
+            kernel32.CloseHandle(handle)
     try:
-        age = time.time() - lock_path.stat().st_mtime
-    except OSError:
-        return True  # vanished; the caller retries the atomic create
-    return age > _LOCK_STALE_AFTER_SEC
+        os.kill(pid, 0)
+        return True
+    except PermissionError:
+        return True  # exists, but we may not signal it
+    except (ProcessLookupError, OSError):
+        return False
 
 
-def _heartbeat_lock(lock_path: Path, token: str) -> None:
-    """Touch the lock file's mtime to signal liveness.
+def _lock_owner_alive(info: dict) -> bool:
+    """True if the lock records a currently-running process.
 
-    Called after every completed batch. Verifies we still own the lock
-    (token match) before touching; raises RuntimeError if the lock was
-    taken over or vanished, so a displaced worker stops instead of
-    writing under a lock it no longer holds.
+    Delegates to _pid_is_running (native API on Windows, os.kill(pid, 0)
+    on POSIX). A live owner is NEVER displaced, no matter how old the
+    lock is.
     """
-    try:
-        info = json.loads(lock_path.read_text(encoding="utf-8"))
-    except Exception as exc:
-        raise RuntimeError(f"lost lock {lock_path.name}: unreadable ({exc})")
-    if info.get("token") != token:
-        raise RuntimeError(
-            f"lost lock {lock_path.name}: taken over by another process")
-    os.utime(lock_path, None)
+    return _pid_is_running(info.get("pid"))
 
 
 def _acquire_lock(lock_path: Path, race_timeout_sec: float = 30.0) -> str:
     """Create the lock file atomically, or take over / refuse clearly.
 
     - Creation uses O_CREAT|O_EXCL: exactly one racing process can win.
-    - A lock with a fresh heartbeat (mtime within _LOCK_STALE_AFTER_SEC)
-      is never displaced: another migration is actively running.
-    - A stale lock (heartbeat older than _LOCK_STALE_AFTER_SEC, or
-      malformed/unreadable) is taken over via verify-then-replace plus a
-      post-replace ownership confirmation, so two racing processes cannot
-      both believe they own it.
+    - A lock whose owner process is still alive is never displaced.
+    - A stale lock (dead PID or malformed) is taken over via
+      verify-then-replace plus a post-replace ownership confirmation,
+      so two racing processes cannot both believe they own it.
     Returns the owner token; _release_lock only removes the lock if the
     token still matches.
     """
@@ -266,19 +281,18 @@ def _acquire_lock(lock_path: Path, race_timeout_sec: float = 30.0) -> str:
         except Exception:
             info = {}
         # Malformed/unreadable content cannot be a healthy owner (the owner
-        # always writes valid JSON before any heartbeat); treat it as stale
-        # regardless of mtime. Otherwise, a fresh heartbeat means another
-        # migration is actively running and the lock must not be displaced.
-        if info and not _lock_is_stale(lock_path):
+        # always writes valid JSON); _lock_owner_alive({}) is False so it is
+        # treated as stale. Otherwise, a live owner is never displaced.
+        if _lock_owner_alive(info):
             try:
                 age = time.time() - lock_path.stat().st_mtime
             except OSError:
                 age = 0.0
             raise RuntimeError(
                 f"lock file present ({lock_path.name}): another migration is "
-                f"active (owner pid {info.get('pid')}, started "
-                f"{info.get('at', 'unknown')}, last heartbeat {age:.0f}s ago). "
-                f"Delete it only if no migration is running.")
+                f"active (pid {info.get('pid')}, started "
+                f"{info.get('at', 'unknown')}, age {age:.0f}s). Delete it "
+                f"only if no migration is running.")
 
         # Stale lock: compare-and-swap takeover.
         try:
@@ -308,8 +322,8 @@ def _acquire_lock(lock_path: Path, race_timeout_sec: float = 30.0) -> str:
             cur = {}
         if cur.get("token") == token:
             logging.getLogger(__name__).warning(
-                "took over stale lock %s (previous owner pid %s, last heartbeat %s)",
-                lock_path.name, info.get("pid"), info.get("at"))
+                "took over stale lock %s (previous owner pid %s)",
+                lock_path.name, info.get("pid"))
             return token
         if time.time() > deadline:
             raise RuntimeError(
@@ -506,12 +520,10 @@ async def _migrate_one(manager: SkillManager, pt_path: Path, dry_run: bool,
 
     # Lock against concurrent runs sharing the quota, acquired immediately
     # before the try block so nothing between acquire and try can raise
-    # and leak it. Released in the finally block below, which also covers
-    # exceptions, KeyboardInterrupt and asyncio.CancelledError. The owner
-    # token prevents us from deleting another process's lock after a
-    # stale takeover. _heartbeat_lock (called after every batch) keeps the
-    # lock's mtime fresh; a lock with no heartbeat for
-    # _LOCK_STALE_AFTER_SEC may be taken over by a new run.
+    # and leak it (ShardCheckpoint init/load above can throw). Released in
+    # the finally block below, which also covers exceptions,
+    # KeyboardInterrupt and asyncio.CancelledError. The owner token prevents
+    # us from deleting another process's lock after a stale takeover.
     lock_token = _acquire_lock(lock_path)
     try:
         batch_idx = 0
@@ -526,7 +538,6 @@ async def _migrate_one(manager: SkillManager, pt_path: Path, dry_run: bool,
                 if problem:
                     raise RuntimeError(f"merge batch {batch_idx}: {problem}")
                 checkpoint.save_batch(batch_idx, vecs)
-                _heartbeat_lock(lock_path, lock_token)
             batch_idx += 1
         for batch in retrieve_batches:
             if batch_idx not in checkpoint.done:
@@ -538,7 +549,6 @@ async def _migrate_one(manager: SkillManager, pt_path: Path, dry_run: bool,
                 if problem:
                     raise RuntimeError(f"retrieve batch {batch_idx}: {problem}")
                 checkpoint.save_batch(batch_idx, vecs)
-                _heartbeat_lock(lock_path, lock_token)
             batch_idx += 1
 
         ordered = checkpoint.ordered_vectors()
