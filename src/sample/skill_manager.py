@@ -281,6 +281,10 @@ class SkillManager:
                 parsed = self._extract_json_object(response)
                 raw_ids = parsed.get("skill_id", []) if isinstance(parsed, dict) else []
                 ids = [(sect, str(sid)) for sid in raw_ids]
+                if not ids and self._looks_truncated(response):
+                    self._logger.warning(
+                        "coarse_filter: LLM output looks truncated (finish_reason=length likely); "
+                        "falling back to default top skills. Response head: %.120s", response)
         except Exception as exc:  # pragma: no cover - defensive fallback
             self._logger.warning("coarse_filter parse failed, fallback to default top skills: %s", exc)
 
@@ -1077,6 +1081,28 @@ class SkillManager:
                 pass
 
         return {}
+
+    @staticmethod
+    def _looks_truncated(text: str) -> bool:
+        """Heuristic: does the LLM output look cut off mid-JSON?
+
+        The backend logs finish_reason=length on truncation, but it is not
+        plumbed through chat_text; detect the signature instead: unbalanced
+        braces/brackets, or the text ending inside a string/token rather
+        than on a closing delimiter.
+        """
+        if not text or not text.strip():
+            return False
+        s = text.strip()
+        s = re.sub(r"^```(?:json)?", "", s).strip()
+        s = re.sub(r"```$", "", s).strip()
+        opens = s.count("{") + s.count("[")
+        closes = s.count("}") + s.count("]")
+        if opens == 0:
+            return False  # not JSON at all; not truncation
+        if opens > closes:
+            return True
+        return s[-1] not in '}]"\'' and bool(re.search(r"[{\[:,]\s*$|\w$", s))
 
     @staticmethod
     def _vector_to_list(value: Any) -> Optional[List[float]]:
