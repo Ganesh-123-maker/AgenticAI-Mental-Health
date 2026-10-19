@@ -528,7 +528,7 @@ def build_visit_preview(visit: TherapyVisitRecord) -> VisitPreview:
 
 def build_visit_state(db: Session, visit: TherapyVisitRecord) -> VisitState:
     return VisitState(
-        **build_visit_preview(visit).dict(),
+        **build_visit_preview(visit).model_dump(),
         course_id=visit.course_id,
         messages=[
             VisitMessageOut(

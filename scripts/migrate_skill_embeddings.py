@@ -205,9 +205,8 @@ def _lock_is_stale(lock_path: Path) -> bool:
 
     Liveness is decided purely by the lock file's mtime, which the owner
     refreshes after every completed batch. No PID check is performed:
-    os.kill(pid, 0) is unreliable on Windows (it can succeed for dead PIDs
-    and raise for live ones depending on permissions), so PID liveness is
-    never consulted.
+    os.kill(pid, 0) is not an existence probe on Windows (signal 0 is the
+    Ctrl+C event), so PID liveness is never consulted.
     """
     try:
         age = time.time() - lock_path.stat().st_mtime

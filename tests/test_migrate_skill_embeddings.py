@@ -196,14 +196,18 @@ def test_lock_malformed_takeover(mig, tmp_path):
     assert not lock.exists()
 
 
-def test_lock_live_not_displaced_by_age(mig, tmp_path):
-    # A live owner keeps its lock no matter how old it is.
+def test_lock_kept_alive_by_heartbeat_not_displaced(mig, tmp_path):
+    # A long-running owner that keeps heartbeating keeps its lock,
+    # however long ago the run started.
     lock = tmp_path / "x.lock"
     token = mig._acquire_lock(lock)
-    old = time.time() - 3 * 3600
-    os.utime(lock, (old, old))
+    info = json.loads(lock.read_text())
+    info["at"] = "2020-01-01T00:00:00"
+    lock.write_text(json.dumps(info))
+    mig._heartbeat_lock(lock, token)
     with pytest.raises(RuntimeError, match="another migration is active"):
         mig._acquire_lock(lock)
+    assert json.loads(lock.read_text())["token"] == token
     mig._release_lock(lock, token)
 
 
