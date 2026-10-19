@@ -6,8 +6,8 @@ import asyncio
 import json
 import re
 import traceback
-from datetime import datetime
 from dataclasses import dataclass
+from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set
 
@@ -24,7 +24,11 @@ from ..io.input_adapter import adapt_eval_case_file
 from ..methods import METHOD_REGISTRY
 
 try:
-    from src.shared.file_utils import load_json_if_exists, safe_filename, write_json_atomic
+    from src.shared.file_utils import (
+        load_json_if_exists,
+        safe_filename,
+        write_json_atomic,
+    )
 except ModuleNotFoundError:  # pragma: no cover - supports PYTHONPATH=src execution style
     from shared.file_utils import load_json_if_exists, safe_filename, write_json_atomic
 

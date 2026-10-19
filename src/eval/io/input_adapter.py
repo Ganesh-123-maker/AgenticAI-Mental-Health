@@ -8,7 +8,6 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-
 _SESSION_STEM_RE = re.compile(r"^session_(\d+)$")
 
 

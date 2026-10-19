@@ -10,20 +10,20 @@ Tests:
    - Computes Longitudinal metrics on 2-session run output.
 """
 
-import asyncio
 import json
 import pathlib
-import pytest
 import sys
+
+import pytest
 
 # Ensure src is on sys.path
 sys.path.insert(0, str(pathlib.Path(__file__).parent.parent.parent / "src"))
 
 from eval.methods import METHOD_REGISTRY
 from eval.methods.multi_agent.coordination import Coordination
-from eval.methods.multi_agent.uncertainty import Uncertainty
-from eval.methods.multi_agent.safety import Safety
 from eval.methods.multi_agent.longitudinal import Longitudinal
+from eval.methods.multi_agent.safety import Safety
+from eval.methods.multi_agent.uncertainty import Uncertainty
 from sample.agents.base import AgentContext
 from sample.agents.pipeline import run_pipeline
 

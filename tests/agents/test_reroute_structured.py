@@ -10,7 +10,6 @@ Fix: pipeline publishes ctx.routing_output after each orchestrator run;
 RE-ROUTE uses sup_payload["risk_consistency"] is False (fail closed).
 """
 
-import asyncio
 import pathlib
 import sys
 

@@ -2,40 +2,39 @@
 
 from __future__ import annotations
 
-from .counselor.ctrs import CTRS
-from .counselor.htais import HTAIS
-from .client.panas import PANAS
-from .client.ipo import IPO
-from .client.phq_9 import PHQ_9
-from .counselor.eft_tfs import EFT_TFS
-from .counselor.miti import MITI
-from .client.scl_90 import SCL_90
-from .client.srs import SRS
 from .client.bdi_ii import BDI_II
-from .counselor.custom_dim import Custom_Dim
-from .counselor.psc import PSC
-from .counselor.tes import TES
 from .client.cct import CCT
-from .client.stai import STAI
+from .client.ipo import IPO
+from .client.panas import PANAS
+from .client.phq_9 import PHQ_9
+from .client.scl_90 import SCL_90
 from .client.sfbt import SFBT
-from .counselor.wai import WAI
+from .client.srs import SRS
+from .client.stai import STAI
+from .counselor.ctrs import CTRS
+from .counselor.custom_dim import Custom_Dim
 from .counselor.dialogue_grounding import Dialogue_Grounding
 from .counselor.dialogue_planning import Dialogue_Planning
 from .counselor.dialogue_redundancy import Dialogue_Redundancy
+from .counselor.eft_tfs import EFT_TFS
+from .counselor.htais import HTAIS
+from .counselor.human_eval import Authenticity, Coherence, Depth, Professionalism
+from .counselor.human_vs_llm import HUMAN_VS_LLM
+from .counselor.miti import MITI
 from .counselor.plan_consistency import (
-    PersonaConsistency,
     OverallGoalConsistency,
+    PersonaConsistency,
     ProcessDetailConsistency,
     TreatmentOutcomeConsistency,
 )
-from .counselor.human_eval import Professionalism, Authenticity, Coherence, Depth
-from .counselor.human_vs_llm import HUMAN_VS_LLM
-from .rro import RRO
+from .counselor.psc import PSC
+from .counselor.tes import TES
+from .counselor.wai import WAI
 from .multi_agent.coordination import Coordination
-from .multi_agent.uncertainty import Uncertainty
-from .multi_agent.safety import Safety
 from .multi_agent.longitudinal import Longitudinal
-
+from .multi_agent.safety import Safety
+from .multi_agent.uncertainty import Uncertainty
+from .rro import RRO
 
 METHOD_REGISTRY = {
     "CTRS": CTRS,

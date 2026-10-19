@@ -23,7 +23,7 @@ import sys
 # Make src importable when run from project root
 sys.path.insert(0, str(pathlib.Path(__file__).parent.parent.parent / "src"))
 
-from sample.agents.base import Agent, AgentContext, AgentError, AgentMessage
+from sample.agents.base import AgentContext, AgentError, AgentMessage
 from sample.agents.memory_agent import MemoryAgent
 from sample.agents.state_agent import StateAgent
 from sample.core.schemas import PublicMemory

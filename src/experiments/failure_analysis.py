@@ -12,7 +12,7 @@ import argparse
 import json
 import sys
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List
 
 repo_root = Path(__file__).resolve().parents[2]
 if str(repo_root) not in sys.path:

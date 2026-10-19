@@ -15,7 +15,11 @@ except ModuleNotFoundError:  # pragma: no cover - supports PYTHONPATH=src execut
     from shared.file_utils import project_root
 
 from .core.schemas import BaselineConfig, RuntimeConfig
-from .io.config_loader import load_baseline_config, load_dataset_config, load_runtime_config
+from .io.config_loader import (
+    load_baseline_config,
+    load_dataset_config,
+    load_runtime_config,
+)
 from .io.dataset_loader import DatasetLoader
 
 

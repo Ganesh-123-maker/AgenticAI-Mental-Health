@@ -19,7 +19,6 @@ import copy
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional
 
-
 # ---------------------------------------------------------------------------
 # AgentContext — shared state passed between agents in the pipeline
 # ---------------------------------------------------------------------------

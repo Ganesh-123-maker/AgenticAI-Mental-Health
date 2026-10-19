@@ -10,7 +10,6 @@ import types as pytypes
 
 import pytest
 
-
 # ---------------------------------------------------------------------------
 # Fake google.genai SDK (injected before skill_manager is imported)
 # ---------------------------------------------------------------------------

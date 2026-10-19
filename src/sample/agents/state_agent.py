@@ -40,7 +40,7 @@ confidence              Fraction of expected fields that could be populated
 from __future__ import annotations
 
 import logging
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List
 
 from .base import Agent, AgentContext, AgentError, AgentMessage
 

@@ -11,12 +11,12 @@ Tests:
 4. Regression check: multi_agent_enabled=False skips the entire outcome/memory update block.
 """
 
-import asyncio
 import json
 import logging
 import pathlib
 import shutil
 import sys
+
 import pytest
 
 # Ensure src is on sys.path
@@ -26,8 +26,11 @@ from sample.agents.base import AgentContext
 from sample.agents.memory_agent import MemoryAgent
 from sample.agents.memory_update_agent import MemoryUpdateAgent
 from sample.agents.outcome_agent import OutcomeAgent
-from sample.core.schemas import BaselineConfig, ClientCase, PublicMemory, RuntimeConfig
-from sample.io.config_loader import load_baseline_config, load_dataset_config, load_runtime_config
+from sample.core.schemas import PublicMemory, RuntimeConfig
+from sample.io.config_loader import (
+    load_baseline_config,
+    load_dataset_config,
+)
 from sample.io.dataset_loader import DatasetLoader
 from sample.runner import PsychAgentRunner
 

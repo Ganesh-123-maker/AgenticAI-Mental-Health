@@ -7,7 +7,6 @@ from pydantic import BaseModel, Field
 
 from .domain import SchoolInfo, StageInfo
 
-
 CourseStatus = Literal["active", "completed", "archived"]
 VisitStatus = Literal["open", "closed"]
 MessageRole = Literal["user", "assistant", "system"]

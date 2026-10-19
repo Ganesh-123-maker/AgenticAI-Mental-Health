@@ -25,7 +25,7 @@ import logging
 import pathlib
 import random
 import re
-from typing import Any, Dict, List, Optional, Sequence, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 
 from .schemas import AmbiguousCase
 
