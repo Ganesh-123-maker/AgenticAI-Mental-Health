@@ -79,7 +79,7 @@ def main() -> int:
         page.get_by_placeholder("Username", exact=False).fill(email)
         page.get_by_placeholder("Password", exact=False).fill(password)
         page.screenshot(path=str(outdir / "03_register_filled.png"))
-        page.get_by_role("button", name="Register").click()
+        page.get_by_role("button", name="Register", exact=True).click()
         page.wait_for_timeout(3000)
         page.screenshot(path=str(outdir / "04_after_register.png"))
 
