@@ -64,7 +64,12 @@ export function SessionStrip({
         </button>
 
         {/* Course selector */}
-        <div className="relative">
+        <div
+          className="relative"
+          onKeyDown={(event) => {
+            if (event.key === "Escape") setCourseMenuOpen(false);
+          }}
+        >
           <button
             type="button"
             onClick={() => setCourseMenuOpen((v) => !v)}
