@@ -32,15 +32,40 @@ venv/
 env/
 ENV/
 .env
-.env.local
+.env.*
+!.env.example
+
+# Local Databases & Journals
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
 data.db
+data.db-journal
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # Frontend / Node
 node_modules/
 dist/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+.vite/
+
+# Backup, Patch & Temporary Files
+*.bak
+*.orig
+*.tmp
+*.pre_*_backup*
+backup_*/
+*_backup_*/
+.gemini_*_backup*/
+*.zip
+*.patch
+original_hashes.json
+TRANSFER_README.txt
 
 # Scratch / Temp
 scratch/
@@ -53,3 +78,4 @@ Thumbs.db
 .idea/
 .vscode/
 *.swp
+
