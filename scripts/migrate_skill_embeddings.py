@@ -481,7 +481,7 @@ async def _migrate_one(manager: SkillManager, pt_path: Path, dry_run: bool,
                     existing.get("_provenance")):
                 # Validate only the expected skill ids: the keyed store also
                 # carries a "_provenance" entry, which must not be treated as
-                # a skill (v6 fix: the old existing.values() comprehension hit
+                # a skill (fix: the old existing.values() comprehension hit
                 # the provenance dict, raised KeyError, and the surrounding
                 # `except Exception: pass` silently disabled this skip path,
                 # so completed files were re-embedded on every run).

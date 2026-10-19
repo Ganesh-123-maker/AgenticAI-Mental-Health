@@ -79,3 +79,5 @@ Thumbs.db
 .vscode/
 *.swp
 
+# Generated skill embedding stores, migration partials, and locks
+assets/skills/**/micro_skills.*.pt*

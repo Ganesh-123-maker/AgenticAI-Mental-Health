@@ -230,6 +230,13 @@ python -m pytest -q
 # Verified: 31 passed in ~28s
 ```
 
+### Skill Embeddings Migration & Regeneration
+```bash
+# Regenerate provenance-keyed embedding stores (micro_skills.<model>.<dim>.pt) from base assets:
+python scripts/migrate_skill_embeddings.py --runtime configs/runtime/multi_agent_gemini.yaml
+```
+*Note: Keyed skill embedding stores (`assets/skills/**/micro_skills.*.pt*`) are git-ignored and regenerated locally using `scripts/migrate_skill_embeddings.py`, preserving the original base artifacts.*
+
 ### Running Benchmark & Failure Analysis
 ```bash
 # Run benchmark evaluation across configurations

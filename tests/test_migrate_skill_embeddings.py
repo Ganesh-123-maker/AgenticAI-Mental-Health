@@ -423,7 +423,7 @@ def test_compute_demand_matches_actual_batching(mig, tmp_path):
 
 
 # ---------------------------------------------------------------------------
-# v6 regression: completed keyed stores must be skipped, not re-embedded
+# Regression: completed keyed stores must be skipped, not re-embedded
 # ---------------------------------------------------------------------------
 
 def test_completed_store_with_provenance_is_skipped(mig, tmp_path):
