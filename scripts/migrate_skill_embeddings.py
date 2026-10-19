@@ -653,8 +653,9 @@ async def _run(args: argparse.Namespace) -> int:
               f"({total_batches/1000*100:.0f}% of 1000/day free-tier requests)")
     print(f"target suffix .{manager._embedding_store_key()}.pt | "
           "originals are never modified; output goes to separate keyed files")
-    if args.rpd and total_batches > args.rpd:
-        print(f"FAIL: {total_batches} requests exceed --rpd {args.rpd}; refusing to start")
+    if args.rpd and total_texts > args.rpd:
+        print(f"FAIL: {total_texts} texts exceed --rpd {args.rpd}; refusing to start "
+              f"({total_batches} HTTP batches; Gemini bills quota per text, not per batch)")
         return 2
 
     if args.dry_run:
@@ -712,7 +713,8 @@ def main() -> int:
     ap.add_argument("--tpm", type=float, default=25000.0,
                     help="max estimated tokens per minute (default 25000; free-tier quota is 30000/min)")
     ap.add_argument("--rpd", type=float, default=1000.0,
-                    help="refuse to start if projected requests exceed this per-day budget (default 1000)")
+                    help="refuse to start if projected texts exceed this per-day budget "
+                         "(default 1000; Gemini counts each text, not each HTTP batch)")
     ap.add_argument("--token-multiplier", type=float, default=1.0,
                     help="headroom multiplier on the conservative CJK-aware token estimate (default 1.0; must be > 0)")
     args = ap.parse_args()
