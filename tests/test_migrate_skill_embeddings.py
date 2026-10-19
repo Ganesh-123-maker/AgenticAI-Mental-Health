@@ -129,13 +129,63 @@ def test_lock_active_refused(mig, tmp_path):
     mig._release_lock(lock, token)
 
 
-def test_lock_stale_dead_pid_takeover(mig, tmp_path):
+def _write_lock_with_age(mig, lock, age_sec, pid=999999999, token="old-token"):
+    """Write a lock file whose mtime is age_sec in the past (no os.kill)."""
+    lock.write_text(json.dumps({"at": "2020-01-01T00:00:00", "pid": pid, "token": token}))
+    old = time.time() - age_sec
+    os.utime(lock, (old, old))
+
+
+def test_lock_stale_old_heartbeat_takeover(mig, tmp_path):
+    # Heartbeat older than _LOCK_STALE_AFTER_SEC: takeable, whatever the PID.
     lock = tmp_path / "x.lock"
-    lock.write_text(json.dumps({"at": "2020-01-01T00:00:00", "pid": 999999999}))
-    os.utime(lock, (time.time(), time.time()))  # fresh mtime, dead PID
-    token = mig._acquire_lock(lock)  # must not raise
+    _write_lock_with_age(mig, lock, mig._LOCK_STALE_AFTER_SEC + 60)
+    token = mig._acquire_lock(lock)
     assert json.loads(lock.read_text())["pid"] == os.getpid()
+    assert json.loads(lock.read_text())["token"] == token
     mig._release_lock(lock, token)
+
+
+def test_lock_fresh_heartbeat_refused_despite_dead_pid(mig, tmp_path):
+    # Fresh heartbeat means "active" even if the recorded PID is dead:
+    # PID liveness is never consulted (unreliable on Windows).
+    lock = tmp_path / "x.lock"
+    _write_lock_with_age(mig, lock, 5, pid=999999999)
+    with pytest.raises(RuntimeError, match="another migration is active"):
+        mig._acquire_lock(lock)
+    # Our failed acquire must not have disturbed the lock.
+    assert json.loads(lock.read_text())["token"] == "old-token"
+
+
+def test_heartbeat_touches_mtime(mig, tmp_path):
+    lock = tmp_path / "x.lock"
+    token = mig._acquire_lock(lock)
+    old = time.time() - 300  # pretend the last heartbeat was 5 min ago
+    os.utime(lock, (old, old))
+    before = lock.stat().st_mtime
+    mig._heartbeat_lock(lock, token)
+    after = lock.stat().st_mtime
+    assert after > before
+    assert after > time.time() - 5
+    mig._release_lock(lock, token)
+
+
+def test_heartbeat_raises_on_takeover(mig, tmp_path):
+    lock = tmp_path / "x.lock"
+    token = mig._acquire_lock(lock)
+    # Another process takes over (simulated): different token in the file.
+    lock.write_text(json.dumps({"at": "t", "pid": 999, "token": "other-token"}))
+    with pytest.raises(RuntimeError, match="taken over"):
+        mig._heartbeat_lock(lock, token)
+    assert lock.exists(), "failed heartbeat must not delete the new owner's lock"
+
+
+def test_heartbeat_raises_on_vanished_lock(mig, tmp_path):
+    lock = tmp_path / "x.lock"
+    token = mig._acquire_lock(lock)
+    lock.unlink()
+    with pytest.raises(RuntimeError, match="lost lock"):
+        mig._heartbeat_lock(lock, token)
 
 
 def test_lock_malformed_takeover(mig, tmp_path):
