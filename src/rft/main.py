@@ -10,12 +10,20 @@ from typing import Optional
 
 try:
     from src.sample.core.schemas import BaselineConfig, RuntimeConfig
-    from src.sample.io.config_loader import load_baseline_config, load_dataset_config, load_runtime_config
+    from src.sample.io.config_loader import (
+        load_baseline_config,
+        load_dataset_config,
+        load_runtime_config,
+    )
     from src.sample.io.dataset_loader import DatasetLoader
     from src.shared.file_utils import project_root
 except ModuleNotFoundError:  # pragma: no cover - supports PYTHONPATH=src execution style
     from sample.core.schemas import BaselineConfig, RuntimeConfig
-    from sample.io.config_loader import load_baseline_config, load_dataset_config, load_runtime_config
+    from sample.io.config_loader import (
+        load_baseline_config,
+        load_dataset_config,
+        load_runtime_config,
+    )
     from sample.io.dataset_loader import DatasetLoader
     from shared.file_utils import project_root
 

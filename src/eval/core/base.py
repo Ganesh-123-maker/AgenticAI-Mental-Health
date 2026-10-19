@@ -2,11 +2,10 @@
 
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
-from typing import Any, Dict, List, Optional
-
 import json
 import os
+from abc import ABC, abstractmethod
+from typing import Any, Dict, List, Optional
 
 
 class EvaluationMethod(ABC):

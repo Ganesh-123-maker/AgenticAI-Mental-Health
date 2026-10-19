@@ -23,8 +23,8 @@ except ImportError:  # pragma: no cover - optional dependency guard
     APIStatusError = _OpenAINotInstalledError  # type: ignore[assignment]
     APITimeoutError = _OpenAINotInstalledError  # type: ignore[assignment]
 
+from ..core.retry import FatalBackendError, RetryableError, RetryPolicy, retry_async
 from .base import BackendHTTPError, BackendSettings, Message
-from ..core.retry import FatalBackendError, RetryPolicy, RetryableError, retry_async
 
 INSECURE_CLIENT_BASE_URL = "https://10.140.158.153:1020/dsv3/all/v1"
 

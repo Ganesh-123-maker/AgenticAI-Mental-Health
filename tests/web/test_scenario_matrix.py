@@ -12,7 +12,7 @@ import pytest
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent.parent.parent / "src"))
 
-from sqlmodel import SQLModel, Session, create_engine
+from sqlmodel import Session, SQLModel, create_engine
 
 from web.backend import models as M
 from web.backend.psychagent_engine import PsychAgentWebBackend

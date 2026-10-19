@@ -24,7 +24,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).parent.parent.parent / "src"))
 
 from sample.agents.base import AgentContext
 from sample.agents.pipeline import run_pipeline
-from sample.agents.risk_agent import RiskAgent, ZH_HIGH_CRISIS_FORMS
+from sample.agents.risk_agent import ZH_HIGH_CRISIS_FORMS, RiskAgent
 
 
 def _severity(message: str, case_id: str = "risk_lang_test") -> dict:

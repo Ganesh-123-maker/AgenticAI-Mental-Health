@@ -5,7 +5,8 @@ from datetime import datetime, timezone
 from typing import Optional
 
 from sqlalchemy import UniqueConstraint
-from sqlmodel import Field as SQLField, SQLModel
+from sqlmodel import Field as SQLField
+from sqlmodel import SQLModel
 
 
 def utcnow() -> datetime:

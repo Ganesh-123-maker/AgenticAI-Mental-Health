@@ -10,8 +10,6 @@ import types as pytypes
 
 import pytest
 
-
-
 FAKE_KEY = "sk-fake-test-key-12345"
 
 

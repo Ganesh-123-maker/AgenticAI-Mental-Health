@@ -30,7 +30,7 @@ if TYPE_CHECKING:
     try:
         from src.eval.reward import RewardEvaluator
     except ModuleNotFoundError:  # pragma: no cover - supports PYTHONPATH=src execution style
-        from eval.reward import RewardEvaluator
+        pass
 
 
 @dataclass

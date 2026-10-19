@@ -1,16 +1,13 @@
 from __future__ import annotations
 
-from typing import Any, Dict, List
-
 import json
-from jinja2 import Template
-from typing import Literal
+from typing import Any, Dict, List, Literal
 
+from jinja2 import Template
 from pydantic import BaseModel, ConfigDict, Field
 
 from ...core.base import EvaluationMethod
 from ...utils import load_prompt
-
 
 HumanEvalItemName = Literal["Professionalism","Authenticity", "Coherence", "Depth"]
 

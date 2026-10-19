@@ -8,9 +8,8 @@ beyond the stdlib.
 from __future__ import annotations
 
 import json
-from dataclasses import asdict, dataclass, field
+from dataclasses import asdict, dataclass
 from typing import Any, Dict, List, Literal
-
 
 
 @dataclass

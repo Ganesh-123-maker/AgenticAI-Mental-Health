@@ -172,9 +172,9 @@ def test_safety_track_from_metadata_not_case_id():
 
 def test_safety_string_in_case_id_not_treated_as_safety_case():
     """A non-safety case whose case_id contains 'safety' must NOT be flagged."""
-    from sample.agents.uncertainty_agent import UncertaintyAgent
     from sample.agents.memory_agent import MemoryAgent
     from sample.agents.state_agent import StateAgent
+    from sample.agents.uncertainty_agent import UncertaintyAgent
     data = json.loads(pathlib.Path("data/benchmark/ambiguous_cases/cbt/cbt_412_ordinary.json").read_text(encoding="utf-8"))
     ctx = AgentContext(
         case_id="my_safety_net_is_strong",

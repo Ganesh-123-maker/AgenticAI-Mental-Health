@@ -12,11 +12,11 @@ import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent.parent.parent / "src"))
 
-from sample.agents.base import AgentContext, AgentMessage
+from sample.agents.base import AgentContext
 from sample.agents.memory_agent import MemoryAgent
+from sample.agents.risk_agent import RiskAgent
 from sample.agents.state_agent import StateAgent
 from sample.agents.uncertainty_agent import UncertaintyAgent
-from sample.agents.risk_agent import RiskAgent
 
 
 def test_empty_and_robustness():

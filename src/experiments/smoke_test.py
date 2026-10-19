@@ -19,8 +19,8 @@ if str(SRC_DIR) not in sys.path:
     sys.path.insert(0, str(SRC_DIR))
 
 from sample.agents.base import AgentContext
-from sample.agents.outcome_agent import OutcomeAgent
 from sample.agents.memory_update_agent import MemoryUpdateAgent
+from sample.agents.outcome_agent import OutcomeAgent
 from sample.agents.pipeline import run_pipeline
 from sample.core.schemas import PublicMemory
 

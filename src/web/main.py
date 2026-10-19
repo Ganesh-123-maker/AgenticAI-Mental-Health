@@ -19,16 +19,15 @@ if str(SRC_DIR) not in sys.path:
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from fastapi import Depends, FastAPI, Header, HTTPException
-from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
-from sqlmodel import Session, SQLModel, create_engine, select
-
 from backend.domain import SCHOOLS, STAGES, SchoolInfo, StageInfo, stage_from_key
 from backend.models import AuthTokenRecord, UserRecord
 from backend.psychagent_engine import PsychAgentWebBackend
 from backend.routes.courses import create_courses_router
 from backend.routes.visits import create_visits_router
+from fastapi import Depends, FastAPI, Header, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
+from sqlmodel import Session, SQLModel, create_engine, select
 
 LOGGER = logging.getLogger("psychagent_web")
 BASELINE_CONFIG_PATH = Path(

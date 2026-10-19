@@ -25,7 +25,13 @@ class _DummyChatResponse:
 
 try:
     from aiolimiter import AsyncLimiter
-    from openai import APIConnectionError, APIStatusError, APITimeoutError, AsyncOpenAI, RateLimitError
+    from openai import (
+        APIConnectionError,
+        APIStatusError,
+        APITimeoutError,
+        AsyncOpenAI,
+        RateLimitError,
+    )
     from tenacity import (
         retry,
         retry_if_exception,

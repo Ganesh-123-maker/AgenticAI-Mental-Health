@@ -15,10 +15,8 @@ import sys
 sys.path.insert(0, str(pathlib.Path(__file__).parent.parent.parent / "src"))
 
 from sample.agents.base import AgentContext
-from sample.agents.counseling_agent import CounselingAgent
-from sample.agents.orchestrator import Orchestrator
 from sample.agents.pipeline import run_pipeline
-from sample.agents.safety_supervisor import SafetySupervisor, _STANDARD_SAFE_FALLBACK
+from sample.agents.safety_supervisor import SafetySupervisor
 
 
 def test_safety_supervisor_verdicts():

@@ -9,14 +9,18 @@ Tests:
 6. Validation checks for payload schema.
 """
 
-import pytest
-import sys
 import pathlib
+import sys
+
+import pytest
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent.parent.parent / "src"))
 
 from sample.agents.base import AgentContext, AgentError
-from sample.agents.safety_supervisor import SafetySupervisor, validate_safety_supervisor_payload
+from sample.agents.safety_supervisor import (
+    SafetySupervisor,
+    validate_safety_supervisor_payload,
+)
 
 
 def test_clear_response_safe():

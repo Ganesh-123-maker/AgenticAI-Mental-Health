@@ -6,8 +6,8 @@ Exports:
     AgentContext   — shared state object passed between agents
 """
 
-from .base import Agent, AgentMessage, AgentContext
-from .outcome_agent import OutcomeAgent
+from .base import Agent, AgentContext, AgentMessage
 from .memory_update_agent import MemoryUpdateAgent
+from .outcome_agent import OutcomeAgent
 
 __all__ = ["Agent", "AgentMessage", "AgentContext", "OutcomeAgent", "MemoryUpdateAgent"]
