@@ -4,12 +4,9 @@ Drives the actual frontend (http://localhost:5173) with Playwright against the
 REAL Python backend (http://localhost:8000) with a live Gemini key.
 
 Run on Windows (key must already be in the environment):
-    1. Backend:  cd D:\\Academics\\Academic_Project\\PsychAgent
-                 set PYTHONPATH=D:\\Academics\\Academic_Project\\PsychAgent\\src
-                 python -m uvicorn main:app --host 127.0.0.1 --port 8000
-       (from src\\web, or set PSYCHAGENT_WEB_*_CONFIG as usual)
-    2. Frontend: cd src\\web && npm run dev
-    3. Tests:    python tests\\e2e\\test_real_backend_chat.py
+    Backend:  set PYTHONPATH=... && python -m uvicorn main:app --host 127.0.0.1 --port 8000
+    Frontend: cd src\\web && npm run dev
+    Tests:    python tests\\e2e\\test_real_backend_chat.py
 
 Paces messages ~20s apart to respect the 5 RPM cap. Writes a JSON report and
 screenshots to tests/e2e/evidence/<timestamp>/.
@@ -22,7 +19,6 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 FRONTEND = "http://localhost:5173"
-BACKEND = "http://localhost:8000"
 PACE_SECONDS = 20
 
 QUALITY_MESSAGES = [
@@ -44,6 +40,17 @@ JUDGE_NOTES = {
     "memory": "Consistent with earlier messages in this session?",
 }
 
+CHAT_PLACEHOLDER = "Share what's on your mind..."
+
+
+def diagnose(page, outdir, tag):
+    """Dump diagnostics when something isn't found."""
+    page.screenshot(path=str(outdir / f"{tag}_DIAG.png"))
+    btns = [b.text_content().strip()[:40] for b in page.get_by_role("button").all()][:15]
+    print(f"[{tag}] DIAGNOSTICS — url={page.url}")
+    print(f"[{tag}] buttons: {btns}")
+    print(f"[{tag}] screenshot: {tag}_DIAG.png")
+
 
 def main() -> int:
     try:
@@ -61,51 +68,73 @@ def main() -> int:
     password = "TestPass123!"
 
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False, slow_mo=300)
+        browser = p.chromium.launch(headless=False, slow_mo=200)
         page = browser.new_page(viewport={"width": 1440, "height": 900})
-        api_log = []
-        page.on("response", lambda r: api_log.append(
-            {"url": r.url, "status": r.status}) if "/api/" in r.url or ":8000" in r.url else None)
 
         page.goto(FRONTEND, wait_until="networkidle")
         page.screenshot(path=str(outdir / "01_loaded.png"))
 
         # --- register ---
-        page.get_by_text("Sign In", exact=False).first.click(timeout=10000)
-        page.screenshot(path=str(outdir / "02_auth_modal.png"))
-        # modal may default to login; switch to register if needed
+        page.get_by_role("button", name="Sign in or register").click(timeout=15000)
         if page.get_by_text("Switch to Register").count():
             page.get_by_text("Switch to Register").click()
-        page.get_by_placeholder("Username", exact=False).fill(email)
-        page.get_by_placeholder("Password", exact=False).fill(password)
-        page.screenshot(path=str(outdir / "03_register_filled.png"))
+        page.get_by_placeholder("Username").fill(email)
+        page.get_by_placeholder("Password").fill(password)
         page.get_by_role("button", name="Register", exact=True).click()
-        page.wait_for_timeout(3000)
+        # wait until we're logged in (New Course appears)
+        try:
+            page.get_by_text("New Course").first.wait_for(timeout=30000)
+        except Exception:
+            diagnose(page, outdir, "register")
+            print("FAIL: registration did not complete")
+            return 1
         page.screenshot(path=str(outdir / "04_after_register.png"))
+        print("registered OK")
 
-        # --- create course (first enabled modality) ---
-        page.get_by_text("New Course").first.click(timeout=10000)
-        page.wait_for_timeout(2000)
+        # --- create course ---
+        page.get_by_text("New Course").first.click()
+        try:
+            page.get_by_role("button", name="Create Course", exact=True).wait_for(timeout=15000)
+        except Exception:
+            diagnose(page, outdir, "course_modal")
+            print("FAIL: course modal did not open")
+            return 1
+        title_box = page.get_by_placeholder("e.g., Anxiety Management & Cognitive Reframing")
+        if not title_box.input_value().strip():
+            title_box.fill("E2E Test Course")
+        page.get_by_role("button", name="Create Course", exact=True).click()
+        # wait for chat to be ready (real backend: course + session creation takes a while)
+        try:
+            page.get_by_placeholder(CHAT_PLACEHOLDER, exact=False).wait_for(timeout=90000)
+        except Exception:
+            diagnose(page, outdir, "course_create")
+            print("FAIL: chat did not become ready after course creation")
+            return 1
         page.screenshot(path=str(outdir / "05_course.png"))
+        print("course created, chat ready")
 
         def send_and_capture(text, tag):
-            box = page.get_by_placeholder("Share what's on your mind...", exact=False)
+            box = page.get_by_placeholder(CHAT_PLACEHOLDER, exact=False)
             box.click()
             box.fill(text)
             page.screenshot(path=str(outdir / f"{tag}_typed.png"))
             box.press("Enter")
-            # wait for reply: typing indicator appears then disappears
-            page.wait_for_timeout(5000)
-            for _ in range(24):  # up to ~2 min for slow model turns
-                body = page.content()
-                if "typing" not in body.lower() or _ > 20:
+            # wait for the reply: poll until a new assistant message appears
+            # simplest robust signal: wait, then check message count grew
+            page.wait_for_timeout(10000)
+            for _ in range(30):  # up to ~5 min for slow model turns
+                # typing indicator present?
+                typing = page.locator("[class*='typing'], [class*='loading']").count()
+                if typing == 0:
                     break
-                page.wait_for_timeout(5000)
-            page.wait_for_timeout(2000)
+                page.wait_for_timeout(10000)
+            page.wait_for_timeout(3000)
             page.screenshot(path=str(outdir / f"{tag}_replied.png"))
-            # grab visible messages
-            texts = page.locator("[data-testid='message'], .message, [class*='bubble']").all_text_contents()
-            reply = texts[-1] if texts else ""
+            texts = page.locator("[data-testid='message']").all_text_contents()
+            if not texts:
+                # fallback: grab all text near chat area
+                texts = [page.locator("main").text_content() or ""]
+            reply = texts[-1][-2000:] if texts else ""
             entry = {"tag": tag, "sent": text, "reply": reply,
                      "judge": {k: "" for k in JUDGE_NOTES}}
             report["messages"].append(entry)
@@ -120,7 +149,6 @@ def main() -> int:
                 print(f"pacing {PACE_SECONDS}s for rate limits...")
                 time.sleep(PACE_SECONDS)
 
-        report["api_calls"] = api_log[-30:]
         report["judge_guide"] = JUDGE_NOTES
         (outdir / "report.json").write_text(json.dumps(report, indent=2, ensure_ascii=False))
         print(f"\nReport written to {outdir / 'report.json'}")
