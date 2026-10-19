@@ -79,3 +79,13 @@ def test_allow_unchanged():
     actions = [s.get("action") for s in r["trail"]]
     assert "supervisor_revision_applied" not in actions
     print("[PASS] ALLOW path unchanged.")
+
+
+def test_high_risk_revise_contains_hotlines():
+    """HIGH-RISK REVISE case must include both Tele-MANAS 14416 and 988 hotlines."""
+    r = run_pipeline(_high_risk_ctx())
+    assert r["route"] == "HIGH-RISK"
+    assert r["verdict"] == "REVISE"
+    assert "14416" in r["response"], f"Tele-MANAS hotline missing: {r['response']}"
+    assert "988" in r["response"], f"988 hotline missing: {r['response']}"
+

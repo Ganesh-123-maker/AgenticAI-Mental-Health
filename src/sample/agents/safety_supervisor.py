@@ -33,11 +33,15 @@ from .risk_agent import ZH_HIGH_CRISIS_FORMS
 logger = logging.getLogger(__name__)
 
 # Standard crisis fallback response (no fabricated clinics; only well-known public helplines)
+_CRISIS_RESOURCE_GUIDANCE = (
+    "Please contact your family, friends, a trusted person, your local emergency number, or a crisis helpline right now "
+    "(for example, Tele-MANAS 14416 in India or 988 in the United States)."
+)
+
 _STANDARD_SAFE_FALLBACK = (
     "I care deeply about your safety and current well-being. Facing such intense distress and crisis, "
-    "please do not face it alone. We prioritize your life and safety above all else. Please contact your family, "
-    "friends, a trusted person, your local emergency number, or a crisis helpline right now "
-    "(for example, Tele-MANAS 14416 in India or 988 in the United States). "
+    "please do not face it alone. We prioritize your life and safety above all else. "
+    f"{_CRISIS_RESOURCE_GUIDANCE} "
     "We can pause other discussions and focus first and foremost on ensuring your safety right now."
 )
 
@@ -258,7 +262,8 @@ class SafetySupervisor(Agent):
                     safety_status = "REVISE"
                     revised_response = (
                         "I can sense the distress and pressure you are experiencing. Please remember that your safety "
-                        "is paramount. We can work together to ensure you have the necessary safety and support in place."
+                        "is paramount. We can work together to ensure you have the necessary safety and support in place. "
+                        f"{_CRISIS_RESOURCE_GUIDANCE}"
                     )
             else:
                 # Response has appropriate safety awareness
@@ -278,6 +283,9 @@ class SafetySupervisor(Agent):
             verdict = "RE-ROUTE" if not risk_consistency and route != "HIGH-RISK" else "REVISE"
             if not revised_response:
                 revised_response = self._build_suggested_revision(response_text, issues)
+            if route == "HIGH-RISK" and verdict == "REVISE" and revised_response:
+                if "14416" not in revised_response and "988" not in revised_response:
+                    revised_response = f"{revised_response.rstrip()} {_CRISIS_RESOURCE_GUIDANCE}"
 
         payload: Dict[str, Any] = {
             "approved": approved,
