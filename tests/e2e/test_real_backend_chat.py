@@ -76,7 +76,7 @@ def main() -> int:
         # modal may default to login; switch to register if needed
         if page.get_by_text("Switch to Register").count():
             page.get_by_text("Switch to Register").click()
-        page.get_by_placeholder("Email", exact=False).fill(email)
+        page.get_by_placeholder("Username", exact=False).fill(email)
         page.get_by_placeholder("Password", exact=False).fill(password)
         page.screenshot(path=str(outdir / "03_register_filled.png"))
         page.get_by_role("button", name="Register").click()
