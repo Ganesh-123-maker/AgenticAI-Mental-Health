@@ -133,9 +133,9 @@ function PhaseTimer() {
 
 const STEP_TILES = [
   { title: "Step 1. Inhale", meta: "4s", instruction: "Breathe in slowly through your nose", Icon: ArrowUp },
-  { title: "Hold 2", meta: "4s", instruction: "Hold your breath gently", Icon: Pause },
-  { title: "Step 3. Exhale", meta: "", instruction: "Breathe out slowly through your mouth", Icon: ArrowDown },
-  { title: "Hold 4", meta: "4s", instruction: "Rest and stay present", Icon: Pause },
+  { title: "Step 2. Hold", meta: "4s", instruction: "Hold your breath gently", Icon: Pause },
+  { title: "Step 3. Exhale", meta: "4s", instruction: "Breathe out slowly through your mouth", Icon: ArrowDown },
+  { title: "Step 4. Hold", meta: "4s", instruction: "Rest and stay present", Icon: Pause },
 ];
 
 /**
