@@ -33,7 +33,7 @@ class Item(BaseModel):
     thought: str = Field(max_length=24, pattern=r"^[^\n\r]{0,24}$")
 
 
-class Items(BaseModel):  # Wrapper schema
+class Items(BaseModel):
     model_config = ConfigDict(extra="forbid", strict=True)
 
     items: List[Item] = Field(min_length=1, max_length=1)
@@ -77,9 +77,7 @@ class CTRS(EvaluationMethod):
         
         if scores :
             for item in scores:
-                mean_score += float(item.score) / 6.0 * 10.0  # 0-6 -> 0-10
-                # print(f"item score: {item['score']}")
-                # print(f"mean_score: {mean_score}")
+                mean_score += float(item.score) / 6.0 * 10.0
             mean_score /= len(scores)
         else:
             mean_score = 0

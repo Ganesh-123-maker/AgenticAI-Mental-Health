@@ -53,8 +53,6 @@ class Coordination(EvaluationMethod):
         meta = benchmark_meta or {}
         expected_route = str(meta.get("expected_route", "")).upper()
 
-        # 1. Routing Accuracy
-        # Find the final route chosen by orchestrator
         actual_route = None
         for step in reversed(trail):
             if step.get("agent") == "orchestrator":
@@ -64,12 +62,8 @@ class Coordination(EvaluationMethod):
         if expected_route and actual_route:
             routing_accuracy: Optional[float] = 1.0 if actual_route == expected_route else 0.0
         else:
-            # No orchestrator route present in the trail: routing accuracy is
-            # not applicable (not 0.0 = mis-routed, not 1.0 = perfectly routed).
             routing_accuracy = None
 
-        # 2. Unnecessary Invocation Rate
-        # e.g. clarification invoked when uncertainty was CLEAR or clarification not required
         unc_status = "CLEAR"
         clarification_required = False
         for step in trail:
@@ -90,8 +84,6 @@ class Coordination(EvaluationMethod):
 
         unnecessary_rate = unnecessary_calls / total_agent_calls if total_agent_calls > 0 else 0.0
 
-        # 3. Handoff Correctness
-        # Check if each agent's next_agent matches the actual next agent
         correct_handoffs = 0
         evaluated_handoffs = 0
 
@@ -134,7 +126,6 @@ class Coordination(EvaluationMethod):
             elif "expected_route" in dialogue:
                 meta = dialogue
         elif isinstance(dialogue, list):
-            # Check if list of trail steps
             if dialogue and isinstance(dialogue[0], dict) and "agent" in dialogue[0]:
                 trail = dialogue
 

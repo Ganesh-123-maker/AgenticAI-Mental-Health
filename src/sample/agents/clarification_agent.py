@@ -33,7 +33,6 @@ from .base import Agent, AgentContext, AgentError, AgentMessage
 
 logger = logging.getLogger(__name__)
 
-# Standard targeted questions for common clinical uncertainty categories
 _CLARIFICATION_TEMPLATES: Dict[str, Dict[str, Any]] = {
     "safety_status": {
         "questions": [
@@ -133,7 +132,6 @@ class ClarificationAgent(Agent):
         unc_priority = unc_payload.get("priority", "LOW")
         risk_severity = str(risk_payload.get("severity", "LOW")).upper()
 
-        # If clarification is NOT required, return valid non-empty schema indicating not needed
         if not clarification_required or unc_payload.get("status") == "CLEAR":
             payload = {
                 "question": "",
@@ -152,10 +150,6 @@ class ClarificationAgent(Agent):
                 payload=payload,
             )
 
-        # Items genuinely resolved in a previous clarification turn must not be
-        # asked again. This uses resolved_information (answers that actually
-        # addressed the item), never target_information: merely asking does
-        # not count as answering.
         reassess_payload = getattr(ctx, "reassessment_output", None) or {}
         if not isinstance(reassess_payload, dict):
             reassess_payload = {}
@@ -177,10 +171,6 @@ class ClarificationAgent(Agent):
             or any("medical" in f or "safety" in f for f in uncertain_fields)
         )
 
-        # Ordered candidate templates. At elevated risk, a safety-relevant gap
-        # jumps to first priority (it materially affects the safety decision);
-        # at LOW risk the standard discourse order applies. Deterministic:
-        # identical inputs always yield the same question.
         candidates: List[str] = []
         if risk_severity in ("HIGH", "MODERATE", "UNCERTAIN") and has_safety_gap:
             candidates.append("safety_status")
@@ -192,12 +182,10 @@ class ClarificationAgent(Agent):
             candidates.append("safety_status")
         if "duration_and_history" in uncertainty_types or any("growth" in f for f in uncertain_fields):
             candidates.append("duration_and_history")
-        # Fall back to any other recognized uncertainty type, in order
         for utype in uncertainty_types:
             if utype in _CLARIFICATION_TEMPLATES and utype not in candidates:
                 candidates.append(utype)
 
-        # Pick the first candidate with at least one unresolved target.
         selected_name: Optional[str] = None
         selected_template: Optional[Dict[str, Any]] = None
         for name in candidates:
@@ -208,7 +196,6 @@ class ClarificationAgent(Agent):
                 break
 
         if selected_template is None:
-            # Generic fallback: first field that is not already resolved.
             candidate_fields = [
                 f for f in uncertain_fields if not _target_resolved([str(f)])
             ]
@@ -217,7 +204,6 @@ class ClarificationAgent(Agent):
                     m for m in missing_info if not _target_resolved([str(m)])
                 ]
             if not candidate_fields:
-                # Everything is already resolved: nothing left to clarify.
                 payload = {
                     "question": "",
                     "questions": [],

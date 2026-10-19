@@ -12,9 +12,6 @@ from dataclasses import asdict, dataclass, field
 from typing import Any, Dict, List, Literal
 
 
-# ---------------------------------------------------------------------------
-# AmbiguousCase record
-# ---------------------------------------------------------------------------
 
 @dataclass
 class AmbiguousCase:

@@ -18,22 +18,18 @@ from .base import Agent, AgentContext, AgentMessage
 
 logger = logging.getLogger(__name__)
 
-# Known withdrawal tokens and phrases
 _WITHDRAWAL_PATTERNS = [
     r"^\s*(\.{3,}|…+|ok|okay|fine|nothing|whatever|i don't know|idk|dunno|skip|pass|no)\s*$",
 ]
 
-# Neutral acknowledgement phrases
 _NEUTRAL_PATTERNS = [
     r"^\s*(sure|sounds good|i will try|got it|all right|i understand|okay thanks|will do|understood)([\s,.;!]+(sure|sounds good|i will try|got it|all right|i understand|okay thanks|will do|understood))*\s*[.!]?\s*$",
 ]
 
-# Disengaged / withdrawal keywords
 _WITHDRAWAL_KEYWORDS = {
     "i don't know", "whatever", "idk", "nothing", "don't want to talk", "no feelings", "never mind",
 }
 
-# Engagement indicators (reflective, causal, descriptive)
 _ENGAGEMENT_INDICATORS = [
     "because", "i feel", "i think", "i tried", "for example", "yesterday",
     "actually", "want to", "plan to", "noticed", "worry", "wondering",
@@ -66,7 +62,6 @@ class OutcomeAgent(Agent):
             AgentMessage with engagement_signal, goal_progress, unresolved_uncertainty,
             and newly_observed_information.
         """
-        # 1. Resolve client message
         target_message = client_message
         if target_message is None:
             target_message = ctx.current_message or ""
@@ -78,38 +73,30 @@ class OutcomeAgent(Agent):
 
         clean_msg = target_message.strip()
 
-        # 2. Resolve goals from memory output or context
         resolved_goals: List[str] = []
         if current_goals is not None:
             resolved_goals = list(current_goals)
         elif ctx.memory_output and isinstance(ctx.memory_output.get("current_goals"), list):
             resolved_goals = list(ctx.memory_output["current_goals"])
         elif isinstance(ctx.obtain_client_info, dict):
-            # Fallback to session focus if present
             focus = ctx.obtain_client_info.get("session_focus", [])
             if isinstance(focus, list):
                 resolved_goals = [str(f) for f in focus if str(f).strip()]
 
-        # 3. Resolve unresolved_uncertainty
         unresolved_uncertainty = False
         unc_out = ctx.uncertainty_output or {}
         if unc_out.get("clarification_required") is True:
-            # Check if reassessment resolved it
             reassess_out = ctx.metadata.get("reassessment_output") or {}
             reassess_status = reassess_out.get("status")
             if reassess_status != "CLEAR" and not reassess_out.get("clarification_resolved", False):
                 unresolved_uncertainty = True
 
-        # 4. Evaluate Engagement Signal
         engagement_signal = self._classify_engagement(clean_msg)
 
-        # 5. Evaluate Goal Progress (observable signals only - no clinical claims)
         goal_progress = self._describe_goal_progress(clean_msg, resolved_goals, engagement_signal)
 
-        # 6. Extract Newly Observed Information
         newly_observed = self._extract_newly_observed_info(clean_msg, ctx)
 
-        # 7. Assemble Payload & AgentMessage
         payload: Dict[str, Any] = {
             "engagement_signal": engagement_signal,
             "goal_progress": goal_progress,
@@ -142,7 +129,6 @@ class OutcomeAgent(Agent):
 
         lower_msg = clean_msg.lower()
 
-        # Check explicit withdrawal patterns
         for pattern in _WITHDRAWAL_PATTERNS:
             if re.match(pattern, clean_msg, re.IGNORECASE):
                 return "WITHDRAWN"
@@ -151,12 +137,10 @@ class OutcomeAgent(Agent):
             if kw in lower_msg and len(clean_msg) < 35:
                 return "WITHDRAWN"
 
-        # Check explicit neutral acknowledgement patterns
         for pattern in _NEUTRAL_PATTERNS:
             if re.match(pattern, clean_msg, re.IGNORECASE):
                 return "NEUTRAL"
 
-        # Check engagement criteria
         indicator_count = sum(1 for ind in _ENGAGEMENT_INDICATORS if ind in lower_msg)
         if len(clean_msg) >= 30 or indicator_count >= 1 or "?" in clean_msg or "？" in clean_msg:
             return "ENGAGED"
@@ -182,7 +166,6 @@ class OutcomeAgent(Agent):
             g_clean = str(g).strip().lower()
             if not g_clean:
                 continue
-            # Look for subword or keyword overlap
             tokens = re.findall(r"[\w\u4e00-\u9fff]+", g_clean)
             for token in tokens:
                 if len(token) >= 2 and token in lower_msg:

@@ -49,7 +49,6 @@ class OpenAIStyleBackend:
             "max_retries": 0,
         }
 
-        # For this internal endpoint we must disable TLS verification.
         if self._is_insecure_tls_endpoint(base_url):
             if httpx is None:
                 raise FatalBackendError("httpx is required to set verify=False for the configured endpoint")
@@ -87,8 +86,6 @@ class OpenAIStyleBackend:
             )
             response_json = self._to_response_dict(response)
             text = self._extract_text(response_json).strip()
-            # Observability: log raw model output + finish reason (truncated).
-            # Added 2026-10-19 to diagnose truncated/off-topic replies.
             try:
                 _choices = response_json.get("choices") or []
                 _finish = _choices[0].get("finish_reason") if _choices else None
@@ -175,7 +172,6 @@ class OpenAIStyleBackend:
                         chunks.append(item)
                 return "".join(chunks)
 
-        # Some OpenAI-compatible servers may return a direct output text field.
         output_text = response_json.get("output_text")
         if isinstance(output_text, str):
             return output_text

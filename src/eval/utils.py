@@ -34,7 +34,6 @@ def load_prompt(method_name: str, prompt_name: str, language: str = "cn") -> str
         if alt.exists():
             candidate = alt
         else:
-            # Some prompts are intentionally placed directly under prompts/eval.
             direct = root / f"{prompt_name}.txt"
             direct_alt = root / f"{prompt_name}.TXT"
             if direct.exists():

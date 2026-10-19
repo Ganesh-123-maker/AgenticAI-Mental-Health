@@ -48,7 +48,6 @@ async def _probe(runtime_path: str) -> int:
     mgr = SkillManager(_NullBackend(), cfg)
     dim = max(1, int(cfg.psychagent_embedding_dimensions))
     model = str(cfg.psychagent_embedding_model).strip()
-    # Synthetic, non-sensitive input only.
     texts = ["synthetic connectivity probe"]
 
     start = time.time()

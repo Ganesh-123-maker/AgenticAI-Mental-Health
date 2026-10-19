@@ -12,9 +12,6 @@ from .base import Message
 class DummyBackend:
     """Deterministic text backend that can emit an end token."""
 
-    # Explicit offline signal: this backend never touches the network.
-    # SkillManager checks ``getattr(backend, "is_offline", False)`` before any
-    # API-key lookup so offline runs stay hermetic.
     is_offline = True
 
     def __init__(self, *, default_end_after_turn: int = 2) -> None:
@@ -144,7 +141,6 @@ class DummyBackend:
                 last_user = msg.get("content", "")
                 break
 
-        # Opening generation path: avoid echoing meta task instructions.
         if counselor_turn == 1 and ("opening" in last_user.lower() or "session opening" in last_user.lower()):
             return (
                 "Welcome. Before we start, I'd like to hear what has felt most difficult lately, "
@@ -157,7 +153,6 @@ class DummyBackend:
         user_lower = last_user.lower()
         all_user_str = " ".join(str(m.get("content", "")) for m in messages if m.get("role") == "user").lower()
 
-        # Context-aware memory retrieval and clinical dialogue responses
         if ("remind me" in user_lower or "what have i told you" in user_lower or "told you about" in user_lower) and "sleep" in user_lower:
             return (
                 "Earlier, you shared that you've been having trouble falling asleep around 11 PM for about three weeks. "

@@ -11,9 +11,6 @@ import types as pytypes
 import pytest
 
 
-# ---------------------------------------------------------------------------
-# Fake google.genai SDK (injected before skill_manager is imported)
-# ---------------------------------------------------------------------------
 
 FAKE_KEY = "sk-fake-test-key-12345"
 
@@ -45,7 +42,7 @@ class _FakeModels:
                 err.status_code = self._client.fail_code
             raise err
         if self._client.malformed == "count":
-            return _FakeEmbedResponse([_FakeEmbedding([0.1, 0.2])])  # wrong count
+            return _FakeEmbedResponse([_FakeEmbedding([0.1, 0.2])])
         if self._client.malformed == "empty":
             return _FakeEmbedResponse([_FakeEmbedding([]) for _ in contents])
         dim = getattr(config, "output_dimensionality", 4) or 4
@@ -121,7 +118,6 @@ def _tracking_client(api_key=None, **kwargs):
 
 _fake_genai.Client = _tracking_client
 
-# Fake openai module for the siliconflow-path test
 class _FakeEmbeddingItem:
     def __init__(self, embedding):
         self.embedding = embedding
@@ -158,9 +154,6 @@ from sample.skill_manager import SkillManager  # noqa: E402
 def _reset(monkeypatch):
     monkeypatch.setenv("GEMINI_API_KEY", FAKE_KEY)
     monkeypatch.delenv("PSYCHAGENT_EMBEDDING_API_KEY", raising=False)
-    # Patch module attributes directly: other test modules may have imported
-    # skill_manager before this file, so import-time sys.modules injection
-    # alone is not enough.
     import sample.skill_manager as _sm
     monkeypatch.setattr(_sm, "genai", _fake_genai, raising=False)
     monkeypatch.setattr(_sm, "AsyncOpenAI", _FakeAsyncOpenAI, raising=False)
@@ -202,7 +195,7 @@ def test_gemini_routing_model_dim_and_batching():
     assert all(len(v) == 768 for v in vecs)
     client = _last_client["client"]
     assert client.api_key == FAKE_KEY
-    assert len(client.calls) == 3  # 5 texts / batch 2
+    assert len(client.calls) == 3
     assert all(c["model"] == "gemini-embedding-001" for c in client.calls)
     assert all(c["dim"] == 768 for c in client.calls)
     assert client.closed is True
@@ -248,7 +241,7 @@ def test_gemini_retry_exhaustion_raises_without_key_leak():
             asyncio.run(_mgr(cfg)._embed_by_api(["hello"]))
     finally:
         _fake_genai.Client = orig
-    assert FAKE_KEY not in str(ei.value)  # key redacted from error
+    assert FAKE_KEY not in str(ei.value)
 
 
 def test_gemini_malformed_count_raises():
@@ -288,12 +281,12 @@ def test_gemini_malformed_empty_vector_raises():
 
 
 def test_stale_dimension_triggers_full_reembed():
-    mgr = _mgr()  # expects 768-dim
+    mgr = _mgr()
     micro = {
         "s1": {
             "skill_id": "s1", "skill_name": "n", "skill_description": "d",
             "trigger": "t", "when_to_use": "w", "parent_ids": [],
-            "embedding_to_merge": [0.1] * 1024,   # stale bge-m3 vectors
+            "embedding_to_merge": [0.1] * 1024,
             "embedding_to_retrive": [0.2] * 1024,
         }
     }
@@ -316,7 +309,7 @@ def test_matching_dimension_no_reembed():
     }
     _, updated = asyncio.run(mgr._ensure_embeddings_for_all(micro))
     assert updated is False
-    assert "client" not in _last_client  # no API call made
+    assert "client" not in _last_client
 
 
 def test_dummy_fallback_uses_configured_dimension(monkeypatch):
@@ -339,7 +332,7 @@ def test_missing_key_non_dummy_raises():
 def test_siliconflow_path_still_works():
     cfg = _gemini_cfg(
         psychagent_embedding_provider="siliconflow",
-        psychagent_embedding_api_key_env="GEMINI_API_KEY",  # reuse fake key
+        psychagent_embedding_api_key_env="GEMINI_API_KEY",
         psychagent_embedding_model="BAAI/bge-m3",
         psychagent_embedding_dimensions=1024,
     )
@@ -359,16 +352,16 @@ def test_runtime_config_validation_rejects_bad_dimensions():
 
 def test_offline_mode_never_goes_live_even_with_key_set():
     """Regression: offline tests must not touch the network even when a key exists."""
-    cfg = _gemini_cfg(client_backend="dummy")  # GEMINI_API_KEY is set by fixture
+    cfg = _gemini_cfg(client_backend="dummy")
     mgr = SkillManager(DummyBackend(), cfg)
     vecs = asyncio.run(mgr._embed_by_api(["a", "b"]))
     assert vecs == [[0.0] * 768, [0.0] * 768]
-    assert "client" not in _last_client  # no SDK client ever created
+    assert "client" not in _last_client
 
 
 def test_offline_mode_detects_dummy_backend_class():
-    cfg = _gemini_cfg(client_backend="openai_api")  # not dummy by config...
-    mgr = SkillManager(DummyBackend(), cfg)  # ...but dummy by backend class
+    cfg = _gemini_cfg(client_backend="openai_api")
+    mgr = SkillManager(DummyBackend(), cfg)
     vecs = asyncio.run(mgr._embed_by_api(["a"]))
     assert vecs == [[0.0] * 768]
     assert "client" not in _last_client
@@ -401,7 +394,7 @@ def test_gemini_auth_error_fails_fast_without_retry():
             asyncio.run(mgr._embed_by_api(["hello"]))
     finally:
         _fake_genai.Client = orig
-    assert len(_last_client["client"].calls) == 1  # exactly one attempt
+    assert len(_last_client["client"].calls) == 1
     assert FAKE_KEY not in str(_last_client["client"].calls and "")
 
 
@@ -416,9 +409,6 @@ def test_timeout_config_validation():
     with pytest.raises(Exception):
         _gemini_cfg(psychagent_embedding_timeout_sec=0)
 
-# ---------------------------------------------------------------------------
-# Additional tests: offline guard, keyed store, retry policy, shutdown
-# ---------------------------------------------------------------------------
 
 def test_offline_guard_with_socket_blocked(monkeypatch):
     """Strongest offline guarantee: TCP/DNS attempts raise, dummy path passes.
@@ -471,7 +461,7 @@ def test_task_types_propagated():
     assert first.calls[0]["task_type"] == "RETRIEVAL_DOCUMENT"
     asyncio.run(mgr._embed_by_api(["query text"], task_type="RETRIEVAL_QUERY"))
     second = _last_client["client"]
-    assert second is not first  # fresh client per call
+    assert second is not first
     assert second.calls[0]["task_type"] == "RETRIEVAL_QUERY"
 
 
@@ -554,15 +544,13 @@ def test_idempotent_shutdown():
     mgr = SkillManager(_NonDummyBackend(), cfg)
     asyncio.run(mgr._embed_by_api(["hello"]))
     asyncio.run(mgr.aclose())
-    asyncio.run(mgr.aclose())  # second close must not raise
+    asyncio.run(mgr.aclose())
 
 
 def test_cosine_similarity_magnitude_invariant():
     assert SkillManager._cosine_similarity([1.0, 0.0], [1.0, 0.0]) == pytest.approx(1.0)
-    # scaled vectors score identically: no L2 normalization required
     assert SkillManager._cosine_similarity([3.0, 4.0], [6.0, 8.0]) == pytest.approx(1.0)
     assert SkillManager._cosine_similarity([1.0] * 768, [2.0] * 768) == pytest.approx(1.0)
-    # dimension mismatch can never score
     assert SkillManager._cosine_similarity([1.0] * 768, [1.0] * 1024) == -1.0
 
 
@@ -640,7 +628,6 @@ def test_retry_delay_from_details_honored(monkeypatch):
     finally:
         _fake_genai.Client = orig
     assert len(vecs) == 1
-    # server said wait 22s: our backoff must honor it (>= 22), not the 0s base
     assert sleeps and sleeps[0] >= 22.0, sleeps
 
 
@@ -684,7 +671,6 @@ def test_daily_quota_stops_without_retry(monkeypatch):
             asyncio.run(mgr._embed_by_api(["hello"]))
     finally:
         _fake_genai.Client = orig
-    # exactly one HTTP attempt: no retry on daily quota
     assert len(_last_client["client"].calls) == 1
     assert not sleeps
     assert FAKE_KEY not in str(ei.value)
@@ -763,7 +749,6 @@ def test_no_bare_429_substring_classification():
     err.status_code = 400
     assert not mgr._is_rate_limit_error(err)
     assert not mgr._is_daily_quota_error(err)
-    # But a genuine 429 status code still classifies.
     err2 = RuntimeError("RESOURCE_EXHAUSTED")
     err2.status_code = 429
     assert mgr._is_rate_limit_error(err2)
@@ -779,7 +764,6 @@ def test_structured_classification_via_details_attribute():
         via_details=True)
     assert not hasattr(err, "response_json")
     assert mgr._is_daily_quota_error(err)
-    # retryDelay also parsed from .details
     assert mgr._retry_after_seconds(err) == pytest.approx(22.0)
 
 

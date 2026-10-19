@@ -103,8 +103,8 @@ def test_mixed_language_input():
 def test_repo_chinese_distress_cases():
     """Chinese distress markers present in repository benchmark cases are detected."""
     cases = {
-        "bt/bt_404_ordinary.json": "MODERATE",   # contains 绝望
-        "het/het_859_ordinary.json": "MODERATE",  # contains 不堪重负
+        "bt/bt_404_ordinary.json": "MODERATE",
+        "het/het_859_ordinary.json": "MODERATE",
     }
     for rel, expected in cases.items():
         data = json.loads(pathlib.Path(f"data/benchmark/ambiguous_cases/{rel}").read_text(encoding="utf-8"))
@@ -166,7 +166,6 @@ def test_supervisor_escalates_chinese_acute_crisis():
     result = run_pipeline(ctx)
     assert result["route"] == "HIGH-RISK"
     assert result["verdict"] == "ESCALATE", f"expected ESCALATE, got {result['verdict']}"
-    # The supervisor's acute-crisis check must cover the Chinese forms.
     assert any(f in ZH_HIGH_CRISIS_FORMS for f in ("自杀", "想死"))
     print("[PASS] Safety supervisor ESCALATEs Chinese acute crisis.")
 

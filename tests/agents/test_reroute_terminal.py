@@ -34,8 +34,6 @@ def _bypassed_flags():
 
 def test_retry_resolves_mismatch_normal_response():
     """RE-ROUTE -> retry fixes it -> normal response delivered."""
-    # Normal routing (not bypassed): HIGH risk routes HIGH-RISK directly,
-    # supervisor sees the correct route via ctx.routing_output -> no RE-ROUTE.
     r = run_pipeline(_bypassed_high_risk_ctx())
     assert r["route"] == "HIGH-RISK"
     actions = [s.get("action") for s in r["trail"] if s.get("action")]
@@ -47,7 +45,6 @@ def test_retry_resolves_mismatch_normal_response():
 def test_exhausted_retry_safe_fallback_not_draft():
     """RE-ROUTE -> retry still mismatched -> safe fallback, never the draft."""
     r = run_pipeline(_bypassed_high_risk_ctx(), flags=_bypassed_flags())
-    # Bypassed orchestrator -> CLEAR route persists -> supervisor RE-ROUTE twice.
     assert "[Counselor response generated" not in r["response"], (
         f"flagged draft delivered: {r['response'][:60]}"
     )
@@ -60,7 +57,6 @@ def test_exhausted_retry_safe_fallback_not_draft():
 def test_exhausted_retry_escalates_when_no_usable_fallback():
     """No usable supervisor fallback -> verdict ESCALATE (fail closed)."""
     r = run_pipeline(_bypassed_high_risk_ctx(), flags=_bypassed_flags())
-    # The supervisor's "revision" here echoes the draft, so we fail closed.
     assert r["verdict"] == "ESCALATE"
     assert "reroute_exhausted_escalated" in [s.get("action") for s in r["trail"] if s.get("action")]
     print("[PASS] No usable fallback -> ESCALATE.")
@@ -73,7 +69,6 @@ def test_supervisor_revision_preferred_when_genuine():
 
     def _genuine_revision(self, ctx, draft_response=""):
         msg = orig_run(self, ctx, draft_response=draft_response)
-        # Force a genuine revision distinct from the draft.
         msg.payload["revised_response"] = "Genuine safety revision: please seek support now."
         if msg.payload.get("verdict") != "RE-ROUTE":
             msg.payload["verdict"] = "RE-ROUTE"
@@ -98,5 +93,5 @@ def test_allow_and_revise_unchanged():
     r = run_pipeline(ctx)
     assert r["verdict"] == "ALLOW"
     r2 = run_pipeline(_bypassed_high_risk_ctx())
-    assert r2["verdict"] == "REVISE"  # normal (non-bypassed) path
+    assert r2["verdict"] == "REVISE"
     print("[PASS] ALLOW/REVISE unchanged.")

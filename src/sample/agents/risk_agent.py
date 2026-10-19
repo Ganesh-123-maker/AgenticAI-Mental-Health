@@ -44,14 +44,13 @@ class RiskSignal(NamedTuple):
     forms to existing concepts, not maintaining a parallel list. Each concept
     carries a stable id used in evidence strings.
     """
-    id: str          # e.g. "suicidal_ideation"
-    severity: str    # "HIGH" | "MODERATE"
-    en: Tuple[str, ...]  # English surface forms
-    zh: Tuple[str, ...]  # Chinese surface forms
+    id: str
+    severity: str
+    en: Tuple[str, ...]
+    zh: Tuple[str, ...]
 
 
 RISK_SIGNALS: Tuple[RiskSignal, ...] = (
-    # ---- HIGH severity ----
     RiskSignal(
         id="suicidal_ideation", severity="HIGH",
         en=("suicide", "suicidal", "want to die", "kill myself", "killing myself",
@@ -70,8 +69,6 @@ RISK_SIGNALS: Tuple[RiskSignal, ...] = (
         en=("can't go on", "hopeless want to die", "leave this world",
             "cannot survive", "better off dead", "better off without me",
             "not waking up", "don't want to wake up"),
-        # Note: 撑不下去 ("can't cope") is deliberately MODERATE, not HIGH:
-        # it appears in LOW-risk benchmark cases as general overwhelm.
         zh=("活不下去", "不如死了", "一了百了", "不想醒来"),
     ),
     RiskSignal(
@@ -80,7 +77,6 @@ RISK_SIGNALS: Tuple[RiskSignal, ...] = (
             "severe mental disorder", "severe violence", "jump off building"),
         zh=("跳楼", "精神急诊", "严重精神障碍", "严重暴力行为"),
     ),
-    # ---- MODERATE severity ----
     RiskSignal(
         id="insomnia", severity="MODERATE",
         en=("insomnia all night", "severe insomnia"),
@@ -118,16 +114,10 @@ RISK_SIGNALS: Tuple[RiskSignal, ...] = (
     ),
 )
 
-# Chinese surface forms of all HIGH-severity concepts, derived from the
-# concept table above (single source of truth). Exported for consumers that
-# perform their own language-aware crisis checks on utterances or on the
-# signal labels in `signals_detected` (e.g. SafetySupervisor.is_acute_crisis).
 ZH_HIGH_CRISIS_FORMS: Tuple[str, ...] = tuple(
     form for _s in RISK_SIGNALS if _s.severity == "HIGH" for form in _s.zh
 )
 
-# Negation cues that, when they precede a signal within the same clause, mark the
-# mention as explicitly denied (e.g. "I have never had thoughts of suicide").
 _NEGATION_CUES = (
     "no", "not", "never", "without", "denies", "denied", "deny", "don't", "do not", "didn't",
     "haven't", "have not", "hasn't", "wouldn't", "won't", "none", "nor",
@@ -160,13 +150,8 @@ def _find_signal(text: str, signal: str) -> Optional[str]:
     return "negated" if found_negated else None
 
 
-# Chinese negation cues for the character-window negation check below.
 _ZH_NEGATION_CUES = ("没有", "否认", "否定", "从未", "不曾", "没", "未", "别", "无", "不")
-# Clause boundaries for Chinese text (Chinese + ASCII punctuation, plus
-# common contrast conjunctions).
 _ZH_CLAUSE_BREAK = re.compile(r"[。，；！？、,.!?;]|但是|然而|不过|虽然")
-# Number of characters before a Chinese signal form examined for negation.
-# Chinese is denser than English; this mirrors the 6-word English window.
 _ZH_NEG_WINDOW_CHARS = 8
 
 
@@ -259,7 +244,6 @@ class RiskAgent(Agent):
             )
 
     def _run(self, ctx: AgentContext) -> AgentMessage:
-        # Extract inputs from state, memory, and raw message
         state_payload = ctx.state_output or {}
         if not isinstance(state_payload, dict):
             state_payload = {}
@@ -275,8 +259,6 @@ class RiskAgent(Agent):
         medical_history = str(static_traits.get("medical_history", "")).strip()
         unknown_info = state_payload.get("unknown_information", []) or []
 
-        # 1. Scan for explicit HIGH-RISK signals (language-aware concept matching;
-        #    negation-aware per language for client-authored text)
         high_signals: List[str] = []
         negated_signals: List[str] = []
         for signal in RISK_SIGNALS:
@@ -290,9 +272,6 @@ class RiskAgent(Agent):
                     high_signals.append(f"{label}:'{form}'")
                 elif hit == "negated":
                     negated_signals.append(f"negated:{label}:'{form}'")
-            # Note: in medical_history, check if it's an affirmative risk (e.g. past attempt)
-            # rather than a negated mention (e.g. "no prior attempts"). Uses the same
-            # language-aware concept matching so Chinese histories are not blind.
             if medical_history:
                 form, hit = _match_signal(medical_history, signal)
                 if hit == "affirmed":
@@ -317,7 +296,6 @@ class RiskAgent(Agent):
                 payload=payload,
             )
 
-        # 2. Check for UNCERTAIN safety status (safety status missing / unverified)
         safety_status_missing = False
         for item in unknown_info:
             item_str = str(item).lower()
@@ -326,12 +304,9 @@ class RiskAgent(Agent):
                 break
 
         if not medical_history or medical_history.lower() in ("(unavailable)", "not mentioned", "unknown"):
-            # If medical history is explicitly not populated or unknown in the context
             if any("medical_history" in str(x) for x in unknown_info) or any("medical_history" in str(x) for x in (ctx.metadata.get("missing_information") or [])):
                 safety_status_missing = True
 
-        # 3. Scan for MODERATE distress / functional impairment signals
-        #    (language-aware concept matching; affirmed matches only)
         moderate_signals: List[str] = []
         for signal in RISK_SIGNALS:
             if signal.severity != "MODERATE":
@@ -383,7 +358,6 @@ class RiskAgent(Agent):
                 payload=payload,
             )
 
-        # 4. NO EVIDENCE
         evidence = ["NO EVIDENCE: No risk or crisis signals detected in current message, state, or memory context"]
         if negated_signals:
             evidence.append(

@@ -90,7 +90,7 @@ def test_uncertain_answer_clear_flow(db, backend):
     assert backend._clarification_pending(snap1) is True
     trace1 = snap1.profile_payload.get("latest_agent_trace") or []
     q1 = [s for s in trace1 if s.get("agent") == "clarification_agent"][0]["payload"]["question"]
-    assert q1  # a real question was persisted
+    assert q1
 
     asyncio.run(vs.send_visit_message(
         db, "u1", visit.visit_id,
@@ -109,7 +109,6 @@ def test_second_clarification_turn(db, backend):
     asyncio.run(vs.send_visit_message(
         db, "u1", visit.visit_id,
         "It's about... that thing, you know. I've been feeling off.", call_llm))
-    # Still-ambiguous + distressed reply: stays UNCERTAIN, reassessment evaluates it.
     t2_msg = "It's still about that thing... 我最近不堪重负，整夜失眠。"
     asyncio.run(vs.send_visit_message(db, "u1", visit.visit_id, t2_msg, call_llm))
     snap2 = _persisted(db, visit)
@@ -117,7 +116,6 @@ def test_second_clarification_turn(db, backend):
     trace2 = snap2.profile_payload.get("latest_agent_trace") or []
     reas = [s for s in trace2 if s.get("agent") == "reassessment_agent"]
     assert len(reas) >= 1, "reassessment did not evaluate the second message"
-    # The answer actually processed was the new message, not the old one.
     assert reas[0].get("clarification_answer") == t2_msg
     assert backend._clarification_pending(snap2) is True
     print("[PASS] Second turn evaluates the new message via reassessment.")
@@ -152,13 +150,11 @@ def test_no_cross_user_state_leak(db, backend):
     snap_a = _persisted(db, visit_a)
     assert backend._clarification_pending(snap_a) is True
 
-    # User B starts fresh; their message must not be treated as an answer.
     asyncio.run(vs.send_visit_message(
         db, "user_b", visit_b.visit_id,
         "Hello, I'd like to talk about work.", call_llm))
     snap_b = _persisted(db, visit_b)
     assert backend._clarification_pending(snap_b) is False
-    # A's state untouched.
     assert _persisted(db, visit_a).profile_payload.get("latest_route") == "UNCERTAIN"
     print("[PASS] No clarification state leaks between users.")
 
@@ -176,7 +172,6 @@ def test_new_question_after_clear_not_answer(db, backend):
         "I was referring to the conflict with my manager last week.", call_llm))
     assert _persisted(db, visit).profile_payload.get("latest_route") == "CLEAR"
 
-    # New question: must not be treated as a clarification answer.
     snap_before = _persisted(db, visit)
     assert backend._clarification_pending(snap_before) is False
     asyncio.run(vs.send_visit_message(

@@ -49,5 +49,4 @@ class PsychAgentPromptManager:
             return ""
         if Template is not None and isinstance(tmpl, Template):
             return tmpl.render(**kwargs)
-        # Jinja2 fallback: keep simple placeholder substitution unavailable.
         return str(tmpl)

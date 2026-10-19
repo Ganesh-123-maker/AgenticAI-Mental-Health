@@ -31,7 +31,7 @@ class Item(BaseModel):
         return s
 
 
-class Items(BaseModel):  # Wrapper schema
+class Items(BaseModel):
     model_config = ConfigDict(extra="forbid", strict=True)
 
     items: List[Item] = Field(min_length=13, max_length=13)
@@ -54,7 +54,6 @@ class EFT_TFS(EvaluationMethod):
         
         template = Template(prompt)
         prompt = template.render(intake_form=profile, diag=dialogue)
-        # print(f"EFT_TFS - {EFT_TFS} prompt: {prompt}")
         messages=[{"role": "user", "content": prompt}]
 
         last_err: Exception | None = None
@@ -78,17 +77,14 @@ class EFT_TFS(EvaluationMethod):
             raise RuntimeError(f"Failed to get valid EFT_TFS output: {last_err}")
         
 
-        # outputs = dict(zip(criteria_list, scores))
         
         mean_score = 0
         
         for item in scores:
-            mean_score += (float(item.score) - 1.0) * 10.0 / 4.0  # 1-5 -> 0-10
+            mean_score += (float(item.score) - 1.0) * 10.0 / 4.0
 
         mean_score /= len(scores)
-        # mean_score = sum(scores) / len(scores) if scores else 0
         
-        # outputs["sum"] = sum(scores)
         return {"counselor": mean_score}
     
     def get_name(self) -> str:

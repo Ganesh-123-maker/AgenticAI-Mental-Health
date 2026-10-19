@@ -32,7 +32,6 @@ from .risk_agent import ZH_HIGH_CRISIS_FORMS
 
 logger = logging.getLogger(__name__)
 
-# Standard crisis fallback response (no fabricated clinics; only well-known public helplines)
 _CRISIS_RESOURCE_GUIDANCE = (
     "Please contact your family, friends, a trusted person, your local emergency number, or a crisis helpline right now "
     "(for example, Tele-MANAS 14416 in India or 988 in the United States)."
@@ -45,7 +44,6 @@ _STANDARD_SAFE_FALLBACK = (
     "We can pause other discussions and focus first and foremost on ensuring your safety right now."
 )
 
-# Unsafe dismissal phrases in elevated or high-risk contexts
 _UNSAFE_DISMISSAL_PHRASES = [
     "don't overthink",
     "it's not a big deal",
@@ -61,7 +59,6 @@ _UNSAFE_DISMISSAL_PHRASES = [
     "that's nothing",
 ]
 
-# False reassurance patterns (especially harmful in UNCERTAIN or elevated safety contexts)
 _FALSE_REASSURANCE_PATTERNS = [
     r"(you are absolutely safe|you definitely have no danger|rest assured, you will not be harmed)",
     r"(no need to worry about your safety|you have no mental illness|you are perfectly normal)",
@@ -69,13 +66,11 @@ _FALSE_REASSURANCE_PATTERNS = [
     r"(you are completely safe|there is definitely no risk|guaranteed to be fine)",
 ]
 
-# Unsupported clinical diagnosis patterns
 _UNSUPPORTED_DIAGNOSIS_PATTERNS = [
     r"(you have been diagnosed with|according to diagnosis you have|you have severe depression|you have schizophrenia|you have borderline personality disorder)",
     r"(you are diagnosed with|you definitely suffer from bipolar|clinical depression confirmed)",
 ]
 
-# Premature certainty patterns where counselor asserts unverified historical facts
 _PREMATURE_CERTAINTY_PATTERNS = [
     r"since you were a child",
     r"you have been suffering from",
@@ -83,7 +78,6 @@ _PREMATURE_CERTAINTY_PATTERNS = [
     r"because of what happened three years ago",
 ]
 
-# Internal agent leakage indicators
 _INTERNAL_LEAKAGE_PATTERNS = [
     r"<think>",
     r"</think>",
@@ -120,8 +114,6 @@ class SafetySupervisor(Agent):
             raise
         except Exception as exc:
             logger.exception("[%s] unexpected error: %s", self.name, exc)
-            # Fail-closed: an unreviewed draft must never be delivered. Escalate to
-            # the standard safe fallback (verdict is consistent with BLOCK status).
             payload = {
                 "approved": False,
                 "safety_status": "BLOCK",
@@ -129,7 +121,6 @@ class SafetySupervisor(Agent):
                 "risk_consistency": False,
                 "revised_response": _STANDARD_SAFE_FALLBACK,
                 "reasoning_summary": f"Evaluation error: {exc}",
-                # Backward compatibility
                 "verdict": "ESCALATE",
                 "rationale": f"Fail-closed after supervisor error: {exc}",
                 "checks": {
@@ -143,14 +134,12 @@ class SafetySupervisor(Agent):
             return AgentMessage(agent=self.name, status="error", error=str(exc), payload=payload)
 
     def _run(self, ctx: AgentContext, draft_response: Optional[str] = None) -> AgentMessage:
-        # 1. Resolve response text
         response_text = draft_response
         if not response_text:
             counsel_payload = getattr(ctx, "counseling_output", None) or ctx.metadata.get("counseling_output", {})
             response_text = counsel_payload.get("response") or counsel_payload.get("response_text", "")
         response_text = str(response_text or "").strip()
 
-        # 2. Extract upstream assessment details
         risk_payload = ctx.risk_output or {}
         risk_severity = str(risk_payload.get("severity", "LOW")).upper()
         risk_status = str(risk_payload.get("risk_status", "NO_EVIDENCE")).upper()
@@ -166,7 +155,6 @@ class SafetySupervisor(Agent):
 
         client_utterance = str(ctx.current_message or "")
 
-        # 3. Track issues & status
         issues: List[str] = []
         approved: bool = True
         safety_status: str = "SAFE"
@@ -174,21 +162,18 @@ class SafetySupervisor(Agent):
         revised_response: Optional[str] = None
         reasoning_summary: str = ""
 
-        # 4. Review: Internal mechanics leakage
         for pat in _INTERNAL_LEAKAGE_PATTERNS:
             if re.search(pat, response_text, re.IGNORECASE):
                 issues.append("Response exposes internal agent formatting or prompt tokens.")
                 safety_status = "REVISE"
                 approved = False
 
-        # 5. Review: Unsupported clinical diagnoses
         for pat in _UNSUPPORTED_DIAGNOSIS_PATTERNS:
             if re.search(pat, response_text, re.IGNORECASE):
                 issues.append("Response makes unsupported psychiatric diagnostic assertions.")
                 safety_status = "REVISE"
                 approved = False
 
-        # 6. Review: Premature certainty on unverified fields
         if unc_status in ("UNCERTAIN", "AMBIGUOUS") and uncertain_fields:
             for pat in _PREMATURE_CERTAINTY_PATTERNS:
                 if re.search(pat, response_text, re.IGNORECASE):
@@ -196,8 +181,6 @@ class SafetySupervisor(Agent):
                     safety_status = "REVISE"
                     approved = False
 
-        # 7. Review: False reassurance in UNCERTAIN safety context
-        # Distinguish 'no evidence of risk' from 'evidence that risk is absent'.
         is_uncertain_safety = (
             risk_severity == "UNCERTAIN"
             or (unc_status in ("UNCERTAIN", "AMBIGUOUS") and any("medical" in f or "risk" in f for f in uncertain_fields))
@@ -210,7 +193,6 @@ class SafetySupervisor(Agent):
                     risk_consistency = False
                     approved = False
 
-        # 8. Review: Route vs Risk alignment (Re-route check if route didn't match risk)
         if risk_severity == "HIGH" and route != "HIGH-RISK":
             issues.append("High risk severity detected by Risk Agent, but Orchestrator route was not HIGH-RISK. Re-routing required.")
             risk_consistency = False
@@ -222,10 +204,8 @@ class SafetySupervisor(Agent):
             utterance_lower = client_utterance.lower()
             signals_lower = " ".join(str(s) for s in risk_signals).lower()
 
-            # Check for dismissal
             has_dismissal = any(p in response_lower for p in _UNSAFE_DISMISSAL_PHRASES)
 
-            # Check for safety-oriented awareness
             has_safety_awareness = any(
                 kw in response_lower
                 for kw in [
@@ -233,9 +213,6 @@ class SafetySupervisor(Agent):
                 ]
             )
 
-            # Check if acute crisis signals are present (English keywords plus the
-            # Chinese HIGH-severity forms from the RiskAgent concept table, so
-            # a Chinese acute crisis is not downgraded relative to English).
             is_acute_crisis = any(
                 kw in utterance_lower or kw in signals_lower
                 for kw in [
@@ -266,10 +243,8 @@ class SafetySupervisor(Agent):
                         f"{_CRISIS_RESOURCE_GUIDANCE}"
                     )
             else:
-                # Response has appropriate safety awareness
                 risk_consistency = True
 
-        # 10. Finalize Verdict & Payload
         if approved and not issues:
             safety_status = "SAFE"
             reasoning_summary = "Response is safe to deliver; consistent with risk level and uncertainty constraints."
@@ -294,7 +269,6 @@ class SafetySupervisor(Agent):
             "risk_consistency": risk_consistency,
             "revised_response": revised_response,
             "reasoning_summary": reasoning_summary,
-            # Backward-compatibility fields
             "verdict": verdict,
             "rationale": reasoning_summary,
             "checks": {
@@ -306,10 +280,8 @@ class SafetySupervisor(Agent):
             "safe_fallback": revised_response if safety_status == "BLOCK" else None,
         }
 
-        # Validate schema
         validate_safety_supervisor_payload(payload)
 
-        # Update AgentContext with reviewed response
         ctx.safety_supervisor_output = payload
         ctx.safety_output = payload
         if approved:
@@ -328,14 +300,11 @@ class SafetySupervisor(Agent):
     def _build_suggested_revision(self, original_text: str, issues: List[str]) -> Optional[str]:
         """Construct a lightweight revision suggestion preserving client context without fabricating facts."""
         cleaned = original_text
-        # Strip internal tags if present
         cleaned = re.sub(r"</?think>|</?assessment>", "", cleaned).strip()
 
-        # If premature certainty was flagged, soften it
         cleaned = re.sub(r"since you were a child", "regarding the experiences you mentioned", cleaned, flags=re.IGNORECASE)
         cleaned = re.sub(r"you have been suffering from", "regarding what you have felt", cleaned, flags=re.IGNORECASE)
 
-        # If false reassurance was flagged, remove it
         cleaned = re.sub(r"rest assured, you will not be harmed[.!?;]?", "", cleaned, flags=re.IGNORECASE)
         cleaned = re.sub(r"you are completely safe[.!?;]?", "", cleaned, flags=re.IGNORECASE)
 

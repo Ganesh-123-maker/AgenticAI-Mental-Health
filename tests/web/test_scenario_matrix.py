@@ -90,7 +90,7 @@ def test_matrix_uncertain_irrelevant_capped(db, backend):
     _send(db, backend, "m3", v, "It's about... that thing, you know.")
     _send(db, backend, "m3", v, "It's still about that thing... 我最近不堪重负。")
     r = _route(db, v)
-    assert r in ("UNCERTAIN", "CLEAR", "HIGH-RISK")  # capped, never hangs
+    assert r in ("UNCERTAIN", "CLEAR", "HIGH-RISK")
     print(f"[PASS] matrix: irrelevant answer -> capped ({r}).")
 
 
@@ -143,6 +143,5 @@ def test_matrix_two_visits_separated(db, backend):
     _send(db, backend, "mv", v1, "I feel completely hopeless and have thought about ending my life.")
     _send(db, backend, "mv", v2, "Work is fine.")
     assert _route(db, v1) == "HIGH-RISK"
-    # Visit 2 is a separate conversation; carried risk is visit-scoped.
     assert _route(db, v2) != "HIGH-RISK"
     print("[PASS] matrix: two visits separated.")

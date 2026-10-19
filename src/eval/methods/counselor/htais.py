@@ -67,7 +67,7 @@ class HTAIS(EvaluationMethod):
 
         mean_score = 0.0
         for it in validated.items:
-            mean_score += (float(it.score) - 1.0) * 2.5  # 1-5 -> 0-10
+            mean_score += (float(it.score) - 1.0) * 2.5
         mean_score /= len(validated.items)
         return {"counselor": mean_score}
 

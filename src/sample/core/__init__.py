@@ -6,14 +6,12 @@ from .contracts import CaseResumeDecision, CaseRunResult
 from .schemas import (
     BaselineConfig,
     ClientCase,
-    # Legacy compatibility artifacts (prefer payload dict contract in io.store).
     CourseArtifact,
     ConfigValidationError,
     DatasetConfig,
     PublicMemory,
     RunResult,
     RuntimeConfig,
-    # Legacy compatibility artifacts (prefer payload dict contract in io.store).
     SessionArtifact,
 )
 

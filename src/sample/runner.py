@@ -39,8 +39,6 @@ class MaxRetriesExceededError(Exception):
     """Raised when retry budget for one case/session is exhausted."""
 
 
-# Backward-compatible aliases for existing imports.
-# Downstream modules should import public contracts from sample.core.contracts.
 _CaseResumeDecision = CaseResumeDecision
 _CaseRunResult = CaseRunResult
 

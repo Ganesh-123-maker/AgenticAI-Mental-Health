@@ -101,7 +101,6 @@ def test_current_message_tracks_latest_answer():
 def test_risk_recalculated_from_latest_message():
     """Turn-2 risk assessment sees the latest client message."""
     ctx = _ctx_two_gaps("riskturn")
-    # Turn 1 answer is benign; turn 2 answer carries acute distress.
     r = run_pipeline(
         ctx,
         clarification_answer=[
@@ -111,7 +110,6 @@ def test_risk_recalculated_from_latest_message():
         max_reassess_turns=3,
     )
     reassesses = [s for s in r["trail"] if s["agent"] == "reassessment_agent"]
-    # The acute answer must surface as HIGH risk -> HIGH-RISK route.
     assert r["route"] == "HIGH-RISK", f"got {r['route']}"
     print("[PASS] Risk recalculated from latest client message.")
 
@@ -126,9 +124,7 @@ def test_single_answer_backward_compatible():
     )
     answers = _trail_answers(r)
     assert answers == ["This started about six months ago, around last spring."]
-    # Turn 2 clarifies but does NOT replay the answer (sequence exhausted).
     assert len(answers) == 1
-    # None still works.
     ctx2 = _ctx_two_gaps("single2")
     r2 = run_pipeline(ctx2, clarification_answer=None, max_reassess_turns=2)
     assert r2["reassess_count"] == 0 or _trail_answers(r2) == []
@@ -177,11 +173,11 @@ def test_carried_risk_floor_unit():
     c = _ctx_with("LOW", "MODERATE"); _apply_carried_risk_floor(c)
     assert c.risk_output["severity"] == "MODERATE"
     c = _ctx_with("HIGH", "MODERATE"); _apply_carried_risk_floor(c)
-    assert c.risk_output["severity"] == "HIGH"  # new evidence raises
+    assert c.risk_output["severity"] == "HIGH"
     c = _ctx_with("UNCERTAIN", "MODERATE"); _apply_carried_risk_floor(c)
-    assert c.risk_output["severity"] == "MODERATE"  # confirmed dominates unverified
+    assert c.risk_output["severity"] == "MODERATE"
     c = _ctx_with("LOW", None); _apply_carried_risk_floor(c)
-    assert c.risk_output["severity"] == "LOW"  # no floor, unchanged
+    assert c.risk_output["severity"] == "LOW"
     c = _ctx_with("LOW", "LOW"); _apply_carried_risk_floor(c)
-    assert c.risk_output["severity"] == "LOW"  # LOW is not a floor
+    assert c.risk_output["severity"] == "LOW"
     print("[PASS] Carried risk floor unit behavior.")

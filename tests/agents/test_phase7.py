@@ -12,7 +12,6 @@ import json
 import pathlib
 import sys
 
-# Ensure src is on sys.path
 sys.path.insert(0, str(pathlib.Path(__file__).parent.parent.parent / "src"))
 
 from sample.agents.base import AgentContext
@@ -26,7 +25,6 @@ def test_safety_supervisor_verdicts():
     """Verify all 4 Safety Supervisor verdicts and rationales."""
     sup = SafetySupervisor()
 
-    # 1. ALLOW: Congruent, safe response
     ctx_allow = AgentContext(case_id="allow_case", modality="cbt")
     ctx_allow.risk_output = {"severity": "LOW", "risk_status": "NO_EVIDENCE"}
     ctx_allow.uncertainty_output = {"status": "CLEAR", "uncertain_fields": []}
@@ -36,7 +34,6 @@ def test_safety_supervisor_verdicts():
     assert msg1.payload["checks"]["risk_congruence"] is True
     print("[PASS] SafetySupervisor: Safe congruent draft -> ALLOW.")
 
-    # 2. REVISE: Response asserts premature certainty on unverified fields
     ctx_revise = AgentContext(case_id="revise_case", modality="cbt")
     ctx_revise.risk_output = {"severity": "LOW", "risk_status": "NO_EVIDENCE"}
     ctx_revise.uncertainty_output = {"status": "UNCERTAIN", "uncertain_fields": ["growth_experiences"]}
@@ -47,7 +44,6 @@ def test_safety_supervisor_verdicts():
     assert msg2.payload["suggested_revision"] is not None
     print("[PASS] SafetySupervisor: Premature certainty on unverified field -> REVISE.")
 
-    # 3. RE-ROUTE: Risk is HIGH but route was marked CLEAR
     ctx_reroute = AgentContext(case_id="reroute_case", modality="cbt")
     ctx_reroute.risk_output = {"severity": "HIGH", "risk_status": "EVIDENCE_OF_RISK", "signals_detected": ["suicide"]}
     ctx_reroute.uncertainty_output = {"status": "CLEAR", "uncertain_fields": []}
@@ -57,7 +53,6 @@ def test_safety_supervisor_verdicts():
     assert msg3.payload["checks"]["route_congruence"] is False
     print("[PASS] SafetySupervisor: High risk with non-safety route -> RE-ROUTE.")
 
-    # 4. ESCALATE: Acute crisis with dismissive or unsafe framing
     ctx_escalate = AgentContext(case_id="escalate_case", modality="cbt", current_message="I want to commit suicide, I can't go on living")
     ctx_escalate.risk_output = {"severity": "HIGH", "risk_status": "EVIDENCE_OF_RISK", "signals_detected": ["suicide"]}
     ctx_escalate.uncertainty_output = {"status": "CLEAR", "uncertain_fields": []}
@@ -78,7 +73,6 @@ def test_escalate_does_not_fabricate_resources():
     fallback = msg.payload.get("safe_fallback", "")
     assert msg.payload["verdict"] == "ESCALATE"
     assert bool(fallback)
-    # Check that fallback contains no fabricated telephone numbers (e.g. 400-xxx, 010-xxx) or fake hospital names
     import re
     assert not re.search(r"\b\d{3,4}[-\s]?\d{7,8}\b", fallback), "Fabricated phone number detected!"
     assert not re.search(r"XX Hospital|Fake Clinic|Fictitious Agency", fallback), "Fabricated clinic detected!"
@@ -87,14 +81,11 @@ def test_escalate_does_not_fabricate_resources():
 
 def test_loop_caps_prevent_infinite_loops():
     """Verify that REVISE and RE-ROUTE loop caps prevent infinite execution."""
-    # Test RE-ROUTE cap in pipeline
     ctx = AgentContext(case_id="cap_test", modality="cbt")
-    # Setting an initial state that triggers RE-ROUTE
     ctx.risk_output = {"severity": "HIGH", "risk_status": "EVIDENCE_OF_RISK", "signals_detected": ["suicide"]}
     ctx.uncertainty_output = {"status": "CLEAR", "uncertain_fields": []}
 
     result = run_pipeline(ctx)
-    # Orchestrator and Counseling Agent must not be called more than twice
     orch_calls = len([step for step in result["trail"] if step.get("agent") == "orchestrator"])
     counsel_calls = len([step for step in result["trail"] if step.get("agent") == "counseling_agent"])
     assert orch_calls <= 2, f"Orchestrator called {orch_calls} times (> 2)"

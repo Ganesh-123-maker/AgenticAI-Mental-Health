@@ -47,7 +47,6 @@ class ResultStore:
         path.mkdir(parents=True, exist_ok=True)
         return path
 
-    # Payload-level APIs used by the active sample/rft runner flow.
     def save_session_payload(
         self,
         modality: str,

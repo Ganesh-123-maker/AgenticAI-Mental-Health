@@ -76,7 +76,7 @@ class PHQ_9(EvaluationMethod):
 
         mean_score = 0.0
         for item in scores:
-            mean_score += float(item.score) * 10.0 / 3.0  # 0-3 -> 0-10
+            mean_score += float(item.score) * 10.0 / 3.0
         mean_score /= len(scores)
         return {"client": mean_score}
     

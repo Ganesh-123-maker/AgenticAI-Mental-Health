@@ -40,7 +40,6 @@ class PromptManager:
             template = self._env.get_template(template_relpath)
             return template.render(**kwargs).strip()
 
-        # Fallback: simple replacement for {{ key }} expressions.
         path = self.prompt_root / template_relpath
         text = path.read_text(encoding="utf-8")
         return _simple_render(text, kwargs).strip()

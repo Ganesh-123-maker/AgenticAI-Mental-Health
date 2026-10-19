@@ -109,28 +109,21 @@ class SkillManager:
         missing_merge_ids = []
         missing_retrieve_ids = []
 
-        # 1. Scan for missing embeddings and unify format
         for sid, skill in micro_lib.items():
-            # Ensure list format for downstream processing
             m_vec = self._vector_to_list(skill.get("embedding_to_merge"))
             r_vec = self._vector_to_list(skill.get("embedding_to_retrive"))
 
             if m_vec is None:
                 missing_merge_ids.append(sid)
             else:
-                skill["embedding_to_merge"] = m_vec # Store uniformly as list
+                skill["embedding_to_merge"] = m_vec
 
             if r_vec is None:
                 missing_retrieve_ids.append(sid)
             else:
                 skill["embedding_to_retrive"] = r_vec
 
-        # 2. Backfill merge embeddings
 
-        # 1b. Guard against stale vectors from a different embedding model.
-        # Stored vectors (e.g. 1024-dim bge-m3) must never be mixed with a newly
-        # configured dimensionality (e.g. 768-dim gemini-embedding-001): cosine
-        # similarity silently returns -1.0 on dimension mismatch. Re-embed all.
         expected_dim = max(1, int(self._runtime.psychagent_embedding_dimensions))
         stale_found = False
         for _sid, _skill in micro_lib.items():
@@ -168,7 +161,6 @@ class SkillManager:
                 micro_lib[sid]["embedding_to_merge"] = emb
             updated = True
 
-        # 3. Backfill retrieve embeddings
         if missing_retrieve_ids:
             self._logger.info(f"Backfilling {len(missing_retrieve_ids)} retrieve embeddings...")
             texts = [
@@ -201,11 +193,8 @@ class SkillManager:
 
         self._logger.info("Skill library loaded, starting embedding check and backfill...")
 
-        # Iterate over all sects and stages
         for sect, stages in self.skill_lib.items():
             for stage_key, loaded_stage in stages.items():
-                # Check whether micro_skills lack embeddings
-                # Note: Call newly defined async completion method
                 updated_micro, is_updated = await self._ensure_embeddings_for_all(loaded_stage.micro)
 
                 if is_updated:
@@ -213,8 +202,6 @@ class SkillManager:
                     loaded_stage.micro = updated_micro
 
                     save_dir = resolve_path(self._runtime.psychagent_skill_base_dir) / sect / stage_key
-                    # Never overwrite the original artifacts: persist to the
-                    # provenance-keyed store for the configured embedding space.
                     keyed_name = f"micro_skills.{self._embedding_store_key()}.pt"
                     save_path = save_dir / keyed_name
                     base_pt = save_dir / "micro_skills.pt"
@@ -224,7 +211,6 @@ class SkillManager:
                         source_hash, len(loaded_stage.micro)
                     )
 
-                    # Atomic write: temp file then rename, avoiding a torn store.
                     if torch is not None:
                         loop = asyncio.get_running_loop()
 
@@ -560,7 +546,6 @@ class SkillManager:
                     return max(0.0, float(val))
                 except (TypeError, ValueError):
                     pass
-        # Fallback: scan the message text for a RetryInfo block.
         m = re.search(r"retryDelay['\"]\s*:\s*['\"]([\d.]+)s['\"]", str(exc))
         if m:
             try:
@@ -599,8 +584,6 @@ class SkillManager:
         google.rpc.QuotaFailure details. Empty list if none present.
         """
         out: list[dict] = []
-        # Real google-genai APIError exposes the body as .details;
-        # our fakes/tests use .response_json. Accept both.
         payload = getattr(exc, "response_json", None) or getattr(exc, "details", None)
         if isinstance(payload, dict):
             try:
@@ -610,7 +593,6 @@ class SkillManager:
             for d in details:
                 if not isinstance(d, dict):
                     continue
-                # QuotaFailure violations list, or a direct violation dict.
                 violations = d.get("violations", [d] if "quotaId" in d else [])
                 for v in violations:
                     if isinstance(v, dict) and (v.get("quotaId") or v.get("quotaMetric")):
@@ -692,8 +674,6 @@ class SkillManager:
         if not texts:
             return []
         if self._is_offline_embedding_mode():
-            # Explicitly configured offline: deterministic zero vectors, no
-            # network access even if an embedding API key is set in the environment.
             dim = max(1, int(self._runtime.psychagent_embedding_dimensions))
             self._logger.warning(
                 "offline embedding mode: returning zero vectors (dim=%d); "
@@ -718,7 +698,6 @@ class SkillManager:
 
     @staticmethod
     def _redact_key(message: str, api_key: str) -> str:
-        # Never leak the key in logs/errors even if an SDK echoes it back.
         if api_key and api_key in message:
             return message.replace(api_key, "<redacted>")
         return message
@@ -760,15 +739,11 @@ class SkillManager:
             output_dimensionality=dimensions,
             task_type=task_type,
         )
-        # Own all retrying in one place: disable SDK-internal retries so a
-        # single logical attempt never fans out into multiple HTTP requests
-        # (which would multiply quota consumption). Our retry loop below is
-        # the only retry logic; it honors server retry delays.
         http_options_kwargs: dict = {"timeout": timeout_sec * 1000}
         try:
             http_options_kwargs["retry_options"] = genai_types.HttpRetryOptions(attempts=1)
         except (AttributeError, TypeError):
-            pass  # older SDK without HttpRetryOptions; default behavior applies
+            pass
         http_options = genai_types.HttpOptions(**http_options_kwargs)
 
         def _make_client() -> Any:
@@ -802,7 +777,6 @@ class SkillManager:
                                 "re-run the migration afterwards to resume."
                             ) from exc
                         if self._is_rate_limit_error(exc) and on_rate_limit is not None:
-                            # Adaptive signal: let the caller widen its pacing.
                             try:
                                 on_rate_limit()
                             except Exception:
@@ -813,10 +787,6 @@ class SkillManager:
                             ) from exc
                         await asyncio.sleep(self._backoff_delay(attempt, sleep_sec, exc))
         finally:
-            # The SDK always creates an internal httpx AsyncClient; close both
-            # the sync and async clients to avoid 'aclose() never awaited'.
-            # Shutdown is idempotent: each close is guarded and failures here
-            # must not mask the original error.
             try:
                 close = getattr(client, "close", None)
                 if callable(close):
@@ -989,9 +959,6 @@ class SkillManager:
             "embedding_dimensions": int(self._runtime.psychagent_embedding_dimensions),
             "index_task_type": "RETRIEVAL_DOCUMENT",
             "query_task_type": "RETRIEVAL_QUERY",
-            # Vectors are stored raw (not L2-normalized): this module scores
-            # with cosine similarity, which normalizes explicitly, so ranking
-            # is magnitude-invariant.
             "l2_normalized": False,
             "created_at_utc": _dt.datetime.now(_dt.timezone.utc).isoformat(),
             "source_file_sha256": source_hash,
@@ -1013,7 +980,6 @@ class SkillManager:
         json_path = stage_dir / "micro_skills.json"
 
         raw: Dict[str, Any] = {}
-        # 1. Prefer the provenance-keyed store for the configured space.
         if keyed_pt_path.exists() and torch is not None:
             loaded = torch.load(str(keyed_pt_path), weights_only=False)
             if isinstance(loaded, dict):
@@ -1027,8 +993,6 @@ class SkillManager:
                         self._runtime.psychagent_embedding_model,
                         self._runtime.psychagent_embedding_dimensions,
                     )
-        # 2. Fall back to the original artifacts (dimension guard downstream
-        #    re-embeds on mismatch instead of mixing vector spaces).
         if not raw:
             if base_pt_path.exists() and torch is not None:
                 loaded = torch.load(str(base_pt_path), weights_only=False)

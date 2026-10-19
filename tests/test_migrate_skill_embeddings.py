@@ -33,43 +33,30 @@ def mig():
     return _load_script()
 
 
-# ---------------------------------------------------------------------------
-# Token estimates
-# ---------------------------------------------------------------------------
 
 def test_est_tokens_cjk_aware(mig):
-    # Pure CJK: ~1 token per character.
     assert mig._est_tokens("你好世界") == pytest.approx(4.0)
-    # Pure ASCII: ~0.25 per character.
     assert mig._est_tokens("abcd") == pytest.approx(1.0)
-    # Mixed.
     assert mig._est_tokens("ab你好") == pytest.approx(0.5 + 2.0)
-    # Multiplier applies.
     assert mig._est_tokens("ab你好", multiplier=2.0) == pytest.approx(5.0)
-    # Optimistic len/4 kept for comparison.
     assert mig._est_tokens_optimistic("abcd") == pytest.approx(1.0)
     assert mig._est_tokens_optimistic("你好世界") == pytest.approx(1.0)
 
 
 def test_pacer_interval_cjk_tpm_binding(mig):
-    # CJK-heavy workload: 2268 est tokens/request. TPM cap 25000 must bind
-    # over the 30 RPM request pacing.
     pacer = mig.RatePacer(rpm=30.0, tpm=25000.0, est_tokens_per_request=2268.0)
     assert pacer.tpm_active
-    # interval = 60 * 2268 / 25000 = 5.44s  (> 2.0s RPM interval)
     assert pacer.interval == pytest.approx(5.44, rel=0.01)
     assert pacer.base_interval == pytest.approx(5.44, rel=0.01)
 
 
 def test_pacer_interval_rpm_binding(mig):
-    # Light workload: RPM pacing binds, TPM does not.
     pacer = mig.RatePacer(rpm=30.0, tpm=25000.0, est_tokens_per_request=100.0)
     assert not pacer.tpm_active
     assert pacer.interval == pytest.approx(2.0)
 
 
 def test_pacer_adaptive_slowdown_and_relax(mig, monkeypatch):
-    # No real sleeping in this test.
     async def _no_sleep(d):
         return None
     monkeypatch.setattr(asyncio, "sleep", _no_sleep)
@@ -80,12 +67,10 @@ def test_pacer_adaptive_slowdown_and_relax(mig, monkeypatch):
     assert pacer.adaptations == 1
     pacer.adapt_on_429()
     assert pacer.interval == pytest.approx(base * 1.5 * 1.5)
-    # Cap at 60s.
     for _ in range(10):
         pacer.adapt_on_429()
     assert pacer.interval <= 60.0
     widened = pacer.interval
-    # wait() relaxes slowly toward base (multiplicative, never below base).
     async def _drain():
         for _ in range(200):
             await pacer.wait()
@@ -94,9 +79,6 @@ def test_pacer_adaptive_slowdown_and_relax(mig, monkeypatch):
     assert widened > base
 
 
-# ---------------------------------------------------------------------------
-# Locking
-# ---------------------------------------------------------------------------
 
 def test_lock_acquire_release(mig, tmp_path):
     lock = tmp_path / "x.lock"
@@ -107,14 +89,12 @@ def test_lock_acquire_release(mig, tmp_path):
     assert info["token"] == token
     mig._release_lock(lock, token)
     assert not lock.exists()
-    # Releasing twice is harmless.
     mig._release_lock(lock, token)
 
 
 def test_lock_release_does_not_remove_others_lock(mig, tmp_path):
     lock = tmp_path / "x.lock"
     token_a = mig._acquire_lock(lock)
-    # Another process takes over (simulated): different token in the file.
     lock.write_text(json.dumps({"at": "t", "pid": 999, "token": "other-token"}))
     mig._release_lock(lock, token_a)
     assert lock.exists(), "must not delete another process's lock"
@@ -123,7 +103,7 @@ def test_lock_release_does_not_remove_others_lock(mig, tmp_path):
 
 def test_lock_active_refused(mig, tmp_path):
     lock = tmp_path / "x.lock"
-    token = mig._acquire_lock(lock)  # our own live PID
+    token = mig._acquire_lock(lock)
     with pytest.raises(RuntimeError, match="another migration is active"):
         mig._acquire_lock(lock)
     mig._release_lock(lock, token)
@@ -132,18 +112,16 @@ def test_lock_active_refused(mig, tmp_path):
 def test_lock_stale_dead_pid_takeover(mig, tmp_path):
     lock = tmp_path / "x.lock"
     lock.write_text(json.dumps({"at": "2020-01-01T00:00:00", "pid": 999999999}))
-    token = mig._acquire_lock(lock)  # must not raise
+    token = mig._acquire_lock(lock)
     assert json.loads(lock.read_text())["pid"] == os.getpid()
     mig._release_lock(lock, token)
 
 
 def test_pid_is_running_self(mig):
-    # The current process is alive; no signal is delivered by the check.
     assert mig._pid_is_running(os.getpid()) is True
 
 
 def test_pid_is_running_unused_pid(mig):
-    # An implausibly large PID is not running; the check sends no signal.
     assert mig._pid_is_running(999999999) is False
 
 
@@ -157,13 +135,12 @@ def test_pid_is_running_rejects_bad_input(mig):
 def test_lock_malformed_takeover(mig, tmp_path):
     lock = tmp_path / "x.lock"
     lock.write_text("not json{{{")
-    token = mig._acquire_lock(lock)  # malformed -> treated as stale
+    token = mig._acquire_lock(lock)
     mig._release_lock(lock, token)
     assert not lock.exists()
 
 
 def test_lock_live_not_displaced_by_age(mig, tmp_path):
-    # A live owner keeps its lock no matter how old it is.
     lock = tmp_path / "x.lock"
     token = mig._acquire_lock(lock)
     old = time.time() - 3 * 3600
@@ -197,7 +174,6 @@ def test_concurrent_acquire_one_winner(mig, tmp_path):
     assert not lock.exists()
 
 
-# --- _migrate_one lock release: fake manager + tiny .pt file -------------
 
 class _FakeRuntime:
     psychagent_embedding_dimensions = 4
@@ -247,7 +223,7 @@ def _tiny_pt(tmp_path):
 
 def test_lock_released_after_exception(mig, tmp_path):
     pt = _tiny_pt(tmp_path)
-    mgr = _FakeManager(fail_on_call=-1)  # RuntimeError on first call
+    mgr = _FakeManager(fail_on_call=-1)
     result = asyncio.run(mig._migrate_one(mgr, pt, False, mig.RatePacer(6000, None, 0), "K"))
     assert result["status"].startswith("FAILED")
     assert not (tmp_path / "micro_skills.gemini-embedding-001.4.pt.lock").exists()
@@ -255,11 +231,10 @@ def test_lock_released_after_exception(mig, tmp_path):
 
 def test_lock_released_after_keyboard_interrupt(mig, tmp_path):
     pt = _tiny_pt(tmp_path)
-    mgr = _FakeManager(fail_on_call=1)  # KeyboardInterrupt on first call
+    mgr = _FakeManager(fail_on_call=1)
     with pytest.raises(KeyboardInterrupt):
         asyncio.run(mig._migrate_one(mgr, pt, False, mig.RatePacer(6000, None, 0), "K"))
     assert not (tmp_path / "micro_skills.gemini-embedding-001.4.pt.lock").exists()
-    # The completed batch before the interrupt is checkpointed; resume works.
     mgr2 = _FakeManager()
     result = asyncio.run(mig._migrate_one(mgr2, pt, False, mig.RatePacer(6000, None, 0), "K"))
     assert result["status"] == "regenerated"
@@ -279,9 +254,6 @@ def test_lock_released_after_cancelled(mig, tmp_path):
     assert not (tmp_path / "micro_skills.gemini-embedding-001.4.pt.lock").exists()
 
 
-# ---------------------------------------------------------------------------
-# Shard checkpoints
-# ---------------------------------------------------------------------------
 
 def _prov():
     return {"embedding_provider": "gemini", "embedding_model": "gemini-embedding-001",
@@ -294,7 +266,6 @@ def test_shard_resume_after_crash(mig, tmp_path):
     assert cp.load() == 0
     cp.save_batch(0, [[0.1] * 4])
     cp.save_batch(1, [[0.2] * 4])
-    # Simulate crash: new instance, batch 2 missing.
     cp2 = mig.ShardCheckpoint(keyed, "hash1", _prov(), ["s1", "s2"], total_batches=3)
     assert cp2.load() == 2
     assert not cp2.is_complete()
@@ -319,7 +290,7 @@ def test_shard_tampered_source_hash_rejected(mig, tmp_path):
     cp = mig.ShardCheckpoint(keyed, "hash1", _prov(), ["s1"], total_batches=1)
     cp.save_batch(0, [[0.1] * 4])
     cp2 = mig.ShardCheckpoint(keyed, "DIFFERENT", _prov(), ["s1"], total_batches=1)
-    assert cp2.load() == 0  # tampered source hash: no reuse
+    assert cp2.load() == 0
 
 
 def test_shard_provenance_mismatch_rejected(mig, tmp_path):
@@ -353,7 +324,6 @@ def test_daily_quota_exhausted_type(mig):
 
 
 def test_file_batch_count_boundaries(mig):
-    # merge and retrieve are batched separately: 2 * ceil(N / batch)
     assert mig._file_batch_count(0, 16) == 0
     assert mig._file_batch_count(1, 16) == 2
     assert mig._file_batch_count(16, 16) == 2
@@ -367,7 +337,6 @@ def test_file_batch_count_boundaries(mig):
 
 def test_compute_demand_matches_actual_batching(mig, tmp_path):
     import torch
-    # Two files with uneven skill counts straddling batch boundaries.
     for name, n in (("a", 17), ("b", 10)):
         d = tmp_path / name
         d.mkdir()
@@ -379,14 +348,10 @@ def test_compute_demand_matches_actual_batching(mig, tmp_path):
     files = sorted(tmp_path.rglob("micro_skills.pt"))
     texts, opt, cons, total = mig._compute_demand(files, 16, 1.0)
     assert texts == 2 * (17 + 10)
-    # Exact: 2*ceil(17/16) + 2*ceil(10/16) = 4 + 2 = 6
     assert total == 6
     assert opt > 0 and cons > 0
 
 
-# ---------------------------------------------------------------------------
-# Regression: completed keyed stores must be skipped, not re-embedded
-# ---------------------------------------------------------------------------
 
 def test_completed_store_with_provenance_is_skipped(mig, tmp_path):
     """A valid keyed store (with its _provenance entry) must be skipped.
@@ -397,7 +362,7 @@ def test_completed_store_with_provenance_is_skipped(mig, tmp_path):
     re-embedded on every run, burning daily quota.
     """
     import torch
-    pt = _tiny_pt(tmp_path)  # 3 skills: s0, s1, s2
+    pt = _tiny_pt(tmp_path)
     keyed = tmp_path / "micro_skills.gemini-embedding-001.4.pt"
     store = {
         f"s{i}": {"embedding_to_merge": [0.1] * 4,
@@ -418,12 +383,12 @@ def test_completed_store_with_provenance_is_skipped(mig, tmp_path):
 def test_completed_store_missing_skill_is_regenerated(mig, tmp_path):
     """A keyed store missing a skill must NOT be skipped (count mismatch)."""
     import torch
-    pt = _tiny_pt(tmp_path)  # 3 skills: s0, s1, s2
+    pt = _tiny_pt(tmp_path)
     keyed = tmp_path / "micro_skills.gemini-embedding-001.4.pt"
     store = {
         f"s{i}": {"embedding_to_merge": [0.1] * 4,
                   "embedding_to_retrive": [0.2] * 4}
-        for i in range(2)  # s2 missing
+        for i in range(2)
     }
     store["_provenance"] = {"embedding_provider": "gemini",
                             "embedding_model": "gemini-embedding-001",

@@ -20,7 +20,6 @@ def load_eval_config(path: str | Path) -> EvalRuntimeConfig:
     config_path = Path(path).expanduser().resolve()
     payload = load_yaml_mapping(config_path)
 
-    # Support wrapping under `eval:` to keep room for multi-task configs.
     raw_config: Dict[str, Any]
     maybe_eval = payload.get("eval")
     if isinstance(maybe_eval, dict):

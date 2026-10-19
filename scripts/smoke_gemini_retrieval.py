@@ -55,7 +55,6 @@ def main() -> None:
     dim = int(cfg.psychagent_embedding_dimensions)
     print(f"config: provider=gemini model={model} dim={dim}")
 
-    # backend=None: _load_micro_skills never touches the backend.
     manager = SkillManager(backend=None, runtime_config=cfg)
     key = manager._embedding_store_key()
     print(f"expected keyed store: micro_skills.{key}.pt")
@@ -77,7 +76,6 @@ def main() -> None:
         if not manager._provenance_matches(prov):
             fail(f"provenance mismatch in {keyed} (model/dims do not match config)")
 
-        # The REAL production selection path (keyed store preferred).
         skills = manager._load_micro_skills(stage_dir)
         if not skills:
             fail(f"no skills loaded from {stage_dir}")
@@ -119,7 +117,6 @@ def main() -> None:
         fail(f"live query embedding has dim {q.numel()}, expected {dim}")
     q = q / q.norm()
 
-    # Rank one stage's keyed vectors against the live query embedding.
     stage_dir = base / "bt" / "stage1"
     skills = manager._load_micro_skills(stage_dir)
     ids, vecs = [], []

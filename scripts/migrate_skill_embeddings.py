@@ -97,7 +97,6 @@ class RatePacer:
             if delay > 0:
                 await asyncio.sleep(delay)
             self._last = asyncio.get_running_loop().time()
-            # Slow relax toward the base interval after each successful wait.
             if self.interval > self.base_interval:
                 self.interval = max(self.base_interval, self.interval * 0.95)
 
@@ -222,20 +221,19 @@ def _pid_is_running(pid: object) -> bool:
         kernel32.CloseHandle.argtypes = (ctypes.wintypes.HANDLE,)
         handle = kernel32.OpenProcess(0x1000, False, pid)
         if not handle:
-            # Process does not exist, or exists but we cannot query it.
-            return ctypes.get_last_error() == 5  # ERROR_ACCESS_DENIED
+            return ctypes.get_last_error() == 5
         try:
             code = ctypes.wintypes.DWORD()
             if not kernel32.GetExitCodeProcess(handle, ctypes.byref(code)):
                 return False
-            return code.value == 259  # STILL_ACTIVE
+            return code.value == 259
         finally:
             kernel32.CloseHandle(handle)
     try:
         os.kill(pid, 0)
         return True
     except PermissionError:
-        return True  # exists, but we may not signal it
+        return True
     except (ProcessLookupError, OSError):
         return False
 
@@ -280,9 +278,6 @@ def _acquire_lock(lock_path: Path, race_timeout_sec: float = 30.0) -> str:
             info = json.loads(lock_path.read_text(encoding="utf-8"))
         except Exception:
             info = {}
-        # Malformed/unreadable content cannot be a healthy owner (the owner
-        # always writes valid JSON); _lock_owner_alive({}) is False so it is
-        # treated as stale. Otherwise, a live owner is never displaced.
         if _lock_owner_alive(info):
             try:
                 age = time.time() - lock_path.stat().st_mtime
@@ -294,11 +289,10 @@ def _acquire_lock(lock_path: Path, race_timeout_sec: float = 30.0) -> str:
                 f"{info.get('at', 'unknown')}, age {age:.0f}s). Delete it "
                 f"only if no migration is running.")
 
-        # Stale lock: compare-and-swap takeover.
         try:
             before = lock_path.read_bytes()
         except OSError:
-            continue  # vanished between checks; retry the atomic create
+            continue
         tmp = lock_path.with_name(f"{lock_path.name}.{os.getpid()}.tmp")
         try:
             tmp.write_text(payload, encoding="utf-8")
@@ -307,14 +301,13 @@ def _acquire_lock(lock_path: Path, race_timeout_sec: float = 30.0) -> str:
             except OSError:
                 unchanged = False
             if not unchanged:
-                continue  # someone else acted; re-evaluate from the top
+                continue
             os.replace(str(tmp), str(lock_path))
         finally:
             try:
                 tmp.unlink()
             except OSError:
                 pass
-        # Confirm we still own it after the replace (closes the race window).
         time.sleep(0.05)
         try:
             cur = json.loads(lock_path.read_text(encoding="utf-8"))
@@ -329,7 +322,6 @@ def _acquire_lock(lock_path: Path, race_timeout_sec: float = 30.0) -> str:
             raise RuntimeError(
                 f"could not acquire lock {lock_path.name}: lost a takeover "
                 f"race. Another process may be starting; retry the command.")
-        # Lost the race; loop and re-evaluate (likely a live lock now).
 
 
 def _release_lock(lock_path: Path, token: str | None = None) -> None:
@@ -460,7 +452,6 @@ async def _migrate_one(manager: SkillManager, pt_path: Path, dry_run: bool,
     source_hash = _sha256_file(pt_path)
     provenance = manager._build_provenance(source_hash, len(skill_ids))
 
-    # Build texts (merge + retrieve are different texts; measured unique).
     merge_texts, retrieve_texts = [], []
     for sid in skill_ids:
         m, r = _skill_texts(skills[sid])
@@ -474,7 +465,6 @@ async def _migrate_one(manager: SkillManager, pt_path: Path, dry_run: bool,
     merge_batches = _batches(merge_texts)
     retrieve_batches = _batches(retrieve_texts)
     total_batches = len(merge_batches) + len(retrieve_batches)
-    # Self-check: the executed batching must match the demand estimate.
     expected = _file_batch_count(len(skill_ids), batch_size)
     if total_batches != expected:
         raise RuntimeError(
@@ -487,18 +477,11 @@ async def _migrate_one(manager: SkillManager, pt_path: Path, dry_run: bool,
     if dry_run:
         return {**stats, "status": "dry-run (no API calls, no writes)"}
 
-    # Resumability: completed keyed store with matching provenance.
     if keyed_path.exists():
         try:
             existing = torch.load(str(keyed_path), weights_only=False)
             if isinstance(existing, dict) and manager._provenance_matches(
                     existing.get("_provenance")):
-                # Validate only the expected skill ids: the keyed store also
-                # carries a "_provenance" entry, which must not be treated as
-                # a skill (fix: the old existing.values() comprehension hit
-                # the provenance dict, raised KeyError, and the surrounding
-                # `except Exception: pass` silently disabled this skip path,
-                # so completed files were re-embedded on every run).
                 problem = _validate_vectors(
                     [existing[sid]["embedding_to_merge"] for sid in skill_ids
                      if isinstance(existing.get(sid), dict)],
@@ -518,16 +501,9 @@ async def _migrate_one(manager: SkillManager, pt_path: Path, dry_run: bool,
 
     dim = max(1, int(manager._runtime.psychagent_embedding_dimensions))
 
-    # Lock against concurrent runs sharing the quota, acquired immediately
-    # before the try block so nothing between acquire and try can raise
-    # and leak it (ShardCheckpoint init/load above can throw). Released in
-    # the finally block below, which also covers exceptions,
-    # KeyboardInterrupt and asyncio.CancelledError. The owner token prevents
-    # us from deleting another process's lock after a stale takeover.
     lock_token = _acquire_lock(lock_path)
     try:
         batch_idx = 0
-        # Order of batch indices: merge batches 0..M-1, retrieve batches M..M+R-1
         for batch in merge_batches:
             if batch_idx not in checkpoint.done:
                 await pacer.wait()
@@ -572,13 +548,9 @@ async def _migrate_one(manager: SkillManager, pt_path: Path, dry_run: bool,
     except Exception as exc:  # noqa: BLE001 - per-file failure, keep going
         msg = _redact(f"{type(exc).__name__}: {exc}", env_name)
         if "daily quota" in msg.lower():
-            # Abort the whole run: retrying sooner is pointless.
             raise DailyQuotaExhausted(msg[:220])
         return {**stats, "status": f"FAILED: {msg[:220]}"}
     finally:
-        # Always release the lock: success, failure, KeyboardInterrupt,
-        # asyncio.CancelledError. Stale locks from killed processes are
-        # detected on acquire.
         _release_lock(lock_path, lock_token)
 
 
@@ -645,7 +617,6 @@ async def _run(args: argparse.Namespace) -> int:
           f" -> interval {pacer.interval:.2f}s/request")
     if total_batches:
         cons_minutes = total_batches * pacer.interval / 60.0
-        # Optimistic duration under RPM pacing alone (no TPM binding).
         opt_interval = 60.0 / max(1.0, float(args.rpm))
         opt_minutes = total_batches * opt_interval / 60.0
         print(f"projected duration: ~{opt_minutes:.0f} min (optimistic) / "
@@ -731,6 +702,5 @@ if __name__ == "__main__":
     try:
         sys.exit(main())
     except KeyboardInterrupt:
-        # Shard checkpoints are atomic per batch; re-running resumes cleanly.
         print("\ninterrupted by user; completed batches are checkpointed, re-run to resume")
         sys.exit(130)

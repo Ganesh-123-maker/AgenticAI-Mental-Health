@@ -272,7 +272,6 @@ class RuntimeConfig:
         if not embedding_env:
             raise ConfigValidationError("psychagent_embedding_api_key_env must be non-empty")
         if self.client_backend != "dummy" and not os.getenv(embedding_env, "").strip():
-            # For non-dummy backends, warn or validate if strictly needed
             pass
 
     def to_dict(self) -> Dict[str, Any]:

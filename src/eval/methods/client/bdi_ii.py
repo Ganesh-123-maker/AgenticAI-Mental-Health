@@ -49,7 +49,6 @@ class BDI_II(EvaluationMethod):
         
         template = Template(prompt)
         prompt = template.render(intake_form=profile, diag=dialogue)
-        # print(f"BDI_II - {BDI_II} prompt: {prompt}")
         messages = [{"role": "user", "content": prompt}]
 
         last_err: Exception | None = None
@@ -73,7 +72,7 @@ class BDI_II(EvaluationMethod):
 
         mean_score = 0.0
         for it in validated.items:
-            mean_score += float(it.score) * 10.0 / 3.0  # 0-3 -> 0-10
+            mean_score += float(it.score) * 10.0 / 3.0
 
         mean_score /= len(validated.items)
         return {"client": mean_score}

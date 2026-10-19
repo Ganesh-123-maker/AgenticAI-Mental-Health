@@ -51,7 +51,6 @@ class SFBT(EvaluationMethod):
         
         template = Template(prompt)
         prompt = template.render(intake_form=profile, diag=dialogue)
-        # print(f"SFBT - {SFBT} prompt: {prompt}")
         messages=[{"role": "user", "content": prompt}]
 
         last_err: Exception | None = None
@@ -75,17 +74,14 @@ class SFBT(EvaluationMethod):
             raise RuntimeError(f"Failed to get valid SFBT output: {last_err}")
         
 
-        # outputs = dict(zip(criteria_list, scores))
         
         mean_score = 0
         
         for item in scores:
-            mean_score += float(item.score) * 10.0 / 4.0  # 0-4 -> 0-10
+            mean_score += float(item.score) * 10.0 / 4.0
 
         mean_score /= len(scores)
-        # mean_score = sum(scores) / len(scores) if scores else 0
         
-        # outputs["sum"] = sum(scores)
         return {"client": mean_score}
     
     def get_name(self) -> str:

@@ -80,7 +80,7 @@ class CCT(EvaluationMethod):
         mean_score = 0.0
         if scores:
             for item in scores:
-                mean_score += float(item.score) / 2.0 * 10.0  # 0-2 -> 0-10
+                mean_score += float(item.score) / 2.0 * 10.0
             mean_score /= len(scores)
 
         return {"client": mean_score}

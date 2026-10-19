@@ -31,7 +31,7 @@ class Item(BaseModel):
         return s
 
 
-class Items(BaseModel):  # Wrapper schema
+class Items(BaseModel):
     model_config = ConfigDict(extra="forbid", strict=True)
 
     items: List[Item] = Field(min_length=12, max_length=12)
@@ -55,7 +55,6 @@ class WAI(EvaluationMethod):
 
         template = Template(prompt)
         prompt = template.render(intake_form=profile, diag=dialogue)
-        # print(f"wai - wai prompt: {prompt}")
         messages=[{"role": "user", "content": prompt}]
 
         last_err: Exception | None = None
@@ -82,12 +81,10 @@ class WAI(EvaluationMethod):
         mean_score = 0
         
         for item in scores:
-            mean_score += (float(item.score) - 1.0) * 2.5  # 1-5 -> 0-10
+            mean_score += (float(item.score) - 1.0) * 2.5
 
         mean_score /= len(scores)
-        # mean_score = sum(scores) / len(scores) if scores else 0
         
-        # outputs["sum"] = sum(scores)
         return {"counselor": mean_score}
 
     def get_name(self) -> str:

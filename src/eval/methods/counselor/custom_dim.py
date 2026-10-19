@@ -26,7 +26,7 @@ class Item(BaseModel):
         return s
 
 
-class _ItemsBase(BaseModel):  # Wrapper schema
+class _ItemsBase(BaseModel):
     model_config = ConfigDict(extra="forbid", strict=True)
 
     items: List[Item]
@@ -104,17 +104,14 @@ class Custom_Dim(EvaluationMethod):
             scores.extend(items)
         
 
-        # outputs = dict(zip(criteria_list, scores))
         
         mean_score = 0
         
         for item in scores:
-            mean_score += (float(item.score) - 1.0) * 2.5  # 1-5 -> 0-10
+            mean_score += (float(item.score) - 1.0) * 2.5
 
         mean_score /= len(scores)
-        # mean_score = sum(scores) / len(scores) if scores else 0
         
-        # outputs["sum"] = sum(scores)
         return {"counselor": mean_score}
     
     def get_name(self) -> str:

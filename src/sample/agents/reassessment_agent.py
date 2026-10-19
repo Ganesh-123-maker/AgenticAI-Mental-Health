@@ -39,7 +39,6 @@ from .uncertainty_agent import UncertaintyAgent
 
 logger = logging.getLogger(__name__)
 
-# Signals indicating evasive or uninformative answers that fail to resolve uncertainty
 _UNINFORMATIVE_ANSWERS = [
     "i don't know", "not clear", "not sure", "nothing", "not much", "just so-so", "don't want to say", "whatever", "can't remember"
 ]
@@ -66,14 +65,8 @@ def _is_uninformative_answer(answer: str) -> bool:
     return len(content_words) < 4
 
 
-# Missing-information items no client answer can resolve (system/memory gaps,
-# not client-answerable facts). They are tracked for transparency but must not
-# keep the route UNCERTAIN on their own.
 _NON_CLIENT_ANSWERABLE = ("prior_session_recaps", "session_recaps", "last_homework", "theory_info")
 
-# Field-name fragments identifying safety-relevant missing items: questions
-# whose answers materially affect the safety decision (e.g. whether the
-# client has a history that changes risk handling).
 _SAFETY_TOPIC_HINTS = ("medical_history", "medical history", "safety",
                        "suicide", "self_harm", "self-harm", "crisis")
 
@@ -84,9 +77,6 @@ def _is_safety_relevant(item: str) -> bool:
     return any(h in text for h in _SAFETY_TOPIC_HINTS)
 
 
-# Severity caution ranking for the blocking rule. UNCERTAIN ("safety status
-# unverified") outranks MODERATE: when safety cannot be verified, unresolved
-# safety questions block like an elevated risk would.
 _SEVERITY_RANK = {"LOW": 0, "MODERATE": 1, "UNCERTAIN": 2, "HIGH": 3}
 
 
@@ -99,9 +89,6 @@ def _effective_severity(*payloads: Dict[str, Any]) -> str:
             best = sev
     return best
 
-# Canonical concern topics -> keywords indicating a client's answer actually
-# addresses that topic. Used to verify resolution against the ANSWER's content,
-# so that merely asking about X never counts as resolving X.
 _TOPIC_KEYWORDS = {
     "medical_history": {"medical", "health", "treatment", "therapy", "therapist", "therapies",
                         "medication", "medicine", "meds", "doctor", "hospital", "clinic",
@@ -121,7 +108,6 @@ _TOPIC_KEYWORDS = {
                      "anxious", "stress", "stressed", "depressed", "sad"},
 }
 
-# Field-name fragments identifying the canonical topic of a missing-information item
 _TOPIC_FIELD_HINTS = {
     "medical_history": ("medical_history", "prior_treatment", "prior_therapy", "medication", "health_status"),
     "growth_experiences": ("growth_experiences", "timeline", "onset", "duration", "how_long"),
@@ -155,7 +141,6 @@ def _answer_addresses_item(answer: str, item: str) -> bool:
     for topic, hints in _TOPIC_FIELD_HINTS.items():
         if any(h in item_lc for h in hints):
             keywords.update(_TOPIC_KEYWORDS[topic])
-    # literal tokens from the field-path part of the item label
     field_part = re.split(r"\s*\(", item_lc, maxsplit=1)[0]
     for tok in re.split(r"[_\W]+", field_part):
         if tok and tok not in _GENERIC_FIELD_TOKENS:
@@ -163,10 +148,6 @@ def _answer_addresses_item(answer: str, item: str) -> bool:
     if not keywords:
         return False
     answer_words = re.findall(r"[a-z']+", str(answer or "").lower())
-    # One-directional: a keyword must appear within an answer word (covers
-    # morphological variants like "therapies"). The reverse direction
-    # (answer word inside keyword) is deliberately excluded: common words
-    # like "the" are substrings of "therapy" and would falsely resolve.
     return any(kw in w for w in answer_words for kw in keywords if len(kw) > 2)
 
 
@@ -205,10 +186,8 @@ class ReassessmentAgent(Agent):
             )
 
     def _run(self, ctx: AgentContext, clarification_answer: Optional[str] = None) -> AgentMessage:
-        # 1. Obtain the clarification answer
         answer = clarification_answer
         if not answer:
-            # Check context fields
             answer = getattr(ctx, "clarification_answer", None)
             if not answer and ctx.metadata.get("clarification_answer"):
                 answer = str(ctx.metadata["clarification_answer"])
@@ -216,20 +195,17 @@ class ReassessmentAgent(Agent):
                 answer = ctx.current_message
         answer = str(answer or "").strip()
 
-        # 2. Pull prior outputs
         prior_state = copy.deepcopy(ctx.state_output or {})
         prior_unc = copy.deepcopy(ctx.uncertainty_output or {})
         prior_risk = copy.deepcopy(ctx.risk_output or {})
 
         missing_info = prior_unc.get("missing_information", [])
 
-        # 3. Check for new RISK signals in the clarification answer
         temp_ctx = ctx.copy()
         temp_ctx.current_message = answer
         risk_msg = self._risk_agent.run(temp_ctx)
         reassessed_risk = risk_msg.payload
 
-        # If prior risk was already HIGH or new answer contains HIGH risk signals
         if prior_risk.get("severity") == "HIGH" or reassessed_risk.get("severity") == "HIGH":
             final_risk = reassessed_risk if reassessed_risk.get("severity") == "HIGH" else prior_risk
             payload: Dict[str, Any] = {
@@ -252,7 +228,6 @@ class ReassessmentAgent(Agent):
                 payload=payload,
             )
 
-        # 4. Check if clarification answer is informative or uninformative
         is_uninformative = _is_uninformative_answer(answer)
 
         resolved_information: List[str] = []
@@ -263,16 +238,11 @@ class ReassessmentAgent(Agent):
         unknown_info = list(updated_state.get("unknown_information", []))
 
         if not is_uninformative and len(answer) >= 5:
-            # Genuine new factual content provided
             new_fact = f"[Clarification Gained] {answer}"
             if new_fact not in known_info:
                 known_info.append(new_fact)
             updated_state["known_information"] = known_info
 
-            # Identify which missing information items the ANSWER actually resolves.
-            # Asking about X does not resolve X: the answer itself must contain
-            # X-related content (see _answer_addresses_item). System gaps that no
-            # client answer can resolve are tracked but never block the route.
             for item in missing_info:
                 item_str = str(item)
                 if _is_system_gap(item_str):
@@ -287,21 +257,14 @@ class ReassessmentAgent(Agent):
 
             updated_state["unknown_information"] = unknown_info
         else:
-            # Answer was evasive, uninformative, or missing — nothing resolved
             remaining_uncertainty = list(missing_info)
             uninf_fact = f"[Uninformative Clarification] Client response: '{answer}'"
             if uninf_fact not in known_info:
                 known_info.append(uninf_fact)
             updated_state["known_information"] = known_info
 
-        # 5. Re-run Uncertainty Assessment on the updated state
         temp_ctx.state_output = updated_state
         temp_mem = copy.deepcopy(ctx.memory_output or {})
-        # If safety information was GENUINELY supplied (in resolved_information,
-        # i.e. the answer actually addressed it -- not merely because the
-        # question was asked), record it in memory BEFORE re-assessing risk so
-        # the risk agent evaluates with complete information. Never manually
-        # force LOW here: prior distress evidence must survive reassessment.
         if any("medical" in r or "safety" in r for r in resolved_information):
             if isinstance(temp_mem, dict):
                 traits = temp_mem.setdefault("known_static_traits", {})
@@ -314,13 +277,6 @@ class ReassessmentAgent(Agent):
         unc_msg = self._uncertainty_agent.run(temp_ctx)
         reassessed_unc = unc_msg.payload
 
-        # 6. Determine final status and route_decision, calibrated by risk.
-        # An unanswered question blocks only when it matters: at MODERATE or
-        # unverified (UNCERTAIN) risk, an unresolved SAFETY-relevant question
-        # means the safety decision is compromised -> stay UNCERTAIN. At LOW
-        # risk the safety decision stands on actual evidence, so unanswered
-        # questions (safety or not) are recorded but do not block the
-        # conversation. System gaps never block on their own.
         remaining_client_items = [r for r in remaining_uncertainty if not _is_system_gap(r)]
         blocking_safety_items = [r for r in remaining_client_items if _is_safety_relevant(r)]
         eff_severity = _effective_severity(prior_risk, reassessed_risk)

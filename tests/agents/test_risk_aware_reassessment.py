@@ -111,7 +111,6 @@ def test_moderate_genuine_answer_resolves_without_risk_downgrade():
     reassess = p["reassessment_agent"]
     assert any("medical_history" in r for r in reassess["resolved_information"])
     assert result["route"] == "CLEAR"
-    # The genuine safety answer must not erase the prior MODERATE distress.
     assert reassess["risk"]["severity"] == "MODERATE", (
         f"risk wrongly downgraded: {reassess['risk']['severity']}"
     )

@@ -44,7 +44,6 @@ from .risk_agent import _find_signal
 
 logger = logging.getLogger(__name__)
 
-# Core concern-relevant information categories
 _CONCERN_RELEVANT_PATTERNS = [
     (r"\b(growth_experiences|timeline|onset|duration|how_long)\b", "growth_experiences", "duration_and_history"),
     (r"\b(medical_history|prior_treatment|prior_therapy|prior_counseling|psychiatric_consultations|medication|health_status)\b", "medical_history", "safety_status"),
@@ -54,16 +53,12 @@ _CONCERN_RELEVANT_PATTERNS = [
     (r"\b(main_problem|chief_complaint|primary_concern)\b", "main_problem", "primary_concern"),
 ]
 
-# Keywords that indicate referential ambiguity or low-specificity client statements
-# (matched case-insensitively)
 _AMBIGUOUS_KEYWORDS = [
     "that matter", "that person", "certain reason", "some event", "that situation", "vaguely",
     "that thing", "someone", "some reason", "don't know what to do", "do not know what to do",
     "everything going on", "it's all too much", "something happened",
 ]
 
-# Patterns that indicate contradictory statements (matched case-insensitively,
-# within the current message or between the previous and current client turn)
 _CONTRADICTORY_PATTERNS = [
     r"(both|on one hand).*(contradictory|conflicting)",
     r"(want to|wish to).*(but don't want|but hate)",
@@ -72,8 +67,6 @@ _CONTRADICTORY_PATTERNS = [
     r"\b(actually|but|though)\b.*\b(barely|not|overwhelmed|struggling|can't|cannot|terrible|awful|anxious|stressed|exhausted)\b",
 ]
 
-# Missing-information items that describe system/configuration gaps rather than
-# facts a client could supply; they must not drive clarification.
 _NON_CLIENT_FIELDS = ("theory_info",)
 
 
@@ -131,7 +124,6 @@ class UncertaintyAgent(Agent):
         is_ambiguous = False
         is_contradictory = False
 
-        # 1. Evaluate UNKNOWN information from state output
         for item in unknown_info:
             item_str = str(item)
             if "prior_session" in item_str.lower() or "session_recap" in item_str.lower() or "first session" in item_str.lower():
@@ -140,7 +132,6 @@ class UncertaintyAgent(Agent):
                 continue
             if item_str not in missing_info:
                 missing_info.append(item_str)
-            # Map item to fields
             for pat, field_name, utype in _CONCERN_RELEVANT_PATTERNS:
                 if re.search(pat, item_str, re.IGNORECASE):
                     if field_name not in uncertain_fields:
@@ -148,7 +139,6 @@ class UncertaintyAgent(Agent):
                     if utype not in uncertainty_types:
                         uncertainty_types.append(utype)
 
-        # Check if medical_history / safety status is absent from static traits
         mem_payload = ctx.memory_output or {}
         if isinstance(mem_payload, dict):
             static_traits = mem_payload.get("known_static_traits", {}) or {}
@@ -156,12 +146,6 @@ class UncertaintyAgent(Agent):
             if not med_hist or med_hist.lower() in ("(unavailable)", "not_mentioned", "not mentioned", "unknown"):
                 if "medical_history (safety status absent)" not in missing_info:
                     missing_info.append("medical_history (safety status absent)")
-                # Flag as active uncertain field if safety track, affirmed medical context mentioned, or concern unknown.
-                # The safety-track signal comes ONLY from structured metadata
-                # (ctx.metadata["track"], propagated by the eval harness from
-                # the case's `track` field). Never infer it from the case_id
-                # or filenames. When unavailable (production runtime), the
-                # remaining clauses still fail safe towards flagging.
                 cur_text = f"{current_concern} {ctx.current_message or ''}".lower()
                 track = str((ctx.metadata or {}).get("track") or "").lower()
                 is_safety_case = track == "safety"
@@ -178,7 +162,6 @@ class UncertaintyAgent(Agent):
                     if "safety_status" not in uncertainty_types:
                         uncertainty_types.append("safety_status")
 
-        # 2. Check client's latest message / current concern for AMBIGUITY
         text_to_check = f"{current_concern} {ctx.current_message or ''}".strip().lower()
         for kw in _AMBIGUOUS_KEYWORDS:
             if kw in text_to_check:
@@ -187,8 +170,6 @@ class UncertaintyAgent(Agent):
                     uncertainty_types.append("ambiguous_expression")
                 evidence.append(f"Ambiguous expression detected: '{kw}' in client expression")
 
-        # 3. Check for CONTRADICTORY information (current message, and previous
-        #    client turn followed by the current one)
         previous_client_turn = ""
         for turn in reversed(ctx.prior_transcript or []):
             if isinstance(turn, dict) and turn.get("role") == "user":
@@ -204,8 +185,6 @@ class UncertaintyAgent(Agent):
                     uncertainty_types.append("contradictory_information")
                 evidence.append(f"Contradictory pattern detected: '{pat}' in client expression")
 
-        # 4. Check whether missing information is directly relevant to current concern
-        # If current_concern exists but duration/growth_experiences or medical history is unknown
         concern_relevant_unresolved = False
         if current_concern and current_concern != "(unavailable)":
             for field_name in uncertain_fields:
@@ -213,7 +192,6 @@ class UncertaintyAgent(Agent):
                     concern_relevant_unresolved = True
                     break
 
-        # 5. Determine status, uncertainty_level, priority, clarification
         if is_contradictory:
             status = "AMBIGUOUS"
             uncertainty_level = "HIGH"
@@ -278,7 +256,6 @@ class UncertaintyAgent(Agent):
             "reasoning_summary": reasoning_summary,
         }
 
-        # Validate
         _validate_uncertainty_payload(payload)
 
         return AgentMessage(

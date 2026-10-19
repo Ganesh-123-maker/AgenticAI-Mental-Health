@@ -89,8 +89,6 @@ class CounselingAgent(Agent):
             (ctx.uncertainty_output or {}).get("status"),
         )
 
-        # Delegate skill retrieval to existing runner / SkillManager
-        # NOTE: SOP-1 crisis prioritization in select_skill/system.txt handles HIGH-RISK cases naturally
         skill_suggestion, _ = await runner_instance._retrieve_skill(
             modality=modality,
             transcript=transcript,
@@ -100,12 +98,10 @@ class CounselingAgent(Agent):
             case_id=case_id,
         )
 
-        # Re-render counselor system prompt with suggested skills
         counselor_messages[0]["content"] = render_counselor_system(skill_suggestion)
         if each_turn_system is not None:
             each_turn_system.append(counselor_messages[0]["content"])
 
-        # Call counselor backend
         c_resp_pure, c_resp_raw = await runner_instance._chat_with_retry(
             runner_instance._counselor_backend,
             counselor_messages,

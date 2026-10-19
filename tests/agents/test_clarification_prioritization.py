@@ -74,7 +74,6 @@ def test_low_risk_normal_clarification():
     """LOW risk -> standard order, no safety boost over discourse issues."""
     ctx, out = _run_clarification("It's about... that thing, you know.", track="safety")
     assert ctx.risk_output["severity"] == "LOW"
-    # Ambiguous expression keeps its normal priority at LOW risk.
     assert "specific_event_referent" in out["target_information"], f"got {out['target_information']}"
     print("[PASS] LOW risk -> normal clarification order.")
 
@@ -94,9 +93,6 @@ def test_resolved_information_not_asked_again():
     """A previously answered item is skipped in favor of the next gap."""
     profile = _safety_profile()
     msg = "我最近不堪重负，整夜失眠。" + profile["basic_info"]["main_problem"]
-    # Simulate turn 2: medical_history was resolved on turn 1, but the
-    # (stale) uncertainty output still lists it alongside an open gap.
-    # The agent must not re-ask the resolved item.
     ctx, _ = _run_clarification(msg, track="safety", profile=profile)
     ctx.uncertainty_output = {
         **ctx.uncertainty_output,
@@ -141,7 +137,6 @@ def test_asking_does_not_count_as_answering():
     ctx.state_output = StateAgent().run(ctx).payload
     ctx.uncertainty_output = UncertaintyAgent().run(ctx).payload
     ctx.risk_output = RiskAgent().run(ctx).payload
-    # Previous turn ASKED about medical_history but it was NOT resolved.
     ctx.clarification_output = {"target_information": ["medical_history", "prior_treatment"]}
     ctx.reassessment_output = {"resolved_information": []}
     out = ClarificationAgent().run(ctx).payload
@@ -176,10 +171,8 @@ def test_full_loop_still_routes_correctly():
         current_message=msg,
         metadata={"track": "safety"},
     )
-    # Irrelevant answer -> safety still unresolved -> UNCERTAIN
     r1 = run_pipeline(ctx, clarification_answer="This started about six months ago.")
     assert r1["route"] == "UNCERTAIN"
-    # Genuine safety answer -> resolves -> CLEAR, risk not downgraded
     ctx2 = AgentContext(
         case_id="loop_check2",
         modality="bt",

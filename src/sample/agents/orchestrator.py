@@ -53,11 +53,9 @@ class Orchestrator(Agent):
             )
 
     def _run(self, ctx: AgentContext) -> AgentMessage:
-        # Check if reassessment has been run
         reassess_payload = getattr(ctx, "reassessment_output", None) or ctx.metadata.get("reassessment_output")
         has_reassessment = isinstance(reassess_payload, dict) and bool(reassess_payload)
 
-        # Pull uncertainty and risk payloads
         if has_reassessment:
             unc_payload = reassess_payload.get("uncertainty", {}) or ctx.uncertainty_output or {}
             risk_payload = reassess_payload.get("risk", {}) or ctx.risk_output or {}
@@ -70,13 +68,11 @@ class Orchestrator(Agent):
         risk_severity = risk_payload.get("severity", "LOW")
         clarification_required = bool(unc_payload.get("clarification_required", False))
 
-        # Rule 1: HIGH-RISK override (must override CLEAR and UNCERTAIN)
         if risk_severity == "HIGH" or (has_reassessment and reassess_payload.get("route_decision") == "HIGH-RISK"):
             route = "HIGH-RISK"
             next_agent = "safety_supervisor"
             reason = "High-risk safety signals detected; emergency safety path prioritized over counseling."
 
-        # Rule 2: Reassessment decision takes precedence over initial uncertainty status
         elif has_reassessment:
             if reassess_payload.get("route_decision") == "CLEAR":
                 route = "CLEAR"
@@ -87,13 +83,11 @@ class Orchestrator(Agent):
                 next_agent = "clarification_agent"
                 reason = "Informational gaps remain unresolved after clarification; further clarification needed."
 
-        # Rule 3: Initial UNCERTAIN route
         elif unc_status in ("UNCERTAIN", "AMBIGUOUS") or clarification_required:
             route = "UNCERTAIN"
             next_agent = "clarification_agent"
             reason = f"Informational uncertainty detected ({unc_status}); clarification needed before proceeding."
 
-        # Rule 4: CLEAR route
         else:
             route = "CLEAR"
             next_agent = "counseling_agent"
@@ -126,7 +120,6 @@ class Orchestrator(Agent):
 
         _validate_orchestrator_payload(payload)
 
-        # Store routing decision on context
         ctx.routing_output = payload
 
         return AgentMessage(

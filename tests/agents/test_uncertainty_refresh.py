@@ -95,8 +95,6 @@ def test_new_uncertainty_discovered_is_preserved():
     """A newly discovered uncertainty type in reassessment reaches turn 2."""
     profile, main_problem = _safety_profile_two_gaps()
     ctx = _base_ctx("我最近不堪重负。" + main_problem, profile)
-    # Simulate reassessment: safety gap resolved, but a contradiction was
-    # discovered in the answer. Turn 2 must target the contradiction.
     r1 = {
         "uncertainty": {
             **ctx.uncertainty_output,
@@ -140,7 +138,6 @@ def test_risk_state_refreshed_for_prioritization():
     profile, main_problem = _safety_profile_two_gaps()
     ctx = _base_ctx("Work has been fine lately. " + main_problem, profile)
     assert ctx.risk_output["severity"] == "LOW"
-    # Reassessment re-ran risk on an answer containing distress -> MODERATE.
     r1 = {
         "uncertainty": ctx.uncertainty_output,
         "risk": {"severity": "MODERATE", "risk_status": "SUSPECTED_RISK", "evidence": ["distress in answer"]},
@@ -163,15 +160,12 @@ def test_multi_turn_terminates_when_resolved():
     profile, main_problem = _safety_profile_two_gaps()
     msg = "我最近不堪重负，整夜失眠。" + main_problem
 
-    # Turn 1 via pipeline: answer addresses medical_history genuinely.
     ctx1 = _base_ctx(msg, profile, case_id="term_t1")
     r1 = run_pipeline(
         ctx1,
         clarification_answer="No, I have never had any mental health treatment before.",
         max_reassess_turns=2,
     )
-    # medical_history resolved; growth_experiences (non-safety) remains at
-    # MODERATE -> CLEAR per risk-aware rule; loop terminates.
     assert r1["route"] == "CLEAR"
     assert r1["reassess_count"] <= 2
     print("[PASS] Multi-turn loop terminates when resolved.")

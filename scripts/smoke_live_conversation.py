@@ -41,7 +41,6 @@ def main() -> None:
     args = ap.parse_args()
     base = args.base_url.rstrip("/")
 
-    # Generous timeout: the real pipeline calls the LLM per turn.
     client = httpx.Client(base_url=base, timeout=300.0)
 
     r = client.get("/health")
@@ -56,7 +55,6 @@ def main() -> None:
         token = r.json()["token"]
         print(f"registered user {username}")
     else:
-        # User exists (re-run): fall back to login.
         r = client.post("/auth/login", json={"username": username, "password": password})
         if r.status_code != 200:
             fail(f"register ({r.status_code}) and login ({r.status_code}) both failed")
