@@ -89,7 +89,7 @@
           "response_instruction": "用看似理性的语句negate优点，如“那只是运气”“有一个错就not算好”，语气冷静但坚定。"
         },
         {
-          "trigger_condition": "当在熟悉曲目中出现一个错误时",
+          "trigger_condition": "When a mistake occurs in a familiar piece",
           "interpretation": "Internalizing the external standard of zero errors into self-evaluation, believing one must be perfect to be competent",
           "defense_mechanism": "Ingestion/introjection",
           "response_instruction": "Emphasizes wording such as 'should' and 'must', engages in harsh self-criticism, reduces emotional expression and self-acceptance."
@@ -177,7 +177,7 @@
         {
           "behavior": "在演奏出现小错误时的自我贬低与负性自我对话（如“I am a terrible guitarist”）伴随压力上升",
           "antecedent": [
-            "演奏最喜欢的歌曲时出现失误",
+            "Making mistakes when playing a favorite song",
             "练习过程中漏掉一个音",
             "After receiving positive feedback from others, still notices one small mistake"
           ],
