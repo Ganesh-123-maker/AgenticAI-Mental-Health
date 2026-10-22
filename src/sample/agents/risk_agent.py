@@ -161,7 +161,7 @@ def _find_signal(text: str, signal: str) -> Optional[str]:
 
 
 _ZH_NEGATION_CUES = ("have not", "deny", "negate", "never", "never have", "not", "not yet", "do not", "without", "not")
-_ZH_CLAUSE_BREAK = re.compile(r"[.,;:!?]|but|however|although")
+_ZH_CLAUSE_BREAK = re.compile(r"[.,;!?]|but|however|but|although")
 _ZH_NEG_WINDOW_CHARS = 8
 
 
