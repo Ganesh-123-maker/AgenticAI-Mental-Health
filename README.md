@@ -354,6 +354,4 @@ Scientific transparency requires disclosing key methodology boundaries and valid
 
 ---
 
-## 15. License
 
-**License: undecided.** This repository does not currently include a LICENSE file, and no license has been selected for this project. The upstream PsychAgent repository (https://github.com/ECNU-ICALK/PsychAgent) also carries no license file (checked 2026-10-21). Earlier MIT wording was removed because it was not backed by a license file; the project owner will decide the license.
