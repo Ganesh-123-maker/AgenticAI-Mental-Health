@@ -53,9 +53,9 @@
     },
     "885": {
         "skill_id": "885",
-        "skill_name": "结束评估清晰度、持续时间与感受并讨论",
+        "skill_name": "Ends by assessing clarity, duration, and feelings and discussing them",
         "skill_description": "After each practice, asks the client about the duration of imagination, clarity and subjective feelings, and discusses around the experience, so as to calibrate difficulty and elements and optimize subsequent training.",
-        "when_to_use": "每次内隐示范练习结束后进行反馈与调整。",
+        "when_to_use": "After each covert modeling practice, giving feedback and making adjustments.",
         "trigger": "来访者结束想象后回复交流，主动反馈体验或显露困惑、not适与not确定。",
         "parent_ids": [
             "916",
@@ -2569,7 +2569,7 @@
     },
     "603": {
         "skill_id": "603",
-        "skill_name": "安置目标肌群肌电电极进行肌力恢复训练",
+        "skill_name": "Places EMG electrodes on target muscle groups for muscle strength recovery training",
         "skill_description": "将电极安放于需康复的目标肌附近，依据反馈进行收缩训练，Reinforcement肌力与控制，适用于痉挛、抽动或部分麻痹等功能恢复。",
         "when_to_use": "In the training stage where EMG feedback is used for rehabilitation, the goal is to enhance the contraction and voluntary control of specific muscle groups.",
         "trigger": "The client shows local muscle spasm, tics, or reduced muscle strength, and reports related functional limitation or weakness.",
@@ -2601,7 +2601,7 @@
     },
     "605": {
         "skill_id": "605",
-        "skill_name": "引导依据反馈信号进行放松或收缩自我调节",
+        "skill_name": "Guiding relaxation or contraction self-regulation based on feedback signals",
         "skill_description": "启动Intervention程序或口头指导，教来访者观察反馈信号，练习降低额肌活动或加强目标肌收缩，逐步建立自我控制能力。",
         "when_to_use": "在反馈学习阶段的Intervention与自我调节环节，基线测量与休息结束后。",
         "trigger": "来访者能看到或听到反馈信号并配合指令，肌电曲线随指令出现可识do not波动。",
@@ -3918,7 +3918,7 @@
     },
     "583": {
         "skill_id": "583",
-        "skill_name": "讲解心率反馈原理与指标意义并消除顾虑",
+        "skill_name": "Explains heart rate feedback principles and the meaning of indicators and dispels concerns",
         "skill_description": "Introduce to the client the purpose and process of biofeedback, equipment safety, and the meaning of the indicators, and through brief suggestion or relaxation demonstration let them experience changes in the indicators, helping them recognize that change comes from active participation.",
         "when_to_use": "在正式训练前的教育与熟悉环节，尤其是初次训练或来访者对方法not熟悉时。",
         "trigger": "Used when the client has concerns about the instrument, asks about safety, or feels confused about the meaning of heart rate / variability indicators and is emotionally tense.",
@@ -3982,7 +3982,7 @@
     },
     "587": {
         "skill_id": "587",
-        "skill_name": "安排小节休息与多轮训练直至掌握下降模式",
+        "skill_name": "Arranging short breaks and multiple rounds of training until the descending pattern is mastered",
         "skill_description": "Arrange brief rest between sections, adjust the rhythm according to fatigue and the degree of internalization of learning; afterwards carry out the practice of the next section, training repeatedly until the client can stably reproduce the self-regulation state of decreasing indicators.",
         "when_to_use": "同一场次训练过程中，为维持专注与体能并促进skill内化的阶段性安排。",
         "trigger": "来访者出现疲劳、Decreased attention、身体not适或完成一小节预定练习后需要过渡时。",
@@ -4597,7 +4597,7 @@
     },
     "675": {
         "skill_id": "675",
-        "skill_name": "颈肩放松引导（头微前倾与耸肩-放松）",
+        "skill_name": "Neck and shoulder relaxation guidance (head slightly forward and shoulder shrug-relax)",
         "skill_description": "Prompt slightly tilting the head forward to experience relaxation of the muscles at the back of the neck; shrug the shoulders to close to the earlobes then let them fall naturally, repeatedly contrasting tension and relaxation. For those who lack exercise, guide step by step, gradually releasing neck and shoulder tension.",
         "when_to_use": "When training progresses to the neck and shoulder-girdle areas, helping relieve long-tense neck and shoulder muscle groups.",
         "trigger": "The client complains of neck stiffness, shrugged tense shoulders, or difficulty relaxing thoroughly due to lack of exercise.",
@@ -4835,7 +4835,7 @@
     },
     "732": {
         "skill_id": "732",
-        "skill_name": "维持分级推进，完成当前级后再进下一级",
+        "skill_name": "Maintains graded progression, completing the current level before advancing to the next",
         "skill_description": "严格按Anxiety等级循序渐进实施接触，只有当当前级do notnot再诱发Anxiety或评分明显下降时才进入下一等级，避免过度跨级。",
         "when_to_use": "During the progression of exposure practice, used to control the pace and cross-level rhythm, ensuring stable desensitization.",
         "trigger": "来访者在当前级do not接触中主观Anxiety降至低水平，without明显紧张反应；或尚not yet完全消敏却提出加快进度。",
@@ -5178,7 +5178,7 @@
         "skill_id": "770",
         "skill_name": "监测生理反应并判定坚持或中止",
         "skill_description": "Closely monitor sympathetic arousal manifestations such as rapid breathing, palpitations, sweating, and dizziness, as well as blood pressure and ECG abnormalities. Unless severe abnormalities or complications occur, encourage persistence; if fainting, shock, etc. occur, stop immediately and treat symptomatically.",
-        "when_to_use": "暴露全过程的安全监测与危机处置环节。",
+        "when_to_use": "Safety monitoring and crisis handling throughout the entire exposure process.",
         "trigger": "来访者出现明显自主神经反应或生命体征异常，或主诉躯体严重not适。",
         "parent_ids": [
             "916",
@@ -5586,7 +5586,7 @@
         "skill_id": "760",
         "skill_name": "安全监护与中止处置",
         "skill_description": "全程密切关注血压、心电等安全指标与严重not良反应；在出现危急征象或来访者/家属反复要求且劝说without效时，立即停止并对症处理。",
-        "when_to_use": "暴露全程的安全把控与突发情况应对阶段。",
+        "when_to_use": "The stage of safety control throughout exposure and handling of unexpected situations.",
         "trigger": "来访者出现通气过度综合征、晕厥、休克，或血压/心电异常，或多次坚决要求终止、家属要求取消且劝说without效。",
         "parent_ids": [
             "916",
@@ -5902,7 +5902,7 @@
     },
     "974": {
         "skill_id": "974",
-        "skill_name": "按等级进行想象暴露—放松—评估循环演练",
+        "skill_name": "Practicing imaginal exposure - relaxation - evaluation cycles by hierarchy level",
         "skill_description": "在已建立等级的基础上，引导想象情境唤起Anxiety，提示体察身心反应并评估水平；一旦紧张上升即停止想象，进行全身放松，再次评估；每次练习1–4个等级，可自中性或最轻恐惧情境开始，循环至该情境not再引发紧张。",
         "when_to_use": "Systematic desensitization的实施阶段（如第4～7次会谈）进行分级练习，巩固放松对抗Anxiety的效果。",
         "trigger": "已完成Anxiety等级划分且能在低等级保持放松，准备继续练习；或在想象训练中出现Anxiety/紧张上升、评估显示not yet达可控水平时。",
@@ -6239,7 +6239,7 @@
     },
     "917": {
         "skill_id": "917",
-        "skill_name": "安排作业与材料反馈以自我监督并对齐目标",
+        "skill_name": "Arranging homework and material feedback for self-monitoring and goal alignment",
         "skill_description": "After the goals are determined, assign homework aligned with the goals, agree to give feedback at the next session, require bringing materials such as plan sheets and mock examination papers, and record execution and results; in the session, check the consistency of homework with the goals, making it convenient to jointly assess with the counselor and adjust the plan in good time, establishing a continuous monitoring and self-supervision mechanism.",
         "when_to_use": "After the goal setting is completed and a continuous monitoring and feedback mechanism needs to be established; or arranging and checking homework at the start and end of each session.",
         "trigger": "来访者已设定目标但执行信心not足或需外部监督支持；能提供学习/训练记录；或对下一步任务not清、对目标进展存疑。",
@@ -6255,7 +6255,7 @@
     },
     "942": {
         "skill_id": "942",
-        "skill_name": "共同制定分层次短期与长期咨询目标与方案",
+        "skill_name": "Jointly formulating tiered short-term and long-term counseling goals and plans",
         "skill_description": "在完成评估后，与来访者明确主要问题，协商制定具体、可执行的短期目标（如缓解/降低Anxiety、改善睡眠、减少回避、重建求职信心等）与长期目标（如找到理想工作、促进人格成熟、适应婚恋等），并约定阶段安排与咨询频次/时长，形成可评估的咨询方案，提升方向感与承诺，作为后续练习基础。",
         "when_to_use": "At the first-stage diagnosis, relationship building and plan formulation, after testing and preliminary analysis are completed.",
         "trigger": "已识do not考试Anxiety等相关症状或就业困难、对not yet来迷茫且信心下降；或已收集基本资料但目标not清/not一致、期望与路径需统一。",
@@ -6419,7 +6419,7 @@
         "skill_id": "928",
         "skill_name": "汇总疗效评估与随访反馈记录",
         "skill_description": "在记录单中汇总来访者自评（心境、睡眠、学习效率、人际等）与咨询师评估（达成Anticipation、回访结论），并归档随访与他人反馈（如“not再做恶梦”“not再害怕”“完全康复”），形成疗效摘要与后续建议依据，支持持续评估与决策。",
-        "when_to_use": "疗程结束或阶段性效果评估与随访总结时。",
+        "when_to_use": "At the end of the course of treatment or at periodic outcome assessment and follow-up summary.",
         "trigger": "Completing the effect evaluation interview and follow-up visit; when receiving feedback from the client by phone, relayed accounts from peers, or reaching the scheduled follow-up point.",
         "parent_ids": [
             "916",

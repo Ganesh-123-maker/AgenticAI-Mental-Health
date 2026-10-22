@@ -299,7 +299,7 @@
     },
     "1237": {
         "skill_id": "1237",
-        "skill_name": "指导自我治疗会谈按标准清单处理残留问题",
+        "skill_name": "Guiding self-therapy sessions to handle residual problems per the standard checklist",
         "skill_description": "Teaches and assigns self-treatment sessions, letting the client regularly handle residual symptoms and difficulties by themself according to standard question lists (such as the thought record form), continuing the treatment effect.",
         "when_to_use": "常规会谈逐渐减少或即将结束时，用于巩固skill并为结束后持续自助处理残留问题做准备。",
         "trigger": "The client begins to improve, sessions decrease in frequency or will end, and expresses hope for a structured method to keep coping with problems after ending.",
@@ -1321,7 +1321,7 @@
     },
     "1323": {
         "skill_id": "1323",
-        "skill_name": "记录咨询师观察到的情绪与人际功能改善",
+        "skill_name": "Records improvements in emotion and interpersonal functioning observed by the counselor",
         "skill_description": "Summarize the professional observations in subsequent sessions, record changes such as the client's emotional stability, increased pleasantness, and enhanced interpersonal skills, comprehensively evaluate progress and recovery from the functional perspective, and supplement the chain of subjective and objective evidence.",
         "when_to_use": "巩固阶段的连续会谈与结案总结时。",
         "trigger": "Signs observed in sessions that the client is more stable, interacts more naturally, and actively integrates into the group.",
@@ -1351,7 +1351,7 @@
         "skill_id": "1454",
         "skill_name": "基于作业反馈评估尝试效果",
         "skill_description": "Review and discuss the approaches the client listed for improving getting along with classmates and the results of recent attempts, confirm the peer responses and emotional changes obtained, and evaluate the actual effect and sustainability, as evidential-basis proof of functional improvement.",
-        "when_to_use": "作业回顾与咨询结束前的巩固评估环节。",
+        "when_to_use": "The homework review and consolidation assessment phase before counseling ends.",
         "trigger": "When the client submits an action plan or reports interaction attempts already made and specific feedback.",
         "parent_ids": [
             "1199",
@@ -1461,7 +1461,7 @@
     },
     "1427": {
         "skill_id": "1427",
-        "skill_name": "收集家人和同事的外部评估验证功能改善",
+        "skill_name": "Collects external evaluations from family and colleagues to verify functional improvement",
         "skill_description": "Ask about and record observations by family members or colleagues on the client's changes, such as going out for entertainment more, increased willingness to communicate, making friends at the company, and so on, in order to verify improvements in social functioning and interpersonal relations and supplement the evaluation evidence.",
         "when_to_use": "When conducting counseling outcome evaluation, needing external corroboration of social functioning change.",
         "trigger": "The client mentions feedback from family or colleagues, or family members' reflections on life changes can be obtained.",
@@ -1506,7 +1506,7 @@
         "skill_name": "复测并对比症状自评量表分数",
         "skill_description": "在咨询结束阶段复测抑郁/Anxiety等症状自评量表，与初测数据逐项对比，记录分值与等级变化，量化情绪症状改善幅度与残留程度，作为客观依据。",
         "when_to_use": "结束评估与Consolidation session中需量化疗效或验证主观改善时。",
-        "trigger": "前后测数据可用或需要客观量化证据时。",
+        "trigger": "When pre/post-test data are available or objective quantitative evidence is needed.",
         "parent_ids": [
             "1199",
             "1200",
@@ -1727,7 +1727,7 @@
     },
     "1464": {
         "skill_id": "1464",
-        "skill_name": "对比前后心理测评量表结果评估整体改善",
+        "skill_name": "Compares psychological assessment scale results before and after to evaluate overall improvement",
         "skill_description": "useSCL-90、PHI、匹兹堡睡眠质量指数等后测结果与初评数据对比，量化症状、人际敏感、睡眠效率与相关指标的变化，作为综合效果评估的客观依据。",
         "when_to_use": "Consolidation session回顾与效果评估环节，咨询结束或随访前。",
         "trigger": "When post-measurement scale results are obtained, or the client hopes to get quantitative evidence to understand overall improvement.",
@@ -2105,7 +2105,7 @@
     },
     "1330": {
         "skill_id": "1330",
-        "skill_name": "复发预感或波动时及时就医并告知支持系统",
+        "skill_name": "When sensing relapse or fluctuation, seeking medical care promptly and informing the support system",
         "skill_description": "When foreseeing symptom recurrence or early fluctuation, seek medical care at a psychiatric outpatient clinic in time according to the plan, or proactively inform the counselor, advisor, and family and start the help-seeking process; at the same time rational emotive therapy can be used for disputation and adjustment, reducing the impact and stabilizing emotions.",
         "when_to_use": "Used when a relapse premonition or early fluctuation appears in post-ending life, requiring starting the disposal process or self-regulation.",
         "trigger": "来访者自述情绪或行为异常波动、担心复发或有复发预感；再次出现not合理信念、灾难化解释或Anxiety情绪上升。",
@@ -2133,7 +2133,7 @@
     },
     "1391": {
         "skill_id": "1391",
-        "skill_name": "明确复发时可采取的应对步骤与求助渠道",
+        "skill_name": "Clarifies coping steps and help-seeking channels to use upon relapse",
         "skill_description": "在识do not到可能的复发征兆后，与来访者讨论并给予操作性指导，明确具体应对措施与时序；同时明确当症状加重时的求助渠道与联络方式，必要时就not yet来突发事件预先讨论对策，以便及早处置、降低影响并巩固疗效。",
         "when_to_use": "完成征兆识do not后制定具体应对与预案时；结束会谈的复发预防规划环节或随访时更新策略。",
         "trigger": "来访者已能辨识疑似复发信号并主动寻求“该怎么做”的指导；担心独自应对not足或对not yet来突发情境感到担忧。",
@@ -2161,7 +2161,7 @@
     },
     "1467": {
         "skill_id": "1467",
-        "skill_name": "复盘恐惧发生与维持原因并整理可用方法",
+        "skill_name": "Reviews the causes of fear onset and maintenance and organizes usable methods",
         "skill_description": "与来访者总结恐惧当初的发生与维持原因，梳理在咨询中有效的方法，作为not yet来再发生时的个体化应对准备。",
         "when_to_use": "When formulating a relapse-prevention plan in the consolidation period, or when strategies need sorting out after fear reignites.",
         "trigger": "The client worries about relapsing in the future, or has just experienced a fright and needs to plan coping.",
@@ -2175,7 +2175,7 @@
     },
     "1312": {
         "skill_id": "1312",
-        "skill_name": "设定阶段性回访与后期随访以监测复发风险",
+        "skill_name": "Setting periodic return visits and later follow-up to monitor relapse risk",
         "skill_description": "Before counseling ends, clarify follow-up nodes such as one month, half a year, and one year, arrange telephone or face-to-face follow-up, continuously track changes in symptoms and life events, clarify help-seeking channels and thresholds where necessary, detect relapse signs early, and adjust support accordingly.",
         "when_to_use": "临近结束时共同制定随访计划，或Consolidation session中更新回访安排；结束后数周至数月的巩固随访期。",
         "trigger": "咨询即将结束或存在复发风险因素；状态虽改善但not稳定，或需要专业追踪与支持。",
@@ -2651,7 +2651,7 @@
         "skill_id": "1417",
         "skill_name": "对照初始与当前状态量化变化",
         "skill_description": "Starting from the initial chief complaint and assessment, compare current improvements in diet and sleep, emotions, interpersonal relationships, study, etc., concretize or quantify the magnitude of change and mark milestone nodes, enhancing the overall grasp of progress and sense of effect.",
-        "when_to_use": "进行咨询效果评估、需要具象化改变时。",
+        "when_to_use": "When conducting a counseling effect evaluation and needing to concretize change.",
         "trigger": "When the client or family mentions current functional improvement, or evidence of treatment effects and key outcome nodes need to be summarized.",
         "parent_ids": [
             "1199",
@@ -3112,7 +3112,7 @@
     },
     "1319": {
         "skill_id": "1319",
-        "skill_name": "复测SAS/SDS对比评估残留与趋势",
+        "skill_name": "Re-administers SAS/SDS to compare and assess residual symptoms and trends",
         "skill_description": "在结束或随访阶段再次施测SAS、SDS等量表（必要时结合SCL‑90），与前次或初评数据对比，量化Anxiety抑郁水平与因子变化，判断是否仍有残留及改善幅度，为终结决策、后续巩固与自我监测提供依据。",
         "when_to_use": "结束与巩固阶段或阶段性复访，需要客观评估疗效与是否存在残留Anxiety/抑郁时。",
         "trigger": "来访者主观好转但仍有紧张、insomnia、注意力not稳等not适；进入回顾与复测环节或需决定是否终结咨询关系时。",
@@ -3196,7 +3196,7 @@
     },
     "1455": {
         "skill_id": "1455",
-        "skill_name": "复测SCL‑90并对比评估残留与变化",
+        "skill_name": "Re-administers the SCL-90 and compares to assess residual symptoms and changes",
         "skill_description": "参考初评与结束或随访时的SCL‑90分数、阳性项目与因子变化，必要时结合SAS/SDS，对比前后数据，量化躯体化、Anxiety、人际等维度的改善与仍偏高领域，判断是否仍有残留及趋势，为自我监测与后续安排提供依据。",
         "when_to_use": "At counseling termination or during follow-up and tracking, when symptom changes need to be objectified and residual problems defined.",
         "trigger": "需量化Anxiety等症状变化；来访者自述好转但仍有not适，或量表分数not yet显著下降/接近常模上限需核实时。",

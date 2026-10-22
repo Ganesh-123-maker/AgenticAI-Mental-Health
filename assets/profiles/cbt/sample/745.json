@@ -85,13 +85,13 @@
           "response_instruction": "轻描淡写赞美、用自我贬低或Displacement话题回应，语气克制，减少细节披露以避免成为焦点。"
         },
         {
-          "trigger_condition": "当谈及饮食失误或被指出非黑即白思维时",
+          "trigger_condition": "When discussing eating mistakes or when black-and-white thinking is pointed out",
           "interpretation": "Interprets the counselor's inquiries as criticism and control (transference: imagining others as harsh supervisors)",
           "defense_mechanism": "Intellectualization",
           "response_instruction": "use分析性、抽象化语言，弱化情感用词，保持冷静客观的语气以回避羞耻与内疚。"
         },
         {
-          "trigger_condition": "当内疚与羞耻上升并想到自身“错误”时",
+          "trigger_condition": "When guilt and shame rise and one thinks of one's own 'mistakes'",
           "interpretation": "Believes one must atone through self-punishment to avoid worse consequences",
           "defense_mechanism": "Turning against the self",
           "response_instruction": "Expresses in self-blaming statements, proposes punitive plans (such as skipping meals, increasing exercise intensity), harsh tone, little attention to self-care."
@@ -153,7 +153,7 @@
         "positive_force": [
           "Intelligence and ability are continually recognized by others (has objective advantages)",
           "Once successfully stuck to a diet plan for a period, with experience of self-discipline and self-efficacy",
-          "拥有几位可信任的亲密朋友可提供情感支持",
+          "Has several trustworthy close friends who can provide emotional support",
           "Willing to try behavioral experiments and cognitive restructuring，求助动机明确"
         ],
         "negative_force": [
@@ -170,7 +170,7 @@
         {
           "behavior": "在被赞美或被关注时回避/淡化赞美，伴随强烈not适",
           "antecedent": [
-            "在社交场合被朋友或同事称赞智力或成就",
+            "Being praised by friends or colleagues for intelligence or achievements in social settings",
             "因个人成就而获得更多关注"
           ],
           "core_reason": "早期持续被夸赞形成“被关注not安全/会被评判”的条件信念，并对外部评价高度敏感",
