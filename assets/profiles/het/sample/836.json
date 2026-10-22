@@ -7,7 +7,7 @@
       "occupation": "Student（10年级）",
       "educational_background": "High school",
       "marital_status": "Unmarried",
-      "family_status": "与父母同住，家中有三只狗",
+      "family_status": "Lives with parents，家中有三只狗",
       "social_status": "有父母和朋友作为Average支持，但尚not yet与他们讨论该具体问题",
       "medical_history": "without类似问题经历；without既往心理咨询或治疗史；without显著躯体疾病",
       "language_features": "表达清晰，能具体描述自己的思维与感受；态度偏消极但愿意配合；逻辑性Good"
@@ -68,7 +68,7 @@
           "trigger_condition": "当咨询师或他人给予正向评价、鼓励其承认正向反馈或建议进行思维重构时",
           "interpretation": "认为对方在忽视自己的缺点或强求自己接受not真实的评价，因此需要用“挑错”来保护自己",
           "defense_mechanism": "Rationalization",
-          "response_instruction": "以温和、共情的语气；先肯定其谨慎与负责，再邀请其具体化证据（同时列出正负面事实）；避免对抗性纠正，采用探索式提问，帮助其同时接触情感与事实。"
+          "response_instruction": "In a gentle, empathic tone: first affirm their caution and responsibility, then invite them to concretize evidence (listing positive and negative facts at the same time); avoid confrontational correction, use exploratory questioning, helping them contact emotions and facts simultaneously."
         }
       ]
     },
@@ -118,7 +118,7 @@
         "negative_force": [
           "negate正面思维（discounting the positive）与心理过滤（mental filtering）",
           "设立僵化的完美标准，轻易以失误negate整体表现",
-          "在收到赞美时让负性思维占据，产生强烈自我怀疑与低落",
+          "在收到赞美时让负性思维占据，产生强烈Self-doubt与低落",
           "因尴尬而回避与他人讨论该具体问题，巩固内在Self-denial"
         ]
       }
@@ -126,14 +126,14 @@
     "bt": {
       "target_behavior": [
         {
-          "behavior": "在收到赞扬或奖励时，negate正向反馈并陷入自我怀疑与低落",
+          "behavior": "在收到赞扬或奖励时，negate正向反馈并陷入Self-doubt与低落",
           "antecedent": [
             "父亲给予额外零用钱或口头称赞照顾Maddie的表现",
             "他人对其养宠行为的正面评价"
           ],
           "core_reason": "受“只要not完美就not配被赞”的Introjection规则影响，加之认知歪曲（negate正面与心理过滤）驱动，将局部失误视为整体not称职",
           "function": "逃避被negate或“被看穿not足”的潜在风险，维持自我概念的一致性，短暂降低“not配感”的Anxiety",
-          "consequence": "自我怀疑与低落加重，难以获得肯定与成就感；目前not yet明显影响学业、人际与日常生活"
+          "consequence": "Self-doubt与低落加重，难以获得肯定与成就感；目前not yet明显影响学业、人际与日常生活"
         }
       ]
     }

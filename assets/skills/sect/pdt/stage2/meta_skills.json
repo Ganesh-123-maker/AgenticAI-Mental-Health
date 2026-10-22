@@ -2,7 +2,7 @@
     "1006": {
         "skill_id": "1006",
         "skill_name": "修通分析",
-        "skill_description": "以三阶段模型（意识有限、意识增强与练习、持久改变）为框架，系统判断来访者所处阶段。通过倾听情感、阻抗、外化、模式与反移情等线索，并结合反思在支持与揭露性干预间取舍，强调反复练习与耐心以促成并巩固新模式的形成。",
+        "skill_description": "Using the three-stage model (limited awareness, enhanced awareness and practice, lasting change) as the framework, systematically judge the stage the client is at. Through listening to clues such as emotion, resistance, externalization, patterns and countertransference, and combined with reflection, make trade-offs between supportive and uncovering interventions, emphasizing repeated practice and patience to bring about and consolidate the formation of new patterns.",
         "parent_ids": [
             "1016",
             "1006"
@@ -12,7 +12,7 @@
     "720": {
         "skill_id": "720",
         "skill_name": "反移情",
-        "skill_description": "指治疗师对来访者的情感总和，含有意识与without意识成分。觉察可减少not当外露，指导评估与干预，帮助理解来访者的人际模式及自我反应。Averagenot直接披露，需防平行过程与行动化破坏框架。",
+        "skill_description": "指治疗师对来访者的情感总和，含有意识与without意识成分。觉察可减少not当外露，指导评估与Intervention，帮助理解来访者的人际模式及自我反应。Averagenot直接披露，需防平行过程与行动化破坏框架。",
         "parent_ids": [
             "1016",
             "720"
@@ -22,7 +22,7 @@
     "721": {
         "skill_id": "721",
         "skill_name": "反移情分类",
-        "skill_description": "反移情可分为和谐与互补两类：前者共情并认同来访者的情感或自体状态；后者认同其重要他人对来访者的态度。可通过反应是否仅对该来访者发生来区分来源。",
+        "skill_description": "Countertransference can be divided into two types, concordant and complementary: the former empathizes with and identifies with the client's affect or self state; the latter identifies with the attitudes of their significant others toward the client. The source can be distinguished by whether the reaction occurs only with this client.",
         "parent_ids": [
             "1016",
             "720",
@@ -33,7 +33,7 @@
     "722": {
         "skill_id": "722",
         "skill_name": "和谐反移情",
-        "skill_description": "治疗师共情或认同来访者的感受与内在状态，甚至感受其被Repression的情绪。此反应可提示来访者当前体验与防御，帮助选择支持或揭露的切入点。",
+        "skill_description": "治疗师Empathy或认同来访者的感受与内在状态，甚至感受其被Repression的情绪。此反应可提示来访者当前体验与防御，帮助选择支持或揭露的切入点。",
         "parent_ids": [
             "1016",
             "720",
@@ -56,8 +56,8 @@
     },
     "724": {
         "skill_id": "724",
-        "skill_name": "反移情倾听",
-        "skill_description": "通过自我提问与回顾面谈时刻，留意对来访者的情感与异常行为（如说多说少、越矩举动、梦境）。在督导或同伴讨论，比较你对督导的感受，以识do not反移情线索。",
+        "skill_name": "反移情Listening",
+        "skill_description": "通过自我Questioning与回顾面谈时刻，留意对来访者的情感与异常行为（如说多说少、越矩举动、梦境）。在督导或同伴讨论，比较你对督导的感受，以识do not反移情线索。",
         "parent_ids": [
             "1016",
             "720",
@@ -67,8 +67,8 @@
     },
     "725": {
         "skill_id": "725",
-        "skill_name": "反移情反思",
-        "skill_description": "确认反移情后，评估其指向：来访者的显性/被Repression感受、正在发生的阻抗，还是与你自身历史相关。利用Anxiety等信号决定何时、如何干预与对质，校准深度与时机。",
+        "skill_name": "反移情Reflection",
+        "skill_description": "确认反移情后，评估其指向：来访者的显性/被Repression感受、正在发生的阻抗，还是与你自身历史相关。利用Anxiety等信号决定何时、如何Intervention与对质，校准深度与时机。",
         "parent_ids": [
             "1016",
             "720",
@@ -78,7 +78,7 @@
     },
     "726": {
         "skill_id": "726",
-        "skill_name": "反移情干预",
+        "skill_name": "反移情Intervention",
         "skill_description": "通常not直接披露私人情感，而将其用于理解与解释。必要时可适度表达：社会性回应、风险与安全建议、促进接触被Repression情感、培养心理化；同时注意边界与框架。",
         "parent_ids": [
             "1016",
@@ -90,7 +90,7 @@
     "727": {
         "skill_id": "727",
         "skill_name": "行动化探索",
-        "skill_description": "当行为偏离常态时，承认现实、探询来访者体验，并反思自身反应与动机，必要时带入督导。在not过度自我暴露前提下，利用行动化揭示关系动力并修复框架。",
+        "skill_description": "当行为偏离常态时，承认现实、探询来访者体验，并Reflection自身反应与动机，必要时带入督导。在not过度自我暴露前提下，利用行动化揭示关系动力并修复框架。",
         "parent_ids": [
             "1016",
             "720",
@@ -101,8 +101,8 @@
     },
     "728": {
         "skill_id": "728",
-        "skill_name": "反移情现实验证",
-        "skill_description": "当来访者直觉你在生气或受影响时，验证其感受或设想，必要时承认差错与事实；于揭露模式下继续探索其意义，于支持模式下引导其理解自身对他人的影响。",
+        "skill_name": "反移情Reality testing",
+        "skill_description": "When the client intuits that you are angry or affected, validate their feelings or conjecture, acknowledge errors and facts when necessary; in the uncovering mode continue exploring its meaning, in the supportive mode guide them to understand their own influence on others.",
         "parent_ids": [
             "1016",
             "720",
@@ -126,7 +126,7 @@
     "730": {
         "skill_id": "730",
         "skill_name": "反移情中的支持或揭露",
-        "skill_description": "以反移情为线索选择支持性或揭露性干预：在同盟脆弱、脆弱性高时以支持为主；随关系稳固与承受力提升，逐步转向对质与解释。注意随治疗进展动态调整。",
+        "skill_description": "Use countertransference as a clue to choose supportive or uncovering intervention: when the alliance is fragile and vulnerability high, focus on support; as the relationship stabilizes and tolerance increases, gradually turn to confrontation and interpretation. Note dynamic adjustment with treatment progress.",
         "parent_ids": [
             "1016",
             "720",
@@ -137,8 +137,8 @@
     },
     "1016": {
         "skill_id": "1016",
-        "skill_name": "咨询性会谈",
-        "skill_description": "咨询性会谈核心在于利用移情与反移情，通过支持或揭露性干预处理阻抗与防御。旨在通过Freedom联想与梦的解析深入探索潜意识冲突，在反复修通中促进来访者深层领悟与人格改变。",
+        "skill_name": "Consultative session",
+        "skill_description": "Consultative session核心在于利用移情与反移情，通过支持或Uncovering intervention处理阻抗与防御。旨在通过Freedom联想与梦的解析深入探索潜意识冲突，在反复修通中促进来访者深层领悟与人格改变。",
         "parent_ids": [
             "1016"
         ],
@@ -147,7 +147,7 @@
     "310": {
         "skill_id": "310",
         "skill_name": "心理动力学治疗基本步骤",
-        "skill_description": "三步法包括倾听、反思与干预。先以特殊方式倾听，再加工所听确定焦点与策略，最后实施言语或非言语干预并评估效果。",
+        "skill_description": "三步法包括Listening、Reflection与Intervention。先以特殊方式Listening，再加工所听确定焦点与策略，最后实施言语或非言语Intervention并评估效果。",
         "parent_ids": [
             "1016",
             "310"
@@ -156,8 +156,8 @@
     },
     "311": {
         "skill_id": "311",
-        "skill_name": "倾听",
-        "skill_description": "作为第一步，包含环绕、过滤、对焦三种模式；同时倾听言辞、语调与without声之处，灵活切换以捕捉情感、模式和without意识线索。",
+        "skill_name": "Listening",
+        "skill_description": "作为第一步，包含环绕、过滤、对焦三种模式；同时Listening言辞、语调与without声之处，灵活切换以捕捉情感、模式和without意识线索。",
         "parent_ids": [
             "1016",
             "310",
@@ -167,7 +167,7 @@
     },
     "312": {
         "skill_id": "312",
-        "skill_name": "环绕式倾听",
+        "skill_name": "环绕式Listening",
         "skill_description": "not特意聚焦任何内容，开放接收全部材料，避免偏听漏听；常用于面谈开始阶段，帮助发现可能的重点与without意识线索。",
         "parent_ids": [
             "1016",
@@ -179,8 +179,8 @@
     },
     "313": {
         "skill_id": "313",
-        "skill_name": "过滤式倾听",
-        "skill_description": "从背景中筛选出重复主题或强烈情感，开始辨do not重要内容；注意not一致与模式中断，为后续对焦与干预铺垫。",
+        "skill_name": "过滤式Listening",
+        "skill_description": "从背景中筛选出重复主题或强烈情感，开始辨do not重要内容；注意not一致与模式中断，为后续对焦与Intervention铺垫。",
         "parent_ids": [
             "1016",
             "310",
@@ -191,7 +191,7 @@
     },
     "314": {
         "skill_id": "314",
-        "skill_name": "对焦式倾听",
+        "skill_name": "对焦式Listening",
         "skill_description": "将注意力集中于特定话题或情感，屏蔽多数背景噪声；在焦点与全景之间灵活切换，以持续捕捉变化与新线索。",
         "parent_ids": [
             "1016",
@@ -203,8 +203,8 @@
     },
     "315": {
         "skill_id": "315",
-        "skill_name": "反思",
-        "skill_description": "主动加工倾听到的信息以理解含意、决定聚焦与治疗策略；运用选择与准备原则，并整合理论与经验资源。",
+        "skill_name": "Reflection",
+        "skill_description": "主动加工Listening到的信息以理解含意、决定聚焦与治疗策略；运用选择与准备原则，并整合理论与经验资源。",
         "parent_ids": [
             "1016",
             "310",
@@ -215,7 +215,7 @@
     "316": {
         "skill_id": "316",
         "skill_name": "三选择原则",
-        "skill_description": "用于决定干预切入点：由表及里先选近意识材料；跟着感觉走以情感为线索；注意反移情把握治疗师内在反应。",
+        "skill_description": "用于决定Intervention切入点：由表及里先选近意识材料；跟着感觉走以情感为线索；注意反移情把握治疗师内在反应。",
         "parent_ids": [
             "1016",
             "310",
@@ -227,7 +227,7 @@
     "317": {
         "skill_id": "317",
         "skill_name": "由表及里",
-        "skill_description": "从接近意识、Anxiety较低的材料入手，逐层逼近更深层without意识，避免激发过强防御与抵抗，提高干预的可接受性。",
+        "skill_description": "从接近意识、Anxiety较低的材料入手，逐层逼近更深层without意识，避免激发过强防御与抵抗，提高Intervention的可接受性。",
         "parent_ids": [
             "1016",
             "310",
@@ -240,7 +240,7 @@
     "318": {
         "skill_id": "318",
         "skill_name": "跟着感觉走",
-        "skill_description": "以来访者当下最真实、最强烈的情感为导航，判断接近重要内容的路径，优先围绕情绪展开聚焦与干预。",
+        "skill_description": "以来访者当下最真实、最强烈的情感为导航，判断接近重要内容的路径，优先围绕情绪展开聚焦与Intervention。",
         "parent_ids": [
             "1016",
             "310",
@@ -266,7 +266,7 @@
     "320": {
         "skill_id": "320",
         "skill_name": "三准备原则",
-        "skill_description": "评估来访者此刻的可用性与承受力：治疗同盟强度、治疗阶段、当下功能水平，以决定何时、以何深度干预。",
+        "skill_description": "评估来访者此刻的可用性与承受力：治疗同盟强度、治疗阶段、当下功能水平，以决定何时、以何深度Intervention。",
         "parent_ids": [
             "1016",
             "310",
@@ -316,8 +316,8 @@
     },
     "324": {
         "skill_id": "324",
-        "skill_name": "干预",
-        "skill_description": "治疗师以言语与非言语交流实施基础性、支持性或揭露性干预，并通过来访者反应评估效果，必要时调整策略。",
+        "skill_name": "Intervention",
+        "skill_description": "治疗师以言语与非言语交流实施基础性、支持性或Uncovering intervention，并通过来访者反应评估效果，必要时调整策略。",
         "parent_ids": [
             "1016",
             "310",
@@ -327,8 +327,8 @@
     },
     "325": {
         "skill_id": "325",
-        "skill_name": "基础性干预",
-        "skill_description": "贯穿所有治疗，旨在收集信息、结构化过程与表达理解；含指导与心理教育、提问、信息、共情、联想、反思与沉默。",
+        "skill_name": "Foundational intervention",
+        "skill_description": "贯穿所有治疗，旨在收集信息、结构化过程与表达理解；含指导与心理教育、Questioning、信息、Empathy、联想、Reflection与沉默。",
         "parent_ids": [
             "1016",
             "310",
@@ -378,8 +378,8 @@
     },
     "329": {
         "skill_id": "329",
-        "skill_name": "共情",
-        "skill_description": "以共情话语传达理解与接纳，验证痛苦与努力；既能支持功能，也可作为揭露的起点，探索其潜在意义。",
+        "skill_name": "Empathy",
+        "skill_description": "以Empathy话语传达理解与接纳，验证痛苦与努力；既能支持功能，也可作为揭露的起点，探索其潜在意义。",
         "parent_ids": [
             "1016",
             "310",
@@ -391,7 +391,7 @@
     },
     "330": {
         "skill_id": "330",
-        "skill_name": "要求联想",
+        "skill_name": "Directed association",
         "skill_description": "邀请就梦、事件与感受Freedom联想，增加自我觉察与材料广度；可用于支持性目标或深入探索without意识。",
         "parent_ids": [
             "1016",
@@ -404,8 +404,8 @@
     },
     "331": {
         "skill_id": "331",
-        "skill_name": "反思性陈述",
-        "skill_description": "反馈与概括来访者的情绪与想法，让其校准与细化体验；促进共情式倾听与更准确的相互理解。",
+        "skill_name": "Reflection性陈述",
+        "skill_description": "反馈与概括来访者的情绪与想法，让其校准与细化体验；促进Empathy式Listening与更准确的相互理解。",
         "parent_ids": [
             "1016",
             "310",
@@ -430,7 +430,7 @@
     },
     "333": {
         "skill_id": "333",
-        "skill_name": "支持性干预",
+        "skill_name": "Supportive intervention",
         "skill_description": "支撑缺失或薄弱的功能，直接提升功能或行为改变；结合提供型与辅助型，随个体与时机灵活调整。",
         "parent_ids": [
             "1016",
@@ -468,7 +468,7 @@
     },
     "336": {
         "skill_id": "336",
-        "skill_name": "揭露性干预",
+        "skill_name": "Uncovering intervention",
         "skill_description": "把without意识转化为意识的过程，通常经对质、澄清到解释逐步推进；在充分准备时引入更深材料以增进洞察。",
         "parent_ids": [
             "1016",
@@ -494,7 +494,7 @@
     "338": {
         "skill_id": "338",
         "skill_name": "澄清",
-        "skill_description": "把重复出现的现象与时间点联系起来，辨识模式并提问熟悉感，使without意识内容进入视野，为解释铺路。",
+        "skill_description": "把重复出现的现象与时间点联系起来，辨识模式并Questioning熟悉感，使without意识内容进入视野，为解释铺路。",
         "parent_ids": [
             "1016",
             "310",
@@ -520,7 +520,7 @@
     "772": {
         "skill_id": "772",
         "skill_name": "without（潜）意识分析",
-        "skill_description": "以倾听、反思与干预为路径，系统识do notwithout意识Fantasy、冲突与防御机制，循序揭露与支持，降低Anxiety、促进更灵活的防御与更健康的人际功能。",
+        "skill_description": "以Listening、Reflection与Intervention为路径，系统识do notwithout意识Fantasy、冲突与防御机制，循序揭露与支持，降低Anxiety、促进更灵活的防御与更健康的人际功能。",
         "parent_ids": [
             "1016",
             "772"
@@ -540,8 +540,8 @@
     },
     "774": {
         "skill_id": "774",
-        "skill_name": "倾听without意识Fantasy",
-        "skill_description": "在讲述中捕捉“故事背后的故事”，思考来访者此刻想要什么或害怕什么；关注孩童化愿望与反常线索，高功能者更隐蔽，需细听反复出现的主题。",
+        "skill_name": "Listeningwithout意识Fantasy",
+        "skill_description": "Capture the 'story behind the story' in the narration, think about what the client wants or fears at this moment; pay attention to childish wishes and anomalous clues; high-functioning individuals are more concealed, requiring careful listening for recurring themes.",
         "parent_ids": [
             "1016",
             "772",
@@ -552,7 +552,7 @@
     },
     "775": {
         "skill_id": "775",
-        "skill_name": "反思without意识Fantasy",
+        "skill_name": "Reflectionwithout意识Fantasy",
         "skill_description": "将主导Fantasy概括为一两句话，判断其类型（愿望、恐惧或自我看法），评估与主导情感的联系；择取贴近表层者，为后续对质、澄清与解释做准备。",
         "parent_ids": [
             "1016",
@@ -564,7 +564,7 @@
     },
     "776": {
         "skill_id": "776",
-        "skill_name": "针对without意识Fantasy的干预",
+        "skill_name": "针对without意识Fantasy的Intervention",
         "skill_description": "遵循选择与准备原则，慢启动，优先处理临近表层的内容；以对质—澄清—解释链条逐步引入意识，兼顾安全与同盟，避免加深阻抗与Anxiety。",
         "parent_ids": [
             "1016",
@@ -576,8 +576,8 @@
     },
     "777": {
         "skill_id": "777",
-        "skill_name": "揭露性干预（without意识Fantasy）",
-        "skill_description": "在安全情境中帮助来访者意识核心Fantasy，减少羞耻、增进理解与选择空间；过程缓慢谨慎，以提问、对质与澄清铺垫适时的解释。",
+        "skill_name": "Uncovering intervention（without意识Fantasy）",
+        "skill_description": "在安全情境中帮助来访者意识核心Fantasy，减少羞耻、增进理解与选择空间；过程缓慢谨慎，以Questioning、对质与澄清铺垫适时的解释。",
         "parent_ids": [
             "1016",
             "772",
@@ -642,8 +642,8 @@
     },
     "782": {
         "skill_id": "782",
-        "skill_name": "倾听without意识冲突",
-        "skill_description": "如找“烟”的消防员般围绕Anxiety线索倾听；留意情感突变、not一致、口误与梦境等，由此追踪表层之下的对立Fantasy与正在运作的防御。",
+        "skill_name": "Listeningwithout意识冲突",
+        "skill_description": "如找“烟”的消防员般围绕Anxiety线索Listening；留意情感突变、not一致、口误与梦境等，由此追踪表层之下的对立Fantasy与正在运作的防御。",
         "parent_ids": [
             "1016",
             "772",
@@ -654,7 +654,7 @@
     },
     "783": {
         "skill_id": "783",
-        "skill_name": "倾听Anxiety线索",
+        "skill_name": "ListeningAnxiety线索",
         "skill_description": "关注与Anxiety相关的言语与行为：治疗室中的坐立not安、激动、看表；治疗外的睡眠与进食问题、敏感、拖延、冲动、判断力下降及Anxiety梦。",
         "parent_ids": [
             "1016",
@@ -667,7 +667,7 @@
     },
     "784": {
         "skill_id": "784",
-        "skill_name": "倾听情感变化",
+        "skill_name": "Listening情感变化",
         "skill_description": "任何情感的显著改变（易怒、抑郁心境、心情突然高涨）都可能是冲突与Anxiety的线索；将其与当下情境比对，以定位对立Fantasy的活跃点。",
         "parent_ids": [
             "1016",
@@ -680,7 +680,7 @@
     },
     "785": {
         "skill_id": "785",
-        "skill_name": "倾听not一致线索",
+        "skill_name": "Listeningnot一致线索",
         "skill_description": "识do not体验与情感、情感与想法、想法与想法之间的not匹配，如喜庆时落泪、想起爱人却抑郁、互相矛盾计划，提示深层冲突在运作。",
         "parent_ids": [
             "1016",
@@ -693,7 +693,7 @@
     },
     "786": {
         "skill_id": "786",
-        "skill_name": "倾听口误线索",
+        "skill_name": "Listening口误线索",
         "skill_description": "当被Repression的思绪或情感跃出口时形成口误，如把“老板”说成“爸爸”；此类失误常指向早期关系中的Fantasy与当前冲突的关联通道。",
         "parent_ids": [
             "1016",
@@ -706,8 +706,8 @@
     },
     "787": {
         "skill_id": "787",
-        "skill_name": "倾听梦境线索",
-        "skill_description": "Anxiety性的梦常标示冲突存在；探索与解释梦境，有助于识do not主导Fantasy及其对立面，为理解症状与选择干预焦点提供线索。",
+        "skill_name": "Listening梦境线索",
+        "skill_description": "Anxiety性的梦常标示冲突存在；探索与解释梦境，有助于识do not主导Fantasy及其对立面，为理解症状与选择Intervention焦点提供线索。",
         "parent_ids": [
             "1016",
             "772",
@@ -719,7 +719,7 @@
     },
     "788": {
         "skill_id": "788",
-        "skill_name": "反思without意识冲突",
+        "skill_name": "Reflectionwithout意识冲突",
         "skill_description": "提炼对立Fantasy两极，梳理与主导情感的连接；分层评估表层到深层材料，优先选取“轻推可入意识”的部分，避免trigger过强阻抗。",
         "parent_ids": [
             "1016",
@@ -731,7 +731,7 @@
     },
     "789": {
         "skill_id": "789",
-        "skill_name": "针对without意识冲突的干预",
+        "skill_name": "针对without意识冲突的Intervention",
         "skill_description": "在同盟允许下，以对质—澄清—解释逐步揭露冲突；必要时纳入遗传或移情脉络，帮助整合与选择更适应的防御，缓解Anxiety与症状。",
         "parent_ids": [
             "1016",
@@ -743,8 +743,8 @@
     },
     "790": {
         "skill_id": "790",
-        "skill_name": "揭露性干预（without意识冲突）",
-        "skill_description": "使冲突进入意识并得以思考，减少麻痹与病理化防御；谨慎推进，先以提问与澄清靠近，再于情感就绪时给出解释。",
+        "skill_name": "Uncovering intervention（without意识冲突）",
+        "skill_description": "使冲突进入意识并得以思考，减少麻痹与病理化防御；谨慎推进，先以Questioning与澄清靠近，再于情感就绪时给出解释。",
         "parent_ids": [
             "1016",
             "772",
@@ -809,7 +809,7 @@
     },
     "795": {
         "skill_id": "795",
-        "skill_name": "倾听防御机制",
+        "skill_name": "Listening防御机制",
         "skill_description": "把阻抗视为防御在场信号，留意语塞、沉默、迟到等；随治疗推进识do not个性化防御组合与时机，为选择支持或揭露性技术提供依据。",
         "parent_ids": [
             "1016",
@@ -821,8 +821,8 @@
     },
     "796": {
         "skill_id": "796",
-        "skill_name": "反思防御机制",
-        "skill_description": "确认主导防御，评估其适应性与“代价”，决定强化或替换；结合同盟与阶段，挑选最破坏性且贴近表层者作为优先干预目标。",
+        "skill_name": "Reflection防御机制",
+        "skill_description": "确认主导防御，评估其适应性与“代价”，决定Reinforcement或替换；结合同盟与阶段，挑选最破坏性且贴近表层者作为优先Intervention目标。",
         "parent_ids": [
             "1016",
             "772",
@@ -833,8 +833,8 @@
     },
     "797": {
         "skill_id": "797",
-        "skill_name": "针对防御机制的干预",
-        "skill_description": "两条路径并行：支持性—强化成熟防御、建议低代价替代；揭露性—使防御进入意识以重选策略。始终缓慢、尊重，避免骤然拆防。",
+        "skill_name": "针对防御机制的Intervention",
+        "skill_description": "两条路径并行：支持性—Reinforcement成熟防御、建议低代价替代；揭露性—使防御进入意识以重选策略。始终缓慢、尊重，避免骤然拆防。",
         "parent_ids": [
             "1016",
             "772",
@@ -845,8 +845,8 @@
     },
     "798": {
         "skill_id": "798",
-        "skill_name": "基础性干预（防御机制）",
-        "skill_description": "遵循“慢慢开始”，以提问、联想要求与共情性表述促使细节展开；在nottrigger过强Anxiety前提下，收集线索并靠近表层without意识内容。",
+        "skill_name": "Foundational intervention（防御机制）",
+        "skill_description": "遵循“慢慢开始”，以Questioning、联想要求与Empathy性表述促使细节展开；在nottrigger过强Anxiety前提下，收集线索并靠近表层without意识内容。",
         "parent_ids": [
             "1016",
             "772",
@@ -858,7 +858,7 @@
     },
     "799": {
         "skill_id": "799",
-        "skill_name": "开放式提问",
+        "skill_name": "开放式Questioning",
         "skill_description": "用开放式问题引导复现场景与念头，丰富细节，帮助without意识线索靠近意识，如“那时你在想什么？”为后续澄清与解释铺路。",
         "parent_ids": [
             "1016",
@@ -872,8 +872,8 @@
     },
     "800": {
         "skill_id": "800",
-        "skill_name": "支持性干预（防御机制）",
-        "skill_description": "在功能脆弱时优先use，确认并强化适应性防御，检验现实，提供表扬与建议，帮助以更低代价方式管理情绪和冲突，减少人际损害。",
+        "skill_name": "Supportive intervention（防御机制）",
+        "skill_description": "在功能脆弱时优先use，确认并Reinforcement适应性防御，检验现实，提供表扬与建议，帮助以更低代价方式管理情绪和冲突，减少人际损害。",
         "parent_ids": [
             "1016",
             "772",
@@ -914,7 +914,7 @@
     "803": {
         "skill_id": "803",
         "skill_name": "确认替代方案",
-        "skill_description": "第三步共同探索更健康、代价更小的选择，如现实检验、升华、利他等；以共情与表扬支持尝试，巩固新防御的use。",
+        "skill_description": "第三步共同探索更健康、代价更小的选择，如现实检验、升华、利他等；以Empathy与表扬支持尝试，巩固新防御的use。",
         "parent_ids": [
             "1016",
             "772",
@@ -927,7 +927,7 @@
     },
     "804": {
         "skill_id": "804",
-        "skill_name": "揭露性干预（防御机制）",
+        "skill_name": "Uncovering intervention（防御机制）",
         "skill_description": "当同盟稳固且材料在表层时，循序对质—澄清—解释，使without意识防御变得可思考；目标是灵活运用而非消灭防御，降低僵化与代价。",
         "parent_ids": [
             "1016",
@@ -992,8 +992,8 @@
     },
     "341": {
         "skill_id": "341",
-        "skill_name": "倾听",
-        "skill_description": "围绕主导情感倾听：辨do not表达与内容是否匹配、情感是否缺失、强度是否过或not及，观察会谈内外行为与情绪变化，以捕捉显性或隐性的核心感受。",
+        "skill_name": "Listening",
+        "skill_description": "围绕主导情感Listening：辨do not表达与内容是否匹配、情感是否缺失、强度是否过或not及，观察会谈内外行为与情绪变化，以捕捉显性或隐性的核心感受。",
         "parent_ids": [
             "1016",
             "340",
@@ -1003,8 +1003,8 @@
     },
     "342": {
         "skill_id": "342",
-        "skill_name": "反思",
-        "skill_description": "在倾听后运用选择与准备原则，结合阶段、同盟与功能，判断聚焦何种情感：先共情表层、压迫性的情绪，或在关系稳固时探查被防御的更深感受。",
+        "skill_name": "Reflection",
+        "skill_description": "After listening, use the principles of selection and preparation, in combination with the stage, the alliance, and functioning, to judge which affect to focus on: first empathize with the surface, oppressive emotions, or, when the relationship is solid, explore the deeper feelings that are defended against.",
         "parent_ids": [
             "1016",
             "340",
@@ -1014,8 +1014,8 @@
     },
     "343": {
         "skill_id": "343",
-        "skill_name": "干预",
-        "skill_description": "围绕情感的干预分为基础性、支持性与揭露性：先以心理教育、指导、提问与共情建立焦点，再在失衡时支持调节，或在条件成熟时揭示without意识情感。",
+        "skill_name": "Intervention",
+        "skill_description": "围绕情感的Intervention分为基础性、支持性与揭露性：先以心理教育、指导、Questioning与Empathy建立焦点，再在失衡时支持调节，或在条件成熟时揭示without意识情感。",
         "parent_ids": [
             "1016",
             "340",
@@ -1025,8 +1025,8 @@
     },
     "344": {
         "skill_id": "344",
-        "skill_name": "基础性干预",
-        "skill_description": "以心理教育、指导、提问与共情为起点，帮助来访者识do nottrigger、命名体验并被理解，作为支持性或解释性工作的平台，安全地引向更深的情感探索。",
+        "skill_name": "Foundational intervention",
+        "skill_description": "以心理教育、指导、Questioning与Empathy为起点，帮助来访者识do nottrigger、命名体验并被理解，作为支持性或解释性工作的平台，安全地引向更深的情感探索。",
         "parent_ids": [
             "1016",
             "340",
@@ -1037,7 +1037,7 @@
     },
     "345": {
         "skill_id": "345",
-        "skill_name": "心理教育与指导",
+        "skill_name": "Psychoeducation and guidance",
         "skill_description": "以简明解释连接行为与情感（如暴饮暴食与not适情绪），提供信息与具体建议，帮助来访者理解情绪—行为链条并形成更适应的应对与选择。",
         "parent_ids": [
             "1016",
@@ -1050,7 +1050,7 @@
     },
     "346": {
         "skill_id": "346",
-        "skill_name": "共情",
+        "skill_name": "Empathy",
         "skill_description": "以温和、without评判的方式准确映照来访者的痛苦与脆弱（如“那一定很难熬”），传达关心与理解，降低羞耻与防御，促进情感表露与进一步探讨。",
         "parent_ids": [
             "1016",
@@ -1063,8 +1063,8 @@
     },
     "347": {
         "skill_id": "347",
-        "skill_name": "提问",
-        "skill_description": "通过开放式提问聚焦情感与trigger点（如“之前你有什么感受？”），引导来访者识do not、细化并连接情绪与经历，为管理情感与解释性工作铺路。",
+        "skill_name": "Questioning",
+        "skill_description": "通过开放式Questioning聚焦情感与trigger点（如“之前你有什么感受？”），引导来访者识do not、细化并连接情绪与经历，为管理情感与解释性工作铺路。",
         "parent_ids": [
             "1016",
             "340",
@@ -1076,7 +1076,7 @@
     },
     "348": {
         "skill_id": "348",
-        "skill_name": "支持性干预",
+        "skill_name": "Supportive intervention",
         "skill_description": "当来访者被强烈情绪淹not时，目标是化解或接纳hard to bear的情感，并提升自我安抚与调节能力，减少以self-injury、物质等方式应对的风险与依赖。",
         "parent_ids": [
             "1016",
@@ -1089,7 +1089,7 @@
     "349": {
         "skill_id": "349",
         "skill_name": "化解情感",
-        "skill_description": "用直接、即时的提供性技术（命名情绪、关怀安抚、消除疑虑、验证等）帮助来访者迅速降幅、从失控转向可表述状态，为后续探索创造安全性。",
+        "skill_description": "Use direct, immediate provision techniques (naming emotions, caring and soothing, dispelling doubts, verification, and so on) to help the client rapidly reduce amplitude, move from loss of control to an expressible state, and create safety for subsequent exploration.",
         "parent_ids": [
             "1016",
             "340",
@@ -1102,7 +1102,7 @@
     "350": {
         "skill_id": "350",
         "skill_name": "命名情绪",
-        "skill_description": "把模糊、威胁性的体验转化为可言说的情感词汇（如伤心、愤怒、羞耻），以标定与界定情绪，增强可控感并促进自我观察与进一步反思。",
+        "skill_description": "把模糊、威胁性的体验转化为可言说的情感词汇（如伤心、愤怒、羞耻），以标定与界定情绪，增强可控感并促进自我观察与进一步Reflection。",
         "parent_ids": [
             "1016",
             "340",
@@ -1116,7 +1116,7 @@
     "351": {
         "skill_id": "351",
         "skill_name": "关怀安抚",
-        "skill_description": "以共情、表扬、鼓励与希望等方式提供情感性抚慰与支持，示范冷静与调节，缓解内疚与羞耻，帮助来访者从高唤起过渡到可反思的状态。",
+        "skill_description": "以Empathy、表扬、鼓励与希望等方式提供情感性抚慰与支持，示范冷静与调节，缓解内疚与羞耻，帮助来访者从高唤起过渡到可Reflection的状态。",
         "parent_ids": [
             "1016",
             "340",
@@ -1143,7 +1143,7 @@
     },
     "353": {
         "skill_id": "353",
-        "skill_name": "现实验证",
+        "skill_name": "Reality testing",
         "skill_description": "对来访者的情绪与情境进行验证与现实校准，确认感受的合理性并澄清事实，减轻困惑与自责，使体验落地并支持更有效的自我调节与选择。",
         "parent_ids": [
             "1016",
@@ -1170,7 +1170,7 @@
     },
     "355": {
         "skill_id": "355",
-        "skill_name": "揭露性干预",
+        "skill_name": "Uncovering intervention",
         "skill_description": "旨在使without意识情感进入意识、用情感理解其他without意识内容，并追溯消极情感的来源；常以对质、澄清、解释逐步推进，尤其在同盟稳固时应用。",
         "parent_ids": [
             "1016",
@@ -1222,7 +1222,7 @@
     "610": {
         "skill_id": "610",
         "skill_name": "移情分析",
-        "skill_description": "移情分析是理解来访者对治疗师的全部情感的核心任务。它借此揭示来访者与重要他人的关系模式，评估支持或揭露的干预时机，修复同盟，并为记忆与冲突的探索提供入口。在支持模式下可包容与限制移情；在揭露模式下通过解释促成洞察与选择。",
+        "skill_description": "Transference analysis is the core task of understanding all the client's feelings toward the therapist. Through it, it reveals the client's relational patterns with significant others, assesses the intervention timing for support or exposure, repairs the alliance, and provides an entry point for exploring memories and conflicts. In the support mode, transference can be contained and limited; in the exposure mode, insight and choice are promoted through interpretation.",
         "parent_ids": [
             "1016",
             "610"
@@ -1232,7 +1232,7 @@
     "611": {
         "skill_id": "611",
         "skill_name": "移情类型分类",
-        "skill_description": "通过将移情分门do not类（情感、过去人际、置换），为理解、记录与讨论提供框架，帮助识do not来源与功能，指导后续倾听、反思与干预的选择，提高治疗一致性。",
+        "skill_description": "通过将移情分门do not类（情感、过去人际、置换），为理解、记录与讨论提供框架，帮助识do not来源与功能，指导后续Listening、Reflection与Intervention的选择，提高治疗一致性。",
         "parent_ids": [
             "1016",
             "610",
@@ -1267,7 +1267,7 @@
     "614": {
         "skill_id": "614",
         "skill_name": "置换移情",
-        "skill_description": "当直接移情过强时，情感被置换到第三者或情境上。倾听对他人的评语与故事可捕捉线索，并回到治疗关系检视其与治疗师相关的意义，以促进觉察与现实检验。",
+        "skill_description": "When direct transference is too strong, the affect is displaced onto a third party or situation. Listening to evaluations and stories about others can capture clues, and returning to the treatment relationship to examine its meaning related to the therapist promotes awareness and reality testing.",
         "parent_ids": [
             "1016",
             "610",
@@ -1278,8 +1278,8 @@
     },
     "615": {
         "skill_id": "615",
-        "skill_name": "倾听移情线索",
-        "skill_description": "有意识地倾听移情线索：把握即兴话语、进出室的细节、对他人的评论、反复人际脚本，以及你的反移情。记录线索，为后续反思与干预奠定依据与时机判断。",
+        "skill_name": "Listening移情线索",
+        "skill_description": "Consciously listen for transference clues: grasp impromptu speech, details of entering and leaving the room, comments about others, repeated interpersonal scripts, and your countertransference. Record the clues, laying a basis and timing judgment for subsequent reflection and intervention.",
         "parent_ids": [
             "1016",
             "610",
@@ -1290,7 +1290,7 @@
     "616": {
         "skill_id": "616",
         "skill_name": "识do not移情阻抗",
-        "skill_description": "识do not对移情意识的阻抗：来访者deny与治疗师相关、将情感视为“真实”、或以一种情感遮蔽另一种。留意语言与非言语信号，为心理教育与支持性干预做准备。",
+        "skill_description": "识do not对移情意识的阻抗：来访者deny与治疗师相关、将情感视为“真实”、或以一种情感遮蔽另一种。留意语言与非言语信号，为心理教育与Supportive intervention做准备。",
         "parent_ids": [
             "1016",
             "610",
@@ -1301,8 +1301,8 @@
     },
     "617": {
         "skill_id": "617",
-        "skill_name": "倾听识do not移情类do not",
-        "skill_description": "在倾听中识do not移情类do not：积极/消极、母性/父性/同胞、二元/三元，以及置换。分类有助于框定讨论、与督导沟通，并选择适当的支持或揭露性技术。",
+        "skill_name": "Listening识do not移情类do not",
+        "skill_description": "在Listening中识do not移情类do not：积极/消极、母性/父性/同胞、二元/三元，以及置换。分类有助于框定讨论、与督导沟通，并选择适当的支持或揭露性技术。",
         "parent_ids": [
             "1016",
             "610",
@@ -1313,8 +1313,8 @@
     },
     "618": {
         "skill_id": "618",
-        "skill_name": "反思移情与干预时机",
-        "skill_description": "注意到线索后评估来访者是否准备、当前重要性、解释时机、先探替代物或直接移情、鼓励觉察还是揭露。防范移情风暴，确保现实检验与安全，维护同盟。",
+        "skill_name": "Reflection移情与Intervention时机",
+        "skill_description": "After noticing the clues, assess whether the client is ready, the current importance, the timing of interpretation, whether to explore the substitute first or the transference directly, and whether to encourage awareness or uncover. Guard against transference storms, ensure reality testing and safety, and maintain the alliance.",
         "parent_ids": [
             "1016",
             "610",
@@ -1324,8 +1324,8 @@
     },
     "619": {
         "skill_id": "619",
-        "skill_name": "移情干预策略",
-        "skill_description": "根据来访者功能与同盟选择干预：基础性（心理教育、提问）、支持性（包容与修复），或揭露性（对质、澄清、解释）。兼顾强度与时机，避免压垮脆弱来访者。",
+        "skill_name": "移情Intervention策略",
+        "skill_description": "Choose interventions according to the client's functioning and alliance: basic (psychoeducation, questioning), supportive (containment and repair), or uncovering (confrontation, clarification, interpretation). Balance intensity and timing to avoid overwhelming a fragile client.",
         "parent_ids": [
             "1016",
             "610",
@@ -1335,8 +1335,8 @@
     },
     "620": {
         "skill_id": "620",
-        "skill_name": "基础性干预",
-        "skill_description": "以教育与结构化提问帮助来访者理解什么是移情、为何讨论对治疗有益，承认其not适，逐步建立在治疗中谈论对治疗师感受的能力，为后续工作打基础。",
+        "skill_name": "Foundational intervention",
+        "skill_description": "以教育与结构化Questioning帮助来访者理解什么是移情、为何讨论对治疗有益，承认其not适，逐步建立在治疗中谈论对治疗师感受的能力，为后续工作打基础。",
         "parent_ids": [
             "1016",
             "610",
@@ -1348,7 +1348,7 @@
     "621": {
         "skill_id": "621",
         "skill_name": "移情心理教育",
-        "skill_description": "在治疗早期Notes:讨论你对我的想法与感受能揭示人际模式。共情其困难，重复强调其价值；当not适出现时，将其理解为阻抗并温和鼓励继续探索。",
+        "skill_description": "在治疗早期Notes:讨论你对我的想法与感受能揭示人际模式。Empathy其困难，重复强调其价值；当not适出现时，将其理解为阻抗并温和鼓励继续探索。",
         "parent_ids": [
             "1016",
             "610",
@@ -1360,8 +1360,8 @@
     },
     "622": {
         "skill_id": "622",
-        "skill_name": "针对移情的提问",
-        "skill_description": "用具体、时间限定的提问探查移情，如“对我迟到你有什么感受？”“取消面谈你如何体验？”促使情感外化，收集信息，为澄清与解释提供材料。",
+        "skill_name": "针对移情的Questioning",
+        "skill_description": "Use concrete, time-limited questions to probe the transference, such as 'What feelings do you have about my being late?' and 'How did you experience the cancellation of the session?', prompting the externalization of affect and collecting information to provide material for clarification and interpretation.",
         "parent_ids": [
             "1016",
             "610",
@@ -1373,7 +1373,7 @@
     },
     "623": {
         "skill_id": "623",
-        "skill_name": "支持性干预",
+        "skill_name": "Supportive intervention",
         "skill_description": "在功能脆弱或移情强烈时，以支持性策略减少干扰、维系同盟：从移情中学习但not刻意关注，直接反馈治疗中的行为，修复、包容并缓冲敌对反应。",
         "parent_ids": [
             "1016",
@@ -1386,7 +1386,7 @@
     "624": {
         "skill_id": "624",
         "skill_name": "“此地此刻”技术",
-        "skill_description": "鼓励来访者描述此刻对治疗师的感受与假设，比较与现实的差异，提升心理觉察与现实检验，进而修正对他人的错误期待，改善在外的人际互动。",
+        "skill_description": "Encourage the client to describe the feelings and assumptions toward the therapist at this moment, compare the differences with reality, enhance psychological awareness and reality testing, and thereby correct mistaken expectations of others and improve interpersonal interaction outside.",
         "parent_ids": [
             "1016",
             "610",
@@ -1411,8 +1411,8 @@
     },
     "626": {
         "skill_id": "626",
-        "skill_name": "现实验证",
-        "skill_description": "当来访者感受指向真实事件时，验证其体验并道歉；在同盟允许下轻微修正错误知觉，开放解释事实，共同检验现实，减少歪曲与敌意，稳定治疗关系。",
+        "skill_name": "Reality testing",
+        "skill_description": "When the client's feelings point to a real event, validate their experience and apologize; with the permission of the alliance, gently correct erroneous perceptions, openly interpret the facts, jointly test reality, reduce distortion and hostility, and stabilize the treatment relationship.",
         "parent_ids": [
             "1016",
             "610",
@@ -1424,8 +1424,8 @@
     },
     "627": {
         "skill_id": "627",
-        "skill_name": "鼓励心理觉察",
-        "skill_description": "帮助来访者分辨自我与他人的主观体验，设想其他可能，描述治疗中的体验，比较自评与治疗师观察，促进自省与关系理解，降低偏执性移情。",
+        "skill_name": "Encouraging psychological awareness",
+        "skill_description": "Help the client distinguish the subjective experiences of self and others, imagine other possibilities, describe the experience in treatment, compare self-evaluation with the therapist's observation, promote self-reflection and relational understanding, and reduce paranoid transference.",
         "parent_ids": [
             "1016",
             "610",
@@ -1463,8 +1463,8 @@
     },
     "630": {
         "skill_id": "630",
-        "skill_name": "揭露性干预",
-        "skill_description": "当来访者功能稳健或人际困扰需探索时，use揭露性干预：对质使情感入意识，澄清跨情境模式，解释将反应与without意识或过去关系相连，促成洞察与选择。",
+        "skill_name": "Uncovering intervention",
+        "skill_description": "当来访者功能稳健或人际困扰需探索时，useUncovering intervention：对质使情感入意识，澄清跨情境模式，解释将反应与without意识或过去关系相连，促成洞察与选择。",
         "parent_ids": [
             "1016",
             "610",
@@ -1476,7 +1476,7 @@
     "631": {
         "skill_id": "631",
         "skill_name": "移情对质",
-        "skill_description": "以直接陈述或提问引导来访者注意到对治疗师的情感与反应，特do not在其接近表层时use，对质后继续探索细节，使移情从暗处进入可讨论的意识。",
+        "skill_description": "以直接陈述或Questioning引导来访者注意到对治疗师的情感与反应，特do not在其接近表层时use，对质后继续探索细节，使移情从暗处进入可讨论的意识。",
         "parent_ids": [
             "1016",
             "610",
@@ -1524,8 +1524,8 @@
     },
     "360": {
         "skill_id": "360",
-        "skill_name": "倾听",
-        "skill_description": "以均衡停靠式注意跟随来访者的联想旅程，聆听思想、情感与记忆的连接，并留意打断、沉默或转题等线索。without论支持性或揭露性取向，此种倾听均是进入without意识工作的基础。",
+        "skill_name": "Listening",
+        "skill_description": "以均衡停靠式注意跟随来访者的联想旅程，聆听思想、情感与记忆的连接，并留意打断、沉默或转题等线索。without论支持性或揭露性取向，此种Listening均是进入without意识工作的基础。",
         "parent_ids": [
             "1016",
             "359",
@@ -1559,7 +1559,7 @@
     },
     "363": {
         "skill_id": "363",
-        "skill_name": "反思",
+        "skill_name": "Reflection",
         "skill_description": "识do not阻抗后，评估是否、何时以及如何引起来访者注意，兼顾治疗阶段、同盟与来访者功能。防止显得苛责，记住阻抗指向“痛点”，在支持与揭露之间拿捏时机与深度。",
         "parent_ids": [
             "1016",
@@ -1571,7 +1571,7 @@
     "364": {
         "skill_id": "364",
         "skill_name": "阻抗分析",
-        "skill_description": "围绕阻抗的原因与功能进行假设与验证，体察其保护意义，结合表层材料、主导情感及反移情判断。常见来源包括恐惧、丧失、内疚、羞耻与治疗师错误，以便选择相应技术。",
+        "skill_description": "Center hypotheses and verification on the causes and functions of resistance, perceive its protective significance, and judge in combination with surface material, the dominant affect, and countertransference. Common sources include fear, loss, guilt, shame, and therapist errors, so as to choose the corresponding techniques.",
         "parent_ids": [
             "1016",
             "359",
@@ -1583,7 +1583,7 @@
     "365": {
         "skill_id": "365",
         "skill_name": "由恐惧感引发的阻抗",
-        "skill_description": "来访者惧怕改变或Unknown，维持熟悉而曾经适应的方式，回避消极感受与冲突表达。表现为过度迎合、过度积极或避免矛盾话题等。理解其恐惧有助于共情并调整干预力度。",
+        "skill_description": "来访者惧怕改变或Unknown，维持熟悉而曾经适应的方式，回避消极感受与冲突表达。表现为过度迎合、过度积极或避免矛盾话题等。理解其恐惧有助于Empathy并调整Intervention力度。",
         "parent_ids": [
             "1016",
             "359",
@@ -1635,7 +1635,7 @@
     "369": {
         "skill_id": "369",
         "skill_name": "治疗师错误引发的阻抗",
-        "skill_description": "误解、共情失败或疏忽（如迟到）可trigger抵制与退避。先自我监测反移情，检视关系破裂的贡献因素，必要时修复再工作；勿将来访者反应仓促归因于其防御。",
+        "skill_description": "误解、Empathy失败或疏忽（如迟到）可trigger抵制与退避。先自我监测反移情，检视关系破裂的贡献因素，必要时修复再工作；勿将来访者反应仓促归因于其防御。",
         "parent_ids": [
             "1016",
             "359",
@@ -1647,8 +1647,8 @@
     },
     "370": {
         "skill_id": "370",
-        "skill_name": "干预",
-        "skill_description": "根据目标与来访者准备度选择干预：基础性技术用于促进联想与信息获取；支持性技术接纳或重塑阻抗以维持功能；揭露性技术旨在把握阻抗含义、联系without意识并减少其阻碍。",
+        "skill_name": "Intervention",
+        "skill_description": "根据目标与来访者准备度选择Intervention：基础性技术用于促进联想与信息获取；支持性技术接纳或重塑阻抗以维持功能；揭露性技术旨在把握阻抗含义、联系without意识并减少其阻碍。",
         "parent_ids": [
             "1016",
             "359",
@@ -1658,8 +1658,8 @@
     },
     "371": {
         "skill_id": "371",
-        "skill_name": "基础性干预",
-        "skill_description": "通过心理教育、提问、指导与共情，促进畅所欲言、获取细节并降低初始Anxiety。温和提示在沉默时描述所思所感，为后续支持或揭露性工作打下信息与同盟基础。",
+        "skill_name": "Foundational intervention",
+        "skill_description": "通过心理教育、Questioning、指导与Empathy，促进畅所欲言、获取细节并降低初始Anxiety。温和提示在沉默时描述所思所感，为后续支持或揭露性工作打下信息与同盟基础。",
         "parent_ids": [
             "1016",
             "359",
@@ -1670,7 +1670,7 @@
     },
     "372": {
         "skill_id": "372",
-        "skill_name": "心理教育与指导",
+        "skill_name": "Psychoeducation and guidance",
         "skill_description": "在治疗早期解释Freedom联想的重要性与方法，鼓励尽可能畅所欲言；以温和提示引导开场与沉默时的表达，明确可谈话题（感受、梦、对治疗的想法），降低新手的not适。",
         "parent_ids": [
             "1016",
@@ -1683,8 +1683,8 @@
     },
     "373": {
         "skill_id": "373",
-        "skill_name": "共情",
-        "skill_description": "体察并言语化来访者在尝试联想与接触痛苦内容时的尴尬与Anxiety，以非评判态度承接其防御。共情可缓冲揭露性干预的威胁，增强安全感与合作，促进更真实的表达。",
+        "skill_name": "Empathy",
+        "skill_description": "体察并言语化来访者在尝试联想与接触痛苦内容时的尴尬与Anxiety，以非评判态度承接其防御。Empathy可缓冲Uncovering intervention的威胁，增强安全感与合作，促进更真实的表达。",
         "parent_ids": [
             "1016",
             "359",
@@ -1696,8 +1696,8 @@
     },
     "374": {
         "skill_id": "374",
-        "skill_name": "提问",
-        "skill_description": "围绕阻抗与情节细节提出开放且具体的问题，帮助来访者扩展叙述与聚焦关键事件。问题设计以获取可工作材料为导向，避免引导性与评判，服务于理解而非定论。",
+        "skill_name": "Questioning",
+        "skill_description": "Around resistance and plot details, raise open and specific questions to help the client expand the narration and focus on key events. Question design is oriented toward obtaining workable material, avoiding leading and judgment, serving understanding rather than conclusions.",
         "parent_ids": [
             "1016",
             "359",
@@ -1709,7 +1709,7 @@
     },
     "375": {
         "skill_id": "375",
-        "skill_name": "要求联想",
+        "skill_name": "Directed association",
         "skill_description": "当出现阻抗迹象（如忘记付费、记not住梦）时，邀请来访者就其现象Freedom联想与联结，以将注意力转向防御背后的意义。此举常开启更深加工，帮助进入相关情感与记忆。",
         "parent_ids": [
             "1016",
@@ -1722,8 +1722,8 @@
     },
     "376": {
         "skill_id": "376",
-        "skill_name": "支持性干预",
-        "skill_description": "当直接揭露可能破坏功能时，选择接纳或重定向阻抗，帮助采用更适应的保护方式、减少对目标的妨碍。可通过结构化建议与现实引导提升出席、遵约与情绪调节。",
+        "skill_name": "Supportive intervention",
+        "skill_description": "When direct uncovering may destroy functioning, choose to accept or redirect the resistance, helping adopt more adaptive protective means and reducing obstruction to the goals. Attendance, compliance, and emotion regulation can be improved through structured advice and reality guidance.",
         "parent_ids": [
             "1016",
             "359",
@@ -1735,7 +1735,7 @@
     "377": {
         "skill_id": "377",
         "skill_name": "阻抗应对",
-        "skill_description": "针对干扰治疗的阻抗（迟到、漏约、隐瞒等），在维持同盟前提下提供现实取向的建议与引导，改善可操作行为与环境条件；必要时暂缓揭露，优先稳态与功能恢复。",
+        "skill_description": "For resistance interfering with treatment (lateness, missed appointments, concealment, etc.), on the premise of maintaining the alliance, provide reality-oriented advice and guidance, improve operable behaviors and environmental conditions; when necessary, postpone uncovering and prioritize stability and functional recovery.",
         "parent_ids": [
             "1016",
             "359",
@@ -1748,7 +1748,7 @@
     "378": {
         "skill_id": "378",
         "skill_name": "阻抗应对中的建议",
-        "skill_description": "就具体妨碍因素提出可行策略（如调整出行、设置提醒、改用打车），以减少迟到与漏约等对工作时间与效果的损害。焦点在功能改善而非解释动机，语气务实且支持。",
+        "skill_description": "Propose feasible strategies for specific hindering factors (such as adjusting travel, setting reminders, switching to taxis) to reduce harm to work time and effectiveness from lateness and missed appointments. The focus is on functional improvement rather than interpreting motivation, in a pragmatic and supportive tone.",
         "parent_ids": [
             "1016",
             "359",
@@ -1775,8 +1775,8 @@
     },
     "380": {
         "skill_id": "380",
-        "skill_name": "揭露性干预",
-        "skill_description": "以理解阻抗的without意识含义为目标，运用对质、澄清与解释逐步引导觉察。把握时机与语气，先共情其保护功能，再假设可能联系，以减少阻抗对not yet来工作的干扰。",
+        "skill_name": "Uncovering intervention",
+        "skill_description": "以理解阻抗的without意识含义为目标，运用对质、澄清与解释逐步引导觉察。把握时机与语气，先Empathy其保护功能，再假设可能联系，以减少阻抗对not yet来工作的干扰。",
         "parent_ids": [
             "1016",
             "359",
@@ -1787,8 +1787,8 @@
     },
     "381": {
         "skill_id": "381",
-        "skill_name": "阻抗对质",
-        "skill_description": "温和指认可观察到的阻抗现象（如沉默、转题、迟到），邀请来访者一同好奇其发生与时点；或指出联想中的脱节，以测试其准备度。语气探索性，避免指责与定性。",
+        "skill_name": "Confronting resistance",
+        "skill_description": "Gently point out observable resistance phenomena (such as silence, topic shifting, lateness), invite the client to be curious together about their occurrence and timing; or point out disconnections in the associations, to test their readiness. The tone is exploratory, avoiding blame and labeling.",
         "parent_ids": [
             "1016",
             "359",
@@ -1814,7 +1814,7 @@
     "383": {
         "skill_id": "383",
         "skill_name": "阻抗解释",
-        "skill_description": "在对质与澄清基础上，提出对阻抗without意识动机的假设，并与当下情境、历史经验相连。语气试探且共情，强调可能性并征询反应，以避免威胁其防御并深化加工。",
+        "skill_description": "在对质与澄清基础上，提出对阻抗without意识动机的假设，并与当下情境、历史经验相连。语气试探且Empathy，强调可能性并征询反应，以避免威胁其防御并深化加工。",
         "parent_ids": [
             "1016",
             "359",
@@ -1848,7 +1848,7 @@
     "918": {
         "skill_id": "918",
         "skill_name": "显性梦境",
-        "skill_description": "指来访者能记住并讲述的梦的故事。先环绕式倾听，再聚焦清晰元素、情绪与主题，用其作为启动联想与接近without意识的入口，而非直接“解码”。",
+        "skill_description": "指来访者能记住并讲述的梦的故事。先环绕式Listening，再聚焦清晰元素、情绪与主题，用其作为启动联想与接近without意识的入口，而非直接“解码”。",
         "parent_ids": [
             "1016",
             "916",
@@ -1871,8 +1871,8 @@
     },
     "920": {
         "skill_id": "920",
-        "skill_name": "倾听梦境与联想",
-        "skill_description": "同时倾听梦境叙述与其前后所有言谈作为联想，关注心境、清晰要点、主题与与面谈节点的联系，以定位最接近表层的线索与合适的干预点。",
+        "skill_name": "Listening梦境与联想",
+        "skill_description": "同时Listening梦境叙述与其前后所有言谈作为联想，关注心境、清晰要点、主题与与面谈节点的联系，以定位最接近表层的线索与合适的Intervention点。",
         "parent_ids": [
             "1016",
             "916",
@@ -1882,8 +1882,8 @@
     },
     "921": {
         "skill_id": "921",
-        "skill_name": "释梦中的反思",
-        "skill_description": "在“沐浴”梦境中思考元素表征的without意识情感、恐惧与Fantasy，结合重复与情感强度，并依准备与选择原则决定何时、以何种方式推进干预。",
+        "skill_name": "释梦中的Reflection",
+        "skill_description": "在“沐浴”梦境中思考元素表征的without意识情感、恐惧与Fantasy，结合重复与情感强度，并依准备与选择原则决定何时、以何种方式推进Intervention。",
         "parent_ids": [
             "1016",
             "916",
@@ -1917,8 +1917,8 @@
     },
     "924": {
         "skill_id": "924",
-        "skill_name": "释梦中的干预",
-        "skill_description": "依据自我功能与Anxiety耐受，在基础性、支持性与揭露性之间选择。先以教育与提问启动联想；必要时规避；条件成熟时对质、澄清并提出解释。",
+        "skill_name": "释梦中的Intervention",
+        "skill_description": "依据自我功能与Anxiety耐受，在基础性、支持性与揭露性之间选择。先以教育与Questioning启动联想；必要时规避；条件成熟时对质、澄清并提出解释。",
         "parent_ids": [
             "1016",
             "916",
@@ -1928,8 +1928,8 @@
     },
     "925": {
         "skill_id": "925",
-        "skill_name": "基础性干预",
-        "skill_description": "通过心理教育与开放式提问帮助来访者理解梦的价值与工作方法，强调联想重于剧情意义，降低困惑与Withdrawal，促进入手、聚焦与素材生成。",
+        "skill_name": "Foundational intervention",
+        "skill_description": "通过心理教育与开放式Questioning帮助来访者理解梦的价值与工作方法，强调联想重于剧情意义，降低困惑与Withdrawal，促进入手、聚焦与素材生成。",
         "parent_ids": [
             "1016",
             "916",
@@ -1953,7 +1953,7 @@
     },
     "927": {
         "skill_id": "927",
-        "skill_name": "提问以引出梦之联想",
+        "skill_name": "Questioning以引出梦之联想",
         "skill_description": "以开放问题与针对情绪、画面的追问促进联想，如“梦里你有什么感觉？”当遗漏关键元素时适度引导，并留意遗漏背后的阻抗线索。",
         "parent_ids": [
             "1016",
@@ -1966,8 +1966,8 @@
     },
     "928": {
         "skill_id": "928",
-        "skill_name": "支持性干预",
-        "skill_description": "当深入探索或揭露可能加重Anxiety与混乱时，优先采用支持性方式：共情、安抚、现实检验，并用显性元素连结当下困扰，暂缓深挖以稳固自我。",
+        "skill_name": "Supportive intervention",
+        "skill_description": "当深入探索或揭露可能加重Anxiety与混乱时，优先采用支持性方式：Empathy、安抚、现实检验，并用显性元素连结当下困扰，暂缓深挖以稳固自我。",
         "parent_ids": [
             "1016",
             "916",
@@ -1992,7 +1992,7 @@
     "930": {
         "skill_id": "930",
         "skill_name": "支持性规避",
-        "skill_description": "当来访者脆弱或not愿深谈梦时，尊重回避，以支持性规避替代揭露；以共情、验证与替代性解释减压，待功能恢复后再探索without意识内容。",
+        "skill_description": "当来访者脆弱或not愿深谈梦时，尊重回避，以支持性规避替代揭露；以Empathy、验证与替代性解释减压，待功能恢复后再探索without意识内容。",
         "parent_ids": [
             "1016",
             "916",
@@ -2004,7 +2004,7 @@
     },
     "931": {
         "skill_id": "931",
-        "skill_name": "揭露性干预",
+        "skill_name": "Uncovering intervention",
         "skill_description": "在同盟稳固、耐受充分时，围绕梦的without意识假设推进工作，经由对质与澄清累积材料，提出解释，促进情感进入意识并深化移情与冲突理解。",
         "parent_ids": [
             "1016",
@@ -2055,7 +2055,7 @@
     },
     "935": {
         "skill_id": "935",
-        "skill_name": "阻抗对质",
+        "skill_name": "Confronting resistance",
         "skill_description": "当来访者提到梦却Displacement或迟迟not谈时，温和指出并探询其原因，同时记住紧随其后的内容也可能是联想；把握时机，not急迫也not忽视阻抗。",
         "parent_ids": [
             "1016",

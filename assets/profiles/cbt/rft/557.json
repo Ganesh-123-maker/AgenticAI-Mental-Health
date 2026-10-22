@@ -2,9 +2,9 @@
   "basic_info": {
     "static_traits": {
       "age": "36",
-      "name": "张敏",
+      "name": "Zhang Min",
       "gender": "Female",
-      "occupation": "杂货店员工",
+      "occupation": "Grocery store employee",
       "educational_background": "High school graduate",
       "marital_status": "Unmarried",
       "family_status": "Living alone",
@@ -16,7 +16,7 @@
     "topic": "Career development",
     "core_demands": "我决定现在寻求咨询，是因为这些想法正在影响我的自尊和工作满意度。",
     "growth_experiences": [
-      "约六个月前，来访者在杂货店工作时因疏忽让一批蔬菜报损。虽然雇主并not yet当场责备或明确表达负面评价，但该事件在她心中挥之not去。自此，她持续反复回想这次失误，并相信它严重阻碍了自己的晋升机会；每当出现晋升机会的消息或讨论，她都会自动联想到这次失误并认为“他们not会考虑我”。在此影响下，她开始加倍工作、格外勤勉以“弥补”错误，同时与同事的关系因她的Anxiety和自我怀疑而趋于紧张，逐渐减少与同事交流。她也not yet将这些担忧与朋友分享，生活中对原本喜欢的活动失去兴趣，自尊与工作满意度明显下降。"
+      "约六个月前，来访者在杂货店工作时因疏忽让一批蔬菜报损。虽然雇主并not yet当场责备或明确表达负面评价，但该事件在她心中挥之not去。自此，她持续反复回想这次失误，并相信它严重阻碍了自己的晋升机会；每当出现晋升机会的消息或讨论，她都会自动联想到这次失误并认为“他们not会考虑我”。在此影响下，她开始加倍工作、格外勤勉以“弥补”错误，同时与同事的关系因她的Anxiety和Self-doubt而趋于紧张，逐渐减少与同事交流。她也not yet将这些担忧与朋友分享，生活中对原本喜欢的活动失去兴趣，自尊与工作满意度明显下降。"
     ]
   },
   "theory": {
@@ -142,8 +142,8 @@
           "具备一定社会支持（有几位朋友可交流）"
         ],
         "negative_force": [
-          "过度概括与预测not yet来等认知偏差强化Self-denial",
-          "自我价值过度依赖外部评价（如晋升）",
+          "过度概括与预测not yet来等认知偏差ReinforcementSelf-denial",
+          "Self-worth excessively dependent on external evaluation（如晋升）",
           "与同事互动回避导致支持减少与Relationship tension",
           "Impaired self-esteem、兴趣下降影响职业投入"
         ]
@@ -152,13 +152,13 @@
     "bt": {
       "target_behavior": [
         {
-          "behavior": "回避与同事交流（Reduced socializing互动）",
+          "behavior": "Avoiding communication with colleagues（Reduced socializing互动）",
           "antecedent": [
             "在工作中想起六个月前的失误",
             "公司发布或讨论晋升机会时",
             "感到他人可能在评价自己"
           ],
-          "core_reason": "将一次失误视为对自身能力的全面negate，并将内在的自我怀疑Projection为他人“not信任/认为我有问题”的看法以致回避交流",
+          "core_reason": "将一次失误视为对自身能力的全面negate，并将内在的Self-doubtProjection为他人“not信任/认为我有问题”的看法以致Avoids communication",
           "function": "逃避被负面评价与可能的羞耻感，短期缓解Anxiety",
           "consequence": "Tense relationships with colleagues、社交支持减弱，进一步加剧孤立与Anxiety"
         },
@@ -168,9 +168,9 @@
             "出现晋升机会或绩效评估时",
             "回想起蔬菜报损事件"
           ],
-          "core_reason": "以“必须完美without错才能被认可”的条件假设来抵消“I am not competent enough”的核心信念，从而通过过度努力寻求安全感与价值感",
+          "core_reason": "以“必须完美without错才能被认可”的条件假设来Undoing“I am not competent enough”的核心信念，从而通过过度努力寻求安全感与价值感",
           "function": "试图Gaining recognition并降低被negate的风险",
-          "consequence": "持续压力与疲惫，Decline in job satisfaction，可能进一步强化自我怀疑"
+          "consequence": "持续压力与疲惫，Decline in job satisfaction，可能进一步ReinforcementSelf-doubt"
         }
       ]
     }

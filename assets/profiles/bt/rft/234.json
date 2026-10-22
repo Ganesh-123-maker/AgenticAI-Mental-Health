@@ -2,7 +2,7 @@
   "basic_info": {
     "static_traits": {
       "age": "31",
-      "name": "张凯",
+      "name": "Zhang Kai",
       "gender": "Male",
       "occupation": "Student",
       "educational_background": "Currently studying for a bachelor's degree",
@@ -12,11 +12,11 @@
       "medical_history": "No major physical illness; no psychotherapy received before或存在其他心理问题；此前not yet经历相似问题",
       "language_features": "Not mentioned"
     },
-    "main_problem": "因财务状况与学业表现而感到overwhelmed和压力；过去一学期在意识到部分课程not及格、债务not断累积后，Anxiety显著加重，几乎每天在收到成绩或债务通知时出现强烈Anxiety；尝试忽视问题但只会增加Anxiety与压力。",
+    "main_problem": "因财务状况与学业表现而感到overwhelmed和压力；过去一学期在意识到部分课程not及格、债务not断累积后，Anxiety显著加重，几乎每天在Receiving grades或债务通知时出现强烈Anxiety；尝试忽视问题但只会增加Anxiety与压力。",
     "topic": "Academic pressure",
     "core_demands": "因感到overwhelmed、without法独自应对学业与财务困境而寻求咨询，希望获得支持以缓解压力并提升应对能力。",
     "growth_experiences": [
-      "在过去一学期，来访者意识到部分课程not及格，同时债务not断累积，感觉一切失控。每当收到成绩或债务通知，Anxiety飙升，开始认为“have not出路”，每日担忧not yet来与债务管理、学业负担，引发学业受影响、Interpersonal tension与日常节律被打乱。来访者尝试通过忽视问题来应对，但Anxiety与压力反而加重。"
+      "在过去一学期，来访者意识到部分课程not及格，同时债务not断累积，感觉一切失控。每当Receiving grades或债务通知，Anxiety飙升，开始认为“have not出路”，每日担忧not yet来与债务管理、学业负担，引发Academics affected、Interpersonal tension与日常节律被打乱。来访者尝试通过忽视问题来应对，但Anxiety与压力反而加重。"
     ]
   },
   "theory": {
@@ -27,7 +27,7 @@
       ],
       "special_situations": [
         {
-          "event": "收到成绩或债务通知",
+          "event": "Receiving grades或债务通知",
           "conditional_assumptions": "如果一次评估表现not好或出现债务，就说明我have not能力，not yet来会被毁掉",
           "compensatory_strategies": "回避与忽视账单或成绩信息，以暂时降低Anxiety",
           "automatic_thoughts": "我会一直被债务困住，这学期完了",
@@ -133,7 +133,7 @@
         ],
         "negative_force": [
           "灾难化、心理过滤、negate正面等认知偏差显著",
-          "收到成绩或债务提醒时强烈Anxiety，容易跳到最坏结果",
+          "Receiving grades或债务提醒时强烈Anxiety，容易跳到最坏结果",
           "倾向回避问题（尝试忽视账单与成绩），导致Anxiety worsened",
           "not愿与朋友讨论困境，社交支持usenot足",
           "Academic pressure与财务负担同时存在，形成双重压力"
@@ -143,14 +143,14 @@
     "bt": {
       "target_behavior": [
         {
-          "behavior": "在收到成绩或债务相关信息时出现强烈Anxiety与恐慌，并回避查看或处理相关事宜",
+          "behavior": "在Receiving grades或债务相关信息时出现强烈Anxiety与恐慌，并回避查看或处理相关事宜",
           "antecedent": [
-            "收到成绩反馈或债务通知",
+            "Receiving grades反馈或债务通知",
             "想到学业进度与债务状况"
           ],
           "core_reason": "在成功压力与财务负担下形成的灾难化认知与过度负面关注（心理过滤），担心“have not出路”",
           "function": "短期逃避not适与Anxiety，试图通过回避信息获得暂时的心理缓解",
-          "consequence": "学业表现下降、Interpersonal tension、日常生活被打乱，Anxiety与压力持续加重"
+          "consequence": "Declining academic performance、Interpersonal tension、日常生活被打乱，Anxiety与压力持续加重"
         }
       ]
     }

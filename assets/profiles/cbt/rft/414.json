@@ -97,7 +97,7 @@
           ],
           "outcomes": [
             "Anxiety与回避增多，体验到孤立感",
-            "生活质量下降、对新体验的兴趣受损"
+            "Decreased quality of life、对新体验的兴趣受损"
           ]
         }
       ],
@@ -125,7 +125,7 @@
         {
           "target_problem": "在准备去陌生地点时，来访者通常会对停车产生强烈担忧并倾向回避，导致取消外出或高度痛苦。",
           "unique_outcome": "在几次去陌生地点的经历中，来访者顺利找到车位并完成停车，not yet出现想象中的“出丑”，情绪较为可控。",
-          "reason": "线索：情境not同（当时停车位较充足/交通较缓）；因此这几次担忧not yet被强化，出现了较顺利的结果。"
+          "reason": "线索：情境not同（当时停车位较充足/交通较缓）；因此这几次担忧not yet被Reinforcement，出现了较顺利的结果。"
         }
       ],
       "force_field": {
@@ -138,7 +138,7 @@
         "negative_force": [
           "灾难化与过度概括的认知风格，自我贴标签（“失败者”）",
           "心理过滤与negate积极证据，削弱自我效能",
-          "回避新情境与社交，强化Anxiety循环",
+          "回避新情境与社交，ReinforcementAnxiety循环",
           "Introjection的“应该”规则与自我苛责，减少寻求支持的可能"
         ]
       }
@@ -163,7 +163,7 @@
           ],
           "core_reason": "为避免可能的失败、尴尬与外界评价，将负性Anticipation泛化为回避选择",
           "function": "通过回避迅速降低Anxiety与紧张",
-          "consequence": "生活范围缩小、社交减少，Loneliness感与失落感加重"
+          "consequence": "生活范围缩小、Reduced socializing，Loneliness感与失落感加重"
         }
       ]
     }

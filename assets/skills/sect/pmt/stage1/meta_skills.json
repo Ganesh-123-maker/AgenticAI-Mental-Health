@@ -1,8 +1,8 @@
 {
     "1": {
         "skill_id": "1",
-        "skill_name": "评估性会谈",
-        "skill_description": "在后现代取向下，评估性会谈以对话与语言为核心，重视合作与平等关系，尊重来访者为自身专家，通过叙事与解决导向的探索澄清问题与目标。",
+        "skill_name": "Evaluative session",
+        "skill_description": "Under a postmodern orientation, the evaluative session takes dialogue and language as the core, values cooperative and equal relationships, respects the client as the expert on themselves, and clarifies problems and goals through narrative and solution-focused exploration.",
         "parent_ids": [
             "1"
         ],
@@ -10,8 +10,8 @@
     },
     "2": {
         "skill_id": "2",
-        "skill_name": "叙事疗法",
-        "skill_description": "叙事疗法鼓励来访者用自身语言讲述生命故事，解构问题中心叙事，外化问题并重写更具意义的故事，强调语言建构与文化脉络的作用。",
+        "skill_name": "Narrative therapy",
+        "skill_description": "Narrative therapy鼓励来访者用自身语言讲述生命故事，解构问题中心叙事，外化问题并重写更具意义的故事，强调语言建构与文化脉络的作用。",
         "parent_ids": [
             "1",
             "2"
@@ -21,7 +21,7 @@
     "3": {
         "skill_id": "3",
         "skill_name": "故事叙述",
-        "skill_description": "故事叙述是叙事疗法的起点；咨询师提供安全、not受打扰的环境，邀请来访者详述事件与影响，以记忆性材料为基础开展后续解构与重写。",
+        "skill_description": "故事叙述是Narrative therapy的起点；咨询师提供安全、not受打扰的环境，邀请来访者详述事件与影响，以记忆性材料为基础开展后续解构与重写。",
         "parent_ids": [
             "1",
             "2",
@@ -32,7 +32,7 @@
     "4": {
         "skill_id": "4",
         "skill_name": "营造叙事会谈的Good氛围",
-        "skill_description": "营造安全、尊重、without评判的氛围，促使来访者愿意讲述破碎与失落的主导故事；咨询师以积极关注与倾听稳定关系，提高探索与改变的动机。",
+        "skill_description": "营造安全、尊重、without评判的氛围，促使来访者愿意讲述破碎与失落的主导故事；咨询师以积极关注与Listening稳定关系，提高探索与改变的动机。",
         "parent_ids": [
             "1",
             "2",
@@ -90,7 +90,7 @@
     "9": {
         "skill_id": "9",
         "skill_name": "问题拟人化",
-        "skill_description": "把问题拟人化，探查它的“意图”“策略”及如何操控生活；强化来访者与问题的关系视角，配合外化与例外探索，提升反制与选择的能力。",
+        "skill_description": "把问题拟人化，探查它的“意图”“策略”及如何操控生活；Reinforcement来访者与问题的关系视角，配合外化与例外探索，提升反制与选择的能力。",
         "parent_ids": [
             "1",
             "2",
@@ -100,8 +100,8 @@
     },
     "10": {
         "skill_id": "10",
-        "skill_name": "焦点解决短期疗法",
-        "skill_description": "焦点解决短期疗法以解决为导向，强调合作与小改变的雪球效应；通过目标建构、例外与奇迹问句、评量与正向反馈，快速促成可行改变。",
+        "skill_name": "Solution-focused brief therapy",
+        "skill_description": "Solution-focused brief therapy以解决为导向，强调合作与小改变的雪球效应；通过目标建构、例外与奇迹问句、评量与正向反馈，快速促成可行改变。",
         "parent_ids": [
             "1",
             "10"
@@ -122,7 +122,7 @@
     "12": {
         "skill_id": "12",
         "skill_name": "首次会面后任务（FFST）",
-        "skill_description": "首次会面后任务要求来访者在两次会谈间观察并记录“值得再次发生”的事件；以正向反馈巩固改变，提升乐观与行动性，推动目标持续达成。",
+        "skill_description": "The task after the first meeting requires the client, between the two sessions, to observe and record events 'worth happening again'; consolidate change with positive feedback, raise optimism and action, and promote the continuous attainment of goals.",
         "parent_ids": [
             "1",
             "10",
