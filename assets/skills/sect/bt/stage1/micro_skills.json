@@ -2,7 +2,7 @@
     "253": {
         "skill_id": "253",
         "skill_name": "use频率记录（连续记录法）",
-        "skill_description": "在整个观察阶段连续记录目标行为，每次出现均计一次，计算总出现次数，以量化行为频率。要求能辨认每次行为的发生与结束。",
+        "skill_description": "Continuously record the target behavior throughout the observation stage, count each occurrence once, and calculate the total number of occurrences to quantify the behavior frequency. It is required to be able to identify the start and end of each occurrence of the behavior.",
         "when_to_use": "在行为观察与记录阶段，计划采用连续记录以建立或评估基线时，需要量化单位阶段内的出现次数。",
         "trigger": "目标行为在观察情境中可多次出现且起止清晰，观察者能够逐次分辨并统计其发生。",
         "parent_ids": [
@@ -93,7 +93,7 @@
     "260": {
         "skill_id": "260",
         "skill_name": "实施时间样本记录并计算百分比",
-        "skill_description": "把观察阶段划分为若干间隔，仅在每个间隔的一部分时间进行观测，最终以记录到行为的间隔数占总间隔数的百分比表示水平。",
+        "skill_description": "Divide the observation phase into several intervals, observe only during part of each interval, and finally express the level as the percentage of intervals in which the behavior was recorded out of the total number of intervals.",
         "when_to_use": "在without法持续全程观察、需用抽样方式估计行为水平并量化为间隔百分比时。",
         "trigger": "观察方案规定仅在每个间隔的一部分时间进行观察，且可统计发生间隔与总间隔数量。",
         "parent_ids": [
@@ -189,7 +189,7 @@
     "238": {
         "skill_id": "238",
         "skill_name": "排除内在推测与主观评价",
-        "skill_description": "界定目标行为时排除对内在心理状态的揣测与价值判断，只依据可观察到的表现进行表述，避免将感受、想法作为定义内容。",
+        "skill_description": "When defining the target behavior, exclude speculation and value judgments about inner psychological states, express it only based on observable manifestations, avoiding taking feelings and thoughts as definitional content.",
         "when_to_use": "在明确目标行为的文字表述或制定评估指标前，需确保定义仅基于可观察行为时。",
         "trigger": "来访者以“感到沮丧”“内心抗拒”等内在状态描述问题，或出现带价值色彩的评判用语。",
         "parent_ids": [
@@ -910,7 +910,7 @@
     "182": {
         "skill_id": "182",
         "skill_name": "评估求助者及周围人对问题行为的态度",
-        "skill_description": "收集求助者与重要他人对该行为的认可或反对态度，分析其在维持或抑制行为中的作用，明确需要调整的社会性后果与沟通焦点。",
+        "skill_description": "Collect the attitudes of approval or opposition toward the behavior from the help-seeker and significant others, analyze their role in maintaining or inhibiting the behavior, and clarify the social consequences and communication focus that need adjustment.",
         "when_to_use": "在计划系统性Intervention、需要动员家庭/Teacher等支持者配合前，用于把握社会性后果方向。",
         "trigger": "来访者转述“家人觉得not问题/会纵容/会批评/坚决反对”等；他人给予的关注、责备或放任影响行为。",
         "parent_ids": [
@@ -1190,7 +1190,7 @@
     "213": {
         "skill_id": "213",
         "skill_name": "记录对象与时间情境",
-        "skill_description": "在观察表中填写被观察者、日期和起止时间，并记录期间的情境特点与所从事活动，为定位前提事件与行为提供时间与情境参照。",
+        "skill_description": "Fill in the observation form with the person observed, the date, and the start and end times, and record the situational characteristics and activities engaged in during the period, providing temporal and situational references for locating antecedent events and behaviors.",
         "when_to_use": "每次观察周期开始时建立本段记录框架，或当情境与活动发生显著变化需更新记录时。",
         "trigger": "启动新一段观察、切换场所或活动，或出现新的时间段需要标注时。",
         "parent_ids": [
@@ -1430,7 +1430,7 @@
     "207": {
         "skill_id": "207",
         "skill_name": "Recording the true consequences of behavior",
-        "skill_description": "于“真正的行为后果”栏记录问题行为实际带来的后果，用以检验哪些后果被一致地提供，并为潜在维持功能提供进一步线索。",
+        "skill_description": "In the 'true behavior consequences' column, record the consequences the problem behavior actually brings, used to check which consequences are consistently provided, and provide further clues for the potential maintaining function.",
         "when_to_use": "问题行为发生后，需要客观记录行为后果以对照功能推断时。",
         "trigger": "问题行为之后出现了可观察后果，如被隔离、获得注意/物品、离开任务或改变要求。",
         "parent_ids": [
@@ -1475,7 +1475,7 @@
     "210": {
         "skill_id": "210",
         "skill_name": "审查行为频次与时间前提关系",
-        "skill_description": "按解释原则先检视哪些行为正在发生、频率及共现，再检视是否在特定时间一致出现，以及特定前提指标与特定行为的关联性。",
+        "skill_description": "According to the interpretation principles, first examine which behaviors are occurring, their frequency, and co-occurrence, then examine whether they consistently appear at specific times, and the association between specific antecedent indicators and specific behaviors.",
         "when_to_use": "收集到足够条目后，进入资料解释以发现时序与先行条件模式时。",
         "trigger": "表中出现重复的时段模式或前提指标，或某些行为在同一时间窗内频繁共现。",
         "parent_ids": [
@@ -2906,7 +2906,7 @@
     "48": {
         "skill_id": "48",
         "skill_name": "运用Self-monitoring记录因果线索",
-        "skill_description": "指导来访者记录行为发生的时间、地点、当时情景和次数，并标注紧随其后的结果，帮助分析前提线索与后果之间的功能性联系。",
+        "skill_description": "Guide the client to record the time, place, situation at the time, and number of occurrences of the behavior, and mark the immediately following outcomes, helping to analyze the functional relationship between antecedent cues and consequences.",
         "when_to_use": "当现有信息not足以判定维持因素，需在自然情境中持续采样以形成功能性假设时。",
         "trigger": "来访者难以回忆细节或模式not清，单次访谈without法充分揭示诱发与后果规律。",
         "parent_ids": [
@@ -4434,7 +4434,7 @@
         "skill_name": "系统收集症状历程并初步分析",
         "skill_description": "与来访者深入交谈，系统收集症状表现、trigger情境、持续时间与强度、回避策略及对学习、人际与生活的影响，梳理出现经过与not愉快事件，形成时间线与功能受损概况，并进行初步问题分析，帮助其理解“为什么会这样”。",
         "when_to_use": "At the initial assessment and comprehensive organization stage, after completing basic information and event follow-up, when the nature of the problem, timeline, severity, and functional impairment need to be clarified.",
-        "trigger": "来访者详细陈述困扰、恐惧或社交紧张与回避，学习/工作功能受损、睡眠饮食异常，并可追忆相关经历或明确持续时间时。",
+        "trigger": "The client states in detail distress, fears, or social tension and avoidance, study/work functioning impaired, sleep and diet abnormal, and can recall related experiences or specify the duration.",
         "parent_ids": [
             "285",
             "267",
@@ -4576,7 +4576,7 @@
     "431": {
         "skill_id": "431",
         "skill_name": "协商确定长期目标与巩固方向",
-        "skill_description": "在近期目标基础上明确长期目标：提升抗压能力，学会情绪调节，形成理性、平和、乐观的心态，作为结案标准与巩固方向。",
+        "skill_description": "On the basis of near-term goals, clarify long-term goals: improve stress resistance, learn emotion regulation, form a rational, calm, optimistic mindset, as the closing standard and consolidation direction.",
         "when_to_use": "制定总体方案时，与来访者达成长期共识。",
         "trigger": "来访者希望not仅缓解当前Anxiety，也提升长期适应。",
         "parent_ids": [
@@ -4866,7 +4866,7 @@
         "skill_name": "整合观察与他人反映评估社会功能与态度",
         "skill_description": "Combined with face-to-face observation and feedback from significant others such as teachers, classmates and parents, record attitudes such as encouragement, soothing, understanding or coldness and the concrete support arrangements, assess their impact on fear, avoidance and social functioning, calibrate the client's subjective inferences about others' reactions, enriching the functional analysis evidence.",
         "when_to_use": "When collecting multi-source information in the assessment and diagnosis stage, used to judge social-function impacts and significant others' attitudes, or to examine the support system in functional analysis.",
-        "trigger": "获得同伴/老师/家长的近况与态度反馈，或现场观察到紧张表现、社会参与下降、他人安抚鼓励与看望接送、表扬等安排时。",
+        "trigger": "When obtaining feedback on the recent situation and attitudes of peers/teachers/parents, or observing on site tense presentations, decreased social participation, and arrangements such as others soothing and encouraging, visiting and picking up/dropping off, and praise.",
         "parent_ids": [
             "285",
             "133",

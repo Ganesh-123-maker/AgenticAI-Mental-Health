@@ -1306,7 +1306,7 @@
     "122": {
         "skill_id": "122",
         "skill_name": "设定咨询目标的具体行为或情绪改变",
-        "skill_description": "在明确了咨询目标领域后，帮助来访者将这些目标具体化为可操作的行为或情绪改变，确保每个目标都具有明确的、可测量的标准。",
+        "skill_description": "After clarifying the counseling goal domains, help the client concretize these goals into operable behavioral or emotional changes, ensuring each goal has clear, measurable criteria.",
         "when_to_use": "在Evaluative session结束阶段，确认咨询的具体方向后，帮助来访者将目标具体化。",
         "trigger": "来访者已同意参与后续咨询，并确认了治疗方向。",
         "parent_ids": [
@@ -1332,7 +1332,7 @@
     "124": {
         "skill_id": "124",
         "skill_name": "向来访者说明预计的咨询次数和频率",
-        "skill_description": "咨询师需要向来访者详细说明预计的咨询次数和频率。例如，每周一次，预计8-14次等，以帮助来访者了解咨询的总体安排。",
+        "skill_description": "The counselor needs to explain in detail to the client the expected number and frequency of sessions. For example, once a week, an expected 8-14 sessions, etc., to help the client understand the overall arrangement of counseling.",
         "when_to_use": "在会谈结束时，明确咨询目标后，用于帮助来访者决定是否继续咨询。",
         "trigger": "来访者表达出对于继续咨询的兴趣或not确定性。",
         "parent_ids": [
@@ -1358,7 +1358,7 @@
     "126": {
         "skill_id": "126",
         "skill_name": "帮助来访者决定是否继续咨询",
-        "skill_description": "咨询师需要根据已提供的咨询次数、频率、时间长度和费用等信息，帮助来访者决定是否继续咨询，并在必要时提供支持性建议。",
+        "skill_description": "The counselor needs, based on the provided information about session number, frequency, session length, and fees, to help the client decide whether to continue counseling, and provide supportive advice when necessary.",
         "when_to_use": "在向来访者说明咨询安排后，来访者需要做出是否继续咨询的决定。",
         "trigger": "来访者在听取了咨询安排信息后，表示需要考虑是否继续咨询。",
         "parent_ids": [
@@ -3704,7 +3704,7 @@
     "523": {
         "skill_id": "523",
         "skill_name": "共建议程并聚焦当次优先议题",
-        "skill_description": "与来访者商定当次会谈的具体内容与重点，结合问题清单进行优先级排序，明确目标与流程，提高会谈效率并避免话题发散。",
+        "skill_description": "Agree with the client on the concrete content and focus of this session, rank priorities combined with the problem list, clarify goals and process, improving session efficiency and avoiding topic divergence.",
         "when_to_use": "完成上周回顾后，需确定本次议程与优先级时。",
         "trigger": "来访者同时提出多个议题或关注点，需要聚焦与排序。",
         "parent_ids": [
@@ -3717,7 +3717,7 @@
     "298": {
         "skill_id": "298",
         "skill_name": "概述本次任务与流程并按项推进",
-        "skill_description": "开场明确当次将完成的任务与先后顺序（如收集信息、初步分析、梳理问题清单与确定目标），使交流有序高效并为后续安排铺路。",
+        "skill_description": "At the opening, clarify the tasks to be completed in this session and their order (such as gathering information, preliminary analysis, organizing the problem list, and setting goals), making the exchange orderly and efficient and paving the way for subsequent arrangements.",
         "when_to_use": "初次会谈开始或转入议题前，需要对当次范围与顺序共识时。",
         "trigger": "来访者叙述发散、焦点not清，或询问“今天主要做什么”。",
         "parent_ids": [
@@ -3730,7 +3730,7 @@
     "385": {
         "skill_id": "385",
         "skill_name": "协商确定目标与方案并明确疗法",
-        "skill_description": "在评估与测评后，与来访者共同商定咨询目标与方案，并明确将采用的疗法，使会谈方向与方法清晰一致，提升配合度与期待感。",
+        "skill_description": "After assessment and testing, jointly agree with the client on the counseling goals and plan, and clarify the therapy to be adopted, making the session's direction and methods clear and consistent, raising cooperation and a sense of expectation.",
         "when_to_use": "首次会谈后半程或初步评估完成后。",
         "trigger": "已完成SAS/SDS等评估并需明确后续路径与方法时。",
         "parent_ids": [
@@ -3756,7 +3756,7 @@
     "521": {
         "skill_id": "521",
         "skill_name": "完成知情同意并明确权利义务",
-        "skill_description": "在咨询开始前说明双方的责任、权利与义务，强调保密与边界，取得来访者同意并建立清晰合作框架，提升透明度与安全感。",
+        "skill_description": "Before counseling begins, explain both parties' responsibilities, rights, and obligations, emphasize confidentiality and boundaries, obtain the client's consent and establish a clear cooperation framework, improving transparency and safety.",
         "when_to_use": "初次会谈开始前或开场阶段。",
         "trigger": "首次到访，对咨询流程、权责not明确或询问相关规定时。",
         "parent_ids": [
@@ -3782,7 +3782,7 @@
     "339": {
         "skill_id": "339",
         "skill_name": "说明并落实会谈频率与节奏",
-        "skill_description": "交代并确认会谈频率、单次时长与阶段总次数（如每日一次后转为每周一次等），确保双方对进度与节奏达成一致，便于配合执行。",
+        "skill_description": "State and confirm the session frequency, the length of each session, and the total number of sessions per stage (such as once daily later changing to once weekly), ensuring both parties agree on the pace and rhythm to facilitate cooperation.",
         "when_to_use": "确立咨询方案时或首次会谈结束前。",
         "trigger": "需要安排时间表、来访者询问频率/次数，或存在时间冲突需协调时。",
         "parent_ids": [
@@ -3808,7 +3808,7 @@
     "422": {
         "skill_id": "422",
         "skill_name": "明确当次会谈目标与任务",
-        "skill_description": "在会谈开端统一当次服务的主题与任务（如接案共识、了解情况、初步评估），界定焦点与边界，避免发散并为后续方案奠定基础。",
+        "skill_description": "At the beginning of the session, unify the theme and tasks of this session (such as intake consensus, understanding the situation, preliminary assessment), define the focus and boundaries, avoid divergence, and lay the foundation for the subsequent plan.",
         "when_to_use": "第一次服务或每次会谈开端。",
         "trigger": "初次接案或议题not yet明确、谈话开始出现发散时。",
         "parent_ids": [
@@ -3821,7 +3821,7 @@
     "170": {
         "skill_id": "170",
         "skill_name": "明确评估阶段的任务与方法",
-        "skill_description": "将第1–2次会谈聚焦于信息收集与关系建立，说明将开展摄入性谈话与测评，界定主要问题并做初步分析，避免议题发散。",
+        "skill_description": "Focus the 1st-2nd sessions on information collection and relationship building, explain that intake interviews and assessments will be carried out, define the main problem and do preliminary analysis, avoiding topic divergence.",
         "when_to_use": "Evaluative session前两次会谈的开场与议程确认时。",
         "trigger": "来访者对评估重点与流程not清或期待立即Intervention时。",
         "parent_ids": [
@@ -3834,7 +3834,7 @@
     "415": {
         "skill_id": "415",
         "skill_name": "说明权责与保密并建立边界",
-        "skill_description": "说明求助者与咨询师的责任、权利与义务，强调保密原则与例外，必要时完成同意程序，让来访者在知情与安全边界中开始合作。",
+        "skill_description": "Explain the responsibilities, rights, and obligations of the help-seeker and the counselor, emphasize the confidentiality principle and its exceptions, complete the consent procedure when necessary, and let the client begin cooperating within informed and safe boundaries.",
         "when_to_use": "初次会谈的结构化说明阶段或制定咨询方案时。",
         "trigger": "来访者对权责、保密或边界提出疑问或表现not安时。",
         "parent_ids": [
@@ -3860,7 +3860,7 @@
     "315": {
         "skill_id": "315",
         "skill_name": "说明咨询时间频率与收费",
-        "skill_description": "向来访者说明时间与频率（如每周一次、50分钟/次）、预计次数及收费政策（如学校免费），使其理解节奏、投入与承诺。",
+        "skill_description": "Explain to the client the time and frequency (such as once a week, 50 minutes per session), the estimated number of sessions, and the fee policy (such as free at school), so they understand the pace, investment, and commitment.",
         "when_to_use": "Evaluative session开始或方案制定时。",
         "trigger": "来访者询问时长、频次、费用或对安排not清时。",
         "parent_ids": [
@@ -3925,7 +3925,7 @@
     "306": {
         "skill_id": "306",
         "skill_name": "以摄入性谈话聚焦内容与范围",
-        "skill_description": "在首次会谈资料收集后，界定本次及后续会谈的内容与范围，明确围绕主要困扰开展摄入性谈话与初步概念化，避免泛谈与跑题。",
+        "skill_description": "After data collection at the first session, define the content and scope of this and subsequent sessions, clarify that intake dialogue and preliminary conceptualization will center on the main distress, avoiding general talk and going off topic.",
         "when_to_use": "首次会谈开始至早期的评估环节。",
         "trigger": "已获得基本情况与主诉，需要明确主题范围与方法时。",
         "parent_ids": [
@@ -3964,7 +3964,7 @@
     "127": {
         "skill_id": "127",
         "skill_name": "交代会后任务与提醒安排",
-        "skill_description": "在收尾布置会后任务，明确具体练习与频次，并设置提醒（如闹钟、每日阅读），说明下次如何回顾与应用，巩固会谈内所学。",
+        "skill_description": "At the close, assign post-session tasks, specify the concrete practice and frequency, and set reminders (such as an alarm clock, daily reading), explaining how it will be reviewed and applied next time, consolidating what was learned in the session.",
         "when_to_use": "当次会谈结束或阶段性收尾时。",
         "trigger": "完成当次讨论，需要将内容转化为日常练习与具体任务时。",
         "parent_ids": [
@@ -4029,7 +4029,7 @@
     "185": {
         "skill_id": "185",
         "skill_name": "声明并确认保密协议",
-        "skill_description": "在初访中明确保密原则、例外与信息保护方式，回应疑虑并确认同意，增强安全感与信任，为真实披露与有效评估创造条件。",
+        "skill_description": "At the initial visit, clarify the confidentiality principle, exceptions, and information-protection methods, respond to concerns and confirm consent, enhancing safety and trust, creating conditions for genuine disclosure and effective assessment.",
         "when_to_use": "首次会谈早期，进入正式交流前。",
         "trigger": "来访者对隐私与信息use有关注、直接询问谈话边界时。",
         "parent_ids": [
@@ -4700,7 +4700,7 @@
     "367": {
         "skill_id": "367",
         "skill_name": "构建问题发生时间线",
-        "skill_description": "按时间顺序回顾关键事件与心理反应，串联从受挫到适应困难等节点，形成清晰的发生—发展脉络，用于把握病程与关键转折。",
+        "skill_description": "Review key events and psychological reactions in chronological order, linking nodes from setbacks to adaptation difficulties, forming a clear onset-development thread, used to grasp the course and key turning points.",
         "when_to_use": "主诉初步明确后，需要定位起点与关键事件、整理病程脉络时。",
         "trigger": "来访者主动回忆或提及多次重要事件对其影响。",
         "parent_ids": [
@@ -4760,7 +4760,7 @@
     "260": {
         "skill_id": "260",
         "skill_name": "重建诱因与病程时间线",
-        "skill_description": "按时间顺序回顾阶段性事件至诊断与治疗节点，记录持续时长与阶段性变化，形成清晰病程轴以把握演变规律并支撑概念化。",
+        "skill_description": "Review staged events in chronological order up to diagnosis and treatment nodes, record durations and staged changes, forming a clear course axis to grasp evolution patterns and support conceptualization.",
         "when_to_use": "初评阶段进行病程与诱因梳理，或在诱因识do not后系统描绘病程轨迹时。",
         "trigger": "来访者能回忆阶段性事件但叙述零散，或出现“近一月起”“之后/后来”等时间标记。",
         "parent_ids": [
@@ -5105,7 +5105,7 @@
     "166": {
         "skill_id": "166",
         "skill_name": "评估同伴关系与宿舍冲突",
-        "skill_description": "询问与同学/舍友关系质量、口角与矛盾频率、作息与噪音等争执诱因，记录主观感受与影响，评估人际功能受损与教育环境适应。",
+        "skill_description": "Ask about the quality of relationships with classmates/roommates, the frequency of quarrels and conflicts, and dispute triggers such as schedules and noise, record subjective feelings and impact, and assess interpersonal functional impairment and adaptation to the educational environment.",
         "when_to_use": "社会功能系统评估阶段，针对教育场景人际互动与宿舍适应。",
         "trigger": "来访者提及关系Average、发生口角、作息冲突或与班主任互动紧张等线索。",
         "parent_ids": [
@@ -5210,7 +5210,7 @@
     "330": {
         "skill_id": "330",
         "skill_name": "评估学习效率与注意力变化",
-        "skill_description": "具体询问学习态度、注意力与课堂参与、作业完成与出勤，并对比近期效率与成绩变化，界定学业功能受损范围与时间对应关系。",
+        "skill_description": "Inquire concretely about study attitude, attention and classroom participation, homework completion and attendance, and compare recent efficiency and grade changes, defining the scope of academic functional impairment and its temporal correspondence.",
         "when_to_use": "评估学业角色功能与日常任务完成度，或量化受损与恢复时。",
         "trigger": "来访者或家长提到上课走神、学习Decreased efficiency、拖延或仍能上课但效率低。",
         "parent_ids": [
@@ -5480,7 +5480,7 @@
     "307": {
         "skill_id": "307",
         "skill_name": "询问家庭心理与家族疾病背景",
-        "skill_description": "补充核实父母是否存在人格或神经症性障碍，了解家族是否有精神疾病史，并记录于基本信息中，用于综合判断风险与资源。",
+        "skill_description": "Additionally verify whether the parents have personality or neurotic disorders, understand whether the family has a history of mental illness, and record it in the basic information, for comprehensive judgment of risks and resources.",
         "when_to_use": "初次评估时补充家庭背景与风险评估，完善基本资料。",
         "trigger": "父母与家族心理健康情况not明确或not yet被记录时。",
         "parent_ids": [
@@ -5495,7 +5495,7 @@
     "198": {
         "skill_id": "198",
         "skill_name": "获取居住与主要照料者/养育者信息",
-        "skill_description": "梳理过往与当前居住安排及主要照料/养育者的变迁（如与祖辈或父母同住），记录与谁更常沟通，以便评估生活环境与支持系统。",
+        "skill_description": "Sort out past and current living arrangements and changes in the main caregivers/raising figures (such as living with grandparents or parents), record whom the client communicates with more often, in order to assess the living environment and support system.",
         "when_to_use": "初谈或背景采集时，梳理生活环境与抚养背景的环节。",
         "trigger": "来访者提及成长经历或被问及过往/当前居住与照料安排时。",
         "parent_ids": [
@@ -6104,7 +6104,7 @@
     "247": {
         "skill_id": "247",
         "skill_name": "梳理家庭结构与监护/抚养变动",
-        "skill_description": "沿时间轴询问父母婚姻与监护变动、主要抚养者与居住安排，明确早年养育环境与依恋脉络，为后续概念化提供结构性背景。",
+        "skill_description": "Along the timeline, ask about changes in the parents' marriage and custody, the main caregiver, and living arrangements, clarifying the early upbringing environment and attachment thread, providing structural background for subsequent conceptualization.",
         "when_to_use": "收集早年教养史的起始环节或建立家庭事件时间轴时。",
         "trigger": "来访者谈及父母吵架/离婚、与谁生活或照料者更替等叙述时。",
         "parent_ids": [
@@ -6134,7 +6134,7 @@
     "161": {
         "skill_id": "161",
         "skill_name": "回顾因父母意见而做出的关键决定",
-        "skill_description": "记录因父母意见做出的学业等关键决定及当时感受与意义，作为把握养育影响关键节点的材料，连接至当前信念与压力体验。",
+        "skill_description": "Record key decisions such as academics made due to the parents' opinions and the feelings and meanings at the time, as material for grasping key nodes of upbringing influence, connecting to current beliefs and stress experiences.",
         "when_to_use": "探寻养育者影响与核心信念形成时。",
         "trigger": "来访者叙述依父母意见做出的重要学业选择等事件时。",
         "parent_ids": [
