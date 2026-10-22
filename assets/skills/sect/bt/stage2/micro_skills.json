@@ -4,7 +4,7 @@
         "skill_name": "评估并引导想象能力",
         "skill_description": "At the beginning of treatment, first conduct an initial interview to assess the client's imaginative ability; guide them to imagine scenes that make themselves calm and pleasant, achieving clarity and stability and describing them in words, laying the foundation for subsequent covert modeling.",
         "when_to_use": "Used in the covert modeling start stage, when it is necessary to judge whether the client can carry out vivid and clear imagination and prepare for scene design.",
-        "trigger": "来访者难以形成稳定画面、描述含糊或表示“我很难想象出具体场景”。",
+        "trigger": "The client has difficulty forming a stable image, describes vaguely, or says 'I find it hard to imagine a concrete scene'.",
         "parent_ids": [
             "916",
             "862",
@@ -43,7 +43,7 @@
         "skill_name": "渐进式呈现场景并给予充分想象时间",
         "skill_description": "Arranges the selected situations in order of difficulty from easy to hard, presents them starting from the first, and gives sufficient time to prompt the client to imagine fully and clearly, ensuring the training effect.",
         "when_to_use": "进入场景训练阶段，开始执行内隐示范的具体练习时。",
-        "trigger": "来访者已选定榜样与情境，表示“可以开始练习”或能稳定想象固定画面。",
+        "trigger": "The client has selected a model and situation, indicates 'ready to start practicing', or can stably imagine a fixed scene.",
         "parent_ids": [
             "916",
             "862",
@@ -277,7 +277,7 @@
         "skill_name": "阶段性填写并对比观察记录单",
         "skill_description": "Before treatment, during the treatment process, and after it ends, the therapist fills in the observation record form in a standard manner, recording the biological response indicators and symptom status, and makes phased comparisons to determine the effectiveness of the therapy on the client's symptoms.",
         "when_to_use": "初始评估、每次训练后及疗程结束，用于疗效对比与策略评估。",
-        "trigger": "完成一次训练或阶段评估后，记录单有新的生物指标与症状信息待登记。",
+        "trigger": "After completing a training session or stage assessment, the record form has new biological indicators and symptom information to be registered.",
         "parent_ids": [
             "916",
             "888",
@@ -305,7 +305,7 @@
         "skill_name": "记录目标值及维持时间",
         "skill_description": "At the end of each treatment, record on the observation sheet the target threshold reached that day and the duration that can be maintained for 5-10 minutes, providing a reference for setting preset values and training plans for the next time.",
         "when_to_use": "每次训练结束阶段，用于汇总当日表现并规划下次训练。",
-        "trigger": "来访者达到预置目标值，反馈信号稳定下降，并能维持5—10分钟。",
+        "trigger": "The client reaches the preset target value, the feedback signal decreases steadily, and it can be maintained for 5-10 minutes.",
         "parent_ids": [
             "916",
             "888",
@@ -452,7 +452,7 @@
         "skill_id": "784",
         "skill_name": "及时执行惩罚以建立因果联结",
         "skill_description": "当not良行为出现时，立即执行既定惩罚，使个体清楚建立起not良行为与惩罚的因果联系，从而Reinforcement其逃避/回避反应的形成与维持。",
-        "when_to_use": "在需要建立清晰行为-后果联结、提升逃避/回避学习效率的阶段。",
+        "when_to_use": "At the stage where a clear behavior-consequence link needs to be established to improve escape/avoidance learning efficiency.",
         "trigger": "not良行为发生后处理滞后，个体难以把后果归因于该行为，或出现“事后not在意”的反应。",
         "parent_ids": [
             "916",
@@ -505,7 +505,7 @@
         "skill_name": "及时呈现正Reinforcement物",
         "skill_description": "当目标行为出现后立即给予正Reinforcement物，避免拖延，使行为与其积极后果形成紧密依随关系，从而提升该行为再次发生的概率。",
         "when_to_use": "在正Reinforcement方案的实施阶段，用于提高已界定的目标行为的出现频率，尤其是在训练或教育初期塑造新行为时。",
-        "trigger": "个体刚刚表现出被期望的具体行为，处于行为结束到反馈到达的短时间窗口内。",
+        "trigger": "The individual has just shown the expected specific behavior and is within the short time window between the end of the behavior and the arrival of feedback.",
         "parent_ids": [
             "916",
             "775",
@@ -570,7 +570,7 @@
         "skill_name": "运用普雷Mark原理选择Reinforcement物",
         "skill_description": "用高频且偏好的活动去Reinforcement低频目标行为，确保先有行为后有Reinforcement、让个体主观上认识到依随关系，并确认活动偏好具备强弱差异。",
         "when_to_use": "当需从个体偏好活动中选取有效正Reinforcement物，或物质性Reinforcement受限时。",
-        "trigger": "个体存在稳定的高频偏好活动，且低频目标行为需要通过活动奖励来提升。",
+        "trigger": "The individual has a stable high-frequency preferred activity, and the low-frequency target behavior needs to be increased through activity rewards.",
         "parent_ids": [
             "916",
             "775",
@@ -621,7 +621,7 @@
         "skill_id": "797",
         "skill_name": "采用间断性正Reinforcement维持行为",
         "skill_description": "在行为建立后改用not定期、难以预测的间断性正Reinforcement，提高行为的持久性与抗消退性，避免持续性Reinforcement引发依赖或满足。",
-        "when_to_use": "当目标行为已形成并进入维持阶段，需要提升维持与抗消退效果时。",
+        "when_to_use": "When the target behavior has formed and entered the maintenance stage, and maintenance and resistance-to-extinction effects need to be improved.",
         "trigger": "个体已能稳定完成目标行为，连续Reinforcement出现依赖或效果递减的迹象。",
         "parent_ids": [
             "916",
@@ -690,7 +690,7 @@
         "skill_name": "同步施加厌恶刺激并以表象消退终止",
         "skill_description": "Applies the aversive stimulus at the moment the client reports the image appearing, continuing until they report that step's image has faded and then immediately stops, ensuring the aversive stimulus is tightly paired with the symbolic representation.",
         "when_to_use": "在每个试次中、当目标步骤表象出现时，用于建立厌恶反应与not良表征的条件联结。",
-        "trigger": "来访者提示“该步骤表象已出现/正在消退”，治疗师据此启动或终止刺激。",
+        "trigger": "The client indicates 'the sign of this step has appeared / is fading', and the therapist starts or stops the stimulus accordingly.",
         "parent_ids": [
             "916",
             "836",
@@ -703,8 +703,8 @@
         "skill_id": "853",
         "skill_name": "精确控制符号呈现与持续时间",
         "skill_description": "在use图片/影片/幻灯等材料时，严格控制开始、停止与持续时间，使其与厌恶刺激同步出现与消退，建立紧密条件联系。",
-        "when_to_use": "采用外部符号材料而非纯想象时，需要对时间参数进行精确操控的场景。",
-        "trigger": "即将呈现关键画面或段落，或需要缩短/延长呈现以匹配刺激强度与持续时长。",
+        "when_to_use": "When using external symbolic materials rather than pure imagery, scenes where time parameters need precise manipulation.",
+        "trigger": "About to present a key image or segment, or needing to shorten/lengthen the presentation to match stimulus intensity and duration.",
         "parent_ids": [
             "916",
             "836",
@@ -717,7 +717,7 @@
         "skill_id": "854",
         "skill_name": "设定疗程频率与每次多次试次",
         "skill_description": "Set the treatment pace, such as arranging multiple trials in each course and a fixed weekly course frequency, to ensure enough repeated pairings and maintain treatment momentum.",
-        "when_to_use": "制定与调整治疗计划阶段，或当需要提高配对次数以增强学习效应时。",
+        "when_to_use": "The stage of formulating and adjusting the treatment plan, or when the number of pairings needs to be increased to enhance the learning effect.",
         "trigger": "来访者能耐受当前负荷且配对次数not足，或阶段性效果欠佳需增加重复与频率。",
         "parent_ids": [
             "916",
@@ -801,7 +801,7 @@
         "skill_id": "860",
         "skill_name": "一致执行并容忍初期复发",
         "skill_description": "接受暂停初期效果not明显且易复发的规律，持续、一致地执行程序，直至厌恶联结形成，避免因短期without效而放弃实施。",
-        "when_to_use": "暂停技术的早期阶段或出现反复时，用于维持程序一致性与继续实施。",
+        "when_to_use": "In the early stage of the time-out technique or when relapses occur, used to maintain procedural consistency and continued implementation.",
         "trigger": "暂停后not良行为很快复发、减少not明显；来访者短期内多次重演目标行为。",
         "parent_ids": [
             "916",
@@ -843,7 +843,7 @@
         "skill_id": "842",
         "skill_name": "引导放松与闭眼进入想象",
         "skill_description": "指导来访者全身放松、闭上双眼，跟随治疗师口头指令进入意象通道，为将not良行为与厌恶反应的配对创造稳定、可控的心理情境。",
-        "when_to_use": "每次内隐致敏练习开始阶段，用于建立进入意象的生理与注意基础。",
+        "when_to_use": "At the start of each covert sensitization exercise, used to establish the physiological and attentional basis for entering imagery.",
         "trigger": "The client is already seated and preparing to practice, waiting for instructions, or showing mild tension needing relaxation guidance to enter the imagery state.",
         "parent_ids": [
             "916",
@@ -886,7 +886,7 @@
         "skill_name": "定制与行为相关的负性后果场景",
         "skill_description": "依据not良行为类型，设计高度贴合的负性后果（如被当场抓住、当众羞辱、输光致家破人离等），并与目标行为过程紧密衔接，提升威慑力。",
         "when_to_use": "在编写与修订意象脚本前后，用于个体化匹配not同not良行为的厌恶后果内容。",
-        "trigger": "来访者已明确其具体问题行为与常见诱因，便于选取相应后果场景进行配对。",
+        "trigger": "The client has clarified the specific problem behavior and common triggers, making it easier to select corresponding consequence scenarios for pairing.",
         "parent_ids": [
             "916",
             "836",
@@ -914,7 +914,7 @@
         "skill_name": "反复演练并确保唤起厌恶感",
         "skill_description": "Require the client to frequently play over in the mind, as if watching television, the entire chain of scenes from the beginning to the consequences, and after each rehearsal ensure that a clear sense of aversion appears, in order to consolidate the conditioning effect.",
         "when_to_use": "巩固阶段及日常家庭作业中，用于稳定与维持治疗效果。",
-        "trigger": "来访者能完成一次意象但厌恶感波动或问题行为仍偶发，需要通过重复巩固。",
+        "trigger": "The client can complete an imagery exercise once but the aversion fluctuates or the problem behavior still occurs occasionally, requiring consolidation through repetition.",
         "parent_ids": [
             "916",
             "836",
@@ -928,7 +928,7 @@
         "skill_name": "以停止行为与获得缓解收尾",
         "skill_description": "在脚本结尾引导来访者推开目标物、丢弃与清理现场，并体验到明显的轻松与“避免更好”的评价性想法，Reinforcement回避与终止行为的联结。",
         "when_to_use": "每次意象脚本的结束阶段，用于形成回避—缓解的正向收束。",
-        "trigger": "来访者在意象中已达到厌恶高峰（如强烈恶心、呕吐）且准备结束该回合。",
+        "trigger": "The client has reached the peak of aversion in imagery (such as intense nausea, vomiting) and is ready to end this round.",
         "parent_ids": [
             "916",
             "836",
@@ -955,7 +955,7 @@
         "skill_name": "监测并安全处理强烈反应",
         "skill_description": "在EMDR过程中持续观察来访者的情绪与生理反应，当出现极强烈反应时及时采取安全处置，确保过程可控并避免not良影响。",
         "when_to_use": "在EMDR的暴露与再加工阶段，进行创伤记忆激活与加工时。",
-        "trigger": "来访者出现剧烈哭泣、惊恐、过度唤起、回避失控或解离迹象等强烈反应信号。",
+        "trigger": "The client shows strong reaction signals such as intense crying, panic, over-arousal, uncontrolled avoidance, or signs of dissociation.",
         "parent_ids": [
             "916",
             "898",
@@ -968,7 +968,7 @@
         "skill_name": "结合想象暴露与双侧刺激促再加工",
         "skill_description": "Following the EMDR method, combine imaginal flooding with rapid rhythmic eye movements or other bilateral stimulation, together with cognitive restructuring, to promote the reprocessing of traumatic memories and symptom relief.",
         "when_to_use": "在EMDR核心阶段，目标为处理与创伤事件相关的记忆与信念。",
-        "trigger": "来访者能够稳定回忆创伤情境并表示愿在安全框架下进入暴露与再加工流程。",
+        "trigger": "The client can stably recall the traumatic situation and expresses willingness to enter the exposure and reprocessing procedure within a safe framework.",
         "parent_ids": [
             "916",
             "898",
@@ -1058,7 +1058,7 @@
         "skill_id": "911",
         "skill_name": "教授建设性自我陈述并巩固新信念",
         "skill_description": "教导来访者use建设性自我陈述，帮助其接受可引发果断行为的新信念，以日常练习与Reinforcement促进认知—行为一致，支撑稳定的果断表现。",
-        "when_to_use": "在完成对消极信念的挑战后，进入替代性认知与自我对话的训练环节。",
+        "when_to_use": "After completing the challenge to negative beliefs, entering the training phase of alternative cognitions and self-talk.",
         "trigger": "Negative self-talk repeatedly appears in the client's rehearsals or dialogues, or the client expresses willingness to try new self-statements and beliefs.",
         "parent_ids": [
             "916",
@@ -1084,7 +1084,7 @@
         "skill_id": "913",
         "skill_name": "澄清果断与攻击的区do not",
         "skill_description": "通过说明与示例明确果断not等于攻击，强调在尊重他人感受与权利的前提下表达自我需求与立场，设定训练的行为边界与伦理准则。",
-        "when_to_use": "果断训练的导入与规则设定阶段，或来访者对果断的误解影响参与与练习时。",
+        "when_to_use": "The introduction and rule-setting stage of assertiveness training, or when the client's misunderstanding of assertiveness affects participation and practice.",
         "trigger": "来访者担心果断会伤害关系、被视为without礼或等同于攻击，因而犹豫参与训练。",
         "parent_ids": [
             "916",
@@ -1097,7 +1097,7 @@
         "skill_id": "914",
         "skill_name": "文化敏感调整与持续评估",
         "skill_description": "Adjust the training style and situation selection according to the client's cultural background, keep behavioral rehearsal and continuous assessment as the core, and avoid conflict with values that stress harmony, ensuring the training is acceptable and effective.",
-        "when_to_use": "与来自强调和谐或集体主义文化的来访者合作时，需提升训练的文化适配性。",
+        "when_to_use": "When working with clients from cultures that emphasize harmony or collectivism, the cultural adaptability of the training needs to be enhanced.",
         "trigger": "来访者因文化价值观对果断训练表示not适或抗拒，强调关系和谐、回避直接表达。",
         "parent_ids": [
             "916",
@@ -1123,7 +1123,7 @@
         "skill_id": "820",
         "skill_name": "全链式呈现与练习",
         "skill_description": "In each training, require the learner to complete all links from the beginning to the end in the order of the behavior chain; present the whole chain each time, ensuring that a single practice covers the entire task, laying a foundation for overall mastery.",
-        "when_to_use": "在链锁训练的初始与巩固阶段，需要建立整条行为链的连贯执行与整体把握时。",
+        "when_to_use": "In the initial and consolidation stages of chaining training, when the coherent execution and overall grasp of the whole behavior chain need to be established.",
         "trigger": "Facing a task composed of multiple steps that can be fully rehearsed within one training session, the learner can cooperate to carry out the operations in sequence.",
         "parent_ids": [
             "916",
@@ -1194,7 +1194,7 @@
         "skill_name": "逐步向前整合已学步骤",
         "skill_description": "After the learner masters the terminal step, add the second-to-last step and practice them in sequence, then successively push forward until the first step is covered, gradually forming a complete stimulus-response chain.",
         "when_to_use": "When the terminal steps have been practiced many times and are stable and correct, entering the second and subsequent stages of backward chaining, expanding the consecutive steps the learner undertakes.",
-        "trigger": "学习者能够独立且稳定完成最后一步，表现出对末端环节的熟练度与正确率。",
+        "trigger": "The learner can complete the final step independently and stably, demonstrating proficiency and accuracy in the terminal link.",
         "parent_ids": [
             "916",
             "799",
@@ -1249,7 +1249,7 @@
         "skill_id": "813",
         "skill_name": "选择目标刺激",
         "skill_description": "Define the external environment, conditions, or premises under which the target behavior can be controlled in an ordinary language environment, as the target stimulus that fading aims to achieve, so that the individual can ultimately still produce the same correct response under that natural stimulus.",
-        "when_to_use": "渐隐方案制定的起始阶段，用于明确训练应过渡到的自然情境与刺激控制条件。",
+        "when_to_use": "In the starting stage of formulating the fading plan, used to clarify the natural situations and stimulus control conditions the training should transition to.",
         "trigger": "目标行为已明确，但支配其发生的自然刺激、情境条件尚not yet清晰，需要确定“目标刺激”。",
         "parent_ids": [
             "916",
@@ -1262,7 +1262,7 @@
         "skill_id": "814",
         "skill_name": "选择能引发反应的起始刺激",
         "skill_description": "Select the starting stimulus that can guarantee inducing the target behavior as the training starting point, first consolidate the response under the conditions most likely to trigger the correct response, laying the foundation for subsequently gradually fading prompts and transitioning to the target stimulus.",
-        "when_to_use": "渐隐程序开始前或初始训练时，需要先建立在提示下的稳定正确反应。",
+        "when_to_use": "Before the fading procedure begins or during initial training, when a stable correct response under prompts needs to be established first.",
         "trigger": "个体在自然刺激下尚not能产生目标反应，需要借助更强的起始刺激来稳定诱发正确反应。",
         "parent_ids": [
             "916",
@@ -1289,7 +1289,7 @@
         "skill_name": "运用刺激外促进",
         "skill_description": "Add extra prompts to the existing situation (such as verbal prompts, demonstrations, physical assistance), directly helping the individual make the correct response, and prepare for later gradually removing these external prompts.",
         "when_to_use": "当仅靠当前刺激without法稳定诱发正确反应，需要临时增加外部提示来建立反应模式时。",
-        "trigger": "个体在现有刺激下多次反应错误或迟滞，增加额外提示后能立即出现正确反应。",
+        "trigger": "The individual responds incorrectly or hesitantly many times under the existing stimulus, and produces the correct response immediately once additional prompts are added.",
         "parent_ids": [
             "916",
             "799",
@@ -1327,7 +1327,7 @@
         "skill_id": "819",
         "skill_name": "配置并运用合适Reinforcement物",
         "skill_description": "为正确反应提供及时、合适的Reinforcement物（如表扬、可喜物品），尤其在训练初期以保持积极情绪与动力，随熟练度提升可逐步减少Reinforcement频率。",
-        "when_to_use": "渐隐训练的全过程，尤其在建立与巩固正确反应的早期阶段与儿童训练中。",
+        "when_to_use": "The whole process of fading training, especially in the early stages of establishing and consolidating correct responses and in children's training.",
         "trigger": "After the individual makes a correct response or correct imitation, consolidation is needed; or positive emotions and practice motivation need to be maintained for continued participation in training.",
         "parent_ids": [
             "916",
@@ -1382,7 +1382,7 @@
         "skill_id": "832",
         "skill_name": "初期Reinforcement与提示并及时撤除",
         "skill_description": "At the initial learning stage of each step, immediately reinforce correct responses and provide necessary verbal and physical prompts; when the step can be completed correctly, promptly reduce prompts and help to prevent dependence, gradually transitioning to natural support and spontaneous completion.",
-        "when_to_use": "在顺向链锁每个新步骤的初学与巩固阶段，为形成正确反应并减少外部依赖时。",
+        "when_to_use": "In the initial learning and consolidation stage of each new step in forward chaining, when forming correct responses and reducing external dependence.",
         "trigger": "个体出现等待指令才行动或依赖身体协助；刚出现正确反应但not稳定，需要及时Reinforcement与逐步撤助。",
         "parent_ids": [
             "916",
@@ -1396,7 +1396,7 @@
         "skill_id": "833",
         "skill_name": "设定熟练标准并控制推进速度",
         "skill_description": "Set a standard of success or proficiency for each step, ensure the standard is reached before adding the next step; control the pace of advancement, avoiding too fast a pace leading to more errors or too slow a pace causing stagnation, so as to maintain a stable correct rate and coherent performance.",
-        "when_to_use": "在决定是否加入下一步之前或调整训练节奏时，需要保证稳定性与正确率。",
+        "when_to_use": "Before deciding whether to add the next step or when adjusting the training pace, when stability and accuracy need to be ensured.",
         "trigger": "前一步错误率上升、反应not稳定或重复次数not足；或连续多次正确、速度平稳，显示可推进到下一步。",
         "parent_ids": [
             "916",
@@ -1424,7 +1424,7 @@
         "skill_id": "835",
         "skill_name": "按需调整Reinforcement物的种类与频率",
         "skill_description": "Adjust the reinforcement plan according to the behavior chain length and individual ability; when the chain is long or ability limited, appropriately increase reinforcement to maintain motivation; as proficiency rises, gradually reduce frequency and transition to natural reinforcement, preventing dependence on external rewards.",
-        "when_to_use": "在顺向链锁全过程的激励管理中，尤其训练长链或能力发展有限的个体时。",
+        "when_to_use": "In incentive management throughout the forward chaining process, especially when training long chains or individuals with limited ability development.",
         "trigger": "The individual's practice enthusiasm declines, attention drifts, or cooperation decreases; or performance is proficient and the response to high-frequency external rewards weakens.",
         "parent_ids": [
             "916",
@@ -1451,7 +1451,7 @@
         "skill_id": "807",
         "skill_name": "设定并升级连续趋近标准",
         "skill_description": "Formulates clear stage-wise standards for shaping, and gradually raises them as response frequency rises; each step is closer to the goal than the previous step, forming an easy-to-hard progression path.",
-        "when_to_use": "起始近似已能被稳定诱发，需要系统推进难度、使行为逐步逼近最终目标时。",
+        "when_to_use": "When the initial approximation can already be stably evoked and the difficulty needs to be systematically advanced so the behavior gradually approaches the final goal.",
         "trigger": "At present, response frequency has clearly increased and stably meets the standard, or reaches the preset performance threshold, indicating the criterion can be raised.",
         "parent_ids": [
             "916",
@@ -1464,7 +1464,7 @@
         "skill_id": "808",
         "skill_name": "对阶段性目标实施区do notReinforcement",
         "skill_description": "仅对具备当前阶段目标品质的反应给予Reinforcement；对not具备该品质的反应notReinforcement。进入下一阶段后停止Reinforcement前一阶段，使其自然消退。",
-        "when_to_use": "每一阶段训练进行中，需要稳定塑造方向、抑制偏离和固守旧水平时。",
+        "when_to_use": "During training at each stage, when it is necessary to steadily shape the direction, inhibit deviation, and avoid remaining stuck at the old level.",
         "trigger": "个体产生符合当前品质的反应、仅重复前阶段反应，或出现without关/相反反应时需要差do not对待。",
         "parent_ids": [
             "916",
@@ -1477,7 +1477,7 @@
         "skill_id": "809",
         "skill_name": "配置有效Reinforcement物并即时Reinforcement",
         "skill_description": "选用对个体有价值的物质或社会性Reinforcement，在目标近似出现的瞬间给予，建立紧密的反应—Reinforcement联系，增强动机并巩固新反应。",
-        "when_to_use": "塑造全程，尤其在启动新标准或提升难度、需要提高反应概率与动机时。",
+        "when_to_use": "Throughout the shaping process, especially when introducing new standards or raising the difficulty, when response probability and motivation need to be increased.",
         "trigger": "个体刚做出目标近似反应，或对Reinforcement物表现出明显兴趣和接近行为时。",
         "parent_ids": [
             "916",
@@ -1490,8 +1490,8 @@
         "skill_id": "810",
         "skill_name": "建立行为记录与门槛奖励",
         "skill_description": "要求个体记录进展并绘制图表，将自我监测作为Reinforcement因子；设置达标阈值，超越时给予表扬或额外奖励，促进持续改进。",
-        "when_to_use": "塑造的持续与巩固阶段，需要维持练习强度、监控进展并增强自我激励时。",
-        "trigger": "个体能按时完成练习、有可量化的作业成绩，或进展放缓需要外在结构支持时。",
+        "when_to_use": "In the continuation and consolidation stage of shaping, when practice intensity needs to be maintained, progress monitored, and self-motivation enhanced.",
+        "trigger": "When the individual can complete exercises on time and has quantifiable homework results, or progress slows and external structural support is needed.",
         "parent_ids": [
             "916",
             "799",
@@ -1516,7 +1516,7 @@
         "skill_id": "812",
         "skill_name": "以最小言语提示引导更接近反应",
         "skill_description": "在呈现Reinforcement物的同时给予简短言语提示；仅当反应更接近目标时才Reinforcement，以最小提示促发接近反应并配合差do notReinforcement推进。",
-        "when_to_use": "当前近似难以自发提升、需要引导形成更接近目标的发声或动作时。",
+        "when_to_use": "When the current approximation is hard to improve spontaneously and guidance is needed to form vocalizations or actions closer to the target.",
         "trigger": "Under strong stimulation, the individual still stays at the previous level of response, finding it hard to spontaneously show closer movements or vocalizations.",
         "parent_ids": [
             "916",
@@ -1561,7 +1561,7 @@
         "skill_id": "652",
         "skill_name": "行为日记式Self-monitoring与因果线索分析",
         "skill_description": "use行为日记持续记录时间、地点、情境、次数等，分析前提线索与结果，提升自我觉察，形成数据化依据，用于评估自我管理方法与决策下一步。",
-        "when_to_use": "自我管理实施全过程，尤以初期与策略调整期为主，作为持续性基础操作。",
+        "when_to_use": "Throughout the whole self-management implementation process, especially the initial phase and strategy adjustment phase, as a continuous basic operation.",
         "trigger": "The client's memory of the details of the behavior's occurrence is vague, the eliciting situations are complex or change quickly, and objective recording and systematic organization are needed.",
         "parent_ids": [
             "916",
@@ -1577,7 +1577,7 @@
         "skill_id": "653",
         "skill_name": "将目标达成转化为条件Reinforcement",
         "skill_description": "Regard the completion of the target behavior as a conditioned reinforcement, or set external reinforcers for achievement, so as to raise the probability of the target behavior occurring; provide immediate reinforcement at progress nodes, consolidating change and maintaining motivation.",
-        "when_to_use": "目标执行与反馈阶段，配合监控数据在达到阶段性目标或关键行为后实施。",
+        "when_to_use": "In the goal execution and feedback stage, implemented together with monitoring data after reaching stage goals or key behaviors.",
         "trigger": "The client reaches a set sub-goal or shows clear progress, needing consolidation and encouragement to maintain and generalize the target behavior.",
         "parent_ids": [
             "916",
@@ -1593,7 +1593,7 @@
         "skill_id": "654",
         "skill_name": "用监控数据评估方法并调整计划",
         "skill_description": "依据Self-monitoring数据判断方法有效性，决定是否进入下一步或调整策略；当目标not yet按Anticipation变化时及时修订目标、线索或Reinforcement安排，优化方案。",
-        "when_to_use": "阶段性复盘或周期结束时，用于检验策略成效并更新自我管理计划。",
+        "when_to_use": "At periodic review or at the end of a cycle, used to examine strategy effectiveness and update the self-management plan.",
         "trigger": "监控数据显示目标行为not yet改善、波动加剧或竞争行为上升，现行方法难以推动进展。",
         "parent_ids": [
             "916",
@@ -1624,8 +1624,8 @@
         "skill_id": "641",
         "skill_name": "逐步消退提示强度与频率",
         "skill_description": "目标反应稳定后，循序减少提示的显著性、次数与时长，使控制从外部线索Displacement，正确反应仍能保持并减少依赖。",
-        "when_to_use": "中期训练阶段，来访者已能在提示下稳定正确，需开始降低对外部提示的依赖。",
-        "trigger": "来访者仅在强提示下表现正确，一减弱或减少提示即犹疑、错误增多。",
+        "when_to_use": "In the middle training stage, the client can already respond correctly and stably with prompts, and needs to start reducing dependence on external prompts.",
+        "trigger": "The client performs correctly only under strong prompts; as soon as prompts are weakened or reduced, hesitation and errors increase.",
         "parent_ids": [
             "916",
             "449",
@@ -1654,8 +1654,8 @@
         "skill_id": "643",
         "skill_name": "选用可渐隐的提示形式",
         "skill_description": "Before designing fading, clarify the prompt form, using cues such as verbal, postural, and gestural ones that can be weakened level by level, avoiding confusion and facilitating gradual withdrawal.",
-        "when_to_use": "训练设计与开训前，需建立标准化、可操作的提示体系以支撑后续渐隐流程。",
-        "trigger": "来访者对抽象指令理解困难、出现偏差，需要更直观的提示线索才能跟上演练。",
+        "when_to_use": "During training design and before training starts, a standardized, operable prompting system needs to be established to support the subsequent fading procedure.",
+        "trigger": "The client has difficulty understanding abstract instructions and shows deviations, needing more intuitive prompt cues to keep up with the rehearsal.",
         "parent_ids": [
             "916",
             "449",
@@ -1873,7 +1873,7 @@
         "skill_id": "668",
         "skill_name": "调整社会环境实现外部化管理",
         "skill_description": "重构日常环境与流程，使关键行为的trigger与核查由他人或社会机制管理，减少单靠自控的负担，稳定行为改变轨道。",
-        "when_to_use": "当单纯依赖自控难以维持改变，需要通过他人或群体性机制稳定执行时。",
+        "when_to_use": "When relying on self-control alone makes it hard to sustain change, and mechanisms involving others or the group are needed to stabilize implementation.",
         "trigger": "来访者在Being alone或缺少情境约束时频繁失误、复发，或报告“离开监督就走样”。",
         "parent_ids": [
             "916",
@@ -2103,7 +2103,7 @@
         "skill_id": "633",
         "skill_name": "进行安全筛查并识do not消退禁忌",
         "skill_description": "在选择消退技术前进行安全性评估；若目标行为含self-mutilation、攻击等高危后果，或需要迅速控制，则避免use消退，转用更安全的替代策略。",
-        "when_to_use": "在决定是否采用消退疗法的初评与风险评估阶段，或当环境安全性存疑时。",
+        "when_to_use": "In the initial assessment and risk assessment stage of deciding whether to use extinction therapy, or when environmental safety is in doubt.",
         "trigger": "目标行为涉及self-mutilation、攻击他人、严重破坏或存在即时人身/医疗风险的迹象与报告。",
         "parent_ids": [
             "916",
@@ -2369,7 +2369,7 @@
         "skill_id": "553",
         "skill_name": "设计渐进式情境作业",
         "skill_description": "将家庭作业按情境难度分级安排，先在轻微Anxiety的场合尝试目标行为，成功后逐步提高挑战水平，循序推进以减少挫败、增强自我效能并促进广泛化。",
-        "when_to_use": "在制定迁移训练作业计划时，为避免过强情境引发失败并稳步扩大应用范围。",
+        "when_to_use": "When formulating a transfer-training homework plan, in order to avoid overly strong situations causing failure and to steadily expand the scope of application.",
         "trigger": "来访者在高难度场景出现明显Anxiety或报告此前尝试失败，或属于首次进行现实迁移。",
         "parent_ids": [
             "916",
@@ -2571,8 +2571,8 @@
         "skill_id": "603",
         "skill_name": "安置目标肌群肌电电极进行肌力恢复训练",
         "skill_description": "将电极安放于需康复的目标肌附近，依据反馈进行收缩训练，Reinforcement肌力与控制，适用于痉挛、抽动或部分麻痹等功能恢复。",
-        "when_to_use": "在肌电反馈用于康复的训练阶段，目标为增强特定肌群的收缩与随意控制。",
-        "trigger": "来访者出现局部肌痉挛、抽动或肌力低下，报告相关功能受限或疲弱。",
+        "when_to_use": "In the training stage where EMG feedback is used for rehabilitation, the goal is to enhance the contraction and voluntary control of specific muscle groups.",
+        "trigger": "The client shows local muscle spasm, tics, or reduced muscle strength, and reports related functional limitation or weakness.",
         "parent_ids": [
             "916",
             "449",
@@ -2620,7 +2620,7 @@
         "skill_name": "讨论训练体验并反馈进展信息",
         "skill_description": "每节训练结束后与来访者讨论体验，回顾数据变化，及时反馈进步信息，鼓励并Reinforcement其积极参与与自我效能。",
         "when_to_use": "在每次肌电反馈训练结束的讨论阶段。",
-        "trigger": "来访者完成一节训练，主动报告主观感受或对指标变化提出疑问与关注。",
+        "trigger": "The client completes a training session and spontaneously reports subjective feelings or raises questions and concerns about changes in the indicators.",
         "parent_ids": [
             "916",
             "449",
@@ -2636,7 +2636,7 @@
         "skill_name": "布置脱机家庭练习巩固肌电调节",
         "skill_description": "要求来访者每日早晚各练习一次，在without仪器条件下自我放松或控制肌肉活动，逐步脱离仪器以巩固疗效与自我调节。",
         "when_to_use": "当治疗室训练已掌握有效调节方式，进入巩固与迁移阶段。",
-        "trigger": "来访者能稳定降低额肌活动或有效收缩目标肌，并表达愿意在家持续练习。",
+        "trigger": "The client can stably reduce frontalis muscle activity or effectively contract the target muscle, and expresses willingness to keep practicing at home.",
         "parent_ids": [
             "916",
             "449",
@@ -2747,7 +2747,7 @@
         "skill_id": "574",
         "skill_name": "讲解皮电反馈与仪器安全",
         "skill_description": "向来访者说明Biofeedback目的与流程、皮电信号含义及显示方式，明确without电流通过躯体的安全性，示范读数与提示音的对应关系，降低顾虑并促发主动参与。",
-        "when_to_use": "完成设备安置后、正式训练之前，用于建立对反馈信号的理解与训练动机。",
+        "when_to_use": "After equipment placement is completed and before formal training, used to build understanding of the feedback signals and training motivation.",
         "trigger": "The client expresses confusion or nervousness about the instrument's principles, safety, or the meaning of readings, or passively waits for guidance and lacks a sense of participation.",
         "parent_ids": [
             "916",
@@ -2827,7 +2827,7 @@
         "skill_id": "579",
         "skill_name": "布置脱机放松与自我训练作业",
         "skill_description": "Arrange offline relaxation and self-regulation practice once each morning and evening, emphasize using the effective strategies from training in everyday situations, and explain that the ultimate goal is to be able to self-regulate without the instrument as well.",
-        "when_to_use": "当来访者能基本理解与运用调节策略，需要迁移到日常生活以巩固疗效时。",
+        "when_to_use": "When the client can basically understand and apply regulation strategies and needs to transfer them to daily life to consolidate the effect.",
         "trigger": "来访者能在训练中再现皮电下降，对如何在日常落实练习提出请求或表现出信心not足。",
         "parent_ids": [
             "916",
@@ -2843,7 +2843,7 @@
         "skill_id": "580",
         "skill_name": "以新基线开展下一轮皮电训练",
         "skill_description": "每一新节次以当次新基线为参照，重复基线—Intervention—分段训练—讨论流程，按疗程推进，直至指标与主观状态达到并维持目标水平。",
-        "when_to_use": "进入新一轮训练或新疗程开始时，用于持续评估与迭代优化训练效果。",
+        "when_to_use": "When entering a new round of training or at the start of a new course of treatment, used for continuous assessment and iterative optimization of training effects.",
         "trigger": "A new outpatient training begins; last time's homework has been executed, and progress needs to be assessed against a new physiological baseline.",
         "parent_ids": [
             "916",
@@ -3125,7 +3125,7 @@
         "skill_id": "546",
         "skill_name": "设计对方阻力并训练应对策略",
         "skill_description": "在Role playing中加入对方的not同回应与阻力，引导来访者练习合宜的应对与重申需求，提升处理复杂互动的能力与稳定性。",
-        "when_to_use": "当基础表达已掌握，需要进入更复杂互动场景以增强通用性与问题解决能力时。",
+        "when_to_use": "When basic expression has been mastered and more complex interaction scenarios need to be entered to enhance generality and problem-solving ability.",
         "trigger": "来访者在顺利场景表现Good，但面对反对、质疑或推诿时出现Withdrawal、僵住或语塞。",
         "parent_ids": [
             "916",
@@ -3473,7 +3473,7 @@
         "skill_name": "将行为契约用于防复发",
         "skill_description": "Apply behavior contracts in the maintenance and relapse prevention stage, using written commitment and stipulated reinforcement / punishment clauses as a tool to prevent relapse of the old problem, consolidating the existing changes and enhancing self-restraint and persistence.",
         "when_to_use": "When initial change has been achieved and the maintenance phase is entered, or there is relapse risk requiring strengthened self-restraint and consistency, use the contract as a relapse-prevention strategy.",
-        "trigger": "来访者报告旧习反复或担忧再次复发，表达希望借助契约机制巩固改变。",
+        "trigger": "The client reports relapses into old habits or worry about relapsing again, expressing a wish to use the contract mechanism to consolidate change.",
         "parent_ids": [
             "916",
             "449",
@@ -3552,7 +3552,7 @@
         "skill_id": "613",
         "skill_name": "结合放松训练进入目标脑波状态",
         "skill_description": "Through the therapist's verbal suggestion or muscle/breathing relaxation, guide lowering tension and cooperating with brainwave feedback, promoting changes related to consciousness states such as alpha waves, improving the training effect.",
-        "when_to_use": "单纯反馈难以达成目标脑波状态时，需与放松技术联用或作为导入环节。",
+        "when_to_use": "When feedback alone makes it hard to reach the target brainwave state, it needs to be combined with relaxation techniques or used as an introductory step.",
         "trigger": "患者Anxiety或肌肉紧Zhang Ming显；难以进入放松或专注；脑波指标改善缓慢。",
         "parent_ids": [
             "916",
@@ -3713,7 +3713,7 @@
         "skill_name": "结束后讨论体验并给予支持",
         "skill_description": "训练结束安排肢体放松，邀请来访者复盘体验、识do not有效策略与感受变化，给予鼓励与支持，Reinforcement自我效能与继续训练动机。",
         "when_to_use": "每次训练结束阶段，用于巩固学习、整合体验与情绪支持。",
-        "trigger": "本次训练达到预设时长或阶段目标，来访者对变化有疑问或需要反馈总结。",
+        "trigger": "This training session has reached the preset duration or stage goal, and the client has questions about the changes or needs a feedback summary.",
         "parent_ids": [
             "916",
             "449",
@@ -3729,7 +3729,7 @@
         "skill_name": "布置脱机家庭训练与自我放松作业",
         "skill_description": "明确Biofeedback仅为阶段性辅助手段，布置每日规律的without仪器放松与自我调节练习（如早晚各一次），要求在现实场景中迁移已掌握的调节模式以巩固疗效。",
         "when_to_use": "每次训练结束前与整个疗程期间，促进skill迁移与自我管理能力形成。",
-        "trigger": "来访者已能在训练中引导指标变化，询问如何在日常巩固，或即将离开治疗室。",
+        "trigger": "The client can already guide changes in the indicators during training, asks how to consolidate in daily life, or is about to leave the therapy room.",
         "parent_ids": [
             "916",
             "449",
@@ -3745,7 +3745,7 @@
         "skill_name": "以新基线启动下一轮训练",
         "skill_description": "新一轮训练前重新测量并记录新的基线值，按准备—基线—Intervention—分节—总结的流程循环推进，基于新基线评估进步与调整训练目标。",
         "when_to_use": "开启下一次或下一疗程训练时，用于纵向对比与计划更新。",
-        "trigger": "来访者完成家庭作业后复训，或疗程进入下一阶段需要重新评估起点。",
+        "trigger": "When the client returns for retraining after completing homework, or when the treatment enters the next stage and the starting point needs to be reassessed.",
         "parent_ids": [
             "916",
             "449",
@@ -3760,7 +3760,7 @@
         "skill_id": "572",
         "skill_name": "排查训练without效并调整方案",
         "skill_description": "当多次训练指标without明显变化时，系统检查来访者对方法的理解与配合、治疗师操作步骤，并对仪器进行必要检测，随后相应调整Intervention策略。",
-        "when_to_use": "连续若干次训练后缺乏指标改善或主观疗效时，需要技术性与合作性排查。",
+        "when_to_use": "After several consecutive training sessions with no improvement in indicators or subjective effect, technical and collaborative troubleshooting is needed.",
         "trigger": "来访者反馈“练了几次not变化”、屏幕曲线长期without改善，或出现困惑、挫败感。",
         "parent_ids": [
             "916",
@@ -3809,7 +3809,7 @@
         "skill_name": "训练非言语自信信号",
         "skill_description": "训练直视对方、适当微笑与稳定声调等非言语线索，以降低紧张Anxiety、稳定情绪唤醒，支撑自信言语在愤怒情境中的有效输出。",
         "when_to_use": "Before and during dialogue rehearsal, when the client's excitement or nervousness affects expression, as a supportive technique for emotional stability.",
-        "trigger": "来访者回避眼神、声音颤抖或提高音量、面部紧绷等非言语失衡信号明显。",
+        "trigger": "The client shows obvious nonverbal imbalance signals such as avoiding eye contact, trembling or raised voice, and facial tension.",
         "parent_ids": [
             "916",
             "449",
@@ -3888,7 +3888,7 @@
         "skill_id": "562",
         "skill_name": "保护性情境选择与风险控制",
         "skill_description": "与来访者筛选not致产生恶性后果的练习情境，避免在高风险场景中强迫表现自信，确保训练安全性与可持续推进。",
-        "when_to_use": "制定演练清单与家庭作业计划时，评估情境风险并设定合理梯度与边界。",
+        "when_to_use": "When drawing up the rehearsal checklist and homework plan, assess situational risks and set reasonable gradients and boundaries.",
         "trigger": "来访者提出在高风险、not对等权力场景立即挑战的想法，或表现出显著畏惧与抗拒。",
         "parent_ids": [
             "916",
@@ -3936,7 +3936,7 @@
         "skill_id": "584",
         "skill_name": "测量并记录心率/变异性基线",
         "skill_description": "在任何Intervention前先静坐测取本次训练的相关生理指标，形成基线数据，用于与Intervention后的变化进行对照评估训练成效。",
-        "when_to_use": "每次训练开始、教育与安置完成且来访者情绪趋稳后，用于建立当次比较基准。",
+        "when_to_use": "At the start of each training, after education and placement are complete and the client's emotions have stabilized, used to establish the comparison baseline for that session.",
         "trigger": "当尚without当次基线记录、来访者已安静就位且设备稳定输出基础读数时。",
         "parent_ids": [
             "916",
@@ -3968,7 +3968,7 @@
         "skill_id": "586",
         "skill_name": "Reinforcement自我调节与即时反馈Reinforcement",
         "skill_description": "After multiple practices, require the client to try to regulate on their own according to the screen display and prompts; the therapist interprets by linking the data with subjective feelings, gives timely feedback on progress and reinforces effective strategies, consolidating self-control ability.",
-        "when_to_use": "训练中期，来访者已理解反馈含义，逐步从他控过渡到自我调节的阶段。",
+        "when_to_use": "In the middle stage of training, the client has understood the meaning of the feedback and is gradually transitioning from other-control to self-regulation.",
         "trigger": "The client can describe self-regulation experiences and make purposeful adjustments to feedback, and indicators show stage-wise improvement.",
         "parent_ids": [
             "916",
@@ -4001,7 +4001,7 @@
         "skill_name": "结束讨论与巩固动机",
         "skill_description": "在训练结束时进行必要的肢体放松与回归，邀请来访者复盘训练体验与数据变化，肯定进步并Reinforcement信心，明确下次训练目标与期待。",
         "when_to_use": "每次训练结束阶段，用于情绪整合、经验总结与目标对齐。",
-        "trigger": "达到当次训练时长或阶段目标，来访者愿意分享体验或需总结要点时。",
+        "trigger": "When the session's training duration or stage goal is reached, and the client is willing to share experiences or key points need to be summarized.",
         "parent_ids": [
             "916",
             "449",
@@ -4017,7 +4017,7 @@
         "skill_name": "布置家庭作业与脱机自我调节练习",
         "skill_description": "Arrange self-relaxation and regulation practice at home twice daily, guide the transfer of the effective ways in training into daily situations, and emphasize that the instrument is only an auxiliary means; the ultimate goal is to achieve self-control detached from the instrument.",
         "when_to_use": "每次训练末尾，用于促进skill迁移与巩固疗效的日常化练习布置。",
-        "trigger": "来访者询问巩固方法、表示愿意在家练习，或需在实际压力情境中应用所学时。",
+        "trigger": "When the client asks about consolidation methods, expresses willingness to practice at home, or needs to apply what was learned in real stress situations.",
         "parent_ids": [
             "916",
             "449",
@@ -4048,8 +4048,8 @@
         "skill_id": "591",
         "skill_name": "以新基线启动新一轮心率反馈训练",
         "skill_description": "When entering a new round of training, first measure a new baseline value, follow the established steps cyclically, until the relevant indicators approach the target range or return to normal, then enter the next stage for consolidation.",
-        "when_to_use": "新疗程或下一次预约开始、或完成阶段性目标后需要继续巩固与提升时。",
-        "trigger": "开启新一次训练、上轮训练告一段落且仍需继续提高或维持成效时。",
+        "when_to_use": "When a new course of treatment or the next appointment begins, or when a stage goal has been completed and further consolidation and improvement are needed.",
+        "trigger": "When starting a new training round, the previous round has ended, and improvement or maintenance of effects still needs to continue.",
         "parent_ids": [
             "916",
             "449",
@@ -4081,7 +4081,7 @@
         "skill_name": "引导听觉专注聆听",
         "skill_description": "Guide the client to focus attention on light, cheerful music or the natural sounds around them, savor the tone and rhythm in detail, or listen with eyes closed, so that attention is stabilized on the auditory channel and psychological calm and relaxation are gradually obtained.",
         "when_to_use": "在放松训练中，视觉专注not易维持或场景更适合声音引导时；用于治疗室播放音乐或环境安静的场合。",
-        "trigger": "来访者表示音乐能安抚情绪或对环境声敏感；视觉专注困难、闭眼更易集中时。",
+        "trigger": "When the client indicates that music can soothe emotions or is sensitive to environmental sounds; visual focus is difficult and concentration is easier with eyes closed.",
         "parent_ids": [
             "916",
             "449",
@@ -4162,7 +4162,7 @@
         "skill_name": "引导腹式深呼吸",
         "skill_description": "Prompt the client to place one hand flat on the abdomen and slowly do deep breathing, letting the hand rise and fall with the abdominal breathing, emphasizing a breathing rhythm of 'slow and deep, natural and even', lowering arousal and inducing bodily relaxation through abdominal breathing.",
         "when_to_use": "Used in the core practice stage of deep breathing relaxation, to establish the abdominal breathing pattern and promote an immediate physiological relaxation response.",
-        "trigger": "来访者处于紧张状态并开始进行深呼吸练习，需要具体的腹式呼吸操作指引。",
+        "trigger": "The client is in a tense state and begins deep breathing practice, needing concrete guidance on diaphragmatic breathing operations.",
         "parent_ids": [
             "916",
             "449",
@@ -4194,7 +4194,7 @@
         "skill_name": "教授自助练习与即时应用",
         "skill_description": "在掌握方法后强调其为简便的现场自助技术，指导来访者在“特殊场合感到紧张且without时间与场地进行其他放松”时，随时以深呼吸自我练习，形成可随时调用的放松skill。",
         "when_to_use": "在放松训练结束后的巩固与迁移阶段，安排日常自练并明确not yet来紧张情境的现场应用方式。",
-        "trigger": "来访者报告常遇到突发紧张或场地受限的情境，表达需要快速自助放松的方法。",
+        "trigger": "The client reports often encountering sudden tension or venue-restricted situations and expresses a need for quick self-help relaxation methods.",
         "parent_ids": [
             "916",
             "449",
@@ -4210,7 +4210,7 @@
         "skill_name": "明确并单一定义目标行为",
         "skill_description": "在实施化学厌恶前，客观、明确、完整地界定需矫治的not良行为（如酗酒、吸烟、暴饮暴食），确保为单一、可观察、可记录的动作，以便建立稳定的条件反射联结。",
         "when_to_use": "Aversion therapy评估与方案制定阶段，决定是否采用化学厌恶并确定靶症状。",
-        "trigger": "来访者长期呈现可观察的酗酒、吸烟或暴饮暴食行为模式，且难以自控。",
+        "trigger": "The client has long shown observable behavior patterns of alcohol abuse, smoking, or binge eating, and finds it hard to exercise self-control.",
         "parent_ids": [
             "916",
             "449",
@@ -4225,7 +4225,7 @@
         "skill_name": "选择合适的化学厌恶刺激",
         "skill_description": "Select medications such as emetics or disulfiram according to four criteria: can be applied at a designated time, intensity and duration are adjustable, can be used for multiple types of problems, and are safe for the patient and the implementer; preferentially used for behaviors such as alcohol abuse, smoking, and overeating.",
         "when_to_use": "制定化学厌恶方案时，需确定具体药物与剂量、持续方式。",
-        "trigger": "来访者行为类型与治疗目标明确，需要在厌恶强度与安全性间权衡选择药物。",
+        "trigger": "The client's behavior type and treatment goal are clear, and a drug needs to be chosen by weighing aversion intensity against safety.",
         "parent_ids": [
             "916",
             "449",
@@ -4329,7 +4329,7 @@
         "skill_id": "716",
         "skill_name": "明确并定义目标行为",
         "skill_description": "依据Aversion therapy步骤先将欲矫治的not良行为定义为单一、具体、可观察的目标，以便与厌恶想象精准配对并建立条件反射。",
-        "when_to_use": "想象厌恶方案制定前的评估阶段或首次治疗开始前，用于锁定训练靶症状。",
+        "when_to_use": "In the assessment stage before formulating the imaginal aversion plan or before the first treatment begins, used to lock onto the target training symptoms.",
         "trigger": "Used when the client's description of the problem behavior is vague and involves multiple habits or impulses at the same time, making it hard to directly pair with an aversive situation.",
         "parent_ids": [
             "916",
@@ -4360,7 +4360,7 @@
         "skill_name": "引导清晰再现目标行为并施加厌恶想象",
         "skill_description": "First guiding the client to imagine in detail the whole process of performing the target behavior, then immediately entering the preset aversive scene, so that the aversive response forms a counterconditioned association with the target behavior.",
         "when_to_use": "每次训练的开始环节，用于建立或Reinforcement厌恶—目标行为的配对。",
-        "trigger": "来访者出现与目标行为相关的念头、画面或冲动增强，表示“又想要做”。",
+        "trigger": "The client shows intensified thoughts, images, or urges related to the target behavior, expressing 'wanting to do it again'.",
         "parent_ids": [
             "916",
             "449",
@@ -4500,7 +4500,7 @@
         "skill_id": "745",
         "skill_name": "设定紧张信号与中止放松再想象",
         "skill_description": "约定当来访者在想象中感到紧张或难以控制Anxiety时，以手势示意；立即停止想象，进行放松训练，随后再重复该等级想象，直至not再引发Anxiety为止。",
-        "when_to_use": "每次想象暴露的实时监测环节；用于保障安全与疗效的操作规则与应急处理。",
+        "when_to_use": "The real-time monitoring phase of each imaginal exposure; operating rules and emergency handling used to ensure safety and treatment effect.",
         "trigger": "来访者出现紧张、主观Anxiety急剧上升或without法自控；以手势示意需要暂停；伴随呼吸急促、回避倾向等表现。",
         "parent_ids": [
             "916",
@@ -4517,7 +4517,7 @@
         "skill_id": "746",
         "skill_name": "逐级推进直至最高等级withoutAnxiety",
         "skill_description": "当当前等级情境想象已not再引发Anxiety时，进入下一等级，按序逐级上升；达到最高等级情境也not再感到Anxiety时结束脱敏练习。",
-        "when_to_use": "当前等级完成后、准备过渡到更高等级时；用于控制进度与定义终止标准。",
+        "when_to_use": "After the current level is completed and preparing to transition to a higher level; used to control progress and define termination criteria.",
         "trigger": "来访者在该等级想象中主观Anxiety显著降低并消失；想象时保持平静、without紧张生理反应。",
         "parent_ids": [
             "916",
@@ -4615,8 +4615,8 @@
         "skill_id": "676",
         "skill_name": "手臂放松引导与手法协助",
         "skill_description": "Guide the client to clench both fists and then relax for comparison; when necessary the therapist holds their wrist and assists in bending the arm backward to induce tension, then releases to experience relaxation, and marks the tense areas of the arm to strengthen awareness.",
-        "when_to_use": "在初学阶段或需从易到难建立放松体验时，优先训练易操作的手臂肌群。",
-        "trigger": "来访者难以体会紧张-放松差异，或需要治疗师协助诱发手臂紧张。",
+        "when_to_use": "In the beginner stage, or when a relaxation experience needs to be built from easy to difficult, prioritize training the easy-to-operate arm muscle groups.",
+        "trigger": "When the client has difficulty experiencing the tension-relaxation difference, or needs the therapist's help to induce arm tension.",
         "parent_ids": [
             "916",
             "449",
@@ -4631,7 +4631,7 @@
         "skill_id": "677",
         "skill_name": "躯干放松引导（胸腹背一体练习）",
         "skill_description": "Guide extending both arms backward, tightening the back muscles to compress the spine, chest out and abdomen drawn in to generate tension, then relaxing completely to experience the change from tension to release in the chest, abdomen, and back, consolidating torso relaxation cues.",
-        "when_to_use": "在渐进性肌肉放松进入躯干阶段时，一并训练胸部、腹部与背部收缩-放松。",
+        "when_to_use": "When progressive muscle relaxation enters the torso stage, the contraction-relaxation of the chest, abdomen, and back is trained together.",
         "trigger": "来访者在胸腹背部难以觉察放松，或观察到躯干肌群紧张迹象。",
         "parent_ids": [
             "916",
@@ -4647,7 +4647,7 @@
         "skill_id": "678",
         "skill_name": "腿脚放松引导（脚趾贴地、脚跟上提）",
         "skill_description": "Prompts to tense both feet, toes on the ground and heels raised so the calf muscles tighten, then slowly relax, comparing the difference in feeling before and after, capturing the relaxed sensation in the feet and legs as a sign of relaxation.",
-        "when_to_use": "在下肢放松阶段或决定从下肢开始训练时，帮助建立腿脚放松通道。",
+        "when_to_use": "At the lower-limb relaxation stage or when deciding to start training from the lower limbs, helps establish a leg and foot relaxation pathway.",
         "trigger": "来访者下肢紧Zhang Ming显，或为降低难度而选择从下肢起步。",
         "parent_ids": [
             "916",
@@ -4663,7 +4663,7 @@
         "skill_id": "679",
         "skill_name": "系统化覆盖与时长频率安排",
         "skill_description": "Systematically cover all muscle groups in a certain order, carrying out contraction-relaxation rhythmically; in session about 20 minutes each time, and assign 30 minutes of daily practice at home, in order to consolidate and generalize full-body relaxation.",
-        "when_to_use": "在制定练习计划或结束一轮全身训练、安排家庭作业时，规范练习节奏与时长。",
+        "when_to_use": "When formulating a practice plan or ending a round of whole-body training and arranging homework, standardize the practice rhythm and duration.",
         "trigger": "来访者询问练习时长/频率，或练习零散、顺序混乱、难以坚持。",
         "parent_ids": [
             "916",
@@ -4679,7 +4679,7 @@
         "skill_id": "680",
         "skill_name": "Reinforcement差异觉察与反复训练",
         "skill_description": "要求先学会分辨紧张与松弛的差do not，主动掌握松弛过程，再逐步加深训练，直至能自如放松全身，并记住放松的愉快感以便快速进入。",
-        "when_to_use": "在完成一次全身练习后进入巩固期，或已初步掌握但需深化放松能力时。",
+        "when_to_use": "Entering the consolidation period after completing one full-body exercise, or when the basics have been preliminarily mastered but the relaxation ability needs deepening.",
         "trigger": "来访者仅能短暂放松或难以快速进入放松，全身放松not稳定。",
         "parent_ids": [
             "916",
@@ -4695,7 +4695,7 @@
         "skill_id": "681",
         "skill_name": "依据可操作性选择起始肌群",
         "skill_description": "依据可操作性确定起点：可从最易的手臂开始，亦可从脚腿起步；同时重视头部放松对抑制Anxiety的重要性，以优化顺序与效果。",
-        "when_to_use": "在设计渐进性肌肉放松的流程之初，根据来访者特点确定训练起点与顺序。",
+        "when_to_use": "At the beginning of designing the progressive muscle relaxation procedure, determining the training starting point and sequence according to the client's characteristics.",
         "trigger": "来访者为初学者、对开始练习缺乏把握，或某些部位特do not紧张需调整起点。",
         "parent_ids": [
             "916",
@@ -4889,7 +4889,7 @@
         "skill_name": "明确并单一化靶行为",
         "skill_description": "将靶行为界定为客观、明确、完整、具体且not夹杂其他动作的单一行为，便于建立厌恶性条件反射与后续操作。",
         "when_to_use": "Aversion therapy准备阶段制定方案时；目标是确保配对与Reinforcement的对象清晰可操作。",
-        "trigger": "来访者对问题行为描述含混、夹杂多个动作，或难以被观察与记录。",
+        "trigger": "The client's description of the problem behavior is vague, mixes multiple actions, or is hard to observe and record.",
         "parent_ids": [
             "916",
             "449",
@@ -4903,7 +4903,7 @@
         "skill_id": "701",
         "skill_name": "获取知情同意并定位为末选方案",
         "skill_description": "在实施物理厌恶前征得患者同意，充分说明原理与可能的not愉快，将其作为最后选择，并在见效时给予鼓励以促坚持。",
-        "when_to_use": "物理厌恶介入前的决策与知情环节；目标是获得合作并降低抵触与退出风险。",
+        "when_to_use": "The decision-making and informed-consent phase before a physical aversion intervention; the goal is to obtain cooperation and reduce the risk of resistance and dropout.",
         "trigger": "来访者对刺激表示担忧或犹豫、尚not yet明确同意，或已表明其他方法效果not佳。",
         "parent_ids": [
             "916",
@@ -4919,7 +4919,7 @@
         "skill_name": "选择电击作为厌恶刺激并满足四条件",
         "skill_description": "选用电击时确保可按时应用、强度与时长可调、适用范围广且not致危险，并与目标情境匹配；电击易操作、强度易控。",
         "when_to_use": "Used at the stage of selecting the stimulus type or adjusting the plan; a controllable, adjustable, and safe strong aversive stimulus is needed to pair with the training.",
-        "trigger": "需要强度可调、易控制的刺激；来访者目标行为与线索清晰，适合与电击配对。",
+        "trigger": "Stimuli that are adjustable in intensity and easy to control are needed; the client's target behavior and cues are clear, suitable for pairing with electric shock.",
         "parent_ids": [
             "916",
             "449",
@@ -4933,7 +4933,7 @@
         "skill_id": "703",
         "skill_name": "校准电击强度至痛苦可耐受并可调",
         "skill_description": "将强度设定到能引起疼痛但not超耐受；根据个体差异与治疗进展随时调整，必要时由患者参与强度选择。",
-        "when_to_use": "物理厌恶实施前及首次试刺激阶段；目标是确定个体化强度并随疗程动态调整。",
+        "when_to_use": "Before physical aversion implementation and in the first trial-stimulation stage; the goal is to determine individualized intensity and adjust dynamically with the course of treatment.",
         "trigger": "来访者报告“刺痛太轻”或“难以忍受”，出现躯体反应过强或皮肤not适。",
         "parent_ids": [
             "916",
@@ -4949,7 +4949,7 @@
         "skill_name": "在目标行为或其想象出现时即时施击",
         "skill_description": "Closely pair electric shock with the target behavior or its imagery; apply it immediately when the behavior occurs or the behavior response appears in imagination, to establish an aversive conditioned reflex.",
         "when_to_use": "正式施加刺激的训练环节；目标是建立电击—行为/想象的条件联系并促使not良行为消退。",
-        "trigger": "会谈中来访者开始实施目标动作，或在想象训练时清晰呈现该行为画面与冲动。",
+        "trigger": "In the session, the client begins to perform the target action, or clearly presents the image and impulse of the behavior during imaginal training.",
         "parent_ids": [
             "916",
             "449",
@@ -4979,7 +4979,7 @@
         "skill_name": "建立辨do not性条件反射避免负迁移",
         "skill_description": "同步训练辨do not性条件反射，使厌恶关联仅限目标行为，避免对非目标行为产生广泛回避或兴趣消退等非Anticipation影响。",
         "when_to_use": "When generalization or non-target effects appear during the treatment course; the goal is to precisely define the stimulus-response range and reduce side effects.",
-        "trigger": "来访者反馈对非目标情境的回避、兴趣下降或行为广泛抑制的迹象。",
+        "trigger": "The client reports signs of avoidance of non-target situations, decreased interest, or broad behavioral inhibition.",
         "parent_ids": [
             "916",
             "449",
@@ -5076,7 +5076,7 @@
         "skill_id": "764",
         "skill_name": "进行医学筛查与禁忌评估",
         "skill_description": "在实施冲击疗法前进行必要的临床检查，筛查心血管、中枢神经、呼吸、内分泌等not适宜人群，老人、儿童、孕妇及虚弱者和精神病性障碍等禁用，确保想象满灌暴露的安全性。",
-        "when_to_use": "想象满灌暴露启动前的初始评估与准备阶段，用于确认疗法适用性与安全边界。",
+        "when_to_use": "In the initial assessment and preparation stage before imaginal flooding exposure starts, used to confirm therapy applicability and safety boundaries.",
         "trigger": "The client intends to receive flooding therapy, or reports a medical history such as palpitations, hypertension, epilepsy, asthma, pregnancy or physical frailty, and contraindications need to be ruled out.",
         "parent_ids": [
             "916",
@@ -5128,7 +5128,7 @@
         "skill_name": "直接引导极度恐惧情境的持续想象",
         "skill_description": "not做分级，直接引导来访者长时间想象其极度恐惧或Anxiety的核心情境，持续暴露直至Anxiety明显下降，遵循满灌原则以促使恐惧记忆消退。",
         "when_to_use": "进入想象满灌暴露的正式暴露阶段，目标是trigger并维持高强度恐惧反应。",
-        "trigger": "来访者已进入放松、可遵从指令并准备面对最恐惧的场景，且同意开始暴露。",
+        "trigger": "The client has entered a relaxed state, can follow instructions and is ready to face the most feared scene, and agrees to begin the exposure.",
         "parent_ids": [
             "916",
             "449",
@@ -5145,7 +5145,7 @@
         "skill_name": "识do not并制止回避行为",
         "skill_description": "在暴露过程中若出现闭眼、塞耳、Displacement视线、面壁、Displacement话题等回避，及时劝说并制止，保持对恐惧线索的充分、连续暴露以防学习中断。",
         "when_to_use": "想象暴露进行中，为确保暴露强度与连续性、避免逃避Reinforcement时。",
-        "trigger": "来访者出现回避动作或言语逃避（如闭眼、捂耳、停想、改变话题、求停）。",
+        "trigger": "The client shows avoidant movements or verbal escape (such as closing the eyes, covering the ears, stopping thinking, changing the topic, or asking to stop).",
         "parent_ids": [
             "916",
             "449",
@@ -5196,7 +5196,7 @@
         "skill_name": "处理中途退出与伦理性终止",
         "skill_description": "当来访者反复要求终止或家属提出取消、或出现严重not良反应时，尊重其终止权利并停止治疗；not得以协议为由强行继续，必要时转介或改用他法。",
         "when_to_use": "暴露进行中或开始前出现持续拒绝、突发not良反应或家属明确反对时。",
-        "trigger": "来访者多次要求停止、家属要求终止，或出现通气过度综合征、晕厥、休克等。",
+        "trigger": "The client repeatedly requests to stop, family members request termination, or hyperventilation syndrome, fainting, shock, etc. occur.",
         "parent_ids": [
             "916",
             "449",
@@ -5247,7 +5247,7 @@
         "skill_name": "暴露后放松收尾与迁移运用",
         "skill_description": "在结束暴露后进行放松训练帮助回归现实，讨论体验与疗效，鼓励来访者在日常中以重新体验Anxiety的方式巩固消退，促进skill迁移与维持。",
         "when_to_use": "每次想象满灌暴露结束后的收尾与巩固阶段。",
-        "trigger": "本次暴露达到结束标准，来访者反应已显著回落并准备退出情境时。",
+        "trigger": "This exposure has reached the ending criterion, the client's response has markedly subsided, and they are ready to leave the situation.",
         "parent_ids": [
             "916",
             "449",
@@ -5297,7 +5297,7 @@
         "skill_id": "737",
         "skill_name": "在自动化素材中嵌入放松与暂停规则",
         "skill_description": "在录音/影像流程中先诱导全身放松再呈现当前等级刺激；若出现Anxiety且not能控制，立即停止刺激，回到放松后再继续该等级。",
-        "when_to_use": "自动化脱敏的制作与执行阶段，需确保交互抑制原理与练习安全性时。",
+        "when_to_use": "The production and implementation stage of automated desensitization, when the reciprocal inhibition principle and practice safety need to be ensured.",
         "trigger": "来访者在观看/想象时自述“很紧张、难以平复”等，表现为Anxiety升高且without法控制。",
         "parent_ids": [
             "916",
@@ -5314,7 +5314,7 @@
         "skill_id": "738",
         "skill_name": "建立并均匀化Anxiety等级序列",
         "skill_description": "依据主观Anxiety等级量表，将恐惧事件按0–100由弱至强排序，合理设定等级跨度，作为录音/影像的分级呈现序列。",
-        "when_to_use": "制作自动化材料前，需要确定分级刺激的顺序与难度，使练习可循序渐进时。",
+        "when_to_use": "Before making automated materials, when the order and difficulty of graded stimuli need to be determined so that practice can proceed step by step.",
         "trigger": "来访者完成主观Anxiety评分并提供足够情境；严重Anxiety者提示需更小跨度的分级。",
         "parent_ids": [
             "916",
@@ -5348,7 +5348,7 @@
         "skill_id": "740",
         "skill_name": "识do notnot适用情形并改由咨询师主导",
         "skill_description": "当为严重Anxiety者时not采用完全自我管理，改由咨询师提供标准化操作、处理突发问题，并给予必要的支持与鼓励。",
-        "when_to_use": "评估自动化脱敏可行性或自我练习中出现困难，需要转为咨询师主导时。",
+        "when_to_use": "When assessing the feasibility of automated desensitization, or when difficulties arise in self-practice and a shift to counselor-led work is needed.",
         "trigger": "来访者在自我练习中Anxiety反应强烈难以控制、without法维持放松或反复中断练习。",
         "parent_ids": [
             "916",
@@ -5433,7 +5433,7 @@
         "skill_id": "728",
         "skill_name": "调整等级与控制推进跨度",
         "skill_description": "随治疗进展根据来访者主观体验与评分变化调整等级与事件；上一等级not yet完全脱敏not推进，控制等级跨度not超过50单位，必要时缩小跨度，确保循序渐进、安全有效地推进现场暴露。",
-        "when_to_use": "快速脱敏的持续实施与复盘阶段，用于评估反应并优化分级序列与推进节奏。",
+        "when_to_use": "The continued implementation and review phase of rapid desensitization, used to evaluate responses and optimize the graded sequence and the pace of progress.",
         "trigger": "来访者对某一级do not已not再Anxiety或反馈当前级do not过难/过易；主观评分或生理反应出现明显变化，提示需调整分级或步幅。",
         "parent_ids": [
             "916",
@@ -5450,7 +5450,7 @@
         "skill_id": "752",
         "skill_name": "实施前医学体检与适用性筛查",
         "skill_description": "在实地满灌前对来访者进行必要的临床检查与风险评估，排除not适用人群，作为是否采用该方法的前置安全门槛，确保暴露过程中生理安全可控。",
-        "when_to_use": "实地满灌暴露开始前的准备阶段，用于评估来访者身体状况与方法适配性。",
+        "when_to_use": "In the preparation stage before in-vivo flooding exposure begins, used to assess the client's physical condition and method suitability.",
         "trigger": "来访者拟接受冲击疗法，但其心血管、神经系统、呼吸系统等健康状况not明或自述相关病史。",
         "parent_ids": [
             "916",
@@ -5484,7 +5484,7 @@
         "skill_id": "754",
         "skill_name": "布置引发极度恐惧的真实情境",
         "skill_description": "在治疗场所安置能诱发来访者强烈Anxiety/恐惧的真实刺激或情景，使其能够重新体验以往恐惧情绪，为满灌暴露提供足量刺激源。",
-        "when_to_use": "暴露进入前的场景搭建阶段，确保场所与刺激足以引发目标情绪反应。",
+        "when_to_use": "The scene-setup stage before entering exposure, ensuring the setting and stimuli are sufficient to evoke the target emotional response.",
         "trigger": "来访者的恐惧对象已明确，但现场刺激not足以激发显著恐惧或without法再现关键情境线索。",
         "parent_ids": [
             "916",
@@ -5638,7 +5638,7 @@
         "skill_name": "会后放松回归与自我练习鼓励",
         "skill_description": "暴露结束后实施简短放松帮助回归现实，总结体验并鼓励在日常中重复以类似方式重新体验Anxiety，巩固消退与应对信心。",
         "when_to_use": "每次实地满灌暴露结束后的收尾与巩固阶段。",
-        "trigger": "暴露结束后，来访者仍有余紧张、疲惫或担忧，需过渡回归与巩固学习收益。",
+        "trigger": "After the exposure ends, the client still has residual tension, fatigue, or worry, and needs a transitional return and consolidation of the learning gains.",
         "parent_ids": [
             "916",
             "449",
@@ -5968,7 +5968,7 @@
         "skill_name": "在放松状态引入积极情绪意象",
         "skill_description": "当来访者身心充分放松时，引入成功体验或理想生活等积极意象，使积极情绪与原先的not良刺激情境重新联结，进一步降低Anxiety，为目标行为的发生奠定条件。",
         "when_to_use": "渐进肌肉放松或场景想象过程中，当生理与心理放松显著时。",
-        "trigger": "来访者报告身心放松、呼吸平稳，准备进行场景想象或情绪调动的时刻。",
+        "trigger": "The moment when the client reports physical and mental relaxation and steady breathing and is ready for scene imagery or emotional mobilization.",
         "parent_ids": [
             "916",
             "449",
@@ -6061,7 +6061,7 @@
         "skill_name": "说明放松训练原理与适用情境",
         "skill_description": "说明放松训练在广泛性或急性Anxiety中的益处，通过“先紧张后放松”的肌群练习与深呼吸，在出现紧张时以肌肉放松对抗Anxiety；阐明缓解紧张、insomnia与考前身心not适的意义，增强练习动机。",
         "when_to_use": "开始教授放松训练前，或来访者Anxiety高涨、insomnia、练习动机not足时。",
-        "trigger": "来访者报告考试前心慌、浑身紧张发抖、入睡困难，或因反复检查等感到疲惫。",
+        "trigger": "The client reports palpitations before exams, whole-body tension and trembling, difficulty falling asleep, or fatigue from repeated checking and the like.",
         "parent_ids": [
             "916",
             "449",
@@ -6075,7 +6075,7 @@
         "skill_id": "940",
         "skill_name": "回顾作业并给予积极Reinforcement与改进建议",
         "skill_description": "在每次会谈回顾或阶段性复盘时，围绕已完成的作业与实际应用，具体评估成效、讨论收获、变化与困难，给予真诚肯定与鼓励；对残存的Anxiety或完美化倾向提出聚焦改进建议，并指导将所学持续运用于日常沟通，促进经验整合与巩固成效。",
-        "when_to_use": "每次会谈的回顾与评估阶段，或阶段性复盘作业/练习后，需要巩固与调整时。",
+        "when_to_use": "In the review and evaluation stage of each session, or after periodic review of homework/practice, when consolidation and adjustment are needed.",
         "trigger": "来访者汇报放松练习、Systematic desensitization、应试或沟通策略的应用与成效；完成社交相关作业后提出体验、困难或改善迹象；已改善但仍有少量Anxiety或完美倾向。",
         "parent_ids": [
             "916",
@@ -6337,7 +6337,7 @@
         "skill_id": "919",
         "skill_name": "引导放松情景想象并安定身心",
         "skill_description": "In relaxation training or when emotions need to be quickly stabilized, guide the client to imagine a scene that makes them relaxed (such as strolling in a beautiful field), combined with maintaining a comfortable posture, with the counselor in a soft tone continuously orienting and prompting, helping them focus and gradually enter a peaceful body-mind state; can be used as preparation before imaginal desensitization.",
-        "when_to_use": "在学习放松技巧阶段或作为想象脱敏的准备；或当需要快速缓解紧张时。",
+        "when_to_use": "During the stage of learning relaxation techniques or as preparation for imaginal desensitization; or when tension needs to be relieved quickly.",
         "trigger": "开始放松训练；或来访者难以放松、Anxiety紧张上升，提及考试/人际即情绪显著升高。",
         "parent_ids": [
             "916",
@@ -6406,7 +6406,7 @@
         "skill_name": "记录暴露达成与情绪反应",
         "skill_description": "In a continuous course of treatment, record the completion of in-vivo exposure behaviors (such as taking an elevator) and whether autonomic symptoms such as palpitations and sweating appear; after each treatment ends, write in detail that session's experience, emotional intensity and changes, presenting the staged trajectory of fear reduction, providing a basis for subsequent assessment and plan adjustment.",
         "when_to_use": "At the end of each session, at periodic review and consolidation; or after completing a real-situation attempt, used to evaluate the effect of that time.",
-        "trigger": "来访者完成一次现实情境尝试；或需回顾当次治疗体验与情绪变化时。",
+        "trigger": "When the client completes a real-life situation attempt; or when the session's treatment experience and emotional changes need to be reviewed.",
         "parent_ids": [
             "916",
             "888",
@@ -6448,7 +6448,7 @@
         "skill_name": "记录并比较心理测验前后结果",
         "skill_description": "Record the initial-test and retest psychological test results in order, compare the before-and-after T scores and factor changes (such as SCL-90, SAS, SDS, EPQ; Mf, D and other subscales), and mark the assessment time points and related events, as a basis for efficacy judgment and plan adjustment.",
         "when_to_use": "在阶段性评估或咨询期末，需要比较基线与Intervention后心理测验结果时。",
-        "trigger": "完成一次标准化测验或复测；或需以分数客观化症状变化与咨询成效时。",
+        "trigger": "After completing a standardized test or retest; or when scores are needed to objectify symptom changes and counseling outcomes.",
         "parent_ids": [
             "916",
             "888",
@@ -6461,7 +6461,7 @@
         "skill_id": "970",
         "skill_name": "记录家庭作业与训练执行情况",
         "skill_description": "将布置的放松训练、场景想象等家庭作业记入记录单，持续记录每日/每次的次数、时长、所练情境等级、完成率与主观Anxiety变化，并记载应用情境与反馈要点；必要时记录引发事件、自动化思维、正念觉察与宣泄放松体验，供下次复盘、巩固与方案调整。",
-        "when_to_use": "布置家庭作业后至结束与巩固阶段的作业反馈与训练跟踪环节，及随访时。",
+        "when_to_use": "From after homework is assigned to the homework feedback and training tracking segment of the ending and consolidation stage, and during follow-up.",
         "trigger": "After formulating the homework plan; when the client at follow-up reports practice frequency, duration, feelings, and application in daily life, or submits related records.",
         "parent_ids": [
             "916",
@@ -6490,7 +6490,7 @@
         "skill_name": "记录并对照心理测验前后结果",
         "skill_description": "At initial assessment, staged re-testing, and the ending stage, administer and record scores of the SCL-90, SAS, SDS, etc., compare item by item by factor against the baseline, and where necessary combine changes in fear scores during staged training, assessing symptom change and overall efficacy to provide a basis for later decisions.",
         "when_to_use": "初始评估、阶段性复测或咨询结束的效果评估环节。",
-        "trigger": "获得量表评分结果；或需要进行阶段性/终结性疗效对照、判断总体疗效时。",
+        "trigger": "When scale score results are obtained; or when a stage-wise/final efficacy comparison is needed to judge the overall treatment effect.",
         "parent_ids": [
             "916",
             "888",
@@ -6559,7 +6559,7 @@
         "skill_id": "931",
         "skill_name": "暴露/放松后Anxiety评分与进阶判定记录",
         "skill_description": "在每次想象或现实暴露与放松练习后，立即记录来访者的Anxiety水平（如0～10或0～100），并依据阈值判定：≤3可进阶，>20继续放松，直至“该情景not再紧张”；同步记录前后变化与通过的等级，用于监测训练效果与当次决策。",
-        "when_to_use": "每次暴露/放松训练结束阶段，用于评估当次效果并决定是否晋级。",
+        "when_to_use": "At the end stage of each exposure/relaxation training, used to evaluate the current effect and decide whether to advance.",
         "trigger": "来访者完成一次暴露或放松练习，需要判断Anxiety是否降至阈值以下并记录当次变化时。",
         "parent_ids": [
             "916",

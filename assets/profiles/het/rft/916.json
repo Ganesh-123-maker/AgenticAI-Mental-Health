@@ -81,7 +81,7 @@
           "response_instruction": "语言收敛，简短回应或回避细节；语气犹疑、降低情感强度，use“not什么”“not值得说”等词语来淡化。"
         },
         {
-          "trigger_condition": "当需要在社交场合直面身高相关情境（如与同伴外出、可能需要高处取物）",
+          "trigger_condition": "When he needs to directly face height-related situations in social settings (such as going out with peers or possibly needing to retrieve objects from high places)",
           "interpretation": "他人会轻视或嘲笑自己，交流只会带来更多羞耻",
           "defense_mechanism": "sring",
           "response_instruction": "以担忧他人想法为理由婉拒或取消计划；用假设性措辞（“他们肯定会笑我”）Reinforcement退出，语气防御性强。"
@@ -169,7 +169,7 @@
     "bt": {
       "target_behavior": [
         {
-          "behavior": "回避与身高相关的情境（如高处取物、与同伴活动中可能暴露身高劣势的场景）",
+          "behavior": "Avoids height-related situations (such as reaching for objects in high places, or scenes in peer activities that might expose a height disadvantage)",
           "antecedent": [
             "需要从高处拿物品",
             "计划与同伴外出或参与活动时担心身高被关注"

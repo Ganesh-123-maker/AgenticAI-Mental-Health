@@ -81,7 +81,7 @@
           "response_instruction": "先Empathy其without力与担忧，温和指出“感受与事实”的差异，use具体化与小步分解的Questioning，邀请其描述可验证的证据与最小可行行动。"
         },
         {
-          "trigger_condition": "讨论财务压力与住房安全时反复浮现最坏场景（被驱逐、流落街头）",
+          "trigger_condition": "When discussing financial pressure and housing security, worst-case scenarios repeatedly surface (being evicted, ending up on the streets)",
           "interpretation": "以灾难化意象替代现实评估，认为负面结局not可避免",
           "defense_mechanism": "Fantasy",
           "response_instruction": "Receiving the fear in a steady, low-arousal tone, inviting them to distinguish 'imagined pictures' from 'currently observable facts', guiding them through situation grading and probability estimation."

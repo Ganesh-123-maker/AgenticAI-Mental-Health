@@ -17,7 +17,7 @@
         "skill_id": "1239",
         "skill_name": "制定复发应对技术与步骤",
         "skill_description": "基于咨询中已掌握的技术，制定复发时的具体操作步骤，如抑郁用行为激活、Anxiety用暴露等，并明确执行次序与频率，确保来访者复发时可照单操作。",
-        "when_to_use": "在已明确复发标志后，结束阶段制定复发应对行动计划与家庭作业时。",
+        "when_to_use": "After relapse signs have been clarified, in the closing stage, formulating a relapse-response action plan and homework.",
         "trigger": "来访者表示“复发时我not知道该做什么”“需要具体步骤”，或询问如何应用所学技术。",
         "parent_ids": [
             "1199",
@@ -59,8 +59,8 @@
         "skill_id": "1242",
         "skill_name": "Making relapse coping cards",
         "skill_description": "Make a 'relapse coping card' with the client, listing the steps and specific techniques for self-help first and noting when to switch to seeking help; a guide to keep at hand for checking and rapidly executing in case of relapse after the counseling ends.",
-        "when_to_use": "结束会谈收尾时，落实具体工具与随身提醒，便于复发时快速执行。",
-        "trigger": "来访者易在复发时慌乱或健忘，要求一目了然的指南，或希望有随身提示。",
+        "when_to_use": "At the closing of the session, implements concrete tools and portable reminders for quick execution at relapse.",
+        "trigger": "The client easily panics or forgets at relapse, asking for a guide clear at a glance, or hoping for portable reminders.",
         "parent_ids": [
             "1199",
             "1207",
@@ -329,7 +329,7 @@
         "skill_id": "1218",
         "skill_name": "布置回顾作业以提高总结质量",
         "skill_description": "Before the formal summary, require the client to review counseling notes, review the course, and self-evaluate the gains, so they enter the session with organized material, improving the depth and accuracy of the evaluation.",
-        "when_to_use": "结束阶段开始筹备总结时或安排最后几次会谈时，为回顾与效果评估做准备。",
+        "when_to_use": "When the ending stage begins to prepare the summary or the last few sessions are arranged, in preparation for review and effect evaluation.",
         "trigger": "来访者表示not确定自己学到了什么、记忆模糊或难以具体描述进步与关键事件时。",
         "parent_ids": [
             "1199",
@@ -428,7 +428,7 @@
         "skill_name": "引导回忆初诊状态与问题基线",
         "skill_description": "Guide the client to describe in specific detail the situation at the time of their first consultation, the intensity of the symptoms and the functional impairment and the goals then, establishing a comparable baseline providing a clear reference point for staged reviews later.",
         "when_to_use": "结束会谈的回顾环节起始阶段，用于开启系统性回顾并建立起点。",
-        "trigger": "来访者开始提及“第一次来咨询时”“刚开始”的情形或对初期状况回忆零散。",
+        "trigger": "The client begins to mention situations of 'when I first came to counseling' or 'at the beginning', or recalls the initial state fragmentarily.",
         "parent_ids": [
             "1199",
             "1200",
@@ -457,7 +457,7 @@
         "skill_id": "1224",
         "skill_name": "识do not并归纳促成改变的努力",
         "skill_description": "For the changes at each stage, press questions about the specific efforts and practices the client made for them (such as homework, technique application), correspond the changes with their proactive behavior, and highlight their own role and self-efficacy.",
-        "when_to_use": "在分阶段盘点之后，用于连接“发生的改变”与“来访者的具体行动”。",
+        "when_to_use": "After the staged stocktaking, used to connect 'the changes that occurred' with 'the client's concrete actions'.",
         "trigger": "来访者描述某个改变、进步或说明某困难已被克服时。",
         "parent_ids": [
             "1199",
@@ -473,7 +473,7 @@
         "skill_name": "重建问题改善的时间线与机制",
         "skill_description": "与来访者共同描绘问题随咨询进程而改善的轨迹，标注关键转折点与有效Intervention，澄清“如何变好”的因果链，为后续巩固与复制提供线索。",
         "when_to_use": "回顾环节的整合收尾阶段，用于总结阶段信息为整体叙事。",
-        "trigger": "来访者能够回述多阶段信息并开始归纳整体变化或询问为何能变好。",
+        "trigger": "The client can recount multi-stage information and begins to summarize overall changes or ask why they were able to improve.",
         "parent_ids": [
             "1199",
             "1200",
@@ -572,7 +572,7 @@
         "skill_id": "1247",
         "skill_name": "把进展归因于来访者以Reinforcement自我效能",
         "skill_description": "当来访者将治疗进展归功于咨询师时，强调其自身认知与行为的改变促成成功，并总结“改变认知和行为所以改变情绪”，以提升来访者的Self-efficacy与独立应对信心。",
-        "when_to_use": "在每次会谈的回顾与结束前的总结阶段，用于巩固成果与增强独立性。",
+        "when_to_use": "In the review and pre-closing summary stage of each session, used to consolidate gains and enhance independence.",
         "trigger": "来访者将治疗进展、好转或成功归功于咨询师。",
         "parent_ids": [
             "1199",
@@ -601,7 +601,7 @@
         "skill_name": "指导自我治疗会谈并use标准问题清单",
         "skill_description": "Encourage the client to conduct self-therapy sessions after regular sessions are reduced and ended, handling problems item by item according to standard question checklists (such as the thought record form, RET self-help form), and keep practicing to maintain and expand coping abilities.",
         "when_to_use": "在常规会谈逐渐减少和结束后，用于巩固治疗成果并提升独立应对not yet来问题的能力。",
-        "trigger": "来访者报告开始好转，常规会谈频率减少，或结束后需独立处理困难。",
+        "trigger": "The client reports starting to improve, the regular session frequency decreases, or after termination they need to handle difficulties independently.",
         "parent_ids": [
             "1199",
             "1207",
@@ -713,7 +713,7 @@
         "skill_name": "持续练习并应用放松技术",
         "skill_description": "根据咨询所学规律练习放松技术并在日常情境中随需应用，降低生理唤醒以缓解Anxiety and insomnia、改善注意与学习效率；情绪易失控时主动use并可记录感受；必要时作为Systematic desensitization的准备与巩固，直至残留症状减轻。",
         "when_to_use": "巩固期与日常维持期；咨询后仍有Anxiety, nervousness或睡眠欠佳等残留症状，或Systematic desensitization开始前的准备阶段。",
-        "trigger": "紧张、烦躁、心悸、入睡困难、注意力难以集中等残留生理或情绪信号。",
+        "trigger": "Residual physiological or emotional signals such as tension, irritability, palpitations, difficulty falling asleep, and difficulty concentrating.",
         "parent_ids": [
             "1199",
             "1207",
@@ -740,7 +740,7 @@
         "skill_id": "1456",
         "skill_name": "记录复盘监测残留症状",
         "skill_description": "延续会谈作业持续记录情绪与自动想法，制作ABC表并量化情绪强度与相信程度；追踪冲动/冲突的次数、方式与诱因，识do not高发时段与trigger源；当日without冲突给予小奖励，并及时套用已验证有效的策略，观察渐进改善。",
-        "when_to_use": "症状已改善但仍偶发的维持期与日常生活中；每日回顾或事件发生后。",
+        "when_to_use": "In the maintenance period and daily life when symptoms have improved but still occur occasionally; during daily review or after an event occurs.",
         "trigger": "间歇出现Anxiety、低落、Sleep disturbed或学习回避；当天多次轻度冲动或情绪评分降幅not明显；对环境快速负面化。",
         "parent_ids": [
             "1199",
@@ -840,7 +840,7 @@
         "skill_name": "肯定改变并Reinforcement自我效能",
         "skill_description": "Review concrete achievements (such as confidence raised, sleep improved, grades risen), affirm their efforts and progress face to face, link them to practice and persistence, encourage expressing insights and reasonable attributions in their own language, consolidating a positive self-concept and continued motivation.",
         "when_to_use": "Used at the end of reviewing success or before case closing, to consolidate change and enhance confidence; or when the client self-blames and motivation fluctuates.",
-        "trigger": "来访者报告进步或量表下降、他评肯定；或表达怀疑、需要明确肯定时。",
+        "trigger": "The client reports progress or decreased scale scores, or receives affirming evaluations from others; or expresses doubt and needs clear affirmation.",
         "parent_ids": [
             "1199",
             "1200",
@@ -869,7 +869,7 @@
         "skill_id": "1315",
         "skill_name": "Reinforcement成功归因并安排练习",
         "skill_description": "Centering on positive events and successful cases, ask in detail about the effort and ability they invested, clarify the 'effort — result' link; give affirmation to effective thinking and behavioral practice and name the successful experiences, encourage continued practice and follow-up review, and clarify the focuses to maintain.",
-        "when_to_use": "总结成功经验的收尾阶段或第9～10次巩固阶段，用于巩固动机与练习计划。",
+        "when_to_use": "In the closing stage of summarizing successful experiences or the 9th-10th consolidation stage, used to consolidate motivation and the practice plan.",
         "trigger": "The client reports being praised, notable progress, or willingness to keep practicing, and the source of progress needs verifying and maintenance points formulating.",
         "parent_ids": [
             "1199",
@@ -974,8 +974,8 @@
         "skill_id": "1389",
         "skill_name": "肯定成长并强调自主效能",
         "skill_description": "Summarize the role of motivational interviewing, highlight the experience of the client leading the selection and implementation of the change plan, affirm autonomous choice and small-step success, clarify the effort-outcome link, strengthen confidence and the motivation for sustained change, and invite them to self-evaluate progress and gains.",
-        "when_to_use": "总结成功经验与动力维护时，或为后续自助与复发预防做心理准备时。",
-        "trigger": "来访者动力波动、对自主性存疑或期待外部指令；呈现具体收获与成长。",
+        "when_to_use": "When summarizing successful experiences and maintaining motivation, or psychologically preparing for subsequent self-help and relapse prevention.",
+        "trigger": "The client's motivation fluctuates, they doubt their autonomy or expect external instruction; concrete gains and growth are presented.",
         "parent_ids": [
             "1199",
             "1200",
@@ -1064,7 +1064,7 @@
         "skill_id": "1321",
         "skill_name": "提供建议并建立Reflection惯例",
         "skill_description": "Give specific advice and support regarding study and life, help integrate improvements into the daily rhythm; at the same time form a habit of regular recording and reviewing changes, affirming progress in the log and tracking difficulties and solutions, to consolidate results and prevent relapse.",
-        "when_to_use": "最后两次会谈的总结与巩固环节，或结束前安排维持与预防回退时。",
+        "when_to_use": "At the summary and consolidation segment of the last two sessions, or when arranging maintenance and relapse prevention before ending.",
         "trigger": "The client is preparing to return to normal life and study, is willing to record and supervise their own changes, or has an existing recording habit that can continue.",
         "parent_ids": [
             "1199",
@@ -1080,7 +1080,7 @@
         "skill_name": "指出努力方向并制定目标",
         "skill_description": "根据成功经验共同指出后续努力方向（如自我控制、努力学习），制定可执行的行为目标，将心得转化为行动计划，并鼓励保持积极态度面向not yet来，确保维持与持续改进。",
         "when_to_use": "咨询接近结束或复访，需要形成后续维持与发展方案时。",
-        "trigger": "成效明确且来访者愿意继续改善，并寻求具体行动指南或期待鼓励时。",
+        "trigger": "When outcomes are clear and the client is willing to continue improving, seeking concrete action guidance or expecting encouragement.",
         "parent_ids": [
             "1199",
             "1200",
@@ -1110,7 +1110,7 @@
         "skill_name": "连接技术与效果明确进步",
         "skill_description": "点对点回顾所用技术与效果对应关系，或总结有效技术组合及作用机制，如Systematic desensitization结合放松与认知技巧逐步削弱Anxiety，明确“何技在何时起效”，以提升自我效能。",
         "when_to_use": "终结前总结收获，需明确“什么带来了改变”或制定维持策略时。",
-        "trigger": "来访者报告情绪与功能改善并能回忆具体技术，或询问进步原因时。",
+        "trigger": "When the client reports improved emotions and functioning and can recall specific techniques, or asks about the reasons for progress.",
         "parent_ids": [
             "1199",
             "1200",
@@ -1140,7 +1140,7 @@
         "skill_name": "鼓励迁移应用并制定计划",
         "skill_description": "Assist in transferring rational cognitive ways and the learned methods to study, interpersonal, and life situations; when encountering similar difficulties, use self-regulation, and formulate a brief persistence plan to maintain change and reduce the possibility of renewed distress.",
         "when_to_use": "收尾总结与展望阶段，或结束前后制定后续巩固与应用计划时。",
-        "trigger": "来访者表达希望维持与推广成效，或询问如何在更多情景中运用所学策略时。",
+        "trigger": "When the client expresses a wish to maintain and extend the results, or asks how to apply the learned strategies in more situations.",
         "parent_ids": [
             "1199",
             "1200",
@@ -1183,7 +1183,7 @@
         "skill_id": "1437",
         "skill_name": "整合来访者自述与咨询师观察及他评形成功能性证据",
         "skill_description": "In the effect evaluation stage, comprehensively use the client's self-reported emotional and functional changes, the counselor's on-site observation (such as smoother communication, increased vitality), and feedback from advisors/classmates, verify improvements in study, interpersonal, and life adaptation, and form multi-source, verifiable functional evidence.",
-        "when_to_use": "在结束与回顾阶段需要提高评估信度、形成综合判断或计划随访时。",
+        "when_to_use": "At the closing and review stage, when assessment reliability needs to be improved, a comprehensive judgment formed, or follow-up planned.",
         "trigger": "The client reports improvement or still having difficulties, while external feedback (from counselors, classmates, etc.) and the counselor's observation cues are available for integration.",
         "parent_ids": [
             "1199",
@@ -1198,7 +1198,7 @@
         "skill_name": "对照目标与情绪评分量化评估改善",
         "skill_description": "Compare against the emotional goals or self-ratings set initially (such as dropping from 60 to 30, the 0-10 scale), ask the client to report the current score and check the fluctuation and stability, quantify the magnitude and persistence of emotional improvement, as an intuitive basis for effect evaluation.",
         "when_to_use": "Consolidation session回顾/效果评估阶段，或结束前需量化情绪改善时。",
-        "trigger": "来访者曾设定具体分值或能提供当前情绪自评分并愿意对比初始数据。",
+        "trigger": "The client has previously set a specific score or can provide a current emotion self-rating and is willing to compare it with the initial data.",
         "parent_ids": [
             "1199",
             "1200",
@@ -1226,7 +1226,7 @@
         "skill_name": "核查睡眠与生理症状及日常功能恢复",
         "skill_description": "Compare against the initial symptoms, systematically ask about and record the current state of sleep, appetite, physical energy, and study and life functions, verify the degree of improvement and the residual problems, as a basis for risk assessment and subsequent support arrangements.",
         "when_to_use": "在效果评估阶段或复访时，回顾疗程结尾的身心与功能变化。",
-        "trigger": "来访者提到睡眠、食欲、精神状态变化，或学习生活功能出现改善或波动。",
+        "trigger": "The client mentions changes in sleep, appetite, or mental state, or improvement or fluctuation in study and life functioning.",
         "parent_ids": [
             "1199",
             "1200",
@@ -1268,7 +1268,7 @@
         "skill_name": "对比情绪自评前后并量化变化",
         "skill_description": "Invite the client to self-evaluate the current emotional state on 0-10 segments and compare with the initial visit score, clarify the extent of improvement and the difference in felt body sensation, and record it in writing as a basis for quantitative evaluation, corroborating each other with the subjective narration.",
         "when_to_use": "Consolidation session回顾评估或结束前，需要量化情绪改善时。",
-        "trigger": "来访者能回忆初访评分或自述情绪明显好转/仍有波动，愿意进行自评。",
+        "trigger": "The client can recall the initial-visit scores, or reports that their emotions have clearly improved or still fluctuate, and is willing to conduct a self-assessment.",
         "parent_ids": [
             "1199",
             "1200",
@@ -1282,7 +1282,7 @@
         "skill_name": "综合评估并指出残留问题与风险",
         "skill_description": "整合量表、来访者报告与观察，明确已达成的改变与not yet尽处（如强迫、人际敏感仍存在），标注残留风险与需巩固领域，并给出“需后期咨询与巩固”的提示。",
         "when_to_use": "效果评估总结收尾，准备结束与后期安排前。",
-        "trigger": "复测显示仍有问题因子，或来访者仍诉相关困扰需要说明残留与后续安排时。",
+        "trigger": "When retesting shows there are still problem factors, or the client still reports related distress and the residue and follow-up arrangements need to be explained.",
         "parent_ids": [
             "1199",
             "1200",
@@ -1394,7 +1394,7 @@
         "skill_name": "评估功能与生活适应的具体改善",
         "skill_description": "Review specific manifestations such as sleep improving, a regular schedule, participation in part-time work/investment in study, as indicators of improvement in mental health and social function, assisting in forming a comprehensive assessment of the degree of recovery.",
         "when_to_use": "Consolidation and termination阶段的回顾会谈，用于判断功能恢复和生活适应度提升。",
-        "trigger": "来访者报告作息改善、睡眠变好、开始兼职或学习工作投入的近况。",
+        "trigger": "The client reports recent improvements in routine, better sleep, starting part-time work, or engagement in study and work.",
         "parent_ids": [
             "1199",
             "1200",
@@ -1590,7 +1590,7 @@
         "skill_name": "回访与观察核实改善与目标达成",
         "skill_description": "通过面谈观察与回访，核对目标达成与功能改善，如自信增强、能正常面对考试与就业、接纳排名变化，判断是否达到Anticipation并记录结论。",
         "when_to_use": "巩固阶段及随访中，用于客观评估疗效与社会功能恢复。",
-        "trigger": "来访者在面谈中表现平静合作，或报告能坦然面对考试与就业等现实任务。",
+        "trigger": "The client appears calm and cooperative in the interview, or reports being able to face real tasks such as exams and employment calmly.",
         "parent_ids": [
             "1199",
             "1200",
@@ -1618,7 +1618,7 @@
         "skill_name": "比较前后心理测验结果评估症状缓解",
         "skill_description": "依据SCL-90、SDS等前后测评分数变化，判断抑郁、Anxiety是否降至正常范围，量化咨询效果并作为结束或随访决策的客观依据。",
         "when_to_use": "Consolidation session回顾评估环节或结束前，再测完成后用于量化症状改变与效果判定。",
-        "trigger": "已获得前后测验结果或来访者关注症状是否好转与是否达到正常范围。",
+        "trigger": "Pre- and post-test results have been obtained, or the client is concerned about whether symptoms have improved and reached the normal range.",
         "parent_ids": [
             "1199",
             "1200",
@@ -1673,8 +1673,8 @@
         "skill_id": "1291",
         "skill_name": "采集并分析睡眠监测与日记关键指标",
         "skill_description": "收集睡眠监测工具读数与睡眠日记（如入睡潜伏期、夜间觉醒次数/时长、总睡眠时间、睡眠效率），核查关键指标与趋势，量化改善并识do not残留干扰点。",
-        "when_to_use": "评估涉及睡眠或生理性症状的个案成效，或复盘睡眠方案/结束阶段时。",
-        "trigger": "来访者提供设备数据或持续记录睡眠日记（如睡眠效率提高、入睡更快）。",
+        "when_to_use": "When assessing the outcomes of cases involving sleep or physiological symptoms, or when reviewing the sleep plan / in the ending stage.",
+        "trigger": "The client provides device data or continuously records a sleep diary (e.g. improved sleep efficiency, falling asleep faster).",
         "parent_ids": [
             "1199",
             "1200",
@@ -1743,7 +1743,7 @@
         "skill_id": "1266",
         "skill_name": "回顾并Reinforcement成功经验提升自我效能",
         "skill_description": "At the consolidation and ending stage, systematically review the changes and progress in counseling, concretely affirm the client's effort and score progress, distill the effective practices and key clues, form a replicable experience list, evoke pleasant experiences and enhance the sense of self-control and confidence, laying a foundation for subsequent independent coping and maintaining the change.",
-        "when_to_use": "在巩固阶段与结束会谈前后，或遇到挫折、怀疑能力时；制定后续自助计划前。",
+        "when_to_use": "In the consolidation stage and around the termination session, or when encountering setbacks and doubting ability; before formulating a follow-up self-help plan.",
         "trigger": "Low mood、Anxiety升高或对自身应对能力产生怀疑；来访者提出对自身改变或后续安排的疑问；对后续应对感到迷茫、信心not足。",
         "parent_ids": [
             "1199",
@@ -1786,7 +1786,7 @@
         "skill_name": "与咨询师保持联系并汇报近况",
         "skill_description": "在学习与生活间隙简短向咨询师反馈近况与情绪变化，形成外化与复盘的习惯，便于及时获得建议与支持，同时巩固所学方法并提升Self-monitoring的稳定性。",
         "when_to_use": "巩固期及阶段性过渡节点（如考试前后、返校后）。",
-        "trigger": "状态波动、出现困惑或希望分享阶段性进展与难点、寻求即时建议时。",
+        "trigger": "When the state fluctuates, confusion arises, or the client wishes to share stage progress and difficulties and seek immediate advice.",
         "parent_ids": [
             "1199",
             "1207",
@@ -1813,7 +1813,7 @@
         "skill_id": "1418",
         "skill_name": "持续运用通用情绪调节组合",
         "skill_description": "明确今后继续运用已学方法自我调适，将运动、深呼吸、放松与积极自我对话作为常备组合，日常练习并在需要时启动，以快速缓解紧张与Anxiety，巩固成效并迁移到生活与学习场景。",
-        "when_to_use": "巩固随访与日常生活中，为维持改善与在压力来临时进行自我调节。",
+        "when_to_use": "In consolidation follow-ups and daily life, to maintain improvement and self-regulate when stress arrives.",
         "trigger": "出现紧张、Anxiety、抑郁或生理激活升高（心跳加快、肌肉紧张）；压力、注意力涣散等困扰再现的苗头。",
         "parent_ids": [
             "1199",
@@ -1841,8 +1841,8 @@
         "skill_id": "1366",
         "skill_name": "设定小目标并复盘人际练习",
         "skill_description": "将目标拆分为具体、可实现的小步骤，循序渐进完成以累计成功体验；鼓励参与班级或宿舍活动并记录心得，完成后分享收获与困难，联合分析亮点与not足，提炼可复制策略以增强自我效能。",
-        "when_to_use": "面对复杂或压力性任务、需要增强掌控感时；每次人际练习后用于总结与巩固。",
-        "trigger": "任务过大、缺乏把握或过去尝试受挫；完成一次人际活动后希望复盘改进。",
+        "when_to_use": "When facing complex or stressful tasks and needing to strengthen the sense of control; after each interpersonal practice, used for summarizing and consolidating.",
+        "trigger": "The task is too big, lacking confidence, or past attempts were frustrated; after completing an interpersonal activity, hoping to review and improve.",
         "parent_ids": [
             "1199",
             "1207",
@@ -1869,7 +1869,7 @@
         "skill_id": "1306",
         "skill_name": "与咨询师共同制定并落实改善计划",
         "skill_description": "At the session summary, refine the goal into a concrete executable plan, clarify implementation details and a timetable, and implement and check it at follow-up; combine later life to formulate behavioral goals and self-control arrangements, clarify the direction of continued effort, consolidate the gains and convert them into sustained action.",
-        "when_to_use": "会谈阶段总结或结束时；咨询后期与结束后需把建议转化为具体行动步骤时。",
+        "when_to_use": "At a stage summary or the end of the session; in the later stage of counseling and after it ends, when suggestions need to be turned into concrete action steps.",
         "trigger": "愿意按建议进一步治疗却缺乏明确行动路径；对后续安排not清、询问下一步方向。",
         "parent_ids": [
             "1199",
@@ -2024,7 +2024,7 @@
         "skill_name": "回顾咨询收获并制定not yet来应用计划",
         "skill_description": "在结束阶段，咨询师先帮助总结数次咨询的收获与思路，邀请来访者回顾与反馈，并将新的认知与应对策略制成面向之后生活情境的应用计划，便于重复Reinforcement与自我运用，支持not yet来独立应对。",
         "when_to_use": "Consolidation and termination阶段，用于巩固咨询效果、准备结束及预防复发时。",
-        "trigger": "进入最后一次或临近结束的会谈；开始讨论“之后如何运用所学”。",
+        "trigger": "Entering the last session or a session near the end; beginning to discuss 'how to use what was learned afterward'.",
         "parent_ids": [
             "1199",
             "1207",
@@ -2331,7 +2331,7 @@
         "skill_id": "1331",
         "skill_name": "回顾整理咨询方法清单以便迁移",
         "skill_description": "In the later stage of counseling and at termination, systematically review and organize the cognitive and behavioral techniques mastered during counseling, distill transferable principles and steps, and form a personalized method list, facilitating rapid recall and application in new situations in the future.",
-        "when_to_use": "第六次或结束会谈的巩固阶段，面向结束后的生活进行前瞻规划时。",
+        "when_to_use": "At the consolidation stage of the sixth session or the closing session, when making forward-looking plans for life after ending.",
         "trigger": "来访者回顾变化、进入结束阶段或询问如何在not yet来应用所学方法。",
         "parent_ids": [
             "1199",
@@ -2652,7 +2652,7 @@
         "skill_name": "对照初始与当前状态量化变化",
         "skill_description": "Starting from the initial chief complaint and assessment, compare current improvements in diet and sleep, emotions, interpersonal relationships, study, etc., concretize or quantify the magnitude of change and mark milestone nodes, enhancing the overall grasp of progress and sense of effect.",
         "when_to_use": "进行咨询效果评估、需要具象化改变时。",
-        "trigger": "来访者或家属提到当前功能改善，或需要总结疗效证据与关键成效节点时。",
+        "trigger": "When the client or family mentions current functional improvement, or evidence of treatment effects and key outcome nodes need to be summarized.",
         "parent_ids": [
             "1199",
             "1200",
@@ -2727,7 +2727,7 @@
         "skill_name": "按阶段时间线回顾会谈目标与进展",
         "skill_description": "Following a three-stage or multi-stage process, review segment by segment each stage's goals, methods, and key interventions (including preparation and relationship building, cognitive-behavioral training, exposure and consolidation), link the focus and progress of each session, and form an overall thread.",
         "when_to_use": "Consolidation session的回顾环节或结案前，用于系统梳理从初诊到结束的Intervention内容与阶段性变化。",
-        "trigger": "来访者能回忆各阶段体验，或需按记录与计划框架重建整体时间线与工作要点。",
+        "trigger": "The client can recall experiences at each stage, or the overall timeline and work key points need to be rebuilt according to the record and plan framework.",
         "parent_ids": [
             "1199",
             "1200",
@@ -2772,7 +2772,7 @@
         "skill_name": "标注关键转折并对应措施",
         "skill_description": "Capture obvious turning points on the timeline (such as cognitive dialogue producing alternative strategies, teachers' and elders' feedback improving, loosening after staged practice), and mark the corresponding measures and supporting roles, clarifying the time points and reasons for change occurring and providing clues for later consolidation focuses.",
         "when_to_use": "整体回顾时，需要明确“何处发生改变、源自何种操作”。",
-        "trigger": "回顾到替代方案形成、家校支持介入、练习后情绪缓解等里程碑事件与反馈。",
+        "trigger": "Reviewing milestone events and feedback such as the formation of alternatives, the involvement of home-school support, and emotional relief after practice.",
         "parent_ids": [
             "1199",
             "1200",
@@ -2787,7 +2787,7 @@
         "skill_name": "对比前后量表结果量化变化",
         "skill_description": "对比not同时间点的量表分数（如SCL-90、SAS/SDS等），用客观数据呈现症状与功能改善轨迹，支撑对各阶段Intervention与效果的回顾与总结，定位仍需改进之处。",
         "when_to_use": "Consolidation session的回顾与效果评估环节，或终结前需要量化进展时。",
-        "trigger": "掌握初测与复测结果；来访者希望看到客观对比数据或对进展存疑需验证时。",
+        "trigger": "Having the initial and retest results; when the client wants to see objective comparative data or doubts the progress and verification is needed.",
         "parent_ids": [
             "1199",
             "1200",
@@ -2832,7 +2832,7 @@
         "skill_name": "复测SAS/SDS并对比Anxiety抑郁变化",
         "skill_description": "在结束或随访节点再次施测SAS/SDS，与初诊分数对比，客观回顾Anxiety与抑郁变化轨迹，作为评估与回顾依据并与主观反馈互证。",
         "when_to_use": "结案会谈或效果评估环节，需要量化进展时。",
-        "trigger": "准备结束咨询或来访者主诉好转需要量化验证；已安排或完成复测。",
+        "trigger": "Preparing to end counseling or the client's chief complaint has improved and needs quantitative verification; re-testing has been arranged or completed.",
         "parent_ids": [
             "1199",
             "1200",
@@ -2861,7 +2861,7 @@
         "skill_id": "1314",
         "skill_name": "评估每次暴露Anxiety评分决定进阶",
         "skill_description": "依据Systematic desensitization流程，每次暴露后共同评估Anxiety水平（如0～10分或分数阈值），达到可接受范围时才进入下一层级，确保循序渐进与安全推进练习。",
-        "when_to_use": "每次暴露练习结束时，或回顾层级推进的节点上，用于决定是否进阶。",
+        "when_to_use": "At the end of each exposure practice, or at the nodes of reviewing hierarchy progression, used to decide whether to advance to the next level.",
         "trigger": "来访者完成一次暴露后报告Anxiety评分或显著情绪反应；记录中有分级与评分数据可参照。",
         "parent_ids": [
             "1199",
@@ -2960,7 +2960,7 @@
         "skill_id": "1342",
         "skill_name": "分解目标并落实行动计划",
         "skill_description": "Turn the established goals into concrete executable steps, landing study, exams, graduation, and job seeking (or further study) on schedules and behaviors, arrange time and resources and implement them, replace avoidance and procrastination with goal orientation, promote consistency between words and actions, and improve adaptation and self-regulation ability.",
-        "when_to_use": "完成规划后进入执行阶段，或结束辅导后需聚焦学业与重要任务时。",
+        "when_to_use": "After planning is completed and entering the execution stage, or after counseling ends when focus on academics and important tasks is needed.",
         "trigger": "目标已明确但行动迟缓、拖延或落实not稳定；需要把计划落地并集中投入。",
         "parent_ids": [
             "1199",
@@ -3002,7 +3002,7 @@
         "skill_id": "1360",
         "skill_name": "Role playing预演新社交与任务情境",
         "skill_description": "Through role play, rehearse in a safe environment new social, study, or work scenes such as answering in class, peer interaction, and conflict handling, practice dialogue and behavioral scripts combined with interpersonal effectiveness skills, raise readiness and on-site performance, and then apply them to real situations.",
-        "when_to_use": "新问题出现或将进入新的社交、学习或工作场合前，需要提前演练时。",
+        "when_to_use": "When new problems arise or before entering new social, study, or work settings, when rehearsal in advance is needed.",
         "trigger": "对即将发生的互动拿not准或感到害怕；对即将到来的互动not安或准备not足。",
         "parent_ids": [
             "1199",
@@ -3100,7 +3100,7 @@
         "skill_id": "1370",
         "skill_name": "安排定期回访并记录新困扰",
         "skill_description": "After counseling ends, carry out telephone or face-to-face follow-up as planned, remind the client to note and record new experiences, feelings, or thoughts, learn about emotion, functioning, and life adaptation, and where necessary adjust suggestions or refer again, preventing residual problems from being overlooked and continuously monitoring changes.",
-        "when_to_use": "每次会谈结束及巩固期在家自我监测阶段，或进入结束后随访的阶段性节点时。",
+        "when_to_use": "At the end of each session and in the at-home self-monitoring stage during consolidation, or when entering stage nodes of follow-up after termination.",
         "trigger": "来访者近期状态not明确、环境将发生变化；仍有困扰或出现新的体验和想法需要跟进；上次随访提示待跟进事项。",
         "parent_ids": [
             "1199",
@@ -3142,7 +3142,7 @@
         "skill_id": "1300",
         "skill_name": "安排短期回访量化近况追踪",
         "skill_description": "At nodes such as one month after the ending, arrange follow-up visits; in the session invite the client to share changes in study, interpersonal relations, and emotions and carry out scoring and comparison, verify whether residual symptoms have subsided and functioning has recovered, providing a basis for subsequent self-management and follow-up.",
-        "when_to_use": "咨询结束后短期随访或三至九个月回访中，用于评估巩固效果与残留问题。",
+        "when_to_use": "In short-term follow-up after counseling ends or at the three-to-nine-month follow-up, used to assess consolidation effects and residual problems.",
         "trigger": "After ending, for a period in school life it is necessary to confirm improvement is maintained; when self-rated scores fluctuate or she reports occasionally being affected by stress and tracking is needed.",
         "parent_ids": [
             "1199",
@@ -3198,7 +3198,7 @@
         "skill_id": "1455",
         "skill_name": "复测SCL‑90并对比评估残留与变化",
         "skill_description": "参考初评与结束或随访时的SCL‑90分数、阳性项目与因子变化，必要时结合SAS/SDS，对比前后数据，量化躯体化、Anxiety、人际等维度的改善与仍偏高领域，判断是否仍有残留及趋势，为自我监测与后续安排提供依据。",
-        "when_to_use": "咨询结束或回访与追踪期间，需要客观化症状变化与界定残留问题时。",
+        "when_to_use": "At counseling termination or during follow-up and tracking, when symptom changes need to be objectified and residual problems defined.",
         "trigger": "需量化Anxiety等症状变化；来访者自述好转但仍有not适，或量表分数not yet显著下降/接近常模上限需核实时。",
         "parent_ids": [
             "1199",
@@ -3226,7 +3226,7 @@
         "skill_id": "1458",
         "skill_name": "鼓励将所学迁移到生活与人际",
         "skill_description": "在总结有效做法基础上，鼓励继续旅游、交流、逛街，重建与同学室友联系并练习正向沟通，将认知与放松等skill拓展到更广泛情境；同时提炼情绪宣泄、积极自我暗示、与人交流、运动等自助策略的作用与适用情境，促进延用与深化。",
-        "when_to_use": "结束前的收益拓展与后续计划制定时，或随访期需要推广有效做法至新场景时。",
+        "when_to_use": "When expanding gains and formulating follow-up plans before termination, or when effective practices need to be extended to new scenarios during follow-up.",
         "trigger": "来访者功能改善且愿意扩大应用范围；能回忆并分享曾use的调节方法及其效果，寻求在其他场景的继续运用。",
         "parent_ids": [
             "1199",
@@ -3283,7 +3283,7 @@
         "skill_name": "促进skill迁移与广泛化应用",
         "skill_description": "引导将情绪调控与认知调整策略运用于学习与日常生活情境，讨论可行场景与具体步骤并预演关键时刻的用法；识do not并肯定生活层面积极变化（如睡眠改善、自信提升、社交拓展），连接正向反馈，鼓励在社团与家庭中持续运用与拓展。",
         "when_to_use": "规划咨询后自助练习与skill广泛化时，或回顾收益与Reinforcement动力阶段。",
-        "trigger": "来访者希望把方法用于新场景，或已提到具体进步并愿意扩大应用。",
+        "trigger": "The client hopes to apply the method to new scenes, or has mentioned concrete progress and is willing to expand its application.",
         "parent_ids": [
             "1199",
             "1200",
@@ -3297,7 +3297,7 @@
         "skill_name": "盘点并巩固方法并鼓励练习",
         "skill_description": "回顾在咨询中掌握的关键技术（如合理情绪辩论、渐进性放松、暴露与Anxiety等级表、接纳技巧等），邀请来访者复述咨询要点与应对思路，重述操作要点，Reinforcement理性观念与积极自我认识，鼓励在日常持续练习与运用。",
         "when_to_use": "Consolidation and termination阶段的回顾总结环节，需固定所得并促进日常化应用时。",
-        "trigger": "来访者已学习并在家练习相关方法，或已获得改善并询问如何继续应用。",
+        "trigger": "The client has learned and practiced the relevant methods at home, or has gained improvement and asks how to continue applying them.",
         "parent_ids": [
             "1199",
             "1200",
@@ -3325,7 +3325,7 @@
         "skill_name": "盘点并命名获得的skill与资源",
         "skill_description": "Summarize and name the transferable abilities already mastered, such as emotion regulation, correcting absolutized cognition, knowing oneself objectively, proactively expressing and seeking social support, clarify the value and usable scenarios of these 'tools', and form a portable ability checklist for later self-application.",
         "when_to_use": "结束咨询前的收益盘点环节，系统梳理Personal growth与skill收获时。",
-        "trigger": "自评/他评显示能更好地控情绪、表达需求、规划学习或参与活动。",
+        "trigger": "Self/observer ratings show better emotion control, expressing needs, planning study, or participating in activities.",
         "parent_ids": [
             "1199",
             "1200",
@@ -3464,7 +3464,7 @@
         "skill_id": "1267",
         "skill_name": "撰写与复盘咨询笔记并迁移应用",
         "skill_description": "After the session, review with the client the insights and solutions that can be recorded, forming counseling notes; in similar situations, refer to them and apply them, examine the effects, and adjust strategies, consolidating the gains and promoting transfer across situations.",
-        "when_to_use": "每次会谈后或结束前的总结与巩固阶段，需要盘点收获与迁移练习时。",
+        "when_to_use": "After each session or in the summary and consolidation stage before closing, when gains need to be inventoried and transfer practice done.",
         "trigger": "来访者获得新洞见或面临重复性问题，需要借助既有记录与方案。",
         "parent_ids": [
             "1199",
@@ -3479,7 +3479,7 @@
         "skill_name": "识do not并Reinforcement个人优势与自我评价",
         "skill_description": "Sort out their strengths together with the client and give evidence, use self-evaluation and other-evaluation feedback to affirm their strengths and their behavior of being good at self-analysis, consolidate positive self-evaluation and self-confidence, and support long-term growth and improvement in self-efficacy.",
         "when_to_use": "第六次及后续回顾收益时，用于Reinforcement自我评价与信心。",
-        "trigger": "完成“找出优点”类作业或能列举并佐证个人优势，或获得他人正向反馈。",
+        "trigger": "Completes 'finding strengths' type homework or can list and substantiate personal strengths, or receives positive feedback from others.",
         "parent_ids": [
             "1199",
             "1200",
@@ -3507,7 +3507,7 @@
         "skill_name": "Reinforcement人际与自我管理的新实践",
         "skill_description": "邀请来访者分享与父母沟通、与舍友交往等新实践体验，盘点关键做法并给予肯定与Reinforcement，促进在人际与自我管理上的迁移与维持。",
         "when_to_use": "作业反馈与收益盘点阶段，用于巩固现实情境中的改变。",
-        "trigger": "来访者报告在沟通、人际或自我管理方面的具体新尝试与正向体验。",
+        "trigger": "The client reports concrete new attempts and positive experiences in communication, interpersonal relations, or self-management.",
         "parent_ids": [
             "1199",
             "1200",
@@ -3548,7 +3548,7 @@
         "skill_id": "1430",
         "skill_name": "盘点可迁移的工具清单并对应场景",
         "skill_description": "与来访者共同列出可迁移的工具（如五栏表/ABC理性思维与辩论、支持-反驳、行为实验、放松与冥想、人际技巧、应对卡片等），并对应到其日常Emotion management与人际互动的具体场景，明确可重复use的工具。",
-        "when_to_use": "收益盘点阶段，需要把隐性经验转化为可操作工具并确认掌握度时。",
+        "when_to_use": "At the gains inventory stage, when implicit experience needs to be turned into operable tools and the degree of mastery confirmed.",
         "trigger": "来访者能回忆并描述use过的具体技术及其效果，或带来作业记录/口述在生活中的运用。",
         "parent_ids": [
             "1199",
@@ -3577,7 +3577,7 @@
         "skill_name": "安排人际skill训练并促进应用",
         "skill_description": "Arrange participation in interpersonal and communication group counseling or teach concrete communication skills; after the course/practice, review the key points gained and select real scenes such as dormitories and classes for continued practice and application, consolidating interpersonal abilities and promoting generalization.",
         "when_to_use": "需提升人际沟通skill并将咨询收益迁移至日常情境时。",
-        "trigger": "来访者在人际互动中显示欠缺或已获得初步自信，需实操训练与后续应用巩固。",
+        "trigger": "The client shows deficits in interpersonal interaction or has gained preliminary confidence, needing practical training and subsequent application consolidation.",
         "parent_ids": [
             "1199",
             "1200",
@@ -3591,7 +3591,7 @@
         "skill_name": "推广并应用合理信念于多情境",
         "skill_description": "Summarize the established rational beliefs and life guidance (such as going with the flow, lowering expectations, participating in activities and proactively communicating), encourage continuous application in family, interpersonal, and study situations, positively reinforce the new cognitive and behavioral patterns and formulate execution paths, so as to prevent relapse.",
         "when_to_use": "效果评估后或结束会谈前，总结成长化收获并计划日常化实践时。",
-        "trigger": "来访者已形成并展现新的理性信念与行为模式，态度与参与度出现积极变化。",
+        "trigger": "The client has formed and displayed new rational beliefs and behavior patterns, and attitude and participation show positive changes.",
         "parent_ids": [
             "1199",
             "1200",
@@ -3674,7 +3674,7 @@
         "skill_id": "1355",
         "skill_name": "盘点并推广呼吸放松等自助skill",
         "skill_description": "回顾与（必要时）教授简单的呼吸放松训练，明确其在压力大、insomnia、注意not集中与焦躁时的use要点，鼓励持续每日练习并在宿舍、课堂等日常情境应用，以巩固成效并预防反复。",
-        "when_to_use": "效果评估后或结束与巩固阶段，梳理可用工具并制定日常运用计划时。",
+        "when_to_use": "After outcome evaluation or in the closing and consolidation stage, organizing usable tools and formulating a daily application plan.",
         "trigger": "来访者提到用放松技巧缓解困扰、报告Anxiety/心慌或希望在其他场景应用放松训练时。",
         "parent_ids": [
             "1199",
