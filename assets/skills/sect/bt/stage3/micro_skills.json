@@ -52,7 +52,7 @@
         "skill_name": "安排回访与跟踪监测维持情况",
         "skill_description": "After completion, arrange regular follow-up visits and tracking, collect the client's self-reports and functional status, record maintenance, relapse, or improvement, in order to consolidate therapeutic effects and continuously improve mental health.",
         "when_to_use": "疗程结束并完成效果评估后，为监测长期维持与防止复发开展随访。",
-        "trigger": "来访者约定复查或随访时段到期，或在随访中报告持续好转、偶发类似想法或残余症状。",
+        "trigger": "When the client's agreed review or follow-up time arrives, or she reports continued improvement, occasional similar thoughts, or residual symptoms in follow-up.",
         "parent_ids": [
             "987",
             "989",
@@ -76,7 +76,7 @@
         "skill_name": "末次会谈给予积极鼓励与康复反馈",
         "skill_description": "在最后一次治疗给予明确积极鼓励与康复反馈，肯定其能力与进步，Reinforcement健康认知与自我效能，帮助维持改善并顺利过渡到日常生活。",
         "when_to_use": "疗程末次、完成分级训练后，症状明显缓解，准备结束治疗并转入日常维持。",
-        "trigger": "来访者在会谈或真实情境中保持镇定，能完成原先恐惧任务，自述改善并准备返校或正常生活。",
+        "trigger": "The client remains calm in the session or real situations, can complete the originally feared task, self-reports improvement, and prepares to return to school or normal life.",
         "parent_ids": [
             "987",
             "989",
@@ -111,7 +111,7 @@
         "skill_id": "1000",
         "skill_name": "系统回顾并总结关键策略与成长",
         "skill_description": "与来访者系统回顾咨询历程，梳理最有效的Emotion management与人际沟通方法（如“我-信息”、积极Listening）及认知行为策略，明确应用场景与步骤，形成个人化要点清单，促进内化与稳定运用，降低旧模式复燃。",
-        "when_to_use": "巩固与结案总结阶段，或第六次等阶段性回顾时，用于整合所学并制定日常应用要点。",
+        "when_to_use": "Used in the consolidation and case-closing summary stage, or at phased reviews such as the sixth session, to integrate what was learned and formulate key points for daily application.",
         "trigger": "The client still feels vague about concrete application scenarios, worries about returning to old expression patterns when encountering interpersonal conflict; or after symptom improvement expresses a wish to sort out gains and strategies.",
         "parent_ids": [
             "987",
@@ -123,7 +123,7 @@
         "skill_id": "1007",
         "skill_name": "反馈作业与每次小结巩固成果",
         "skill_description": "Review and give feedback on each previous counseling homework, discuss around the implementation process, difficulties, and changes, sort out effective practices and experiences; at the end of each session give a summary, highlighting the changes already obtained and clarifying the focus of the next session, to consolidate positive experiences and behaviors and support continued growth.",
-        "when_to_use": "巩固阶段与每次会谈结束，用于总结作业与进展、巩固成效；疗程收尾时用于阶段性总结。",
+        "when_to_use": "At the consolidation stage and at the end of each session, used to summarize homework and progress and consolidate the effect; at the end of the treatment course, used for a stage summary.",
         "trigger": "The client has completed homework as arranged and entered review; the session is nearing the end or stage progress needs to be sorted out, entering effect review and ending preparation.",
         "parent_ids": [
             "987",
@@ -148,7 +148,7 @@
         "skill_name": "开展回访与跟踪评估功能恢复",
         "skill_description": "Before and after the counseling ends and during the follow-up period, through return visits and tracking collect the client's performance and emotional changes in study, life and interpersonal matters, combined with tests and records judge functional recovery and symptom maintenance, providing a basis for subsequent consolidation or adjustment, preventing relapse and maintaining the raised level of mental health.",
         "when_to_use": "咨询结束后与随访期，需监测疗效维持与生活功能变化或调整巩固计划时。",
-        "trigger": "结束评估后需了解维持情况；报告新情境中的情绪波动或功能变化；来访者/家长提出随访需求。",
+        "trigger": "After the final assessment, the maintenance situation needs to be understood; emotional fluctuations or functional changes in new situations are reported; the client / parents raise follow-up needs.",
         "parent_ids": [
             "987",
             "989",
@@ -172,7 +172,7 @@
         "skill_name": "收集来访者自评与功能恢复反馈",
         "skill_description": "Guide the client to describe subjective changes such as emotional stability, sleep, attention, study efficiency, confidence, experience of interacting with the opposite sex, reduced avoidance, and dating/marriage plans, and record their self-assessment as a basis for comprehensive efficacy and consolidation goals, used to adjust later practice or support measures.",
         "when_to_use": "巩固阶段或结案前的效果评估访谈；Systematic desensitization数次后或随访回访时。",
-        "trigger": "来访者主动反馈改善或仍有困扰；完成一阶段咨询后愿意汇报当前状态与策略执行。",
+        "trigger": "The client proactively feeds back improvement or still has distress; after completing a stage of counseling, is willing to report the current state and strategy implementation.",
         "parent_ids": [
             "987",
             "989",
