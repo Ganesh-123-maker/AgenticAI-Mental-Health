@@ -25,7 +25,7 @@
       ],
       "special_situations": [
         {
-          "event": "航班因天气原因被取消",
+          "event": "Flight canceled due to weather",
           "conditional_assumptions": "如果一次重要计划被打断，就意味着它永远not会发生",
           "compensatory_strategies": "Avoids rebooking and further action to avoid being disappointed again",
           "automatic_thoughts": "这辈子我都去not了英国了",
@@ -137,9 +137,9 @@
     "bt": {
       "target_behavior": [
         {
-          "behavior": "回避重新订票与信息收集",
+          "behavior": "Avoiding rebooking tickets and gathering information",
           "antecedent": [
-            "想到航班被取消的经历",
+            "Thinking about the canceled flight",
             "When preparing to take action (checking flights / contacting the airline)",
             "看到与英国相关的内容被trigger"
           ],

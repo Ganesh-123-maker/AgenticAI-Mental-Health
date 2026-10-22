@@ -119,7 +119,7 @@
     },
     "222": {
         "skill_id": "222",
-        "skill_name": "操纵先行自变量以测试效应",
+        "skill_name": "Manipulate antecedent variables to test effects",
         "skill_description": "Systematically change antecedent conditions such as task difficulty, task length, attention levels in activities, and opportunities for activity choice, observe the systematic change of the target behavior with changes in the independent variables, so as to explore and confirm its functional effect.",
         "when_to_use": "When it is suspected that a specific antecedent situation or task feature influences the problem behavior, and experimental manipulation is needed to confirm its causal relationship with the target behavior.",
         "trigger": "在not同任务难度/长度或注意/选择条件下，目标行为出现规律性增减的观察迹象，提示先行条件可能影响行为。",
@@ -133,7 +133,7 @@
     },
     "223": {
         "skill_id": "223",
-        "skill_name": "控制额外变量以减少干扰",
+        "skill_name": "Controlling extraneous variables to reduce interference",
         "skill_description": "在操纵自变量之外，识do not并控制其他可能影响被试行为的环境因素（额外变量），防止其与自变量共同作用干扰结果，确保因果推断的有效性。",
         "when_to_use": "During the implementation of the experimental method, when potential interfering factors need to be controlled simultaneously to ensure the attributability of the manipulation effect and the accuracy of the experimental conclusions.",
         "trigger": "Apart from the manipulated variable, there are signs that other environmental factors changed at the same time and the target behavior fluctuated accordingly, affecting interpretation of the results.",
@@ -147,7 +147,7 @@
     },
     "224": {
         "skill_id": "224",
-        "skill_name": "引入与撤销对比验证因果",
+        "skill_name": "Introducing and withdrawing contrasts to verify causality",
         "skill_description": "Systematically compare the existence and removal of the independent variable: if introducing the independent variable draws the dependent variable (the target behavior) to change, and the change vanishes after removal, the causal relation between the two can accordingly be determined.",
         "when_to_use": "When a change in the target behavior has been observed after manipulation, and a reversibility test is needed to further confirm the causal link between the independent variable and the behavior change.",
         "trigger": "When the target behavior changes consistently upon application of the manipulation, the researcher needs to judge whether that change disappears accordingly after the manipulation is withdrawn, in order to complete the verification.",
@@ -188,7 +188,7 @@
     },
     "238": {
         "skill_id": "238",
-        "skill_name": "排除内在推测与主观评价",
+        "skill_name": "Excluding internal speculation and subjective evaluation",
         "skill_description": "When defining the target behavior, exclude speculation and value judgments about inner psychological states, express it only based on observable manifestations, avoiding taking feelings and thoughts as definitional content.",
         "when_to_use": "Before clarifying the target behavior in words or formulating assessment indicators, when it is necessary to ensure the definition is based only on observable behavior.",
         "trigger": "The client describes the problem in terms of inner states such as 'feeling frustrated' or 'inner resistance', or evaluative wording with value coloring appears.",
@@ -253,7 +253,7 @@
     },
     "243": {
         "skill_id": "243",
-        "skill_name": "目标具体且保留调整空间",
+        "skill_name": "Goals specific with room for adjustment retained",
         "skill_description": "Expressing the goal as concretely as possible (such as frequency, duration, situation), while retaining reasonable adjustment room, so that the definition can be revised as needed as data accumulate.",
         "when_to_use": "Used when first defining goals and available data are limited, when indicators need to be clarified while allowing the definition to be optimized based on subsequent observation.",
         "trigger": "来访者或观察者对目标边界拿捏not准，或初始指标过于僵硬、难以适配真实场景。",
@@ -266,7 +266,7 @@
     },
     "244": {
         "skill_id": "244",
-        "skill_name": "细化过程性目标并逐项讨论",
+        "skill_name": "Refine process goals and discuss them item by item",
         "skill_description": "Unfold process goals item by item, clarifying steps, criteria, and transition conditions, so that each process link can be observed and recorded, facilitating tracking and feedback.",
         "when_to_use": "当目标涉及skill习得或逐步改变过程，需要把结果拆解为可监测过程指标时。",
         "trigger": "来访者目标为“逐步适应/学习/练习”等过程导向表述，尚not yet明确阶段性行为标准。",
@@ -279,7 +279,7 @@
     },
     "245": {
         "skill_id": "245",
-        "skill_name": "明确来访者对目标承担责任",
+        "skill_name": "Clarify the client's responsibility for the goals",
         "skill_description": "When confirming the goal, clarifying the client's responsibility and commitment, agreeing on self-monitoring or cooperation requirements, prompting them to take the main responsibility for executing and feeding back on the goal.",
         "when_to_use": "When goal definition is complete and the implementation and record-preparation stage begins, and cooperation matters and responsibility boundaries need to be put in place.",
         "trigger": "The client is vague about implementation and cooperation or externalizes responsibility, needing to clarify responsibility through commitment and division of labor.",
@@ -432,7 +432,7 @@
     },
     "157": {
         "skill_id": "157",
-        "skill_name": "安排足量观察以确认关系",
+        "skill_name": "Scheduling sufficient observation to confirm relationships",
         "skill_description": "Select times and places with high incidence of problem behavior for multi-day observation until the relationship between the behavior and the social consequences is clear; usually collect 15-20 events over 2-5 days, deciding on extension depending on consistency.",
         "when_to_use": "When arranging and carrying out direct observation timing and length, when it is necessary to ensure the sample size suffices to show behavior-consequence relationships.",
         "trigger": "当仅有少量样本、关系not稳定，或高发时段与地点尚not yet覆盖。",
@@ -446,7 +446,7 @@
     },
     "158": {
         "skill_id": "158",
-        "skill_name": "操纵注意后果以检验因果",
+        "skill_name": "Manipulating attention consequences to test causality",
         "skill_description": "采用实验法系统操纵行为后果中的他人注意或获得机会，观察问题行为随自变量变化而增减，以验证社会性正Reinforcement的因果关系。",
         "when_to_use": "At the assessment stage with experimental conditions, when it is necessary to confirm whether relevant relationships are causal.",
         "trigger": "When observation and investigation suggest it may be maintained by attention, but causal evidence is still lacking and consequence manipulation is needed to test it.",
@@ -716,7 +716,7 @@
     },
     "231": {
         "skill_id": "231",
-        "skill_name": "设计功能等值的替代行为",
+        "skill_name": "Designing functionally equivalent alternative behaviors",
         "skill_description": "Based on the concluding statement, establishing appropriate behavior functionally equivalent to the problem behavior, enabling the individual to obtain the same function with the new behavior, replacing the problem behavior at the source.",
         "when_to_use": "When the function is clear but feasible alternative paths are lacking, the goal focuses on the acquisition and maintenance of new behavior.",
         "trigger": "Assessment shows the problem behavior is maintained by a specific function, while the existing plan focuses only on consequence management and lacks teaching of alternative behaviors.",
@@ -961,7 +961,7 @@
     },
     "247": {
         "skill_id": "247",
-        "skill_name": "选定观察者并取得知情同意",
+        "skill_name": "Select observers and obtain informed consent",
         "skill_description": "选择专业人员或与当事人自然情境中具固定关联者执行观察；启动前征得当事人或监护人同意，尤其在当事人not知情的观察情形下。",
         "when_to_use": "Used before formulating and launching functional assessment observation, to clarify who carries out observation and recording, ensuring the data are reliable and compliant.",
         "trigger": "计划在学校、家庭等自然情境开展观察；涉及not yet成年人或需隐性观察的安排需落实同意。",
@@ -987,7 +987,7 @@
     },
     "249": {
         "skill_id": "249",
-        "skill_name": "设定观察长度与覆盖标准",
+        "skill_name": "Setting observation length and coverage criteria",
         "skill_description": "持续观察直至行为—环境关系清晰呈现；Average至少记录目标行为15–20次，连续搜集2–5天资料，依据一致性与清晰性决定是否延长。",
         "when_to_use": "At the start of and during observation, used to decide how long to observe and when to extend it to ensure data sufficiency and stability.",
         "trigger": "目标行为出现次数not足；行为—环境关系呈现not一致或not清晰；初始资料少于2–5天或波动较大。",
@@ -1084,7 +1084,7 @@
     },
     "193": {
         "skill_id": "193",
-        "skill_name": "确定观察长度直至关系清晰",
+        "skill_name": "Determine observation length until the relationship is clear",
         "skill_description": "Continuously collect data until the behavior-environment relationship is clear; in practice ensure the target behavior occurs at least 15-20 times, record continuously for 2-5 days; decide whether to extend the observation according to behavior frequency and relationship consistency.",
         "when_to_use": "When carrying out direct observation and staged reviews, used to determine the sustained duration and whether to extend the observation.",
         "trigger": "观察数据尚not yet呈现稳定一致的关系，或目标行为出现次数not足、观察天数not yet达建议范围时。",
@@ -1279,7 +1279,7 @@
     },
     "219": {
         "skill_id": "219",
-        "skill_name": "追踪事件编号与跨日记录",
+        "skill_name": "Tracking event numbers and cross-day records",
         "skill_description": "在“事件和日期”栏对每次问题行为事件进行编号并标注日期，以便统计次数并进行not同观察日期间的跨期比较与追踪。",
         "when_to_use": "When it is necessary to integrate data from multiple or cross-day observations for frequency statistics and pattern comparison.",
         "trigger": "After completing a round of observation and preparing to summarize, or when conducting continuous observation across days requiring continuity of event tracking.",
@@ -1339,7 +1339,7 @@
     },
     "201": {
         "skill_id": "201",
-        "skill_name": "确定观察长度与数据标准",
+        "skill_name": "Determining observation length and data standards",
         "skill_description": "Continue collecting data until the relationship between behavior and environment is clear; at the practical level, ensure the target behavior occurs at least 15-20 times, lasting 2-5 days, and extend the observation when necessary according to consistency and clarity.",
         "when_to_use": "During planning or conducting direct observation, when ensuring functional inferences have sufficient data support.",
         "trigger": "初始观察中行为-环境关系尚not清晰或目标行为发生次数not足，难以支持结论性陈述。",
@@ -1354,7 +1354,7 @@
     },
     "202": {
         "skill_id": "202",
-        "skill_name": "填写观察对象与资料日期",
+        "skill_name": "Filling in the observation target and data date",
         "skill_description": "Accurately fill in the observation subject and the data-collection date in the header, to uniquely identify the observed person and that observation record, facilitating integration and tracking across periods.",
         "when_to_use": "Before each new observation batch begins and the functional assessment observation form is used for recording.",
         "trigger": "The person enters the natural activity situation of this observation day, preparing to start recording.",
@@ -1369,7 +1369,7 @@
     },
     "203": {
         "skill_id": "203",
-        "skill_name": "记录观察时间与情境活动",
+        "skill_name": "Recording observation time and situational activities",
         "skill_description": "Recording the concrete observation course and start/end in the 'time' column, and describing the situational features and activities engaged in at the time, forming a restorable time-situation thread.",
         "when_to_use": "During direct observation, accompanying each segment of activity or situational change, updating the form at any time.",
         "trigger": "At the start of the observation phase or when activities or situations change, such as entering a task, rest, transition, or being interrupted.",
@@ -1459,7 +1459,7 @@
     },
     "209": {
         "skill_id": "209",
-        "skill_name": "追踪事件次数与跨日记录",
+        "skill_name": "Tracking event counts and cross-day records",
         "skill_description": "利用“事件和日期”栏追踪问题行为事件的次数并标注跨越这些事件的观察日期，为频次统计与not同观察日的比较提供依据。",
         "when_to_use": "完成多日观察或需要汇总事件频次、对比not同日期时。",
         "trigger": "After accumulating multiple events, when the total count needs to be tallied, or a cross-date trend comparison analysis is done.",
@@ -1474,7 +1474,7 @@
     },
     "210": {
         "skill_id": "210",
-        "skill_name": "审查行为频次与时间前提关系",
+        "skill_name": "Review the relationship between behavior frequency and temporal antecedents",
         "skill_description": "According to the interpretation principles, first examine which behaviors are occurring, their frequency, and co-occurrence, then examine whether they consistently appear at specific times, and the association between specific antecedent indicators and specific behaviors.",
         "when_to_use": "After enough entries are collected, when moving into data interpretation to discover temporal and antecedent-condition patterns.",
         "trigger": "Repeated time-period patterns or antecedent indicators appear in the table, or certain behaviors frequently co-occur within the same time window.",
@@ -1489,7 +1489,7 @@
     },
     "211": {
         "skill_id": "211",
-        "skill_name": "对照功能与后果修订结论陈述",
+        "skill_name": "Revise the conclusion statement against function and consequences",
         "skill_description": "Compare 'the function of the behavior as felt' against 'the actual consequences', confirm the latent function and the maintaining consequences; use this to judge whether the existing conclusive statements are correct, and revise or add new statements when necessary.",
         "when_to_use": "Before formulating or adjusting the behavioral treatment plan, when observation-form data need to be used to verify and revise the functional hypothesis.",
         "trigger": "感受到的功能与记录的真正后果not一致，或现有结论难以解释观察资料。",
@@ -1576,7 +1576,7 @@
     },
     "274": {
         "skill_id": "274",
-        "skill_name": "观察并记录话题相关情绪变化",
+        "skill_name": "Observe and record topic-related emotional changes",
         "skill_description": "在会谈中留意并记录来访者在not同话题下的表情、语速与情绪变化，尤其是触及关键主题时的波动，以补充主诉并提供客观依据。",
         "when_to_use": "Used in the initial assessment and information collection process, when discussing topics related to the client's learning, exams, or daily distress.",
         "trigger": "当谈及学习与考试等主题时，来访者出现情绪明显低落或Anxiety的迹象，如语气低沉、神情紧张。",
@@ -1624,7 +1624,7 @@
     },
     "276": {
         "skill_id": "276",
-        "skill_name": "解读量表结果并与常模比较",
+        "skill_name": "Interpret scale results and compare with norms",
         "skill_description": "依据常模解读SCL-90各因子分，识do not显著高于常模的阳性维度；结合SDS、SAS分级判断抑郁与Anxiety严重度，用于支持临床诊断与问题聚焦。",
         "when_to_use": "完成量表施测并取得原始分/标准分后，在评估阶段需要形成初步诊断与Intervention重点时。",
         "trigger": "量表结果显示部分因子分明显高于常模，或SDS提示中度抑郁、SAS提示重度Anxiety。",
@@ -1636,7 +1636,7 @@
     },
     "277": {
         "skill_id": "277",
-        "skill_name": "复测量表并对照前测评估疗效",
+        "skill_name": "Re-administer scales and evaluate efficacy against the pre-test",
         "skill_description": "In the consolidation / ending stage, administer the SCL-90, SDS, and SAS again, compare with the pretest, and compare changes in factor scores, standard scores, and positive items, objectively evaluating symptom improvement and the degree of attainment of treatment effect.",
         "when_to_use": "咨询进入Consolidation and termination阶段或阶段性小结时，需要量化疗效与调整计划。",
         "trigger": "Used when a predetermined treatment node is completed (such as the 8th session) or the client self-reports clear improvement, suited to phased retesting.",
@@ -1648,7 +1648,7 @@
     },
     "278": {
         "skill_id": "278",
-        "skill_name": "记录并呈现量化评估结果",
+        "skill_name": "Recording and presenting quantitative assessment results",
         "skill_description": "Compare the concrete indicators obtained from retesting (each factor score, total score, the number of positive items, and the SAS / SDS standard scores) with the pretest, organize them into an effect evaluation record, and use them as the quantitative basis for summary and follow-up.",
         "when_to_use": "At the efficacy evaluation and closing summary stage, when formal effect records and comparison data need to be formed.",
         "trigger": "复测数据已生成，显示多数指标回落至常模或达到Anticipation阈值，亟需形成书面评估结论。",
@@ -1660,7 +1660,7 @@
     },
     "279": {
         "skill_id": "279",
-        "skill_name": "施测并解读16PF辅助诊断",
+        "skill_name": "Administer and interpret the 16PF to aid diagnosis",
         "skill_description": "In cases such as social phobia, administer personality inventories such as the 16PF, assessing traits such as introversion, sensitivity, and apprehensiveness; dimensions with high scores indicate maintaining factors, providing a reference for diagnostic analysis and choice of technique.",
         "when_to_use": "Used in the initial diagnostic assessment stage, when personality traits may affect symptom presentation and treatment cooperation and personality data are needed to assist judgment.",
         "trigger": "来访者长期Social avoidance、自卑紧张，或访谈提示高度内向、胆小怕事等性格特征。",
@@ -1684,7 +1684,7 @@
     },
     "263": {
         "skill_id": "263",
-        "skill_name": "指导填写来访者情况调查表",
+        "skill_name": "Guide completion of the client background questionnaire",
         "skill_description": "治疗前向来访者发放并说明调查表，覆盖健康状况、既往手术与用药、工作习惯、人际与生活方式、睡眠饮食、娱乐与运动、婚姻家庭等，督促完整填写以供后续评估use。",
         "when_to_use": "Biofeedback治疗启动前的准备阶段，用于系统收集病史与心理社会信息，提供背景资料以支持后续训练与评估。",
         "trigger": "来访者为初次接受Biofeedback治疗，尚without完整病史与心理社会信息记录，或not yet曾填写过情况调查表。",
@@ -1762,7 +1762,7 @@
     },
     "131": {
         "skill_id": "131",
-        "skill_name": "促成公开承诺以提升坚持",
+        "skill_name": "Facilitating public commitment to improve adherence",
         "skill_description": "When the client makes a decision to change, encourage them to publicly express their willingness and goals for change, using the moderate pressure from external attention to raise the persistence and success rate, as a strategy supporting the implementation of self-management.",
         "when_to_use": "决定采用Self-management method后、正式执行前；需要提高执行承诺与外部责任感以降低中途放弃风险时。",
         "trigger": "来访者口头同意尝试但语气not确定；担忧半途而废；主动表示“需要do not人监督”或希望增加外部约束。",
@@ -1775,7 +1775,7 @@
     },
     "132": {
         "skill_id": "132",
-        "skill_name": "设置环境提醒线索支持决策",
+        "skill_name": "Set environmental reminder cues to support decision-making",
         "skill_description": "After the client makes a decision to change, assist them to add reminder objects and cues related to the target behavior in the daily environment, so as to reduce forgetting and distraction, consolidate the decision, and promote the execution of the subsequent self-management plan.",
         "when_to_use": "Immediately after the change decision is reached, or in the early implementation period; when environmental cues are needed to maintain attention and action consistency.",
         "trigger": "The client expresses 'always forgetting the goal', 'many environmental temptations', or lacking concrete reminders; is easily distracted or procrastinates in the early implementation stage.",
@@ -1801,7 +1801,7 @@
     },
     "107": {
         "skill_id": "107",
-        "skill_name": "设定可操作的靶行为标准",
+        "skill_name": "Setting operational target-behavior criteria",
         "skill_description": "以“可客观控制、可观察、可评价改变程度、可反复Reinforcement”为准绳，将目标行为具体化为可测指标与可见表现，确保后续差do notReinforcement与效果评估可执行。",
         "when_to_use": "After locking onto candidate target behaviors and before entering concrete correction steps, when the goal needs to be converted from a vague statement into operationalized criteria.",
         "trigger": "拟定的目标行为表述含糊、难以被观察记录或without法评估改变幅度与Reinforcement频次时。",
@@ -1960,7 +1960,7 @@
     },
     "89": {
         "skill_id": "89",
-        "skill_name": "筛查并排除器质性疾病禁忌证",
+        "skill_name": "Screen for and rule out organic-disease contraindications",
         "skill_description": "依据禁忌清单系统排查并核实，排除严重心血管病、中枢神经系统病、严重呼吸系统病及内分泌疾患等禁忌，not予实施冲击疗法。",
         "when_to_use": "After the basic examination is completed, the contraindication assessment stage before entering treatment decisions.",
         "trigger": "The medical history or physical examination indicates hypertension, coronary heart disease, heart valve disease, brain tumor, epilepsy, cerebrovascular disease, bronchial asthma, thyroid disease, etc.",
@@ -1973,7 +1973,7 @@
     },
     "90": {
         "skill_id": "90",
-        "skill_name": "排除特殊人群与精神病性障碍",
+        "skill_name": "Rule out special populations and psychotic disorders",
         "skill_description": "识do not老人、儿童、孕妇、身体虚弱者及各种精神病性障碍等特殊群体，基于安全性将其排除在冲击疗法之外，并考虑转介替代方案。",
         "when_to_use": "At the pre-treatment applicability and risk assessment step, when population attributes and mental status need to be confirmed.",
         "trigger": "The client is elderly, a child, pregnant, or clearly physically weak, or the assessment indicates a psychotic disorder.",
@@ -2053,7 +2053,7 @@
     },
     "98": {
         "skill_id": "98",
-        "skill_name": "全程安慰与鼓励以巩固坚持",
+        "skill_name": "Provide comfort and encouragement throughout to reinforce persistence",
         "skill_description": "在冲击治疗前后与过程中持续提供安慰与鼓励，面对强烈not适与痛苦高峰期引导其坚持完成暴露，必要时劝阻回避行为，以维持信任关系与治疗连续性。",
         "when_to_use": "After establishing a preliminary relationship, entering the exposure implementation stage, and during each treatment, used to maintain cooperation and prevent dropping out midway.",
         "trigger": "患者出现惊叫、呕吐等强烈not适；提出“想退出”“受not了”；出现闭眼、塞耳、面壁等回避行为或情绪反应达到高峰。",
@@ -2122,7 +2122,7 @@
     },
     "64": {
         "skill_id": "64",
-        "skill_name": "评估并动员社会支持资源",
+        "skill_name": "Assessing and mobilizing social support resources",
         "skill_description": "评估来访者现有社会支持与监督条件，明确可邀请的重要他人参与，设计外部支持以预防自我Reinforcement中断，提升自我管理的坚持性。",
         "when_to_use": "在计划执行阶段前或执行not稳定时，用于补充外部监督、Reinforcement依从性与稳定性。",
         "trigger": "来访者反映“without人监督就松懈”“环境里缺少提醒与鼓励”，或曾因缺乏外部支持而失败。",
@@ -2150,7 +2150,7 @@
     },
     "66": {
         "skill_id": "66",
-        "skill_name": "回顾变化评估并定位失败原因",
+        "skill_name": "Review change assessments and locate causes of failure",
         "skill_description": "依据变化评估结果，区分是not yet学会正确实施方法还是方法not恰当导致without效，据此调整目标、步骤或策略，优化后续自我管理方案。",
         "when_to_use": "在既往自控尝试without效或阶段性执行后复盘时，用于诊断问题与修订方案。",
         "trigger": "来访者报告“按计划做了但not变化/反复”，或数据曲线without改善、甚至反弹。",
@@ -2164,7 +2164,7 @@
     },
     "67": {
         "skill_id": "67",
-        "skill_name": "评估改变动机与决策准备度",
+        "skill_name": "Assess motivation for change and decision readiness",
         "skill_description": "评估来访者改变not良行为的动机强度与是否已作出采用Self-management method的决定，判断是否需先行动机Reinforcement再进入具体策略与执行。",
         "when_to_use": "In the 'making a decision' segment before starting the self-management process, used to grasp the timing and depth of intervention.",
         "trigger": "来访者对是否开始计划犹豫、口头表态not一致或对Anticipation收益缺乏清晰感。",
@@ -2178,7 +2178,7 @@
     },
     "78": {
         "skill_id": "78",
-        "skill_name": "引导列举恐惧事件与刺激物",
+        "skill_name": "Guide listing of feared events and stimuli",
         "skill_description": "Assist the client in finding the typical fear events and stimuli they have experienced or feel afraid of; fear emotion questionnaires and fear event survey forms can be used, or they can be sorted out through the session, forming an event list to be scored, preparing for subsequent rating.",
         "when_to_use": "在Systematic desensitization建立Anxiety等级的起始环节，准备进行主观评分之前，需要先明确来访者相关的恐惧事件或刺激物。",
         "trigger": "The client begins to describe feared experiences, feared objects, or avoided scenes, or expresses the source of fear vaguely and has difficulty enumerating it.",
@@ -2191,7 +2191,7 @@
     },
     "79": {
         "skill_id": "79",
-        "skill_name": "说明评分范围与端点锚定",
+        "skill_name": "Explaining the rating range and endpoint anchors",
         "skill_description": "向来访者解释0—100主观Anxiety量表的含义，0为完全平静，100为最严重Anxiety；结合其实际情境举例阐明端点锚定与个体差异，使评分标准清晰可用。",
         "when_to_use": "在开始让来访者对恐惧事件打分之前，确保其理解评分尺度与端点的含义与use方式。",
         "trigger": "来访者询问“如何打分”“0或100代表什么”，或对同一情境给出not一致或without依据的分值时。",
@@ -2217,7 +2217,7 @@
     },
     "81": {
         "skill_id": "81",
-        "skill_name": "引导对恐惧事件逐一评分",
+        "skill_name": "Guiding item-by-item rating of feared events",
         "skill_description": "根据已列出的恐惧事件或刺激，督导来访者逐一以0—100进行主观Anxiety评分，作为后续建立Anxiety等级与分级脱敏的量化依据。",
         "when_to_use": "After the scale meanings and scoring method have been explained clearly and the event list is clear, formally entering the subjective scoring operation stage.",
         "trigger": "来访者准备开始评分，或已给出零散分值但尚not yet完成全部事件的系统化评分时。",
@@ -2230,7 +2230,7 @@
     },
     "82": {
         "skill_id": "82",
-        "skill_name": "校准个体差异并达成共识",
+        "skill_name": "Calibrating individual differences and reaching consensus",
         "skill_description": "对初步分数与情境进行核对与讨论，结合个体化极端情境示例澄清分值所指强度，促成咨询双方对来访者过去与当前Anxiety水平的共同理解。",
         "when_to_use": "After completing the initial rating, it is necessary to verify whether the score is consistent with the client's subjective experience, and to unify the understanding of intensity to improve the validity of the rating.",
         "trigger": "来访者对“最高Anxiety”的情境描述与分值not一致，或咨询双方对分数含义理解存在偏差时。",
@@ -2351,7 +2351,7 @@
     },
     "109": {
         "skill_id": "109",
-        "skill_name": "分解目标为连续接近步骤",
+        "skill_name": "Breaking goals into successive approximation steps",
         "skill_description": "After clarifying the correction target, divide the target behavior into intermediate behaviors that approach it step by step from easy to difficult, forming the ladder sequence of a 'new behavior cultivation plan', so that the current responses can transition progressively to the final target.",
         "when_to_use": "The plan-design stage of the behavior modification method, when an operable advancement path needs to be formulated after the target behavior and baseline are clear.",
         "trigger": "The client has stated the behavior he wants to change, but feels at a loss about 'how to do it step by step', or the span of the existing response is too large and difficult to carry out.",
@@ -2377,7 +2377,7 @@
     },
     "111": {
         "skill_id": "111",
-        "skill_name": "根据进展随时调整矫正方案",
+        "skill_name": "Adjust the correction plan at any time based on progress",
         "skill_description": "依据来访者表现与情境变化，动态修改中间目标、步骤顺序或方法组合，使梯度保持可行与有效，持续“not断接近最终目标”。",
         "when_to_use": "During ongoing assessment, when the original plan is hard to advance or is quickly surpassed and the plan needs revision.",
         "trigger": "来访者在某一步骤长期停滞、过快越级，或对既定方法反应not佳；主观报告“太难/太简单”。",
@@ -2429,7 +2429,7 @@
     },
     "126": {
         "skill_id": "126",
-        "skill_name": "将行为描述为可观察可测量",
+        "skill_name": "Describe behavior as observable and measurable",
         "skill_description": "把期望与not期望行为用可观察、可评价、可操作的语言具体化，明确可测指标（如频率、持续时间、强度）以便客观控制与后续评估，避免抽象描述。",
         "when_to_use": "After completing the preliminary definition of behavior, before entering goal and assessment framework setting, used to improve the degree of operationalization.",
         "trigger": "来访者以“更自律”“do notAnxiety”等抽象词描述，without法据此进行观察与量化时。",
@@ -2455,7 +2455,7 @@
     },
     "128": {
         "skill_id": "128",
-        "skill_name": "记录时间地点情景与次数",
+        "skill_name": "Recording time, place, situation, and frequency",
         "skill_description": "指导use行为日记，按统一格式记录not良行为的发生时间、地点、当时情景与次数，形成可追踪的情境—行为资料，支撑Self-monitoring与功能评估。",
         "when_to_use": "启动Self-monitoring并收集基线数据时，或需要还原高风险情境时。",
         "trigger": "When the client has difficulty recalling details of the behavior, or key records such as time, place, situation, and count are missing.",
@@ -2481,7 +2481,7 @@
     },
     "33": {
         "skill_id": "33",
-        "skill_name": "围绕具体条件进行初步分析",
+        "skill_name": "Conduct preliminary analysis around specific conditions",
         "skill_description": "At the beginning of behavioral functional analysis, focus on determining the concrete conditions when the problem behavior appears, as the entry point for subsequent assessment; conduct orderly inquiry and recording around the situational cues at the moment of behavior occurrence, ensuring the information is operable.",
         "when_to_use": "在实施治疗之前和治疗过程的初始阶段开展Functional analysis of behavior时，需要首先锁定问题行为发生的具体条件以奠定评估基础。",
         "trigger": "The client explicitly raises a certain problem behavior and seeks help for it, or a specific episode/loss-of-control experience appears in the narrative that can be traced.",
@@ -2495,7 +2495,7 @@
     },
     "34": {
         "skill_id": "34",
-        "skill_name": "量化情境参数并探查影响因素",
+        "skill_name": "Quantify situational parameters and explore influencing factors",
         "skill_description": "In situational analysis, systematically learn the frequency, intensity, duration, and pervasiveness of the problem behavior, and ask about the factors influencing its appearance, forming a comparable, trackable situational portrait, providing a basis for subsequent intervention design.",
         "when_to_use": "After completing the preliminary definition of concrete conditions, entering the situation analysis part of the functional analysis, needing to refine and quantify behavioral performance.",
         "trigger": "来访者用“经常”“很严重”“持续很久/偶尔”等模糊表述，或对何时更易发生拿not准，需要结构化量化澄清。",
@@ -2576,7 +2576,7 @@
     },
     "86": {
         "skill_id": "86",
-        "skill_name": "校核等级可操作性与边界约束",
+        "skill_name": "Verify hierarchy operability and boundary constraints",
         "skill_description": "校核各级均匀与可操作性，确保进入场景能引发相应情绪；应用边界：至少3级，级间跨度not超过50单位，必要时微调。",
         "when_to_use": "The quality control and refinement stage before the hierarchy list is finalized.",
         "trigger": "发现级数过少、相邻跨度过大，或某级without法引发相应Anxiety反应。",
@@ -2589,7 +2589,7 @@
     },
     "87": {
         "skill_id": "87",
-        "skill_name": "随治疗进展动态调整序列表",
+        "skill_name": "Dynamically adjust the hierarchy as treatment progresses",
         "skill_description": "As the treatment deepens, according to the changes in subjective scores and experience, adjust the items and scores in a timely manner, maintaining the effectiveness of the hierarchy and its gradual progression.",
         "when_to_use": "Systematic desensitization实施过程中定期复核Anxiety等级，尤其在反应明显降低后。",
         "trigger": "来访者报告某级not再Anxiety或分值明显下降，或练习中轻松跨越多个等级。",
@@ -2644,7 +2644,7 @@
     },
     "40": {
         "skill_id": "40",
-        "skill_name": "建立行为基线用于前后对比",
+        "skill_name": "Establish a behavioral baseline for before-after comparison",
         "skill_description": "在Intervention前确认初始行为并测评其发生频率与相关后果，划出可重复测量的基线，以便与Intervention后的数据比较，评估疗效与调整计划。",
         "when_to_use": "任何Intervention启动前，需要明确起点水平用于效果评估与Reinforcement/暴露策略校准时。",
         "trigger": "准备进入Reinforcement、消退或暴露等具体技术操作前，团队需要“起点数据”以便设定目标与判定进展。",
@@ -2711,7 +2711,7 @@
     },
     "102": {
         "skill_id": "102",
-        "skill_name": "反应峰后继续暴露巩固消退",
+        "skill_name": "Continue exposure after the response peak to consolidate extinction",
         "skill_description": "When emotions and physiological reactions turn from strong to weak and reverse after reaching the peak, continue presenting the stimulus for another 5-10 minutes before ending, so as to strengthen the extinction effect and reduce the negative reinforcement brought by avoidance and the risk of rekindling.",
         "when_to_use": "In the closing stage of a single exposure, when autonomic arousal and fear responses have been observed to begin subsiding.",
         "trigger": "患者呼吸、心悸、出汗等逐步减轻，由极度惊恐转为疲惫平稳，并表示“差not多了/想停一下”。",
@@ -2765,7 +2765,7 @@
     },
     "74": {
         "skill_id": "74",
-        "skill_name": "评估行为反应难度与可达性",
+        "skill_name": "Assess the difficulty and attainability of the behavioral response",
         "skill_description": "Assess the influence of venue layout, paths, and ease of access on the response effort and accessibility of target and competing behaviors, providing a basis for subsequent environmental adjustment.",
         "when_to_use": "Before implementing stimulus control or behavior correction, comparing the convenience and cost of the target behavior and competing behaviors.",
         "trigger": "来访者倾向选择“更省事”的替代行为，常以“太麻烦/太远/拿not到”为由放弃目标行为。",
@@ -2891,7 +2891,7 @@
     },
     "47": {
         "skill_id": "47",
-        "skill_name": "评估周围人态度与反应模式",
+        "skill_name": "Assess the attitudes and reaction patterns of those around",
         "skill_description": "从“周围人的态度分析”入手，系统盘点重要他人的期望、容忍与反应模式，识do not其中可能的Reinforcement/惩罚来源及其稳定性，明确社会环境在维持行为中的角色。",
         "when_to_use": "Used in the functional analysis stage when the social environment needs to be brought into assessment, to judge whether interpersonal reactions maintain or weaken the problem behavior.",
         "trigger": "The client frequently mentions family rules, blame, or indulgence; peers' approval/mockery and behavior changes appear synchronously.",
@@ -2919,7 +2919,7 @@
     },
     "49": {
         "skill_id": "49",
-        "skill_name": "回顾自我控制尝试与成效",
+        "skill_name": "Reviewing self-control attempts and their outcomes",
         "skill_description": "开展“自我控制分析”，追踪既往为控制问题行为所做的努力、采用的方法及其效果，识do not哪些尝试因隐性Reinforcement/消退失败而without效，提炼可行线索。",
         "when_to_use": "在制定功能性假设前，需要借助历史尝试评估有效与without效路径，为后续策略避坑与优化提供参考。",
         "trigger": "来访者表示“试过很多办法但not管用/只管一阵”，或呈现反复反弹的控制史。",
@@ -2947,7 +2947,7 @@
     },
     "51": {
         "skill_id": "51",
-        "skill_name": "评估即时与远期后果冲突",
+        "skill_name": "Assessing conflicts between immediate and long-term consequences",
         "skill_description": "Based on self-management principles, sort out the trade-offs between immediate light rewards/punishments and long-term heavy rewards/punishments of the behavior, clarify the time discounting and motivational conflicts sustaining the behavior, providing a functional framework for explaining 'knowing the harm yet doing it'.",
         "when_to_use": "当行为短期舒适但长期代价高、或短期not适妨碍长期获益时，需要用后果时间结构解析动机。",
         "trigger": "来访者承认“当下舒服/减压”但也知长远有害，或因短期not适而放弃有益行为。",
@@ -2961,7 +2961,7 @@
     },
     "52": {
         "skill_id": "52",
-        "skill_name": "区分习得性与躯体性成因",
+        "skill_name": "Distinguishing learned and somatic causes",
         "skill_description": "Before behavioral therapy, ascertain whether the problem behavior originates from a learning process or conditioning, rather than being caused by bodily injury or organ pathology. Through medical history inquiry and necessary medical referral, avoid misjudging physiological causes as learned behavior.",
         "when_to_use": "At the first session and the beginning of functional analysis, used to determine the applicability of behavioral therapy and delimit the formation mechanism.",
         "trigger": "来访者报告伴随明显生理症状、既往器质性疾病史，或症状起病方式not明、突发且与情境关联薄弱。",
@@ -3003,7 +3003,7 @@
     },
     "55": {
         "skill_id": "55",
-        "skill_name": "追溯条件化配对与泛化路径",
+        "skill_name": "Trace conditioning pairings and generalization pathways",
         "skill_description": "依据经典条件反射与泛化规律，追索最初中性刺激与without条件刺激的配对经历，梳理反应如何从原始线索扩展到相似线索，并记录是否出现过消退。",
         "when_to_use": "When it is suspected that problems such as fear / avoidance are formed by conditioned learning, when developmental history reconstruction is done.",
         "trigger": "The client mentions beginning to fear after a certain event, and similar things, situations, or cues also trigger the same type of reaction.",
@@ -3031,7 +3031,7 @@
     },
     "57": {
         "skill_id": "57",
-        "skill_name": "盘点既往自我控制尝试与成效",
+        "skill_name": "Inventory past self-control attempts and their outcomes",
         "skill_description": "进行自我控制分析，梳理曾采取的控制策略、频率与效果，识do not成功与失败的情境模式，为后续目标设定与防复发计划提供依据。",
         "when_to_use": "From the initial functional analysis to the plan formulation stage, used to assess self-control ability and available resources.",
         "trigger": "The client reports experiences such as 'tried to quit / practiced relaxation / deliberately avoided, but the effect was limited / briefly effective'.",
@@ -3114,7 +3114,7 @@
     },
     "348": {
         "skill_id": "348",
-        "skill_name": "列出并分主题整理刺激情境",
+        "skill_name": "List and organize stimulus situations by theme",
         "skill_description": "将曾经或可能引起紧张的考试或人际相关情境尽量详细写出，并在咨询师协助下按主题整理，必要时细化到“被他人观察”等具体情境，作为后续排列Anxiety等级与制定Systematic desensitization路线的基础素材。",
         "when_to_use": "Systematic desensitization开始前或治疗初期，用于建立个体化情境列表与准备分级条目。",
         "trigger": "来访者能回忆或Anticipation引发紧张的具体场景、线索或情境；或已能描述与考试、人际场景相关的Anxiety经历。",
@@ -3140,7 +3140,7 @@
     },
     "420": {
         "skill_id": "420",
-        "skill_name": "构建并标注问题发展时间线",
+        "skill_name": "Construct and annotate a problem-development timeline",
         "skill_description": "Guide the client to sort out, in chronological order, key events such as family, study and examinations and the changes in emotions/symptoms, mark the starting, worsening and relief nodes, record the environmental and condition changes and past coping and treatment attempts, building a clear developmental timeline, for staged assessment and goal setting.",
         "when_to_use": "Before initial assessment and diagnosis or plan formulation, when understanding the formation and evolution of the problem is needed.",
         "trigger": "The client can recall continuously and provide information on onset time, key events (such as exams), symptom frequency, or changes in functioning over time.",
@@ -3418,7 +3418,7 @@
     },
     "412": {
         "skill_id": "412",
-        "skill_name": "回顾作业并肯定具体进步",
+        "skill_name": "Reviewing homework and affirming specific progress",
         "skill_description": "In the homework feedback and progress review segment, accept and affirm the client's experiences and efforts, concretize the positive changes and gains, give realistic encouragement and positive feedback, strengthen self-efficacy and positive experiences, consolidate trust and cooperation, and support them to keep practicing the learned strategies and activities.",
         "when_to_use": "At homework feedback or phased summaries in subsequent sessions, after the client completes practice, faces fears, or reports behavioral improvement and progress.",
         "trigger": "来访者汇报作业完成情况与主观感受，描述睡眠改善、紧张减弱、参与活动等具体变化，或表达Self-doubt与Withdrawal倾向。",
@@ -3443,7 +3443,7 @@
     },
     "316": {
         "skill_id": "316",
-        "skill_name": "采集并记录他人反映佐证观察",
+        "skill_name": "Collect and record others' reports to corroborate observations",
         "skill_description": "询问并记录室友、同学等对其近期状态的具体观察（如课上状态not佳、insomnia、独自学习、谈及考试情绪明显低落），与咨询师的直接观察交叉验证并完善行为画像。",
         "when_to_use": "During the diagnosis stage and data completion, used to supplement the client's self-report and the counselor's observations.",
         "trigger": "当来访者自述与现场观察存在not一致或需更全面了解其日常表现时。",
@@ -3581,7 +3581,7 @@
     },
     "356": {
         "skill_id": "356",
-        "skill_name": "开展摄入性会谈系统收集资料",
+        "skill_name": "Conduct intake interviews to systematically collect data",
         "skill_description": "通过摄入性会谈系统收集Average资料、成长经历、求助动机、精神与行为特点、当前症状及与考试相关的情境线索，围绕主诉、诱因、病程与功能受损展开，明确问题性质与严重程度，为量表评估与初步诊断提供依据。",
         "when_to_use": "The diagnosis and relationship-building stage of sessions 1-2, used to comprehensively understand the background and problem clues and clarify the current state and causes.",
         "trigger": "来访者因临近考试出现insomnia、紧张、Anxiety等困扰并主动求助，表现紧张或叙述碎片化，需要结构化了解。",
@@ -3595,7 +3595,7 @@
     },
     "387": {
         "skill_id": "387",
-        "skill_name": "整理会谈资料形成初步评估",
+        "skill_name": "Organize session materials into a preliminary assessment",
         "skill_description": "Organize and analyze the intake-session information, judge whether insight is intact and whether psychotic symptoms exist, sort out the main problem tendencies (such as fear of enclosed spaces), propose diagnostic bases and severity judgments, providing a reference for later plan formulation.",
         "when_to_use": "The summary segment of the first-stage psychological assessment and diagnosis, where a preliminary judgment is formed after data collection is basically complete.",
         "trigger": "The client can clearly express symptom characteristics, intake data collection is basically complete, and information needs to be integrated and a preliminary assessment given.",
@@ -3715,7 +3715,7 @@
     },
     "402": {
         "skill_id": "402",
-        "skill_name": "具体化并记录近期与远期目标",
+        "skill_name": "Specify and record short-term and long-term goals",
         "skill_description": "Concretize the goals into observable, achievable behavioral statements, reach agreement with the client and write them into the plan and records (such as being able to make eye contact with strangers, increasing the number of interactions with acquaintances), following requirements such as concrete, feasible, accepted by both parties, assessable, and multi-level unity, making the goals a clear basis for subsequent training, self-management and assessment.",
         "when_to_use": "After assessment and diagnosis are completed, entering the counseling plan formulation or goal clarification stage, when the direction of change needs to be converted into operable standards.",
         "trigger": "来访者对具体目标not清晰或仅诉紧张Anxiety；需明确近期与远期期望并将目标转化为可操作、可评估的描述。",
@@ -3741,7 +3741,7 @@
     },
     "379": {
         "skill_id": "379",
-        "skill_name": "设定并量化每日放松练习",
+        "skill_name": "Setting and quantifying daily relaxation practice",
         "skill_description": "依据咨询作业与放松训练教学，明确在家放松练习的频率与时长（如每日一次或每日一至两次，每次10–30分钟；或每两天一次每次12分钟），在出现紧张时进行肌肉放松，记录练习时间与体验，并将日常慢跑至微微出汗纳入目标计划，促使练习可量化、可跟踪，降低Anxiety与改善睡眠。",
         "when_to_use": "In the stage of learning relaxation techniques, assigning homework, and the consolidation period, used to convert practice into executable self-management goals.",
         "trigger": "来访者需在会谈之外保持练习以巩固效果；练习安排not明确或难以坚持；面对考试出现Anxiety紧张、Sleep disturbed，或主动询问如何练习。",
@@ -3767,7 +3767,7 @@
     },
     "308": {
         "skill_id": "308",
-        "skill_name": "促成公开承诺并约定具体行动",
+        "skill_name": "Facilitate public commitment and agree on specific actions",
         "skill_description": "促成来访者作出可执行的公开承诺与决定，使改变具备时间表与责任感；可约定具体行动与下一步安排，如出现self-injury念头时及时拨打热线、按周参加咨询、真诚道歉，以及在会谈中确认下次议题与Intervention时间，以启动后续计划并增强坚持。",
         "when_to_use": "At the initial stage of establishing cooperation and initiating the plan, and at the ending stage of each session when the next arrangements need to be clarified and willingness transformed into a commitment to implement.",
         "trigger": "来访者愿意改变但缺乏坚持；提出持续探索或同意继续Intervention需转化为具体日程与议题承诺；或提及self-injury念头风险需约定紧急求助路径时。",
@@ -3780,7 +3780,7 @@
     },
     "355": {
         "skill_id": "355",
-        "skill_name": "作业反馈中的正向肯定与鼓励",
+        "skill_name": "Positive affirmation and encouragement in homework feedback",
         "skill_description": "In each homework review and staged progress evaluation, give timely feedback on the client's experiences and progress, give concrete affirmation and encouragement, strengthen self-efficacy and the sense of hope, maintain practice motivation and persistence, and invite them to keep carrying out relaxation training and in-vivo/imaginal desensitization.",
         "when_to_use": "第三阶段Consolidation and termination及各次作业反馈时；或训练过程中出现坚持波动需外部Reinforcement时。",
         "trigger": "来访者完成练习或出现改善并反馈具体进步；或Decreased motivation、练习松动需要外部肯定与鼓励时。",
@@ -3940,7 +3940,7 @@
     },
     "405": {
         "skill_id": "405",
-        "skill_name": "评估放松训练的执行与坚持",
+        "skill_name": "Assess the execution and persistence of relaxation training",
         "skill_description": "在教授肌肉放松、腹式呼吸或想像—放松训练后，布置每日一至三次练习并在反馈环节核查完成度、坚持性与效果（如紧张时自我放松、睡眠改善），以判断自我调节skill掌握程度、独立应用能力与依从性。",
         "when_to_use": "In the homework feedback stage after relaxation training is implemented and during follow-up, used to monitor compliance and self-regulation level.",
         "trigger": "来访者报告练习频率、完成或not yet完成规定放松/脱敏练习，描述紧张时自我放松体验或睡眠变化。",
@@ -3999,7 +3999,7 @@
     },
     "313": {
         "skill_id": "313",
-        "skill_name": "观察并记录精神状态关键项",
+        "skill_name": "Observe and record key mental-status items",
         "skill_description": "记录意识清晰度、思维连贯与逻辑性、言语流利度与清晰度、自知力表现及有without幻觉或妄想等精神状态指标，用于判断心理活动是否正常，并支撑鉴do not诊断与问题严重程度评估。",
         "when_to_use": "On-site observation and mental status examination at the initial consultation and diagnosis stage, used to assess basic psychological functioning and provide a basis for ruling out psychotic disorders.",
         "trigger": "入室到Freedom叙述过程中呈现意识清楚、思维连贯、言语流利或出现异常迹象、自知力表现等。",
@@ -4042,7 +4042,7 @@
     },
     "328": {
         "skill_id": "328",
-        "skill_name": "分级暴露配合放松逐步提升",
+        "skill_name": "Graded exposure combined with relaxation, increasing step by step",
         "skill_description": "从最轻场景开始短时暴露，指导深呼吸与渐进性肌肉放松以降低生理唤醒；在低等级情境中体验愉悦放松，随进展延长暴露并提升等级，反复训练直至Anxiety显著下降与习惯化。",
         "when_to_use": "In the implementation stage of each graded exposure, as a prerequisite and coordination segment for entering or advancing to a higher level.",
         "trigger": "进入某一层级时出现紧张、出汗、发抖等Anxiety反应需要调节；或当前等级已能体验到放松、准备提升训练难度。",
@@ -4068,7 +4068,7 @@
     },
     "330": {
         "skill_id": "330",
-        "skill_name": "安排每日想像练习与现实暴露",
+        "skill_name": "Schedule daily imaginal practice and in-vivo exposure",
         "skill_description": "Assign staged homework: every day carry out 3 imaginal-relaxation trainings by level, first evoking fear in imagination then turning to safe, relaxing imagery; after consolidation, advance in-vivo exposure according to the graded list, adapting and overcoming one by one, promoting transfer of practice to daily life.",
         "when_to_use": "会谈间隔期，为巩固想像脱敏效果并过渡到现实暴露阶段；当直接进入现实暴露困难或Anxiety较高时。",
         "trigger": "一想到目标场景即出现明显紧张或“难以逃离/without人帮助”等念头；来访者已能在想像中完成低—中等级练习，需要增加练习频次并迁移到现实。",
@@ -4164,7 +4164,7 @@
     },
     "346": {
         "skill_id": "346",
-        "skill_name": "列出考试相关刺激情境条目",
+        "skill_name": "List exam-related stimulus situation items",
         "skill_description": "依照Systematic desensitization步骤，先将任何曾经或可能引起紧张的考试相关情境尽量详细写在纸上，明确何时何地何线索triggerAnxiety，作为后续评估与Intervention依据。",
         "when_to_use": "在Systematic desensitization前建立考试Anxiety等级或Functional analysis of behavior的初步分析环节。",
         "trigger": "来访者存在考试Anxiety，并能回忆引发紧张的具体考试情境。",
@@ -4178,7 +4178,7 @@
     },
     "394": {
         "skill_id": "394",
-        "skill_name": "说明咨询事项、规则与流程",
+        "skill_name": "Explain the counseling matters, rules, and procedures",
         "skill_description": "在关系建立阶段清晰说明咨询的有关事项、会谈规则与流程（含频次、时长与边界），必要时介绍拟采用疗法的原理与操作方式，降低not确定与Anxiety，提升安全感、理解与配合，巩固合作关系。",
         "when_to_use": "Used at the start of the first session or in the rule clarification period; when assessment ends and before transferring to treatment, when process and expectations need unifying.",
         "trigger": "来访者对流程、频次与要求not清楚或紧张犹疑；主动询问“咨询如何进行”“需要配合什么”或需取得配合时。",
@@ -4256,7 +4256,7 @@
     },
     "322": {
         "skill_id": "322",
-        "skill_name": "探寻改变意愿并邀请承诺配合",
+        "skill_name": "Explore willingness to change and invite committed cooperation",
         "skill_description": "After clarifying the methods and treatment approach, directly inquire into the client's motivation and desire to change, understand their ambivalence and invite them to make a clear verbal commitment, to strengthen the sense of responsibility and cooperative relationship, and pave the way for implementing goals and plans and for homework.",
         "when_to_use": "After explaining the psychological methods and treatment approach, before preparing to launch the plan; in the initial assessment and relationship-building stage, before setting goals.",
         "trigger": "来访者尚not yet明确表态或动机与期望not清；表达困扰希望得到帮助但犹疑not定。",
@@ -4431,7 +4431,7 @@
     },
     "362": {
         "skill_id": "362",
-        "skill_name": "系统收集症状历程并初步分析",
+        "skill_name": "Systematically collect the symptom course and conduct preliminary analysis",
         "skill_description": "与来访者深入交谈，系统收集症状表现、trigger情境、持续时间与强度、回避策略及对学习、人际与生活的影响，梳理出现经过与not愉快事件，形成时间线与功能受损概况，并进行初步问题分析，帮助其理解“为什么会这样”。",
         "when_to_use": "At the initial assessment and comprehensive organization stage, after completing basic information and event follow-up, when the nature of the problem, timeline, severity, and functional impairment need to be clarified.",
         "trigger": "The client states in detail distress, fears, or social tension and avoidance, study/work functioning impaired, sleep and diet abnormal, and can recall related experiences or specify the duration.",
@@ -4455,7 +4455,7 @@
     },
     "426": {
         "skill_id": "426",
-        "skill_name": "整合自述、他评与现场观察",
+        "skill_name": "Integrate self-report, others' evaluations, and on-site observation",
         "skill_description": "Comprehensively obtain the client's self-report, feedback from the class teacher and parents, and the counselor's on-site observation, record impressions such as clothing, state of consciousness, tense expression and polite manners, and in the interview systematically observe clues such as speech, expression, posture and physiological tension, covering triggers, duration and impact on study and life, raising the completeness of the material.",
         "when_to_use": "The assessment and diagnosis stage, especially in the first visit, follow-up contact, and interviews throughout.",
         "trigger": "When a homeroom teacher or parent provides reflections and the self-report needs verification or the sources of information need enrichment; or when emotional fluctuation, signs of tension, and nonverbal behavior changes appear.",
@@ -4575,7 +4575,7 @@
     },
     "431": {
         "skill_id": "431",
-        "skill_name": "协商确定长期目标与巩固方向",
+        "skill_name": "Negotiate long-term goals and consolidation direction",
         "skill_description": "On the basis of near-term goals, clarify long-term goals: improve stress resistance, learn emotion regulation, form a rational, calm, optimistic mindset, as the closing standard and consolidation direction.",
         "when_to_use": "When formulating the overall plan, reaching long-term consensus with the client.",
         "trigger": "来访者希望not仅缓解当前Anxiety，也提升长期适应。",
@@ -4587,7 +4587,7 @@
     },
     "386": {
         "skill_id": "386",
-        "skill_name": "明确长期目标与发展方向",
+        "skill_name": "Clarifying long-term goals and development direction",
         "skill_description": "Jointly set with the client long-term and final goals: perfecting the personality structure and self-identity, forming reasonable cognitions and healthy coping mechanisms, raising psychological resilience, stress resistance and frustration tolerance, improving interpersonal and parent-child relationships, expanding socializing, building a rational and optimistic mindset and raising social adaptation and quality of life, as guidance for continuous intervention and follow-up.",
         "when_to_use": "After short-term goals are clarified, when entering the long-term planning or goal-setting wrap-up stage and follow-up consolidation.",
         "trigger": "来访者对not yet来适应与自我发展提出期待，愿意在认知、人际与情绪方面进行长期改变，或需要对齐长期成效与方向。",
@@ -4659,7 +4659,7 @@
     },
     "369": {
         "skill_id": "369",
-        "skill_name": "制定放松练习程序与日程安排",
+        "skill_name": "Develop a relaxation practice protocol and schedule",
         "skill_description": "Teach and determine the concrete steps of muscle/breathing relaxation (such as a comfortable lying or sitting position, first tensing then relaxing, from top to bottom combined with deep breathing), incorporate the practice into homework, and specify a regular frequency and duration, such as 1-2 times daily for 20-30 minutes, or 10 minutes morning and evening, or about 12 minutes once every two days; extra practice can be added at any time when tense, to form a stable relaxation response.",
         "when_to_use": "The plan-formulation and relaxation-training stage (sessions 2-4), and when assigning homework and training plans, used to reduce tension and improve sleep.",
         "trigger": "来访者同意在会谈外规律练习；出现心慌、全身紧张、insomnia等躯体化Anxiety，需通过放松巩固与评估。",
@@ -4683,7 +4683,7 @@
     },
     "294": {
         "skill_id": "294",
-        "skill_name": "设定每次脱敏流程与等级推进",
+        "skill_name": "Set the desensitization procedure and hierarchy progression for each session",
         "skill_description": "在每次训练中按流程进行：先想象中性情境，再想象最轻恐惧情境；评估Anxiety水平—放松—再评估，直至最低值；每次处理1～3个等级，视反应调整节奏，确保强度与推进可控。",
         "when_to_use": "Systematic desensitization实施阶段的每次训练前与训练中，需要控制强度与节奏时。",
         "trigger": "开始具体脱敏训练且需明确每次的流程与等级数；来访者在练习中报告Anxiety水平以指导推进。",
@@ -5032,7 +5032,7 @@
     },
     "372": {
         "skill_id": "372",
-        "skill_name": "采集基本资料与成长家庭背景",
+        "skill_name": "Collect basic data and family-of-origin background",
         "skill_description": "系统记录性do not、年龄、专业身份、成长环境与家庭/亲子关系、角色与表现、躯体疾病与挫折史，以及出生年月、经济状况、现住与同住者、性格特质与学习轨迹，形成评估所需的背景资料。",
         "when_to_use": "评估与诊断第一阶段，Establishing the counseling relationship并填写调查表的基本信息与成长背景部分时。",
         "trigger": "When the first session needs to understand basic background, or the client begins to review growth experiences, family, and health history.",
@@ -5045,7 +5045,7 @@
     },
     "290": {
         "skill_id": "290",
-        "skill_name": "收集重要他人反映以补充资料",
+        "skill_name": "Collect significant others' reports to supplement data",
         "skill_description": "Proactively gather descriptions from guardians or significant others about the client's character, past performance, and changes in symptoms, record the similarities and differences against the self-report, and round out information from other sources, improving the comprehensiveness and credibility of the material.",
         "when_to_use": "In the initial assessment stage, when multi-source verification of information and supplementary social data are needed.",
         "trigger": "When a parent is present or contactable and willing to provide information, or when self-report and observation differ and corroboration is needed.",
@@ -5071,7 +5071,7 @@
     },
     "425": {
         "skill_id": "425",
-        "skill_name": "记录典型心理与行为表现",
+        "skill_name": "Recording typical psychological and behavioral presentations",
         "skill_description": "按时间与情境记录情绪与行为表现，如哭泣、坐立not安、手部反复搓动、躯体not适，以及在学校住宿时的扰动行为，形成问题表现档案，支撑后续分析与诊断。",
         "when_to_use": "At the assessment stage, after filling in the 'symptoms and behavior presentation' section or conducting on-site observation.",
         "trigger": "The client shows marked emotional or somatization symptoms, or the homeroom teacher and parents report disruptive behavior and adaptation difficulties.",
@@ -5097,7 +5097,7 @@
     },
     "373": {
         "skill_id": "373",
-        "skill_name": "记录主诉、病程与功能受损",
+        "skill_name": "Record the chief complaint, course, and functional impairment",
         "skill_description": "Around the current distress, record in detail the symptoms and duration, triggering scenarios and help-seeking motivations, and sleep, study, and daily functioning impairment, including medical information when necessary, as the problem baseline and severity judgment.",
         "when_to_use": "At the initial assessment stage, used before clarifying problem nature and severity and setting goals.",
         "trigger": "来访者报告Fear, anxiety或躯体化症状，说明持续时间或提及医院检查与结果，并描述回避与功能受损。",
@@ -5123,7 +5123,7 @@
     },
     "343": {
         "skill_id": "343",
-        "skill_name": "实施并记录心理测验结果",
+        "skill_name": "Implementing and recording psychological test results",
         "skill_description": "With the client's consent, administer and record the key scores and factors of scales such as the SCL-90, EPQ, SAS, or SDS, quantify symptom intensity and scope, establish an assessment baseline for auxiliary diagnosis and follow-up comparison, and preliminary analysis may be fed back to the client.",
         "when_to_use": "At the initial consultation or reassessment stage, when after completing the clinical interview it is necessary to quantify symptoms and establish a baseline.",
         "trigger": "来访者同意接受心理测评，或需要客观化评估强迫、Anxiety等症状与后续比较。",
@@ -5136,7 +5136,7 @@
     },
     "435": {
         "skill_id": "435",
-        "skill_name": "收集就诊用药史与家族精神史",
+        "skill_name": "Collect medical/medication history and family psychiatric history",
         "skill_description": "填写既往就诊与治疗经历（如专科诊断恐怖症）、用药及因副作用停药情况，并记录家族精神病史（如without精神疾病家族史），用于评估风险与可行性、支持诊断与方案制定。",
         "when_to_use": "初诊调查表的病史条目填写时，或制定Intervention方案前进行安全性评估时。",
         "trigger": "来访者提到曾就医、用药not耐受，或被询问家族精神疾病史。",
@@ -5175,7 +5175,7 @@
     },
     "376": {
         "skill_id": "376",
-        "skill_name": "核实体检资料并记录排除结论",
+        "skill_name": "Verify physical-exam data and record exclusion conclusions",
         "skill_description": "查阅既往体检与相关检查结果并记录结论（如not yet见躯体疾病），或注明体检正常/异常，以支持心理学诊断与病因鉴do not并指导后续Intervention。",
         "when_to_use": "初期评估需区分心理与躯体原因、作出初步诊断或决定后续Intervention路径时。",
         "trigger": "When the past history mentions a physical examination, or somatic factors are suspected to possibly affect current symptoms.",

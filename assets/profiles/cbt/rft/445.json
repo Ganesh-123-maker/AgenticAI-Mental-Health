@@ -40,14 +40,14 @@
           "cognitive_pattern": "Catastrophizing"
         },
         {
-          "event": "被朋友邀请一起去徒步",
+          "event": "Being invited by friends to go hiking",
           "conditional_assumptions": "如果我表现not好就会拖累大家、让朋友失望，说明我not行。",
           "compensatory_strategies": "Declines invitations; reduces going out with them to avoid being evaluated.",
           "automatic_thoughts": "They will think I am terrible，最好do not去。",
           "cognitive_pattern": "Personalization"
         },
         {
-          "event": "回忆以往成功的徒步经历",
+          "event": "Recalling past successful hiking experiences",
           "conditional_assumptions": "积极经验只是运气，not代表真实能力。",
           "compensatory_strategies": "向朋友寻求再保证，但很快negate正面反馈。",
           "automatic_thoughts": "那只是侥幸，not算数。",
@@ -94,10 +94,10 @@
       "exception_events": [],
       "force_field": {
         "positive_force": [
-          "热爱徒步且有动机恢复参与",
+          "Loves hiking and is motivated to resume participation",
           "Has had successful hiking experiences that can serve as positive evidence",
           "Willing to try behavioral experiments and record thoughts",
-          "拥有朋友与一定的社会支持"
+          "Has friends and some social support"
         ],
         "negative_force": [
           "灾难化、过度概括、negate积极、个人化等认知偏差",
@@ -109,7 +109,7 @@
     "bt": {
       "target_behavior": [
         {
-          "behavior": "回避徒步及相关户外活动",
+          "behavior": "Avoiding hiking and related outdoor activities",
           "antecedent": [
             "计划或想到要去徒步",
             "Received a hiking invitation from a friend",
