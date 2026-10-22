@@ -65,7 +65,8 @@ RISK_SIGNALS: Tuple[RiskSignal, ...] = (
     RiskSignal(
         id="self_harm", severity="HIGH",
         en=("self-harm", "self harm", "self-injury", "hurt myself", "hurting myself",
-            "harm myself", "harming myself", "slit wrists"),
+            "harm myself", "harming myself", "slit wrists", "slit my wrists",
+            "cut my wrists", "cutting my wrists"),
         zh=("self-mutilation", "self-injury", "hurt oneself", "slit wrists"),
     ),
     RiskSignal(
@@ -85,7 +86,8 @@ RISK_SIGNALS: Tuple[RiskSignal, ...] = (
     ),
     RiskSignal(
         id="insomnia", severity="MODERATE",
-        en=("insomnia all night", "severe insomnia"),
+        en=("insomnia all night", "severe insomnia", "cannot sleep", "can't sleep",
+            "unable to fall asleep"),
         zh=("awake all night with insomnia", "severe insomnia", "insomnia", "unable to fall asleep", "cannot sleep"),
     ),
     RiskSignal(
@@ -110,7 +112,7 @@ RISK_SIGNALS: Tuple[RiskSignal, ...] = (
     ),
     RiskSignal(
         id="overwhelm", severity="MODERATE",
-        en=("unbearable", "can't bear it", "cannot bear it"),
+        en=("unbearable", "can't bear it", "cannot bear it", "overwhelmed"),
         zh=("overwhelmed", "cannot bear the strain", "hard to bear", "cannot hold on any longer"),
     ),
     RiskSignal(
