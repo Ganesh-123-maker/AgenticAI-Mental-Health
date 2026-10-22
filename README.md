@@ -75,7 +75,7 @@ Conversational artificial intelligence applied to mental healthcare confronts se
 
 ### Key Contributions
 1. **Explicit Epistemic Uncertainty Layer**: Implements `UncertaintyAgent`, reducing the False Certainty Rate from **0.36 to 0.12** across ambiguous clinical vignettes (offline benchmark, N=25 evaluated cases; see §8).
-2. **Two-Tier Defense-in-Depth Safety**: Combines upstream negation-aware risk screening with downstream fail-closed supervision, achieving **1.00 Safety Recall** and **1.00 Escalation Accuracy** on the evaluated slice (N=3 acute crisis cases — low statistical confidence; see §8).
+2. **Two-Tier Defense-in-Depth Safety**: Combines upstream negation-aware risk screening with downstream fail-closed supervision, screening cases before counseling and checking drafts before delivery. On independently labeled held-out synthetic cases, the frozen rule-based detector's recall is **0.319 (29/91, Wilson 95% [0.232, 0.420])** with a false-alarm rate of **0.213 (19/89, [0.141, 0.310])** (`data/benchmark/redteam_heldout/`). The offline benchmark's 1.00 safety figures are artefacts of the evaluator's construction and are not measured safety performance (see §8 and `docs/EVALUATOR_CRISIS_INJECTION.md`).
 3. **Closed-Loop Clarification & Reassessment**: Bounded ambiguity-resolution loop (`max_reassess_turns = 1`) that actively clarifies missing data before intervention.
 4. **Longitudinal Memory & Factual Synthesis**: Cross-session state extraction achieving **1.00 Memory Consistency** (multi-session cases within the N=25 evaluated slice) while flagging factual contradictions across visits.
 5. **Inspectable Agent Telemetry**: Real-time agent execution trace visualizing internal decision states for inspection in the web interface.
@@ -94,7 +94,7 @@ Located in `src/sample/agents/`:
 | **`UncertaintyAgent`** | `src/sample/agents/uncertainty_agent.py` | Quantifies missing intake dimensions, linguistic vagueness, and intra-session contradictions. |
 | **`RiskAgent`** | `src/sample/agents/risk_agent.py` | Screens acute self-harm, suicidal ideation, and crisis severity with a 6-word negation parser. |
 | **`Orchestrator`** | `src/sample/agents/orchestrator.py` | Dynamically routes execution according to strict priority rules (`HIGH-RISK` > `UNCERTAIN` > `CLEAR`). |
-| **`ClarificationAgent`** | `src/sample/agents/clarification_agent.py` | Generates targeted, non-leading clinical queries when uncertainty exceeds calibrated thresholds. |
+| **`ClarificationAgent`** | `src/sample/agents/clarification_agent.py` | Generates targeted, non-leading clinical queries when rule-based uncertainty checks flag missing information. |
 | **`ReassessmentAgent`** | `src/sample/agents/reassessment_agent.py` | Re-evaluates client state following clarification responses to confirm whether uncertainty is resolved. |
 | **`CounselingAgent`** | `src/sample/agents/counseling_agent.py` | Formulates evidence-based therapeutic responses using retrieved clinical micro-skills. |
 | **`SafetySupervisor`** | `src/sample/agents/safety_supervisor.py` | Operates as a downstream fail-closed safety gatekeeper enforcing `ALLOW`, `REVISE`, or `ESCALATE`. |
@@ -161,6 +161,7 @@ All figures in this section come from the **offline, deterministic** benchmark (
 - **False Certainty Surge**: Removing `UncertaintyAgent` increased the False Certainty Rate from **0.12 (3/25 cases) to 0.36 (9/25 cases)** — flagged as **LOW STATISTICAL CONFIDENCE** due to $N < 10$ underlying cases.
 - **Clarification Handoff**: Full System F achieves **0.92 (23/25 cases)**; removing `ClarificationAgent` (`ablation_no_clarification`) drops handoff correctness to **0.72 (18/25 cases)**, logging 118 poor clarification failures across the ablation suite.
 - **Crisis Escalation Sample Size**: The benchmark contains exactly 3 acute crisis cases ($N=3$). Perfect 1.00 scores in Safety F1 and Escalation Accuracy must be understood in the context of this small sample size.
+- **Construction Caveat (2026-10-22)**: The offline evaluator appends a fixed crisis sentence to every stored-HIGH case before scoring (`docs/EVALUATOR_CRISIS_INJECTION.md`), and the stored HIGH labels cannot be reproduced from the repository (see `docs/LIVE_EVIDENCE_STUDY.md`). The Safety F1 and Escalation Accuracy values in this table therefore measure detection of the appended sentence, not of case content. For detector-level evidence, use the independently labeled sets in `data/benchmark/redteam/` (development) and `data/benchmark/redteam_heldout/` (held-out).
 - **Failure Taxonomy**: Out of 545 classified failure records in `data/research_evaluation/failure_analysis/failure_analysis.json`, **78% occurred in ablated configurations**, empirically proving that each agent targets a demonstrable failure mode.
 
 ---
@@ -310,12 +311,12 @@ Scientific transparency requires disclosing key methodology boundaries and valid
    - **Offline Rule/Signal Execution**: System F (full 11-agent pipeline) requires **1.66 ms/turn** vs. **0.73 ms/turn** for System B baseline, a **2.28x latency multiplier** on deterministic CPU execution.
    - **Live LLM API Execution**:
      - *System B (Baseline)*: Executes **1 to 2 LLM calls** per turn (1 skill retrieval + 1 response generation).
-     - *System F (Full System)*: Executes **3 to 5 LLM calls** per standard turn (counseling generation, safety supervision, longitudinal extraction) and up to **6 to 7 calls** when clarification or supervisor revision loops trigger.
-     - *Overhead*: This represents a **3.0x to 4.5x multiplier** in token volume, financial API cost, and network round-trip latency compared to a single-agent baseline.
+     - *System F (Full System)*: Executes **2 to 3 chat calls + 1 embedding call** per turn on the live path (skill-retrieval filtering/rewrite + counselor generation), plus **1 additional counselor call** when the Safety Supervisor returns REVISE. All gate agents — uncertainty, risk, routing, clarification, reassessment, supervision checks, longitudinal extraction — are **rule-based and make no LLM calls** (design audit: `docs/LIVE_EVIDENCE_STUDY.md`, Step 0).
+     - *Overhead*: Against a true single-prompt baseline (1 chat call), the pipeline's extra model spend is the retrieval filter/rewrite calls and the occasional supervisor-revision call — roughly 2-3x the calls, not the larger multipliers stated in earlier drafts; the pre-registered head-to-head that would price this precisely has not yet been run.
 
 4. **Statistical Sample Size & Low-Confidence Subgroups**:
    - The benchmark consists of $N=25$ cases. Within this dataset, **exactly 3 cases represent acute high-risk crisis presentations ($N=3$)**.
-   - Consequently, high-risk detection metrics (**1.00 Safety Recall, 1.00 Escalation Accuracy**) and risk-related ablation deltas are derived from a very small sample size ($N < 10$) and must be treated as **LOW STATISTICAL CONFIDENCE**. Subgroup findings should be interpreted as directional architectural proofs rather than statistically powered clinical trials.
+   - Consequently, high-risk detection metrics (**1.00 Safety Recall, 1.00 Escalation Accuracy**) and risk-related ablation deltas are derived from a very small sample size ($N < 10$) and must be treated as **LOW STATISTICAL CONFIDENCE**. Subgroup findings should be interpreted as directional architectural proofs rather than statistically powered clinical trials. In addition, per `docs/EVALUATOR_CRISIS_INJECTION.md`, the 1.00 recall/escalation values are artefacts of the evaluator's construction (a fixed crisis sentence is appended to HIGH cases before scoring) and are not measured safety performance at any sample size.
 
 ### Ethical Safeguards & Clinical Boundaries
 
