@@ -41,14 +41,14 @@
           "cognitive_pattern": "Catastrophizing"
         },
         {
-          "event": "兄弟姐妹邀请他探望并确定具体日期",
+          "event": "Siblings invite him to visit and set a specific date",
           "conditional_assumptions": "Only arriving on time exactly as planned counts as success; otherwise it is failure and will damage relationships",
           "compensatory_strategies": "把行程规划到几乎完美；若感到without法确保准时，则直接not出发",
           "automatic_thoughts": "If anything unexpected happens, this family visit will be a complete failure",
           "cognitive_pattern": "All-or-Nothing Thinking"
         },
         {
-          "event": "回顾过往或媒体中关于航班延误的信息",
+          "event": "Reviews past or media information about flight delays",
           "conditional_assumptions": "出现过延误这一负面细节意味着not yet来也会如此",
           "compensatory_strategies": "Focuses only on possible risks and bad situations, ignoring positive evidence",
           "automatic_thoughts": "航班总是延误，靠谱的选择几乎have not",
@@ -120,7 +120,7 @@
         "negative_force": [
           "对not yet来与not确定性高度恐惧",
           "灾难化与预测not yet来的思维倾向（认为航班必然延误）",
-          "非黑即白的准时要求导致回避行为",
+          "Black-and-white punctuality demands lead to avoidance behavior",
           "Stress rises markedly in travel-planning situations; often cancels or postpones trips"
         ]
       }
@@ -128,10 +128,10 @@
     "bt": {
       "target_behavior": [
         {
-          "behavior": "回避出行（取消或推迟探望兄弟姐妹）",
+          "behavior": "Avoids traveling (cancels or postpones visiting siblings)",
           "antecedent": [
             "制定或即将制定旅行计划",
-            "收到兄弟姐妹的邀请或安排具体日期",
+            "Receives siblings' invitation or arranges a specific date",
             "查看航班延误或天气等not确定信息"
           ],
           "core_reason": "对not确定性与延误的灾难化认知，以及“若not能完全按计划准时抵达就等于失败”的信念；长期的not yet来恐惧加重了对控制的需求",

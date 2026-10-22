@@ -14,7 +14,7 @@
     },
     "672": {
         "skill_id": "672",
-        "skill_name": "采用0-100情绪标尺主观评定心境",
+        "skill_name": "Uses a 0-100 emotion scale to subjectively rate mood",
         "skill_description": "Guide the client to use a 0-100 percentage scale to subjectively rate the intensity of other emotions or the overall mood, obtaining concise quantitative data, assisting in grasping the current state and change trends.",
         "when_to_use": "在开始环节进行心境评估时，除Anxiety/抑郁外需了解其他情绪或整体心境的强度。",
         "trigger": "The client talks about feelings regarding other emotions or overall mood, needing to convert their subjective experience into a quantifiable value.",
@@ -79,7 +79,7 @@
     },
     "684": {
         "skill_id": "684",
-        "skill_name": "依据近期信息判定是否入列并限细节",
+        "skill_name": "Judge based on recent information whether to include and limit details",
         "skill_description": "Ask the client to summarize the key events of the most recent week, assess whether they need to be included in the agenda; avoid overly detailed narration, leaving concrete discussion to the middle part to save time.",
         "when_to_use": "After obtaining the latest information in the opening component, when setting today's agenda it is necessary to decide which events enter the list and control discussion depth.",
         "trigger": "The client begins to unfold in detail the process and particulars of recent negative events, and the narration time lengthens, exceeding the degree of overview needed for agenda setting.",
@@ -131,7 +131,7 @@
     },
     "711": {
         "skill_id": "711",
-        "skill_name": "评估作业完成可能性并调整布置策略",
+        "skill_name": "Assess the likelihood of homework completion and adjust assignment strategy",
         "skill_description": "在反馈中询问家庭作业的可行性与困难，依据意愿水平调整布置：完成意愿低于50%时放弃该作业，介于50%至80%时设为可选，并识do not妨碍因素。",
         "when_to_use": "Before and after confirming the homework in the closing segment, assess the feasibility of homework execution through session feedback, ensuring the assignment matches the client's willingness.",
         "trigger": "来访者对家庭作业的意愿not明确或表达顾虑、困难，需要通过反馈问题量化完成可能性并识do not阻碍。",
@@ -367,7 +367,7 @@
     },
     "626": {
         "skill_id": "626",
-        "skill_name": "建立信念标尺并获取自动思维基线评分",
+        "skill_name": "Establishes a belief scale and obtains baseline ratings of automatic thoughts",
         "skill_description": "绘制并讲解0~100%信念标尺，解释完全相信与完全not相信的含义，强调多为部分相信；请来访者对已识do not的自动思维给出当前相信程度，形成Intervention前的基线评分。",
         "when_to_use": "单个议程中已明确需要评估的自动思维内容，正式开展认知或行为Intervention前需量化其相信程度时。",
         "trigger": "来访者已清楚表达某个自动思维（如“我会not及格”）且尚not yet进行信念程度评分，或咨询师准备评估其确信度。",
@@ -693,7 +693,7 @@
     },
     "630": {
         "skill_id": "630",
-        "skill_name": "制作应付卡：界定情境并书写正反面",
+        "skill_name": "Make a coping card: define the situation and write the front and back",
         "skill_description": "与来访者将反复trigger的情境或自动思维写在应付卡正面，将应对的思考与行为指示写在反面；卡片以便携为原则，便于随身use与复习。",
         "when_to_use": "The consolidation segment of the automatic thought stage, when effective strategies need to be externalized into portable cue tools after the session.",
         "trigger": "来访者报告在相似情境下反复出现Anxiety、担心或自责等消极情绪与自动思维。",
@@ -833,7 +833,7 @@
     },
     "640": {
         "skill_id": "640",
-        "skill_name": "提供记录形式选项以兼顾隐私与便携",
+        "skill_name": "Provide record format options to balance privacy and portability",
         "skill_description": "Choose the form of recording coping cards and notes according to preference, such as pen and paper or phone recording, reducing privacy-exposure concerns and improving the convenience of carrying and review.",
         "when_to_use": "When planning recording and review methods, needing to improve compliance and sustainability.",
         "trigger": "来访者对书写本子not适、担心隐私或携带not便，提出希望改用其他形式。",
@@ -847,7 +847,7 @@
     },
     "641": {
         "skill_id": "641",
-        "skill_name": "落实替代思维与替代行为的生活实践",
+        "skill_name": "Implement alternative thoughts and alternative behaviors in daily life practice",
         "skill_description": "Converting the new thoughts and new behaviors obtained in the session into concrete life requirements, clarifying to think with the new thoughts and act with the new behaviors in corresponding situations, ensuring application is put into practice.",
         "when_to_use": "The consolidation and application stage, setting concrete practice requirements and scenes before leaving the consulting room.",
         "trigger": "The client has formed alternative thoughts or alternative behaviors and is ready to return to daily life to face the same situations.",
@@ -2318,7 +2318,7 @@
     },
     "763": {
         "skill_id": "763",
-        "skill_name": "拆解线性联想为关键阶段并标注时间点",
+        "skill_name": "Breaks down linear associations into key stages and annotates time points",
         "skill_description": "Split the linear chain of 'single event → final outcome' along the process timeline and name the key links, marking specific time nodes when necessary, forming a structured path that can be examined and intervened in link by link.",
         "when_to_use": "在终点目标与期限确定后，准备开展系统性分析与Intervention；需要将“今晚insomnia→明天教学差→考试差→升学率差”等链式预言具体化时。",
         "trigger": "The client produces a long string of 'if... then... and then...' associative narration, or connects events from multiple time periods linearly in one passage, having difficulty stopping the deduction.",
@@ -2438,7 +2438,7 @@
     },
     "781": {
         "skill_id": "781",
-        "skill_name": "维持高信念时要求持续按新信念行事",
+        "skill_name": "When maintaining high belief, require continued action according to the new belief",
         "skill_description": "When the client fully believes, or the degree of belief remains continuously at 90% or above, require them to keep acting on the new belief in daily life, promoting the habituation of the new pattern of behavior until counseling at this stage is completed.",
         "when_to_use": "In the later stage of application, when the new belief is stably and highly believed, the goal shifts to consolidation and habituation.",
         "trigger": "来访者自陈“完全相信”或多日保持≥90%的相信度，且without明显波动或倒退迹象。",
@@ -3004,7 +3004,7 @@
     },
     "742": {
         "skill_id": "742",
-        "skill_name": "布置情境观察与记录以检验巩固新假设",
+        "skill_name": "Assigns situational observation and recording to test and consolidate new assumptions",
         "skill_description": "布置回家作业，要求记录哪些情境可按新信念放手或调整做法、哪些仍需旧策略，并下次复盘，以累积证据Reinforcement新信念。",
         "when_to_use": "提出新信念后，会谈收尾阶段，新信念初步建立但尚not yet内化，需要凭日常证据检验与巩固时。",
         "trigger": "The client's belief in the new belief is moderately high but still fluctuates, indicating willingness to observe, try out and record concrete situations and outcomes in life.",
@@ -3238,7 +3238,7 @@
     },
     "795": {
         "skill_id": "795",
-        "skill_name": "按自我/他人/世界主题归类自动思维",
+        "skill_name": "Categorizes automatic thoughts by self/others/world themes",
         "skill_description": "将自动思维中的Average性认识按三大主题归类（自我、他人、世界），据此判断核心信念的指向，如without能/not可爱、他人坏/全能/without能、世界冷漠/敌对，提升识do not准确度。",
         "when_to_use": "在核心信念识do not阶段，需对来访者多条自动思维进行快速主题归类，以明确核心信念领域与内容时。",
         "trigger": "来访者自述含主题化判断，如“I am not worthy of being loved”“他人喜欢操纵do not人”“遭遇困难not人会帮我”，呈现对自我/他人/世界的普遍化评价。",
@@ -3313,7 +3313,7 @@
     },
     "804": {
         "skill_id": "804",
-        "skill_name": "从自动思维界定核心信念主题与性质",
+        "skill_name": "Define core belief themes and nature from automatic thoughts",
         "skill_description": "依据自动思维句型（主语指向我/他人/世界，谓语为判断），识do not并界定其核心信念的主题与性质，按自我/他人/世界及正/负分类，参考“without能、not可爱、without价值”等示例进行归类。",
         "when_to_use": "初始评估与识do not核心信念阶段；来访者报告与具体情境相关的自动思维时，用于迅速界定其核心信念的主题与性质。",
         "trigger": "来访者出现Average化判断语句，如“我就是…”“do not人都是…”“世界很…”，并带有“without能、not可爱、without价值”等绝对化标签。",
@@ -3574,7 +3574,7 @@
     },
     "937": {
         "skill_id": "937",
-        "skill_name": "构建最坏、最好与最现实并估计概率",
+        "skill_name": "Construct the worst, best, and most realistic outcomes and estimate probabilities",
         "skill_description": "围绕not yet发生的具体事件，与来访者结构化描绘最坏、最好及最现实的结果，外化最坏情形并澄清其含义，识do not灾难链条与可承受范围；必要时以百分比估计各结果的发生概率，重估恐惧强度，纠正灾难化或过高期待，校准对not yet来的判断与情绪。",
         "when_to_use": "在处理not yet发生的not yet来情境引发的Anxiety、灾难化或过高期待的前期概念化与评估阶段，需将模糊担忧具体化并平衡判断时。",
         "trigger": "来访者只聚焦最坏情境、做出极端结论（如“他会毁了我”“会崩溃”），或主观概率评估偏高；伴随Significant anxiety或despair，且对担忧缺乏具体化与逻辑。",
@@ -3662,7 +3662,7 @@
     },
     "872": {
         "skill_id": "872",
-        "skill_name": "每次会谈开场共同明确当次议题与任务",
+        "skill_name": "At the opening of each session, jointly clarifies the session's agenda and tasks",
         "skill_description": "在每次会谈开始环节，结合作业回顾与新近事件，与来访者共同设定当次议题，明确优先级与步骤，界定范围与焦点，如评估诊断、介绍ABC、辩论not合理信念、练习放松等，并预留作业布置与总结时间，使讨论聚焦高效。",
         "when_to_use": "每次会谈开场，进入正式讨论前；主题较多、叙述发散或需延续上次not yet竟内容时。",
         "trigger": "来访者提出欲讨论主题、作业中的困难或新近事件；上次遗留主题需取舍；双方尚not yet对当次目标达成一致。",
@@ -3916,7 +3916,7 @@
     },
     "1049": {
         "skill_id": "1049",
-        "skill_name": "确认并命名自我价值/被爱类核心信念",
+        "skill_name": "Confirms and names self-worth/being-loved core beliefs",
         "skill_description": "在已识do not自动思维的基础上，介绍核心信念概念，依据来访言语中反复出现的自我价值与被爱/被抛弃判断（如“I am not good enough”“我有缺陷”“not人喜欢我”），与来访者确认并直接命名对应的核心信念，为后续工作提供明确靶点。",
         "when_to_use": "自动思维识do not已有、准备开展核心信念工作阶段（如第6–7次会谈），或在对话中此类判断反复出现、需要明确其核心含义时。",
         "trigger": "来访者频繁use自我价值或被爱/被抛弃的判断性表述，如“I am not good enough”“我有缺陷”“not人喜欢我”“not值得被爱”。",
@@ -3976,7 +3976,7 @@
     },
     "950": {
         "skill_id": "950",
-        "skill_name": "共同填写与澄清三栏表以收集自动思维",
+        "skill_name": "Jointly fills in and clarifies the three-column form to collect automatic thoughts",
         "skill_description": "引导来访者将具体情境、自动思维与情绪逐项写入三栏表，现场讲解认知三角并纠正将评价写入情境的错误，明确情境-想法-情绪的区分，使思维内容清晰可见，为识do not背后的核心信念提供素材。",
         "when_to_use": "在评估与早期Intervention阶段，或检查三栏表作业时，当来访者情绪激动、思路混乱或对记录存在情境/评价混淆。",
         "trigger": "When describing events, the client shows anger, irritability, or confusion, has difficulty clearly expressing thoughts and emotions, or the submitted three-column form confuses situation and evaluation.",
@@ -4071,7 +4071,7 @@
     },
     "986": {
         "skill_id": "986",
-        "skill_name": "共同评价效果并必要时复测与讨论结束",
+        "skill_name": "Jointly evaluates the effect and, if necessary, retests and discusses termination",
         "skill_description": "After the summary, jointly evaluate with the client the effects and changes of this or the staged counseling, where necessary combining re-testing with scales such as the SAS and SDS to objectify progress and check subjective feelings, and on the basis of reviewing the problem list and genogram discuss whether to end counseling and the follow-up arrangements.",
         "when_to_use": "At the end of a stage or when change needs to be tested; can also be used at the end of a single session to assess short-term goal attainment.",
         "trigger": "完成若干次Intervention或达到阶段节点；需要量化变化或校准自评与客观指标并讨论终结。",
@@ -4123,7 +4123,7 @@
     },
     "1122": {
         "skill_id": "1122",
-        "skill_name": "总结认知与行为改变经验并巩固信念",
+        "skill_name": "Summarize cognitive and behavioral change experiences and consolidate beliefs",
         "skill_description": "At the ending stage, review this session's and the earlier key experiences of cognitive restructuring and behavioral practice, guide the client to summarize the core understandings in their own words, review the earlier homework and contrast the new adaptive beliefs with the old cognitions, distill the effective practices and insights, to consolidate the changes already formed and the learning key points.",
         "when_to_use": "In the third stage or the consolidation segment at the end of each session, after completing a cognitive reappraisal or a behavioral-experiment review.",
         "trigger": "The client has completed multiple practices, formed new cognitive understanding and can distill experience, preparing to end this session.",
@@ -4515,7 +4515,7 @@
     },
     "847": {
         "skill_id": "847",
-        "skill_name": "将目标转化为可执行行动并跟进评估",
+        "skill_name": "Convert goals into actionable steps and follow up with evaluation",
         "skill_description": "把目标细化为可观察的行为与步骤（如主动交谈、参加集体、学会说not、练习换位思考/非暴力沟通、调整作息与复习），明确时间点并以作业实施；在真实情境试用、下次检查执行与感受，评估并及时调整以巩固改善。",
         "when_to_use": "After the counseling plan is determined or the event analysis is completed, when the understanding and alternative cognitions from the session need to be converted into concrete steps and implemented.",
         "trigger": "The client proposes a willingness to change but lacks a route or procrastinates; has accepted rational beliefs but lacks an action plan or motivation; is willing to work through relationships to seek concrete methods, or expresses the wish to review and prepare for exams, adjust the sleep schedule, and so on.",
@@ -4560,7 +4560,7 @@
     },
     "1104": {
         "skill_id": "1104",
-        "skill_name": "制定时间管理与作业清单并监督执行",
+        "skill_name": "Formulate time management and homework checklists and supervise implementation",
         "skill_description": "Refine the goals into homework and time arrangements by week/day, clarify when, where and how to carry them out (such as reducing gaming, increasing practice, participating in competitions, recording and expressing, interests/exercise, sleep aids), set the check frequency and the responsible person, complete them step by step and record progress, fine-tune according to feedback to accumulate successful experiences and reduce setbacks.",
         "when_to_use": "问题清晰且可通过具体行动改善时；或目标已设定但行动模糊、执行Insufficient motivation，需要把替代思维转化为具体行动并避免过大目标导致放弃时。",
         "trigger": "认可改变方向但not知从何下手，或多次承诺without落实、易拖延；仅停留在想法层面、缺少步骤与时间安排；目标含糊not清、not可操作。",
@@ -4849,7 +4849,7 @@
     },
     "1133": {
         "skill_id": "1133",
-        "skill_name": "布置情境—情绪—自动思维记录作业",
+        "skill_name": "Assign situation-emotion-automatic thought recording homework",
         "skill_description": "Introduce and assign the recording homework: record according to the concrete daily situation, the automatic thoughts and emotional intensity at the time, adding reasonable responses and the emotional results after responding, with percentage scoring; encourage precise recording at the very moment a conflict occurs, supervised by parents when necessary, to enhance grasp of the situation-emotion-thought chain and serve as material for subsequent intervention.",
         "when_to_use": "在初期1～3次或需要系统化练习的阶段，于会谈结束前明确作业与方法；处理自动思维的会谈后或认知Intervention阶段需要改善人际冲突时。",
         "trigger": "The client finds it hard to notice the relationship between automatic thoughts and emotions, emotional distress repeats; interpersonal conflicts appear and recalling details is difficult; has understood the cognitive path and is willing to cooperate with self-recording.",
@@ -4940,7 +4940,7 @@
     },
     "961": {
         "skill_id": "961",
-        "skill_name": "引导自评并收集他人反映评估心境趋势",
+        "skill_name": "Guides self-rating and collects others' feedback to assess mood trends",
         "skill_description": "Invite the client to self-rate the current intensity of negative emotion with a score and compare it with the established goal or the previous score; simultaneously collect observations from peers and others and the client's subjective self-report, re-measure the scales and comprehensively judge mood changes and efficacy, enhancing the reliability and ecological validity of the assessment.",
         "when_to_use": "At periodic assessment or session summary, when the degree of emotional improvement and goal attainment needs to be judged; during follow-up, when scale changes and functional improvement need verification.",
         "trigger": "The client mentions mood fluctuations, improvement/worsening of the chief complaint, or a need to review progress and evaluate effects.",
@@ -4953,7 +4953,7 @@
     },
     "1009": {
         "skill_id": "1009",
-        "skill_name": "观察与结构化询问综合评估当前心境",
+        "skill_name": "Observe and use structured inquiry to comprehensively assess current mood",
         "skill_description": "在会谈开始观察仪态、情绪与语调等非言语线索，并围绕insomnia、Anxiety、易哭等进行结构化询问与记录；结合主诉、他人述诉与功能受损情况，澄清当前主要情绪及其影响，形成当下心境与风险的综合判断。",
         "when_to_use": "At the state assessment and symptom tracking at the start of each session, or when mood and symptom data need to be updated.",
         "trigger": "来访者表现紧张not安、Low mood或自述近两周情绪困扰、睡眠/学习功能受影响；Teacher或家属提供近期变化信息。",
@@ -4966,7 +4966,7 @@
     },
     "844": {
         "skill_id": "844",
-        "skill_name": "每次会谈进行心境分值检查并命名情绪",
+        "skill_name": "Conducts a mood score check and names the emotion in each session",
         "skill_description": "会谈开场进行心境检查，邀请来访者回顾近一周或近期感受，use0–10或分值方式自评紧张/Anxiety等强度，记录数值并在后续对比变化，同时提供情绪词选项促其命名情绪，快速把握当前基线与波动。",
         "when_to_use": "At the beginning of each session, used to quickly understand the current mood and establish or update a common reference.",
         "trigger": "A new week's session begins, or the client expresses their current mood vaguely and reports emotional ups and downs, needing scores and emotion words to describe the state.",
@@ -4979,7 +4979,7 @@
     },
     "931": {
         "skill_id": "931",
-        "skill_name": "说明评估原因并施测核心量表建立基线",
+        "skill_name": "Explains the assessment reasons and administers core scales to establish a baseline",
         "skill_description": "向来访者说明评估原因并征得同意后，施测SCL-90、SDS、SAS及SBQ-R等核心量表，量化抑郁、Anxiety与suicide风险，获取基线并在后续阶段复测监测变化，为转介与Intervention决策提供依据。",
         "when_to_use": "初始评估阶段及需要监测疗效或风险变化时，尤其出现self-injury风险或情绪困扰显著时。",
         "trigger": "来访者近期self-injury/suicide意念、自述Low mood与Anxiety worsened，或需与精神科协作制订方案前。",
@@ -5031,7 +5031,7 @@
     },
     "1071": {
         "skill_id": "1071",
-        "skill_name": "观察非言语与行为线索快速评估心境",
+        "skill_name": "Observe nonverbal and behavioral cues to quickly assess mood",
         "skill_description": "留意面容、姿态、语调、语速、流泪等非言语与言语线索，如忧虑面容、坐立not安、反复小动作，综合判断当下心境与痛苦程度；并与量表与自述相互印证，作为即时情绪评估依据。",
         "when_to_use": "每次会谈伊始的快速情绪扫描，或量表not可用时；叙述过程中情绪波动明显时。",
         "trigger": "Observable signals appear, such as a haggard face, lowered head, low tone, repeated sighing, avoiding eye contact, tearful complaints.",
@@ -5275,7 +5275,7 @@
     },
     "1155": {
         "skill_id": "1155",
-        "skill_name": "设定渐进式目标与小任务创造成功体验",
+        "skill_name": "Sets progressive goals and small tasks to create success experiences",
         "skill_description": "Suggest formulating a detailed plan, first setting daily small goals that are easy to complete, then gradually increasing the task volume; set small, attainable exercises and review successes in time, use actual progress to counter old assumptions such as 'poor memory', and enhance the motivation to correct old beliefs and sustain action.",
         "when_to_use": "当难以投入行动、寻求速成且Anxiety负担重时，或在纠正相关观念后需要以成功体验巩固改变与维持行动时。",
         "trigger": "承认过去靠考前突击、目前难以一下投入复习、启动困难；对改变观望或对技巧有效性仍信心not足。",
@@ -5923,7 +5923,7 @@
     },
     "1085": {
         "skill_id": "1085",
-        "skill_name": "跨情境汇总并归纳自动思维共同主题",
+        "skill_name": "Aggregate across situations and summarize common themes of automatic thoughts",
         "skill_description": "Collect and organize automatic thought/emotion/behavior records from multiple situations (three-column forms, thought record books, etc.), horizontally compare the high-frequency wording and reaction patterns, classify them by dimensions such as ability, self-worth, being accepted/being loved, distill the repeatedly appearing common core, as a basis for core-belief candidates.",
         "when_to_use": "After completing several records or multiple sessions, entering case conceptualization or cross-sectional case analysis, when deeper themes need to be induced from multi-situation material.",
         "trigger": "not同情境下频繁出现相似的自责、能力not足、not被喜欢/被排斥等表述，伴随稳定的负性情绪或相近反应模式；多条记录指向同一评价主题。",
@@ -5983,7 +5983,7 @@
     },
     "1045": {
         "skill_id": "1045",
-        "skill_name": "跨情境收集与比较自动思维归纳内核",
+        "skill_name": "Collect and compare automatic thoughts across situations to summarize the core",
         "skill_description": "列出多个日常/社交场景的自动思维与情绪行为线索（三栏表等），横向比较其共性与负性假设（如被审视、被negate、能力not足、“必须/应该”），总结反复出现的共同内核，为后续重构提供依据。",
         "when_to_use": "When doing horizontal case analysis or having accumulated multi-situation materials and preparing to summarize core themes.",
         "trigger": "not同事件中反复出现相似担忧与自动思维，或多条B在语气和评价维度上高度一致（“必须”“应该”“会被negate”）。",
@@ -6250,7 +6250,7 @@
     },
     "1077": {
         "skill_id": "1077",
-        "skill_name": "制定行为目标与模拟任务检验新信念",
+        "skill_name": "Formulate behavioral goals and simulation tasks to test new beliefs",
         "skill_description": "Jointly formulate with the client clear, executable behavioral goals and practice plans, assign tasks such as completing mock exams with a formal mindset and self-evaluating, take the process and results as real evidence, correct failure predictions, enhance self-efficacy, and consolidate cognitive and behavioral change.",
         "when_to_use": "在巩固阶段需要用行为结果佐证认知改变、提升Self-efficacy时，或咨询后期将新信念转化为稳定行为模式时。",
         "trigger": "The client lacks confidence in their own ability or has doubts about real performance; feeds back improvement and expresses willingness to keep working hard.",
@@ -6292,7 +6292,7 @@
     },
     "1187": {
         "skill_id": "1187",
-        "skill_name": "结束阶段复盘并进行更高强度现实检验",
+        "skill_name": "Reviews in the termination phase and conducts higher-intensity reality testing",
         "skill_description": "In the ending stage, review the coping methods and the newly formed rational beliefs, encourage trying higher-intensity exposure and response prevention on the premise of safety, complete new reality testing, to enhance confidence and replace the old beliefs.",
         "when_to_use": "At the end of counseling or a stage summary, when outcomes need consolidating and self-efficacy improving.",
         "trigger": "When the client's symptoms have clearly eased and they express hope to consolidate further and challenge harder situations.",
@@ -6418,7 +6418,7 @@
     },
     "1060": {
         "skill_id": "1060",
-        "skill_name": "应用情绪ABC并辩驳生成替代信念",
+        "skill_name": "Apply the emotional ABC and dispute to generate alternative beliefs",
         "skill_description": "以情绪ABC框架梳理事件—信念—结果，定位not合理信念，开展辩驳并生成更合理的替代信念，促进客观自我认识与情绪调节，巩固咨询成效。",
         "when_to_use": "识do not到not合理信念与负面情绪关联，需要系统性认知重建与巩固时。",
         "trigger": "存在“It is all my fault”“not被爱”等信念并伴随抑郁、内疚、without助等情绪体验时。",
@@ -6432,7 +6432,7 @@
     },
     "871": {
         "skill_id": "871",
-        "skill_name": "讲解ABC模型以促领悟与建立共识",
+        "skill_name": "Explain the ABC model to promote insight and build consensus",
         "skill_description": "With concrete events, split A (activating event) - B (belief) - C (emotion/behavior), emphasize that emotions are triggered by B rather than A, explain the rational emotive therapy ABC model, distinguish cognition from facts, correct the habit of attributing reactions only to events, explain the path of change and unify the intervention goals and language.",
         "when_to_use": "Before entering the belief working-through/application stage or when explaining the treatment rationale for the first time, used to establish a shared theoretical framework and consensus on change.",
         "trigger": "来访者把情绪完全归因于外部事件，对咨询方法与目标困惑，或分not清情绪与想法、认知与事实时。",
@@ -6500,7 +6500,7 @@
         "skill_id": "1058",
         "skill_name": "及时肯定进步并Reinforcement持续练习",
         "skill_description": "After homework feedback, promptly affirm the persistence and changes (such as improvement in attention or relationships, symptom relief), summarize the specific gains, strengthen the motivation for self-efficacy and continued implementation, and encourage continuous practice in daily life.",
-        "when_to_use": "每次作业回顾结束或出现积极变化时。",
+        "when_to_use": "At the end of each homework review or when positive changes appear.",
         "trigger": "The client shows positive results in homework, practice progress, or improved completion.",
         "parent_ids": [
             "660",
@@ -7243,7 +7243,7 @@
     },
     "923": {
         "skill_id": "923",
-        "skill_name": "用ABC模型澄清事件—信念—结果",
+        "skill_name": "Use the ABC model to clarify event-belief-consequence",
         "skill_description": "Clearly distinguish and record the activating event A, belief B, and consequence C, using a form to compare differences when necessary, prompting the client to turn from the event to examining the belief, clarifying the source of emotions, and laying a foundation for subsequent disputation and revision.",
         "when_to_use": "评估情绪困扰来源、准备质询not合理信念时；介绍ABC并开始梳理的阶段。",
         "trigger": "将not良情绪直接归因于外部事件，或出现“应该/丢脸/一旦就”等绝对化念头。",
@@ -7318,7 +7318,7 @@
     },
     "903": {
         "skill_id": "903",
-        "skill_name": "系统梳理成长史、家庭互动与关键事件",
+        "skill_name": "Systematically sorts out growth history, family interactions, and key events",
         "skill_description": "Guide the client to review the main life events and turning points along a timeline or by developmental stage, record the emotions and coping methods of the time, systematically collect materials such as the family-of-origin upbringing, significant others' expectations and evaluations, academic trajectory and traumatic experiences, organizing the person-situation and time threads, laying a material foundation for locating the sources of the negative core belief and the clues maintaining it.",
         "when_to_use": "After the relationship is established, during assessment and case conceptualization or the early stage of core belief evaluation, when the growth history and coping patterns need to be systematically understood.",
         "trigger": "When the client mentions childhood parenting, being compared/ignored, family upheavals, academic fluctuations, or traumatic experiences; or feels confused about the causes of the problem.",
@@ -7483,7 +7483,7 @@
     },
     "1084": {
         "skill_id": "1084",
-        "skill_name": "定位具体情境并挖掘自动思维与反应",
+        "skill_name": "Locate specific situations and excavate automatic thoughts and reactions",
         "skill_description": "Guide the client to review the concrete events of the past week or the present stimulus situation, with the help of prompt questions such as 'what was I thinking when the emotion changed', promptly dig out the automatic thoughts that emerged at the time, and confirm the emotions, behaviors/physiological reactions that appeared with them, forming monitoring material of situation-thought-emotion-behavior, paving the way for subsequent recording and assessment.",
         "when_to_use": "在学习识do not自动思维的起始阶段与会谈初期，开始监控前或日常遇到具体trigger情境时，用于收集与定位记录素材。",
         "trigger": "来访者笼统诉说困扰或报告考试失利、人际互动not yet回复、突发联系等事件后出现Anxiety、难过、慌张、回避、insomnia等心身反应，需要据此回溯当下念头。",
@@ -7498,7 +7498,7 @@
     },
     "934": {
         "skill_id": "934",
-        "skill_name": "及时记录情境—自动思维—情绪并评分",
+        "skill_name": "Records situation-automatic thought-emotion in a timely manner and rates them",
         "skill_description": "按作业要求在事件发生后尽快记录当时的情景、自动思维与情绪/行为，并对情绪强度进行主观评分，持续观察强度变化，识do not典型高发情境与相关思维线索，作为后续检验与重评的基础资料。",
         "when_to_use": "在学习识do not自动思维阶段及每周家庭作业中；日常出现负性情绪或显著波动时，事件当下或事后尽快填写。",
         "trigger": "出现难过、Anxiety、失落等负性情绪，或收到短信、担心被议论、学习受挫等刺激情境并伴随强烈情绪/生理反应、反刍或逃离时。",
@@ -7528,7 +7528,7 @@
     },
     "1166": {
         "skill_id": "1166",
-        "skill_name": "回顾并记录近期困扰事件、情绪与想法",
+        "skill_name": "Reviews and records recent troublesome events, emotions, and thoughts",
         "skill_description": "根据作业要求回顾近一段时间的Anxiety、低落、insomnia等体验及当时的想法，逐条记录近期困扰事件；每周填写Emotion management表并记录当天情绪波动与消极言行；当条目较多时选择情绪最强的典型事件作为起点，以聚焦并提高后续处理效率。",
         "when_to_use": "Start collecting material through homework after the 1st counseling; when beginning to monitor or organize recent distress items, the primary target event needs determining; at the 7th counseling consolidation stage and before subsequent weekly sessions, used to review the week's emotions and behaviors.",
         "trigger": "能回忆近一段时间的情绪波动与相应想法；近期被某事件反复困扰；出现Low mood或消极言行；罗列多项烦恼难以聚焦或选择切入点时。",
@@ -7868,7 +7868,7 @@
     },
     "857": {
         "skill_id": "857",
-        "skill_name": "讲解并运用ABC区分事件信念情绪",
+        "skill_name": "Explain and use ABC to distinguish event, belief, and emotion",
         "skill_description": "向来访者解说ABC理论，回顾具体事件，标注诱发事件(A)、看法/评价(B)及情绪与行为结果(C)；说明情绪受认知影响，区分客观事实与主观解释，建立识do not情境中的想法与感受的共同框架。",
         "when_to_use": "第1次咨询的关系与诊断或领悟阶段，开始识do not情境中的想法与情绪、澄清困扰来源时。",
         "trigger": "来访者将情绪完全归因于事件，或叙述父母责骂、成绩下滑并出现not满、烦躁、委屈等且难以分辨想法与感受。",
@@ -7980,7 +7980,7 @@
     },
     "1125": {
         "skill_id": "1125",
-        "skill_name": "布置并指导情绪与自动思维记录作业",
+        "skill_name": "Assign and guide emotion and automatic thought recording homework",
         "skill_description": "讲解记录表的关键栏目（情境、自动思维、情绪及强度、行为/合理反应），布置每日或睡前记录情绪事件与当时的想法，复盘在not同情境下的情绪变化与诱因，持续捕捉自动思维并形成问题模式的初步识do not。",
         "when_to_use": "第一次会谈结束后或识do not训练开始时；需要将会谈练习迁移到日常生活、系统收集资料与监控情绪时。",
         "trigger": "来访者在会谈外难以稳定识do not自动思维，或情绪波动明显、对来源not清、叙述零散缺乏线索。",
@@ -8022,7 +8022,7 @@
     },
     "1182": {
         "skill_id": "1182",
-        "skill_name": "情景想象/再现以捕捉情绪与自动思维",
+        "skill_name": "Situation imagination/reproduction to capture emotions and automatic thoughts",
         "skill_description": "Have the client imagine and re-present feared or real interpersonal interaction scenes and experience the emotional changes; when emotions are activated, observe and record the emerging thoughts and feelings, and where necessary introduce the perspective of others/a good friend, reducing single-interpretation bias and concretizing the situation and thinking.",
         "when_to_use": "现场not易trigger真实情境或识do not过程卡顿、来访者难以具体回忆时。",
         "trigger": "对恐惧或人际情境难以描述、deny有想法，或在叙述中出现明显紧张迹象与记忆模糊。",
@@ -8484,9 +8484,9 @@
     },
     "1126": {
         "skill_id": "1126",
-        "skill_name": "SAS/SDS复测并比较评估成效",
+        "skill_name": "Re-administer SAS/SDS and compare to evaluate effectiveness",
         "skill_description": "Compare the standard scores of the SAS/SDS in the initial test and the retest, judging the extent of emotional improvement, objectively evaluate the staged or final treatment effect, and accordingly summarize the counseling outcome and subsequent arrangements.",
-        "when_to_use": "咨询中后期或结束前的效果评估节点。",
+        "when_to_use": "The effect-evaluation node in the middle-late stage of counseling or before termination.",
         "trigger": "完成若干次Intervention或作业后需检验进展并决定后续方向。",
         "parent_ids": [
             "660",
@@ -8582,7 +8582,7 @@
     },
     "1080": {
         "skill_id": "1080",
-        "skill_name": "初评施测量表并必要时建议医疗评估",
+        "skill_name": "Administer scales at initial assessment and recommend medical evaluation if necessary",
         "skill_description": "在初次评估阶段useSCL-90、SDS、SAS等量表建立基线并初步判断；若量表与临床线索提示需要，建议前往医院进一步诊断，以明确方向和联合Intervention方案。",
         "when_to_use": "首次会谈或早期评估，需要量化基线与澄清鉴do not诊断时。",
         "trigger": "广泛Anxiety抑郁、功能受损或对病因与诊断心存疑虑，需进一步评估。",
@@ -8624,7 +8624,7 @@
     },
     "1036": {
         "skill_id": "1036",
-        "skill_name": "施测并分析SCL-90与风险评估",
+        "skill_name": "Administer and analyze the SCL-90 and risk assessment",
         "skill_description": "在初始评估阶段实施SCL-90等测量并结合suicide/self-injury危险评估，量化抑郁、Anxiety等因子与症状指标，联合主观访谈综合判断当前状态，形成Intervention基线或复测对照。",
         "when_to_use": "At initial diagnosis or when symptom severity needs updating, as an objective reference for formulating the plan.",
         "trigger": "Needing to objectively understand the current degree of distress, comorbidity dimensions, or potential risks.",

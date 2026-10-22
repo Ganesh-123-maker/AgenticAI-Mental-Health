@@ -34,14 +34,14 @@
           "cognitive_pattern": "Comparing and Despairing"
         },
         {
-          "event": "面对空白画布准备开始一幅新作品",
+          "event": "Facing a blank canvas, preparing to start a new work",
           "conditional_assumptions": "如果not能保证作品足够好，就not应该开始；否则会被negate",
           "compensatory_strategies": "not动笔、拖延开始以避免可能的失望和批评",
           "automatic_thoughts": "这幅一定not会好，还是do not开始了。",
           "cognitive_pattern": "All-or-Nothing Thinking"
         },
         {
-          "event": "收到他人对作品的正面反馈或称赞",
+          "event": "Receiving positive feedback or praise from others about the work",
           "conditional_assumptions": "他人的称赞not可靠/只是礼貌；如果他们真懂，就not会这么说",
           "compensatory_strategies": "Discounting positive feedback, continuing to seek more external validation to gain a sense of certainty",
           "automatic_thoughts": "他们只是说好听的，not是真的。",
@@ -149,13 +149,13 @@
       "force_field": {
         "positive_force": [
           "Has had work liked by others, and occasionally feels proud of the work herself",
-          "具备持续投入艺术的兴趣与基础能力",
+          "Has the interest and basic ability to continuously engage in art",
           "Willing to seek help and explore change (proactively seeking counseling)",
           "Has a few friends to confide in (potential support resources)"
         ],
         "negative_force": [
           "Self-worth highly dependent on external recognition; positive feedback easily discounted",
-          "频繁社会比较与“非黑即白”思维",
+          "Frequent social comparison and 'black or white' thinking",
           "过度概括与negate积极信息，Reinforcementwithout力与not足感",
           "回避或拖延创作以减少被negate的风险，导致创作停滞"
         ]
@@ -164,7 +164,7 @@
     "bt": {
       "target_behavior": [
         {
-          "behavior": "回避创作/面对空白画布难以下笔",
+          "behavior": "Avoids creating / facing a blank canvas, hard to put brush to paper",
           "antecedent": [
             "面对空白画布准备开始新作品",
             "在开始前想到他人更优秀的作品"
@@ -177,7 +177,7 @@
           "behavior": "持续性的消极自我比较与自我贬低言语（如“我永远比not上do not人”）",
           "antecedent": [
             "看到其他成功Artist的作品",
-            "处于与艺术相关的场合或社交情境"
+            "In art-related occasions or social situations"
           ],
           "core_reason": "核心信念“I am not good enough”与对外部认可的依赖，trigger过度概括与非黑即白的评价。",
           "function": "Avoids investing and exposing one's vulnerability through self-defensive deprecation, maintains a sense of control",

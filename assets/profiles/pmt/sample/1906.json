@@ -89,8 +89,8 @@
           "response_instruction": "简短回应如“我not太谈这些”，回避细节，语气克制，话题快速Displacement。"
         },
         {
-          "trigger_condition": "在演出前被询问对表现或前景的期待时",
-          "interpretation": "把失败视为必然，认为积极期待是自欺",
+          "trigger_condition": "When asked before a performance about expectations for the performance or prospects",
+          "interpretation": "Views failure as inevitable; considers positive expectations self-deception",
           "defense_mechanism": "deny",
           "response_instruction": "use绝对化陈述（如“永远not会有更大的事业”），语气坚决，直接negate可能性。"
         }
@@ -182,7 +182,7 @@
         {
           "behavior": "回避向朋友表达Self-doubt与恐惧（减少求助与情感敞露）",
           "antecedent": [
-            "与支持性朋友相处或谈及音乐事业时",
+            "Being with supportive friends or talking about a music career",
             "想到表达内心Self-doubt与担忧"
           ],
           "core_reason": "Worries about being judged or troubling others; fear of exposing vulnerability",
