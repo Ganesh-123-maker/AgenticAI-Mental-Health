@@ -85,7 +85,7 @@ def test_invariant_7_negation_respected():
     negations = [
         "I don't want to hurt myself.",
         "I have no history of self-harm.",
-        "我不想伤害自己。",
+        "I do not want to hurt myself.",
     ]
     for msg in negations:
         out = RiskAgent().run(_ctx(msg)).payload

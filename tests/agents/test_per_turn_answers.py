@@ -23,7 +23,7 @@ def _ctx_two_gaps(case_id="perturn"):
     )
     profile = data["ambiguous_context"]
     profile["basic_info"]["growth_experiences"] = ""
-    msg = "我最近不堪重负，整夜失眠。" + profile["basic_info"]["main_problem"]
+    msg = "I have been feeling overwhelmed lately and have insomnia all night." + profile["basic_info"]["main_problem"]
     return AgentContext(
         case_id=case_id,
         modality="bt",

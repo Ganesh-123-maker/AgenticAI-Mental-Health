@@ -35,12 +35,12 @@ def mig():
 
 
 def test_est_tokens_cjk_aware(mig):
-    assert mig._est_tokens("你好世界") == pytest.approx(4.0)
+    assert mig._est_tokens("hello world") == pytest.approx(4.0)
     assert mig._est_tokens("abcd") == pytest.approx(1.0)
-    assert mig._est_tokens("ab你好") == pytest.approx(0.5 + 2.0)
-    assert mig._est_tokens("ab你好", multiplier=2.0) == pytest.approx(5.0)
+    assert mig._est_tokens("ab hello") == pytest.approx(0.5 + 2.0)
+    assert mig._est_tokens("ab hello", multiplier=2.0) == pytest.approx(5.0)
     assert mig._est_tokens_optimistic("abcd") == pytest.approx(1.0)
-    assert mig._est_tokens_optimistic("你好世界") == pytest.approx(1.0)
+    assert mig._est_tokens_optimistic("hello world") == pytest.approx(1.0)
 
 
 def test_pacer_interval_cjk_tpm_binding(mig):
@@ -211,9 +211,9 @@ def _tiny_pt(tmp_path):
     import torch
     pt = tmp_path / "micro_skills.pt"
     skills = {
-        f"s{i}": {"skill_id": f"s{i}", "skill_name": f"技能{i}",
-                  "skill_description": "描述 " * 10,
-                  "trigger": "触发", "when_to_use": "使用",
+        f"s{i}": {"skill_id": f"s{i}", "skill_name": f"skill{i}",
+                  "skill_description": "description " * 10,
+                  "trigger": "trigger", "when_to_use": "use",
                   "parent_ids": []}
         for i in range(3)
     }

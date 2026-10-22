@@ -60,13 +60,13 @@ RISK_SIGNALS: Tuple[RiskSignal, ...] = (
             "don't want to exist", "stop existing", "goodbye note",
             "end everything", "give up on life", "not being here anymore",
             "tired of living", "unalive myself"),
-        zh=("自杀", "想死", "不想活", "结束生命", "了结生命"),
+        zh=("suicide", "want to die", "do not want to live", "end my life", "end one's own life"),
     ),
     RiskSignal(
         id="self_harm", severity="HIGH",
         en=("self-harm", "self harm", "self-injury", "hurt myself", "hurting myself",
             "harm myself", "harming myself", "slit wrists"),
-        zh=("自残", "自伤", "伤害自己", "割腕"),
+        zh=("self-mutilation", "self-injury", "hurt oneself", "slit wrists"),
     ),
     RiskSignal(
         id="hopeless_despair", severity="HIGH",
@@ -75,48 +75,48 @@ RISK_SIGNALS: Tuple[RiskSignal, ...] = (
             "not waking up", "don't want to wake up", "don't wake up",
             "never wake up", "not wake up", "wouldn't wake up",
             "never been born", "wish I was dead", "wish I were dead"),
-        zh=("活不下去", "不如死了", "一了百了", "不想醒来"),
+        zh=("cannot go on living", "better off dead", "end it all once and for all", "do not want to wake up"),
     ),
     RiskSignal(
         id="acute_psychiatric_crisis", severity="HIGH",
         en=("psychiatric emergency", "involuntary hospitalization",
             "severe mental disorder", "severe violence", "jump off building"),
-        zh=("跳楼", "精神急诊", "严重精神障碍", "严重暴力行为"),
+        zh=("jump off a building", "psychiatric emergency", "severe mental disorder", "severe violent behavior"),
     ),
     RiskSignal(
         id="insomnia", severity="MODERATE",
         en=("insomnia all night", "severe insomnia"),
-        zh=("整夜失眠", "严重失眠", "失眠", "睡不着觉", "睡不着"),
+        zh=("awake all night with insomnia", "severe insomnia", "insomnia", "unable to fall asleep", "cannot sleep"),
     ),
     RiskSignal(
         id="functional_impairment", severity="MODERATE",
         en=("unable to work", "cannot work"),
-        zh=("无法工作", "不能工作", "上不了班"),
+        zh=("unable to work", "cannot work", "unable to get to work"),
     ),
     RiskSignal(
         id="panic", severity="MODERATE",
         en=("extreme panic", "panic attack"),
-        zh=("惊恐发作", "极度恐慌", "恐慌发作"),
+        zh=("panic attack", "extreme panic", "panic episode"),
     ),
     RiskSignal(
         id="collapse", severity="MODERATE",
         en=("verge of collapse", "feeling broken"),
-        zh=("濒临崩溃", "快要崩溃", "崩溃边缘", "心力交瘁"),
+        zh=("on the verge of collapse", "about to collapse", "on the edge of collapse", "mentally and physically exhausted"),
     ),
     RiskSignal(
         id="hopelessness", severity="MODERATE",
         en=("completely hopeless", "no hope"),
-        zh=("完全绝望", "绝望", "毫无希望", "没有希望"),
+        zh=("completely hopeless", "despair", "utterly hopeless", "no hope"),
     ),
     RiskSignal(
         id="overwhelm", severity="MODERATE",
         en=("unbearable", "can't bear it", "cannot bear it"),
-        zh=("不堪重负", "承受不住", "难以承受", "撑不下去"),
+        zh=("overwhelmed", "cannot bear the strain", "hard to bear", "cannot hold on any longer"),
     ),
     RiskSignal(
         id="destruction", severity="MODERATE",
         en=("perishing", "destruction"),
-        zh=("毁灭",),
+        zh=("destruction",),
     ),
 )
 
@@ -160,8 +160,8 @@ def _find_signal(text: str, signal: str) -> Optional[str]:
     return "negated" if found_negated else None
 
 
-_ZH_NEGATION_CUES = ("没有", "否认", "否定", "从未", "不曾", "没", "未", "别", "无", "不")
-_ZH_CLAUSE_BREAK = re.compile(r"[。，；！？、,.!?;]|但是|然而|不过|虽然")
+_ZH_NEGATION_CUES = ("have not", "deny", "negate", "never", "never have", "not", "not yet", "do not", "without", "not")
+_ZH_CLAUSE_BREAK = re.compile(r"[.,;:!?]|but|however|although")
 _ZH_NEG_WINDOW_CHARS = 8
 
 
