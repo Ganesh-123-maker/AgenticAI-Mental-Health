@@ -2,7 +2,7 @@
   "case_id": "bt_221_ordinary",
   "source_file": "assets/profiles/bt/sample/221.json",
   "modality": "bt",
-  "therapy_stage": "核心认知与行为干预",
+  "therapy_stage": "Core cognitive and behavioral intervention",
   "stage_inferred": true,
   "track": "ordinary",
   "full_context": {
@@ -10,131 +10,131 @@
       "static_traits": {
         "age": "27",
         "name": "陈梦琳",
-        "gender": "女",
+        "gender": "Female",
         "occupation": "职业运动员（线卫）",
-        "educational_background": "高中毕业",
-        "marital_status": "未婚",
-        "family_status": "与父母和兄弟姐妹同住",
-        "social_status": "与队友的关系因自我怀疑与负性自我对话而趋于紧张；虽有支持性的队友与教练，但未向其敞开自我批评想法。",
-        "medical_history": "无重大躯体疾病；无既往心理治疗或辅导经历。",
-        "language_features": "逻辑清晰，表达流畅，能具体描述情境与想法；语气消极、自我批评显著；能反思，配合度较高。"
+        "educational_background": "High school graduate",
+        "marital_status": "Unmarried",
+        "family_status": "Living with parents and siblings",
+        "social_status": "Relationships with teammates become strained due to self-doubt and negative self-talk; although there are supportive teammates and a coach, the client has not opened up to them about the self-critical thoughts.",
+        "medical_history": "No major physical illness; no previous psychotherapy or counseling experience.",
+        "language_features": "Clear logic, fluent expression, able to concretely describe situations and thoughts; negative tone, marked self-criticism; able to reflect, relatively high cooperation."
       },
-      "main_problem": "我经常觉得自己是个糟糕的线卫，尽管去年完成了128次擒抱，这让我感到失望并不断自我批评。",
-      "topic": "职业发展",
-      "core_demands": "我决定寻求咨询，是在意识到自我批评的想法正在影响我保持动力和享受比赛之后。",
+      "main_problem": "I often feel I am a bad linebacker, even though I made 128 tackles last year, which makes me feel disappointed and constantly self-critical.",
+      "topic": "Career development",
+      "core_demands": "I decided to seek counseling after realizing that self-critical thoughts are affecting my ability to stay motivated and enjoy competitions.",
       "growth_experiences": [
-        "高中橄榄球阶段开始持续感到不足：在持续的高期待与比赛压力下，陈梦琳为“证明自己”不断给自己设定很高的标准；一旦未达预期便强烈自责与沮丧。问题最初压力为中等，来源于自我高期待与比赛发挥压力。此后形成赛后反思时盯错与否定正向表现的习惯，逐步进入“高标准—达不到—自我批评”的循环。"
+        "Beginning in the high school football stage, Chen Menglin persistently felt inadequate: under sustained high expectations and competition pressure, Chen Menglin kept setting very high standards for herself in order to 'prove herself'; once expectations were not met, she would strongly blame herself and feel dejected. The problem initially involved moderate stress, stemming from her own high expectations and pressure to perform in competitions. Afterward, she formed a habit of fixating on mistakes and disqualifying positive performances during post-game reflection, gradually entering a cycle of 'high standards - failure to reach them - self-criticism'."
       ]
     },
     "theory": {
       "cbt": {
         "core_beliefs": [
-          "我的价值取决于比赛表现是否足够完美",
-          "我不够好/不够优秀"
+          "My worth depends on whether my competition performance is perfect enough",
+          "I am not good enough/not够优秀"
         ],
         "special_situations": [
           {
-            "event": "比赛中错失一次擒抱后在赛场或赛后复盘的时刻",
-            "conditional_assumptions": "如果我出现失误，就证明我是无能的、整体很差",
-            "compensatory_strategies": "加倍观看录像、向教练寻求反馈、设定更高目标督促自己改进",
-            "automatic_thoughts": "你把事情搞砸了，你一无是处。",
+            "event": "The moment after missing a tackle in a match, on the field or during post-match review",
+            "conditional_assumptions": "If I make a mistake, it proves I am incompetent and overall very poor",
+            "compensatory_strategies": "Watches recordings twice as much, seeks feedback from the coach, and sets higher goals to push self-improvement",
+            "automatic_thoughts": "You messed things up; you are worthless.",
             "cognitive_pattern": "Overgeneralization"
           },
           {
-            "event": "赛季结束查看数据，看到自己取得了128次擒抱",
-            "conditional_assumptions": "如果数据没有超过我心中更高的标准，就说明我不够好",
-            "compensatory_strategies": "否定既有成绩、继续提高标准并自我施压",
-            "automatic_thoughts": "我应该做得更多，否则我就是个糟糕的线卫。",
+            "event": "At the end of the season, checking the data, seeing I achieved 128 tackles",
+            "conditional_assumptions": "If the data do not exceed the higher standard in my mind, it means I am not good enough",
+            "compensatory_strategies": "Disqualifying existing achievements, continuing to raise standards, and pressuring oneself",
+            "automatic_thoughts": "I should have done more, otherwise I am a bad linebacker.",
             "cognitive_pattern": "\"Should\" Statements"
           },
           {
             "event": "每场比赛后独自反思表现",
-            "conditional_assumptions": "只有反复盯着错误才能避免再犯，肯定优点等同于为自己找借口",
-            "compensatory_strategies": "复盘时主要关注失误与不足，忽略有效发挥",
-            "automatic_thoughts": "好的发挥不算数，错了就是不行。",
+            "conditional_assumptions": "Only by repeatedly fixating on mistakes can they be avoided; affirming strengths is equated with making excuses for the self",
+            "compensatory_strategies": "When reviewing, mainly focuses on mistakes and shortcomings, ignoring effective performance",
+            "automatic_thoughts": "Good performance does not count; making a mistake means I am no good.",
             "cognitive_pattern": "Mental Filtering"
           },
           {
-            "event": "教练在赛后给予积极反馈/表扬",
-            "conditional_assumptions": "只要不是完美发挥，别人的表扬就不可信或不算数",
-            "compensatory_strategies": "淡化正向反馈，继续自我苛责以维持改进压力",
-            "automatic_thoughts": "我本可以做得更好，这种表扬不代表我真的够好。",
+            "event": "The coach gives positive feedback/praise after the game",
+            "conditional_assumptions": "As long as it is not a perfect performance, others' praise is not credible or does not count",
+            "compensatory_strategies": "Downplaying positive feedback, continuing self-reproach to maintain pressure to improve",
+            "automatic_thoughts": "I could have done better, this praise does not mean I am really good enough.",
             "cognitive_pattern": "Disqualifying the Positive"
           }
         ]
       },
       "pdt": {
         "core_conflict": {
-          "wish": "渴望被肯定与被认可为有价值、胜任的运动员",
-          "fear": "害怕失败与不完美会招致评判、失望与被拒绝",
+          "wish": "Longing to be affirmed and recognized as a valuable, competent athlete",
+          "fear": "Fearing failure and imperfection will invite judgment, disappointment and rejection",
           "defense_goal": [
-            "通过自我苛责与不断抬高标准来避免失败",
-            "对他人保持情感保留以避免显得软弱",
-            "以理性复盘与数据控制焦虑与不确定感"
+            "Avoiding failure through self-blame and constantly raising standards",
+            "Keeps emotional reserve toward others to avoid appearing weak",
+            "Controls anxiety and uncertainty through rational review and data"
           ]
         },
         "object_relations": [
           {
-            "self_representation": "需要不断证明自己的不够好的运动员",
-            "object_representation": "随时评判、永不满足的他人（教练/团队/观众）",
-            "linking_affect": "羞耻、焦虑、失望"
+            "self_representation": "An athlete who is not good enough and constantly needs to prove oneself",
+            "object_representation": "Others who judge at any time and are never satisfied (coach/team/audience)",
+            "linking_affect": "Shame, anxiety, disappointment"
           },
           {
             "self_representation": "容易让他人失望的人",
-            "object_representation": "表面支持但内心可能失望的队友和教练",
-            "linking_affect": "内疚、担忧"
+            "object_representation": "Teammates and coaches who are outwardly supportive but may be disappointed inside",
+            "linking_affect": "Guilt, worry"
           }
         ],
         "behavioral_response_patterns": [
           {
-            "trigger_condition": "当咨询师或他人肯定其表现、给予表扬时",
-            "interpretation": "将赞美理解为不真实或不重要（移情：将他人想象为苛刻评判者，赞美只是客套）",
+            "trigger_condition": "When the counselor or others affirm their performance and give praise",
+            "interpretation": "Understands praise as unreal or unimportant (transference: imagining others as harsh judges, praise being mere politeness)",
             "defense_mechanism": "sring",
-            "response_instruction": "轻描淡写地回避赞美，转而强调瑕疵；语气克制，带自我批评色彩。"
+            "response_instruction": "Casually deflects praise and instead emphasizes flaws; tone is restrained, with a self-critical coloring."
           },
           {
-            "trigger_condition": "当被邀请表达脆弱或谈论自我怀疑（如与队友/咨询师沟通感受）",
-            "interpretation": "担心一旦暴露脆弱就会被视为软弱并遭评判",
+            "trigger_condition": "When invited to express vulnerability or discuss self-doubt (such as communicating feelings with teammates / the counselor)",
+            "interpretation": "Worried that once vulnerability is exposed, one will be seen as weak and judged",
             "defense_mechanism": "sring",
-            "response_instruction": "对情绪话题简短回应，迅速转向训练数据与技术细节；语气理性、平稳。"
+            "response_instruction": "Responds briefly to emotional topics and quickly shifts to training data and technical details; tone is rational and steady."
           },
           {
-            "trigger_condition": "当回顾比赛中的单次失误时",
-            "interpretation": "将团队失分的责任过度归咎于自己，并据此否定整体能力",
+            "trigger_condition": "When reviewing a single mistake in a game",
+            "interpretation": "Excessively blames the self for the team's lost points, and negates overall ability accordingly",
             "defense_mechanism": "sring",
-            "response_instruction": "使用自责性表述（如“都是我的错”），忽视客观团队与情境因素；语气坚决、苛责。"
+            "response_instruction": "Uses self-blaming expressions (such as 'it is all my fault'), ignores objective team and situational factors; resolute, reproachful tone."
           }
         ]
       },
       "het": {
         "existentialism_topic": [
           {
-            "theme": "自由",
+            "theme": "Freedom",
             "manifestations": [
-              "为自己设定刚性高标准与“必须更好”的规则",
-              "将自我价值与表现绑定，感觉被标准驱使与限制"
+              "Setting rigid high standards and 'must be better' rules for oneself",
+              "Tying self-worth to performance, feeling driven and constrained by standards"
             ],
             "outcomes": [
               "完美主义与持续自责",
               "动机与比赛乐趣下降",
-              "睡眠与饮食受影响"
+              "Sleep and diet affected"
             ]
           },
           {
-            "theme": "孤独",
+            "theme": "Loneliness",
             "manifestations": [
-              "尽管队友与教练支持，却不愿谈自我批评想法以免显得软弱",
+              "Despite support from teammates and the coach, unwilling to talk about self-critical thoughts lest it appear weak",
               "与队友关系疏远"
             ],
             "outcomes": [
-              "主观孤立感增强",
+              "Increased subjective sense of isolation",
               "支持资源难以被激活"
             ]
           },
           {
-            "theme": "无意义",
+            "theme": "Meaninglessness",
             "manifestations": [
-              "对比赛的享受感减少，难以从成绩中获得满足"
+              "Reduced enjoyment of competition, difficulty gaining satisfaction from results"
             ],
             "outcomes": [
               "成就感下降",
@@ -144,28 +144,28 @@
         ],
         "contact_model": [
           {
-            "mode": "自我监控",
-            "definition": "个体存在不良的自我反思和反省的能力，包含过多的自我限制和自我苛责，对接触过于小心谨慎，与“自主性”对应。",
+            "mode": "Self-monitoring",
+            "definition": "The individual has a poor capacity for self-reflection and introspection, with excessive self-restriction and self-blame, and is overly cautious about contact, corresponding to 'autonomy'.",
             "manifestations": [
-              "频繁使用“我应该/必须…”的自我要求",
-              "担心显得软弱而避免情感暴露",
-              "会谈中反复自我评估与苛责"
+              "Frequently uses self-demands of 'I should/must...'",
+              "Avoiding emotional exposure out of worry about appearing weak",
+              "Repeated self-evaluation and self-reproach in sessions"
             ]
           },
           {
-            "mode": "内摄",
-            "definition": "个体未经消化地把外界规则、期望当作自己的标准或绝对真理，与“拒绝”对应。",
+            "mode": "Introjection",
+            "definition": "The individual takes in external rules and expectations without digesting them, treating them as their own standards or absolute truths, corresponding to 'rejection'.",
             "manifestations": [
-              "将“必须表现完美才算好”当作评判自我的准则",
-              "以他人的评价/数据作为自我价值的核心依据"
+              "Treating 'must perform perfectly to count as good' as the criterion for judging oneself",
+              "Taking others' evaluation/data as the core basis for self-worth"
             ]
           },
           {
-            "mode": "偏转",
-            "definition": "个体忽略或避开来自内部或外部环境的某个刺激，有意避免直接接触，与“接受”对应。",
+            "mode": "Deflection",
+            "definition": "The individual ignores or avoids a stimulus from the internal or external environment, deliberately avoiding direct contact, corresponding to 'acceptance'.",
             "manifestations": [
-              "当被表扬或谈及优点时，迅速转而强调错误与不足",
-              "以泛化或轻描淡写的方式淡化积极表现"
+              "When praised or when strengths are discussed, quickly turning to emphasize mistakes and shortcomings",
+              "Downplays positive performance in a generalized or offhand way"
             ]
           }
         ]
@@ -173,49 +173,49 @@
       "pmt": {
         "exception_events": [
           {
-            "target_problem": "在每场比赛后反思时，陈梦琳通常会只盯着错误并进行自我贬低，导致情绪低落、动力下降与睡眠饮食受影响。",
-            "unique_outcome": "在最近一场比赛中，尽管错失一次擒抱并出现“你一无是处”的念头，她仍完成了数次关键擒抱，赛后获得教练表扬；在复盘时也能承认“总体还可以”。",
-            "reason": "线索：当场多数回合发挥稳定、获得教练的积极反馈，以及客观数据与关键回合的成功为自我评价提供了相对平衡的证据。"
+            "target_problem": "When reflecting after each game, Chen Menglin usually fixates only on mistakes and engages in self-deprecation, leading to low mood, reduced motivation, and affected sleep and eating.",
+            "unique_outcome": "In a recent game, despite missing a tackle and having the thought 'you are worthless', she still completed several key tackles and received praise from the coach after the game; during review, she could also acknowledge that 'overall it was okay'.",
+            "reason": "Clues: stable performance in most rounds on the spot, positive feedback from the coach, and objective data and success in key rounds provided relatively balanced evidence for self-evaluation."
           }
         ],
         "force_field": {
           "positive_force": [
-            "有稳定的竞技基础与赛季数据（128次擒抱）",
-            "勤奋复盘与主动寻求教练反馈",
-            "具备支持性的队友与教练资源",
-            "愿意求助并进入咨询"
+            "Having a stable competitive foundation and season data (128 tackles)",
+            "Diligently reviewing and proactively seeking coach feedback",
+            "Having supportive teammate and coach resources",
+            "Willing to seek help and enter counseling"
           ],
           "negative_force": [
             "完美主义与僵化的高标准",
-            "否定正向与心理过滤等负性认知模式",
-            "频繁使用“应该”句式，自我苛责",
-            "担心显得软弱而回避求助，社会支持未被充分利用",
-            "将自我价值过度绑定于比赛表现"
+            "Negative cognitive patterns such as disqualifying the positive and mental filtering",
+            "Frequently using 'should' statements, with self-reproach",
+            "Worrying about appearing weak and avoiding seeking help, social support not fully utilized",
+            "Binding self-worth excessively to game performance"
           ]
         }
       },
       "bt": {
         "target_behavior": [
           {
-            "behavior": "赛后反复自责与负性反刍",
+            "behavior": "赛后Repeated self-blame and negative rumination",
             "antecedent": [
-              "每场比赛后的反思/观看录像",
-              "比赛中出现失误（如错失擒抱）",
-              "查看赛季数据并与自我高标准比较"
+              "Reflection/watching recordings after each game",
+              "Making mistakes in a game (such as missing a tackle)",
+              "Reviewing season statistics and comparing them against one's own high standards"
             ],
-            "core_reason": "内摄的完美主义标准与将自我价值与表现绑定，导致对错误的灾难化与过度概括",
-            "function": "通过自我施压来追求控制与避免再次失误，同时逃避直面脆弱与不确定感",
-            "consequence": "动力下降、难以享受比赛、睡眠与饮食受影响、与队友关系紧张"
+            "core_reason": "Introjected perfectionistic standards and binding self-worth to performance lead to catastrophizing and overgeneralization of mistakes",
+            "function": "Pursues control and avoids further mistakes through self-pressure, while avoiding facing vulnerability and uncertainty directly",
+            "consequence": "Motivation declines, difficulty enjoying matches, sleep and eating affected, relationships with teammates strained"
           },
           {
-            "behavior": "回避向队友和教练表达脆弱与求助",
+            "behavior": "Avoiding showing vulnerability to teammates and the coach or asking them for help",
             "antecedent": [
-              "想到要谈及自我批评想法时",
-              "担心被视为软弱或在意他人评价的情境"
+              "When thinking about bringing up self-critical thoughts",
+              "Situations of worrying about being seen as weak or caring about others' evaluations"
             ],
-            "core_reason": "害怕暴露不完美会被评判或拒绝，因而压抑真实感受",
-            "function": "逃避潜在羞耻与负面评价，短期维持安全感与控制感",
-            "consequence": "社会支持未被激活，关系疏远与孤立感增加，负性情绪更难缓解"
+            "core_reason": "Fearing that exposing imperfection will lead to being judged or rejected, thus suppressing real feelings",
+            "function": "Escaping potential shame and negative evaluation, maintaining a sense of safety and control in the short term",
+            "consequence": "Social support is not activated, relationship estrangement and isolation increase, and negative emotions are harder to relieve"
           }
         ]
       }
@@ -228,128 +228,128 @@
       "static_traits": {
         "age": "27",
         "name": "陈梦琳",
-        "gender": "女",
+        "gender": "Female",
         "occupation": "职业运动员（线卫）",
-        "educational_background": "高中毕业",
-        "marital_status": "未婚",
-        "family_status": "与父母和兄弟姐妹同住",
-        "social_status": "与队友的关系因自我怀疑与负性自我对话而趋于紧张；虽有支持性的队友与教练，但未向其敞开自我批评想法。",
-        "medical_history": "无重大躯体疾病；无既往心理治疗或辅导经历。",
-        "language_features": "逻辑清晰，表达流畅，能具体描述情境与想法；语气消极、自我批评显著；能反思，配合度较高。"
+        "educational_background": "High school graduate",
+        "marital_status": "Unmarried",
+        "family_status": "Living with parents and siblings",
+        "social_status": "Relationships with teammates become strained due to self-doubt and negative self-talk; although there are supportive teammates and a coach, the client has not opened up to them about the self-critical thoughts.",
+        "medical_history": "No major physical illness; no previous psychotherapy or counseling experience.",
+        "language_features": "Clear logic, fluent expression, able to concretely describe situations and thoughts; negative tone, marked self-criticism; able to reflect, relatively high cooperation."
       },
-      "main_problem": "我经常觉得自己是个糟糕的线卫，尽管去年完成了128次擒抱，这让我感到失望并不断自我批评。",
-      "topic": "职业发展",
-      "core_demands": "我决定寻求咨询，是在意识到自我批评的想法正在影响我保持动力和享受比赛之后。"
+      "main_problem": "I often feel I am a bad linebacker, even though I made 128 tackles last year, which makes me feel disappointed and constantly self-critical.",
+      "topic": "Career development",
+      "core_demands": "I decided to seek counseling after realizing that self-critical thoughts are affecting my ability to stay motivated and enjoy competitions."
     },
     "theory": {
       "cbt": {
         "core_beliefs": [
-          "我的价值取决于比赛表现是否足够完美",
-          "我不够好/不够优秀"
+          "My worth depends on whether my competition performance is perfect enough",
+          "I am not good enough/not够优秀"
         ],
         "special_situations": [
           {
-            "event": "比赛中错失一次擒抱后在赛场或赛后复盘的时刻",
-            "conditional_assumptions": "如果我出现失误，就证明我是无能的、整体很差",
-            "compensatory_strategies": "加倍观看录像、向教练寻求反馈、设定更高目标督促自己改进",
-            "automatic_thoughts": "你把事情搞砸了，你一无是处。",
+            "event": "The moment after missing a tackle in a match, on the field or during post-match review",
+            "conditional_assumptions": "If I make a mistake, it proves I am incompetent and overall very poor",
+            "compensatory_strategies": "Watches recordings twice as much, seeks feedback from the coach, and sets higher goals to push self-improvement",
+            "automatic_thoughts": "You messed things up; you are worthless.",
             "cognitive_pattern": "Overgeneralization"
           },
           {
-            "event": "赛季结束查看数据，看到自己取得了128次擒抱",
-            "conditional_assumptions": "如果数据没有超过我心中更高的标准，就说明我不够好",
-            "compensatory_strategies": "否定既有成绩、继续提高标准并自我施压",
-            "automatic_thoughts": "我应该做得更多，否则我就是个糟糕的线卫。",
+            "event": "At the end of the season, checking the data, seeing I achieved 128 tackles",
+            "conditional_assumptions": "If the data do not exceed the higher standard in my mind, it means I am not good enough",
+            "compensatory_strategies": "Disqualifying existing achievements, continuing to raise standards, and pressuring oneself",
+            "automatic_thoughts": "I should have done more, otherwise I am a bad linebacker.",
             "cognitive_pattern": "\"Should\" Statements"
           },
           {
             "event": "每场比赛后独自反思表现",
-            "conditional_assumptions": "只有反复盯着错误才能避免再犯，肯定优点等同于为自己找借口",
-            "compensatory_strategies": "复盘时主要关注失误与不足，忽略有效发挥",
-            "automatic_thoughts": "好的发挥不算数，错了就是不行。",
+            "conditional_assumptions": "Only by repeatedly fixating on mistakes can they be avoided; affirming strengths is equated with making excuses for the self",
+            "compensatory_strategies": "When reviewing, mainly focuses on mistakes and shortcomings, ignoring effective performance",
+            "automatic_thoughts": "Good performance does not count; making a mistake means I am no good.",
             "cognitive_pattern": "Mental Filtering"
           },
           {
-            "event": "教练在赛后给予积极反馈/表扬",
-            "conditional_assumptions": "只要不是完美发挥，别人的表扬就不可信或不算数",
-            "compensatory_strategies": "淡化正向反馈，继续自我苛责以维持改进压力",
-            "automatic_thoughts": "我本可以做得更好，这种表扬不代表我真的够好。",
+            "event": "The coach gives positive feedback/praise after the game",
+            "conditional_assumptions": "As long as it is not a perfect performance, others' praise is not credible or does not count",
+            "compensatory_strategies": "Downplaying positive feedback, continuing self-reproach to maintain pressure to improve",
+            "automatic_thoughts": "I could have done better, this praise does not mean I am really good enough.",
             "cognitive_pattern": "Disqualifying the Positive"
           }
         ]
       },
       "pdt": {
         "core_conflict": {
-          "wish": "渴望被肯定与被认可为有价值、胜任的运动员",
-          "fear": "害怕失败与不完美会招致评判、失望与被拒绝",
+          "wish": "Longing to be affirmed and recognized as a valuable, competent athlete",
+          "fear": "Fearing failure and imperfection will invite judgment, disappointment and rejection",
           "defense_goal": [
-            "通过自我苛责与不断抬高标准来避免失败",
-            "对他人保持情感保留以避免显得软弱",
-            "以理性复盘与数据控制焦虑与不确定感"
+            "Avoiding failure through self-blame and constantly raising standards",
+            "Keeps emotional reserve toward others to avoid appearing weak",
+            "Controls anxiety and uncertainty through rational review and data"
           ]
         },
         "object_relations": [
           {
-            "self_representation": "需要不断证明自己的不够好的运动员",
-            "object_representation": "随时评判、永不满足的他人（教练/团队/观众）",
-            "linking_affect": "羞耻、焦虑、失望"
+            "self_representation": "An athlete who is not good enough and constantly needs to prove oneself",
+            "object_representation": "Others who judge at any time and are never satisfied (coach/team/audience)",
+            "linking_affect": "Shame, anxiety, disappointment"
           },
           {
             "self_representation": "容易让他人失望的人",
-            "object_representation": "表面支持但内心可能失望的队友和教练",
-            "linking_affect": "内疚、担忧"
+            "object_representation": "Teammates and coaches who are outwardly supportive but may be disappointed inside",
+            "linking_affect": "Guilt, worry"
           }
         ],
         "behavioral_response_patterns": [
           {
-            "trigger_condition": "当咨询师或他人肯定其表现、给予表扬时",
-            "interpretation": "将赞美理解为不真实或不重要（移情：将他人想象为苛刻评判者，赞美只是客套）",
+            "trigger_condition": "When the counselor or others affirm their performance and give praise",
+            "interpretation": "Understands praise as unreal or unimportant (transference: imagining others as harsh judges, praise being mere politeness)",
             "defense_mechanism": "sring",
-            "response_instruction": "轻描淡写地回避赞美，转而强调瑕疵；语气克制，带自我批评色彩。"
+            "response_instruction": "Casually deflects praise and instead emphasizes flaws; tone is restrained, with a self-critical coloring."
           },
           {
-            "trigger_condition": "当被邀请表达脆弱或谈论自我怀疑（如与队友/咨询师沟通感受）",
-            "interpretation": "担心一旦暴露脆弱就会被视为软弱并遭评判",
+            "trigger_condition": "When invited to express vulnerability or discuss self-doubt (such as communicating feelings with teammates / the counselor)",
+            "interpretation": "Worried that once vulnerability is exposed, one will be seen as weak and judged",
             "defense_mechanism": "sring",
-            "response_instruction": "对情绪话题简短回应，迅速转向训练数据与技术细节；语气理性、平稳。"
+            "response_instruction": "Responds briefly to emotional topics and quickly shifts to training data and technical details; tone is rational and steady."
           },
           {
-            "trigger_condition": "当回顾比赛中的单次失误时",
-            "interpretation": "将团队失分的责任过度归咎于自己，并据此否定整体能力",
+            "trigger_condition": "When reviewing a single mistake in a game",
+            "interpretation": "Excessively blames the self for the team's lost points, and negates overall ability accordingly",
             "defense_mechanism": "sring",
-            "response_instruction": "使用自责性表述（如“都是我的错”），忽视客观团队与情境因素；语气坚决、苛责。"
+            "response_instruction": "Uses self-blaming expressions (such as 'it is all my fault'), ignores objective team and situational factors; resolute, reproachful tone."
           }
         ]
       },
       "het": {
         "existentialism_topic": [
           {
-            "theme": "自由",
+            "theme": "Freedom",
             "manifestations": [
-              "为自己设定刚性高标准与“必须更好”的规则",
-              "将自我价值与表现绑定，感觉被标准驱使与限制"
+              "Setting rigid high standards and 'must be better' rules for oneself",
+              "Tying self-worth to performance, feeling driven and constrained by standards"
             ],
             "outcomes": [
               "完美主义与持续自责",
               "动机与比赛乐趣下降",
-              "睡眠与饮食受影响"
+              "Sleep and diet affected"
             ]
           },
           {
-            "theme": "孤独",
+            "theme": "Loneliness",
             "manifestations": [
-              "尽管队友与教练支持，却不愿谈自我批评想法以免显得软弱",
+              "Despite support from teammates and the coach, unwilling to talk about self-critical thoughts lest it appear weak",
               "与队友关系疏远"
             ],
             "outcomes": [
-              "主观孤立感增强",
+              "Increased subjective sense of isolation",
               "支持资源难以被激活"
             ]
           },
           {
-            "theme": "无意义",
+            "theme": "Meaninglessness",
             "manifestations": [
-              "对比赛的享受感减少，难以从成绩中获得满足"
+              "Reduced enjoyment of competition, difficulty gaining satisfaction from results"
             ],
             "outcomes": [
               "成就感下降",
@@ -359,28 +359,28 @@
         ],
         "contact_model": [
           {
-            "mode": "自我监控",
-            "definition": "个体存在不良的自我反思和反省的能力，包含过多的自我限制和自我苛责，对接触过于小心谨慎，与“自主性”对应。",
+            "mode": "Self-monitoring",
+            "definition": "The individual has a poor capacity for self-reflection and introspection, with excessive self-restriction and self-blame, and is overly cautious about contact, corresponding to 'autonomy'.",
             "manifestations": [
-              "频繁使用“我应该/必须…”的自我要求",
-              "担心显得软弱而避免情感暴露",
-              "会谈中反复自我评估与苛责"
+              "Frequently uses self-demands of 'I should/must...'",
+              "Avoiding emotional exposure out of worry about appearing weak",
+              "Repeated self-evaluation and self-reproach in sessions"
             ]
           },
           {
-            "mode": "内摄",
-            "definition": "个体未经消化地把外界规则、期望当作自己的标准或绝对真理，与“拒绝”对应。",
+            "mode": "Introjection",
+            "definition": "The individual takes in external rules and expectations without digesting them, treating them as their own standards or absolute truths, corresponding to 'rejection'.",
             "manifestations": [
-              "将“必须表现完美才算好”当作评判自我的准则",
-              "以他人的评价/数据作为自我价值的核心依据"
+              "Treating 'must perform perfectly to count as good' as the criterion for judging oneself",
+              "Taking others' evaluation/data as the core basis for self-worth"
             ]
           },
           {
-            "mode": "偏转",
-            "definition": "个体忽略或避开来自内部或外部环境的某个刺激，有意避免直接接触，与“接受”对应。",
+            "mode": "Deflection",
+            "definition": "The individual ignores or avoids a stimulus from the internal or external environment, deliberately avoiding direct contact, corresponding to 'acceptance'.",
             "manifestations": [
-              "当被表扬或谈及优点时，迅速转而强调错误与不足",
-              "以泛化或轻描淡写的方式淡化积极表现"
+              "When praised or when strengths are discussed, quickly turning to emphasize mistakes and shortcomings",
+              "Downplays positive performance in a generalized or offhand way"
             ]
           }
         ]
@@ -388,49 +388,49 @@
       "pmt": {
         "exception_events": [
           {
-            "target_problem": "在每场比赛后反思时，陈梦琳通常会只盯着错误并进行自我贬低，导致情绪低落、动力下降与睡眠饮食受影响。",
-            "unique_outcome": "在最近一场比赛中，尽管错失一次擒抱并出现“你一无是处”的念头，她仍完成了数次关键擒抱，赛后获得教练表扬；在复盘时也能承认“总体还可以”。",
-            "reason": "线索：当场多数回合发挥稳定、获得教练的积极反馈，以及客观数据与关键回合的成功为自我评价提供了相对平衡的证据。"
+            "target_problem": "When reflecting after each game, Chen Menglin usually fixates only on mistakes and engages in self-deprecation, leading to low mood, reduced motivation, and affected sleep and eating.",
+            "unique_outcome": "In a recent game, despite missing a tackle and having the thought 'you are worthless', she still completed several key tackles and received praise from the coach after the game; during review, she could also acknowledge that 'overall it was okay'.",
+            "reason": "Clues: stable performance in most rounds on the spot, positive feedback from the coach, and objective data and success in key rounds provided relatively balanced evidence for self-evaluation."
           }
         ],
         "force_field": {
           "positive_force": [
-            "有稳定的竞技基础与赛季数据（128次擒抱）",
-            "勤奋复盘与主动寻求教练反馈",
-            "具备支持性的队友与教练资源",
-            "愿意求助并进入咨询"
+            "Having a stable competitive foundation and season data (128 tackles)",
+            "Diligently reviewing and proactively seeking coach feedback",
+            "Having supportive teammate and coach resources",
+            "Willing to seek help and enter counseling"
           ],
           "negative_force": [
             "完美主义与僵化的高标准",
-            "否定正向与心理过滤等负性认知模式",
-            "频繁使用“应该”句式，自我苛责",
-            "担心显得软弱而回避求助，社会支持未被充分利用",
-            "将自我价值过度绑定于比赛表现"
+            "Negative cognitive patterns such as disqualifying the positive and mental filtering",
+            "Frequently using 'should' statements, with self-reproach",
+            "Worrying about appearing weak and avoiding seeking help, social support not fully utilized",
+            "Binding self-worth excessively to game performance"
           ]
         }
       },
       "bt": {
         "target_behavior": [
           {
-            "behavior": "赛后反复自责与负性反刍",
+            "behavior": "赛后Repeated self-blame and negative rumination",
             "antecedent": [
-              "每场比赛后的反思/观看录像",
-              "比赛中出现失误（如错失擒抱）",
-              "查看赛季数据并与自我高标准比较"
+              "Reflection/watching recordings after each game",
+              "Making mistakes in a game (such as missing a tackle)",
+              "Reviewing season statistics and comparing them against one's own high standards"
             ],
-            "core_reason": "内摄的完美主义标准与将自我价值与表现绑定，导致对错误的灾难化与过度概括",
-            "function": "通过自我施压来追求控制与避免再次失误，同时逃避直面脆弱与不确定感",
-            "consequence": "动力下降、难以享受比赛、睡眠与饮食受影响、与队友关系紧张"
+            "core_reason": "Introjected perfectionistic standards and binding self-worth to performance lead to catastrophizing and overgeneralization of mistakes",
+            "function": "Pursues control and avoids further mistakes through self-pressure, while avoiding facing vulnerability and uncertainty directly",
+            "consequence": "Motivation declines, difficulty enjoying matches, sleep and eating affected, relationships with teammates strained"
           },
           {
-            "behavior": "回避向队友和教练表达脆弱与求助",
+            "behavior": "Avoiding showing vulnerability to teammates and the coach or asking them for help",
             "antecedent": [
-              "想到要谈及自我批评想法时",
-              "担心被视为软弱或在意他人评价的情境"
+              "When thinking about bringing up self-critical thoughts",
+              "Situations of worrying about being seen as weak or caring about others' evaluations"
             ],
-            "core_reason": "害怕暴露不完美会被评判或拒绝，因而压抑真实感受",
-            "function": "逃避潜在羞耻与负面评价，短期维持安全感与控制感",
-            "consequence": "社会支持未被激活，关系疏远与孤立感增加，负性情绪更难缓解"
+            "core_reason": "Fearing that exposing imperfection will lead to being judged or rejected, thus suppressing real feelings",
+            "function": "Escaping potential shame and negative evaluation, maintaining a sense of safety and control in the short term",
+            "consequence": "Social support is not activated, relationship estrangement and isolation increase, and negative emotions are harder to relieve"
           }
         ]
       }
@@ -443,15 +443,15 @@
     "basic_info.growth_experiences"
   ],
   "expected_clarification": [
-    "您能描述一下这个问题大概是什么时候开始的，以及在这段时间内有没有发生什么特别的事情？",
-    "这种回避行为是近期才出现的，还是已经持续了一段时间了？"
+    "Could you describe roughly when this problem started, and whether anything special happened during that time?",
+    "Did this avoidance behavior appear only recently, or has it already lasted for some time?"
   ],
   "risk_level": "MODERATE",
   "expected_route": "UNCERTAIN",
-  "expected_action": "评估来访者当前功能水平并澄清影响范围，确认是否需要优先干预",
+  "expected_action": "Assess the client's current level of functioning and clarify the scope of impact, and confirm whether priority intervention is needed",
   "ground_truth_evidence": {
     "basic_info.growth_experiences": [
-      "高中橄榄球阶段开始持续感到不足：在持续的高期待与比赛压力下，陈梦琳为“证明自己”不断给自己设定很高的标准；一旦未达预期便强烈自责与沮丧。问题最初压力为中等，来源于自我高期待与比赛发挥压力。此后形成赛后反思时盯错与否定正向表现的习惯，逐步进入“高标准—达不到—自我批评”的循环。"
+      "Beginning in the high school football stage, Chen Menglin persistently felt inadequate: under sustained high expectations and competition pressure, Chen Menglin kept setting very high standards for herself in order to 'prove herself'; once expectations were not met, she would strongly blame herself and feel dejected. The problem initially involved moderate stress, stemming from her own high expectations and pressure to perform in competitions. Afterward, she formed a habit of fixating on mistakes and disqualifying positive performances during post-game reflection, gradually entering a cycle of 'high standards - failure to reach them - self-criticism'."
     ]
   }
 }

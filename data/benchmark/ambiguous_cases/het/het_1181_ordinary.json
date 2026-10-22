@@ -2,150 +2,150 @@
   "case_id": "het_1181_ordinary",
   "source_file": "assets/profiles/het/sample/1181.json",
   "modality": "het",
-  "therapy_stage": "问题概念化与目标设定",
+  "therapy_stage": "Problem conceptualization and goal setting",
   "stage_inferred": false,
   "track": "ordinary",
   "full_context": {
     "basic_info": {
       "static_traits": {
         "age": "41",
-        "name": "陈明",
-        "gender": "男",
-        "occupation": "未提及",
-        "educational_background": "未提及",
-        "marital_status": "未提及",
-        "family_status": "未提及",
-        "social_status": "有朋友可交谈，但尚未向他们分享自己的失败感受",
-        "medical_history": "此前未出现类似心理问题；未接受过心理治疗；无重大躯体疾病",
-        "language_features": "自我否定明显，存在全或无思维、过度概括与心理过滤；能清晰表达现状与想法；态度偏消极但愿意尝试行为实验；语速与配合度未提及"
+        "name": "Chen Ming",
+        "gender": "Male",
+        "occupation": "Not mentioned",
+        "educational_background": "Not mentioned",
+        "marital_status": "Not mentioned",
+        "family_status": "Not mentioned",
+        "social_status": "Having friends to talk to, but not yet sharing feelings of failure with them",
+        "medical_history": "No similar psychological problems before; has not received psychotherapy; no major physical illness",
+        "language_features": "Evident self-negation, with all-or-nothing thinking, overgeneralization, and mental filtering; able to clearly express the current situation and thoughts; attitude rather negative but willing to try behavioral experiments; speech rate and cooperation not mentioned"
       },
-      "main_problem": "因常把自己喜爱的食物（如披萨、卷饼）烹饪过火而持续产生“我在生活中失败”的感受，伴随无能与自我批评；问题始于最近独自生活、自己做饭后，并逐渐泛化到生活其他方面。",
-      "topic": "情绪管理",
-      "core_demands": "当失败感开始影响自尊与对曾经喜爱的活动的享受后，希望通过咨询缓解自我失败感与自我批评。",
+      "main_problem": "Because I often overcook foods I love (such as pizza and burritos), I persistently feel 'I am a failure in life,' with feelings of incompetence and self-criticism; the problem began recently when I started living alone and cooking for myself, and has gradually generalized to other areas of life.",
+      "topic": "Emotion management",
+      "core_demands": "After feelings of failure began to affect self-esteem and enjoyment of once-loved activities, the client hopes to relieve self-failure feelings and self-criticism through counseling.",
       "growth_experiences": [
-        "最近开始独自生活并自己做饭。每次做饭（如披萨、卷饼）常烹饪过火，引发强烈的自责与无能感；这种失败感逐步从做饭扩散到购物、工作等日常领域，使其认为“每一个小错误都证明我不够好”。同时尝试提高烹饪技能与寻求他人认可，但未能缓解。"
+        "The client recently began living alone and cooking their own meals. Each time the client cooks (such as pizza or wraps), the food is often overcooked, triggering strong self-blame and feelings of incompetence; this sense of failure gradually spread from cooking to daily domains such as shopping and work, making the client believe that 'every small mistake proves I am not good enough'. At the same time, the client tried to improve cooking skills and seek others' recognition, but this did not bring relief."
       ]
     },
     "theory": {
       "cbt": {
         "core_beliefs": [
-          "我不够好",
-          "我一无是处"
+          "I am not good enough",
+          "I am worthless"
         ],
         "special_situations": [
           {
-            "event": "独自做饭（如披萨或卷饼）并把食物烹饪过火",
-            "conditional_assumptions": "如果连简单的做饭都做不好，就说明我是生活中的失败者",
-            "compensatory_strategies": "放弃继续练习做饭，改为选择不需要烹饪的食物或点外卖；在做饭过程中反复自我怀疑",
-            "automatic_thoughts": "我连这都做不好，我的人生也失败了",
+            "event": "Cooking alone (such as pizza or burritos) and overcooking the food",
+            "conditional_assumptions": "If I cannot even cook a simple meal well, it means I am a failure in life",
+            "compensatory_strategies": "Gave up continuing to practice cooking, instead choosing foods that require no cooking or ordering takeout; repeatedly doubts themselves during cooking",
+            "automatic_thoughts": "I cannot even do this well; my life is a failure too",
             "cognitive_pattern": "Overgeneralization"
           },
           {
-            "event": "开始做饭前回想以往失败并担心再次搞砸",
-            "conditional_assumptions": "如果之前失败过，这次也一定会失败；与其再受打击，不如不尝试",
-            "compensatory_strategies": "回避烹饪，或仅选择极其简单、无需烹饪的食物以降低风险",
-            "automatic_thoughts": "我又会把它搞砸，没必要再试",
+            "event": "Before starting to cook, recalls past failures and worries about messing up again",
+            "conditional_assumptions": "If I failed before, I will surely fail this time; rather than being hit again, it is better not to try",
+            "compensatory_strategies": "Avoids cooking, or only chooses extremely simple, no-cook foods to reduce risk",
+            "automatic_thoughts": "I will mess it up again; there is no need to try anymore",
             "cognitive_pattern": "Fortune Telling"
           },
           {
-            "event": "在购物或工作等日常活动中出现小错误",
-            "conditional_assumptions": "任何一个小错误都能证明我不够好、我不胜任",
-            "compensatory_strategies": "反复回想错误并忽视做对的部分，加重自我批评",
-            "automatic_thoughts": "这又说明我不行",
+            "event": "Making small mistakes in daily activities such as shopping or work",
+            "conditional_assumptions": "Any small mistake can prove I am not good enough, I am not competent",
+            "compensatory_strategies": "Repeatedly recalling mistakes and ignoring the parts done right, worsening self-criticism",
+            "automatic_thoughts": "这又说明我not行",
             "cognitive_pattern": "Mental Filtering"
           },
           {
-            "event": "向他人寻求认可或反馈以缓解失败感却收效甚微",
-            "conditional_assumptions": "只有得到他人的肯定，我才算有价值；没有外部认可，任何进步都不算数",
-            "compensatory_strategies": "反复向他人寻求认可与保证；把正面反馈归因为偶然、轻描淡写其价值",
-            "automatic_thoughts": "如果别人不认可，我就是失败者",
+            "event": "Seeking recognition or feedback from others to relieve feelings of failure but with little effect",
+            "conditional_assumptions": "Only with others' affirmation do I count as valuable; without external recognition, no progress counts",
+            "compensatory_strategies": "Repeatedly seeks recognition and reassurance from others; attributes positive feedback to chance and downplays its value",
+            "automatic_thoughts": "If others do not approve of me, I am a failure",
             "cognitive_pattern": "External Validation"
           }
         ]
       },
       "pdt": {
         "core_conflict": {
-          "wish": "渴望被看作胜任且独立，能把生活与做饭等事务处理好并获得认可",
-          "fear": "害怕失败导致自我价值崩塌、被否定与羞辱；担心任何错误都证明自己不够好",
+          "wish": "Longs to be seen as competent and independent, able to handle life and matters like cooking well and gain recognition",
+          "fear": "Fears failure leading to a collapse of self-worth, being negated and humiliated; worries that any mistake proves they are not good enough",
           "defense_goal": [
-            "通过自我批评与回避烹饪来减少再失败的风险",
-            "寻求外部认可以暂时缓解不安全感",
-            "把标准收紧并谨慎行事以维持脆弱的自尊"
+            "Reducing the risk of failing again through self-criticism and avoiding cooking",
+            "Seeking external recognition to temporarily relieve insecurity",
+            "Tightens standards and acts cautiously to maintain fragile self-esteem"
           ]
         },
         "object_relations": [
           {
-            "self_representation": "不胜任、容易失败的自我",
-            "object_representation": "挑剔的评判者（可能否定我）",
-            "linking_affect": "羞愧、焦虑、失望"
+            "self_representation": "not胜任、容易失败的自我",
+            "object_representation": "A picky judge (who may negate me)",
+            "linking_affect": "Shame, anxiety, disappointment"
           }
         ],
         "behavioral_response_patterns": [
           {
-            "trigger_condition": "当被邀请尝试新方法（如行为实验）或被鼓励继续练习烹饪时",
-            "interpretation": "把尝试理解为“必须成功，否则再次证明我不行”，并预设结局不会改变（悲观期待）",
-            "defense_mechanism": "合理化",
-            "response_instruction": "以消极、怀疑的语气强调过去的失败和“不会有变化”的理由，用否定式预测来拒绝尝试。"
+            "trigger_condition": "When invited to try new methods (such as behavioral experiments) or encouraged to keep practicing cooking",
+            "interpretation": "Understands trying as 'must succeed, otherwise it proves once again that I am incapable', and presupposes the outcome will not change (pessimistic expectation)",
+            "defense_mechanism": "Rationalization",
+            "response_instruction": "In a negative, skeptical tone, emphasizes past failures and reasons that 'there will be no change', using negating predictions to refuse trying."
           },
           {
-            "trigger_condition": "当做饭失败或在日常活动中出现小错误，被询问其体验或细节时",
-            "interpretation": "把错误当成对整体价值的判决，认为“我不配、我不够好”",
-            "defense_mechanism": "转向自身",
-            "response_instruction": "使用强烈自责与贬低自己的语句，放大错误、忽视正面，语气沉重而否定。"
+            "trigger_condition": "When cooking fails or small mistakes occur in daily activities and they are asked about their experience or the details",
+            "interpretation": "Treats mistakes as a verdict on overall worth, believing 'I do not deserve it, I am not good enough'",
+            "defense_mechanism": "Turning against the self",
+            "response_instruction": "Uses strongly self-blaming and self-deprecating statements, magnifying mistakes and ignoring positives, with a heavy and negating tone."
           }
         ]
       },
       "het": {
         "existentialism_topic": [
           {
-            "theme": "无意义",
+            "theme": "Meaninglessness",
             "manifestations": [
-              "把做饭失败泛化为“我在生活中失败”",
-              "活动的乐趣下降（做饭、购物）",
-              "积极事件被失败感覆盖，难以想起做得好的时刻"
+              "Generalizes a cooking failure into 'I have failed in life'",
+              "Decreased enjoyment of activities (cooking, shopping)",
+              "Positive events are covered by feelings of failure, difficulty remembering moments done well"
             ],
             "outcomes": [
               "低自尊与自我贬低",
               "回避尝试、缩减生活参与",
-              "焦虑与挫败感增强"
+              "Increased anxiety and sense of frustration"
             ]
           },
           {
-            "theme": "孤独",
+            "theme": "Loneliness",
             "manifestations": [
-              "最近独自生活并独自承担日常事务",
-              "虽有朋友可谈，但未分享自己的失败与感受"
+              "Recently living alone and handling daily affairs alone",
+              "Although there are friends to talk to, has not shared one's failures and feelings"
             ],
             "outcomes": [
               "情感表达受限与自我封闭",
-              "加重对自我价值的怀疑与焦虑",
+              "Aggravating doubt about and anxiety over one's self-worth",
               "对外部认可的依赖提升"
             ]
           }
         ],
         "contact_model": [
           {
-            "mode": "内摄",
-            "definition": "个体未经消化地把外界规则、期望当作自己的标准或绝对真理。",
+            "mode": "Introjection",
+            "definition": "The individual takes in external rules and expectations without digesting them, treating them as their own standards or absolute truths.",
             "manifestations": [
-              "以“应该能把简单的事做好”为硬性标准评判自己",
-              "将“做饭必须成功”内化为自我价值的衡量尺"
+              "Judging oneself by the rigid standard 'should be able to do simple things well'",
+              "Internalizing 'cooking must succeed' as a yardstick for self-worth"
             ]
           },
           {
-            "mode": "回摄",
-            "definition": "个体将原欲对外发出的能量转而对自己，克制或放弃外向表达与行动。",
+            "mode": "Retroflection",
+            "definition": "The individual turns the energy originally directed outward onto the self, restraining or giving up outward expression and action.",
             "manifestations": [
-              "做饭失败后把愤怒与失望转向自责与贬低自己",
-              "选择避免再尝试烹饪、点外卖以压抑不适感"
+              "After cooking failure, turning anger and disappointment into self-blame and self-deprecation",
+              "Chooses to avoid trying cooking again and orders takeout to suppress discomfort"
             ]
           },
           {
-            "mode": "自我监控",
-            "definition": "个体存在不良的自我反思与过度自我限制与苛责，对接触过于小心谨慎。",
+            "mode": "Self-monitoring",
+            "definition": "The individual has poor self-reflection with excessive self-restriction and reproach, and is overly cautious about contact.",
             "manifestations": [
-              "在做饭前过度担忧、反复自我怀疑",
-              "把小错误视为整体不胜任，严苛自我评判"
+              "Excessive worry and repeated self-doubt before cooking",
+              "Views small mistakes as overall incompetence; harsh self-judgment"
             ]
           }
         ]
@@ -154,51 +154,51 @@
         "exception_events": [],
         "force_field": {
           "positive_force": [
-            "具备一定的自我观察能力，能描述前中后做饭时的想法与情绪",
-            "愿意尝试新的方法（如选择简单食谱、事先备料）",
-            "拥有一定的社会支持资源（有朋友可交谈）",
-            "能够制定具体的小步骤计划（选择简单食谱、提前准备）"
+            "Possesses some self-observation ability, able to describe thoughts and emotions before, during, and after cooking",
+            "Willing to try new methods (such as choosing simple recipes, preparing ingredients in advance)",
+            "Has some social support resources (friends to talk with)",
+            "Able to formulate concrete small-step plans (choosing simple recipes, preparing in advance)"
           ],
           "negative_force": [
-            "自我否定与低自尊，常以错误定义自我价值",
-            "全或无思维与过度概括，易将单次失败泛化为整体失败",
-            "心理过滤与否定积极，失败感覆盖正面经验",
-            "对外部认可的依赖，内部自我肯定不足",
-            "回避尝试以短期减轻焦虑，长期强化“无能”自我图式"
+            "Self-negation and low self-esteem; often defines self-worth by mistakes",
+            "All-or-nothing thinking and overgeneralization, easily generalizing a single failure to overall failure",
+            "Mental filtering and disqualifying the positive; a sense of failure overshadows positive experiences",
+            "Dependence on external approval; insufficient internal self-affirmation",
+            "Avoiding attempts to reduce anxiety in the short term, reinforcing the 'incompetence' self-schema in the long term"
           ]
         }
       },
       "bt": {
         "target_behavior": [
           {
-            "behavior": "回避烹饪与技能性活动，改为点外卖或选择无需烹饪的食物",
+            "behavior": "Avoids cooking and skill-based activities, instead ordering takeout or choosing no-cook foods",
             "antecedent": [
-              "开始做饭前的高焦虑与自我怀疑",
+              "High anxiety and self-doubt before starting to cook",
               "回忆以往做饭失败经历"
             ],
-            "core_reason": "对失败的灾难化与预测未来必然失败（全或无规则、预测未来），以维护脆弱自尊",
-            "function": "逃避失败与焦虑，获得短期情绪缓解",
-            "consequence": "加深“我不行”的自我认知，生活成本增加，乐趣与自我效能进一步下降"
+            "core_reason": "Catastrophizing of failure and predicting inevitable future failure (all-or-nothing rules, fortune telling), in order to protect fragile self-esteem",
+            "function": "Escapes failure and anxiety, gaining short-term emotional relief",
+            "consequence": "Deepens the self-perception of 'I can't do it', living costs increase, and enjoyment and self-efficacy decline further"
           },
           {
-            "behavior": "强烈的自我贬低与自我批评（如“我一无是处”）",
+            "behavior": "Strong self-deprecation and self-criticism (such as 'I am worthless')",
             "antecedent": [
-              "做饭失败或在购物、工作中出现小错误",
-              "回顾日常表现时只关注错误"
+              "Failing at cooking or making small mistakes at shopping or work",
+              "When reviewing daily performance, focusing only on mistakes"
             ],
-            "core_reason": "内化的负性核心信念（我不够好），并以错误作为全局证据支持该信念",
-            "function": "以自责作为自我控制与防止再尝试的方式，避免再次面对失败带来的羞耻",
-            "consequence": "自尊受损、情绪低落与回避增加，生活参与度下降"
+            "core_reason": "Internalized negative core belief (I am not good enough), using mistakes as global evidence supporting that belief",
+            "function": "Uses self-blame as a means of self-control and preventing further attempts, avoiding facing again the shame brought by failure",
+            "consequence": "Damaged self-esteem, low mood and increased avoidance, decreased life participation"
           },
           {
-            "behavior": "做饭过程中的高度焦虑与分心，导致频繁把食物烹饪过火",
+            "behavior": "High anxiety and distraction during cooking, leading to frequently overcooking the food",
             "antecedent": [
               "独自做饭时担心再次失败",
-              "做饭过程中反复第二次猜测与自我怀疑"
+              "Repeated second-guessing and self-doubt during cooking"
             ],
-            "core_reason": "对错误高度敏感与过度监控，削弱专注与执行，形成负性反馈循环",
-            "function": "在当下试图通过过度监控获得控制感（但适得其反）",
-            "consequence": "烹饪结果持续不佳，进一步强化失败感与避免行为"
+            "core_reason": "High sensitivity to mistakes and excessive monitoring weaken focus and execution, forming a negative feedback loop",
+            "function": "Trying to gain a sense of control through excessive monitoring in the present (but it backfires)",
+            "consequence": "Persistently poor cooking results further reinforce feelings of failure and avoidance behavior"
           }
         ]
       }
@@ -210,140 +210,140 @@
     "basic_info": {
       "static_traits": {
         "age": "41",
-        "name": "陈明",
-        "gender": "男",
-        "occupation": "未提及",
-        "educational_background": "未提及",
-        "marital_status": "未提及",
-        "family_status": "未提及",
-        "social_status": "有朋友可交谈，但尚未向他们分享自己的失败感受",
-        "medical_history": "此前未出现类似心理问题；未接受过心理治疗；无重大躯体疾病",
-        "language_features": "自我否定明显，存在全或无思维、过度概括与心理过滤；能清晰表达现状与想法；态度偏消极但愿意尝试行为实验；语速与配合度未提及"
+        "name": "Chen Ming",
+        "gender": "Male",
+        "occupation": "Not mentioned",
+        "educational_background": "Not mentioned",
+        "marital_status": "Not mentioned",
+        "family_status": "Not mentioned",
+        "social_status": "Having friends to talk to, but not yet sharing feelings of failure with them",
+        "medical_history": "No similar psychological problems before; has not received psychotherapy; no major physical illness",
+        "language_features": "Evident self-negation, with all-or-nothing thinking, overgeneralization, and mental filtering; able to clearly express the current situation and thoughts; attitude rather negative but willing to try behavioral experiments; speech rate and cooperation not mentioned"
       },
-      "main_problem": "因常把自己喜爱的食物（如披萨、卷饼）烹饪过火而持续产生“我在生活中失败”的感受，伴随无能与自我批评；问题始于最近独自生活、自己做饭后，并逐渐泛化到生活其他方面。",
-      "topic": "情绪管理",
-      "core_demands": "当失败感开始影响自尊与对曾经喜爱的活动的享受后，希望通过咨询缓解自我失败感与自我批评。"
+      "main_problem": "Because I often overcook foods I love (such as pizza and burritos), I persistently feel 'I am a failure in life,' with feelings of incompetence and self-criticism; the problem began recently when I started living alone and cooking for myself, and has gradually generalized to other areas of life.",
+      "topic": "Emotion management",
+      "core_demands": "After feelings of failure began to affect self-esteem and enjoyment of once-loved activities, the client hopes to relieve self-failure feelings and self-criticism through counseling."
     },
     "theory": {
       "cbt": {
         "core_beliefs": [
-          "我不够好",
-          "我一无是处"
+          "I am not good enough",
+          "I am worthless"
         ],
         "special_situations": [
           {
-            "event": "独自做饭（如披萨或卷饼）并把食物烹饪过火",
-            "conditional_assumptions": "如果连简单的做饭都做不好，就说明我是生活中的失败者",
-            "compensatory_strategies": "放弃继续练习做饭，改为选择不需要烹饪的食物或点外卖；在做饭过程中反复自我怀疑",
-            "automatic_thoughts": "我连这都做不好，我的人生也失败了",
+            "event": "Cooking alone (such as pizza or burritos) and overcooking the food",
+            "conditional_assumptions": "If I cannot even cook a simple meal well, it means I am a failure in life",
+            "compensatory_strategies": "Gave up continuing to practice cooking, instead choosing foods that require no cooking or ordering takeout; repeatedly doubts themselves during cooking",
+            "automatic_thoughts": "I cannot even do this well; my life is a failure too",
             "cognitive_pattern": "Overgeneralization"
           },
           {
-            "event": "开始做饭前回想以往失败并担心再次搞砸",
-            "conditional_assumptions": "如果之前失败过，这次也一定会失败；与其再受打击，不如不尝试",
-            "compensatory_strategies": "回避烹饪，或仅选择极其简单、无需烹饪的食物以降低风险",
-            "automatic_thoughts": "我又会把它搞砸，没必要再试",
+            "event": "Before starting to cook, recalls past failures and worries about messing up again",
+            "conditional_assumptions": "If I failed before, I will surely fail this time; rather than being hit again, it is better not to try",
+            "compensatory_strategies": "Avoids cooking, or only chooses extremely simple, no-cook foods to reduce risk",
+            "automatic_thoughts": "I will mess it up again; there is no need to try anymore",
             "cognitive_pattern": "Fortune Telling"
           },
           {
-            "event": "在购物或工作等日常活动中出现小错误",
-            "conditional_assumptions": "任何一个小错误都能证明我不够好、我不胜任",
-            "compensatory_strategies": "反复回想错误并忽视做对的部分，加重自我批评",
-            "automatic_thoughts": "这又说明我不行",
+            "event": "Making small mistakes in daily activities such as shopping or work",
+            "conditional_assumptions": "Any small mistake can prove I am not good enough, I am not competent",
+            "compensatory_strategies": "Repeatedly recalling mistakes and ignoring the parts done right, worsening self-criticism",
+            "automatic_thoughts": "这又说明我not行",
             "cognitive_pattern": "Mental Filtering"
           },
           {
-            "event": "向他人寻求认可或反馈以缓解失败感却收效甚微",
-            "conditional_assumptions": "只有得到他人的肯定，我才算有价值；没有外部认可，任何进步都不算数",
-            "compensatory_strategies": "反复向他人寻求认可与保证；把正面反馈归因为偶然、轻描淡写其价值",
-            "automatic_thoughts": "如果别人不认可，我就是失败者",
+            "event": "Seeking recognition or feedback from others to relieve feelings of failure but with little effect",
+            "conditional_assumptions": "Only with others' affirmation do I count as valuable; without external recognition, no progress counts",
+            "compensatory_strategies": "Repeatedly seeks recognition and reassurance from others; attributes positive feedback to chance and downplays its value",
+            "automatic_thoughts": "If others do not approve of me, I am a failure",
             "cognitive_pattern": "External Validation"
           }
         ]
       },
       "pdt": {
         "core_conflict": {
-          "wish": "渴望被看作胜任且独立，能把生活与做饭等事务处理好并获得认可",
-          "fear": "害怕失败导致自我价值崩塌、被否定与羞辱；担心任何错误都证明自己不够好",
+          "wish": "Longs to be seen as competent and independent, able to handle life and matters like cooking well and gain recognition",
+          "fear": "Fears failure leading to a collapse of self-worth, being negated and humiliated; worries that any mistake proves they are not good enough",
           "defense_goal": [
-            "通过自我批评与回避烹饪来减少再失败的风险",
-            "寻求外部认可以暂时缓解不安全感",
-            "把标准收紧并谨慎行事以维持脆弱的自尊"
+            "Reducing the risk of failing again through self-criticism and avoiding cooking",
+            "Seeking external recognition to temporarily relieve insecurity",
+            "Tightens standards and acts cautiously to maintain fragile self-esteem"
           ]
         },
         "object_relations": [
           {
-            "self_representation": "不胜任、容易失败的自我",
-            "object_representation": "挑剔的评判者（可能否定我）",
-            "linking_affect": "羞愧、焦虑、失望"
+            "self_representation": "not胜任、容易失败的自我",
+            "object_representation": "A picky judge (who may negate me)",
+            "linking_affect": "Shame, anxiety, disappointment"
           }
         ],
         "behavioral_response_patterns": [
           {
-            "trigger_condition": "当被邀请尝试新方法（如行为实验）或被鼓励继续练习烹饪时",
-            "interpretation": "把尝试理解为“必须成功，否则再次证明我不行”，并预设结局不会改变（悲观期待）",
-            "defense_mechanism": "合理化",
-            "response_instruction": "以消极、怀疑的语气强调过去的失败和“不会有变化”的理由，用否定式预测来拒绝尝试。"
+            "trigger_condition": "When invited to try new methods (such as behavioral experiments) or encouraged to keep practicing cooking",
+            "interpretation": "Understands trying as 'must succeed, otherwise it proves once again that I am incapable', and presupposes the outcome will not change (pessimistic expectation)",
+            "defense_mechanism": "Rationalization",
+            "response_instruction": "In a negative, skeptical tone, emphasizes past failures and reasons that 'there will be no change', using negating predictions to refuse trying."
           },
           {
-            "trigger_condition": "当做饭失败或在日常活动中出现小错误，被询问其体验或细节时",
-            "interpretation": "把错误当成对整体价值的判决，认为“我不配、我不够好”",
-            "defense_mechanism": "转向自身",
-            "response_instruction": "使用强烈自责与贬低自己的语句，放大错误、忽视正面，语气沉重而否定。"
+            "trigger_condition": "When cooking fails or small mistakes occur in daily activities and they are asked about their experience or the details",
+            "interpretation": "Treats mistakes as a verdict on overall worth, believing 'I do not deserve it, I am not good enough'",
+            "defense_mechanism": "Turning against the self",
+            "response_instruction": "Uses strongly self-blaming and self-deprecating statements, magnifying mistakes and ignoring positives, with a heavy and negating tone."
           }
         ]
       },
       "het": {
         "existentialism_topic": [
           {
-            "theme": "无意义",
+            "theme": "Meaninglessness",
             "manifestations": [
-              "把做饭失败泛化为“我在生活中失败”",
-              "活动的乐趣下降（做饭、购物）",
-              "积极事件被失败感覆盖，难以想起做得好的时刻"
+              "Generalizes a cooking failure into 'I have failed in life'",
+              "Decreased enjoyment of activities (cooking, shopping)",
+              "Positive events are covered by feelings of failure, difficulty remembering moments done well"
             ],
             "outcomes": [
               "低自尊与自我贬低",
               "回避尝试、缩减生活参与",
-              "焦虑与挫败感增强"
+              "Increased anxiety and sense of frustration"
             ]
           },
           {
-            "theme": "孤独",
+            "theme": "Loneliness",
             "manifestations": [
-              "最近独自生活并独自承担日常事务",
-              "虽有朋友可谈，但未分享自己的失败与感受"
+              "Recently living alone and handling daily affairs alone",
+              "Although there are friends to talk to, has not shared one's failures and feelings"
             ],
             "outcomes": [
               "情感表达受限与自我封闭",
-              "加重对自我价值的怀疑与焦虑",
+              "Aggravating doubt about and anxiety over one's self-worth",
               "对外部认可的依赖提升"
             ]
           }
         ],
         "contact_model": [
           {
-            "mode": "内摄",
-            "definition": "个体未经消化地把外界规则、期望当作自己的标准或绝对真理。",
+            "mode": "Introjection",
+            "definition": "The individual takes in external rules and expectations without digesting them, treating them as their own standards or absolute truths.",
             "manifestations": [
-              "以“应该能把简单的事做好”为硬性标准评判自己",
-              "将“做饭必须成功”内化为自我价值的衡量尺"
+              "Judging oneself by the rigid standard 'should be able to do simple things well'",
+              "Internalizing 'cooking must succeed' as a yardstick for self-worth"
             ]
           },
           {
-            "mode": "回摄",
-            "definition": "个体将原欲对外发出的能量转而对自己，克制或放弃外向表达与行动。",
+            "mode": "Retroflection",
+            "definition": "The individual turns the energy originally directed outward onto the self, restraining or giving up outward expression and action.",
             "manifestations": [
-              "做饭失败后把愤怒与失望转向自责与贬低自己",
-              "选择避免再尝试烹饪、点外卖以压抑不适感"
+              "After cooking failure, turning anger and disappointment into self-blame and self-deprecation",
+              "Chooses to avoid trying cooking again and orders takeout to suppress discomfort"
             ]
           },
           {
-            "mode": "自我监控",
-            "definition": "个体存在不良的自我反思与过度自我限制与苛责，对接触过于小心谨慎。",
+            "mode": "Self-monitoring",
+            "definition": "The individual has poor self-reflection with excessive self-restriction and reproach, and is overly cautious about contact.",
             "manifestations": [
-              "在做饭前过度担忧、反复自我怀疑",
-              "把小错误视为整体不胜任，严苛自我评判"
+              "Excessive worry and repeated self-doubt before cooking",
+              "Views small mistakes as overall incompetence; harsh self-judgment"
             ]
           }
         ]
@@ -352,51 +352,51 @@
         "exception_events": [],
         "force_field": {
           "positive_force": [
-            "具备一定的自我观察能力，能描述前中后做饭时的想法与情绪",
-            "愿意尝试新的方法（如选择简单食谱、事先备料）",
-            "拥有一定的社会支持资源（有朋友可交谈）",
-            "能够制定具体的小步骤计划（选择简单食谱、提前准备）"
+            "Possesses some self-observation ability, able to describe thoughts and emotions before, during, and after cooking",
+            "Willing to try new methods (such as choosing simple recipes, preparing ingredients in advance)",
+            "Has some social support resources (friends to talk with)",
+            "Able to formulate concrete small-step plans (choosing simple recipes, preparing in advance)"
           ],
           "negative_force": [
-            "自我否定与低自尊，常以错误定义自我价值",
-            "全或无思维与过度概括，易将单次失败泛化为整体失败",
-            "心理过滤与否定积极，失败感覆盖正面经验",
-            "对外部认可的依赖，内部自我肯定不足",
-            "回避尝试以短期减轻焦虑，长期强化“无能”自我图式"
+            "Self-negation and low self-esteem; often defines self-worth by mistakes",
+            "All-or-nothing thinking and overgeneralization, easily generalizing a single failure to overall failure",
+            "Mental filtering and disqualifying the positive; a sense of failure overshadows positive experiences",
+            "Dependence on external approval; insufficient internal self-affirmation",
+            "Avoiding attempts to reduce anxiety in the short term, reinforcing the 'incompetence' self-schema in the long term"
           ]
         }
       },
       "bt": {
         "target_behavior": [
           {
-            "behavior": "回避烹饪与技能性活动，改为点外卖或选择无需烹饪的食物",
+            "behavior": "Avoids cooking and skill-based activities, instead ordering takeout or choosing no-cook foods",
             "antecedent": [
-              "开始做饭前的高焦虑与自我怀疑",
+              "High anxiety and self-doubt before starting to cook",
               "回忆以往做饭失败经历"
             ],
-            "core_reason": "对失败的灾难化与预测未来必然失败（全或无规则、预测未来），以维护脆弱自尊",
-            "function": "逃避失败与焦虑，获得短期情绪缓解",
-            "consequence": "加深“我不行”的自我认知，生活成本增加，乐趣与自我效能进一步下降"
+            "core_reason": "Catastrophizing of failure and predicting inevitable future failure (all-or-nothing rules, fortune telling), in order to protect fragile self-esteem",
+            "function": "Escapes failure and anxiety, gaining short-term emotional relief",
+            "consequence": "Deepens the self-perception of 'I can't do it', living costs increase, and enjoyment and self-efficacy decline further"
           },
           {
-            "behavior": "强烈的自我贬低与自我批评（如“我一无是处”）",
+            "behavior": "Strong self-deprecation and self-criticism (such as 'I am worthless')",
             "antecedent": [
-              "做饭失败或在购物、工作中出现小错误",
-              "回顾日常表现时只关注错误"
+              "Failing at cooking or making small mistakes at shopping or work",
+              "When reviewing daily performance, focusing only on mistakes"
             ],
-            "core_reason": "内化的负性核心信念（我不够好），并以错误作为全局证据支持该信念",
-            "function": "以自责作为自我控制与防止再尝试的方式，避免再次面对失败带来的羞耻",
-            "consequence": "自尊受损、情绪低落与回避增加，生活参与度下降"
+            "core_reason": "Internalized negative core belief (I am not good enough), using mistakes as global evidence supporting that belief",
+            "function": "Uses self-blame as a means of self-control and preventing further attempts, avoiding facing again the shame brought by failure",
+            "consequence": "Damaged self-esteem, low mood and increased avoidance, decreased life participation"
           },
           {
-            "behavior": "做饭过程中的高度焦虑与分心，导致频繁把食物烹饪过火",
+            "behavior": "High anxiety and distraction during cooking, leading to frequently overcooking the food",
             "antecedent": [
               "独自做饭时担心再次失败",
-              "做饭过程中反复第二次猜测与自我怀疑"
+              "Repeated second-guessing and self-doubt during cooking"
             ],
-            "core_reason": "对错误高度敏感与过度监控，削弱专注与执行，形成负性反馈循环",
-            "function": "在当下试图通过过度监控获得控制感（但适得其反）",
-            "consequence": "烹饪结果持续不佳，进一步强化失败感与避免行为"
+            "core_reason": "High sensitivity to mistakes and excessive monitoring weaken focus and execution, forming a negative feedback loop",
+            "function": "Trying to gain a sense of control through excessive monitoring in the present (but it backfires)",
+            "consequence": "Persistently poor cooking results further reinforce feelings of failure and avoidance behavior"
           }
         ]
       }
@@ -409,15 +409,15 @@
     "basic_info.growth_experiences"
   ],
   "expected_clarification": [
-    "这些感受大概是什么时候开始出现的？是有某个具体的事件触发了它们吗？",
-    "您能描述一下这个问题是如何逐渐发展到现在这个程度的吗？"
+    "Roughly when did these feelings start to appear? Was there a specific event that triggered them?",
+    "Could you describe how this problem gradually developed to its current extent?"
   ],
   "risk_level": "LOW",
   "expected_route": "CLEAR",
-  "expected_action": "按常规流程推进咨询，聚焦于来访者的主要困扰和改变目标",
+  "expected_action": "Proceed with counseling according to the standard process, focusing on the client's main difficulties and change goals",
   "ground_truth_evidence": {
     "basic_info.growth_experiences": [
-      "最近开始独自生活并自己做饭。每次做饭（如披萨、卷饼）常烹饪过火，引发强烈的自责与无能感；这种失败感逐步从做饭扩散到购物、工作等日常领域，使其认为“每一个小错误都证明我不够好”。同时尝试提高烹饪技能与寻求他人认可，但未能缓解。"
+      "The client recently began living alone and cooking their own meals. Each time the client cooks (such as pizza or wraps), the food is often overcooked, triggering strong self-blame and feelings of incompetence; this sense of failure gradually spread from cooking to daily domains such as shopping and work, making the client believe that 'every small mistake proves I am not good enough'. At the same time, the client tried to improve cooking skills and seek others' recognition, but this did not bring relief."
     ]
   }
 }

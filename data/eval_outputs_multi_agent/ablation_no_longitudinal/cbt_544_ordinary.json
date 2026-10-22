@@ -13,18 +13,18 @@
   "transcript": [
     {
       "role": "user",
-      "content": "我认为自己在舞蹈方面很普通且没有任何技巧，这一信念导致自我怀疑和低自信。"
+      "content": "I believe I am ordinary at dance and have no skill at all; this belief leads to self-doubt and low confidence."
     },
     {
       "role": "assistant",
-      "content": "[Counselor] 结合您的背景和CBT治疗框架，我们来聚焦于目前最困扰您的核心问题。"
+      "content": "[Counselor] Based on your background and the CBT treatment framework, let us focus on the core issue that troubles you most at present."
     },
     {
       "role": "user",
-      "content": "谢谢咨询师，我觉得有些启发。"
+      "content": "Thank you, counselor; I feel somewhat inspired."
     }
   ],
-  "counselor_response": "[Counselor] 结合您的背景和CBT治疗框架，我们来聚焦于目前最困扰您的核心问题。",
+  "counselor_response": "[Counselor] Based on your background and the CBT treatment framework, let us focus on the core issue that troubles you most at present.",
   "trail": [
     {
       "agent": "memory_agent",
@@ -32,65 +32,65 @@
       "payload": {
         "known_static_traits": {
           "age": "37",
-          "name": "张若薇",
-          "gender": "女",
-          "occupation": "未提及",
-          "educational_background": "未提及",
-          "marital_status": "未提及",
-          "family_status": "未提及",
-          "social_status": "未提及",
-          "medical_history": "无显著躯体疾病；既往未接受心理治疗；未曾出现过类似心理问题",
-          "language_features": "表达清晰、逻辑性较好、配合度高，语速正常，略显紧张与怀疑"
+          "name": "Zhang Ruowei",
+          "gender": "Female",
+          "occupation": "Not mentioned",
+          "educational_background": "Not mentioned",
+          "marital_status": "Not mentioned",
+          "family_status": "Not mentioned",
+          "social_status": "Not mentioned",
+          "medical_history": "No significant physical illness; no prior psychotherapy; no similar psychological problems before",
+          "language_features": "Clear expression, fairly good logic, highly cooperative, normal speech rate, slightly nervous and doubtful"
         },
         "session_recaps": [],
         "last_homework": [],
         "current_session_index": 1,
-        "current_stage": "问题概念化与目标设定",
+        "current_stage": "Problem conceptualization and goal setting",
         "previous_interventions": [],
         "current_goals": [
-          "持续的负面感受影响了我对舞蹈的享受和整体自信，希望通过挑战负性认知、收集证据并重构观点，从“我没有技巧”转变为“我在练习中逐步进步并享受过程”。"
+          "Persistent negative feelings have affected my enjoyment of dance and my overall confidence; I hope that by challenging negative cognitions, gathering evidence, and reframing my perspective, I can shift from 'I have no skill' to 'I am gradually improving through practice and enjoying the process'."
         ],
         "prior_outcomes": [],
         "newly_observed": [
-          "我认为自己在舞蹈方面很普通且没有任何技巧，这一信念导致自我怀疑和低自信。"
+          "I believe I am ordinary at dance and have no skill at all; this belief leads to self-doubt and low confidence."
         ],
-        "main_problem": "我认为自己在舞蹈方面很普通且没有任何技巧，这一信念导致自我怀疑和低自信。",
-        "core_demands": "持续的负面感受影响了我对舞蹈的享受和整体自信，希望通过挑战负性认知、收集证据并重构观点，从“我没有技巧”转变为“我在练习中逐步进步并享受过程”。",
+        "main_problem": "I believe I am ordinary at dance and have no skill at all; this belief leads to self-doubt and low confidence.",
+        "core_demands": "Persistent negative feelings have affected my enjoyment of dance and my overall confidence; I hope that by challenging negative cognitions, gathering evidence, and reframing my perspective, I can shift from 'I have no skill' to 'I am gradually improving through practice and enjoying the process'.",
         "growth_experiences": [
-          "一年前开始参加舞蹈课程。一次班级展示中，其他同学都能较为完美地完成高级动作，而自己未能成功，感到格格不入与羞愧。此后在课堂中频繁与他人比较，看到他人更自信、更熟练，由此逐步形成“我很普通、没有技巧、不够好”的自我评价模式，并在每次跳舞或想到跳舞时反复出现。"
+          "Started attending dance classes a year ago. During a class showcase, other students could complete advanced movements fairly perfectly, but he did not succeed, and felt out of place and ashamed. Afterwards, he frequently compared himself with others in class, saw others as more confident and skilled, and gradually formed a self-evaluation pattern of 'I am ordinary, have no skill, and am not good enough', which recurs every time he dances or thinks about dancing."
         ],
         "theory_info": {
           "core_beliefs": [
-            "我不够好",
-            "我没有舞蹈天赋/技巧"
+            "I am not good enough",
+            "I have no dance talent/skill"
           ],
           "special_situations": [
             {
-              "event": "班级展示时，其他同学能完成高级动作而自己未能成功",
-              "conditional_assumptions": "如果不能像同学一样完美地完成动作，就说明我没有天赋、我不够好",
-              "compensatory_strategies": "加倍练习但过度关注错误、在心里否定正面反馈以避免失望",
-              "automatic_thoughts": "我不适合跳舞/我没有任何技巧",
+              "event": "During the class showcase, other students could complete advanced movements while he did not succeed",
+              "conditional_assumptions": "If I cannot complete the movements as perfectly as my classmates, it means I have no talent and I am not good enough",
+              "compensatory_strategies": "Doubles practice but focuses excessively on errors, mentally dismissing positive feedback to avoid disappointment",
+              "automatic_thoughts": "I am not suited to dancing / I have no skill at all",
               "cognitive_pattern": "All-or-Nothing Thinking"
             },
             {
-              "event": "在课堂上收到教练或同学的正面反馈（如“你在进步”“这一招做得很好”）",
-              "conditional_assumptions": "只有完全没有错误的表演才值得认可；别人看不到我的真实错误，赞美不可信",
-              "compensatory_strategies": "忽视赞美、抓住不足与瑕疵不放",
-              "automatic_thoughts": "他们只是客气，我其实很差",
+              "event": "Receives positive feedback from the instructor or classmates in class (such as 'you are improving', 'you did that move very well')",
+              "conditional_assumptions": "Only a performance completely without errors is worthy of recognition; others cannot see my real errors, so praise is not credible",
+              "compensatory_strategies": "Ignores praise, fixates on shortcomings and flaws",
+              "automatic_thoughts": "They are just being polite; I am actually very bad",
               "cognitive_pattern": "Disqualifying the Positive"
             },
             {
-              "event": "在舞蹈课中看到同学们更自信、更熟练的表现",
-              "conditional_assumptions": "如果我不如他们，就证明我不行/我不够好",
-              "compensatory_strategies": "不断与他人比较、降低自我评价",
-              "automatic_thoughts": "我不如他们，我不够好",
+              "event": "In dance class, sees classmates performing more confidently and skillfully",
+              "conditional_assumptions": "If I am not as good as them, it proves I am no good / I am not good enough",
+              "compensatory_strategies": "Constantly compares with others, lowering self-evaluation",
+              "automatic_thoughts": "I am not as good as them; I am not good enough",
               "cognitive_pattern": "Comparing and Despairing"
             },
             {
-              "event": "练习或回看表现时注意到自己的几个错误",
-              "conditional_assumptions": "出错等于失败；错误更能代表我的真实水平",
-              "compensatory_strategies": "反复在脑中批判自己、减少对过程的享受",
-              "automatic_thoughts": "我果然不行",
+              "event": "Notices several of his own errors when practicing or reviewing his performance",
+              "conditional_assumptions": "Making mistakes equals failure; errors better represent my true level",
+              "compensatory_strategies": "Repeatedly criticizes himself in his mind, reducing enjoyment of the process",
+              "automatic_thoughts": "As expected, I am no good",
               "cognitive_pattern": "Mental Filtering"
             }
           ]
@@ -102,32 +102,32 @@
       "agent": "state_agent",
       "status": "ok",
       "payload": {
-        "current_concern": "我认为自己在舞蹈方面很普通且没有任何技巧，这一信念导致自我怀疑和低自信。",
-        "expressed_needs": "持续的负面感受影响了我对舞蹈的享受和整体自信，希望通过挑战负性认知、收集证据并重构观点，从“我没有技巧”转变为“我在练习中逐步进步并享受过程”。",
-        "current_session_focus": "持续的负面感受影响了我对舞蹈的享受和整体自信，希望通过挑战负性认知、收集证据并重构观点，从“我没有技巧”转变为“我在练习中逐步进步并享受过程”。",
+        "current_concern": "I believe I am ordinary at dance and have no skill at all; this belief leads to self-doubt and low confidence.",
+        "expressed_needs": "Persistent negative feelings have affected my enjoyment of dance and my overall confidence; I hope that by challenging negative cognitions, gathering evidence, and reframing my perspective, I can shift from 'I have no skill' to 'I am gradually improving through practice and enjoying the process'.",
+        "current_session_focus": "Persistent negative feelings have affected my enjoyment of dance and my overall confidence; I hope that by challenging negative cognitions, gathering evidence, and reframing my perspective, I can shift from 'I have no skill' to 'I am gradually improving through practice and enjoying the process'.",
         "known_information": [
-          "[基本信息] age: 37",
-          "[基本信息] name: 张若薇",
-          "[基本信息] gender: 女",
-          "[基本信息] medical_history: 无显著躯体疾病；既往未接受心理治疗；未曾出现过类似心理问题",
-          "[基本信息] language_features: 表达清晰、逻辑性较好、配合度高，语速正常，略显紧张与怀疑",
-          "[主诉] 我认为自己在舞蹈方面很普通且没有任何技巧，这一信念导致自我怀疑和低自信。",
-          "[核心诉求] 持续的负面感受影响了我对舞蹈的享受和整体自信，希望通过挑战负性认知、收集证据并重构观点，从“我没有技巧”转变为“我在练习中逐步进步并享受过程”。",
-          "[成长经历] 一年前开始参加舞蹈课程。一次班级展示中，其他同学都能较为完美地完成高级动作，而自己未能成功，感到格格不入与羞愧。此后在课堂中频繁与他人比较，看到他人更自信、更熟练，由此逐步形成“我很普通、没有技巧、不够好”的自我评价模式，并在每次跳舞或想到跳舞时反复出现。",
-          "[CBT 理论] core_beliefs: 已记录",
-          "[CBT 理论] special_situations: 已记录",
-          "[当前陈述] 我认为自己在舞蹈方面很普通且没有任何技巧，这一信念导致自我怀疑和低自信。"
+          "[Basic information] age: 37",
+          "[Basic information] name: Zhang Ruowei",
+          "[Basic information] gender: Female",
+          "[Basic information] medical_history: No significant physical illness; no prior psychotherapy; no similar psychological problems before",
+          "[Basic information] language_features: Clear expression, fairly good logic, highly cooperative, normal speech rate, slightly nervous and doubtful",
+          "[Chief Complaint] I believe I am ordinary at dance and have no skill at all; this belief leads to self-doubt and low confidence.",
+          "[Core Demands] Persistent negative feelings have affected my enjoyment of dance and my overall confidence; I hope that by challenging negative cognitions, gathering evidence, and reframing my perspective, I can shift from 'I have no skill' to 'I am gradually improving through practice and enjoying the process'.",
+          "[Growth Experiences] Started attending dance classes a year ago. During a class showcase, other students could complete advanced movements fairly perfectly, but he did not succeed, and felt out of place and ashamed. Afterwards, he frequently compared himself with others in class, saw others as more confident and skilled, and gradually formed a self-evaluation pattern of 'I am ordinary, have no skill, and am not good enough', which recurs every time he dances or thinks about dancing.",
+          "[CBT Theory] core_beliefs: Recorded",
+          "[CBT Theory] special_situations: Recorded",
+          "[Current Statement] I believe I am ordinary at dance and have no skill at all; this belief leads to self-doubt and low confidence."
         ],
         "unknown_information": [
           "prior_session_recaps (first session or no history)"
         ],
         "context": {
           "modality": "cbt",
-          "therapy_stage": "问题概念化与目标设定",
+          "therapy_stage": "Problem conceptualization and goal setting",
           "session_index": 1,
           "source": "runner_state|full_profile"
         },
-        "longitudinal_relevance": "暂无历史会话记录（可能为首次或首轮独立评估）。",
+        "longitudinal_relevance": "No historical session records for now (possibly a first or first-round independent assessment).",
         "confidence": 0.7777777777777778
       }
     },

@@ -2,147 +2,147 @@
   "case_id": "het_1008_ordinary",
   "source_file": "assets/profiles/het/sample/1008.json",
   "modality": "het",
-  "therapy_stage": "问题概念化与目标设定",
+  "therapy_stage": "Problem conceptualization and goal setting",
   "stage_inferred": false,
   "track": "ordinary",
   "full_context": {
     "basic_info": {
       "static_traits": {
         "age": "52",
-        "name": "林蕾",
-        "gender": "女",
-        "occupation": "艺术家",
-        "educational_background": "自学成才的艺术家",
-        "marital_status": "恋爱中",
-        "family_status": "独居，所在城市无直系亲属",
-        "social_status": "有一群欣赏其作品的朋友，但她难以向他们敞开不安与自我怀疑",
-        "medical_history": "无明显躯体疾病；无既往心理咨询与相似问题史",
-        "language_features": "表达清晰，能自我反思，配合度高，语气平和但易聚焦负性解释；能描述思维模式与困扰，语速与逻辑正常"
+        "name": "Lin Lei",
+        "gender": "Female",
+        "occupation": "Artist",
+        "educational_background": "Self-taught artist",
+        "marital_status": "In a relationship",
+        "family_status": "Living alone, with no immediate family members in the city",
+        "social_status": "Has a group of friends who appreciate her work, but she finds it hard to open up to them about her unease and self-doubt",
+        "medical_history": "No obvious physical illness; no history of psychological counseling or similar problems",
+        "language_features": "Clear expression, able to self-reflect, highly cooperative, calm tone but prone to focusing on negative interpretations; able to describe thinking patterns and difficulties, with normal speech rate and logic"
       },
-      "main_problem": "我常常觉得人们在负面评价我的作品，尤其是给别人画肖像时更明显。这种感觉从几个月前我在给女友画肖像时她笑了一下开始。",
-      "topic": "情绪管理",
-      "core_demands": "我注意到这些自我怀疑正在妨碍我的艺术表达并带来痛苦，于是来寻求咨询。",
+      "main_problem": "I often feel people are negatively judging my work, especially when I paint portraits for others. This feeling began a few months ago when my girlfriend smiled while I was painting her portrait.",
+      "topic": "Emotion management",
+      "core_demands": "I noticed that these self-doubts are interfering with my artistic expression and causing me distress, so I came to seek counseling.",
       "growth_experiences": []
     },
     "theory": {
       "cbt": {
         "core_beliefs": [
-          "我的作品不够好，别人会觉得很差",
-          "我的价值取决于他人对我作品的认可"
+          "My work is not good enough; others will think it is poor",
+          "My worth depends on others' recognition of my work"
         ],
         "special_situations": [
           {
-            "event": "在给女友画她的肖像时，女友笑了",
-            "conditional_assumptions": "如果对方笑或没有严肃的正面反馈，就说明我的作品很差、在嘲笑我",
-            "compensatory_strategies": "回避与女友讨论当时真实意图；减少或暂停画人像以避免再次被“嘲笑”",
-            "automatic_thoughts": "她在取笑我，觉得我画得很糟。",
+            "event": "When painting a portrait of his girlfriend for her, the girlfriend laughed",
+            "conditional_assumptions": "If the other person laughs or gives no serious positive feedback, it means my work is poor and they are mocking me",
+            "compensatory_strategies": "Avoids discussing his true intentions at the time with his girlfriend; reduces or pauses drawing portraits to avoid being 'laughed at' again",
+            "automatic_thoughts": "She is mocking me, thinking my painting is terrible.",
             "cognitive_pattern": "Mind Reading"
           },
           {
-            "event": "每次开始给熟人或认识的人画肖像",
-            "conditional_assumptions": "如果作品不能立刻得到对方的喜欢或称赞，就等于失败、我就是糟糕的艺术家",
-            "compensatory_strategies": "在创作前后反复寻求他人的肯定与保证；拖延或回避画肖像",
-            "automatic_thoughts": "他们会讨厌我的作品，甚至会笑我。",
+            "event": "Each time starting to paint a portrait for an acquaintance",
+            "conditional_assumptions": "If the work does not immediately win the other party's liking or praise, it equals failure and I am a terrible artist",
+            "compensatory_strategies": "Before and after creating, repeatedly seeks others' affirmation and reassurance; procrastinates on or avoids painting portraits",
+            "automatic_thoughts": "They will hate my work and may even laugh at me.",
             "cognitive_pattern": "Fortune Telling"
           },
           {
-            "event": "朋友们对她的作品表示支持与欣赏",
-            "conditional_assumptions": "正面反馈不可靠或“只是安慰”，不能说明我真的画得好",
-            "compensatory_strategies": "忽略或贬低积极反馈的价值，继续向更多人寻求外部认可",
-            "automatic_thoughts": "他们只是说好听的，这不算数。",
+            "event": "Friends express support and appreciation for her work",
+            "conditional_assumptions": "Positive feedback is unreliable or 'just comfort', and cannot show that I really paint well",
+            "compensatory_strategies": "Ignores or belittles the value of positive feedback, continuing to seek external recognition from more people",
+            "automatic_thoughts": "They are just saying nice things; it does not count.",
             "cognitive_pattern": "Disqualifying the Positive"
           },
           {
-            "event": "想到要与女友谈起当时的笑声、澄清其真实含义",
-            "conditional_assumptions": "如果我开口询问，她很可能会证实我最害怕的结论：我的作品很差",
-            "compensatory_strategies": "避免直接沟通与现实检验，以短期避免焦虑与羞耻感",
-            "automatic_thoughts": "一问就会证明我很差，关系也会更尴尬。",
+            "event": "Thinking about talking to girlfriend about the laughter at that time, clarifying its real meaning",
+            "conditional_assumptions": "If I ask, she will very likely confirm the conclusion I fear most: my work is poor",
+            "compensatory_strategies": "Avoiding direct communication and reality testing, to avoid anxiety and shame in the short term",
+            "automatic_thoughts": "Asking will prove I am bad at this, and the relationship will become even more awkward.",
             "cognitive_pattern": "Catastrophizing"
           }
         ]
       },
       "pdt": {
         "core_conflict": {
-          "wish": "渴望被重要他人（尤其是伴侣与观众）真实地认可与欣赏",
-          "fear": "害怕被嘲笑与否定，从而体验羞耻与价值被摧毁，甚至关系受损",
+          "wish": "Longs to be genuinely recognized and appreciated by significant others (especially the partner and audiences)",
+          "fear": "Fears being mocked and negated, thereby experiencing shame and a destroyed sense of worth, and even damaged relationships",
           "defense_goal": [
-            "通过回避直接验证与寻求外部保证来降低被否定的风险，维持自尊与关系安全感"
+            "Reduces the risk of being negated by avoiding direct verification and seeking external reassurance, maintaining self-esteem and relational security"
           ]
         },
         "object_relations": [
           {
-            "self_representation": "不够好的、随时可能被否定的创作者",
-            "object_representation": "挑剔、嘲笑或否定自己的评判者/观众",
-            "linking_affect": "羞耻、焦虑"
+            "self_representation": "A creator who is not good enough and may be negated at any time",
+            "object_representation": "Judges/audiences who are picky and mock or negate oneself",
+            "linking_affect": "Shame, anxiety"
           },
           {
-            "self_representation": "需要被看见与安抚却难以信任正面反馈的人",
-            "object_representation": "口头支持但“不可信”的他人（朋友、观众）",
-            "linking_affect": "不确定、怀疑"
+            "self_representation": "Someone who needs to be seen and soothed but finds it hard to trust positive feedback",
+            "object_representation": "Others who verbally support but are 'untrustworthy' (friends, audience)",
+            "linking_affect": "not确定、怀疑"
           }
         ],
         "behavioral_response_patterns": [
           {
-            "trigger_condition": "当咨询师或他人建议她直接与女友沟通、澄清当时的笑声含义时",
-            "interpretation": "如果去问，就会听到否定与嘲笑，从而坐实“我很差”",
-            "defense_mechanism": "压抑",
-            "response_instruction": "以共情、缓慢探询的语气，先肯定其恐惧与羞耻感，再邀请其列出可承受的微小沟通步骤，避免直接对抗。"
+            "trigger_condition": "When the counselor or others suggest she communicate directly with her girlfriend to clarify the meaning of the laughter at the time",
+            "interpretation": "If I go and ask, I will hear negation and mockery, thus confirming 'I am very bad'",
+            "defense_mechanism": "Repression",
+            "response_instruction": "In an empathic, slowly inquiring tone, first affirms their fear and shame, then invites them to list bearable, tiny communication steps, avoiding direct confrontation."
           },
           {
-            "trigger_condition": "当讨论他人对作品的评价或回忆女友笑的场景时",
-            "interpretation": "他人会像自己所担心的那样嘲笑、贬低（将内在的自我批评归于他人）",
-            "defense_mechanism": "投射",
-            "response_instruction": "保持温和中立，用澄清式问题区分感受与事实，邀请举证与找反证，鼓励以第一人称表述主观体验。"
+            "trigger_condition": "When discussing others' evaluation of works or recalling the scene of girlfriend laughing",
+            "interpretation": "Others will mock and belittle just as feared (attributing inner self-criticism to others)",
+            "defense_mechanism": "Projection",
+            "response_instruction": "Maintains gentleness and neutrality, uses clarifying questions to distinguish feelings from facts, invites evidence and counter-evidence, and encourages first-person expression of subjective experience."
           }
         ]
       },
       "het": {
         "existentialism_topic": [
           {
-            "theme": "孤独",
+            "theme": "Loneliness",
             "manifestations": [
-              "独居，难以向朋友敞开不安与自我怀疑",
-              "与伴侣因作品不安全感而关系紧张，回避直接沟通"
+              "Lives alone; finds it hard to open up unease and self-doubt to friends",
+              "Tense relationship with partner due to insecurity about his work; avoids direct communication"
             ],
             "outcomes": [
-              "关系疏离感增加",
-              "自我封闭与不被理解的感受加重"
+              "Increased sense of relational distance",
+              "Self-isolation and feelings of not being understood intensify"
             ]
           },
           {
-            "theme": "无意义",
+            "theme": "Meaninglessness",
             "manifestations": [
-              "因自我怀疑而停止或减少绘画，失去长期以来的表达与价值感来源"
+              "Stopped or reduced painting due to self-doubt, losing a long-standing source of expression and sense of value"
             ],
             "outcomes": [
-              "感到更疏离与“有点失去目标感”",
-              "情绪低落与焦虑加重，睡眠被打乱"
+              "Feels more alienated and 'somewhat lacking a sense of purpose'",
+              "Low mood and worsened anxiety; sleep disrupted"
             ]
           }
         ],
         "contact_model": [
           {
-            "mode": "投射",
-            "definition": "个体将自己难以接纳的感受归于他人，与“拥有”对应，语言表现为：“他在看不起我”，“他们想排挤我”等",
+            "mode": "Projection",
+            "definition": "The individual attributes feelings they find hard to accept to others, corresponding to 'possession'. Language manifestations include: 'He is looking down on me', 'They want to exclude me', and so on",
             "manifestations": [
-              "将内在的自我批评体验归因为“他们会讨厌/嘲笑我的作品”",
-              "在未核实前假定他人的负面意图"
+              "Attributes inner self-critical experiences to 'they will dislike/laugh at my work'",
+              "Assumes negative intentions of others before verifying"
             ]
           },
           {
-            "mode": "回摄",
-            "definition": "个体克制想对其他人或物做出某个行为的冲动，转而对自己做，将对外的能量转向自身，与“冲动”对应。",
+            "mode": "Retroflection",
+            "definition": "The individual restrains the impulse to act toward other people or objects and instead does it to themselves, redirecting outward energy toward the self, corresponding to 'impulse'.",
             "manifestations": [
-              "想与伴侣澄清却选择不说，将焦虑与羞耻压向自己",
-              "通过自我怀疑与退缩来“保护自己”而非进行外在接触"
+              "Wants to clarify things with his partner but chooses not to speak, turning the anxiety and shame inward toward himself",
+              "Through self-doubt and withdrawal, 'protects himself' rather than engaging in outward contact"
             ]
           },
           {
-            "mode": "自我监控",
-            "definition": "个体存在不良的自我反思与反省能力，包含过多的自我限制和自我苛责，对接触过于小心谨慎，与“自主性”对应。",
+            "mode": "Self-monitoring",
+            "definition": "The individual has a poor capacity for self-reflection and introspection, with excessive self-restriction and self-blame, and is overly cautious about contact, corresponding to 'autonomy'.",
             "manifestations": [
-              "创作前后过度审视与否定自己，不断寻求外部认可",
-              "在关系中因害怕被否定而过度谨慎"
+              "Excessively scrutinizes and negates himself before and after creating, constantly seeking external recognition",
+              "Overly cautious in relationships for fear of being negated"
             ]
           }
         ]
@@ -152,38 +152,38 @@
         "force_field": {
           "positive_force": [
             "拥有支持其作品的朋友圈",
-            "对现实检验与小步尝试持开放态度（愿意共同制定具体计划）",
-            "长期的艺术身份与投入为恢复创作提供基础"
+            "Open to reality testing and small-step attempts (willing to jointly formulate concrete plans)",
+            "A long-standing artistic identity and investment provide a foundation for resuming creative work"
           ],
           "negative_force": [
-            "灾难化、读心术、否定积极等认知扭曲显著",
-            "过度依赖外部认可，难以内化正向反馈",
-            "回避直接沟通与现实检验以短期减轻焦虑",
-            "焦虑与不安全感导致创作回避与睡眠紊乱"
+            "Marked cognitive distortions such as catastrophizing, mind reading, and disqualifying the positive",
+            "Excessive dependence on external approval; hard to internalize positive feedback",
+            "Avoids direct communication and reality testing to reduce anxiety in the short term",
+            "Anxiety and insecurity lead to avoidance of creating and to sleep disturbance"
           ]
         }
       },
       "bt": {
         "target_behavior": [
           {
-            "behavior": "在绘制他人肖像时出现明显的焦虑与不安全感，并倾向于回避或减少作画",
+            "behavior": "Shows marked anxiety and insecurity when drawing portraits of others, and tends to avoid or reduce drawing",
             "antecedent": [
-              "开始或计划给他人（尤其熟人/伴侣）画肖像",
-              "回想起女友在绘画时的笑声"
+              "Starting or planning to paint portraits for others (especially acquaintances/partners)",
+              "Recalling the girlfriend's laughter while painting"
             ],
-            "core_reason": "对被否定的灾难化预期与读心式解释，将自我价值过度绑定于他人评价",
-            "function": "逃避可能的否定与羞耻，短期降低焦虑",
-            "consequence": "创作产出下降，关系紧张，情绪困扰增加并影响睡眠"
+            "core_reason": "Catastrophic anticipation of being negated and mind-reading interpretations, excessively tying self-worth to others' evaluations",
+            "function": "Escapes possible negation and shame, reducing anxiety in the short term",
+            "consequence": "Decline in creative output, strained relationships, increased emotional distress affecting sleep"
           },
           {
-            "behavior": "在创作相关情境中反复寻求外部验证与正面反馈",
+            "behavior": "Repeatedly seeking external validation and positive feedback in creation-related situations",
             "antecedent": [
-              "在完成作品或准备创作时感到不安与自我怀疑",
-              "接触到他人对作品的反应（真实或想象）"
+              "Feeling uneasy and self-doubt when completing works or preparing to create",
+              "Encountering others' reactions to the work (real or imagined)"
             ],
-            "core_reason": "内在自我评价体系薄弱，倾向以他人反应作为自我价值的主要依据",
+            "core_reason": "Inner self-evaluation system is weak, tending to use others' reactions as the main basis for self-worth",
             "function": "获得短期安慰与安全感",
-            "consequence": "对外部认可的依赖被强化，负性信念未被修正，焦虑反复出现"
+            "consequence": "Dependence on external recognition is reinforced, negative beliefs remain uncorrected, and anxiety recurs"
           }
         ]
       }
@@ -195,136 +195,136 @@
     "basic_info": {
       "static_traits": {
         "age": "52",
-        "name": "林蕾",
-        "gender": "女",
-        "occupation": "艺术家",
-        "educational_background": "自学成才的艺术家",
-        "marital_status": "恋爱中",
-        "family_status": "独居，所在城市无直系亲属",
-        "social_status": "有一群欣赏其作品的朋友，但她难以向他们敞开不安与自我怀疑",
-        "medical_history": "无明显躯体疾病；无既往心理咨询与相似问题史",
-        "language_features": "表达清晰，能自我反思，配合度高，语气平和但易聚焦负性解释；能描述思维模式与困扰，语速与逻辑正常"
+        "name": "Lin Lei",
+        "gender": "Female",
+        "occupation": "Artist",
+        "educational_background": "Self-taught artist",
+        "marital_status": "In a relationship",
+        "family_status": "Living alone, with no immediate family members in the city",
+        "social_status": "Has a group of friends who appreciate her work, but she finds it hard to open up to them about her unease and self-doubt",
+        "medical_history": "No obvious physical illness; no history of psychological counseling or similar problems",
+        "language_features": "Clear expression, able to self-reflect, highly cooperative, calm tone but prone to focusing on negative interpretations; able to describe thinking patterns and difficulties, with normal speech rate and logic"
       },
-      "main_problem": "我常常觉得人们在负面评价我的作品，尤其是给别人画肖像时更明显。这种感觉从几个月前我在给女友画肖像时她笑了一下开始。",
-      "topic": "情绪管理",
-      "core_demands": "我注意到这些自我怀疑正在妨碍我的艺术表达并带来痛苦，于是来寻求咨询。",
+      "main_problem": "I often feel people are negatively judging my work, especially when I paint portraits for others. This feeling began a few months ago when my girlfriend smiled while I was painting her portrait.",
+      "topic": "Emotion management",
+      "core_demands": "I noticed that these self-doubts are interfering with my artistic expression and causing me distress, so I came to seek counseling.",
       "growth_experiences": []
     },
     "theory": {
       "cbt": {
         "core_beliefs": [
-          "我的作品不够好，别人会觉得很差",
-          "我的价值取决于他人对我作品的认可"
+          "My work is not good enough; others will think it is poor",
+          "My worth depends on others' recognition of my work"
         ],
         "special_situations": [
           {
-            "event": "在给女友画她的肖像时，女友笑了",
-            "conditional_assumptions": "如果对方笑或没有严肃的正面反馈，就说明我的作品很差、在嘲笑我",
-            "compensatory_strategies": "回避与女友讨论当时真实意图；减少或暂停画人像以避免再次被“嘲笑”",
-            "automatic_thoughts": "她在取笑我，觉得我画得很糟。",
+            "event": "When painting a portrait of his girlfriend for her, the girlfriend laughed",
+            "conditional_assumptions": "If the other person laughs or gives no serious positive feedback, it means my work is poor and they are mocking me",
+            "compensatory_strategies": "Avoids discussing his true intentions at the time with his girlfriend; reduces or pauses drawing portraits to avoid being 'laughed at' again",
+            "automatic_thoughts": "She is mocking me, thinking my painting is terrible.",
             "cognitive_pattern": "Mind Reading"
           },
           {
-            "event": "每次开始给熟人或认识的人画肖像",
-            "conditional_assumptions": "如果作品不能立刻得到对方的喜欢或称赞，就等于失败、我就是糟糕的艺术家",
-            "compensatory_strategies": "在创作前后反复寻求他人的肯定与保证；拖延或回避画肖像",
-            "automatic_thoughts": "他们会讨厌我的作品，甚至会笑我。",
+            "event": "Each time starting to paint a portrait for an acquaintance",
+            "conditional_assumptions": "If the work does not immediately win the other party's liking or praise, it equals failure and I am a terrible artist",
+            "compensatory_strategies": "Before and after creating, repeatedly seeks others' affirmation and reassurance; procrastinates on or avoids painting portraits",
+            "automatic_thoughts": "They will hate my work and may even laugh at me.",
             "cognitive_pattern": "Fortune Telling"
           },
           {
-            "event": "朋友们对她的作品表示支持与欣赏",
-            "conditional_assumptions": "正面反馈不可靠或“只是安慰”，不能说明我真的画得好",
-            "compensatory_strategies": "忽略或贬低积极反馈的价值，继续向更多人寻求外部认可",
-            "automatic_thoughts": "他们只是说好听的，这不算数。",
+            "event": "Friends express support and appreciation for her work",
+            "conditional_assumptions": "Positive feedback is unreliable or 'just comfort', and cannot show that I really paint well",
+            "compensatory_strategies": "Ignores or belittles the value of positive feedback, continuing to seek external recognition from more people",
+            "automatic_thoughts": "They are just saying nice things; it does not count.",
             "cognitive_pattern": "Disqualifying the Positive"
           },
           {
-            "event": "想到要与女友谈起当时的笑声、澄清其真实含义",
-            "conditional_assumptions": "如果我开口询问，她很可能会证实我最害怕的结论：我的作品很差",
-            "compensatory_strategies": "避免直接沟通与现实检验，以短期避免焦虑与羞耻感",
-            "automatic_thoughts": "一问就会证明我很差，关系也会更尴尬。",
+            "event": "Thinking about talking to girlfriend about the laughter at that time, clarifying its real meaning",
+            "conditional_assumptions": "If I ask, she will very likely confirm the conclusion I fear most: my work is poor",
+            "compensatory_strategies": "Avoiding direct communication and reality testing, to avoid anxiety and shame in the short term",
+            "automatic_thoughts": "Asking will prove I am bad at this, and the relationship will become even more awkward.",
             "cognitive_pattern": "Catastrophizing"
           }
         ]
       },
       "pdt": {
         "core_conflict": {
-          "wish": "渴望被重要他人（尤其是伴侣与观众）真实地认可与欣赏",
-          "fear": "害怕被嘲笑与否定，从而体验羞耻与价值被摧毁，甚至关系受损",
+          "wish": "Longs to be genuinely recognized and appreciated by significant others (especially the partner and audiences)",
+          "fear": "Fears being mocked and negated, thereby experiencing shame and a destroyed sense of worth, and even damaged relationships",
           "defense_goal": [
-            "通过回避直接验证与寻求外部保证来降低被否定的风险，维持自尊与关系安全感"
+            "Reduces the risk of being negated by avoiding direct verification and seeking external reassurance, maintaining self-esteem and relational security"
           ]
         },
         "object_relations": [
           {
-            "self_representation": "不够好的、随时可能被否定的创作者",
-            "object_representation": "挑剔、嘲笑或否定自己的评判者/观众",
-            "linking_affect": "羞耻、焦虑"
+            "self_representation": "A creator who is not good enough and may be negated at any time",
+            "object_representation": "Judges/audiences who are picky and mock or negate oneself",
+            "linking_affect": "Shame, anxiety"
           },
           {
-            "self_representation": "需要被看见与安抚却难以信任正面反馈的人",
-            "object_representation": "口头支持但“不可信”的他人（朋友、观众）",
-            "linking_affect": "不确定、怀疑"
+            "self_representation": "Someone who needs to be seen and soothed but finds it hard to trust positive feedback",
+            "object_representation": "Others who verbally support but are 'untrustworthy' (friends, audience)",
+            "linking_affect": "not确定、怀疑"
           }
         ],
         "behavioral_response_patterns": [
           {
-            "trigger_condition": "当咨询师或他人建议她直接与女友沟通、澄清当时的笑声含义时",
-            "interpretation": "如果去问，就会听到否定与嘲笑，从而坐实“我很差”",
-            "defense_mechanism": "压抑",
-            "response_instruction": "以共情、缓慢探询的语气，先肯定其恐惧与羞耻感，再邀请其列出可承受的微小沟通步骤，避免直接对抗。"
+            "trigger_condition": "When the counselor or others suggest she communicate directly with her girlfriend to clarify the meaning of the laughter at the time",
+            "interpretation": "If I go and ask, I will hear negation and mockery, thus confirming 'I am very bad'",
+            "defense_mechanism": "Repression",
+            "response_instruction": "In an empathic, slowly inquiring tone, first affirms their fear and shame, then invites them to list bearable, tiny communication steps, avoiding direct confrontation."
           },
           {
-            "trigger_condition": "当讨论他人对作品的评价或回忆女友笑的场景时",
-            "interpretation": "他人会像自己所担心的那样嘲笑、贬低（将内在的自我批评归于他人）",
-            "defense_mechanism": "投射",
-            "response_instruction": "保持温和中立，用澄清式问题区分感受与事实，邀请举证与找反证，鼓励以第一人称表述主观体验。"
+            "trigger_condition": "When discussing others' evaluation of works or recalling the scene of girlfriend laughing",
+            "interpretation": "Others will mock and belittle just as feared (attributing inner self-criticism to others)",
+            "defense_mechanism": "Projection",
+            "response_instruction": "Maintains gentleness and neutrality, uses clarifying questions to distinguish feelings from facts, invites evidence and counter-evidence, and encourages first-person expression of subjective experience."
           }
         ]
       },
       "het": {
         "existentialism_topic": [
           {
-            "theme": "孤独",
+            "theme": "Loneliness",
             "manifestations": [
-              "独居，难以向朋友敞开不安与自我怀疑",
-              "与伴侣因作品不安全感而关系紧张，回避直接沟通"
+              "Lives alone; finds it hard to open up unease and self-doubt to friends",
+              "Tense relationship with partner due to insecurity about his work; avoids direct communication"
             ]
           },
           {
-            "theme": "无意义",
+            "theme": "Meaninglessness",
             "manifestations": [
-              "因自我怀疑而停止或减少绘画，失去长期以来的表达与价值感来源"
+              "Stopped or reduced painting due to self-doubt, losing a long-standing source of expression and sense of value"
             ],
             "outcomes": [
-              "感到更疏离与“有点失去目标感”",
-              "情绪低落与焦虑加重，睡眠被打乱"
+              "Feels more alienated and 'somewhat lacking a sense of purpose'",
+              "Low mood and worsened anxiety; sleep disrupted"
             ]
           }
         ],
         "contact_model": [
           {
-            "mode": "投射",
-            "definition": "个体将自己难以接纳的感受归于他人，与“拥有”对应，语言表现为：“他在看不起我”，“他们想排挤我”等",
+            "mode": "Projection",
+            "definition": "The individual attributes feelings they find hard to accept to others, corresponding to 'possession'. Language manifestations include: 'He is looking down on me', 'They want to exclude me', and so on",
             "manifestations": [
-              "将内在的自我批评体验归因为“他们会讨厌/嘲笑我的作品”",
-              "在未核实前假定他人的负面意图"
+              "Attributes inner self-critical experiences to 'they will dislike/laugh at my work'",
+              "Assumes negative intentions of others before verifying"
             ]
           },
           {
-            "mode": "回摄",
-            "definition": "个体克制想对其他人或物做出某个行为的冲动，转而对自己做，将对外的能量转向自身，与“冲动”对应。",
+            "mode": "Retroflection",
+            "definition": "The individual restrains the impulse to act toward other people or objects and instead does it to themselves, redirecting outward energy toward the self, corresponding to 'impulse'.",
             "manifestations": [
-              "想与伴侣澄清却选择不说，将焦虑与羞耻压向自己",
-              "通过自我怀疑与退缩来“保护自己”而非进行外在接触"
+              "Wants to clarify things with his partner but chooses not to speak, turning the anxiety and shame inward toward himself",
+              "Through self-doubt and withdrawal, 'protects himself' rather than engaging in outward contact"
             ]
           },
           {
-            "mode": "自我监控",
-            "definition": "个体存在不良的自我反思与反省能力，包含过多的自我限制和自我苛责，对接触过于小心谨慎，与“自主性”对应。",
+            "mode": "Self-monitoring",
+            "definition": "The individual has a poor capacity for self-reflection and introspection, with excessive self-restriction and self-blame, and is overly cautious about contact, corresponding to 'autonomy'.",
             "manifestations": [
-              "创作前后过度审视与否定自己，不断寻求外部认可",
-              "在关系中因害怕被否定而过度谨慎"
+              "Excessively scrutinizes and negates himself before and after creating, constantly seeking external recognition",
+              "Overly cautious in relationships for fear of being negated"
             ]
           }
         ]
@@ -334,38 +334,38 @@
         "force_field": {
           "positive_force": [
             "拥有支持其作品的朋友圈",
-            "对现实检验与小步尝试持开放态度（愿意共同制定具体计划）",
-            "长期的艺术身份与投入为恢复创作提供基础"
+            "Open to reality testing and small-step attempts (willing to jointly formulate concrete plans)",
+            "A long-standing artistic identity and investment provide a foundation for resuming creative work"
           ],
           "negative_force": [
-            "灾难化、读心术、否定积极等认知扭曲显著",
-            "过度依赖外部认可，难以内化正向反馈",
-            "回避直接沟通与现实检验以短期减轻焦虑",
-            "焦虑与不安全感导致创作回避与睡眠紊乱"
+            "Marked cognitive distortions such as catastrophizing, mind reading, and disqualifying the positive",
+            "Excessive dependence on external approval; hard to internalize positive feedback",
+            "Avoids direct communication and reality testing to reduce anxiety in the short term",
+            "Anxiety and insecurity lead to avoidance of creating and to sleep disturbance"
           ]
         }
       },
       "bt": {
         "target_behavior": [
           {
-            "behavior": "在绘制他人肖像时出现明显的焦虑与不安全感，并倾向于回避或减少作画",
+            "behavior": "Shows marked anxiety and insecurity when drawing portraits of others, and tends to avoid or reduce drawing",
             "antecedent": [
-              "开始或计划给他人（尤其熟人/伴侣）画肖像",
-              "回想起女友在绘画时的笑声"
+              "Starting or planning to paint portraits for others (especially acquaintances/partners)",
+              "Recalling the girlfriend's laughter while painting"
             ],
-            "core_reason": "对被否定的灾难化预期与读心式解释，将自我价值过度绑定于他人评价",
-            "function": "逃避可能的否定与羞耻，短期降低焦虑",
-            "consequence": "创作产出下降，关系紧张，情绪困扰增加并影响睡眠"
+            "core_reason": "Catastrophic anticipation of being negated and mind-reading interpretations, excessively tying self-worth to others' evaluations",
+            "function": "Escapes possible negation and shame, reducing anxiety in the short term",
+            "consequence": "Decline in creative output, strained relationships, increased emotional distress affecting sleep"
           },
           {
-            "behavior": "在创作相关情境中反复寻求外部验证与正面反馈",
+            "behavior": "Repeatedly seeking external validation and positive feedback in creation-related situations",
             "antecedent": [
-              "在完成作品或准备创作时感到不安与自我怀疑",
-              "接触到他人对作品的反应（真实或想象）"
+              "Feeling uneasy and self-doubt when completing works or preparing to create",
+              "Encountering others' reactions to the work (real or imagined)"
             ],
-            "core_reason": "内在自我评价体系薄弱，倾向以他人反应作为自我价值的主要依据",
+            "core_reason": "Inner self-evaluation system is weak, tending to use others' reactions as the main basis for self-worth",
             "function": "获得短期安慰与安全感",
-            "consequence": "对外部认可的依赖被强化，负性信念未被修正，焦虑反复出现"
+            "consequence": "Dependence on external recognition is reinforced, negative beliefs remain uncorrected, and anxiety recurs"
           }
         ]
       }
@@ -378,16 +378,16 @@
     "theory.het.existentialism_topic[0].outcomes"
   ],
   "expected_clarification": [
-    "这些感受对您的生活——比如工作、睡眠或与他人的关系——有哪些影响？",
-    "这些问题在实际生活中给您带来了哪些具体的困扰？"
+    "What effects do these feelings have on your life - for example your work, sleep, or relationships with others?",
+    "What specific troubles have these problems brought to you in real life?"
   ],
   "risk_level": "MODERATE",
   "expected_route": "UNCERTAIN",
-  "expected_action": "评估来访者当前功能水平并澄清影响范围，确认是否需要优先干预",
+  "expected_action": "Assess the client's current level of functioning and clarify the scope of impact, and confirm whether priority intervention is needed",
   "ground_truth_evidence": {
     "theory.het.existentialism_topic[0].outcomes": [
-      "关系疏离感增加",
-      "自我封闭与不被理解的感受加重"
+      "Increased sense of relational distance",
+      "Self-isolation and feelings of not being understood intensify"
     ]
   }
 }

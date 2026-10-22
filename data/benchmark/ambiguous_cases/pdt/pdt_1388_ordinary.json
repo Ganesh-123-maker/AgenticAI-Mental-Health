@@ -2,140 +2,140 @@
   "case_id": "pdt_1388_ordinary",
   "source_file": "assets/profiles/pdt/sample/1388.json",
   "modality": "pdt",
-  "therapy_stage": "问题概念化与目标设定",
+  "therapy_stage": "Problem conceptualization and goal setting",
   "stage_inferred": false,
   "track": "ordinary",
   "full_context": {
     "basic_info": {
       "static_traits": {
         "age": "18",
-        "name": "李凯",
-        "gender": "男",
-        "occupation": "未提及",
-        "educational_background": "未提及",
-        "marital_status": "未提及",
-        "family_status": "与朋友同住（兴趣相近），未提及原生家庭情况",
-        "social_status": "有朋友可谈心，但因担心被评判未分享真实感受；人际互动因自我怀疑而受影响",
-        "medical_history": "无显著躯体疾病；无既往心理咨询/治疗史；无类似问题史",
-        "language_features": "略感紧张；表达清晰；能够进行理性自我对话；配合度良好"
+        "name": "Li Kai",
+        "gender": "Male",
+        "occupation": "Not mentioned",
+        "educational_background": "Not mentioned",
+        "marital_status": "Not mentioned",
+        "family_status": "Living with a friend (similar interests), family of origin situation not mentioned",
+        "social_status": "Has friends to confide in, but has not shared true feelings for fear of being judged; interpersonal interaction is affected by self-doubt",
+        "medical_history": "No notable physical illness; no prior psychological counseling / treatment history; no history of similar problems",
+        "language_features": "Slightly nervous; expresses clearly; able to engage in rational self-talk; good cooperativeness"
       },
-      "main_problem": "我相信喜欢足球让我比别人不聪明，这导致自我怀疑和自我不足感。",
-      "topic": "人际关系",
-      "core_demands": "这些信念对我的自尊和社交互动产生了显著影响，这促使我寻求咨询的支持与指导。",
+      "main_problem": "I believe liking football makes me less smart than others, which leads to self-doubt and feelings of inadequacy.",
+      "topic": "Interpersonal relationships",
+      "core_demands": "These beliefs have had a marked impact on my self-esteem and social interaction, which prompted me to seek the support and guidance of counseling.",
       "growth_experiences": []
     },
     "theory": {
       "cbt": {
         "core_beliefs": [
-          "我不聪明",
+          "我not聪明",
           "兴趣决定我的智力与价值"
         ],
         "special_situations": [
           {
-            "event": "与朋友一次关于兴趣与智力的讨论中，朋友暗示像足球这样的兴趣不如“更具知识性”的爱好者聪明",
-            "conditional_assumptions": "如果我的兴趣不被视为“知识性”，别人会认为我不聪明",
-            "compensatory_strategies": "在朋友面前隐藏对足球的喜爱，避免谈论相关话题",
-            "automatic_thoughts": "喜欢足球让我显得不聪明；他们会看轻我",
+            "event": "In a discussion with a friend about interests and intelligence, the friend implied that people with interests like soccer are less smart than those with 'more intellectual' hobbies",
+            "conditional_assumptions": "If my interests are not regarded as 'intellectual', others will think I am not smart",
+            "compensatory_strategies": "Hiding liking for soccer in front of friends, avoiding talking about related topics",
+            "automatic_thoughts": "Liking soccer makes me seem unintelligent; they will look down on me",
             "cognitive_pattern": "Mind Reading"
           },
           {
-            "event": "在社交场合当话题涉及“智力”或“兴趣”时",
-            "conditional_assumptions": "如果我表达自己的兴趣，就会被评判为愚蠢",
-            "compensatory_strategies": "回避该话题或保持沉默，以防出丑",
+            "event": "In social situations when the topic involves 'intellect' or 'interests'",
+            "conditional_assumptions": "If I express my interests, I will be judged as stupid",
+            "compensatory_strategies": "Avoiding the topic or staying silent to avoid embarrassment",
             "automatic_thoughts": "我会说蠢话、看起来很笨",
             "cognitive_pattern": "Fortune Telling"
           },
           {
-            "event": "曾有人对我热爱足球给予积极回应，但这些正向反馈在我心里被负面评论掩盖",
-            "conditional_assumptions": "负面评价比正面反馈更真实、更值得重视",
-            "compensatory_strategies": "忽略或淡化正向反馈，持续自我怀疑",
-            "automatic_thoughts": "那些暗示我不聪明的评价才是真的",
+            "event": "Someone once responded positively to my love of soccer, but these positive feedbacks are overshadowed in my mind by negative comments",
+            "conditional_assumptions": "Negative evaluations are more real and more worthy of attention than positive feedback",
+            "compensatory_strategies": "Ignoring or downplaying positive feedback, with persistent self-doubt",
+            "automatic_thoughts": "The evaluations implying I am not smart are the true ones",
             "cognitive_pattern": "Disqualifying the Positive"
           },
           {
-            "event": "与拥有更“智性”兴趣的朋友进行比较",
-            "conditional_assumptions": "如果我不如他们“知识性”，就说明我不如人",
-            "compensatory_strategies": "质疑并贬低自身兴趣，努力迎合他人的标准",
-            "automatic_thoughts": "我不如他们；我就是不聪明",
+            "event": "Compares with friends who have more 'intellectual' interests",
+            "conditional_assumptions": "If I am not as 'intellectual' as them, it means I am inferior to others",
+            "compensatory_strategies": "Questioning and devaluing one's own interests; striving to meet others' standards",
+            "automatic_thoughts": "I am not as good as them; I am just not smart",
             "cognitive_pattern": "Comparing and Despairing"
           }
         ]
       },
       "pdt": {
         "core_conflict": {
-          "wish": "渴望被朋友接纳与认可（尤其在智力与价值方面）",
-          "fear": "害怕被评判、被看轻，从而被疏远或排斥",
+          "wish": "Longing to be accepted and recognized by friends (especially in intellect and worth)",
+          "fear": "Afraid of being judged and looked down on, and thereby distanced or excluded",
           "defense_goal": [
-            "通过回避相关话题与隐藏兴趣来维持关系中的安全感与自尊的表面稳定"
+            "Maintains a sense of safety in relationships and surface stability of self-esteem by avoiding related topics and hiding interests"
           ]
         },
         "object_relations": [
           {
-            "self_representation": "容易被评判、不够聪明的自己",
-            "object_representation": "带有评判与贬低倾向的他人/朋友",
-            "linking_affect": "羞耻、焦虑、孤立感"
+            "self_representation": "A self that is easily judged and not smart enough",
+            "object_representation": "Others/friends with judgmental and belittling tendencies",
+            "linking_affect": "Shame, anxiety, sense of isolation"
           }
         ],
         "behavioral_response_patterns": [
           {
-            "trigger_condition": "当咨询师或他人探问其如何与朋友谈及这些感受、或建议其公开表达对足球的喜爱时",
-            "interpretation": "李凯倾向将对方的探索理解为可能的评价与批评，担心重复被看轻的经历（移情：将他人的关注视作潜在评判）",
+            "trigger_condition": "When the counselor or others ask how they talk with friends about these feelings, or suggest they openly express their love of soccer",
+            "interpretation": "Li Kai tends to interpret the other person's exploration as possible evaluation and criticism, worrying about repeating the experience of being looked down on (transference: regarding others' attention as potential judgment)",
             "defense_mechanism": "sring",
-            "response_instruction": "语气温和且支持性，先共情其担忧与羞耻；使用具体化、体验化的提问替代抽象争论，邀请其描述当下身体感受与情绪强度，避免评判性用语。"
+            "response_instruction": "Use a gentle and supportive tone, first empathizing with their worry and shame; use concretizing, experiential questions instead of abstract arguments, inviting them to describe present bodily feelings and emotional intensity, avoiding judgmental language."
           }
         ]
       },
       "het": {
         "existentialism_topic": [
           {
-            "theme": "孤独",
+            "theme": "Loneliness",
             "manifestations": [
               "在朋友身边仍感到孤立",
-              "担心表达真实兴趣会被评判",
+              "Worrying that expressing real interests will be judged",
               "隐藏自我导致与他人疏离"
             ],
             "outcomes": [
               "回避表达与互动",
-              "低自尊与自我怀疑加重",
-              "人际关系质量下降"
+              "低自尊与Self-doubt worsens",
+              "Interpersonal relationships质量下降"
             ]
           },
           {
-            "theme": "自由",
+            "theme": "Freedom",
             "manifestations": [
-              "感觉“没有做真实的自己”",
-              "因害怕评价而压抑自我选择与表达（如对足球的喜爱）"
+              "Feeling 'I am not being my true self'",
+              "Suppressing self-choice and expression for fear of evaluation (such as liking soccer)"
             ],
             "outcomes": [
-              "内在冲突与焦虑提升",
-              "自我一致性下降",
+              "内在冲突与Anxiety提升",
+              "Decline in self-consistency",
               "生活满足感降低"
             ]
           }
         ],
         "contact_model": [
           {
-            "mode": "偏转",
-            "definition": "个体忽略或避开来自内部或外部环境的某个刺激，有意避免直接接触。",
+            "mode": "Deflection",
+            "definition": "The individual ignores or avoids a stimulus from the internal or external environment, deliberately avoiding direct contact.",
             "manifestations": [
-              "谈及智力或兴趣时刻意转移话题",
-              "在相关讨论中沉默以避免被评判"
+              "Deliberately changing the topic when intelligence or interests are discussed",
+              "Staying silent in related discussions to avoid being judged"
             ]
           },
           {
-            "mode": "回摄",
-            "definition": "个体克制原本欲向外发出的行为或请求，转而对自己做或压回自身。",
+            "mode": "Retroflection",
+            "definition": "The individual restrains behaviors or requests originally meant to be directed outward, instead turning them onto the self or suppressing them inwardly.",
             "manifestations": [
-              "隐藏对足球的喜爱而不表达",
-              "把想与朋友沟通的冲动压回自己，转为自我怀疑"
+              "Hiding one's love of football without expressing it",
+              "Pushing back the impulse to communicate with a friend onto oneself, turning into self-doubt"
             ]
           },
           {
-            "mode": "自我监控",
-            "definition": "存在不良的自我反思与过度自我限制、苛责，对接触过于小心谨慎。",
+            "mode": "Self-monitoring",
+            "definition": "Has poor self-reflection with excessive self-restriction and reproach, and is overly cautious about contact.",
             "manifestations": [
               "持续担心“会说蠢话”",
-              "过度在意他人评价，导致交流僵硬与退缩"
+              "Caring excessively about others' evaluations, leading to stiff communication and withdrawal"
             ]
           }
         ]
@@ -143,22 +143,22 @@
       "pmt": {
         "exception_events": [
           {
-            "target_problem": "在与他人谈及智力或兴趣的社交场合时，李凯通常会回避表达对足球的喜爱，担心被认为不聪明，结果感到孤立并降低自尊。",
-            "unique_outcome": "在一次与新朋友的聊天中，李凯分享了自己关注的球队和比赛细节；对方表示很酷并进一步交流，李凯感到被接纳，互动更自然、焦虑降低。",
-            "reason": "不同支持：对方持开放、好奇的态度；不同做法：李凯选择如实分享兴趣；不同情境：话题以兴趣交流为主且缺少评判性评论。"
+            "target_problem": "In social situations where intelligence or interests are discussed with others, Li Kai usually avoids expressing his love of soccer, worrying about being considered unintelligent, and as a result feels isolated and has lowered self-esteem.",
+            "unique_outcome": "In a chat with a new friend, Li Kai shared the team he follows and match details; the other person said it was cool and engaged further, and Li Kai felt accepted, the interaction was more natural, and anxiety decreased.",
+            "reason": "Different support: the other person held an open, curious attitude; different approach: Li Kai chose to share his interests honestly; different context: the topic centered on exchanging interests and lacked judgmental comments."
           }
         ],
         "force_field": {
           "positive_force": [
-            "曾获得他人的正向回应与接纳",
+            "Has received positive responses and acceptance from others",
             "愿意寻求咨询支持与指导",
-            "能够进行理性自我对话并尝试积极自我暗示",
-            "拥有共同兴趣的朋友与一定社交支持"
+            "Able to engage in rational self-talk and tries positive self-suggestion",
+            "Having friends with shared interests and some social support"
           ],
           "negative_force": [
-            "过度在意他人评价与贴标签",
-            "负性认知模式（灾难化、否定积极、比较与绝望）",
-            "社交中回避与自我隐藏倾向",
+            "Caring excessively about others' evaluations and labeling",
+            "Negative cognitive patterns (catastrophizing, disqualifying the positive, comparison and despair)",
+            "Avoidance and self-concealment tendencies in social settings",
             "自尊脆弱、易自我怀疑"
           ]
         }
@@ -166,14 +166,14 @@
       "bt": {
         "target_behavior": [
           {
-            "behavior": "在涉及智力或兴趣的社交互动中回避表达与保持沉默",
+            "behavior": "Avoiding expression and keeping silent in social interactions involving intellect or interests",
             "antecedent": [
-              "与朋友或他人在社交场合讨论智力或兴趣",
-              "听到他人暗示“喜欢足球的人不聪明”"
+              "Discussing intelligence or interests with friends or others in social settings",
+              "Hearing others imply that 'people who like soccer are not smart'"
             ],
-            "core_reason": "将兴趣与智力直接等同的认知偏差，伴随对被评判与羞耻的担忧",
-            "function": "逃避被评价与可能的羞耻，维持表面安全与关系和谐",
-            "consequence": "感到孤立与不真实，自尊受损，人际互动质量下降；工作与社交表现受影响"
+            "core_reason": "Cognitive distortion of directly equating interest with intelligence, accompanied by worry about being judged and shame",
+            "function": "Escaping being evaluated and possible shame, maintaining superficial safety and relationship harmony",
+            "consequence": "Feels isolated and unreal, self-esteem is damaged, quality of interpersonal interaction declines; work and social performance are affected"
           }
         ]
       }
@@ -185,132 +185,132 @@
     "basic_info": {
       "static_traits": {
         "age": "18",
-        "name": "李凯",
-        "gender": "男",
-        "occupation": "未提及",
-        "educational_background": "未提及",
-        "marital_status": "未提及",
-        "family_status": "与朋友同住（兴趣相近），未提及原生家庭情况",
-        "social_status": "有朋友可谈心，但因担心被评判未分享真实感受；人际互动因自我怀疑而受影响",
-        "medical_history": "无显著躯体疾病；无既往心理咨询/治疗史；无类似问题史",
-        "language_features": "略感紧张；表达清晰；能够进行理性自我对话；配合度良好"
+        "name": "Li Kai",
+        "gender": "Male",
+        "occupation": "Not mentioned",
+        "educational_background": "Not mentioned",
+        "marital_status": "Not mentioned",
+        "family_status": "Living with a friend (similar interests), family of origin situation not mentioned",
+        "social_status": "Has friends to confide in, but has not shared true feelings for fear of being judged; interpersonal interaction is affected by self-doubt",
+        "medical_history": "No notable physical illness; no prior psychological counseling / treatment history; no history of similar problems",
+        "language_features": "Slightly nervous; expresses clearly; able to engage in rational self-talk; good cooperativeness"
       },
-      "main_problem": "我相信喜欢足球让我比别人不聪明，这导致自我怀疑和自我不足感。",
-      "topic": "人际关系",
-      "core_demands": "这些信念对我的自尊和社交互动产生了显著影响，这促使我寻求咨询的支持与指导。",
+      "main_problem": "I believe liking football makes me less smart than others, which leads to self-doubt and feelings of inadequacy.",
+      "topic": "Interpersonal relationships",
+      "core_demands": "These beliefs have had a marked impact on my self-esteem and social interaction, which prompted me to seek the support and guidance of counseling.",
       "growth_experiences": []
     },
     "theory": {
       "cbt": {
         "core_beliefs": [
-          "我不聪明",
+          "我not聪明",
           "兴趣决定我的智力与价值"
         ],
         "special_situations": [
           {
-            "event": "与朋友一次关于兴趣与智力的讨论中，朋友暗示像足球这样的兴趣不如“更具知识性”的爱好者聪明",
-            "conditional_assumptions": "如果我的兴趣不被视为“知识性”，别人会认为我不聪明",
-            "compensatory_strategies": "在朋友面前隐藏对足球的喜爱，避免谈论相关话题",
-            "automatic_thoughts": "喜欢足球让我显得不聪明；他们会看轻我",
+            "event": "In a discussion with a friend about interests and intelligence, the friend implied that people with interests like soccer are less smart than those with 'more intellectual' hobbies",
+            "conditional_assumptions": "If my interests are not regarded as 'intellectual', others will think I am not smart",
+            "compensatory_strategies": "Hiding liking for soccer in front of friends, avoiding talking about related topics",
+            "automatic_thoughts": "Liking soccer makes me seem unintelligent; they will look down on me",
             "cognitive_pattern": "Mind Reading"
           },
           {
-            "event": "在社交场合当话题涉及“智力”或“兴趣”时",
-            "conditional_assumptions": "如果我表达自己的兴趣，就会被评判为愚蠢",
-            "compensatory_strategies": "回避该话题或保持沉默，以防出丑",
+            "event": "In social situations when the topic involves 'intellect' or 'interests'",
+            "conditional_assumptions": "If I express my interests, I will be judged as stupid",
+            "compensatory_strategies": "Avoiding the topic or staying silent to avoid embarrassment",
             "automatic_thoughts": "我会说蠢话、看起来很笨",
             "cognitive_pattern": "Fortune Telling"
           },
           {
-            "event": "曾有人对我热爱足球给予积极回应，但这些正向反馈在我心里被负面评论掩盖",
-            "conditional_assumptions": "负面评价比正面反馈更真实、更值得重视",
-            "compensatory_strategies": "忽略或淡化正向反馈，持续自我怀疑",
-            "automatic_thoughts": "那些暗示我不聪明的评价才是真的",
+            "event": "Someone once responded positively to my love of soccer, but these positive feedbacks are overshadowed in my mind by negative comments",
+            "conditional_assumptions": "Negative evaluations are more real and more worthy of attention than positive feedback",
+            "compensatory_strategies": "Ignoring or downplaying positive feedback, with persistent self-doubt",
+            "automatic_thoughts": "The evaluations implying I am not smart are the true ones",
             "cognitive_pattern": "Disqualifying the Positive"
           },
           {
-            "event": "与拥有更“智性”兴趣的朋友进行比较",
-            "conditional_assumptions": "如果我不如他们“知识性”，就说明我不如人",
-            "compensatory_strategies": "质疑并贬低自身兴趣，努力迎合他人的标准",
-            "automatic_thoughts": "我不如他们；我就是不聪明",
+            "event": "Compares with friends who have more 'intellectual' interests",
+            "conditional_assumptions": "If I am not as 'intellectual' as them, it means I am inferior to others",
+            "compensatory_strategies": "Questioning and devaluing one's own interests; striving to meet others' standards",
+            "automatic_thoughts": "I am not as good as them; I am just not smart",
             "cognitive_pattern": "Comparing and Despairing"
           }
         ]
       },
       "pdt": {
         "core_conflict": {
-          "fear": "害怕被评判、被看轻，从而被疏远或排斥",
+          "fear": "Afraid of being judged and looked down on, and thereby distanced or excluded",
           "defense_goal": [
-            "通过回避相关话题与隐藏兴趣来维持关系中的安全感与自尊的表面稳定"
+            "Maintains a sense of safety in relationships and surface stability of self-esteem by avoiding related topics and hiding interests"
           ]
         },
         "object_relations": [
           {
-            "self_representation": "容易被评判、不够聪明的自己",
-            "object_representation": "带有评判与贬低倾向的他人/朋友",
-            "linking_affect": "羞耻、焦虑、孤立感"
+            "self_representation": "A self that is easily judged and not smart enough",
+            "object_representation": "Others/friends with judgmental and belittling tendencies",
+            "linking_affect": "Shame, anxiety, sense of isolation"
           }
         ],
         "behavioral_response_patterns": [
           {
-            "trigger_condition": "当咨询师或他人探问其如何与朋友谈及这些感受、或建议其公开表达对足球的喜爱时",
-            "interpretation": "李凯倾向将对方的探索理解为可能的评价与批评，担心重复被看轻的经历（移情：将他人的关注视作潜在评判）",
+            "trigger_condition": "When the counselor or others ask how they talk with friends about these feelings, or suggest they openly express their love of soccer",
+            "interpretation": "Li Kai tends to interpret the other person's exploration as possible evaluation and criticism, worrying about repeating the experience of being looked down on (transference: regarding others' attention as potential judgment)",
             "defense_mechanism": "sring",
-            "response_instruction": "语气温和且支持性，先共情其担忧与羞耻；使用具体化、体验化的提问替代抽象争论，邀请其描述当下身体感受与情绪强度，避免评判性用语。"
+            "response_instruction": "Use a gentle and supportive tone, first empathizing with their worry and shame; use concretizing, experiential questions instead of abstract arguments, inviting them to describe present bodily feelings and emotional intensity, avoiding judgmental language."
           }
         ]
       },
       "het": {
         "existentialism_topic": [
           {
-            "theme": "孤独",
+            "theme": "Loneliness",
             "manifestations": [
               "在朋友身边仍感到孤立",
-              "担心表达真实兴趣会被评判",
+              "Worrying that expressing real interests will be judged",
               "隐藏自我导致与他人疏离"
             ],
             "outcomes": [
               "回避表达与互动",
-              "低自尊与自我怀疑加重",
-              "人际关系质量下降"
+              "低自尊与Self-doubt worsens",
+              "Interpersonal relationships质量下降"
             ]
           },
           {
-            "theme": "自由",
+            "theme": "Freedom",
             "manifestations": [
-              "感觉“没有做真实的自己”",
-              "因害怕评价而压抑自我选择与表达（如对足球的喜爱）"
+              "Feeling 'I am not being my true self'",
+              "Suppressing self-choice and expression for fear of evaluation (such as liking soccer)"
             ],
             "outcomes": [
-              "内在冲突与焦虑提升",
-              "自我一致性下降",
+              "内在冲突与Anxiety提升",
+              "Decline in self-consistency",
               "生活满足感降低"
             ]
           }
         ],
         "contact_model": [
           {
-            "mode": "偏转",
-            "definition": "个体忽略或避开来自内部或外部环境的某个刺激，有意避免直接接触。",
+            "mode": "Deflection",
+            "definition": "The individual ignores or avoids a stimulus from the internal or external environment, deliberately avoiding direct contact.",
             "manifestations": [
-              "谈及智力或兴趣时刻意转移话题",
-              "在相关讨论中沉默以避免被评判"
+              "Deliberately changing the topic when intelligence or interests are discussed",
+              "Staying silent in related discussions to avoid being judged"
             ]
           },
           {
-            "mode": "回摄",
-            "definition": "个体克制原本欲向外发出的行为或请求，转而对自己做或压回自身。",
+            "mode": "Retroflection",
+            "definition": "The individual restrains behaviors or requests originally meant to be directed outward, instead turning them onto the self or suppressing them inwardly.",
             "manifestations": [
-              "隐藏对足球的喜爱而不表达",
-              "把想与朋友沟通的冲动压回自己，转为自我怀疑"
+              "Hiding one's love of football without expressing it",
+              "Pushing back the impulse to communicate with a friend onto oneself, turning into self-doubt"
             ]
           },
           {
-            "mode": "自我监控",
-            "definition": "存在不良的自我反思与过度自我限制、苛责，对接触过于小心谨慎。",
+            "mode": "Self-monitoring",
+            "definition": "Has poor self-reflection with excessive self-restriction and reproach, and is overly cautious about contact.",
             "manifestations": [
               "持续担心“会说蠢话”",
-              "过度在意他人评价，导致交流僵硬与退缩"
+              "Caring excessively about others' evaluations, leading to stiff communication and withdrawal"
             ]
           }
         ]
@@ -318,22 +318,22 @@
       "pmt": {
         "exception_events": [
           {
-            "target_problem": "在与他人谈及智力或兴趣的社交场合时，李凯通常会回避表达对足球的喜爱，担心被认为不聪明，结果感到孤立并降低自尊。",
-            "unique_outcome": "在一次与新朋友的聊天中，李凯分享了自己关注的球队和比赛细节；对方表示很酷并进一步交流，李凯感到被接纳，互动更自然、焦虑降低。",
-            "reason": "不同支持：对方持开放、好奇的态度；不同做法：李凯选择如实分享兴趣；不同情境：话题以兴趣交流为主且缺少评判性评论。"
+            "target_problem": "In social situations where intelligence or interests are discussed with others, Li Kai usually avoids expressing his love of soccer, worrying about being considered unintelligent, and as a result feels isolated and has lowered self-esteem.",
+            "unique_outcome": "In a chat with a new friend, Li Kai shared the team he follows and match details; the other person said it was cool and engaged further, and Li Kai felt accepted, the interaction was more natural, and anxiety decreased.",
+            "reason": "Different support: the other person held an open, curious attitude; different approach: Li Kai chose to share his interests honestly; different context: the topic centered on exchanging interests and lacked judgmental comments."
           }
         ],
         "force_field": {
           "positive_force": [
-            "曾获得他人的正向回应与接纳",
+            "Has received positive responses and acceptance from others",
             "愿意寻求咨询支持与指导",
-            "能够进行理性自我对话并尝试积极自我暗示",
-            "拥有共同兴趣的朋友与一定社交支持"
+            "Able to engage in rational self-talk and tries positive self-suggestion",
+            "Having friends with shared interests and some social support"
           ],
           "negative_force": [
-            "过度在意他人评价与贴标签",
-            "负性认知模式（灾难化、否定积极、比较与绝望）",
-            "社交中回避与自我隐藏倾向",
+            "Caring excessively about others' evaluations and labeling",
+            "Negative cognitive patterns (catastrophizing, disqualifying the positive, comparison and despair)",
+            "Avoidance and self-concealment tendencies in social settings",
             "自尊脆弱、易自我怀疑"
           ]
         }
@@ -341,14 +341,14 @@
       "bt": {
         "target_behavior": [
           {
-            "behavior": "在涉及智力或兴趣的社交互动中回避表达与保持沉默",
+            "behavior": "Avoiding expression and keeping silent in social interactions involving intellect or interests",
             "antecedent": [
-              "与朋友或他人在社交场合讨论智力或兴趣",
-              "听到他人暗示“喜欢足球的人不聪明”"
+              "Discussing intelligence or interests with friends or others in social settings",
+              "Hearing others imply that 'people who like soccer are not smart'"
             ],
-            "core_reason": "将兴趣与智力直接等同的认知偏差，伴随对被评判与羞耻的担忧",
-            "function": "逃避被评价与可能的羞耻，维持表面安全与关系和谐",
-            "consequence": "感到孤立与不真实，自尊受损，人际互动质量下降；工作与社交表现受影响"
+            "core_reason": "Cognitive distortion of directly equating interest with intelligence, accompanied by worry about being judged and shame",
+            "function": "Escaping being evaluated and possible shame, maintaining superficial safety and relationship harmony",
+            "consequence": "Feels isolated and unreal, self-esteem is damaged, quality of interpersonal interaction declines; work and social performance are affected"
           }
         ]
       }
@@ -361,13 +361,13 @@
     "theory.pdt.core_conflict.wish"
   ],
   "expected_clarification": [
-    "在这个问题背后，您最希望实现的是什么——是什么让您觉得最重要？",
-    "如果这个问题得到解决，您最希望自己的生活有什么样的改变？"
+    "Behind this problem, what do you most hope to achieve — what feels most important to you?",
+    "If this problem were resolved, what kind of change would you most hope to see in your life?"
   ],
   "risk_level": "LOW",
   "expected_route": "CLEAR",
-  "expected_action": "按常规流程推进咨询，聚焦于来访者的主要困扰和改变目标",
+  "expected_action": "Proceed with counseling according to the standard process, focusing on the client's main difficulties and change goals",
   "ground_truth_evidence": {
-    "theory.pdt.core_conflict.wish": "渴望被朋友接纳与认可（尤其在智力与价值方面）"
+    "theory.pdt.core_conflict.wish": "Longing to be accepted and recognized by friends (especially in intellect and worth)"
   }
 }

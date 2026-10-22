@@ -2,7 +2,7 @@
   "case_id": "pdt_1542_ordinary",
   "source_file": "assets/profiles/pdt/sample/1542.json",
   "modality": "pdt",
-  "therapy_stage": "核心认知与行为干预",
+  "therapy_stage": "Core cognitive and behavioral intervention",
   "stage_inferred": true,
   "track": "ordinary",
   "full_context": {
@@ -10,98 +10,98 @@
       "static_traits": {
         "age": "29",
         "name": "陈天宇",
-        "gender": "男",
-        "occupation": "研究生",
-        "educational_background": "学习成为医生",
-        "marital_status": "单身",
-        "family_status": "未提供",
-        "social_status": "有一些研究生同学朋友可倾诉，但尚未向他们分享自我怀疑与低估自身能力的感受；与同学的关系会受到其淡化成就的影响",
-        "medical_history": "本科阶段曾有类似的贬低成就经历；未曾接受心理治疗；无显著身体疾病",
-        "language_features": "表达清晰、能具体举例、对自身思维有一定觉察；语气中立，配合度较好；常使用自我否定与外归的陈述（如“任何人都能做到”“我只是运气好”）"
+        "gender": "Male",
+        "occupation": "Graduate student",
+        "educational_background": "学习成为Doctor",
+        "marital_status": "Single",
+        "family_status": "Not provided",
+        "social_status": "Has some graduate-school classmate friends to confide in, but has not yet shared with them the feelings of self-doubt and underestimating their own abilities; relationships with classmates are affected by the client's downplaying of achievements",
+        "medical_history": "Had similar experiences of devaluing achievements during the undergraduate stage; has never received psychotherapy; no notable physical illness",
+        "language_features": "Clear expression, able to give concrete examples, with some awareness of their own thinking; neutral tone, relatively good cooperation; often uses statements of self-negation and external attribution (such as 'anyone could do it' and 'I was just lucky')"
       },
-      "main_problem": "我经常贬低自己的成就，把它们归因于外部因素，而不承认自己的努力。这导致自我怀疑并低估自己的能力。",
-      "topic": "学业压力",
-      "core_demands": "我意识到持续的自我怀疑以及无法承认自己的成就正在阻碍我的学业和个人成长，因此寻求咨询。",
+      "main_problem": "I often belittle my achievements, attributing them to external factors rather than acknowledging my own effort. This leads to self-doubt and underestimating my abilities.",
+      "topic": "Academic pressure",
+      "core_demands": "I realize that persistent self-doubt and the inability to acknowledge my own achievements are hindering my academic and personal growth, so I seek counseling.",
       "growth_experiences": [
-        "本科阶段开始出现在取得好成绩后贬低成就、将成功归因于外因的模式，认为高学业压力下“任何人都能做到我做的事”，这逐步固化为自我怀疑与否定积极的习惯性思维。",
-        "被医学院录取的那一刻曾短暂地感到欣喜与被肯定，视其为对长期努力的验证，但随后自我怀疑再次出现，呈现对成就的积极体验难以维持的模式。"
+        "Beginning in the undergraduate stage, the client developed a pattern of belittling achievements after getting good grades and attributing success to external causes, believing that under high academic pressure 'anyone could do what I did'; this gradually solidified into habitual thinking of self-doubt and disqualifying the positive.",
+        "At the moment of being admitted to medical school, the client briefly felt joy and affirmation, viewing it as validation of long-term effort, but then self-doubt reappeared, showing a pattern in which positive experiences of achievement are hard to sustain."
       ]
     },
     "theory": {
       "cbt": {
         "core_beliefs": [
-          "我的成就不算数",
+          "My achievements do not count",
           "任何人都能做到我做的事",
-          "我不够好"
+          "I am not good enough"
         ],
         "special_situations": [
           {
             "event": "本学期取得了很好的成绩",
-            "conditional_assumptions": "如果好成绩并非独一无二、他人也能做到，那么我的成就就不值得被认可",
-            "compensatory_strategies": "将成功归因于运气或“题目恰好熟悉”，主动淡化和否定自己的努力以避免显得自大",
-            "automatic_thoughts": "任何人只要努力都能做到，我只是运气好",
+            "conditional_assumptions": "If good grades are not unique and others can also achieve them, then my achievements are not worth recognizing",
+            "compensatory_strategies": "Attributes success to luck or 'the questions happened to be familiar', proactively downplays and negates their own effort to avoid seeming arrogant",
+            "automatic_thoughts": "Anyone can do it if they try; I was just lucky",
             "cognitive_pattern": "Disqualifying the Positive"
           },
           {
-            "event": "在一场困难的考试中取得高分",
-            "conditional_assumptions": "如果试题刚好是我会的，就不算真正体现能力和努力",
-            "compensatory_strategies": "以具体偶然因素解释成绩，忽略长期付出与准备",
-            "automatic_thoughts": "这次只是因为题目刚好是我会的",
+            "event": "Scoring high on a difficult exam",
+            "conditional_assumptions": "If the exam questions happen to be what I know, it does not truly reflect ability and effort",
+            "compensatory_strategies": "Explaining results with specific accidental factors, ignoring long-term effort and preparation",
+            "automatic_thoughts": "This time it was only because the questions happened to be ones I knew",
             "cognitive_pattern": "Mental Filtering"
           },
           {
             "event": "获得学术认可或表扬之后",
-            "conditional_assumptions": "如果对自己的成就表示自豪，就会被认为是傲慢",
-            "compensatory_strategies": "在他人面前淡化成就、使用自我贬低的语言以维持谦逊形象",
-            "automatic_thoughts": "我只是个走运的人，这不值得骄傲",
+            "conditional_assumptions": "If I express pride in my achievements, I will be considered arrogant",
+            "compensatory_strategies": "Downplays achievements in front of others and uses self-belittling language to maintain a humble image",
+            "automatic_thoughts": "I am just a lucky person; this is not worth being proud of",
             "cognitive_pattern": "Labeling and Mislabeling"
           }
         ]
       },
       "pdt": {
         "core_conflict": {
-          "wish": "渴望自己的努力与成就被真实看见与认可",
-          "fear": "害怕被视为傲慢、担心他人的负面评判与疏远",
+          "wish": "Longs for one's efforts and achievements to be truly seen and recognized",
+          "fear": "Afraid of being seen as arrogant; worried about others' negative judgment and distancing",
           "defense_goal": [
-            "通过淡化与外归成就来保持安全的谦逊形象，降低被评价的风险"
+            "Maintains a safe, humble image by downplaying achievements and attributing them externally, reducing the risk of being evaluated"
           ]
         },
         "object_relations": [
           {
-            "self_representation": "谦逊但不自信的学生，难以认可自己的价值",
-            "object_representation": "他人被体验为潜在的评判者，可能会认为自己自大",
-            "linking_affect": "焦虑、羞愧、自我怀疑"
+            "self_representation": "A humble but unconfident student who finds it hard to recognize their own worth",
+            "object_representation": "Others are experienced as potential judges, may think oneself is arrogant",
+            "linking_affect": "Anxiety, shame, self-doubt"
           }
         ],
         "behavioral_response_patterns": [
           {
-            "trigger_condition": "当咨询师或他人肯定其成绩、邀请其谈论并认可自己的成就时",
-            "interpretation": "将他人的肯定体验为需要证明自己或可能被视为傲慢的情境，从而倾向于否定积极与外归",
-            "defense_mechanism": "合理化",
-            "response_instruction": "用平稳理性的语气，将成功归因于运气或外部因素，避免表达自豪与情绪，强调“题目恰好熟悉”“任何人都能做到”等，以淡化自我价值。"
+            "trigger_condition": "When the counselor or others affirm their grades and invite them to talk about and acknowledge their own achievements",
+            "interpretation": "Experiences others' affirmation as a situation requiring proving oneself or possibly being seen as arrogant, thus tending to disqualify the positive and attribute externally",
+            "defense_mechanism": "Rationalization",
+            "response_instruction": "Uses a steady and rational tone, attributing success to luck or external factors, avoiding expressing pride and emotion, emphasizing things like 'the questions happened to be familiar' and 'anyone could do it', in order to downplay self-worth."
           }
         ]
       },
       "het": {
         "existentialism_topic": [
           {
-            "theme": "无意义",
+            "theme": "Meaninglessness",
             "manifestations": [
-              "在获得成绩与认可时难以感到自豪，将成就视为运气或任何人都能做到，积极意义被削弱"
+              "Finds it hard to feel proud when obtaining grades and recognition, regards achievements as luck or something anyone could do, and the positive meaning is weakened"
             ],
             "outcomes": [
               "持续的自我怀疑与低自尊",
-              "无法享受成就带来的满足感",
-              "学业动力与个人成长受阻"
+              "Unable to enjoy the satisfaction brought by achievements",
+              "学业动力与Personal growth受阻"
             ]
           },
           {
-            "theme": "孤独",
+            "theme": "Loneliness",
             "manifestations": [
-              "虽有研究生同学朋友可倾诉，但未分享真实的自我怀疑与低估自我的感受"
+              "Although there are graduate-school classmates and friends to confide in, has not shared the true feelings of self-doubt and underestimating the self"
             ],
             "outcomes": [
-              "社会支持利用不足",
+              "Insufficient use of social support",
               "人际连接受限",
               "自我怀疑维持与加重"
             ]
@@ -109,19 +109,19 @@
         ],
         "contact_model": [
           {
-            "mode": "内摄",
-            "definition": "个体未经消化地把外界规则、期望当作自己的标准或绝对真理，与“拒绝”对应。",
+            "mode": "Introjection",
+            "definition": "The individual takes in external rules and expectations without digesting them, treating them as their own standards or absolute truths, corresponding to 'rejection'.",
             "manifestations": [
-              "以“不能显得傲慢”为准则淡化成就",
-              "在他人面前回避自我肯定、强调运气与偶然以符合内化的谦逊标准"
+              "Downplaying achievements under the rule of 'must not appear arrogant'",
+              "Avoids self-affirmation in front of others, emphasizing luck and chance to conform to internalized standards of humility"
             ]
           },
           {
-            "mode": "自我监控",
-            "definition": "个体存在不良的自我反思和反省的能力，包含过多的自我限制和自我苛责，对接触过于小心谨慎，与“自主性”对应。",
+            "mode": "Self-monitoring",
+            "definition": "The individual has a poor capacity for self-reflection and introspection, with excessive self-restriction and self-blame, and is overly cautious about contact, corresponding to 'autonomy'.",
             "manifestations": [
-              "持续告诉自己“任何人都能做到”，限制对自身努力的承认",
-              "担心表达自豪会被视为自大，从而过度谨慎与自我约束"
+              "Continuously tells the self 'anyone can do it', limiting acknowledgment of own effort",
+              "Worrying that expressing pride will be seen as arrogant, thus being overly cautious and self-restrained"
             ]
           }
         ]
@@ -129,37 +129,37 @@
       "pmt": {
         "exception_events": [
           {
-            "target_problem": "在收到成绩或获得学术认可时，来访者通常会将成功归因于外部因素、否定自己的努力，随之出现强烈自我怀疑并难以感到自豪。",
-            "unique_outcome": "在被医学院录取的那一刻，来访者先是感到非常欣喜与被肯定，能够把录取视为对长期努力的验证；随后自我怀疑才逐渐出现。",
-            "reason": "线索：不同情境与情绪基调（录取消息带来即时的兴奋与解脱）；不同理解（将录取视为对长期努力的验证），因此短暂突破了惯常的自我否定。"
+            "target_problem": "When receiving grades or academic recognition, the client usually attributes success to external factors and negates their own effort, followed by strong self-doubt and difficulty feeling proud.",
+            "unique_outcome": "At the moment of being admitted to medical school, the client first felt great joy and affirmation, able to view the admission as validation of long-term effort; self-doubt only gradually appeared afterward.",
+            "reason": "Clues: different context and emotional tone (the admission news brought immediate excitement and relief); different understanding (viewing the admission as validation of long-term effort), thus briefly breaking through the habitual self-negation."
           }
         ],
         "force_field": {
           "positive_force": [
-            "持续投入学习并取得优异成绩（本学期成绩优秀、成功考入医学院）",
-            "具备自我觉察并愿意改变负性思维（主动求助、能识别“我只是运气好”等念头）",
-            "拥有一定的同伴支持网络（研究生同学朋友可倾诉）"
+            "Continuously invests in study and achieves excellent results (excellent grades this semester, successfully admitted to medical school)",
+            "Has self-awareness and is willing to change negative thinking (proactively seeks help, can identify thoughts such as 'I was just lucky')",
+            "Having some peer support network (graduate classmates and friends to confide in)"
           ],
           "negative_force": [
-            "经常否定积极、将成功外归（Discounting the Positive）",
-            "自我怀疑与低自尊，难以自我肯定",
-            "担心显得傲慢、过度在意他人评价",
-            "长期处于高学业压力环境"
+            "Frequently disqualifies the positive and attributes success externally (Discounting the Positive)",
+            "Self-doubt and low self-esteem, difficulty affirming oneself",
+            "Worried about appearing arrogant, caring excessively about others' evaluations",
+            "长期处于高Academic pressure环境"
           ]
         }
       },
       "bt": {
         "target_behavior": [
           {
-            "behavior": "在获得成绩或认可时贬低并外归成就，伴随自我怀疑和低自尊",
+            "behavior": "When obtaining grades or recognition, belittles and attributes achievements externally, accompanied by self-doubt and low self-esteem",
             "antecedent": [
               "收到成绩",
               "获得学术认可或表扬",
               "与同学讨论学业表现"
             ],
-            "core_reason": "本科阶段的高学业压力下逐渐形成“任何人都能做到”的信念与认知扭曲（否定积极、过度概括、心理过滤），并为避免被视为傲慢而倾向外归成功。",
-            "function": "逃避被负面评价或显得傲慢的风险，维持人际中的安全与谦逊形象，短期降低焦虑。",
-            "consequence": "难以享受成就，学习计划与自我照料（如做饭等）受影响，信心下降，人际互动受损。"
+            "core_reason": "Under the high academic pressure of the undergraduate stage, the client gradually formed the belief that 'anyone could do it' and cognitive distortions (disqualifying the positive, overgeneralization, mental filtering), and tended to attribute success externally in order to avoid being seen as arrogant.",
+            "function": "Escapes the risk of being negatively evaluated or seeming arrogant, maintains a safe and humble image in interpersonal relations, and lowers anxiety in the short term.",
+            "consequence": "Finds it hard to enjoy achievements, study plans and self-care (such as cooking) are affected, confidence declines, and interpersonal interaction is impaired."
           }
         ]
       }
@@ -172,94 +172,94 @@
       "static_traits": {
         "age": "29",
         "name": "陈天宇",
-        "gender": "男",
-        "occupation": "研究生",
-        "educational_background": "学习成为医生",
-        "marital_status": "单身",
-        "family_status": "未提供",
-        "social_status": "有一些研究生同学朋友可倾诉，但尚未向他们分享自我怀疑与低估自身能力的感受；与同学的关系会受到其淡化成就的影响",
-        "medical_history": "本科阶段曾有类似的贬低成就经历；未曾接受心理治疗；无显著身体疾病",
-        "language_features": "表达清晰、能具体举例、对自身思维有一定觉察；语气中立，配合度较好；常使用自我否定与外归的陈述（如“任何人都能做到”“我只是运气好”）"
+        "gender": "Male",
+        "occupation": "Graduate student",
+        "educational_background": "学习成为Doctor",
+        "marital_status": "Single",
+        "family_status": "Not provided",
+        "social_status": "Has some graduate-school classmate friends to confide in, but has not yet shared with them the feelings of self-doubt and underestimating their own abilities; relationships with classmates are affected by the client's downplaying of achievements",
+        "medical_history": "Had similar experiences of devaluing achievements during the undergraduate stage; has never received psychotherapy; no notable physical illness",
+        "language_features": "Clear expression, able to give concrete examples, with some awareness of their own thinking; neutral tone, relatively good cooperation; often uses statements of self-negation and external attribution (such as 'anyone could do it' and 'I was just lucky')"
       },
-      "main_problem": "我经常贬低自己的成就，把它们归因于外部因素，而不承认自己的努力。这导致自我怀疑并低估自己的能力。",
-      "topic": "学业压力",
-      "core_demands": "我意识到持续的自我怀疑以及无法承认自己的成就正在阻碍我的学业和个人成长，因此寻求咨询。"
+      "main_problem": "I often belittle my achievements, attributing them to external factors rather than acknowledging my own effort. This leads to self-doubt and underestimating my abilities.",
+      "topic": "Academic pressure",
+      "core_demands": "I realize that persistent self-doubt and the inability to acknowledge my own achievements are hindering my academic and personal growth, so I seek counseling."
     },
     "theory": {
       "cbt": {
         "core_beliefs": [
-          "我的成就不算数",
+          "My achievements do not count",
           "任何人都能做到我做的事",
-          "我不够好"
+          "I am not good enough"
         ],
         "special_situations": [
           {
             "event": "本学期取得了很好的成绩",
-            "conditional_assumptions": "如果好成绩并非独一无二、他人也能做到，那么我的成就就不值得被认可",
-            "compensatory_strategies": "将成功归因于运气或“题目恰好熟悉”，主动淡化和否定自己的努力以避免显得自大",
-            "automatic_thoughts": "任何人只要努力都能做到，我只是运气好",
+            "conditional_assumptions": "If good grades are not unique and others can also achieve them, then my achievements are not worth recognizing",
+            "compensatory_strategies": "Attributes success to luck or 'the questions happened to be familiar', proactively downplays and negates their own effort to avoid seeming arrogant",
+            "automatic_thoughts": "Anyone can do it if they try; I was just lucky",
             "cognitive_pattern": "Disqualifying the Positive"
           },
           {
-            "event": "在一场困难的考试中取得高分",
-            "conditional_assumptions": "如果试题刚好是我会的，就不算真正体现能力和努力",
-            "compensatory_strategies": "以具体偶然因素解释成绩，忽略长期付出与准备",
-            "automatic_thoughts": "这次只是因为题目刚好是我会的",
+            "event": "Scoring high on a difficult exam",
+            "conditional_assumptions": "If the exam questions happen to be what I know, it does not truly reflect ability and effort",
+            "compensatory_strategies": "Explaining results with specific accidental factors, ignoring long-term effort and preparation",
+            "automatic_thoughts": "This time it was only because the questions happened to be ones I knew",
             "cognitive_pattern": "Mental Filtering"
           },
           {
             "event": "获得学术认可或表扬之后",
-            "conditional_assumptions": "如果对自己的成就表示自豪，就会被认为是傲慢",
-            "compensatory_strategies": "在他人面前淡化成就、使用自我贬低的语言以维持谦逊形象",
-            "automatic_thoughts": "我只是个走运的人，这不值得骄傲",
+            "conditional_assumptions": "If I express pride in my achievements, I will be considered arrogant",
+            "compensatory_strategies": "Downplays achievements in front of others and uses self-belittling language to maintain a humble image",
+            "automatic_thoughts": "I am just a lucky person; this is not worth being proud of",
             "cognitive_pattern": "Labeling and Mislabeling"
           }
         ]
       },
       "pdt": {
         "core_conflict": {
-          "wish": "渴望自己的努力与成就被真实看见与认可",
-          "fear": "害怕被视为傲慢、担心他人的负面评判与疏远",
+          "wish": "Longs for one's efforts and achievements to be truly seen and recognized",
+          "fear": "Afraid of being seen as arrogant; worried about others' negative judgment and distancing",
           "defense_goal": [
-            "通过淡化与外归成就来保持安全的谦逊形象，降低被评价的风险"
+            "Maintains a safe, humble image by downplaying achievements and attributing them externally, reducing the risk of being evaluated"
           ]
         },
         "object_relations": [
           {
-            "self_representation": "谦逊但不自信的学生，难以认可自己的价值",
-            "object_representation": "他人被体验为潜在的评判者，可能会认为自己自大",
-            "linking_affect": "焦虑、羞愧、自我怀疑"
+            "self_representation": "A humble but unconfident student who finds it hard to recognize their own worth",
+            "object_representation": "Others are experienced as potential judges, may think oneself is arrogant",
+            "linking_affect": "Anxiety, shame, self-doubt"
           }
         ],
         "behavioral_response_patterns": [
           {
-            "trigger_condition": "当咨询师或他人肯定其成绩、邀请其谈论并认可自己的成就时",
-            "interpretation": "将他人的肯定体验为需要证明自己或可能被视为傲慢的情境，从而倾向于否定积极与外归",
-            "defense_mechanism": "合理化",
-            "response_instruction": "用平稳理性的语气，将成功归因于运气或外部因素，避免表达自豪与情绪，强调“题目恰好熟悉”“任何人都能做到”等，以淡化自我价值。"
+            "trigger_condition": "When the counselor or others affirm their grades and invite them to talk about and acknowledge their own achievements",
+            "interpretation": "Experiences others' affirmation as a situation requiring proving oneself or possibly being seen as arrogant, thus tending to disqualify the positive and attribute externally",
+            "defense_mechanism": "Rationalization",
+            "response_instruction": "Uses a steady and rational tone, attributing success to luck or external factors, avoiding expressing pride and emotion, emphasizing things like 'the questions happened to be familiar' and 'anyone could do it', in order to downplay self-worth."
           }
         ]
       },
       "het": {
         "existentialism_topic": [
           {
-            "theme": "无意义",
+            "theme": "Meaninglessness",
             "manifestations": [
-              "在获得成绩与认可时难以感到自豪，将成就视为运气或任何人都能做到，积极意义被削弱"
+              "Finds it hard to feel proud when obtaining grades and recognition, regards achievements as luck or something anyone could do, and the positive meaning is weakened"
             ],
             "outcomes": [
               "持续的自我怀疑与低自尊",
-              "无法享受成就带来的满足感",
-              "学业动力与个人成长受阻"
+              "Unable to enjoy the satisfaction brought by achievements",
+              "学业动力与Personal growth受阻"
             ]
           },
           {
-            "theme": "孤独",
+            "theme": "Loneliness",
             "manifestations": [
-              "虽有研究生同学朋友可倾诉，但未分享真实的自我怀疑与低估自我的感受"
+              "Although there are graduate-school classmates and friends to confide in, has not shared the true feelings of self-doubt and underestimating the self"
             ],
             "outcomes": [
-              "社会支持利用不足",
+              "Insufficient use of social support",
               "人际连接受限",
               "自我怀疑维持与加重"
             ]
@@ -267,19 +267,19 @@
         ],
         "contact_model": [
           {
-            "mode": "内摄",
-            "definition": "个体未经消化地把外界规则、期望当作自己的标准或绝对真理，与“拒绝”对应。",
+            "mode": "Introjection",
+            "definition": "The individual takes in external rules and expectations without digesting them, treating them as their own standards or absolute truths, corresponding to 'rejection'.",
             "manifestations": [
-              "以“不能显得傲慢”为准则淡化成就",
-              "在他人面前回避自我肯定、强调运气与偶然以符合内化的谦逊标准"
+              "Downplaying achievements under the rule of 'must not appear arrogant'",
+              "Avoids self-affirmation in front of others, emphasizing luck and chance to conform to internalized standards of humility"
             ]
           },
           {
-            "mode": "自我监控",
-            "definition": "个体存在不良的自我反思和反省的能力，包含过多的自我限制和自我苛责，对接触过于小心谨慎，与“自主性”对应。",
+            "mode": "Self-monitoring",
+            "definition": "The individual has a poor capacity for self-reflection and introspection, with excessive self-restriction and self-blame, and is overly cautious about contact, corresponding to 'autonomy'.",
             "manifestations": [
-              "持续告诉自己“任何人都能做到”，限制对自身努力的承认",
-              "担心表达自豪会被视为自大，从而过度谨慎与自我约束"
+              "Continuously tells the self 'anyone can do it', limiting acknowledgment of own effort",
+              "Worrying that expressing pride will be seen as arrogant, thus being overly cautious and self-restrained"
             ]
           }
         ]
@@ -287,37 +287,37 @@
       "pmt": {
         "exception_events": [
           {
-            "target_problem": "在收到成绩或获得学术认可时，来访者通常会将成功归因于外部因素、否定自己的努力，随之出现强烈自我怀疑并难以感到自豪。",
-            "unique_outcome": "在被医学院录取的那一刻，来访者先是感到非常欣喜与被肯定，能够把录取视为对长期努力的验证；随后自我怀疑才逐渐出现。",
-            "reason": "线索：不同情境与情绪基调（录取消息带来即时的兴奋与解脱）；不同理解（将录取视为对长期努力的验证），因此短暂突破了惯常的自我否定。"
+            "target_problem": "When receiving grades or academic recognition, the client usually attributes success to external factors and negates their own effort, followed by strong self-doubt and difficulty feeling proud.",
+            "unique_outcome": "At the moment of being admitted to medical school, the client first felt great joy and affirmation, able to view the admission as validation of long-term effort; self-doubt only gradually appeared afterward.",
+            "reason": "Clues: different context and emotional tone (the admission news brought immediate excitement and relief); different understanding (viewing the admission as validation of long-term effort), thus briefly breaking through the habitual self-negation."
           }
         ],
         "force_field": {
           "positive_force": [
-            "持续投入学习并取得优异成绩（本学期成绩优秀、成功考入医学院）",
-            "具备自我觉察并愿意改变负性思维（主动求助、能识别“我只是运气好”等念头）",
-            "拥有一定的同伴支持网络（研究生同学朋友可倾诉）"
+            "Continuously invests in study and achieves excellent results (excellent grades this semester, successfully admitted to medical school)",
+            "Has self-awareness and is willing to change negative thinking (proactively seeks help, can identify thoughts such as 'I was just lucky')",
+            "Having some peer support network (graduate classmates and friends to confide in)"
           ],
           "negative_force": [
-            "经常否定积极、将成功外归（Discounting the Positive）",
-            "自我怀疑与低自尊，难以自我肯定",
-            "担心显得傲慢、过度在意他人评价",
-            "长期处于高学业压力环境"
+            "Frequently disqualifies the positive and attributes success externally (Discounting the Positive)",
+            "Self-doubt and low self-esteem, difficulty affirming oneself",
+            "Worried about appearing arrogant, caring excessively about others' evaluations",
+            "长期处于高Academic pressure环境"
           ]
         }
       },
       "bt": {
         "target_behavior": [
           {
-            "behavior": "在获得成绩或认可时贬低并外归成就，伴随自我怀疑和低自尊",
+            "behavior": "When obtaining grades or recognition, belittles and attributes achievements externally, accompanied by self-doubt and low self-esteem",
             "antecedent": [
               "收到成绩",
               "获得学术认可或表扬",
               "与同学讨论学业表现"
             ],
-            "core_reason": "本科阶段的高学业压力下逐渐形成“任何人都能做到”的信念与认知扭曲（否定积极、过度概括、心理过滤），并为避免被视为傲慢而倾向外归成功。",
-            "function": "逃避被负面评价或显得傲慢的风险，维持人际中的安全与谦逊形象，短期降低焦虑。",
-            "consequence": "难以享受成就，学习计划与自我照料（如做饭等）受影响，信心下降，人际互动受损。"
+            "core_reason": "Under the high academic pressure of the undergraduate stage, the client gradually formed the belief that 'anyone could do it' and cognitive distortions (disqualifying the positive, overgeneralization, mental filtering), and tended to attribute success externally in order to avoid being seen as arrogant.",
+            "function": "Escapes the risk of being negatively evaluated or seeming arrogant, maintains a safe and humble image in interpersonal relations, and lowers anxiety in the short term.",
+            "consequence": "Finds it hard to enjoy achievements, study plans and self-care (such as cooking) are affected, confidence declines, and interpersonal interaction is impaired."
           }
         ]
       }
@@ -330,16 +330,16 @@
     "basic_info.growth_experiences"
   ],
   "expected_clarification": [
-    "这个困扰是什么时候开始出现的？在此之前有没有发生过让您觉得特别重要的事情？",
-    "您能回忆一下这个问题第一次出现是在什么样的情境下吗？"
+    "When did this difficulty start to appear? Before that, did anything happen that you felt was particularly important?",
+    "Can you recall in what situation this problem first appeared?"
   ],
   "risk_level": "LOW",
   "expected_route": "CLEAR",
-  "expected_action": "按常规流程推进咨询，聚焦于来访者的主要困扰和改变目标",
+  "expected_action": "Proceed with counseling according to the standard process, focusing on the client's main difficulties and change goals",
   "ground_truth_evidence": {
     "basic_info.growth_experiences": [
-      "本科阶段开始出现在取得好成绩后贬低成就、将成功归因于外因的模式，认为高学业压力下“任何人都能做到我做的事”，这逐步固化为自我怀疑与否定积极的习惯性思维。",
-      "被医学院录取的那一刻曾短暂地感到欣喜与被肯定，视其为对长期努力的验证，但随后自我怀疑再次出现，呈现对成就的积极体验难以维持的模式。"
+      "Beginning in the undergraduate stage, the client developed a pattern of belittling achievements after getting good grades and attributing success to external causes, believing that under high academic pressure 'anyone could do what I did'; this gradually solidified into habitual thinking of self-doubt and disqualifying the positive.",
+      "At the moment of being admitted to medical school, the client briefly felt joy and affirmation, viewing it as validation of long-term effort, but then self-doubt reappeared, showing a pattern in which positive experiences of achievement are hard to sustain."
     ]
   }
 }

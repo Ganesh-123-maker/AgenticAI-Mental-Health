@@ -3,113 +3,113 @@
     "static_traits": {
       "age": "14",
       "name": "马修",
-      "gender": "男",
-      "occupation": "兽医",
-      "educational_background": "兽医医学博士",
-      "marital_status": "未婚",
-      "family_status": "有两个侄子，兄长在军队服役",
-      "social_status": "工作表现受到影响；因优先安排跑步而略微影响与家人的关系；有兄长与几位朋友的支持，但尚未向他们具体谈及此类感受",
-      "medical_history": "无重大躯体疾病；以往未经历类似心理问题，未接受心理治疗",
-      "language_features": "表达清晰、条理较好；配合度与态度积极；能具体描述触发情境与情绪变化"
+      "gender": "Male",
+      "occupation": "Veterinarian",
+      "educational_background": "Veterinarian医学博士",
+      "marital_status": "Unmarried",
+      "family_status": "Having two nephews; the older brother serves in the military",
+      "social_status": "Work performance is affected; prioritizing running slightly affects relationships with family; has support from an elder brother and several friends, but has not yet discussed these feelings with them in detail",
+      "medical_history": "No major physical illness; has not experienced similar psychological problems in the past, has not received psychotherapy",
+      "language_features": "Expresses clearly and fairly coherently; cooperative with a positive attitude; able to describe triggering situations and emotional changes concretely"
     },
-    "main_problem": "我觉得如果不能去跑步，我的整周都被毁了，这会引发焦虑和失望感。",
-    "topic": "情绪管理",
-    "core_demands": "我愿意寻找其他的应对方式，这样当我不能跑步时就不会那么焦虑。",
+    "main_problem": "I feel that if I cannot go running, my whole week is ruined, which triggers anxiety and disappointment.",
+    "topic": "Emotion management",
+    "core_demands": "I am willing to look for other coping methods, so that when I cannot run I will not be so anxious.",
     "growth_experiences": [
-      "约一年前因工作异常忙碌无法安排跑步，开始形成“错过一次跑步就会失控、整周被毁”的连锁担忧；此后每当因工作日程不可预测而错过跑步即感到强烈焦虑与失控，影响专注力、睡眠与饮食；长期依赖跑步作为主要的减压方式，缺乏其他替代策略。"
+      "About a year ago, because work was exceptionally busy and the client could not schedule runs, the client began to form a chain of worries that 'missing one run will lead to losing control and the whole week being ruined'; afterward, whenever the client missed a run due to an unpredictable work schedule, the client would feel strong anxiety and loss of control, affecting concentration, sleep, and eating; the client has long relied on running as the main way to relieve stress and lacks other alternative strategies."
     ]
   },
   "theory": {
     "cbt": {
       "core_beliefs": [
-        "我的身心平衡与控制完全依赖于是否跑步",
-        "只要错过一次跑步，这一周就会变得糟糕或被毁"
+        "My mind-body balance and control depend entirely on whether I run",
+        "As long as I miss one run, this week will become bad or be ruined"
       ],
       "special_situations": [
         {
-          "event": "工作异常忙碌或日程不可预测，导致当天无法跑步",
-          "conditional_assumptions": "如果我错过一次跑步，我就会失去对身心的控制，整周都会崩坏",
-          "compensatory_strategies": "将跑步刚性地安排为首要任务，尽量把其他事务让位于跑步",
-          "automatic_thoughts": "这周完了，我撑不住工作压力。",
+          "event": "Work is unusually busy or schedule is unpredictable, causing inability to run that day",
+          "conditional_assumptions": "If I miss one run, I will lose control over my body and mind, and the whole week will fall apart",
+          "compensatory_strategies": "Rigidly schedules running as the top priority, trying to make other matters give way to running",
+          "automatic_thoughts": "This week is ruined; I cannot hold on under the work pressure.",
           "cognitive_pattern": "Catastrophizing"
         },
         {
-          "event": "社交活动与既定跑步时间发生冲突",
-          "conditional_assumptions": "如果不把跑步放在第一位，我的状态会变糟并影响工作",
-          "compensatory_strategies": "回避或减少社交活动以确保能够跑步",
-          "automatic_thoughts": "去参加就会打乱节奏，之后都会更糟。",
+          "event": "Social activities conflict with the scheduled running time",
+          "conditional_assumptions": "If I do not put running first, my condition will worsen and affect work",
+          "compensatory_strategies": "Avoiding or reducing social activities to ensure being able to run",
+          "automatic_thoughts": "Going will disrupt the rhythm, and everything will be worse afterward.",
           "cognitive_pattern": "Fortune Telling"
         },
         {
-          "event": "在周计划中看到某一天无法安排跑步的空档",
-          "conditional_assumptions": "一个缺口就意味着整周的失败",
-          "compensatory_strategies": "通过让自己更忙来顶住焦虑、试图“撑过去”",
-          "automatic_thoughts": "只要今天没跑，后面也会继续错过。",
+          "event": "Noticing a day in the weekly plan when running cannot be scheduled",
+          "conditional_assumptions": "One gap means failure for the whole week",
+          "compensatory_strategies": "Keeping oneself busier to withstand the anxiety, trying to 'tough it out'",
+          "automatic_thoughts": "As long as I did not run today, I will keep missing runs afterward.",
           "cognitive_pattern": "Overgeneralization"
         },
         {
-          "event": "回想以往偶尔错过跑步的经历（周并非完全糟糕），却只关注负面体验",
-          "conditional_assumptions": "只有完全遵守计划才算好，一点偏差就是坏的一周",
-          "compensatory_strategies": "反刍负面结果、忽略正面证据",
-          "automatic_thoughts": "我总是处理不好，一错就全错。",
+          "event": "Recalls past experiences of occasionally missing a run (the week was not entirely bad), yet focuses only on the negative experience",
+          "conditional_assumptions": "Only fully adhering to the plan counts as good, a little deviation is a bad week",
+          "compensatory_strategies": "Ruminating on negative outcomes, ignoring positive evidence",
+          "automatic_thoughts": "I always handle things badly; one mistake and everything is wrong.",
           "cognitive_pattern": "Mental Filtering"
         }
       ]
     },
     "pdt": {
       "core_conflict": {
-        "wish": "渴望通过稳定的跑步维持自我控制与身心平衡",
-        "fear": "害怕失去控制、被焦虑淹没并导致工作表现受损",
+        "wish": "Longing to maintain self-control and mind-body balance through regular running",
+        "fear": "Fearing losing control, being overwhelmed by anxiety and causing impaired work performance",
         "defense_goal": [
-          "通过僵化坚持跑步并将其置于优先位来维持安全与稳定感"
+          "Maintains a sense of safety and stability by rigidly persisting in running and prioritizing it"
         ]
       },
       "object_relations": [
         {
-          "self_representation": "需要依靠跑步来维持平衡的脆弱个体",
-          "object_representation": "不可预测、会打乱节奏的外部环境与他人安排",
-          "linking_affect": "焦虑、紧张、担忧"
+          "self_representation": "A vulnerable individual who needs to rely on running to maintain balance",
+          "object_representation": "An unpredictable external environment and others' arrangements that disrupt one's rhythm",
+          "linking_affect": "Anxiety, nervousness、担忧"
         }
       ],
       "behavioral_response_patterns": [
         {
-          "trigger_condition": "当工作或他人邀请的社交活动影响既定跑步安排时",
-          "interpretation": "潜意识将外界要求体验为对自我平衡的威胁，认为若不跑步就会失控",
-          "defense_mechanism": "合理化",
-          "response_instruction": "以坚定但礼貌的语气强调必须坚持跑步，详细列出不参加社交或调整安排的理由来证明其“合理性”。"
+          "trigger_condition": "When work or social activities invited by others affect the established running schedule",
+          "interpretation": "Unconsciously experiences external demands as a threat to self-balance, believing that without running things will spiral out of control",
+          "defense_mechanism": "Rationalization",
+          "response_instruction": "In a firm but polite tone, emphasizes that running must be adhered to, listing in detail reasons for not participating in social activities or adjusting arrangements to prove its 'rationality'."
         },
         {
-          "trigger_condition": "当意识到某天无法跑步、或在咨询中被邀请探讨跑步以外的应对策略时",
-          "interpretation": "将“缺席一次跑步”解读为整周全坏（移情为对控制的强烈焦虑）",
-          "defense_mechanism": "分裂",
-          "response_instruction": "使用绝对化与“非黑即白”的措辞（如“完了”“全毁”），语气紧张、结论化，弱化灰度与可能性讨论。"
+          "trigger_condition": "When realizing that running is impossible on a certain day, or when invited in counseling to explore coping strategies other than running",
+          "interpretation": "Interprets 'missing one run' as the whole week being ruined (transference into strong anxiety about control)",
+          "defense_mechanism": "Splitting",
+          "response_instruction": "Uses absolute and 'all-or-nothing' wording (such as 'it is over' and 'all ruined'), with a tense, conclusive tone, weakening discussion of grays and possibilities."
         }
       ]
     },
     "het": {
       "existentialism_topic": [
         {
-          "theme": "自由",
+          "theme": "Freedom",
           "manifestations": [
-            "强烈需要通过固定跑步来维持对生活的掌控感",
-            "面对工作不可预测的安排时感到自主性受限",
+            "A strong need to maintain a sense of control over life through a fixed running routine",
+            "Feeling one's autonomy is restricted when facing unpredictable work schedules",
             "为维持节奏而牺牲社交"
           ],
           "outcomes": [
-            "显著焦虑与失控感",
+            "Significant anxiety与失控感",
             "睡眠与饮食规律受影响",
-            "工作专注下降"
+            "Decreased work focus"
           ]
         }
       ],
       "contact_model": [
         {
-          "mode": "内摄",
-          "definition": "个体未经消化地把外界规则、期望当作自己的标准或绝对真理，与“拒绝”对应。常见语言为“我必须/应该…”，“大家都这样”等。",
+          "mode": "Introjection",
+          "definition": "The individual takes in external rules and expectations without digesting them, treating them as their own standards or absolute truths, corresponding to 'rejection'. Common language includes 'I must / should...' and 'everyone is like this'.",
           "manifestations": [
-            "以“必须坚持跑步”作为硬性标准来维持稳定",
-            "用“应该”“必须”的自我要求看待日程与表现",
-            "将固定节奏视为唯一正确选择而忽略其他可能的应对方式"
+            "Using 'must keep running' as a rigid standard to maintain stability",
+            "Viewing schedule and performance with 'should' 'must' self-demands",
+            "Treats the fixed rhythm as the only correct choice, ignoring other possible coping methods"
           ]
         }
       ]
@@ -117,38 +117,38 @@
     "pmt": {
       "exception_events": [
         {
-          "target_problem": "在错过跑步时，来访者通常会出现强烈焦虑、难以专注，并担心整周会被“毁掉”。",
-          "unique_outcome": "在某几次因工作繁忙而错过跑步的情况下，虽仍感到焦虑，但来访者通过让自己保持更忙并“硬推着走”，一周并未完全糟糕，工作也得以推进。",
-          "reason": "不同情境与做法：当时工作任务更饱和形成分心；来访者采取保持高投入与忙碌的策略，从而部分缓解了对“整周被毁”的担忧。"
+          "target_problem": "When missing a run, the client usually experiences strong anxiety, finds it hard to focus, and worries the whole week will be 'ruined'.",
+          "unique_outcome": "On a few occasions when the client missed runs due to busy work, although still anxious, the client kept themselves busier and 'pushed through', the week was not completely terrible, and work was able to proceed.",
+          "reason": "Different context and approach: the work tasks were more saturated at the time, creating distraction; the client adopted a strategy of staying highly engaged and busy, thereby partially relieving the worry that 'the whole week will be ruined'."
         }
       ],
       "force_field": {
         "positive_force": [
-          "愿意探索跑步之外的替代应对策略",
-          "具备坚持自我管理的习惯（跑步作为稳定器）",
-          "与兄长和朋友保持联系、具备一定社会支持",
-          "咨询态度积极、愿意练习去灾难化"
+          "Willing to explore alternative coping strategies besides running",
+          "Has a habit of persisting with self-management (running as a stabilizer)",
+          "Maintains contact with older brother and friends; has some social support",
+          "Positive attitude toward counseling, willing to practice de-catastrophizing"
         ],
         "negative_force": [
-          "灾难化与非黑即白认知导致焦虑升级",
-          "过度依赖单一应对方式（仅以跑步减压）",
-          "心理过滤与过度概括使积极证据被忽视",
-          "工作日程不可预测增加触发频率与失控感"
+          "Catastrophizing and black-and-white cognition lead to escalating anxiety",
+          "Excessive reliance on a single coping method (only running to relieve stress)",
+          "Mental filtering and overgeneralization cause positive evidence to be ignored",
+          "An unpredictable work schedule increases trigger frequency and feelings of losing control"
         ]
       }
     },
     "bt": {
       "target_behavior": [
         {
-          "behavior": "在错过一次跑步时出现强烈焦虑与失控感，并以“整周被毁”的绝对化认知反应",
+          "behavior": "When missing one run, strong anxiety and a sense of losing control appear, reacting with the absolute cognition that 'the whole week is ruined'",
           "antecedent": [
-            "工作日程不可预测或异常忙碌导致无法按计划跑步",
+            "Unpredictable or unusually busy work schedule causes inability to run as planned",
             "社交活动与跑步时间冲突",
-            "在周计划中看到某天无法安排跑步的空档"
+            "Seeing a day in the weekly plan when running cannot be scheduled"
           ],
-          "core_reason": "长期将跑步视为唯一有效的减压与维持控制的方式；对错过跑步持灾难化、非黑即白与过度概括的认知，担忧后续持续失控。",
-          "function": "逃避不受欢迎的焦虑体验并迅速恢复主观控制感（通过刚性日程与优先跑步）；以回避社交来减少节奏被打乱的风险。",
-          "consequence": "工作专注下降、睡眠与饮食受影响；社交减少并与家人互动受损，整体生活质量降低。"
+          "core_reason": "Long regards running as the only effective way to relieve stress and maintain control; holds catastrophizing, all-or-nothing, and overgeneralizing cognitions about missing a run, worrying about continued loss of control afterward.",
+          "function": "Escapes unwelcome anxious experiences and quickly restores a subjective sense of control (through a rigid schedule and prioritizing running); avoids socializing to reduce the risk of the rhythm being disrupted.",
+          "consequence": "Work focus declined, sleep and eating affected; socializing reduced and interaction with family impaired, overall quality of life lowered."
         }
       ]
     }

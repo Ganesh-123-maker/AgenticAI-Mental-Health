@@ -2,133 +2,133 @@
   "case_id": "cbt_594_ordinary",
   "source_file": "assets/profiles/cbt/sample/594.json",
   "modality": "cbt",
-  "therapy_stage": "问题概念化与目标设定",
+  "therapy_stage": "Problem conceptualization and goal setting",
   "stage_inferred": false,
   "track": "ordinary",
   "full_context": {
     "basic_info": {
       "static_traits": {
         "age": "55",
-        "name": "许安美",
-        "gender": "女",
-        "occupation": "未提及",
-        "educational_background": "未提及",
-        "marital_status": "未提及",
-        "family_status": "未提及",
-        "social_status": "有几位朋友可交谈，但尚未与其分享工作相关恐惧；在新单位与同事互动较少，主观上感到被孤立",
-        "medical_history": "无重大躯体疾病；无既往心理治疗/精神科就诊史",
-        "language_features": "表达清晰，逻辑性好，能自我反思与配合；情绪以焦虑为主，提及“想到上班胃就翻腾”的躯体化不适"
+        "name": "Xu Anmei",
+        "gender": "Female",
+        "occupation": "Not mentioned",
+        "educational_background": "Not mentioned",
+        "marital_status": "Not mentioned",
+        "family_status": "Not mentioned",
+        "social_status": "Has a few friends to talk with, but has not yet shared work-related fears with them; interacts little with colleagues at the new workplace and subjectively feels isolated",
+        "medical_history": "No major physical illness; no history of psychotherapy/psychiatric visits",
+        "language_features": "Clear expression, good logic, able to self-reflect and cooperate; emotions mainly anxiety, mentions somatic discomfort of 'my stomach churns at the thought of going to work'"
       },
-      "main_problem": "我觉得新同事讨厌我，而且我很快会被解雇。",
-      "topic": "人际关系",
-      "core_demands": "这些孤立感和被解雇的恐惧正在影响我的心理健康和工作表现；我想在工作中感觉更有连接和更安全，也想对自己和工作感觉更好。",
+      "main_problem": "I feel my new colleagues dislike me and that I will be fired soon.",
+      "topic": "Interpersonal relationships",
+      "core_demands": "These feelings of isolation and the fear of being fired are affecting my mental health and work performance; I want to feel more connected and safer at work, and to feel better about myself and my work.",
       "growth_experiences": []
     },
     "theory": {
       "cbt": {
         "core_beliefs": [
-          "我不够好",
-          "我不被喜欢/不被接纳"
+          "I am not good enough",
+          "I am not liked / not accepted"
         ],
         "special_situations": [
           {
-            "event": "午餐时尝试加入同事谈话却被敷衍",
-            "conditional_assumptions": "如果我说话没有被热情回应，就说明我不被喜欢、不合群",
-            "compensatory_strategies": "主动寒暄、尝试制造话题以获得接纳",
-            "automatic_thoughts": "他们不喜欢我，我很无聊",
+            "event": "Tries to join colleagues' conversation at lunch but is brushed off",
+            "conditional_assumptions": "If what I say is not warmly responded to, it means I am not liked and do not fit in",
+            "compensatory_strategies": "Initiates greetings, tries to create topics to gain acceptance",
+            "automatic_thoughts": "They do not like me; I am boring",
             "cognitive_pattern": "Mind Reading"
           },
           {
-            "event": "提前完成项目却无人评论",
-            "conditional_assumptions": "如果没有得到他人的认可与赞美，说明我做得不够好/我没有价值",
-            "compensatory_strategies": "通过更努力表现与提高产出证明自己",
-            "automatic_thoughts": "我不可见、我还是不够好",
+            "event": "Finished a project early but no one commented",
+            "conditional_assumptions": "If I do not receive recognition and praise from others, it means I did not do well enough / I have no value",
+            "compensatory_strategies": "Proves himself through harder performance and increased output",
+            "automatic_thoughts": "I am invisible; I am still not good enough",
             "cognitive_pattern": "External Validation"
           },
           {
-            "event": "团队会议中发言被打断或意见被忽视",
-            "conditional_assumptions": "如果我的观点不被采纳，就说明他们看不起我或不喜欢我",
-            "compensatory_strategies": "更用力地准备与发言以证明能力",
-            "automatic_thoughts": "我是个局外人，他们排斥我",
+            "event": "His remarks are interrupted or his opinions ignored in team meetings",
+            "conditional_assumptions": "If my views are not adopted, it means they look down on me or do not like me",
+            "compensatory_strategies": "Prepares and speaks with more effort to prove his ability",
+            "automatic_thoughts": "I am an outsider; they exclude me",
             "cognitive_pattern": "Personalization"
           },
           {
-            "event": "看到同事彼此聊天融洽，自己走进房间后气氛改变",
-            "conditional_assumptions": "如果他们不和我互动，说明他们在议论我/讨厌我，我会被边缘化甚至被解雇",
-            "compensatory_strategies": "尝试加入或通过工作表现来赢得好感",
-            "automatic_thoughts": "他们肯定不喜欢我，我可能会被开除",
+            "event": "Sees colleagues chatting harmoniously with each other; the atmosphere changes after he walks into the room",
+            "conditional_assumptions": "If they do not interact with me, it means they are talking about me/disliking me, and I will be marginalized or even fired",
+            "compensatory_strategies": "Tries to join in or win favor through work performance",
+            "automatic_thoughts": "They definitely do not like me; I might be fired",
             "cognitive_pattern": "Fortune Telling"
           }
         ]
       },
       "pdt": {
         "core_conflict": {
-          "wish": "渴望被接纳、被看见与认可，建立归属感",
-          "fear": "害怕被拒绝、被贬低与被抛弃，进一步担心被解雇与失去价值",
+          "wish": "Longs to be accepted, seen, and recognized, and to build a sense of belonging",
+          "fear": "Fears rejection, being belittled, and abandonment, and further worries about being fired and losing value",
           "defense_goal": [
-            "通过高度自我监控与放大负面线索来避免“被拒绝”的打击",
-            "以加倍努力与产出证明自身价值，以交换接纳与安全感"
+            "Avoids the blow of 'being rejected' through high self-monitoring and magnifying negative cues",
+            "Proving one's worth through doubled effort and output, in exchange for acceptance and a sense of safety"
           ]
         },
         "object_relations": [
           {
-            "self_representation": "不够有趣、容易被忽视的局外人",
-            "object_representation": "冷漠、排斥或苛刻评价的同事群体",
-            "linking_affect": "孤独、羞耻、焦虑与无力感"
+            "self_representation": "An outsider who is not interesting enough and easily overlooked",
+            "object_representation": "A group of colleagues who are indifferent, rejecting, or harshly judgmental",
+            "linking_affect": "Loneliness, shame, anxiety, and a sense of powerlessness"
           }
         ],
         "behavioral_response_patterns": [
           {
-            "trigger_condition": "当咨询师邀请其回忆并权衡正负证据、关注正向反馈时",
-            "interpretation": "正向证据“分量不够/不算数”，保持“他们不喜欢我”的信念更安全",
-            "defense_mechanism": "合理化",
-            "response_instruction": "温和共情其受伤感，承认正向证据显得“微弱”的主观体验，同时以好奇语气共同细化证据与比例，不对抗、不过度劝说。"
+            "trigger_condition": "When the counselor invites them to recall and weigh positive and negative evidence and focus on positive feedback",
+            "interpretation": "Positive evidence 'does not carry enough weight / does not count'; it is safer to keep the belief 'they do not like me'",
+            "defense_mechanism": "Rationalization",
+            "response_instruction": "Gently empathize with their sense of hurt, acknowledge the subjective experience that the positive evidence seems 'weak', and at the same time, in a curious tone, jointly refine the evidence and proportions, without confrontation or excessive persuasion."
           },
           {
-            "trigger_condition": "谈及进入房间后气氛变化、或同事相互交谈而未与其互动的情境",
-            "interpretation": "将他人的沉默与忙碌理解为对自己的负面看法（他们在议论/讨厌我）",
-            "defense_mechanism": "投射",
-            "response_instruction": "区分“事实与推断”，请其举证并探索其他可能解释；语气保持中性探询，避免评判。"
+            "trigger_condition": "Talks about situations where the atmosphere changed after entering the room, or colleagues talked among themselves without interacting with them",
+            "interpretation": "Interprets others' silence and busyness as negative views of the self (they are talking about me / dislike me)",
+            "defense_mechanism": "Projection",
+            "response_instruction": "Distinguishes 'facts and inferences', asks them to provide evidence and explore other possible explanations; maintains a neutral inquiring tone, avoiding judgment."
           },
           {
-            "trigger_condition": "当想到可能被解雇或工作表现未被注意时",
-            "interpretation": "把失望与不安转成对自己的苛责与不足归因（“我不够好/不该这样”）",
-            "defense_mechanism": "转向自身",
-            "response_instruction": "先标定情绪与需求（被看见/被接纳），再温和外化问题、减少自责语言的使用强度。"
+            "trigger_condition": "When thinking about possibly being fired or work performance going unnoticed",
+            "interpretation": "Turns disappointment and unease into harsh self-blame and attributions of inadequacy ('I am not good enough / I should not be like this')",
+            "defense_mechanism": "Turning against the self",
+            "response_instruction": "First labels the emotions and needs (being seen / being accepted), then gently externalizes the problem and reduces the intensity of self-blaming language."
           }
         ]
       },
       "het": {
         "existentialism_topic": [
           {
-            "theme": "孤独",
+            "theme": "Loneliness",
             "manifestations": [
-              "入职新环境后与同事互动有限，主观体验为“被孤立、是局外人”",
-              "看到同事彼此热聊而自己难以融入"
+              "After starting in a new environment, interaction with colleagues is limited, subjectively experienced as 'being isolated, an outsider'",
+              "Seeing colleagues chat warmly with each other while finding it hard to fit in"
             ],
             "outcomes": [
-              "持续的焦虑与担忧被解雇",
-              "胃部不适等躯体化反应",
-              "工作表现受影响",
-              "对旅行与与猫互动等日常乐趣的兴趣下降"
+              "Persistent anxiety与担忧被解雇",
+              "胃部not适等躯体化反应",
+              "Work performance affected",
+              "Interest in daily pleasures such as travel and interacting with the cat declines"
             ]
           }
         ],
         "contact_model": [
           {
-            "mode": "投射",
-            "definition": "个体将自己难以接纳的感受归于他人，与”拥有“对应，语言表现为：“他在看不起我”，“他们想排挤我”等",
+            "mode": "Projection",
+            "definition": "The individual attributes feelings they find hard to accept to others, corresponding to 'possession'. Language manifestations include: 'He is looking down on me', 'They want to exclude me', and so on",
             "manifestations": [
-              "将同事的沉默/忙碌解读为“他们讨厌我、在议论我”",
-              "进入房间后气氛变化即被理解为针对自己"
+              "Interpreting colleagues' silence/busyness as 'they hate me, they are talking about me'",
+              "A change in atmosphere upon entering a room is interpreted as being directed at oneself"
             ]
           },
           {
-            "mode": "自我监控",
-            "definition": "个体存在不良的自我反思和反省的能力，包含过多的自我限制和自我苛责，对接触过于小心谨慎，与“自主性”对应。",
+            "mode": "Self-monitoring",
+            "definition": "The individual has a poor capacity for self-reflection and introspection, with excessive self-restriction and self-blame, and is overly cautious about contact, corresponding to 'autonomy'.",
             "manifestations": [
-              "频繁自责“我不够有趣/不够好”，“无论做什么都不够”",
-              "在正向反馈出现时仍快速否定其价值（认为“不算数”）"
+              "Frequently self-blames 'I am not interesting enough / not good enough', 'whatever I do is not enough'",
+              "When positive feedback appears, still quickly negates its value (believing it 'does not count')"
             ]
           }
         ]
@@ -136,54 +136,54 @@
       "pmt": {
         "exception_events": [
           {
-            "target_problem": "在新工作环境中，许安美通常觉得同事讨厌自己、被排斥，因而感到强烈焦虑并担心被解雇，正向互动很少出现。",
-            "unique_outcome": "一次正式汇报中有同事称赞其演示/表达能力，这次获得了积极反馈，与以往被忽视的体验不同。",
-            "reason": "线索：在正式场景中其专业能力被清晰看见，反馈路径明确，因而更容易触发积极回应。"
+            "target_problem": "In the new work environment, Xu Anmei usually feels that colleagues dislike her and that she is excluded, thus feeling strong anxiety and worrying about being fired, with positive interactions rarely occurring.",
+            "unique_outcome": "At a formal presentation, a colleague praised their presentation / expression ability; this time they received positive feedback, different from past experiences of being ignored.",
+            "reason": "Clues: in formal settings, their professional competence was clearly seen and the feedback path was clear, thus more easily triggering positive responses."
           },
           {
-            "target_problem": "在日常协作与非正式交流情境下，她通常难以被邀请参与，进而感到自己是“局外人”。",
-            "unique_outcome": "几周前有同事在任务受阻时主动征求她的意见，互动顺畅，让她感到被需要与被认可。",
-            "reason": "线索：他人带着具体问题主动求助、角色与目标明确，使其专业价值更易被看见并得到肯定。"
+            "target_problem": "In daily collaboration and informal communication situations, she usually finds it hard to be invited to participate, and consequently feels like an 'outsider'.",
+            "unique_outcome": "A few weeks ago, a colleague proactively sought her opinion when a task was blocked; the interaction went smoothly, making her feel needed and recognized.",
+            "reason": "Clues: others proactively sought help with concrete problems, roles and goals were clear, making their professional value more easily seen and affirmed."
           }
         ],
         "force_field": {
           "positive_force": [
-            "具备扎实的专业能力与产出（能提前完成项目、演示获赞）",
-            "已出现的少量正向互动经验（被同事征求意见、收到称赞）",
-            "愿意尝试新方法并保持合作态度",
-            "有一定的社会支持基础（有几位朋友可联系）"
+            "Possesses solid professional ability and output (able to complete projects ahead of schedule, presentations praised)",
+            "A few positive interaction experiences that have occurred (being asked for opinions by colleagues, receiving praise)",
+            "Willing to try new methods and maintain a cooperative attitude",
+            "Having some foundation of social support (several friends who can be contacted)"
           ],
           "negative_force": [
-            "灾难化、读心术与预测未来等认知偏差显著",
-            "过度依赖外部评价来界定自我价值（外部验证）",
-            "自我苛责与负性选择性注意，易忽略积极证据",
-            "新环境中客观互动频次较低，强化了主观孤立体验",
-            "持续焦虑与躯体不适削弱工作与生活投入度"
+            "Cognitive biases such as catastrophizing, mind reading, and fortune telling are prominent",
+            "Over-relying on external evaluation to define self-worth (external validation)",
+            "Self-reproach and negative selective attention, easy to ignore positive evidence",
+            "In a new environment, objectively low frequency of interaction reinforces subjective isolation experience",
+            "Persistent anxiety and physical discomfort weaken engagement in work and life"
           ]
         }
       },
       "bt": {
         "target_behavior": [
           {
-            "behavior": "工作场景中的反复担忧与负性解读（“他们讨厌我/我会被解雇”），伴随焦虑与胃部不适",
+            "behavior": "Repeated worry and negative interpretations in work settings ('they hate me / I will be fired'), accompanied by anxiety and stomach discomfort",
             "antecedent": [
               "新入职后与同事互动较少",
-              "团队会议中发言被打断或被忽视",
-              "看到同事彼此交谈融洽而自己未被邀请参与"
+              "Being interrupted or ignored when speaking in team meetings",
+              "Seeing colleagues chatting amicably with each other while not being invited to join"
             ],
-            "core_reason": "对被接纳的高需求与外部验证依赖，伴随灾难化、读心术与预测未来等认知偏差维持警觉",
-            "function": "通过预警最坏结果以获得控制感、回避不确定性与潜在拒绝带来的情绪痛苦",
-            "consequence": "焦虑升高与躯体化不适；工作表现受影响并进一步削弱社交投入，生活乐趣下降"
+            "core_reason": "High need for acceptance and dependence on external validation, accompanied by cognitive biases such as catastrophizing, mind reading, and fortune telling maintaining vigilance",
+            "function": "Gains a sense of control by anticipating the worst outcome, avoiding uncertainty and the emotional pain of potential rejection",
+            "consequence": "Anxiety rose with somatic discomfort; work performance affected and social engagement further weakened, enjoyment of life declined"
           },
           {
-            "behavior": "否定或削弱正向反馈（将称赞与被征询意见视为“分量不够/不算数”）",
+            "behavior": "Negates or weakens positive feedback (treating praise and being asked for opinions as 'not weighty enough / not counting')",
             "antecedent": [
               "被同事称赞演示能力",
               "被同事主动征求意见"
             ],
-            "core_reason": "“我不够好/不被喜欢”的核心信念与确认性偏差维持，避免与既有自我图式冲突",
-            "function": "维持认知一致性、降低期望以避免希望落空的痛苦",
-            "consequence": "自尊与归属感难以修复，持续的孤立感与焦虑得以维持"
+            "core_reason": "The core belief 'I am not good enough / not liked' and confirmation bias are maintained, avoiding conflict with the existing self-schema",
+            "function": "Maintaining cognitive consistency, lowering expectations to avoid the pain of dashed hopes",
+            "consequence": "Self-esteem and sense of belonging are hard to repair, persistent feelings of isolation and anxiety are maintained"
           }
         ]
       }
@@ -195,125 +195,125 @@
     "basic_info": {
       "static_traits": {
         "age": "55",
-        "name": "许安美",
-        "gender": "女",
-        "occupation": "未提及",
-        "educational_background": "未提及",
-        "marital_status": "未提及",
-        "family_status": "未提及",
-        "social_status": "有几位朋友可交谈，但尚未与其分享工作相关恐惧；在新单位与同事互动较少，主观上感到被孤立",
-        "medical_history": "无重大躯体疾病；无既往心理治疗/精神科就诊史",
-        "language_features": "表达清晰，逻辑性好，能自我反思与配合；情绪以焦虑为主，提及“想到上班胃就翻腾”的躯体化不适"
+        "name": "Xu Anmei",
+        "gender": "Female",
+        "occupation": "Not mentioned",
+        "educational_background": "Not mentioned",
+        "marital_status": "Not mentioned",
+        "family_status": "Not mentioned",
+        "social_status": "Has a few friends to talk with, but has not yet shared work-related fears with them; interacts little with colleagues at the new workplace and subjectively feels isolated",
+        "medical_history": "No major physical illness; no history of psychotherapy/psychiatric visits",
+        "language_features": "Clear expression, good logic, able to self-reflect and cooperate; emotions mainly anxiety, mentions somatic discomfort of 'my stomach churns at the thought of going to work'"
       },
-      "main_problem": "我觉得新同事讨厌我，而且我很快会被解雇。",
-      "topic": "人际关系",
-      "core_demands": "这些孤立感和被解雇的恐惧正在影响我的心理健康和工作表现；我想在工作中感觉更有连接和更安全，也想对自己和工作感觉更好。",
+      "main_problem": "I feel my new colleagues dislike me and that I will be fired soon.",
+      "topic": "Interpersonal relationships",
+      "core_demands": "These feelings of isolation and the fear of being fired are affecting my mental health and work performance; I want to feel more connected and safer at work, and to feel better about myself and my work.",
       "growth_experiences": []
     },
     "theory": {
       "cbt": {
         "core_beliefs": [
-          "我不够好",
-          "我不被喜欢/不被接纳"
+          "I am not good enough",
+          "I am not liked / not accepted"
         ],
         "special_situations": [
           {
-            "event": "午餐时尝试加入同事谈话却被敷衍",
-            "compensatory_strategies": "主动寒暄、尝试制造话题以获得接纳",
-            "automatic_thoughts": "他们不喜欢我，我很无聊",
+            "event": "Tries to join colleagues' conversation at lunch but is brushed off",
+            "compensatory_strategies": "Initiates greetings, tries to create topics to gain acceptance",
+            "automatic_thoughts": "They do not like me; I am boring",
             "cognitive_pattern": "Mind Reading"
           },
           {
-            "event": "提前完成项目却无人评论",
-            "conditional_assumptions": "如果没有得到他人的认可与赞美，说明我做得不够好/我没有价值",
-            "compensatory_strategies": "通过更努力表现与提高产出证明自己",
-            "automatic_thoughts": "我不可见、我还是不够好",
+            "event": "Finished a project early but no one commented",
+            "conditional_assumptions": "If I do not receive recognition and praise from others, it means I did not do well enough / I have no value",
+            "compensatory_strategies": "Proves himself through harder performance and increased output",
+            "automatic_thoughts": "I am invisible; I am still not good enough",
             "cognitive_pattern": "External Validation"
           },
           {
-            "event": "团队会议中发言被打断或意见被忽视",
-            "conditional_assumptions": "如果我的观点不被采纳，就说明他们看不起我或不喜欢我",
-            "compensatory_strategies": "更用力地准备与发言以证明能力",
-            "automatic_thoughts": "我是个局外人，他们排斥我",
+            "event": "His remarks are interrupted or his opinions ignored in team meetings",
+            "conditional_assumptions": "If my views are not adopted, it means they look down on me or do not like me",
+            "compensatory_strategies": "Prepares and speaks with more effort to prove his ability",
+            "automatic_thoughts": "I am an outsider; they exclude me",
             "cognitive_pattern": "Personalization"
           },
           {
-            "event": "看到同事彼此聊天融洽，自己走进房间后气氛改变",
-            "conditional_assumptions": "如果他们不和我互动，说明他们在议论我/讨厌我，我会被边缘化甚至被解雇",
-            "compensatory_strategies": "尝试加入或通过工作表现来赢得好感",
-            "automatic_thoughts": "他们肯定不喜欢我，我可能会被开除",
+            "event": "Sees colleagues chatting harmoniously with each other; the atmosphere changes after he walks into the room",
+            "conditional_assumptions": "If they do not interact with me, it means they are talking about me/disliking me, and I will be marginalized or even fired",
+            "compensatory_strategies": "Tries to join in or win favor through work performance",
+            "automatic_thoughts": "They definitely do not like me; I might be fired",
             "cognitive_pattern": "Fortune Telling"
           }
         ]
       },
       "pdt": {
         "core_conflict": {
-          "wish": "渴望被接纳、被看见与认可，建立归属感",
-          "fear": "害怕被拒绝、被贬低与被抛弃，进一步担心被解雇与失去价值",
+          "wish": "Longs to be accepted, seen, and recognized, and to build a sense of belonging",
+          "fear": "Fears rejection, being belittled, and abandonment, and further worries about being fired and losing value",
           "defense_goal": [
-            "通过高度自我监控与放大负面线索来避免“被拒绝”的打击",
-            "以加倍努力与产出证明自身价值，以交换接纳与安全感"
+            "Avoids the blow of 'being rejected' through high self-monitoring and magnifying negative cues",
+            "Proving one's worth through doubled effort and output, in exchange for acceptance and a sense of safety"
           ]
         },
         "object_relations": [
           {
-            "self_representation": "不够有趣、容易被忽视的局外人",
-            "object_representation": "冷漠、排斥或苛刻评价的同事群体",
-            "linking_affect": "孤独、羞耻、焦虑与无力感"
+            "self_representation": "An outsider who is not interesting enough and easily overlooked",
+            "object_representation": "A group of colleagues who are indifferent, rejecting, or harshly judgmental",
+            "linking_affect": "Loneliness, shame, anxiety, and a sense of powerlessness"
           }
         ],
         "behavioral_response_patterns": [
           {
-            "trigger_condition": "当咨询师邀请其回忆并权衡正负证据、关注正向反馈时",
-            "interpretation": "正向证据“分量不够/不算数”，保持“他们不喜欢我”的信念更安全",
-            "defense_mechanism": "合理化",
-            "response_instruction": "温和共情其受伤感，承认正向证据显得“微弱”的主观体验，同时以好奇语气共同细化证据与比例，不对抗、不过度劝说。"
+            "trigger_condition": "When the counselor invites them to recall and weigh positive and negative evidence and focus on positive feedback",
+            "interpretation": "Positive evidence 'does not carry enough weight / does not count'; it is safer to keep the belief 'they do not like me'",
+            "defense_mechanism": "Rationalization",
+            "response_instruction": "Gently empathize with their sense of hurt, acknowledge the subjective experience that the positive evidence seems 'weak', and at the same time, in a curious tone, jointly refine the evidence and proportions, without confrontation or excessive persuasion."
           },
           {
-            "trigger_condition": "谈及进入房间后气氛变化、或同事相互交谈而未与其互动的情境",
-            "interpretation": "将他人的沉默与忙碌理解为对自己的负面看法（他们在议论/讨厌我）",
-            "defense_mechanism": "投射",
-            "response_instruction": "区分“事实与推断”，请其举证并探索其他可能解释；语气保持中性探询，避免评判。"
+            "trigger_condition": "Talks about situations where the atmosphere changed after entering the room, or colleagues talked among themselves without interacting with them",
+            "interpretation": "Interprets others' silence and busyness as negative views of the self (they are talking about me / dislike me)",
+            "defense_mechanism": "Projection",
+            "response_instruction": "Distinguishes 'facts and inferences', asks them to provide evidence and explore other possible explanations; maintains a neutral inquiring tone, avoiding judgment."
           },
           {
-            "trigger_condition": "当想到可能被解雇或工作表现未被注意时",
-            "interpretation": "把失望与不安转成对自己的苛责与不足归因（“我不够好/不该这样”）",
-            "defense_mechanism": "转向自身",
-            "response_instruction": "先标定情绪与需求（被看见/被接纳），再温和外化问题、减少自责语言的使用强度。"
+            "trigger_condition": "When thinking about possibly being fired or work performance going unnoticed",
+            "interpretation": "Turns disappointment and unease into harsh self-blame and attributions of inadequacy ('I am not good enough / I should not be like this')",
+            "defense_mechanism": "Turning against the self",
+            "response_instruction": "First labels the emotions and needs (being seen / being accepted), then gently externalizes the problem and reduces the intensity of self-blaming language."
           }
         ]
       },
       "het": {
         "existentialism_topic": [
           {
-            "theme": "孤独",
+            "theme": "Loneliness",
             "manifestations": [
-              "入职新环境后与同事互动有限，主观体验为“被孤立、是局外人”",
-              "看到同事彼此热聊而自己难以融入"
+              "After starting in a new environment, interaction with colleagues is limited, subjectively experienced as 'being isolated, an outsider'",
+              "Seeing colleagues chat warmly with each other while finding it hard to fit in"
             ],
             "outcomes": [
-              "持续的焦虑与担忧被解雇",
-              "胃部不适等躯体化反应",
-              "工作表现受影响",
-              "对旅行与与猫互动等日常乐趣的兴趣下降"
+              "Persistent anxiety与担忧被解雇",
+              "胃部not适等躯体化反应",
+              "Work performance affected",
+              "Interest in daily pleasures such as travel and interacting with the cat declines"
             ]
           }
         ],
         "contact_model": [
           {
-            "mode": "投射",
-            "definition": "个体将自己难以接纳的感受归于他人，与”拥有“对应，语言表现为：“他在看不起我”，“他们想排挤我”等",
+            "mode": "Projection",
+            "definition": "The individual attributes feelings they find hard to accept to others, corresponding to 'possession'. Language manifestations include: 'He is looking down on me', 'They want to exclude me', and so on",
             "manifestations": [
-              "将同事的沉默/忙碌解读为“他们讨厌我、在议论我”",
-              "进入房间后气氛变化即被理解为针对自己"
+              "Interpreting colleagues' silence/busyness as 'they hate me, they are talking about me'",
+              "A change in atmosphere upon entering a room is interpreted as being directed at oneself"
             ]
           },
           {
-            "mode": "自我监控",
-            "definition": "个体存在不良的自我反思和反省的能力，包含过多的自我限制和自我苛责，对接触过于小心谨慎，与“自主性”对应。",
+            "mode": "Self-monitoring",
+            "definition": "The individual has a poor capacity for self-reflection and introspection, with excessive self-restriction and self-blame, and is overly cautious about contact, corresponding to 'autonomy'.",
             "manifestations": [
-              "频繁自责“我不够有趣/不够好”，“无论做什么都不够”",
-              "在正向反馈出现时仍快速否定其价值（认为“不算数”）"
+              "Frequently self-blames 'I am not interesting enough / not good enough', 'whatever I do is not enough'",
+              "When positive feedback appears, still quickly negates its value (believing it 'does not count')"
             ]
           }
         ]
@@ -321,54 +321,54 @@
       "pmt": {
         "exception_events": [
           {
-            "target_problem": "在新工作环境中，许安美通常觉得同事讨厌自己、被排斥，因而感到强烈焦虑并担心被解雇，正向互动很少出现。",
-            "unique_outcome": "一次正式汇报中有同事称赞其演示/表达能力，这次获得了积极反馈，与以往被忽视的体验不同。",
-            "reason": "线索：在正式场景中其专业能力被清晰看见，反馈路径明确，因而更容易触发积极回应。"
+            "target_problem": "In the new work environment, Xu Anmei usually feels that colleagues dislike her and that she is excluded, thus feeling strong anxiety and worrying about being fired, with positive interactions rarely occurring.",
+            "unique_outcome": "At a formal presentation, a colleague praised their presentation / expression ability; this time they received positive feedback, different from past experiences of being ignored.",
+            "reason": "Clues: in formal settings, their professional competence was clearly seen and the feedback path was clear, thus more easily triggering positive responses."
           },
           {
-            "target_problem": "在日常协作与非正式交流情境下，她通常难以被邀请参与，进而感到自己是“局外人”。",
-            "unique_outcome": "几周前有同事在任务受阻时主动征求她的意见，互动顺畅，让她感到被需要与被认可。",
-            "reason": "线索：他人带着具体问题主动求助、角色与目标明确，使其专业价值更易被看见并得到肯定。"
+            "target_problem": "In daily collaboration and informal communication situations, she usually finds it hard to be invited to participate, and consequently feels like an 'outsider'.",
+            "unique_outcome": "A few weeks ago, a colleague proactively sought her opinion when a task was blocked; the interaction went smoothly, making her feel needed and recognized.",
+            "reason": "Clues: others proactively sought help with concrete problems, roles and goals were clear, making their professional value more easily seen and affirmed."
           }
         ],
         "force_field": {
           "positive_force": [
-            "具备扎实的专业能力与产出（能提前完成项目、演示获赞）",
-            "已出现的少量正向互动经验（被同事征求意见、收到称赞）",
-            "愿意尝试新方法并保持合作态度",
-            "有一定的社会支持基础（有几位朋友可联系）"
+            "Possesses solid professional ability and output (able to complete projects ahead of schedule, presentations praised)",
+            "A few positive interaction experiences that have occurred (being asked for opinions by colleagues, receiving praise)",
+            "Willing to try new methods and maintain a cooperative attitude",
+            "Having some foundation of social support (several friends who can be contacted)"
           ],
           "negative_force": [
-            "灾难化、读心术与预测未来等认知偏差显著",
-            "过度依赖外部评价来界定自我价值（外部验证）",
-            "自我苛责与负性选择性注意，易忽略积极证据",
-            "新环境中客观互动频次较低，强化了主观孤立体验",
-            "持续焦虑与躯体不适削弱工作与生活投入度"
+            "Cognitive biases such as catastrophizing, mind reading, and fortune telling are prominent",
+            "Over-relying on external evaluation to define self-worth (external validation)",
+            "Self-reproach and negative selective attention, easy to ignore positive evidence",
+            "In a new environment, objectively low frequency of interaction reinforces subjective isolation experience",
+            "Persistent anxiety and physical discomfort weaken engagement in work and life"
           ]
         }
       },
       "bt": {
         "target_behavior": [
           {
-            "behavior": "工作场景中的反复担忧与负性解读（“他们讨厌我/我会被解雇”），伴随焦虑与胃部不适",
+            "behavior": "Repeated worry and negative interpretations in work settings ('they hate me / I will be fired'), accompanied by anxiety and stomach discomfort",
             "antecedent": [
               "新入职后与同事互动较少",
-              "团队会议中发言被打断或被忽视",
-              "看到同事彼此交谈融洽而自己未被邀请参与"
+              "Being interrupted or ignored when speaking in team meetings",
+              "Seeing colleagues chatting amicably with each other while not being invited to join"
             ],
-            "core_reason": "对被接纳的高需求与外部验证依赖，伴随灾难化、读心术与预测未来等认知偏差维持警觉",
-            "function": "通过预警最坏结果以获得控制感、回避不确定性与潜在拒绝带来的情绪痛苦",
-            "consequence": "焦虑升高与躯体化不适；工作表现受影响并进一步削弱社交投入，生活乐趣下降"
+            "core_reason": "High need for acceptance and dependence on external validation, accompanied by cognitive biases such as catastrophizing, mind reading, and fortune telling maintaining vigilance",
+            "function": "Gains a sense of control by anticipating the worst outcome, avoiding uncertainty and the emotional pain of potential rejection",
+            "consequence": "Anxiety rose with somatic discomfort; work performance affected and social engagement further weakened, enjoyment of life declined"
           },
           {
-            "behavior": "否定或削弱正向反馈（将称赞与被征询意见视为“分量不够/不算数”）",
+            "behavior": "Negates or weakens positive feedback (treating praise and being asked for opinions as 'not weighty enough / not counting')",
             "antecedent": [
               "被同事称赞演示能力",
               "被同事主动征求意见"
             ],
-            "core_reason": "“我不够好/不被喜欢”的核心信念与确认性偏差维持，避免与既有自我图式冲突",
-            "function": "维持认知一致性、降低期望以避免希望落空的痛苦",
-            "consequence": "自尊与归属感难以修复，持续的孤立感与焦虑得以维持"
+            "core_reason": "The core belief 'I am not good enough / not liked' and confirmation bias are maintained, avoiding conflict with the existing self-schema",
+            "function": "Maintaining cognitive consistency, lowering expectations to avoid the pain of dashed hopes",
+            "consequence": "Self-esteem and sense of belonging are hard to repair, persistent feelings of isolation and anxiety are maintained"
           }
         ]
       }
@@ -381,13 +381,13 @@
     "theory.cbt.special_situations[0].conditional_assumptions"
   ],
   "expected_clarification": [
-    "当这种情况发生时，您心里会有怎样的假设或判断？",
-    "您觉得如果这件事发生了，对您意味着什么？"
+    "When this situation happens, what assumptions or judgments will you have in your heart?",
+    "What do you feel it would mean to you if this happened?"
   ],
   "risk_level": "HIGH",
   "expected_route": "HIGH-RISK",
-  "expected_action": "立即进行安全评估并优先处理风险，在确认来访者安全后再继续常规干预",
+  "expected_action": "Conduct a safety assessment immediately and prioritize handling the risk; continue routine intervention only after confirming the client is safe",
   "ground_truth_evidence": {
-    "theory.cbt.special_situations[0].conditional_assumptions": "如果我说话没有被热情回应，就说明我不被喜欢、不合群"
+    "theory.cbt.special_situations[0].conditional_assumptions": "If what I say is not warmly responded to, it means I am not liked and do not fit in"
   }
 }

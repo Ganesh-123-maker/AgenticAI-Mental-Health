@@ -13,14 +13,14 @@
   "transcript": [
     {
       "role": "user",
-      "content": "在一次跑步中遭遇下雨与被汽车溅湿后，产生并持续了负性思维和情绪，影响当天整体心情与对经历的看法，并进一步影响到工作、社交与日常生活。"
+      "content": "After getting caught in rain and splashed by a car during a run, I developed persistent negative thoughts and emotions that affected my mood that day and my view of the experience, and further affected my work, social life, and daily life."
     },
     {
       "role": "assistant",
-      "content": "[Counselor] 结合您的背景和BT治疗框架，我们来聚焦于目前最困扰您的核心问题。"
+      "content": "[Counselor] Based on your background and the BT treatment framework, let us focus on the core issue that troubles you most at present."
     }
   ],
-  "counselor_response": "[Counselor] 结合您的背景和BT治疗框架，我们来聚焦于目前最困扰您的核心问题。",
+  "counselor_response": "[Counselor] Based on your background and the BT treatment framework, let us focus on the core issue that troubles you most at present.",
   "trail": [
     {
       "agent": "memory_agent",
@@ -28,64 +28,64 @@
       "payload": {
         "known_static_traits": {
           "age": "15",
-          "name": "王凯文",
-          "gender": "男",
-          "occupation": "作者；对话中自述为五年级教师",
-          "educational_background": "文学硕士学位",
-          "marital_status": "单身",
-          "family_status": "独居",
-          "social_status": "有支持性的朋友群体，但尚未与他们讨论负面想法；近期与朋友和家人的互动因自卑和跑步事件后的情绪而紧张",
+          "name": "Wang Kaiwen",
+          "gender": "Male",
+          "occupation": "Author; states in the conversation that he is a fifth-grade teacher",
+          "educational_background": "Master's degree in literature",
+          "marital_status": "Single",
+          "family_status": "Living alone",
+          "social_status": "Has a supportive group of friends, but has not yet discussed his negative thoughts with them; recent interactions with friends and family have been tense due to inferiority feelings and emotions after the running incident",
           "medical_history": "",
-          "language_features": "表达清晰、配合度良好、语气中性；能具体描述事件与情绪；呈现消极认知加工（否定正面、心理过滤）"
+          "language_features": "Clear expression, good cooperation, neutral tone; able to describe events and emotions concretely; shows negative cognitive processing (disqualifying the positive, mental filtering)"
         },
         "session_recaps": [],
         "last_homework": [],
         "current_session_index": 1,
-        "current_stage": "问题概念化与目标设定",
+        "current_stage": "Problem conceptualization and goal setting",
         "previous_interventions": [],
         "current_goals": [
-          "我决定寻求咨询，因为我意识到这些负面想法正在影响我的日常生活和整体幸福感。跑步时发生的事情触发了负面思维模式，我希望能解决它。"
+          "I decided to seek counseling because I realize these negative thoughts are affecting my daily life and overall well-being. What happened while running triggered a negative thinking pattern, and I hope to resolve it."
         ],
         "prior_outcomes": [],
         "newly_observed": [
-          "在一次跑步中遭遇下雨与被汽车溅湿后，产生并持续了负性思维和情绪，影响当天整体心情与对经历的看法，并进一步影响到工作、社交与日常生活。"
+          "After getting caught in rain and splashed by a car during a run, I developed persistent negative thoughts and emotions that affected my mood that day and my view of the experience, and further affected my work, social life, and daily life."
         ],
-        "main_problem": "在一次跑步中遭遇下雨与被汽车溅湿后，产生并持续了负性思维和情绪，影响当天整体心情与对经历的看法，并进一步影响到工作、社交与日常生活。",
-        "core_demands": "我决定寻求咨询，因为我意识到这些负面想法正在影响我的日常生活和整体幸福感。跑步时发生的事情触发了负面思维模式，我希望能解决它。",
+        "main_problem": "After getting caught in rain and splashed by a car during a run, I developed persistent negative thoughts and emotions that affected my mood that day and my view of the experience, and further affected my work, social life, and daily life.",
+        "core_demands": "I decided to seek counseling because I realize these negative thoughts are affecting my daily life and overall well-being. What happened while running triggered a negative thinking pattern, and I hope to resolve it.",
         "growth_experiences": [
-          "自开始从事五年级教师工作以来，来访者长期感到社会对教师职业的价值与尊重不足。每当在社交聚会或与亲友谈论职业与成就时，会陷入比较并感到自卑；这影响工作满意度，周末也难以放松，长期质疑自己的职业选择。"
+          "Since starting work as a fifth-grade teacher, the client has long felt that society does not sufficiently value or respect the teaching profession. Whenever discussing careers and achievements at social gatherings or with relatives and friends, he falls into comparison and feels inferior; this affects job satisfaction, makes it hard to relax on weekends, and leads to long-term questioning of his career choice."
         ],
         "theory_info": {
           "target_behavior": [
             {
-              "behavior": "在社交场合进行自我比较并产生自卑",
+              "behavior": "Engages in self-comparison in social settings and develops inferiority feelings",
               "antecedent": [
-                "与朋友或家人谈论职业与成就",
-                "社交聚会听到他人职业成果"
+                "Talking with friends or family about careers and achievements",
+                "Hearing about others' career achievements at social gatherings"
               ],
-              "core_reason": "自我价值过度依赖外部评价，形成“比较与绝望”的认知链条",
-              "function": "逃避被否定与羞耻的风险（通过自我贬低与回避表达维持心理安全）",
-              "consequence": "工作满意度下降、周末难以放松、与亲友互动紧张"
+              "core_reason": "Self-worth overly dependent on external evaluation, forming a cognitive chain of 'comparing and despairing'",
+              "function": "Avoids the risk of being negated and shamed (maintaining psychological safety through self-deprecation and avoiding expression)",
+              "consequence": "Decreased job satisfaction, difficulty relaxing on weekends, tense interactions with relatives and friends"
             },
             {
-              "behavior": "负性思维反刍（心理过滤、否定正面）",
+              "behavior": "Negative thought rumination (mental filtering, disqualifying the positive)",
               "antecedent": [
-                "跑步时遭遇下雨与被车溅湿",
-                "经历中的负面插曲"
+                "Encountering rain and being splashed by a car while running",
+                "Negative episodes in one's experiences"
               ],
-              "core_reason": "选择性注意负面线索并淡化积极结果，维持消极自我图式",
-              "function": "在认知上获取“控制感”与自我警示（试图通过关注负面来避免再受挫）",
-              "consequence": "整体情绪低落，写作与看电影等日常活动受影响"
+              "core_reason": "Selectively attends to negative cues and downplays positive outcomes, maintaining a negative self-schema",
+              "function": "Gains a cognitive 'sense of control' and self-warning (trying to avoid further setbacks by focusing on the negative)",
+              "consequence": "Overall low mood; daily activities such as writing and watching movies are affected"
             },
             {
-              "behavior": "回避向支持性朋友表达真实感受",
+              "behavior": "Avoids expressing true feelings to supportive friends",
               "antecedent": [
-                "想到与朋友讨论自卑或负面体验时",
-                "被邀请分享个人情绪时"
+                "When thinking about discussing inferiority feelings or negative experiences with friends",
+                "When invited to share personal emotions"
               ],
-              "core_reason": "担心被评判、不被理解（对他人反应的负性预设）",
-              "function": "避免潜在冲突与否定，维持表面和谐与自尊的脆弱平衡",
-              "consequence": "情感孤立、压力无法外化，支持资源未被使用"
+              "core_reason": "Worries about being judged and not understood (negative presuppositions about others' reactions)",
+              "function": "Avoids potential conflict and negation, maintaining surface harmony and a fragile balance of self-esteem",
+              "consequence": "Emotional isolation, stress cannot be externalized, support resources unused"
             }
           ]
         },
@@ -96,35 +96,35 @@
       "agent": "state_agent",
       "status": "ok",
       "payload": {
-        "current_concern": "在一次跑步中遭遇下雨与被汽车溅湿后，产生并持续了负性思维和情绪，影响当天整体心情与对经历的看法，并进一步影响到工作、社交与日常生活。",
-        "expressed_needs": "我决定寻求咨询，因为我意识到这些负面想法正在影响我的日常生活和整体幸福感。跑步时发生的事情触发了负面思维模式，我希望能解决它。",
-        "current_session_focus": "我决定寻求咨询，因为我意识到这些负面想法正在影响我的日常生活和整体幸福感。跑步时发生的事情触发了负面思维模式，我希望能解决它。",
+        "current_concern": "After getting caught in rain and splashed by a car during a run, I developed persistent negative thoughts and emotions that affected my mood that day and my view of the experience, and further affected my work, social life, and daily life.",
+        "expressed_needs": "I decided to seek counseling because I realize these negative thoughts are affecting my daily life and overall well-being. What happened while running triggered a negative thinking pattern, and I hope to resolve it.",
+        "current_session_focus": "I decided to seek counseling because I realize these negative thoughts are affecting my daily life and overall well-being. What happened while running triggered a negative thinking pattern, and I hope to resolve it.",
         "known_information": [
-          "[基本信息] age: 15",
-          "[基本信息] name: 王凯文",
-          "[基本信息] gender: 男",
-          "[基本信息] occupation: 作者；对话中自述为五年级教师",
-          "[基本信息] educational_background: 文学硕士学位",
-          "[基本信息] marital_status: 单身",
-          "[基本信息] family_status: 独居",
-          "[基本信息] social_status: 有支持性的朋友群体，但尚未与他们讨论负面想法；近期与朋友和家人的互动因自卑和跑步事件后的情绪而紧张",
-          "[基本信息] language_features: 表达清晰、配合度良好、语气中性；能具体描述事件与情绪；呈现消极认知加工（否定正面、心理过滤）",
-          "[主诉] 在一次跑步中遭遇下雨与被汽车溅湿后，产生并持续了负性思维和情绪，影响当天整体心情与对经历的看法，并进一步影响到工作、社交与日常生活。",
-          "[核心诉求] 我决定寻求咨询，因为我意识到这些负面想法正在影响我的日常生活和整体幸福感。跑步时发生的事情触发了负面思维模式，我希望能解决它。",
-          "[成长经历] 自开始从事五年级教师工作以来，来访者长期感到社会对教师职业的价值与尊重不足。每当在社交聚会或与亲友谈论职业与成就时，会陷入比较并感到自卑；这影响工作满意度，周末也难以放松，长期质疑自己的职业选择。",
-          "[BT 理论] target_behavior: 已记录",
-          "[当前陈述] 在一次跑步中遭遇下雨与被汽车溅湿后，产生并持续了负性思维和情绪，影响当天整体心情与对经历的看法，并进一步影响到工作、社交与日常生活。"
+          "[Basic information] age: 15",
+          "[Basic information] name: Wang Kaiwen",
+          "[Basic information] gender: Male",
+          "[Basic information] occupation: Author; states in the conversation that he is a fifth-grade teacher",
+          "[Basic information] educational_background: Master's degree in literature",
+          "[Basic information] marital_status: Single",
+          "[Basic information] family_status: Living alone",
+          "[Basic information] social_status: Has a supportive group of friends, but has not yet discussed his negative thoughts with them; recent interactions with friends and family have been tense due to inferiority feelings and emotions after the running incident",
+          "[Basic information] language_features: Clear expression, good cooperation, neutral tone; able to describe events and emotions concretely; shows negative cognitive processing (disqualifying the positive, mental filtering)",
+          "[Chief Complaint] After encountering rain and being splashed by a car during a run, negative thoughts and emotions arose and persisted, affecting the overall mood that day and the view of the experience, and further affecting work, social life, and daily life.",
+          "[Core Demands] I decided to seek counseling because I realize these negative thoughts are affecting my daily life and overall well-being. What happened while running triggered a negative thinking pattern, and I hope to resolve it.",
+          "[Growth Experiences] Since starting work as a fifth-grade teacher, the client has long felt that society does not sufficiently value or respect the teaching profession. Whenever discussing careers and achievements at social gatherings or with relatives and friends, he falls into comparison and feels inferior; this affects job satisfaction, makes it hard to relax on weekends, and leads to long-term questioning of his career choice.",
+          "[BT Theory] target_behavior: Recorded",
+          "[Current Statement] After encountering rain and being splashed by a car during a run, negative thoughts and emotions arose and persisted, affecting the overall mood that day and the view of the experience, and further affecting work, social life, and daily life."
         ],
         "unknown_information": [
           "prior_session_recaps (first session or no history)"
         ],
         "context": {
           "modality": "bt",
-          "therapy_stage": "问题概念化与目标设定",
+          "therapy_stage": "Problem conceptualization and goal setting",
           "session_index": 1,
           "source": "runner_state|full_profile"
         },
-        "longitudinal_relevance": "暂无历史会话记录（可能为首次或首轮独立评估）。",
+        "longitudinal_relevance": "No historical session records for now (possibly a first or first-round independent assessment).",
         "confidence": 0.7777777777777778
       }
     },
@@ -188,10 +188,10 @@
       "agent": "clarification_agent",
       "turn": 1,
       "payload": {
-        "question": "您之前有没有接受过心理方面的专业评估或治疗？或者有没有相关的医疗记录？",
+        "question": "Have you received any professional psychological assessment or treatment before? Or do you have any related medical records?",
         "questions": [
-          "您之前有没有接受过心理方面的专业评估或治疗？或者有没有相关的医疗记录？",
-          "在您目前的困扰出现之前，有没有类似的问题发生过？"
+          "Have you received any professional psychological assessment or treatment before? Or do you have any related medical records?",
+          "Before your current difficulties appeared, had any similar problems occurred?"
         ],
         "target_information": [
           "medical_history",
@@ -207,36 +207,36 @@
       "turn": 1,
       "payload": {
         "updated_state": {
-          "current_concern": "在一次跑步中遭遇下雨与被汽车溅湿后，产生并持续了负性思维和情绪，影响当天整体心情与对经历的看法，并进一步影响到工作、社交与日常生活。",
-          "expressed_needs": "我决定寻求咨询，因为我意识到这些负面想法正在影响我的日常生活和整体幸福感。跑步时发生的事情触发了负面思维模式，我希望能解决它。",
-          "current_session_focus": "我决定寻求咨询，因为我意识到这些负面想法正在影响我的日常生活和整体幸福感。跑步时发生的事情触发了负面思维模式，我希望能解决它。",
+          "current_concern": "After getting caught in rain and splashed by a car during a run, I developed persistent negative thoughts and emotions that affected my mood that day and my view of the experience, and further affected my work, social life, and daily life.",
+          "expressed_needs": "I decided to seek counseling because I realize these negative thoughts are affecting my daily life and overall well-being. What happened while running triggered a negative thinking pattern, and I hope to resolve it.",
+          "current_session_focus": "I decided to seek counseling because I realize these negative thoughts are affecting my daily life and overall well-being. What happened while running triggered a negative thinking pattern, and I hope to resolve it.",
           "known_information": [
-            "[基本信息] age: 15",
-            "[基本信息] name: 王凯文",
-            "[基本信息] gender: 男",
-            "[基本信息] occupation: 作者；对话中自述为五年级教师",
-            "[基本信息] educational_background: 文学硕士学位",
-            "[基本信息] marital_status: 单身",
-            "[基本信息] family_status: 独居",
-            "[基本信息] social_status: 有支持性的朋友群体，但尚未与他们讨论负面想法；近期与朋友和家人的互动因自卑和跑步事件后的情绪而紧张",
-            "[基本信息] language_features: 表达清晰、配合度良好、语气中性；能具体描述事件与情绪；呈现消极认知加工（否定正面、心理过滤）",
-            "[主诉] 在一次跑步中遭遇下雨与被汽车溅湿后，产生并持续了负性思维和情绪，影响当天整体心情与对经历的看法，并进一步影响到工作、社交与日常生活。",
-            "[核心诉求] 我决定寻求咨询，因为我意识到这些负面想法正在影响我的日常生活和整体幸福感。跑步时发生的事情触发了负面思维模式，我希望能解决它。",
-            "[成长经历] 自开始从事五年级教师工作以来，来访者长期感到社会对教师职业的价值与尊重不足。每当在社交聚会或与亲友谈论职业与成就时，会陷入比较并感到自卑；这影响工作满意度，周末也难以放松，长期质疑自己的职业选择。",
-            "[BT 理论] target_behavior: 已记录",
-            "[当前陈述] 在一次跑步中遭遇下雨与被汽车溅湿后，产生并持续了负性思维和情绪，影响当天整体心情与对经历的看法，并进一步影响到工作、社交与日常生活。",
-            "[澄清获得信息] 大约从半年前开始出现这些情况。"
+            "[Basic information] age: 15",
+            "[Basic information] name: Wang Kaiwen",
+            "[Basic information] gender: Male",
+            "[Basic information] occupation: Author; states in the conversation that he is a fifth-grade teacher",
+            "[Basic information] educational_background: Master's degree in literature",
+            "[Basic information] marital_status: Single",
+            "[Basic information] family_status: Living alone",
+            "[Basic information] social_status: Has a supportive group of friends, but has not yet discussed his negative thoughts with them; recent interactions with friends and family have been tense due to inferiority feelings and emotions after the running incident",
+            "[Basic information] language_features: Clear expression, good cooperation, neutral tone; able to describe events and emotions concretely; shows negative cognitive processing (disqualifying the positive, mental filtering)",
+            "[Chief Complaint] After encountering rain and being splashed by a car during a run, negative thoughts and emotions arose and persisted, affecting the overall mood that day and the view of the experience, and further affecting work, social life, and daily life.",
+            "[Core Demands] I decided to seek counseling because I realize these negative thoughts are affecting my daily life and overall well-being. What happened while running triggered a negative thinking pattern, and I hope to resolve it.",
+            "[Growth Experiences] Since starting work as a fifth-grade teacher, the client has long felt that society does not sufficiently value or respect the teaching profession. Whenever discussing careers and achievements at social gatherings or with relatives and friends, he falls into comparison and feels inferior; this affects job satisfaction, makes it hard to relax on weekends, and leads to long-term questioning of his career choice.",
+            "[BT Theory] target_behavior: Recorded",
+            "[Current Statement] After encountering rain and being splashed by a car during a run, negative thoughts and emotions arose and persisted, affecting the overall mood that day and the view of the experience, and further affecting work, social life, and daily life.",
+            "[Clarified information obtained] These situations began to appear about half a year ago."
           ],
           "unknown_information": [
             "prior_session_recaps (first session or no history)"
           ],
           "context": {
             "modality": "bt",
-            "therapy_stage": "问题概念化与目标设定",
+            "therapy_stage": "Problem conceptualization and goal setting",
             "session_index": 1,
             "source": "runner_state|full_profile"
           },
-          "longitudinal_relevance": "暂无历史会话记录（可能为首次或首轮独立评估）。",
+          "longitudinal_relevance": "No historical session records for now (possibly a first or first-round independent assessment).",
           "confidence": 0.7777777777777778
         },
         "uncertainty": {
@@ -262,7 +262,7 @@
           "severity": "LOW",
           "risk_status": "NO_EVIDENCE",
           "evidence": [
-            "Clarified safety status: 大约从半年前开始出现这些情况。"
+            "Clarified safety status: These situations began to appear about half a year ago."
           ],
           "confidence": 0.9,
           "signals_detected": []

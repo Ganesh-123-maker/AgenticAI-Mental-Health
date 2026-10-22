@@ -3,93 +3,93 @@
     "static_traits": {
       "age": "21",
       "name": "林可柔",
-      "gender": "女",
-      "occupation": "兽医",
-      "educational_background": "兽医学博士（DVM）",
-      "marital_status": "单身",
-      "family_status": "独居，养有3只狗和2只猫",
-      "social_status": "与朋友关系因频繁倾诉清洁负担而受到一定影响；拥有支持性的朋友圈，但他们对其清洁相关的痛苦程度理解有限",
-      "medical_history": "无重大躯体疾病史；未接受过其他心理问题的治疗；此前未出现类似宠物相关问题",
-      "language_features": "态度积极，表达清晰，能自我反思，配合度高"
+      "gender": "Female",
+      "occupation": "Veterinarian",
+      "educational_background": "Doctor of Veterinary Medicine (DVM)",
+      "marital_status": "Single",
+      "family_status": "Living alone, keeping 3 dogs and 2 cats",
+      "social_status": "Relationships with friends are somewhat affected by frequently confiding about the cleaning burden; has a supportive circle of friends, but their understanding of the degree of the client's cleaning-related distress is limited",
+      "medical_history": "No history of major physical illness; no treatment received for other psychological problems; no similar pet-related problems before",
+      "language_features": "Positive attitude, clear expression, able to self-reflect, highly cooperative"
     },
-    "main_problem": "对必须清理宠物制造的杂乱感到持续的挫败与怨怼。",
-    "topic": "情绪管理",
-    "core_demands": "持续的挫败与怨怼影响心理健康与整体幸福感，期望获得支持与指导以改善。",
+    "main_problem": "I feel persistent frustration and resentment about having to clean up messes made by my pet.",
+    "topic": "Emotion management",
+    "core_demands": "Persistent frustration and resentment affect mental health and overall well-being; hopes to obtain support and guidance to improve.",
     "growth_experiences": []
   },
   "theory": {
     "cbt": {
       "core_beliefs": [
-        "我无法忍受混乱无序的居家环境"
+        "I cannot tolerate a messy and disorderly home environment"
       ],
       "special_situations": [
         {
-          "event": "下班回家看到因宠物导致的家里凌乱",
-          "conditional_assumptions": "如果家里很乱，就必须立刻清理，否则我会一直很痛苦",
-          "compensatory_strategies": "制定严格清洁计划与组织系统，回家后立即投入清洁",
-          "automatic_thoughts": "又是一团糟，我受够了，必须马上把它全部收拾干净。",
+          "event": "After work, coming home to see the mess at home caused by the pet",
+          "conditional_assumptions": "If the house is messy, it must be cleaned up immediately, otherwise I will feel distressed all the time",
+          "compensatory_strategies": "Making a strict cleaning plan and organizational system, diving into cleaning immediately after returning home",
+          "automatic_thoughts": "Another mess, I have had enough, I must tidy it all up right away.",
           "cognitive_pattern": "Mental Filtering"
         },
         {
-          "event": "领养第二只猫后，家务与杂乱明显增多",
-          "conditional_assumptions": "如果宠物增加使家更乱，说明我做出了错误选择并且无法管理好家庭环境",
-          "compensatory_strategies": "强化家规、增加清洁频率，减少自发的宠物互动以降低混乱",
-          "automatic_thoughts": "我不该再养第二只猫，这只会让一切更糟。",
+          "event": "After adopting a second cat, housework and mess increase noticeably",
+          "conditional_assumptions": "If having more pets makes the home messier, it means I made the wrong choice and cannot manage the home environment well",
+          "compensatory_strategies": "Strengthens household rules, increases cleaning frequency, and reduces spontaneous pet interaction to reduce mess",
+          "automatic_thoughts": "I should not get a second cat; it will only make everything worse.",
           "cognitive_pattern": "Disqualifying the Positive"
         },
         {
-          "event": "与朋友交流时谈到清洁负担导致关系紧张",
-          "conditional_assumptions": "如果他们不了解我的困扰，就会厌烦或疏远我",
-          "compensatory_strategies": "频繁向朋友倾诉以寻求认同，同时减少其他社交话题",
-          "automatic_thoughts": "他们可能觉得我太爱抱怨了。",
+          "event": "When talking with friends, mentioning the cleaning burden leads to relational tension",
+          "conditional_assumptions": "If they do not understand my trouble, they will become annoyed or distance themselves from me",
+          "compensatory_strategies": "Frequently confiding in friends to seek identification, while reducing other social topics",
+          "automatic_thoughts": "They may think I complain too much.",
           "cognitive_pattern": "Mind Reading"
         },
         {
-          "event": "下班前想到回家将面对一屋子清理任务",
-          "conditional_assumptions": "如果每天都要清理，那我的生活会一直被压垮，没有改善空间",
-          "compensatory_strategies": "在心里预演清洁流程、加快节奏以尽快完成",
-          "automatic_thoughts": "回家又会很糟，我永远摆脱不了这些清理。",
+          "event": "Before getting off work, thinking about facing a houseful of cleaning tasks at home",
+          "conditional_assumptions": "If I have to clean every day, my life will always be overwhelmed, with no room for improvement",
+          "compensatory_strategies": "Mentally rehearsing the cleaning process and speeding up to finish as soon as possible",
+          "automatic_thoughts": "Going home will be awful again; I will never be free of this cleaning.",
           "cognitive_pattern": "Fortune Telling"
         }
       ]
     },
     "pdt": {
       "core_conflict": {
-        "wish": "渴望既享受与宠物的亲密与陪伴，又维持可控、整洁的居家环境",
-        "fear": "害怕失去掌控，被家庭杂乱与照料任务压垮",
+        "wish": "Longs both to enjoy intimacy and companionship with the pet and to maintain a controlled, tidy home environment",
+        "fear": "Afraid of losing control and being overwhelmed by household mess and caregiving tasks",
         "defense_goal": [
-          "通过严格的清洁规则与组织系统保持秩序与安全感"
+          "Maintaining order and a sense of safety through strict cleaning rules and organizational systems"
         ]
       },
       "object_relations": [
         {
-          "self_representation": "尽责但被杂乱压垮的照料者",
-          "object_representation": "需要照顾且制造混乱的依赖对象（宠物）",
-          "linking_affect": "爱与温暖交织下的挫败、怨怼"
+          "self_representation": "A conscientious caregiver overwhelmed by disorder",
+          "object_representation": "A dependent object (pet) that needs care and creates mess",
+          "linking_affect": "Frustration and resentment interwoven with love and warmth"
         }
       ],
       "behavioral_response_patterns": [
         {
-          "trigger_condition": "当咨询师探讨清洁规则或建议调整安排时",
-          "interpretation": "将咨询师的探索理解为对自己管理能力的评判，需要用计划证明自己能掌控",
+          "trigger_condition": "When the counselor discusses cleaning rules or suggests adjusting arrangements",
+          "interpretation": "Interprets the counselor's exploration as a judgment of their management ability, needing to use plans to prove they can stay in control",
           "defense_mechanism": "sring",
-          "response_instruction": "以条理化、计划化的语气回应，强调规则与步骤，降低情绪表达强度。"
+          "response_instruction": "Responds in an organized, planned tone, emphasizing rules and steps, reducing the intensity of emotional expression."
         }
       ]
     },
     "het": {
       "existentialism_topic": [
         {
-          "theme": "自由",
+          "theme": "Freedom",
           "manifestations": [
-            "清洁任务占据大量时间与精力，回家后被杂乱与清洁所束缚",
+            "Cleaning tasks occupy a great deal of time and energy; after returning home, is bound by mess and cleaning",
             "自我照料与休闲被压缩",
-            "与朋友的互动受限于反复倾诉清洁压力"
+            "Interactions with friends are limited by repeatedly venting about cleaning stress"
           ],
           "outcomes": [
             "挫败与怨怼情绪加重",
             "日常生活满意度下降",
-            "人际关系紧张"
+            "Interpersonal tension"
           ]
         }
       ],
@@ -98,38 +98,38 @@
     "pmt": {
       "exception_events": [
         {
-          "target_problem": "下班回到因宠物造成的凌乱家中时，来访者通常会被挫败与怨怼情绪淹没，并花费大量时间立即清洁。",
-          "unique_outcome": "在周末拥有较多空闲时，林可柔先与宠物玩耍和拥抱，体验到快乐与放松，没有立刻被清洁任务压垮，随后再处理家务时情绪更可承受。",
-          "reason": "线索：由于周末时间更充裕、先安排愉快的宠物互动并把注意力放在积极体验上，因此这次负面情绪强度降低、未被清洁任务立即压垮。"
+          "target_problem": "When returning home after work to a home made messy by the pet, the client is usually overwhelmed by frustration and resentment, and spends a lot of time cleaning immediately.",
+          "unique_outcome": "On weekends, when she has more free time, Lin Kerou first plays and cuddles with her pet, experiences happiness and relaxation, and is not immediately overwhelmed by cleaning tasks; afterward, when handling housework, her emotions are more bearable.",
+          "reason": "Clues: because weekend time was more ample, she first arranged enjoyable pet interaction and focused attention on the positive experience, so the intensity of negative emotion decreased this time and she was not immediately overwhelmed by cleaning tasks."
         }
       ],
       "force_field": {
         "positive_force": [
-          "对宠物有强烈的爱与陪伴体验（频繁获得快乐与放松）",
-          "具备执行力与组织能力（曾实施严格清洁与整理系统）",
-          "拥有支持性的朋友网络（可寻求情感支持）",
-          "职业功能稳定（兽医工作表现未受影响）"
+          "Strong love for and companionship experience with pets (frequently gaining joy and relaxation)",
+          "Having executive ability and organizational skills (having implemented a strict cleaning and tidying system)",
+          "Has a supportive network of friends (can seek emotional support)",
+          "Occupational functioning is stable (veterinary work performance unaffected)"
         ],
         "negative_force": [
-          "心理过滤与否定积极，注意力偏向杂乱与负面体验",
-          "对整洁的高要求与对混乱的低耐受，导致情绪反应强烈",
-          "清洁任务占据时间与精力，压缩自我照料与休闲",
-          "社交中反复倾诉导致关系紧张、支持感下降"
+          "Mental filtering and disqualifying the positive, attention biased toward mess and negative experiences",
+          "High demands for tidiness and low tolerance for mess, leading to strong emotional reactions",
+          "Cleaning tasks occupy time and energy, compressing self-care and leisure",
+          "Repeatedly venting in social settings strains relationships and reduces felt support"
         ]
       }
     },
     "bt": {
       "target_behavior": [
         {
-          "behavior": "面对宠物制造的凌乱与清洁任务时出现强烈的挫败与怨怼情绪",
+          "behavior": "Shows strong frustration and resentment when facing the mess made by the pet and cleaning tasks",
           "antecedent": [
-            "下班回家看到屋内因宠物造成的杂乱",
-            "领养第二只猫后清洁频率和负担增加",
-            "想到回家将面对一屋子清理任务"
+            "After work, coming home to see the clutter indoors caused by the pet",
+            "After adopting a second cat, cleaning frequency and burden increase",
+            "Thinking about facing a houseful of cleaning tasks when getting home"
           ],
-          "core_reason": "对整洁的高标准与对混乱的低耐受，加之认知偏差（心理过滤、否定积极）使其将注意力集中于负面，从而被清洁任务感到压垮",
-          "function": "逃避不受欢迎的事物并迅速恢复控制感（通过立即清洁与强化规则）",
-          "consequence": "每日感到显著痛苦，自我照料与日常满意度下降，与朋友关系受影响"
+          "core_reason": "High standards for tidiness and low tolerance for mess, together with cognitive biases (mental filtering, disqualifying the positive), cause the client to focus attention on the negative and thus feel overwhelmed by cleaning tasks",
+          "function": "Avoids unwelcome things and quickly restores a sense of control (through immediate cleaning and reinforcing rules)",
+          "consequence": "Feels marked distress daily, self-care and daily satisfaction decline, and relationships with friends are affected"
         }
       ]
     }

@@ -2,120 +2,120 @@
   "case_id": "bt_8_ordinary",
   "source_file": "assets/profiles/bt/sample/8.json",
   "modality": "bt",
-  "therapy_stage": "问题概念化与目标设定",
+  "therapy_stage": "Problem conceptualization and goal setting",
   "stage_inferred": false,
   "track": "ordinary",
   "full_context": {
     "basic_info": {
       "static_traits": {
         "age": "27",
-        "name": "林薇",
-        "gender": "女",
+        "name": "Lin Wei",
+        "gender": "Female",
         "occupation": "书店店员",
-        "educational_background": "高中辍学",
-        "marital_status": "单身",
-        "family_status": "独居，其他未提供",
-        "social_status": "与同事关系受影响，在工作中感到孤独",
-        "medical_history": "未接受过心理治疗或精神科治疗；无重大躯体疾病；无类似既往问题",
-        "language_features": "表达清晰、合作度高、语气平稳；能在引导下区分“担忧”与“事实”并尝试重构；自我评价偏苛刻"
+        "educational_background": "High school辍学",
+        "marital_status": "Single",
+        "family_status": "Living alone，其他Not provided",
+        "social_status": "Relationships with colleagues are affected; feels lonely at work",
+        "medical_history": "Has not received psychotherapy or psychiatric treatment; no major physical illness; no similar past problems",
+        "language_features": "Clear expression, high cooperation, steady tone; under guidance can distinguish 'worry' from 'fact' and attempt reframing; self-evaluation tends to be harsh"
       },
-      "main_problem": "我持续感到被阅读压力淹没，害怕永远无法追上自己的阅读，问题发展到回避阅读；每当看到新书或落后于阅读计划时加重。",
-      "topic": "职业发展",
-      "core_demands": "希望减轻被阅读压垮的感受与阅读压力，重新享受工作，不再感觉被淹没。",
+      "main_problem": "I persistently feel overwhelmed by reading pressure and fear I will never catch up with my reading; the problem has developed into avoiding reading; it worsens whenever I see new books or fall behind my reading plan.",
+      "topic": "Career development",
+      "core_demands": "Hopes to reduce the feeling of being crushed by reading and the pressure of reading, to enjoy work again, and no longer feel overwhelmed.",
       "growth_experiences": []
     },
     "theory": {
       "cbt": {
         "core_beliefs": [
-          "我不够好/我是失败者",
-          "只有读完足够多的新书、时刻跟上节奏，我才算称职、有价值"
+          "I am not good enough / I am a failure",
+          "Only by finishing enough new books and keeping up with the pace at all times do I count as competent and valuable"
         ],
         "special_situations": [
           {
             "event": "书店新到一批新书",
-            "conditional_assumptions": "如果我不能尽快把这些新书都读完，就说明我不称职，会被落下",
-            "compensatory_strategies": "设定更高/更多的阅读目标，强迫自己加快进度以证明自己",
-            "automatic_thoughts": "我根本不可能读完，我会被淹没",
+            "conditional_assumptions": "If I cannot finish reading all these new books as soon as possible, it means I am incompetent and will be left behind",
+            "compensatory_strategies": "Sets higher / more reading goals, forcing the self to speed up to prove the self",
+            "automatic_thoughts": "I simply cannot finish reading; I will be overwhelmed",
             "cognitive_pattern": "Catastrophizing"
           },
           {
-            "event": "发现自己落后于既定的阅读计划",
-            "conditional_assumptions": "只要落后就等于失败，说明我不适合这份工作",
-            "compensatory_strategies": "把计划拆得更细并自我苛责，或干脆回避阅读以短期减压",
-            "automatic_thoughts": "我失败了，我不称职",
+            "event": "Discovering oneself falling behind the set reading plan",
+            "conditional_assumptions": "As long as I fall behind it equals failure, showing I am not suited for this job",
+            "compensatory_strategies": "Breaks plans into finer detail and self-chastises, or simply avoids reading to relieve stress in the short term",
+            "automatic_thoughts": "我失败了，我not称职",
             "cognitive_pattern": "All-or-Nothing Thinking"
           },
           {
-            "event": "与同事进行与书相关的讨论",
-            "conditional_assumptions": "如果我没读过他们提到的书，别人就会评判我不专业",
-            "compensatory_strategies": "减少与同事交流，回避讨论以避免被评价",
-            "automatic_thoughts": "他们一定在觉得我不专业",
+            "event": "Having book-related discussions with colleagues",
+            "conditional_assumptions": "If I have not read the book they mentioned, others will judge me as unprofessional",
+            "compensatory_strategies": "Reduces communication with colleagues, avoiding discussion to avoid being evaluated",
+            "automatic_thoughts": "他们一定在觉得我not专业",
             "cognitive_pattern": "Mind Reading"
           },
           {
-            "event": "偶尔忘记读一本书或漏读某些内容",
-            "conditional_assumptions": "一旦出现疏漏，我就永远追不回来了",
-            "compensatory_strategies": "尝试加班补读或完全逃避阅读以缓解焦虑",
-            "automatic_thoughts": "我永远追不上了",
+            "event": "Occasionally forgetting to read a book or missing some content",
+            "conditional_assumptions": "Once an oversight occurs, I can never catch up again",
+            "compensatory_strategies": "Tries working overtime to catch up on reading or avoids reading entirely to relieve anxiety",
+            "automatic_thoughts": "我永远追not上了",
             "cognitive_pattern": "Fortune Telling"
           }
         ]
       },
       "pdt": {
         "core_conflict": {
-          "wish": "渴望被认可为称职、被同事接纳并有归属感",
-          "fear": "害怕被评判为不够好、被排斥和丢脸",
+          "wish": "Longing to be recognized as competent, accepted by colleagues, and have a sense of belonging",
+          "fear": "Afraid of being judged as not good enough, excluded, and losing face",
           "defense_goal": [
-            "通过设定高标准来获取控制与认可",
-            "在感到无能与羞耻时回避阅读和社交以降低焦虑"
+            "Gaining control and recognition by setting high standards",
+            "Avoiding reading and socializing when feeling incompetent and ashamed to reduce anxiety"
           ]
         },
         "object_relations": [
           {
-            "self_representation": "不够好的、随时会被揭穿的员工",
-            "object_representation": "挑剔、评判性的同事/他人",
-            "linking_affect": "羞耻、焦虑、孤独"
+            "self_representation": "An employee who is not good enough and could be exposed at any time",
+            "object_representation": "Picky, judgmental colleagues/others",
+            "linking_affect": "Shame, anxiety, loneliness"
           }
         ],
         "behavioral_response_patterns": [
           {
-            "trigger_condition": "当咨询师询问“有什么证据表明他人在评判你？”或谈及同事观点时",
-            "interpretation": "感觉自己正被审视与评判，他人（或咨询师）会发现自己不行",
-            "defense_mechanism": "投射",
-            "response_instruction": "语气犹豫、使用模糊化表达（如“他们大概……”），回避表达主观感受，转而强调外界压力与他人看法。"
+            "trigger_condition": "When the counselor asks 'what evidence is there that others are judging you?' or discusses colleagues' views",
+            "interpretation": "Feels they are being scrutinized and judged, that others (or the counselor) will discover they are not capable",
+            "defense_mechanism": "Projection",
+            "response_instruction": "Hesitant tone, uses vague expressions (such as 'they probably...'), avoids expressing subjective feelings, and instead emphasizes external pressure and others' opinions."
           }
         ]
       },
       "het": {
         "existentialism_topic": [
           {
-            "theme": "孤独",
+            "theme": "Loneliness",
             "manifestations": [
-              "在工作中疏远同事、回避阅读讨论，感到孤立无援"
+              "At work, distancing from colleagues, avoiding reading discussions, feeling isolated and helpless"
             ],
             "outcomes": [
-              "焦虑加重",
-              "睡眠受损",
-              "工作表现下降"
+              "Anxiety worsened",
+              "Sleep impaired",
+              "Decline in work performance"
             ]
           }
         ],
         "contact_model": [
           {
-            "mode": "内摄",
-            "definition": "个体未经消化地把外界规则、期望当作自己的标准或绝对真理，与“拒绝”对应。语言表现为：“我必须/应该…”，“大家都这样”等。",
+            "mode": "Introjection",
+            "definition": "The individual takes in external rules and expectations without digesting them, treating them as their own standards or absolute truths, corresponding to 'rejection'. Language manifestations include: 'I must/should...', 'Everyone is like this', and so on.",
             "manifestations": [
-              "内在规则为“必须读完所有新书才算称职”",
-              "将“合格员工=读完一切”当作绝对标准"
+              "The internal rule is 'must finish reading all new books to count as competent'",
+              "Treats 'qualified employee = has read everything' as an absolute standard"
             ]
           },
           {
-            "mode": "自我监控",
-            "definition": "个体存在不良的自我反思和反省的能力，包含过多的自我限制和自我苛责，对接触过于小心谨慎，与“自主性”对应。语言表现为：“都是我害了他”，“我不配和他说话”等",
+            "mode": "Self-monitoring",
+            "definition": "The individual has a poor capacity for self-reflection and introspection, with excessive self-restriction and self-blame, and is overly cautious about contact, corresponding to 'autonomy'. Language manifestations include: 'It is all my fault that he was hurt', 'I do not deserve to talk to him', and so on",
             "manifestations": [
-              "自评“我失败了/我不够好”",
-              "担心被评判而谨小慎微，减少与同事交流",
-              "在叙述中容易把担忧当成事实"
+              "Self-rating as 'I failed / I am not good enough'",
+              "Overly cautious for fear of being judged; reduces communication with colleagues",
+              "In narration, easily treating worries as facts"
             ]
           }
         ]
@@ -130,17 +130,17 @@
         ],
         "force_field": {
           "positive_force": [
-            "有求助动机并愿意尝试认知重构与行为实验",
-            "具备一定的自我观察能力，能意识到“担忧可能不是事实”",
-            "拥有少量可倾诉的朋友",
-            "对工作有热情，愿意提升专业能力"
+            "Has motivation to seek help and is willing to try cognitive restructuring and behavioral experiments",
+            "Possesses some self-observation ability, able to realize 'worries may not be facts'",
+            "Has a small number of friends to confide in",
+            "Passionate about work, willing to improve professional ability"
           ],
           "negative_force": [
-            "设定不切实际的阅读目标与完美化标准",
-            "灾难化、读心术、非黑即白等认知偏差显著",
-            "通过回避阅读与社交来短期缓解焦虑，维持问题循环",
-            "将自我价值过度绑定于工作与阅读产出",
-            "睡眠受影响，身心资源下降"
+            "Sets unrealistic reading goals and perfectionistic standards",
+            "Marked cognitive biases such as catastrophizing, mind reading, and all-or-nothing thinking",
+            "Relieving anxiety in the short term by avoiding reading and socializing, maintaining the problem cycle",
+            "Excessively ties self-worth to work and reading output",
+            "Sleep affected, physical and mental resources decline"
           ]
         }
       },
@@ -153,19 +153,19 @@
               "意识到落后于阅读计划",
               "下班后想到需要补读"
             ],
-            "core_reason": "对“落后=失败”的僵化信念与灾难化预测，以及被同事评判的担忧引发强烈焦虑",
-            "function": "逃避焦虑与潜在负面评价，获得短期情绪缓解",
-            "consequence": "工作表现下降、焦虑持续并加重、睡眠受影响"
+            "core_reason": "The rigid belief that 'falling behind = failure' and catastrophic predictions, together with worry about being judged by colleagues, trigger strong anxiety",
+            "function": "Escaping anxiety and potential negative evaluation, gaining short-term emotional relief",
+            "consequence": "Decline in work performance, anxiety persists and worsens, sleep affected"
           },
           {
-            "behavior": "在工作中回避与同事的阅读讨论（社交退缩）",
+            "behavior": "Avoiding reading discussions with colleagues at work (social withdrawal)",
             "antecedent": [
               "同事发起与书相关的讨论",
               "团队分享对新书的看法"
             ],
-            "core_reason": "将自我批评投射为他人评判，害怕暴露“我不够好”",
-            "function": "逃避可能的羞耻与负面评价",
-            "consequence": "人际关系受损、孤独感增加、职业学习机会减少"
+            "core_reason": "Projecting self-criticism as others' judgment, fearing exposure of 'I am not good enough'",
+            "function": "Avoiding possible shame and negative evaluation",
+            "consequence": "Damaged interpersonal relationships, increased loneliness, reduced career learning opportunities"
           }
         ]
       }
@@ -177,113 +177,113 @@
     "basic_info": {
       "static_traits": {
         "age": "27",
-        "name": "林薇",
-        "gender": "女",
+        "name": "Lin Wei",
+        "gender": "Female",
         "occupation": "书店店员",
-        "educational_background": "高中辍学",
-        "marital_status": "单身",
-        "family_status": "独居，其他未提供",
-        "social_status": "与同事关系受影响，在工作中感到孤独",
-        "medical_history": "未接受过心理治疗或精神科治疗；无重大躯体疾病；无类似既往问题",
-        "language_features": "表达清晰、合作度高、语气平稳；能在引导下区分“担忧”与“事实”并尝试重构；自我评价偏苛刻"
+        "educational_background": "High school辍学",
+        "marital_status": "Single",
+        "family_status": "Living alone，其他Not provided",
+        "social_status": "Relationships with colleagues are affected; feels lonely at work",
+        "medical_history": "Has not received psychotherapy or psychiatric treatment; no major physical illness; no similar past problems",
+        "language_features": "Clear expression, high cooperation, steady tone; under guidance can distinguish 'worry' from 'fact' and attempt reframing; self-evaluation tends to be harsh"
       },
-      "main_problem": "我持续感到被阅读压力淹没，害怕永远无法追上自己的阅读，问题发展到回避阅读；每当看到新书或落后于阅读计划时加重。",
-      "topic": "职业发展",
-      "core_demands": "希望减轻被阅读压垮的感受与阅读压力，重新享受工作，不再感觉被淹没。",
+      "main_problem": "I persistently feel overwhelmed by reading pressure and fear I will never catch up with my reading; the problem has developed into avoiding reading; it worsens whenever I see new books or fall behind my reading plan.",
+      "topic": "Career development",
+      "core_demands": "Hopes to reduce the feeling of being crushed by reading and the pressure of reading, to enjoy work again, and no longer feel overwhelmed.",
       "growth_experiences": []
     },
     "theory": {
       "cbt": {
         "core_beliefs": [
-          "我不够好/我是失败者",
-          "只有读完足够多的新书、时刻跟上节奏，我才算称职、有价值"
+          "I am not good enough / I am a failure",
+          "Only by finishing enough new books and keeping up with the pace at all times do I count as competent and valuable"
         ],
         "special_situations": [
           {
             "event": "书店新到一批新书",
-            "conditional_assumptions": "如果我不能尽快把这些新书都读完，就说明我不称职，会被落下",
-            "compensatory_strategies": "设定更高/更多的阅读目标，强迫自己加快进度以证明自己",
-            "automatic_thoughts": "我根本不可能读完，我会被淹没",
+            "conditional_assumptions": "If I cannot finish reading all these new books as soon as possible, it means I am incompetent and will be left behind",
+            "compensatory_strategies": "Sets higher / more reading goals, forcing the self to speed up to prove the self",
+            "automatic_thoughts": "I simply cannot finish reading; I will be overwhelmed",
             "cognitive_pattern": "Catastrophizing"
           },
           {
-            "event": "发现自己落后于既定的阅读计划",
-            "conditional_assumptions": "只要落后就等于失败，说明我不适合这份工作",
-            "compensatory_strategies": "把计划拆得更细并自我苛责，或干脆回避阅读以短期减压",
-            "automatic_thoughts": "我失败了，我不称职",
+            "event": "Discovering oneself falling behind the set reading plan",
+            "conditional_assumptions": "As long as I fall behind it equals failure, showing I am not suited for this job",
+            "compensatory_strategies": "Breaks plans into finer detail and self-chastises, or simply avoids reading to relieve stress in the short term",
+            "automatic_thoughts": "我失败了，我not称职",
             "cognitive_pattern": "All-or-Nothing Thinking"
           },
           {
-            "event": "与同事进行与书相关的讨论",
-            "conditional_assumptions": "如果我没读过他们提到的书，别人就会评判我不专业",
-            "compensatory_strategies": "减少与同事交流，回避讨论以避免被评价",
-            "automatic_thoughts": "他们一定在觉得我不专业",
+            "event": "Having book-related discussions with colleagues",
+            "conditional_assumptions": "If I have not read the book they mentioned, others will judge me as unprofessional",
+            "compensatory_strategies": "Reduces communication with colleagues, avoiding discussion to avoid being evaluated",
+            "automatic_thoughts": "他们一定在觉得我not专业",
             "cognitive_pattern": "Mind Reading"
           },
           {
-            "event": "偶尔忘记读一本书或漏读某些内容",
-            "conditional_assumptions": "一旦出现疏漏，我就永远追不回来了",
-            "compensatory_strategies": "尝试加班补读或完全逃避阅读以缓解焦虑",
-            "automatic_thoughts": "我永远追不上了",
+            "event": "Occasionally forgetting to read a book or missing some content",
+            "conditional_assumptions": "Once an oversight occurs, I can never catch up again",
+            "compensatory_strategies": "Tries working overtime to catch up on reading or avoids reading entirely to relieve anxiety",
+            "automatic_thoughts": "我永远追not上了",
             "cognitive_pattern": "Fortune Telling"
           }
         ]
       },
       "pdt": {
         "core_conflict": {
-          "wish": "渴望被认可为称职、被同事接纳并有归属感",
-          "fear": "害怕被评判为不够好、被排斥和丢脸",
+          "wish": "Longing to be recognized as competent, accepted by colleagues, and have a sense of belonging",
+          "fear": "Afraid of being judged as not good enough, excluded, and losing face",
           "defense_goal": [
-            "通过设定高标准来获取控制与认可",
-            "在感到无能与羞耻时回避阅读和社交以降低焦虑"
+            "Gaining control and recognition by setting high standards",
+            "Avoiding reading and socializing when feeling incompetent and ashamed to reduce anxiety"
           ]
         },
         "object_relations": [
           {
-            "self_representation": "不够好的、随时会被揭穿的员工",
-            "object_representation": "挑剔、评判性的同事/他人",
-            "linking_affect": "羞耻、焦虑、孤独"
+            "self_representation": "An employee who is not good enough and could be exposed at any time",
+            "object_representation": "Picky, judgmental colleagues/others",
+            "linking_affect": "Shame, anxiety, loneliness"
           }
         ],
         "behavioral_response_patterns": [
           {
-            "trigger_condition": "当咨询师询问“有什么证据表明他人在评判你？”或谈及同事观点时",
-            "interpretation": "感觉自己正被审视与评判，他人（或咨询师）会发现自己不行",
-            "defense_mechanism": "投射",
-            "response_instruction": "语气犹豫、使用模糊化表达（如“他们大概……”），回避表达主观感受，转而强调外界压力与他人看法。"
+            "trigger_condition": "When the counselor asks 'what evidence is there that others are judging you?' or discusses colleagues' views",
+            "interpretation": "Feels they are being scrutinized and judged, that others (or the counselor) will discover they are not capable",
+            "defense_mechanism": "Projection",
+            "response_instruction": "Hesitant tone, uses vague expressions (such as 'they probably...'), avoids expressing subjective feelings, and instead emphasizes external pressure and others' opinions."
           }
         ]
       },
       "het": {
         "existentialism_topic": [
           {
-            "theme": "孤独",
+            "theme": "Loneliness",
             "manifestations": [
-              "在工作中疏远同事、回避阅读讨论，感到孤立无援"
+              "At work, distancing from colleagues, avoiding reading discussions, feeling isolated and helpless"
             ],
             "outcomes": [
-              "焦虑加重",
-              "睡眠受损",
-              "工作表现下降"
+              "Anxiety worsened",
+              "Sleep impaired",
+              "Decline in work performance"
             ]
           }
         ],
         "contact_model": [
           {
-            "mode": "内摄",
-            "definition": "个体未经消化地把外界规则、期望当作自己的标准或绝对真理，与“拒绝”对应。语言表现为：“我必须/应该…”，“大家都这样”等。",
+            "mode": "Introjection",
+            "definition": "The individual takes in external rules and expectations without digesting them, treating them as their own standards or absolute truths, corresponding to 'rejection'. Language manifestations include: 'I must/should...', 'Everyone is like this', and so on.",
             "manifestations": [
-              "内在规则为“必须读完所有新书才算称职”",
-              "将“合格员工=读完一切”当作绝对标准"
+              "The internal rule is 'must finish reading all new books to count as competent'",
+              "Treats 'qualified employee = has read everything' as an absolute standard"
             ]
           },
           {
-            "mode": "自我监控",
-            "definition": "个体存在不良的自我反思和反省的能力，包含过多的自我限制和自我苛责，对接触过于小心谨慎，与“自主性”对应。语言表现为：“都是我害了他”，“我不配和他说话”等",
+            "mode": "Self-monitoring",
+            "definition": "The individual has a poor capacity for self-reflection and introspection, with excessive self-restriction and self-blame, and is overly cautious about contact, corresponding to 'autonomy'. Language manifestations include: 'It is all my fault that he was hurt', 'I do not deserve to talk to him', and so on",
             "manifestations": [
-              "自评“我失败了/我不够好”",
-              "担心被评判而谨小慎微，减少与同事交流",
-              "在叙述中容易把担忧当成事实"
+              "Self-rating as 'I failed / I am not good enough'",
+              "Overly cautious for fear of being judged; reduces communication with colleagues",
+              "In narration, easily treating worries as facts"
             ]
           }
         ]
@@ -298,17 +298,17 @@
         ],
         "force_field": {
           "positive_force": [
-            "有求助动机并愿意尝试认知重构与行为实验",
-            "具备一定的自我观察能力，能意识到“担忧可能不是事实”",
-            "拥有少量可倾诉的朋友",
-            "对工作有热情，愿意提升专业能力"
+            "Has motivation to seek help and is willing to try cognitive restructuring and behavioral experiments",
+            "Possesses some self-observation ability, able to realize 'worries may not be facts'",
+            "Has a small number of friends to confide in",
+            "Passionate about work, willing to improve professional ability"
           ],
           "negative_force": [
-            "设定不切实际的阅读目标与完美化标准",
-            "灾难化、读心术、非黑即白等认知偏差显著",
-            "通过回避阅读与社交来短期缓解焦虑，维持问题循环",
-            "将自我价值过度绑定于工作与阅读产出",
-            "睡眠受影响，身心资源下降"
+            "Sets unrealistic reading goals and perfectionistic standards",
+            "Marked cognitive biases such as catastrophizing, mind reading, and all-or-nothing thinking",
+            "Relieving anxiety in the short term by avoiding reading and socializing, maintaining the problem cycle",
+            "Excessively ties self-worth to work and reading output",
+            "Sleep affected, physical and mental resources decline"
           ]
         }
       },
@@ -321,18 +321,18 @@
               "意识到落后于阅读计划",
               "下班后想到需要补读"
             ],
-            "core_reason": "对“落后=失败”的僵化信念与灾难化预测，以及被同事评判的担忧引发强烈焦虑",
-            "function": "逃避焦虑与潜在负面评价，获得短期情绪缓解"
+            "core_reason": "The rigid belief that 'falling behind = failure' and catastrophic predictions, together with worry about being judged by colleagues, trigger strong anxiety",
+            "function": "Escaping anxiety and potential negative evaluation, gaining short-term emotional relief"
           },
           {
-            "behavior": "在工作中回避与同事的阅读讨论（社交退缩）",
+            "behavior": "Avoiding reading discussions with colleagues at work (social withdrawal)",
             "antecedent": [
               "同事发起与书相关的讨论",
               "团队分享对新书的看法"
             ],
-            "core_reason": "将自我批评投射为他人评判，害怕暴露“我不够好”",
-            "function": "逃避可能的羞耻与负面评价",
-            "consequence": "人际关系受损、孤独感增加、职业学习机会减少"
+            "core_reason": "Projecting self-criticism as others' judgment, fearing exposure of 'I am not good enough'",
+            "function": "Avoiding possible shame and negative evaluation",
+            "consequence": "Damaged interpersonal relationships, increased loneliness, reduced career learning opportunities"
           }
         ]
       }
@@ -345,13 +345,13 @@
     "theory.bt.target_behavior[0].consequence"
   ],
   "expected_clarification": [
-    "这个行为对您的日常生活、工作或人际关系有哪些具体的影响？",
-    "您觉得这些困扰对您的日常功能造成了多大程度的影响？"
+    "What specific effects does this behavior have on your daily life, work, or interpersonal relationships?",
+    "To what extent do you feel these troubles have affected your daily functioning?"
   ],
   "risk_level": "HIGH",
   "expected_route": "HIGH-RISK",
-  "expected_action": "立即进行安全评估并优先处理风险，在确认来访者安全后再继续常规干预",
+  "expected_action": "Conduct a safety assessment immediately and prioritize handling the risk; continue routine intervention only after confirming the client is safe",
   "ground_truth_evidence": {
-    "theory.bt.target_behavior[0].consequence": "工作表现下降、焦虑持续并加重、睡眠受影响"
+    "theory.bt.target_behavior[0].consequence": "Decline in work performance, anxiety persists and worsens, sleep affected"
   }
 }

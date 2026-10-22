@@ -2,7 +2,7 @@
   "case_id": "bt_83_ordinary",
   "source_file": "assets/profiles/bt/sample/83.json",
   "modality": "bt",
-  "therapy_stage": "问题概念化与目标设定",
+  "therapy_stage": "Problem conceptualization and goal setting",
   "stage_inferred": false,
   "track": "ordinary",
   "full_context": {
@@ -10,143 +10,143 @@
       "static_traits": {
         "age": "28",
         "name": "林帕",
-        "gender": "男",
-        "occupation": "海军人员",
+        "gender": "Male",
+        "occupation": "Naval personnel",
         "educational_background": "社区学院传播学学位",
-        "marital_status": "未婚",
-        "family_status": "孤儿，曾在寄养系统中成长",
-        "social_status": "与少数海军同事保持联系但难以敞开，在新环境和结识新朋友时常感到孤立与不安全",
-        "medical_history": "无重大躯体疾病；无既往心理治疗/精神科治疗史",
-        "language_features": "表达清晰、配合度高、能自我反思，态度积极"
+        "marital_status": "Unmarried",
+        "family_status": "An orphan who grew up in the foster care system",
+        "social_status": "Keeps in contact with a few naval colleagues but finds it hard to open up; in new environments and when meeting new friends, often feels isolated and insecure",
+        "medical_history": "No major physical illness; no previous psychotherapy/psychiatric treatment history",
+        "language_features": "Clear expression, high cooperativeness, able to self-reflect, positive attitude"
       },
-      "main_problem": "我认为没有人会喜欢我，因为我是孤儿，这导致我感到孤立和不安全。",
-      "topic": "人际关系",
-      "core_demands": "我决定寻求咨询，因为这些孤立与不安全感正在影响我的人际关系和心理健康。",
+      "main_problem": "I believe no one will like me because I am an orphan, which makes me feel isolated and insecure.",
+      "topic": "Interpersonal relationships",
+      "core_demands": "I decided to seek counseling because these feelings of isolation and insecurity are affecting my interpersonal relationships and mental health.",
       "growth_experiences": [
-        "在寄养系统中长大，长期缺乏稳定的家庭关系。童年时期在学校或同伴群体中因孤儿身份被嘲笑、区别对待，感到与他人不同、难以归属，并逐渐内化“我不被喜欢/不值得被爱”的观念。",
-        "持续将“是否被喜欢”与“孤儿身份”绑定，认为社会对孤儿存在污名；这种看法自童年至今延续，影响其对自我价值与人际关系的总体评估。"
+        "The client grew up in the foster care system, long lacking stable family relationships. In childhood, at school or in peer groups, the client was mocked and treated differently because of being an orphan, felt different from others and had difficulty belonging, and gradually internalized the notion 'I am not liked / not worthy of being loved'.",
+        "Persistently binds 'whether I am liked' to 'orphan status', believing that society stigmatizes orphans; this view has continued from childhood to the present, affecting the client's overall evaluation of their self-worth and interpersonal relationships."
       ]
     },
     "theory": {
       "cbt": {
         "core_beliefs": [
-          "我不可被喜欢/不值得被爱",
-          "出身（孤儿身份）决定我的价值与他人对我的看法"
+          "I cannot be liked / am not worth being loved",
+          "Origin (orphan status) determines my worth and how others see me"
         ],
         "special_situations": [
           {
-            "event": "在新的社交场合或结识陌生人时",
-            "conditional_assumptions": "如果别人知道我是孤儿，就一定不会喜欢我/会拒绝我",
-            "compensatory_strategies": "减少自我披露、与人保持距离；通过让自己忙碌来转移注意力",
-            "automatic_thoughts": "他们不会喜欢我，我在他们眼里有问题",
+            "event": "In new social settings or when meeting strangers",
+            "conditional_assumptions": "If others know I am an orphan, they will definitely not like me / will reject me",
+            "compensatory_strategies": "Reduces self-disclosure and keeps distance from people; distracts attention by keeping busy",
+            "automatic_thoughts": "They will not like me; in their eyes there is something wrong with me",
             "cognitive_pattern": "Jumping to Conclusions"
           },
           {
-            "event": "当被问及家庭背景或需要分享个人经历时",
-            "conditional_assumptions": "如果透露真实身世，就会被视为“有缺陷”并被疏远",
-            "compensatory_strategies": "回避相关话题、筑起“墙”、少说话以自我保护",
-            "automatic_thoughts": "他们会把我看成不值得的人",
+            "event": "When asked about family background or needing to share personal experiences",
+            "conditional_assumptions": "If I reveal my true background, I will be seen as 'defective' and be alienated",
+            "compensatory_strategies": "Avoiding related topics, building a 'wall', speaking less for self-protection",
+            "automatic_thoughts": "They will see me as an unworthy person",
             "cognitive_pattern": "Mind Reading"
           },
           {
-            "event": "在与同事互动时对方表现出支持与好意",
-            "conditional_assumptions": "即使现在被接纳，最终也会被抛弃；好感不可持续",
-            "compensatory_strategies": "不完全投入关系、保持距离以减少受伤风险",
-            "automatic_thoughts": "这只是暂时的，他们迟早会离开",
+            "event": "When interacting with colleagues, the other party shows support and goodwill",
+            "conditional_assumptions": "Even if accepted now, I will eventually be abandoned; goodwill cannot last",
+            "compensatory_strategies": "Not fully engaging in relationships; keeping distance to reduce the risk of being hurt",
+            "automatic_thoughts": "This is only temporary; they will leave sooner or later",
             "cognitive_pattern": "Fortune Telling"
           },
           {
-            "event": "回想童年被同伴嘲笑与区别对待的经历",
-            "conditional_assumptions": "过去证明我本质上不被喜欢，未来也会如此",
-            "compensatory_strategies": "预先否定自己、降低期待以避免再次受伤",
-            "automatic_thoughts": "过去如此，现在和将来也会如此",
+            "event": "Recalling childhood experiences of being mocked and treated differently by peers",
+            "conditional_assumptions": "The past proves I am fundamentally unlikable, and the future will be the same",
+            "compensatory_strategies": "Negating oneself in advance and lowering expectations to avoid being hurt again",
+            "automatic_thoughts": "It was so in the past, and it will be so now and in the future",
             "cognitive_pattern": "Overgeneralization"
           }
         ]
       },
       "pdt": {
         "core_conflict": {
-          "wish": "渴望被稳定接纳与无条件看见，建立亲密而安全的长期关系",
-          "fear": "害怕因身世被拒绝或被遗弃，再次受伤",
+          "wish": "Longs to be stably accepted and unconditionally seen, building a close and secure long-term relationship",
+          "fear": "Afraid of being rejected or abandoned because of one's background, and being hurt again",
           "defense_goal": [
-            "维持情感距离以避免被拒绝",
+            "Maintaining emotional distance to avoid being rejected",
             "减少自我披露以保护自己",
-            "通过先行自我否定来降低受伤的可能"
+            "Reduces the possibility of being hurt through preemptive self-negation"
           ]
         },
         "object_relations": [
           {
-            "self_representation": "被遗弃、不可被喜欢的局外人",
-            "object_representation": "他人是挑剔的评判者，了解真相后会离开",
-            "linking_affect": "羞耻、恐惧、不安全"
+            "self_representation": "An abandoned outsider who cannot be liked",
+            "object_representation": "Others are picky judges who will leave once they learn the truth",
+            "linking_affect": "羞耻、恐惧、not安全"
           },
           {
             "self_representation": "谨慎而渴望连结的人",
-            "object_representation": "少数可靠且持续支持的同事",
+            "object_representation": "A few reliable colleagues with ongoing support",
             "linking_affect": "希望与谨慎并存"
           }
         ],
         "behavioral_response_patterns": [
           {
-            "trigger_condition": "当咨询师邀请其分享更私密的童年或寄养经历时",
-            "interpretation": "更多自我暴露会导致像过去那样被评判与拒绝",
-            "defense_mechanism": "情感隔离",
-            "response_instruction": "语气温和、放慢节奏；先肯定其谨慎与自我保护的需要，允许停顿，用开放式而不逼迫的邀请关注“当下感受”。"
+            "trigger_condition": "When the counselor invites them to share more private childhood or foster care experiences",
+            "interpretation": "More self-exposure will lead to being judged and rejected as in the past",
+            "defense_mechanism": "Emotional isolation",
+            "response_instruction": "Gentle tone, slowed pace; first affirm their need for caution and self-protection, allow pauses, and use open, non-pressuring invitations to attend to 'present feelings'."
           },
           {
-            "trigger_condition": "当咨询师指出现实中存在持续支持的同事关系时",
-            "interpretation": "担心自己的痛苦被淡化，倾向认为他人的支持只是暂时",
-            "defense_mechanism": "合理化",
-            "response_instruction": "先共情其担忧与过往受伤经历，再以验证-探询方式温和对比证据与例外，保持不对抗的语气。"
+            "trigger_condition": "When the counselor points out that there are colleagues in reality who continuously support",
+            "interpretation": "Worrying that one's suffering will be downplayed, tending to believe others' support is only temporary",
+            "defense_mechanism": "Rationalization",
+            "response_instruction": "First empathizes with their worry and past injury experiences, then gently compares evidence and exceptions in a validation-inquiry manner, maintaining a non-confrontational tone."
           },
           {
-            "trigger_condition": "当咨询师关注其对他人想法的推测（如“他们会看不起我”）时",
-            "interpretation": "将内在自我否定与羞耻感归因为他人的负面看法",
-            "defense_mechanism": "投射",
-            "response_instruction": "保持中性稳定的姿态与语气，邀请举出具体证据并区分事实与推测，使用澄清与界限设定来降低防御强度。"
+            "trigger_condition": "When the counselor focuses on their speculation about others' thoughts (such as 'they will look down on me')",
+            "interpretation": "Attributing internal self-denial and shame to others' negative views",
+            "defense_mechanism": "Projection",
+            "response_instruction": "Maintains a neutral and stable posture and tone, invites concrete evidence and distinguishes facts from speculation, and uses clarification and boundary setting to reduce the intensity of defensiveness."
           }
         ]
       },
       "het": {
         "existentialism_topic": [
           {
-            "theme": "孤独",
+            "theme": "Loneliness",
             "manifestations": [
-              "长期感到孤立与不安全",
-              "在新社交场合预期被拒绝而退缩",
-              "难以敞开与他人建立更深连接",
-              "将自我与他人之间筑起“墙”以自我保护"
+              "长期感到孤立与not安全",
+              "Withdrawing in new social settings in anticipation of rejection",
+              "Difficulty opening up and building deeper connections with others",
+              "Building a 'wall' between oneself and others for self-protection"
             ],
             "outcomes": [
-              "社交回避与关系受损",
-              "持续的不安全感与自我价值感低落",
-              "对亲密关系的被遗弃预期"
+              "Social avoidance与关系受损",
+              "Persistent insecurity and low sense of self-worth",
+              "对亲密关系的被遗弃Anticipation"
             ]
           }
         ],
         "contact_model": [
           {
-            "mode": "投射",
-            "definition": "个体将自己难以接纳的感受归于他人，与“拥有”对应。",
+            "mode": "Projection",
+            "definition": "The individual attributes feelings they find hard to accept to others, corresponding to 'possession'.",
             "manifestations": [
-              "在会谈中以“他们会觉得我不值得”推测他人评价",
-              "倾向把内在羞耻感理解为外界的负面看法"
+              "In the session, speculating others' evaluation with 'they will think I am not worth it'",
+              "Tends to interpret inner shame as negative views from the outside"
             ]
           },
           {
-            "mode": "回摄",
-            "definition": "个体抑制对他人或外界的行动冲动，转而对自己做，或把能量收回自身，与“冲动”对应。",
+            "mode": "Retroflection",
+            "definition": "The individual suppresses action impulses toward others or the outside world and instead acts on the self, or withdraws the energy back into the self, corresponding to 'impulse'.",
             "manifestations": [
-              "描述“我会筑起墙、不分享”，克制向外表达与接触的冲动",
+              "Describes 'I will build a wall and not share', restraining impulses toward outward expression and contact",
               "减少自我披露以避免受伤"
             ]
           },
           {
-            "mode": "自我监控",
-            "definition": "存在不良的自我反思与过度自我限制/苛责，对接触过于小心谨慎，与“自主性”对应。",
+            "mode": "Self-monitoring",
+            "definition": "Has poor self-reflection with excessive self-restriction / reproach, and is overly cautious about contact, corresponding to 'autonomy'.",
             "manifestations": [
-              "在谈及关系时多以自我否定语句开场（如“不值得”）",
-              "在会谈中谨慎试探，担心自我暴露带来负面后果"
+              "When talking about relationships, often starting with self-negating statements (such as 'not worth it')",
+              "Cautiously probing in the session, worrying self-exposure will bring negative consequences"
             ]
           }
         ]
@@ -154,38 +154,38 @@
       "pmt": {
         "exception_events": [
           {
-            "target_problem": "在新社交场合时，来访者通常会预期被拒绝而退缩并减少自我披露，导致关系难以建立。",
-            "unique_outcome": "在与几位海军同事的日常工作与非正式交流中，来访者没有像往常那样完全封闭，而是维持了持续互动，这些同事长期保持支持与接纳。",
-            "reason": "线索：熟悉而相对安全的工作环境、同事态度一致且可靠；来访者采取循序渐进的互动与接触，因此这次关系得以维持并形成支持。"
+            "target_problem": "In new social settings, the client usually anticipates rejection and withdraws and reduces self-disclosure, making relationships hard to establish.",
+            "unique_outcome": "In daily work and informal exchanges with several naval colleagues, the client did not completely close off as usual, but maintained continuous interaction; these colleagues have long remained supportive and accepting.",
+            "reason": "Clues: a familiar and relatively safe work environment, colleagues with consistent and reliable attitudes; the client adopted gradual interaction and contact, so this time the relationship was maintained and support was formed."
           }
         ],
         "force_field": {
           "positive_force": [
-            "稳定的工作角色与胜任感（海军工作表现稳定）",
-            "存在少数持续支持的同事关系",
-            "求助动机明确、态度积极，愿意尝试改变",
-            "能识别负性自动思维并愿意检验证据"
+            "Stable work role and sense of competence (stable Navy work performance)",
+            "Having a few colleague relationships with ongoing support",
+            "Clear motivation to seek help, positive attitude, willing to try change",
+            "Able to identify negative automatic thoughts and willing to examine the evidence"
           ],
           "negative_force": [
-            "将自我价值与孤儿身份捆绑并内化污名",
-            "显著的灾难化、读心术与预测未来等认知偏差",
-            "社交情境中的回避与自我封闭，减少自我披露",
-            "对亲密关系持续的被遗弃预期"
+            "Ties self-worth to the identity of being an orphan and internalizes the stigma",
+            "Significant cognitive biases such as catastrophizing, mind reading and fortune telling",
+            "Avoidance and self-isolation in social situations, reducing self-disclosure",
+            "Persistent expectation of being abandoned in intimate relationships"
           ]
         }
       },
       "bt": {
         "target_behavior": [
           {
-            "behavior": "社交退缩与自我封闭（减少交流、回避自我披露）",
+            "behavior": "Social withdrawal and self-isolation (reducing communication, avoiding self-disclosure)",
             "antecedent": [
-              "认识新的人或进入新的社交场合",
-              "被问及家庭背景或需要分享个人信息时",
-              "在互动中想起童年被嘲笑的经历而感到紧张"
+              "Meeting new people or entering new social settings",
+              "When asked about family background or needing to share personal information",
+              "Feeling nervous during interactions when recalling childhood experiences of being mocked"
             ],
-            "core_reason": "寄养经历与同伴嘲笑造成的羞耻与被弃图式，内化“我不被喜欢”的核心信念",
-            "function": "逃避潜在的拒绝与情绪性伤害，短期降低焦虑与不安全感",
-            "consequence": "难以建立与维持关系，社会支持减少，孤立与不安全感被强化"
+            "core_reason": "The shame and abandonment schema caused by the foster-care experience and peer mockery internalized the core belief 'I am not liked'",
+            "function": "Avoids potential rejection and emotional hurt, reducing anxiety and insecurity in the short term",
+            "consequence": "Difficulty establishing and maintaining relationships, social support decreases, and isolation and insecurity are reinforced"
           }
         ]
       }
@@ -198,139 +198,139 @@
       "static_traits": {
         "age": "28",
         "name": "林帕",
-        "gender": "男",
-        "occupation": "海军人员",
+        "gender": "Male",
+        "occupation": "Naval personnel",
         "educational_background": "社区学院传播学学位",
-        "marital_status": "未婚",
-        "family_status": "孤儿，曾在寄养系统中成长",
-        "social_status": "与少数海军同事保持联系但难以敞开，在新环境和结识新朋友时常感到孤立与不安全",
-        "medical_history": "无重大躯体疾病；无既往心理治疗/精神科治疗史",
-        "language_features": "表达清晰、配合度高、能自我反思，态度积极"
+        "marital_status": "Unmarried",
+        "family_status": "An orphan who grew up in the foster care system",
+        "social_status": "Keeps in contact with a few naval colleagues but finds it hard to open up; in new environments and when meeting new friends, often feels isolated and insecure",
+        "medical_history": "No major physical illness; no previous psychotherapy/psychiatric treatment history",
+        "language_features": "Clear expression, high cooperativeness, able to self-reflect, positive attitude"
       },
-      "main_problem": "我认为没有人会喜欢我，因为我是孤儿，这导致我感到孤立和不安全。",
-      "topic": "人际关系",
-      "core_demands": "我决定寻求咨询，因为这些孤立与不安全感正在影响我的人际关系和心理健康。"
+      "main_problem": "I believe no one will like me because I am an orphan, which makes me feel isolated and insecure.",
+      "topic": "Interpersonal relationships",
+      "core_demands": "I decided to seek counseling because these feelings of isolation and insecurity are affecting my interpersonal relationships and mental health."
     },
     "theory": {
       "cbt": {
         "core_beliefs": [
-          "我不可被喜欢/不值得被爱",
-          "出身（孤儿身份）决定我的价值与他人对我的看法"
+          "I cannot be liked / am not worth being loved",
+          "Origin (orphan status) determines my worth and how others see me"
         ],
         "special_situations": [
           {
-            "event": "在新的社交场合或结识陌生人时",
-            "conditional_assumptions": "如果别人知道我是孤儿，就一定不会喜欢我/会拒绝我",
-            "compensatory_strategies": "减少自我披露、与人保持距离；通过让自己忙碌来转移注意力",
-            "automatic_thoughts": "他们不会喜欢我，我在他们眼里有问题",
+            "event": "In new social settings or when meeting strangers",
+            "conditional_assumptions": "If others know I am an orphan, they will definitely not like me / will reject me",
+            "compensatory_strategies": "Reduces self-disclosure and keeps distance from people; distracts attention by keeping busy",
+            "automatic_thoughts": "They will not like me; in their eyes there is something wrong with me",
             "cognitive_pattern": "Jumping to Conclusions"
           },
           {
-            "event": "当被问及家庭背景或需要分享个人经历时",
-            "conditional_assumptions": "如果透露真实身世，就会被视为“有缺陷”并被疏远",
-            "compensatory_strategies": "回避相关话题、筑起“墙”、少说话以自我保护",
-            "automatic_thoughts": "他们会把我看成不值得的人",
+            "event": "When asked about family background or needing to share personal experiences",
+            "conditional_assumptions": "If I reveal my true background, I will be seen as 'defective' and be alienated",
+            "compensatory_strategies": "Avoiding related topics, building a 'wall', speaking less for self-protection",
+            "automatic_thoughts": "They will see me as an unworthy person",
             "cognitive_pattern": "Mind Reading"
           },
           {
-            "event": "在与同事互动时对方表现出支持与好意",
-            "conditional_assumptions": "即使现在被接纳，最终也会被抛弃；好感不可持续",
-            "compensatory_strategies": "不完全投入关系、保持距离以减少受伤风险",
-            "automatic_thoughts": "这只是暂时的，他们迟早会离开",
+            "event": "When interacting with colleagues, the other party shows support and goodwill",
+            "conditional_assumptions": "Even if accepted now, I will eventually be abandoned; goodwill cannot last",
+            "compensatory_strategies": "Not fully engaging in relationships; keeping distance to reduce the risk of being hurt",
+            "automatic_thoughts": "This is only temporary; they will leave sooner or later",
             "cognitive_pattern": "Fortune Telling"
           },
           {
-            "event": "回想童年被同伴嘲笑与区别对待的经历",
-            "conditional_assumptions": "过去证明我本质上不被喜欢，未来也会如此",
-            "compensatory_strategies": "预先否定自己、降低期待以避免再次受伤",
-            "automatic_thoughts": "过去如此，现在和将来也会如此",
+            "event": "Recalling childhood experiences of being mocked and treated differently by peers",
+            "conditional_assumptions": "The past proves I am fundamentally unlikable, and the future will be the same",
+            "compensatory_strategies": "Negating oneself in advance and lowering expectations to avoid being hurt again",
+            "automatic_thoughts": "It was so in the past, and it will be so now and in the future",
             "cognitive_pattern": "Overgeneralization"
           }
         ]
       },
       "pdt": {
         "core_conflict": {
-          "wish": "渴望被稳定接纳与无条件看见，建立亲密而安全的长期关系",
-          "fear": "害怕因身世被拒绝或被遗弃，再次受伤",
+          "wish": "Longs to be stably accepted and unconditionally seen, building a close and secure long-term relationship",
+          "fear": "Afraid of being rejected or abandoned because of one's background, and being hurt again",
           "defense_goal": [
-            "维持情感距离以避免被拒绝",
+            "Maintaining emotional distance to avoid being rejected",
             "减少自我披露以保护自己",
-            "通过先行自我否定来降低受伤的可能"
+            "Reduces the possibility of being hurt through preemptive self-negation"
           ]
         },
         "object_relations": [
           {
-            "self_representation": "被遗弃、不可被喜欢的局外人",
-            "object_representation": "他人是挑剔的评判者，了解真相后会离开",
-            "linking_affect": "羞耻、恐惧、不安全"
+            "self_representation": "An abandoned outsider who cannot be liked",
+            "object_representation": "Others are picky judges who will leave once they learn the truth",
+            "linking_affect": "羞耻、恐惧、not安全"
           },
           {
             "self_representation": "谨慎而渴望连结的人",
-            "object_representation": "少数可靠且持续支持的同事",
+            "object_representation": "A few reliable colleagues with ongoing support",
             "linking_affect": "希望与谨慎并存"
           }
         ],
         "behavioral_response_patterns": [
           {
-            "trigger_condition": "当咨询师邀请其分享更私密的童年或寄养经历时",
-            "interpretation": "更多自我暴露会导致像过去那样被评判与拒绝",
-            "defense_mechanism": "情感隔离",
-            "response_instruction": "语气温和、放慢节奏；先肯定其谨慎与自我保护的需要，允许停顿，用开放式而不逼迫的邀请关注“当下感受”。"
+            "trigger_condition": "When the counselor invites them to share more private childhood or foster care experiences",
+            "interpretation": "More self-exposure will lead to being judged and rejected as in the past",
+            "defense_mechanism": "Emotional isolation",
+            "response_instruction": "Gentle tone, slowed pace; first affirm their need for caution and self-protection, allow pauses, and use open, non-pressuring invitations to attend to 'present feelings'."
           },
           {
-            "trigger_condition": "当咨询师指出现实中存在持续支持的同事关系时",
-            "interpretation": "担心自己的痛苦被淡化，倾向认为他人的支持只是暂时",
-            "defense_mechanism": "合理化",
-            "response_instruction": "先共情其担忧与过往受伤经历，再以验证-探询方式温和对比证据与例外，保持不对抗的语气。"
+            "trigger_condition": "When the counselor points out that there are colleagues in reality who continuously support",
+            "interpretation": "Worrying that one's suffering will be downplayed, tending to believe others' support is only temporary",
+            "defense_mechanism": "Rationalization",
+            "response_instruction": "First empathizes with their worry and past injury experiences, then gently compares evidence and exceptions in a validation-inquiry manner, maintaining a non-confrontational tone."
           },
           {
-            "trigger_condition": "当咨询师关注其对他人想法的推测（如“他们会看不起我”）时",
-            "interpretation": "将内在自我否定与羞耻感归因为他人的负面看法",
-            "defense_mechanism": "投射",
-            "response_instruction": "保持中性稳定的姿态与语气，邀请举出具体证据并区分事实与推测，使用澄清与界限设定来降低防御强度。"
+            "trigger_condition": "When the counselor focuses on their speculation about others' thoughts (such as 'they will look down on me')",
+            "interpretation": "Attributing internal self-denial and shame to others' negative views",
+            "defense_mechanism": "Projection",
+            "response_instruction": "Maintains a neutral and stable posture and tone, invites concrete evidence and distinguishes facts from speculation, and uses clarification and boundary setting to reduce the intensity of defensiveness."
           }
         ]
       },
       "het": {
         "existentialism_topic": [
           {
-            "theme": "孤独",
+            "theme": "Loneliness",
             "manifestations": [
-              "长期感到孤立与不安全",
-              "在新社交场合预期被拒绝而退缩",
-              "难以敞开与他人建立更深连接",
-              "将自我与他人之间筑起“墙”以自我保护"
+              "长期感到孤立与not安全",
+              "Withdrawing in new social settings in anticipation of rejection",
+              "Difficulty opening up and building deeper connections with others",
+              "Building a 'wall' between oneself and others for self-protection"
             ],
             "outcomes": [
-              "社交回避与关系受损",
-              "持续的不安全感与自我价值感低落",
-              "对亲密关系的被遗弃预期"
+              "Social avoidance与关系受损",
+              "Persistent insecurity and low sense of self-worth",
+              "对亲密关系的被遗弃Anticipation"
             ]
           }
         ],
         "contact_model": [
           {
-            "mode": "投射",
-            "definition": "个体将自己难以接纳的感受归于他人，与“拥有”对应。",
+            "mode": "Projection",
+            "definition": "The individual attributes feelings they find hard to accept to others, corresponding to 'possession'.",
             "manifestations": [
-              "在会谈中以“他们会觉得我不值得”推测他人评价",
-              "倾向把内在羞耻感理解为外界的负面看法"
+              "In the session, speculating others' evaluation with 'they will think I am not worth it'",
+              "Tends to interpret inner shame as negative views from the outside"
             ]
           },
           {
-            "mode": "回摄",
-            "definition": "个体抑制对他人或外界的行动冲动，转而对自己做，或把能量收回自身，与“冲动”对应。",
+            "mode": "Retroflection",
+            "definition": "The individual suppresses action impulses toward others or the outside world and instead acts on the self, or withdraws the energy back into the self, corresponding to 'impulse'.",
             "manifestations": [
-              "描述“我会筑起墙、不分享”，克制向外表达与接触的冲动",
+              "Describes 'I will build a wall and not share', restraining impulses toward outward expression and contact",
               "减少自我披露以避免受伤"
             ]
           },
           {
-            "mode": "自我监控",
-            "definition": "存在不良的自我反思与过度自我限制/苛责，对接触过于小心谨慎，与“自主性”对应。",
+            "mode": "Self-monitoring",
+            "definition": "Has poor self-reflection with excessive self-restriction / reproach, and is overly cautious about contact, corresponding to 'autonomy'.",
             "manifestations": [
-              "在谈及关系时多以自我否定语句开场（如“不值得”）",
-              "在会谈中谨慎试探，担心自我暴露带来负面后果"
+              "When talking about relationships, often starting with self-negating statements (such as 'not worth it')",
+              "Cautiously probing in the session, worrying self-exposure will bring negative consequences"
             ]
           }
         ]
@@ -338,38 +338,38 @@
       "pmt": {
         "exception_events": [
           {
-            "target_problem": "在新社交场合时，来访者通常会预期被拒绝而退缩并减少自我披露，导致关系难以建立。",
-            "unique_outcome": "在与几位海军同事的日常工作与非正式交流中，来访者没有像往常那样完全封闭，而是维持了持续互动，这些同事长期保持支持与接纳。",
-            "reason": "线索：熟悉而相对安全的工作环境、同事态度一致且可靠；来访者采取循序渐进的互动与接触，因此这次关系得以维持并形成支持。"
+            "target_problem": "In new social settings, the client usually anticipates rejection and withdraws and reduces self-disclosure, making relationships hard to establish.",
+            "unique_outcome": "In daily work and informal exchanges with several naval colleagues, the client did not completely close off as usual, but maintained continuous interaction; these colleagues have long remained supportive and accepting.",
+            "reason": "Clues: a familiar and relatively safe work environment, colleagues with consistent and reliable attitudes; the client adopted gradual interaction and contact, so this time the relationship was maintained and support was formed."
           }
         ],
         "force_field": {
           "positive_force": [
-            "稳定的工作角色与胜任感（海军工作表现稳定）",
-            "存在少数持续支持的同事关系",
-            "求助动机明确、态度积极，愿意尝试改变",
-            "能识别负性自动思维并愿意检验证据"
+            "Stable work role and sense of competence (stable Navy work performance)",
+            "Having a few colleague relationships with ongoing support",
+            "Clear motivation to seek help, positive attitude, willing to try change",
+            "Able to identify negative automatic thoughts and willing to examine the evidence"
           ],
           "negative_force": [
-            "将自我价值与孤儿身份捆绑并内化污名",
-            "显著的灾难化、读心术与预测未来等认知偏差",
-            "社交情境中的回避与自我封闭，减少自我披露",
-            "对亲密关系持续的被遗弃预期"
+            "Ties self-worth to the identity of being an orphan and internalizes the stigma",
+            "Significant cognitive biases such as catastrophizing, mind reading and fortune telling",
+            "Avoidance and self-isolation in social situations, reducing self-disclosure",
+            "Persistent expectation of being abandoned in intimate relationships"
           ]
         }
       },
       "bt": {
         "target_behavior": [
           {
-            "behavior": "社交退缩与自我封闭（减少交流、回避自我披露）",
+            "behavior": "Social withdrawal and self-isolation (reducing communication, avoiding self-disclosure)",
             "antecedent": [
-              "认识新的人或进入新的社交场合",
-              "被问及家庭背景或需要分享个人信息时",
-              "在互动中想起童年被嘲笑的经历而感到紧张"
+              "Meeting new people or entering new social settings",
+              "When asked about family background or needing to share personal information",
+              "Feeling nervous during interactions when recalling childhood experiences of being mocked"
             ],
-            "core_reason": "寄养经历与同伴嘲笑造成的羞耻与被弃图式，内化“我不被喜欢”的核心信念",
-            "function": "逃避潜在的拒绝与情绪性伤害，短期降低焦虑与不安全感",
-            "consequence": "难以建立与维持关系，社会支持减少，孤立与不安全感被强化"
+            "core_reason": "The shame and abandonment schema caused by the foster-care experience and peer mockery internalized the core belief 'I am not liked'",
+            "function": "Avoids potential rejection and emotional hurt, reducing anxiety and insecurity in the short term",
+            "consequence": "Difficulty establishing and maintaining relationships, social support decreases, and isolation and insecurity are reinforced"
           }
         ]
       }
@@ -382,16 +382,16 @@
     "basic_info.growth_experiences"
   ],
   "expected_clarification": [
-    "您能描述一下这个问题大概是什么时候开始的，以及在这段时间内有没有发生什么特别的事情？",
-    "这种回避行为是近期才出现的，还是已经持续了一段时间了？"
+    "Could you describe roughly when this problem started, and whether anything special happened during that time?",
+    "Did this avoidance behavior appear only recently, or has it already lasted for some time?"
   ],
   "risk_level": "HIGH",
   "expected_route": "HIGH-RISK",
-  "expected_action": "立即进行安全评估并优先处理风险，在确认来访者安全后再继续常规干预",
+  "expected_action": "Conduct a safety assessment immediately and prioritize handling the risk; continue routine intervention only after confirming the client is safe",
   "ground_truth_evidence": {
     "basic_info.growth_experiences": [
-      "在寄养系统中长大，长期缺乏稳定的家庭关系。童年时期在学校或同伴群体中因孤儿身份被嘲笑、区别对待，感到与他人不同、难以归属，并逐渐内化“我不被喜欢/不值得被爱”的观念。",
-      "持续将“是否被喜欢”与“孤儿身份”绑定，认为社会对孤儿存在污名；这种看法自童年至今延续，影响其对自我价值与人际关系的总体评估。"
+      "The client grew up in the foster care system, long lacking stable family relationships. In childhood, at school or in peer groups, the client was mocked and treated differently because of being an orphan, felt different from others and had difficulty belonging, and gradually internalized the notion 'I am not liked / not worthy of being loved'.",
+      "Persistently binds 'whether I am liked' to 'orphan status', believing that society stigmatizes orphans; this view has continued from childhood to the present, affecting the client's overall evaluation of their self-worth and interpersonal relationships."
     ]
   }
 }
