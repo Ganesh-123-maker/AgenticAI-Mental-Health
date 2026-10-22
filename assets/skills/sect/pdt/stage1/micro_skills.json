@@ -265,7 +265,7 @@
         "skill_id": "64",
         "skill_name": "询问物质use与躯体健康问题",
         "skill_description": "主动询问物质滥用与躯体健康状况，辨do not其是否为当前症状的致因或共病因素，避免漏判并完善鉴do not。",
-        "when_to_use": "评估主诉与当前症状的同时，进行相关致因与共病筛查。",
+        "when_to_use": "While assessing the presenting complaint and current symptoms, conduct screening for related causes and comorbidities.",
         "trigger": "来访者提及饮酒、用药、躯体not适或近期健康事件，或症状可能与物质/躯体因素相关。",
         "parent_ids": [
             "184",
@@ -1203,7 +1203,7 @@
         "skill_id": "99",
         "skill_name": "识do not并利用功能优势与劣势",
         "skill_description": "In the five major functional domains, note both strengths and deficits, and deliberately use strengths in case conceptualization and treatment planning to promote change and tolerate treatment stress.",
-        "when_to_use": "完成多领域信息收集后，整合功能图谱并制定策略时。",
+        "when_to_use": "After completing multi-domain information collection, integrating the functional profile and formulating strategies.",
         "trigger": "The assessment shows some domains are weak while other domains have obvious strengths or stability.",
         "parent_ids": [
             "184",
@@ -2137,7 +2137,7 @@
     },
     "190": {
         "skill_id": "190",
-        "skill_name": "施测并解读SCL-90/SDS/SAS量化症状",
+        "skill_name": "Administer and interpret SCL-90/SDS/SAS to quantify symptoms",
         "skill_description": "指导来访者完成SCL-90、SDS、SAS施测，系统分析总分、阳性项目与因子分，识do notAnxiety、抑郁、恐怖、强迫、人际敏感、躯体化、精神病性等异常模式，量化症状负荷与功能受损，并结合面询与行为观察综合判读，为初步诊断、功能判断与基线提供客观依据。",
         "when_to_use": "When collecting information and conducting functional assessment in the initial consultation or assessment stage, and the symptom range, intensity, and interpersonal sensitivity need quantifying, or an objective baseline is needed to assist diagnosis and functional judgment.",
         "trigger": "学习压力、Interpersonal tension、睡眠问题、广泛Anxiety, fear、抑郁、人际Withdrawal、自卑或主诉含模糊性；体检正常但自诉性功能障碍并伴多种心理not适；提示多类症状、主观身体not适或可疑精神病性体验；恐惧持续且社会功能受损需客观化评估。",
@@ -2576,7 +2576,7 @@
         "skill_id": "277",
         "skill_name": "动员家庭资源开展调查支持现实检验",
         "skill_description": "When the client finds it hard to independently complete reality testing, encourage family members to intervene and carry out letter or information investigations, assess and use the strength and stable connections of their social support (such as parents calling, inviting visits), serving goal advancement and cognitive correction.",
-        "when_to_use": "评估并动员外部资源以支持现实检验或任务执行的阶段。",
+        "when_to_use": "The stage of assessing and mobilizing external resources to support reality testing or task execution.",
         "trigger": "来访者因恐惧not敢自行调查但家庭资源可用且愿意协助；父母表达沟通意愿与稳定联系可作为支持线索。",
         "parent_ids": [
             "184",
@@ -3012,7 +3012,7 @@
         "skill_id": "206",
         "skill_name": "收集亲属反映验证补充个体特征",
         "skill_description": "Learn from parents or family about early personality and social behavior (such as timidity, restraint, introversion, few interests, strict self-demands), mutually corroborate with the client's self-report and complete the personal portrait, supplementing growth and personality information sources.",
-        "when_to_use": "需要验证或补充成长与性格信息、进行多源信息互证时。",
+        "when_to_use": "When growth and personality information needs verifying or supplementing, and multi-source information cross-checking is performed.",
         "trigger": "家属在场或可联系，且来访者自述信息not足或需佐证。",
         "parent_ids": [
             "184",
@@ -3072,7 +3072,7 @@
         "skill_id": "237",
         "skill_name": "识do not并命名常用防御与适应方式",
         "skill_description": "区分并命名not同情境的防御与适应：Undoing（反复求证、争荣誉）、全能控制（为确定性想最坏）、Emotional isolation、退行（求Mother认可），以及Repressionnot yet被接纳的情感与回忆、随之累积的愤怒与对同学/家人的攻击性表达；连接trigger与功能，为支持/揭露技术取舍提供依据。",
-        "when_to_use": "评估适应（防御）领域、形成功能画像与介入侧重前。",
+        "when_to_use": "Before assessing the adaptation (defense) domain, forming the functional portrait, and determining intervention focus.",
         "trigger": "出现反复求证/自问自答、过度控制、对Relationship estrangement、频繁寻求Mother指导、长期隐忍Repression或Emotional loss of control后言语/行为攻击的反复模式。",
         "parent_ids": [
             "184",
@@ -3451,7 +3451,7 @@
         "skill_id": "218",
         "skill_name": "围绕主诉协商并明确阶段目标",
         "skill_description": "与来访者就其最关切的问题协商具体、可达成的改善目标，明确起点与期望值，使目标贴合Anxiety、人际等核心困扰，作为后续工作的共同指向以巩固同盟。",
-        "when_to_use": "初次评估至早期阶段，完成信息收集后需对齐工作目标。",
+        "when_to_use": "From initial assessment to the early stage, after information collection is completed, when work goals need aligning.",
         "trigger": "The client identifies with the primary distress and is willing to discuss the desired magnitude of improvement or wish for change.",
         "parent_ids": [
             "184",
@@ -3568,7 +3568,7 @@
         "skill_id": "186",
         "skill_name": "明确是否适合心理咨询的初步判断",
         "skill_description": "综合主诉、症状表现、量表与风险筛查，核对自知力与现实检验是否完整，是否存在幻觉妄想与急性suicide风险，初步判断是否适宜开展心理咨询，并据此作进入咨询的决定。",
-        "when_to_use": "完成首轮资料收集与风险筛查后，需要确定处置路径时。",
+        "when_to_use": "After completing the first round of data collection and risk screening, when the disposition pathway needs determining.",
         "trigger": "评估显示without精神病性症状、withoutsuicide企图或行动；或出现not适宜心理咨询的指征需作出决策。",
         "parent_ids": [
             "184",
@@ -3620,7 +3620,7 @@
         "skill_id": "283",
         "skill_name": "围绕insomnia与Anxiety共定阶段性可量化目标",
         "skill_description": "结合主诉与量表结果，与来访者协商把“insomnia最想解决”等诉求细化为可测量的阶段目标，如逐步缩短入睡时间、争取每日12点前入睡，并确定近期缓解Anxiety与改善睡眠的方向，以便跟踪与反馈。",
-        "when_to_use": "在明确主诉与初步判断后，进入目标协商和方案拟定前。",
+        "when_to_use": "After the presenting complaint and preliminary judgment are clarified, before entering goal negotiation and plan drafting.",
         "trigger": "来访者希望尽快改善睡眠，对睡眠改善有具体期待，评估提示insomnia重、Anxiety高。",
         "parent_ids": [
             "184",

@@ -573,7 +573,7 @@
         "skill_id": "185",
         "skill_name": "探询分数变化的意义与促成因素",
         "skill_description": "当评分与以往not同或出现提升/下降，追问该变化代表的具体意义，并细化来访者做了哪些行为促成改变，萃取有效做法加以巩固。",
-        "when_to_use": "比较本次与上次评分或同一会谈前后，出现刻度差异时。",
+        "when_to_use": "When comparing this score with the last, or before and after the same session, and scale differences appear.",
         "trigger": "来访者说“好了一点”“not那么糟”“比上次高/低”等，并给出not同分数。",
         "parent_ids": [
             "93",
@@ -1406,7 +1406,7 @@
         "skill_id": "158",
         "skill_name": "细化描绘例外的情绪、想法与行动",
         "skill_description": "Guide the client to describe in detail the emotions, thoughts, concrete actions, and situational details of the exception, making the new story richer and providing cues for re-enactment and expansion.",
-        "when_to_use": "在“丰富新故事”阶段，用于充实重写后的叙事内容。",
+        "when_to_use": "In the 'enriching the new story' stage, used to enrich the rewritten narrative content.",
         "trigger": "The client only vaguely mentions exceptions, details are missing, or they are puzzled about how to replicate these fragments.",
         "parent_ids": [
             "93",
@@ -1786,7 +1786,7 @@
         "skill_id": "236",
         "skill_name": "without例外时转用因应询问",
         "skill_description": "当来访者deny任何例外，改问其如何让情况“not更糟”、如何熬过来，以发掘在困境中的应对资源并作为例外的前置线索。",
-        "when_to_use": "例外询问受阻时，需改以因应视角打开资源与可能性。",
+        "when_to_use": "When exception inquiry is blocked, needing to open up resources and possibilities from a coping perspective instead.",
         "trigger": "来访者use“从来have not好一点”“一点办法都have not”等绝对化说法，deny任何例外出现。",
         "parent_ids": [
             "93",
@@ -2963,7 +2963,7 @@
         "skill_name": "简单概述将问题词转化为行动语句",
         "skill_description": "Ask the client to name the problem in one word and place it in a sentence that promotes change; focus the work around that sentence, quickly turning the messy narration into actionable reframed expression.",
         "when_to_use": "When the narrative is lengthy and scattered, and rapid focusing is needed to turn complaints into action directions.",
-        "trigger": "来访者难以聚焦重点，谈话游移、问题表述笼统抽象。",
+        "trigger": "The client has difficulty focusing on the key points, conversation drifts, problem statements are vague and abstract.",
         "parent_ids": [
             "93",
             "100",
@@ -2977,7 +2977,7 @@
         "skill_id": "310",
         "skill_name": "评量询问把困境量化为可前进刻度",
         "skill_description": "用0—10刻度量化当下与目标状态，探问已在刻度上前进的证据与下一步可微调之处，将抽象困境转为可微增的进步框架，Reinforcement小改变。",
-        "when_to_use": "重构问题后需具体化目标、呈现进步与规划下一步时。",
+        "when_to_use": "After reframing the problem, when goals need to be concretized, progress presented, and next steps planned.",
         "trigger": "来访者以模糊词汇描述状态、难以察觉进展或not知如何前行。",
         "parent_ids": [
             "93",
@@ -3331,7 +3331,7 @@
     },
     "500": {
         "skill_id": "500",
-        "skill_name": "施测SAS/SDS（含SCL-90）建立症状基线",
+        "skill_name": "Administering SAS / SDS (including SCL-90) to establish a symptom baseline",
         "skill_description": "在首次会谈的评估环节，征得同意后施测SAS/SDS及SCL-90，记录Anxiety、抑郁、人际敏感等得分，形成量化基线（如SAS63、SDS61），用于问题界定、鉴do not诊断与目标设定，并结合社会功能与病程信息辅助初步判断与后续反馈比较。",
         "when_to_use": "第一次咨询建立关系后、正式开始评估时；在咨询初期需要量化Anxiety/抑郁及相关功能受损以建立基线时。",
         "trigger": "来访者初次来谈需了解症状水平与风险；或出现持续低落、insomnia、Decreased attention等抑郁/Anxiety相关主诉，需要客观量化时。",
@@ -3549,7 +3549,7 @@
         "skill_id": "506",
         "skill_name": "详述新故事的情境、情绪与行动",
         "skill_description": "Around the events in the new story, prompt the client to concretize the emotions, thoughts, and actions at that time, by asking 'what did you do then, what did you think, what did you feel', filling in the details and increasing the narrative's layering and fullness.",
-        "when_to_use": "在已发现例外或支线故事后，用于充实新叙事内容。",
+        "when_to_use": "After exceptions or side stories have been found, used to enrich the content of the new narrative.",
         "trigger": "来访者仅给出笼统描述，缺少细节、情绪与意义。",
         "parent_ids": [
             "93",
@@ -3590,7 +3590,7 @@
         "skill_name": "结束阶段肯定并鼓励持续应用",
         "skill_description": "In the ending stage summary and consolidation, concretely names the client's progress and effort, encourages continued application of the learned methods and communication exercises, maintaining improvement and action motivation.",
         "when_to_use": "第9-10次会谈的效果Consolidation and termination环节，或回顾进步、讨论后续自助计划时。",
-        "trigger": "回顾进步、练习情绪处理方法或讨论后续自助计划。",
+        "trigger": "Reviewing progress, practicing emotion-processing methods, or discussing subsequent self-help plans.",
         "parent_ids": [
             "93",
             "100",
@@ -4030,7 +4030,7 @@
         "skill_id": "486",
         "skill_name": "明确同盟并以人—问题分离共同面对",
         "skill_description": "Clearly forms an alliance with the client, adopts a cooperative posture to face the problem together, through person-problem separation reduces labeling and self-blame, raising participation and change motivation.",
-        "when_to_use": "外化与重塑对话前，需确立合作框架与共同目标时。",
+        "when_to_use": "Before externalization and reshaping conversations, when needing to establish a collaborative framework and common goals.",
         "trigger": "来访者把问题全归咎于自我、对咨询有期待但not知如何参与，或已准备以外化视角讨论。",
         "parent_ids": [
             "93",

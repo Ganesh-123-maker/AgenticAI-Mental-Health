@@ -546,7 +546,7 @@
         "skill_id": "160",
         "skill_name": "调查访谈聚焦前提与后果识do not逃避功能",
         "skill_description": "In interviews, phone calls, or scale surveys, require the respondent to specifically describe antecedent events such as demands, difficult tasks, or interruptions occurring before the behavior, and whether a result of leaving the demand was obtained after the behavior. Emphasize objective events and consequences, avoid subjective inference, and focus on escape-related clues.",
-        "when_to_use": "功能分析的间接调查阶段，形成初步结论性陈述前。",
+        "when_to_use": "The indirect investigation stage of functional analysis, before forming preliminary conclusive statements.",
         "trigger": "The interviewee can recall concrete event chains such as 'acts up as soon as a task is assigned' and 'after acting up, the teacher lets them go out', but mostly uses subjective comments.",
         "parent_ids": [
             "285",
@@ -602,7 +602,7 @@
         "skill_id": "164",
         "skill_name": "调整立即前提事件削弱逃避动机",
         "skill_description": "Follow the principle of 'changing immediate antecedent events', adjust task difficulty, length, activity arrangement, or attention level, reduce the aversiveness of demands, break the connection between problem behavior and antecedent events, thereby weakening the reinforcing value of escape.",
-        "when_to_use": "方案设计与情境改造阶段，需预防性降低发作概率时。",
+        "when_to_use": "Scheme design and situation modification stage, when needing to preventively reduce the probability of episodes.",
         "trigger": "Observation shows that problem behavior increases markedly in demand situations of high difficulty, long duration, or that are interrupted.",
         "parent_ids": [
             "285",
@@ -1356,8 +1356,8 @@
         "skill_id": "202",
         "skill_name": "填写观察对象与资料日期",
         "skill_description": "Accurately fill in the observation subject and the data-collection date in the header, to uniquely identify the observed person and that observation record, facilitating integration and tracking across periods.",
-        "when_to_use": "每次开始新的观察批次、启用功能性评估观察表记录前。",
-        "trigger": "当事人进入本次观察日的自然活动情境，准备开始记录。",
+        "when_to_use": "Before each new observation batch begins and the functional assessment observation form is used for recording.",
+        "trigger": "The person enters the natural activity situation of this observation day, preparing to start recording.",
         "parent_ids": [
             "285",
             "133",
@@ -1401,7 +1401,7 @@
         "skill_id": "205",
         "skill_name": "Recording antecedent events and potential indicators",
         "skill_description": "于“前提事件”先填调查中确认的关键指标（如要求、困难任务、中断、缺乏注意），并补充其他新发现的潜在诱发因素；Unknown时标注not清楚。",
-        "when_to_use": "在问题行为发生前后，需定位与之相关的先行条件时。",
+        "when_to_use": "Before and after problem behavior occurs, when needing to locate the antecedent conditions related to it.",
         "trigger": "Situations such as demands being made, difficult tasks, activities being interrupted, or lack of attention appear, or new suspicious triggering factors are observed.",
         "parent_ids": [
             "285",
@@ -1962,7 +1962,7 @@
         "skill_id": "89",
         "skill_name": "筛查并排除器质性疾病禁忌证",
         "skill_description": "依据禁忌清单系统排查并核实，排除严重心血管病、中枢神经系统病、严重呼吸系统病及内分泌疾患等禁忌，not予实施冲击疗法。",
-        "when_to_use": "基础检查完成后、进入治疗决策前的禁忌证评估阶段。",
+        "when_to_use": "After the basic examination is completed, the contraindication assessment stage before entering treatment decisions.",
         "trigger": "The medical history or physical examination indicates hypertension, coronary heart disease, heart valve disease, brain tumor, epilepsy, cerebrovascular disease, bronchial asthma, thyroid disease, etc.",
         "parent_ids": [
             "285",
@@ -2565,7 +2565,7 @@
         "skill_id": "85",
         "skill_name": "商定等级数量与跨度",
         "skill_description": "与来访者商定等级数量与跨度：常用每10单位一档；事件少时按事件定级，事件多时可超10级；重度Anxiety者可将跨度≤5单位。",
-        "when_to_use": "初步排序完成后，需要将连续分值划分为操作性等级时。",
+        "when_to_use": "After the preliminary ranking is completed and continuous scores need to be divided into operational levels.",
         "trigger": "分值分布稀疏或密集（仅5项或超过10项），或来访者Anxiety很高、相邻分值差异细微。",
         "parent_ids": [
             "285",
@@ -3249,7 +3249,7 @@
     },
     "443": {
         "skill_id": "443",
-        "skill_name": "施测SCL-90/SAS/SDS建立基线并监测疗效",
+        "skill_name": "Administer SCL-90/SAS/SDS to establish a baseline and monitor treatment effects",
         "skill_description": "采用SCL-90评估症状维度负荷，SAS量化Anxiety，SDS量化抑郁，建立客观基线；在咨询前后或随访阶段进行对比测验，辅助诊断、问题概念化与风险判断，并用于暴露训练安排与疗效追踪。",
         "when_to_use": "The assessment stage at the initial consultation and before exposure is used to understand the current mental state and baseline; at the end of treatment or at follow-up it is used for effect evaluation and comparison.",
         "trigger": "需要客观了解症状严重度或进一步量化Anxiety/抑郁；存在强迫观念、Anxiety, fear等主诉；计划进行前后数据对照或随访监测；来访者自述Low mood、Sleep impaired、胸闷心慌等。",
@@ -3835,7 +3835,7 @@
         "skill_name": "耐心介绍咨询事项与会谈规则建立安全感",
         "skill_description": "在填写登记表的同时，耐心介绍咨询过程中的有关事项与会谈规则，明确流程与边界，降低not确定感与Anxiety，形成安全、透明的互动氛围，增强对咨询师的信任。",
         "when_to_use": "评估阶段的初次会谈与关系建立起始环节。",
-        "trigger": "来访者对咨询流程陌生、感到紧张或担心规则与边界时。",
+        "trigger": "When the client is unfamiliar with the counseling process, feels nervous, or worries about rules and boundaries.",
         "parent_ids": [
             "285",
             "13",
@@ -4347,7 +4347,7 @@
     },
     "427": {
         "skill_id": "427",
-        "skill_name": "施测并解读SCL-90与SAS/SDS建立基线",
+        "skill_name": "Administer and interpret SCL-90 and SAS/SDS to establish a baseline",
         "skill_description": "在首访/初诊实施SCL-90、SAS、SDS（必要时EPQ或汉密尔顿Anxiety量表），指导填写并评分，记录总分、因子分、粗分与标准分，解读Anxiety、恐怖、强迫、抑郁及躯体化等高分因子，形成诊断依据与治疗前量化基线，用于后续Intervention选择与疗效评估。",
         "when_to_use": "The assessment and diagnosis stage of the first visit or initial consultation, when it is necessary to quantify symptom level and nature.",
         "trigger": "需区分Average心理问题与Anxiety/抑郁等并量化程度；或来访者自述Anxiety明显、睡眠/功能受影响。",
@@ -4457,7 +4457,7 @@
         "skill_id": "426",
         "skill_name": "整合自述、他评与现场观察",
         "skill_description": "Comprehensively obtain the client's self-report, feedback from the class teacher and parents, and the counselor's on-site observation, record impressions such as clothing, state of consciousness, tense expression and polite manners, and in the interview systematically observe clues such as speech, expression, posture and physiological tension, covering triggers, duration and impact on study and life, raising the completeness of the material.",
-        "when_to_use": "评估与诊断阶段，尤其首访与后续联络及全程访谈中。",
+        "when_to_use": "The assessment and diagnosis stage, especially in the first visit, follow-up contact, and interviews throughout.",
         "trigger": "When a homeroom teacher or parent provides reflections and the self-report needs verification or the sources of information need enrichment; or when emotional fluctuation, signs of tension, and nonverbal behavior changes appear.",
         "parent_ids": [
             "285",
@@ -4904,7 +4904,7 @@
         "skill_id": "447",
         "skill_name": "形成功能性结论陈述并对齐目标",
         "skill_description": "与来访者协作整合trigger情境、核心症状、发展与维持机制等信息，凝练功能性陈述，明确关键控制变量与可变因素，达成对“为什么会这样”的共识，以指导后续目标设定、Intervention方案与复发预防。",
-        "when_to_use": "关键信息收集完成后或阶段性复盘、制定目标与方案前。",
+        "when_to_use": "After key information collection is completed, or before periodic review and setting goals and plans.",
         "trigger": "Functional clues are fully collected and the behavior chain is clear, needing to be integrated into an operable functional explanation and reach consensus with the client.",
         "parent_ids": [
             "285",
@@ -5152,7 +5152,7 @@
         "skill_name": "向亲友同学核实并补充病史与家族史",
         "skill_description": "Through relatives, friends, or classmates, verify and record the past physical medical history, personal developmental history, and family history of mental illness, forming multi-source data, improving the accuracy and completeness of the information, and avoiding single-source bias.",
         "when_to_use": "When self-reported information needs verification or supplementation, especially at steps involving key medical history and family history.",
-        "trigger": "来访者信息有限或存在疑问，需要第三方佐证与补充。",
+        "trigger": "When the client's information is limited or doubtful, needing third-party corroboration and supplementation.",
         "parent_ids": [
             "285",
             "261",
@@ -5178,7 +5178,7 @@
         "skill_name": "核实体检资料并记录排除结论",
         "skill_description": "查阅既往体检与相关检查结果并记录结论（如not yet见躯体疾病），或注明体检正常/异常，以支持心理学诊断与病因鉴do not并指导后续Intervention。",
         "when_to_use": "初期评估需区分心理与躯体原因、作出初步诊断或决定后续Intervention路径时。",
-        "trigger": "既往史提及体检，或怀疑躯体因素可能影响当前症状。",
+        "trigger": "When the past history mentions a physical examination, or somatic factors are suspected to possibly affect current symptoms.",
         "parent_ids": [
             "285",
             "261",
