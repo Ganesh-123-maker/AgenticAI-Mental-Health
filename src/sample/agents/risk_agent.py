@@ -55,7 +55,11 @@ RISK_SIGNALS: Tuple[RiskSignal, ...] = (
         id="suicidal_ideation", severity="HIGH",
         en=("suicide", "suicidal", "want to die", "kill myself", "killing myself",
             "take my own life", "end my life", "ending my life", "end life",
-            "ending life", "end it all", "ending it all", "don't want to live"),
+            "ending life", "end it all", "ending it all", "don't want to live",
+            "don't want to be alive", "want to disappear", "wish I could disappear",
+            "don't want to exist", "stop existing", "goodbye note",
+            "end everything", "give up on life", "not being here anymore",
+            "tired of living", "unalive myself"),
         zh=("自杀", "想死", "不想活", "结束生命", "了结生命"),
     ),
     RiskSignal(
@@ -68,7 +72,9 @@ RISK_SIGNALS: Tuple[RiskSignal, ...] = (
         id="hopeless_despair", severity="HIGH",
         en=("can't go on", "hopeless want to die", "leave this world",
             "cannot survive", "better off dead", "better off without me",
-            "not waking up", "don't want to wake up"),
+            "not waking up", "don't want to wake up", "don't wake up",
+            "never wake up", "not wake up", "wouldn't wake up",
+            "never been born", "wish I was dead", "wish I were dead"),
         zh=("活不下去", "不如死了", "一了百了", "不想醒来"),
     ),
     RiskSignal(
@@ -133,6 +139,10 @@ def _find_signal(text: str, signal: str) -> Optional[str]:
     same clause (up to 6 words before the signal) and the signal itself does
     not already contain a negation (e.g. "don't want to live"). Ambiguous
     cases are resolved towards "affirmed" (i.e. towards flagging risk).
+
+    Two or more negation cues in the window form a double negation and count
+    as affirmed, not negated: "It's not like I haven't thought about ending
+    it all" discloses the thought rather than denying it.
     """
     lowered = text.lower()
     sig = signal.lower()
@@ -143,7 +153,7 @@ def _find_signal(text: str, signal: str) -> Optional[str]:
         breaks = list(_CLAUSE_BREAK.finditer(prefix))
         clause = prefix[breaks[-1].end():] if breaks else prefix
         window = " ".join(clause.split()[-6:])
-        if _NEGATION_RE.search(sig) or not _NEGATION_RE.search(window):
+        if _NEGATION_RE.search(sig) or len(_NEGATION_RE.findall(window)) != 1:
             return "affirmed"
         found_negated = True
         start = lowered.find(sig, start + len(sig))
@@ -179,6 +189,36 @@ def _find_signal_zh(text: str, form: str) -> Optional[str]:
     return "negated" if found_negated else None
 
 
+_LEET_TRANS = str.maketrans({"0": "o", "1": "i", "3": "e", "4": "a", "5": "s", "7": "t", "@": "a", "$": "s"})
+_LEET_CHARS = frozenset("013457@$")
+_SPACED_LETTERS_RE = re.compile(r"\b(?:[A-Za-z][ .]){2,}[A-Za-z]\b")
+
+
+def _normalize_for_matching(text: str) -> str:
+    """Return a de-obfuscated copy of text for signal matching.
+
+    Two general obfuscations are undone:
+    - letter-spaced or letter-dotted words ("s u i c i d e", "s.u.i.c.i.d.e")
+      are joined back into single words;
+    - leetspeak substitutions inside mixed letter/digit tokens ("k1lling",
+      "su1cide", "mys3lf") are mapped back to letters.
+
+    The original text is always matched as well; this copy only adds matches,
+    it never removes one, so it cannot loosen any existing rule.
+    """
+    def _join(m: "re.Match") -> str:
+        return re.sub(r"[ .]", "", m.group(0))
+
+    norm = _SPACED_LETTERS_RE.sub(_join, text)
+    out = []
+    for tok in norm.split(" "):
+        if any(c.isalpha() for c in tok) and any(c in _LEET_CHARS for c in tok):
+            out.append(tok.translate(_LEET_TRANS))
+        else:
+            out.append(tok)
+    return " ".join(out)
+
+
 _CJK_RE = re.compile(r"[\u4e00-\u9fff]")
 
 
@@ -194,12 +234,17 @@ def _match_signal(text: str, signal: RiskSignal) -> Tuple[Optional[str], Optiona
     if not text:
         return None, None
     negated_form: Optional[str] = None
+    en_texts = [text]
+    normalized = _normalize_for_matching(text)
+    if normalized != text:
+        en_texts.append(normalized)
     for form in signal.en:
-        hit = _find_signal(text, form)
-        if hit == "affirmed":
-            return form, "affirmed"
-        if hit == "negated" and negated_form is None:
-            negated_form = form
+        for candidate in en_texts:
+            hit = _find_signal(candidate, form)
+            if hit == "affirmed":
+                return form, "affirmed"
+            if hit == "negated" and negated_form is None:
+                negated_form = form
     if _CJK_RE.search(text):
         for form in signal.zh:
             hit = _find_signal_zh(text, form)
