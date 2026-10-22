@@ -488,7 +488,7 @@
     },
     "187": {
         "skill_id": "187",
-        "skill_name": "引导被调查者提供具体事件并聚焦前提与后果",
+        "skill_name": "Guides the respondent to provide specific events and focus on antecedents and consequences",
         "skill_description": "Explain at the opening of the interview and remind repeatedly during the process, requiring the interviewee to provide concrete situations and descriptions of observable behavior, avoiding subjective inference, and narrating around the antecedent events of the behavior's occurrence and the consequences that followed.",
         "when_to_use": "When conducting any form of investigative interview or questionnaire supplementation, when it is necessary to improve the observability and operability of information to serve functional analysis.",
         "trigger": "当受访者以笼统评价、主观解释或跳过细节的方式回答，频繁use“觉得、应该、可能”等推测性措辞时。",
@@ -560,7 +560,7 @@
         "skill_id": "161",
         "skill_name": "用功能性评估观察表记录逃避指标",
         "skill_description": "During direct observation, record the time, problem behavior, and antecedent events, and under 'perceived function of the behavior' tick 'escape/avoidance'. Also record the 'actual behavioral consequences' in detail, checking whether the behavior consistently results in leaving a demand or termination of a task, to support a determination of escape function.",
-        "when_to_use": "功能分析的直接观察阶段与基线资料收集时。",
+        "when_to_use": "During the direct observation stage of functional analysis and baseline data collection.",
         "trigger": "When demands are made, difficult tasks are begun, or activities are interrupted, the problem behavior occurs frequently, and after the behavior the client gains leaving the setting or stopping the task.",
         "parent_ids": [
             "285",
@@ -574,7 +574,7 @@
         "skill_id": "162",
         "skill_name": "审查后果以避免without意Reinforcement逃避",
         "skill_description": "Based on the 'actual behavioral consequences' in the observation table, examine whether practices such as isolation, leaving the room, and pausing tasks let the problem behavior obtain an escape outcome; if this pattern is found, correct the strategy in time to prevent escape being used as reinforcement, causing the problem behavior to be maintained or worsen.",
-        "when_to_use": "观察资料解读、方案拟定或执行受挫需修订时。",
+        "when_to_use": "When observation data interpretation, plan drafting, or execution is frustrated and needs revision.",
         "trigger": "记录显示发作后常被带离要求情境或隔离，且问题行为频率not降反升。",
         "parent_ids": [
             "285",
@@ -1612,7 +1612,7 @@
     },
     "275": {
         "skill_id": "275",
-        "skill_name": "施测SCL-90、SDS、SAS建立基线",
+        "skill_name": "Administering SCL-90, SDS, SAS to establish baselines",
         "skill_description": "在初始评估时选用SCL-90、SDS、SAS等标准化量表进行施测，量化躯体化、Anxiety、抑郁等症状水平，形成可对照的基线数据，支撑后续诊断与治疗规划。",
         "when_to_use": "初始评估阶段，在建立关系并完成基本资料收集后，用于系统量化症状与功能，来访者合作但紧张或Anxiety。",
         "trigger": "来访者自述坐立not安、头痛、心慌、出汗、睡眠not佳，谈及关键情境（如考试）时情绪明显低落与Anxiety。",
@@ -1710,7 +1710,7 @@
     },
     "265": {
         "skill_id": "265",
-        "skill_name": "依据调查表分析心理社会因素并排除药物营养影响",
+        "skill_name": "Analyzing psychosocial factors based on the questionnaire and ruling out medication and nutrition effects",
         "skill_description": "依据调查表信息分析问题的心理社会成因（如工作、人际、生活方式），并辨do not症状是否由药物或营养因素引起或加重，为选择训练指标与制定治疗目标提供依据。",
         "when_to_use": "回收并核实调查表后、制定Biofeedback训练方案前，用于形成初步问题假设并排除干扰因素。",
         "trigger": "The questionnaire shows a medication history, dietary or nutritional abnormalities, lifestyle stressors, or clues that symptoms are temporally related to the above factors.",
@@ -3511,7 +3511,7 @@
     },
     "301": {
         "skill_id": "301",
-        "skill_name": "施测并解读SCL-90等量化症状强度与变化",
+        "skill_name": "Administering and interpreting SCL-90 and other measures to quantify symptom intensity and change",
         "skill_description": "在咨询前后施测SCL-90并记录各因子分与标准分，结合SAS、SDS结果解读Anxiety、抑郁等维度强度（如Anxiety因子偏高、SAS=70严重、中度Anxiety），建立客观基线并在结束或随访阶段复测比较变化，用于判定趋势、辅助诊断与目标制定；必要时补充EPQ了解人格气质作为评估依据。",
         "when_to_use": "初评与诊断阶段建立症状基线，及Intervention后效果评估与随访复测时。",
         "trigger": "需客观量化Anxiety、抑郁等主诉强度或比较Intervention前后变化；来访者完成或愿意配合心理测量；症状严重度判断需量表数据支持。",
@@ -3845,7 +3845,7 @@
     },
     "340": {
         "skill_id": "340",
-        "skill_name": "介绍咨询事项、规则与保密例外明确权利义务",
+        "skill_name": "Introducing counseling matters, rules, and confidentiality exceptions to clarify rights and obligations",
         "skill_description": "在首次会谈中清楚介绍咨询事项、会谈规则与练习安排，明确频次、时间与作业要求；说明咨询设置、保密协议与保密例外及双方责任与权利，并告知可能用于督导或研究且匿名、取得知情同意，提升可Anticipation与可控感，降低not安，促成安全与信任的框架。",
         "when_to_use": "Used at the start of the 1st session or meeting, in the first meeting or before entering treatment, to establish a safety framework and basic trust.",
         "trigger": "来访者初访、对咨询流程与保密或权益not清楚，显得拘谨紧张或犹疑，并询问相关事宜。",
@@ -4269,7 +4269,7 @@
     },
     "353": {
         "skill_id": "353",
-        "skill_name": "协商并确立具体目标与实施方案（含权利义务）",
+        "skill_name": "Negotiating and establishing concrete goals and implementation plans (including rights and obligations)",
         "skill_description": "Negotiate with the client and establish concrete, measurable short-term and long-term goals, clarify methods and frequency, homework and boundaries, formulate an implementation path in combination with assessment results; where necessary confirm with a written agreement and explain rights and obligations, enhancing the sense of security, responsibility, and stability of cooperation.",
         "when_to_use": "At sessions 1-2, after diagnosis and assessment are completed; when the relationship is preliminarily established or the second session clarifies direction.",
         "trigger": "Both parties have consensus on the main problem, need to clarify goals and process; the client is willing to participate and holds an open attitude toward methods and goals; data has been obtained and a plan is expected.",
@@ -4505,7 +4505,7 @@
         "skill_id": "413",
         "skill_name": "会谈中系统观察并记录临床印象",
         "skill_description": "During the interview process, systematically observe and record nonverbal and behavioral characteristics such as facial expressions, eye contact, speech initiative and silence, speech rate and density, cooperative attitude, thinking and insight, attention, orientation and consciousness, appearance and grooming, forming a clinical impression, assisting comprehensive judgment.",
-        "when_to_use": "首次会谈及评估期各次面谈的全程观察记录环节。",
+        "when_to_use": "The full observation record segment of the first session and each interview in the assessment period.",
         "trigger": "During the interview, observable speech, thought, and behavior features appear, such as a tense expression, passive communication, little eye contact, a low expression, or prolonged silence.",
         "parent_ids": [
             "285",
@@ -5047,7 +5047,7 @@
         "skill_id": "290",
         "skill_name": "收集重要他人反映以补充资料",
         "skill_description": "Proactively gather descriptions from guardians or significant others about the client's character, past performance, and changes in symptoms, record the similarities and differences against the self-report, and round out information from other sources, improving the comprehensiveness and credibility of the material.",
-        "when_to_use": "初评阶段需多来源验证信息与补充社会性资料时。",
+        "when_to_use": "In the initial assessment stage, when multi-source verification of information and supplementary social data are needed.",
         "trigger": "When a parent is present or contactable and willing to provide information, or when self-report and observation differ and corroboration is needed.",
         "parent_ids": [
             "285",
@@ -5165,7 +5165,7 @@
         "skill_name": "协调体检并记录结论以排除器质性病因",
         "skill_description": "根据评估需要建议并对接医学检查，在资料表中记录检查结论（如without明显器质性疾病），用于排除器质性精神障碍与完善诊断依据，避免误判。",
         "when_to_use": "At the assessment and diagnosis stage, when organic causes need to be ruled out or diagnostic grounds completed.",
-        "trigger": "来访者存在反复躯体症状或对器质性问题有担忧。",
+        "trigger": "The client has repeated somatic symptoms or worries about organic problems.",
         "parent_ids": [
             "285",
             "261",
@@ -5188,7 +5188,7 @@
     },
     "291": {
         "skill_id": "291",
-        "skill_name": "施测并记录SCL-90/SAS/SDS结果",
+        "skill_name": "Administering and recording SCL-90/SAS/SDS results",
         "skill_description": "选择SCL-90、SAS、SDS及EPQ等量表进行评估，按效度与标准分记录总分与维度分数，量化Anxiety抑郁与相关因子水平，保存为评估基线与随访比对的数据来源。",
         "when_to_use": "At the initial assessment stage or diagnosis stage, when it is necessary to quantify symptoms and establish a test baseline.",
         "trigger": "测验结果已出具且有效，或Anxiety present抑郁主诉与考试相关问题需标准化量表评估。",

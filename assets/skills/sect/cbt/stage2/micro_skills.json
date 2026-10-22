@@ -2510,7 +2510,7 @@
     },
     "731": {
         "skill_id": "731",
-        "skill_name": "复盘评分波动并关联生活事件以调整咨询安排",
+        "skill_name": "Reviewing score fluctuations and linking life events to adjust counseling arrangements",
         "skill_description": "定期回看记录表，识do not新旧信念分数的波动与趋势，讨论哪些生活事件促成变化，据此判断Intervention效果并规划后续进程与目标调整。",
         "when_to_use": "每周或阶段性总结时，用于评估Intervention成效、理解波动来源并优化咨询计划。",
         "trigger": "The client reports that recent events affect belief strength; the record form shows significant rises or falls or trend changes, needing explanation and adjustment.",
@@ -4450,7 +4450,7 @@
         "skill_id": "1170",
         "skill_name": "第一次会谈收集咨询动机与现状",
         "skill_description": "In the information-gathering session, guide the client to briefly describe their motivation for coming, expectations of counseling, and current state, and to share the past week's situation and problems, forming an overview of the key situation and providing the latest basis for setting goals and choosing techniques.",
-        "when_to_use": "第一次咨询或阶段启动时的开场信息更新环节。",
+        "when_to_use": "At the opening information update segment of the first counseling or stage launch.",
         "trigger": "开始会谈或来访者表述迷茫、Insufficient motivation，或出现波动性self-injury念头等近期变化。",
         "parent_ids": [
             "660",
@@ -5070,7 +5070,7 @@
     },
     "1020": {
         "skill_id": "1020",
-        "skill_name": "施测SAS/SDS并反馈解释，阶段性复测比较",
+        "skill_name": "Administering SAS/SDS with feedback and interpretation, and stage re-testing for comparison",
         "skill_description": "完成SAS/SDS测评后向来访者反馈分数与意义，判定Anxiety/抑郁严重度；在初评、阶段性与回访节点复测并与基线对比，客观评估变化与咨询效果，必要时结合医疗诊断。",
         "when_to_use": "Feedback and explanation are needed after testing is completed; at initial consultation and phased retesting, and when evaluating effects before termination.",
         "trigger": "量表评分已完成且显示Anxiety/抑郁或相关问题；需与初测分数进行对比评估进展。",
@@ -5187,7 +5187,7 @@
     },
     "1021": {
         "skill_id": "1021",
-        "skill_name": "结束前复测SAS/SDS并对照初测评估改善",
+        "skill_name": "Retesting SAS/SDS before the end and comparing with initial tests to assess improvement",
         "skill_description": "在结束或巩固阶段再次施测SAS/SDS，记录标准分并与初次测评结果对照，客观评估Anxiety与抑郁的改善幅度与咨询效果，向来访者反馈变化并用于结案与巩固计划。",
         "when_to_use": "Consolidation and termination阶段的效果评估环节；第三至第六次咨询的回顾总结或随访复盘。",
         "trigger": "When preparing to end counseling or needing to evaluate the stage effect, when the pre-test was completed earlier and comparison with the baseline is needed.",
@@ -6058,7 +6058,7 @@
     },
     "863": {
         "skill_id": "863",
-        "skill_name": "布置ABC/ABCDE记录以跨情境收集材料",
+        "skill_name": "Assigning ABC/ABCDE records to collect materials across situations",
         "skill_description": "安排家庭作业，按ABC或ABCDE格式记录事件A、信念B与结果C（及D反驳、E新效果），要求标出并分析B中的not合理成分，逐条记录矛盾场景的想法与感受，回收后用于横向比较与归纳重复主题。",
         "when_to_use": "在心理帮助阶段或第二次咨询后，需要系统化收集多情境的自动思维与not合理信念，为后续概括做准备时。",
         "trigger": "会谈材料not足或来访者对情绪与信念关系认识not足；或主题not清晰、仅凭印象下结论，需要通过作业系统记录A、B、C。",
@@ -6539,7 +6539,7 @@
         "skill_id": "981",
         "skill_name": "肯定作业收获巩固正向评价",
         "skill_description": "Review and strengthen the positive changes brought by the homework, convey others' recognition, guide the client to see the positive parts and give concrete encouragement; thought record practice may continue, paired with a self-affirmation checklist, consolidating the gains of the 'observing strengths' task and raising self-esteem and the motivation for continued implementation.",
-        "when_to_use": "作业回顾环节或结束阶段及后续巩固练习时。",
+        "when_to_use": "In the homework review segment or closing stage and subsequent consolidation practice.",
         "trigger": "来访者按时完成任务并报告Anxiety减少、睡眠改善、自信提升等结果，或仍对自我价值持消极评价。",
         "parent_ids": [
             "660",
@@ -6604,7 +6604,7 @@
         "skill_id": "974",
         "skill_name": "检查睡眠与放松作业并Reinforcement反馈",
         "skill_description": "Check the completion of homework such as sleep diaries, relaxation training, and daytime behavior (frequency, duration, and deviations), review effects together with subjective feelings and changes in sleep indicators, promptly affirm progress and propose adjustment suggestions on the spot, and consolidate effective behavior.",
-        "when_to_use": "回顾睡眠卫生与放松等行为作业的执行与效果时。",
+        "when_to_use": "When reviewing the implementation and effects of behavioral homework such as sleep hygiene and relaxation.",
         "trigger": "The client submits records or reports information such as longer sleep time, fewer awakenings, and persisting with training.",
         "parent_ids": [
             "660",
@@ -7030,7 +7030,7 @@
         "skill_id": "1022",
         "skill_name": "回顾改变达成的路径与方法",
         "skill_description": "Guide the client to review how the change occurred, restate the key thinking and the path of practice (such as reasonable thinking and practice), clarify their understanding of the process, and consolidate their grasp of the mechanism and their capacity to replicate it themselves.",
-        "when_to_use": "在结束反馈中，需确保方法被理解并可自用时。",
+        "when_to_use": "In closing feedback, when ensuring the method is understood and can be self-used.",
         "trigger": "When the client has reported change but the understanding of the implementation process and key points is still vague.",
         "parent_ids": [
             "660",
@@ -7043,7 +7043,7 @@
         "skill_id": "874",
         "skill_name": "肯定积极变化并Reinforcement持续动机",
         "skill_description": "Based on the client's progress and successful experiences, give appropriate affirmation and encouragement, evoke positive emotions, enhance self-efficacy and the willingness to keep trying, and lay the groundwork for subsequent homework and behavior maintenance.",
-        "when_to_use": "会谈反馈/结案时，或完成挑战性练习与作业后。",
+        "when_to_use": "At session feedback/closure, or after completing challenging exercises and homework.",
         "trigger": "报告睡眠改善、Anxiety降低、理性思维应用等正向变化，或完成任务但对成效not确定时。",
         "parent_ids": [
             "660",
@@ -7069,7 +7069,7 @@
         "skill_id": "969",
         "skill_name": "承接负面反馈并予以解释与澄清",
         "skill_description": "结束环节主动邀请并承接not适与负面反馈，针对抱怨/疑虑及时解释流程与目的，并进行必要的宣教与澄清，修复关系并促进持续合作与作业执行。",
-        "when_to_use": "每次结束前的反馈环节，用于收集体验与问题时。",
+        "when_to_use": "At the feedback segment before each ending, used to collect experiences and problems.",
         "trigger": "来访者表达失望、Anxiety、埋怨，或对治疗与作业产生疑虑与误解时。",
         "parent_ids": [
             "660",
@@ -8652,7 +8652,7 @@
     },
     "1092": {
         "skill_id": "1092",
-        "skill_name": "复测SCL-90/SAS前后对比评估疗效",
+        "skill_name": "Re-administering SCL-90 / SAS for before-and-after comparison to evaluate efficacy",
         "skill_description": "在阶段性或结束时再次施测SCL-90与SAS，与初评结果对比，检验总体症状与Anxiety水平的改善程度，为巩固、结束或调整策略与作业提供依据。",
         "when_to_use": "After completing multiple trainings or sessions, when efficacy and residual symptoms need objective evaluation.",
         "trigger": "The client feels improved or still has residuals and needs scales to verify and quantify the magnitude of change.",

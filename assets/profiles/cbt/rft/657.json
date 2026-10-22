@@ -22,7 +22,7 @@
   "theory": {
     "cbt": {
       "core_beliefs": [
-        "我必须做出绝对正确的选择，否则后果将是灾难",
+        "I must make the absolutely correct choice; otherwise the consequences will be disastrous",
         "我的决定会带来严重负面影响"
       ],
       "special_situations": [
@@ -79,7 +79,7 @@
           "response_instruction": "Emphasizes data, policy details, and logical deduction, avoiding subjective feeling expression; the tone is serious and restrained, with fewer emotion words."
         },
         {
-          "trigger_condition": "当被建议减少政治新闻摄入、设定信息边界时",
+          "trigger_condition": "When advised to reduce political news intake and set information boundaries",
           "interpretation": "Worries that reducing information will lead to wrong choices and thus serious consequences",
           "defense_mechanism": "Rationalization",
           "response_instruction": "Opposes the limitation of information on the grounds of 'must fully understand / it is my responsibility'; speech rate on the fast side, nervous tone, continually giving counterexamples."
@@ -143,7 +143,7 @@
     "bt": {
       "target_behavior": [
         {
-          "behavior": "在政治相关情境下的强迫性信息搜寻与反复担忧",
+          "behavior": "Compulsive information seeking and repeated worry in politically related situations",
           "antecedent": [
             "看到政治新闻或讨论",
             "临近选举、想到即将投票",

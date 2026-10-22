@@ -559,7 +559,7 @@
         "skill_id": "184",
         "skill_name": "询问当前自评刻度以具体化当下状态",
         "skill_description": "After the scale is established, directly invite the client to rate the current state (such as 'What score are you at now?'), making the present experience concrete, laying a foundation for subsequent comparison and planning.",
-        "when_to_use": "已完成刻度与端点定义后，进入现状评估环节时。",
+        "when_to_use": "After the scale and endpoints have been defined, when entering the current-state assessment segment.",
         "trigger": "The client is describing their current situation or has just reached consensus on the meanings of 0 and 10.",
         "parent_ids": [
             "93",
@@ -601,7 +601,7 @@
         "skill_id": "187",
         "skill_name": "在具体问题域设定刻度与目标增量",
         "skill_description": "Apply scaling to a specific topic (such as sleep), define what 0 and 10 mean within that domain, ask for the current rating, the desired rating, and how many points they hope to move forward in this session, making the goal more closely fitted to the situation.",
-        "when_to_use": "围绕特定症状或功能问题开展评估与目标设定时。",
+        "when_to_use": "When conducting assessment and goal setting around specific symptoms or functional problems.",
         "trigger": "来访者提出具体困扰（如“cannot sleep”“工作效率很低”），需要领域化衡量与目标。",
         "parent_ids": [
             "93",
@@ -3550,7 +3550,7 @@
         "skill_name": "详述新故事的情境、情绪与行动",
         "skill_description": "Around the events in the new story, prompt the client to concretize the emotions, thoughts, and actions at that time, by asking 'what did you do then, what did you think, what did you feel', filling in the details and increasing the narrative's layering and fullness.",
         "when_to_use": "After exceptions or side stories have been found, used to enrich the content of the new narrative.",
-        "trigger": "来访者仅给出笼统描述，缺少细节、情绪与意义。",
+        "trigger": "The client only gives a general description, lacking details, emotions, and meaning.",
         "parent_ids": [
             "93",
             "94",

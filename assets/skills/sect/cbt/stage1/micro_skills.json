@@ -243,7 +243,7 @@
         "skill_name": "询问主诉问题的频率与持续时间",
         "skill_description": "Asks about the occurrence frequency and duration of the chief complaint problem, to assess whether the problem persists and its possible impact.",
         "when_to_use": "在评估问题的持续性和发生频率时。",
-        "trigger": "来访者描述了问题发生的频率和每次持续的时间。",
+        "trigger": "The client described the frequency of the problem's occurrence and the duration of each episode.",
         "parent_ids": [
             "1",
             "5",
@@ -363,7 +363,7 @@
         "skill_name": "评估夫妻/亲子关系",
         "skill_description": "通过询问来访者与配偶或子Female的关系，了解其在家庭中的互动模式，识do not是否存在夫妻或亲子关系中的问题。",
         "when_to_use": "在Evaluative session中，特do not是当来访者提到婚姻或家庭方面的问题时。",
-        "trigger": "来访者提到夫妻冲突、亲子矛盾或家庭压力等。",
+        "trigger": "When the client mentions marital conflict, parent-child conflict, or family stress, etc.",
         "parent_ids": [
             "1",
             "5",
@@ -407,7 +407,7 @@
         "skill_id": "60",
         "skill_name": "识do not其他角色中的表现与互动",
         "skill_description": "通过询问来访者在其他社会角色（如朋友、社区成员等）中的表现与互动，评估其在not同角色中的适应情况。",
-        "when_to_use": "当来访者提到其在社交或其他角色中的困扰时。",
+        "when_to_use": "When the client mentions troubles in social or other roles.",
         "trigger": "来访者提到自己在人际交往或社会活动中的困难或not适应。",
         "parent_ids": [
             "1",
@@ -600,10 +600,10 @@
     },
     "73": {
         "skill_id": "73",
-        "skill_name": "回顾青少年阶段的关键社会关系与自我认知的形成",
+        "skill_name": "Reviewing key social relationships and the formation of self-cognition in adolescence",
         "skill_description": "Ask about the main social relationships of the client's adolescence (such as classmates, friends, romantic relationships) and their influence on self-worth and cognition. This process helps trace the formation of intermediate beliefs and self-cognition patterns.",
         "when_to_use": "In the process of exploring the development of the client's self-awareness, especially key relationships during adolescence.",
-        "trigger": "来访者提到青少年时期的社交互动或亲密关系时。",
+        "trigger": "When the client mentions social interactions or intimate relationships in adolescence.",
         "parent_ids": [
             "1",
             "5",
@@ -859,7 +859,7 @@
     },
     "91": {
         "skill_id": "91",
-        "skill_name": "采用斯蒂芬·霍夫曼的认知行为模型分析问题机理",
+        "skill_name": "Using Stephen Hoffman's cognitive behavioral model to analyze the mechanism of the problem",
         "skill_description": "应用斯蒂芬·霍夫曼的认知行为模型，通过特定的概念化视角，分析来访者的心理问题，识do not情境、认知、情绪与行为之间的关系。",
         "when_to_use": "在Evaluative session中，当来访者展示出明显的心理问题症状时，use该模型来理解问题的根本机理。",
         "trigger": "来访者描述了情绪困扰或行为问题，例如Anxiety、恐慌、Low mood等，咨询师需要use模型进行问题分析。",
@@ -1217,7 +1217,7 @@
         "skill_name": "收集来访者基本人口学信息",
         "skill_description": "在会谈开始阶段，咨询师通过询问来访者的年龄、性do not、婚育、职业、文化程度、宗教信仰、居住状况等个人基本信息，收集并记录这些信息用于后续分析与诊断。",
         "when_to_use": "在Evaluative session的开始阶段，作为初步信息收集的一部分。",
-        "trigger": "来访者初次到访时，或在咨询关系建立的初期。",
+        "trigger": "When the client first visits, or in the early stage of establishing the counseling relationship.",
         "parent_ids": [
             "1",
             "5",
@@ -1308,7 +1308,7 @@
         "skill_name": "设定咨询目标的具体行为或情绪改变",
         "skill_description": "After clarifying the counseling goal domains, help the client concretize these goals into operable behavioral or emotional changes, ensuring each goal has clear, measurable criteria.",
         "when_to_use": "在Evaluative session结束阶段，确认咨询的具体方向后，帮助来访者将目标具体化。",
-        "trigger": "来访者已同意参与后续咨询，并确认了治疗方向。",
+        "trigger": "The client has agreed to participate in subsequent counseling and confirmed the treatment direction.",
         "parent_ids": [
             "1",
             "29",
@@ -1347,7 +1347,7 @@
         "skill_name": "向来访者说明咨询的时间长度和费用范围",
         "skill_description": "The counselor needs to explain to the client the expected length of counseling time (for example, 8 to 14 sessions), as well as the fee range per session (such as 500 yuan per session), to help the client decide whether to continue counseling.",
         "when_to_use": "After clarifying the counseling goals, conveys to the client the practical arrangements and fee information about the counseling.",
-        "trigger": "来访者表达出对时间和费用安排的关注或疑虑。",
+        "trigger": "When the client expresses concern or doubt about time and fee arrangements.",
         "parent_ids": [
             "1",
             "29",
@@ -1432,7 +1432,7 @@
         "skill_id": "460",
         "skill_name": "标注关键事件的情绪、行为与认知影响",
         "skill_description": "围绕每个关键事件并列记录当时与后续的情绪反应、行为/功能变化与认知后果（如低落、self-injury、回避、自评下降或自我要求增强），同时保留成就与挫折两类素材，以呈现事件—反应—结果链，支持纵向概念化与Intervention设计。",
-        "when_to_use": "成长史与现病史交叉核对或关键事件细化阶段。",
+        "when_to_use": "Stage of cross-checking developmental history and present illness history or refining key events.",
         "trigger": "When the client recalls winning a competition/being mocked, traumatic experiences, or stressful events, and describes marked emotional and behavioral changes.",
         "parent_ids": [
             "1",
@@ -1611,7 +1611,7 @@
         "skill_id": "286",
         "skill_name": "商定可量化且双方认可的目标",
         "skill_description": "Discuss and confirm goals with the client item by item, making them concrete, quantifiable, and evaluable, clarifying progress review and feedback methods, and ensuring they match their real circumstances and core distress, to serve as a common standard for subsequent intervention and evaluation.",
-        "when_to_use": "介绍目标制定原则后，进入目标协商与确认阶段。",
+        "when_to_use": "After introducing the principles of goal setting, entering the goal negotiation and confirmation stage.",
         "trigger": "The client is willing to participate in goal setting and raises expectations or preferences, needing to form a consistent and assessable goal list.",
         "parent_ids": [
             "1",
@@ -1754,7 +1754,7 @@
         "skill_id": "177",
         "skill_name": "正常化来访者的困境与反应",
         "skill_description": "After learning the reason for seeking help, explain the objectivity of the challenges they face, emphasize the understandability of the emotional and behavioral reactions, and through 'normalization' reduce shame and self-blame, raise acceptance, and stabilize the initial alliance.",
-        "when_to_use": "初次会谈早期，在澄清求助原因与主要困扰之后。",
+        "when_to_use": "Early in the first session, after clarifying the reasons for seeking help and the main troubles.",
         "trigger": "对自身反应感到困惑，或在描述现实压力与Low mood时。",
         "parent_ids": [
             "1",
@@ -2339,7 +2339,7 @@
         "skill_id": "416",
         "skill_name": "核实近期就医检查与器质性排除结果",
         "skill_description": "收集多次就医与检查经历及结论，记录“not yet发现器质性病变”等信息，用于支持当前诊断、是否转介及Intervention方案的制定。",
-        "when_to_use": "评估既往就医史或需要排除身体疾病影响时。",
+        "when_to_use": "When assessing prior medical history or needing to rule out the influence of physical illness.",
         "trigger": "When the client mentions having sought medical examinations multiple times or having worries about physical condition.",
         "parent_ids": [
             "1",
@@ -2354,7 +2354,7 @@
         "skill_id": "473",
         "skill_name": "核实精神科诊断与当前用药情况",
         "skill_description": "询问并核对既往与当前精神科诊断、就诊机构与用药情况，记录遵医嘱服药与随访安排及态度变化，为Intervention与转介计划提供依据。",
-        "when_to_use": "初次评估或病情较重、需与医疗端协作与转介时。",
+        "when_to_use": "At initial assessment or when the condition is more severe and collaboration with and referral to the medical side are needed.",
         "trigger": "When the client mentions psychiatric visits/medication or presents hospital diagnostic information, or shows resistance to continuing medication.",
         "parent_ids": [
             "1",
@@ -2414,7 +2414,7 @@
         "skill_id": "502",
         "skill_name": "核实精神诊断、住院与心理治疗经历",
         "skill_description": "Recording the formal diagnosis, the start and end and duration of hospitalization, psychotherapy experience, and follow-up arrangements, forming an objective medical history framework to assist the current assessment and plan formulation.",
-        "when_to_use": "既往病史采集阶段及需要整合外部病历信息时。",
+        "when_to_use": "During past medical history collection and when external medical record information needs to be integrated.",
         "trigger": "When the client mentions experiences of hospitalization/medical visits, being diagnosed, or having received psychological treatment.",
         "parent_ids": [
             "1",
@@ -2430,7 +2430,7 @@
         "skill_name": "Asking about and recording family history of mental illness",
         "skill_description": "采集“家族without精神疾病史”等信息，作为鉴do not诊断与共病风险评估的依据，辅助排除相关精神障碍的家族倾向。",
         "when_to_use": "诊断评估与鉴do not诊断资料收集阶段。",
-        "trigger": "需要了解家族史或来访者提及家族健康状况时。",
+        "trigger": "When family history needs to be understood or the client mentions family health status.",
         "parent_ids": [
             "1",
             "5",
@@ -2475,7 +2475,7 @@
         "skill_name": "询问并记录家族精神病史",
         "skill_description": "询问家族成员是否曾患精神疾病并如实记录（如“without家族精神病史”），用于评估家族风险与支持系统，为诊断与Intervention提供背景信息。",
         "when_to_use": "既往病史采集与风险评估时。",
-        "trigger": "来访者提及家庭成员或被问及家族疾病史时。",
+        "trigger": "When the client mentions family members or is asked about family medical history.",
         "parent_ids": [
             "1",
             "5",
@@ -2519,7 +2519,7 @@
         "skill_id": "190",
         "skill_name": "整合精神科就诊诊断与用药信息",
         "skill_description": "询问是否至专业机构评估、获得何种诊断及当前用药方案，记录随访安排与依从性，整合医疗信息以协调校内外Intervention并制定咨询计划。",
-        "when_to_use": "评估阶段需整合医疗信息或决定转介与协作时。",
+        "when_to_use": "When the assessment stage requires integrating medical information or deciding on referral and collaboration.",
         "trigger": "来访者提及被评估、被诊断为Anxiety抑郁或正在服药，或携带医院诊断与医嘱信息时。",
         "parent_ids": [
             "1",
@@ -3046,7 +3046,7 @@
         "skill_id": "145",
         "skill_name": "排查躯体疾病与器质性病变",
         "skill_description": "系统询问重大躯体疾病、手术与慢性病史，并核对近期体检/医院检查要点，记录阴/阳性结论（如“without异常/without器质性病变”）；必要时补充家族精神病史与总体健康，排除医学因素干扰，支持转介与Intervention决策。",
-        "when_to_use": "初评与诊断排除阶段，或症状与生理相关时。",
+        "when_to_use": "In the initial assessment and diagnostic exclusion stage, or when symptoms are physiologically related.",
         "trigger": "需排除医学共病；来访者提供体检结果或deny/not清楚身体疾病；存在睡眠、食欲等生理异常线索时。",
         "parent_ids": [
             "1",
@@ -3627,7 +3627,7 @@
         "skill_id": "447",
         "skill_name": "明确短期与长期咨询目标",
         "skill_description": "在评估与概念化后，清晰列出本阶段短期与长期目标，并与来访者确认共识，使方向与Anticipation具体可达成，指引后续步骤与重点。",
-        "when_to_use": "完成初步评估与概念化后，对齐方向与期望时。",
+        "when_to_use": "After completing initial assessment and conceptualization, when aligning direction and expectations.",
         "trigger": "已形成初步判断，需要统一咨询目标与Anticipation成效之际。",
         "parent_ids": [
             "1",
@@ -3640,7 +3640,7 @@
         "skill_id": "377",
         "skill_name": "说明方法与阶段安排及时间节奏",
         "skill_description": "向来访者说明拟采用的方法与阶段性任务，明确频次、单次时长与预计总次数，并概述各阶段重点，使其把握整体流程与Anticipation路径。",
-        "when_to_use": "初次评估完成并形成初步目标后或方案制定阶段。",
+        "when_to_use": "After the initial assessment is completed and preliminary goals are formed, or at the plan formulation stage.",
         "trigger": "来访者对频次、时长或后续步骤not明确，需要结构化说明时。",
         "parent_ids": [
             "1",
@@ -3705,7 +3705,7 @@
         "skill_id": "523",
         "skill_name": "共建议程并聚焦当次优先议题",
         "skill_description": "Agree with the client on the concrete content and focus of this session, rank priorities combined with the problem list, clarify goals and process, improving session efficiency and avoiding topic divergence.",
-        "when_to_use": "完成上周回顾后，需确定本次议程与优先级时。",
+        "when_to_use": "After completing last week's review, when this session's agenda and priorities need to be set.",
         "trigger": "When the client raises multiple topics or concerns at the same time, needing focusing and prioritization.",
         "parent_ids": [
             "1",
@@ -3770,7 +3770,7 @@
         "skill_id": "312",
         "skill_name": "说明时间安排与费用政策",
         "skill_description": "清晰告知咨询频次、单次时长、预计总次数及费用情况（如校内免费），帮助来访者形成现实Anticipation并便于时间与资源安排。",
-        "when_to_use": "首次会谈结构化阶段或制定初步咨询计划时。",
+        "when_to_use": "In the first session structuring stage or when formulating a preliminary counseling plan.",
         "trigger": "来访者询问时长、次数或费用，或尚not yet获知具体安排时。",
         "parent_ids": [
             "1",
@@ -3835,7 +3835,7 @@
         "skill_id": "415",
         "skill_name": "说明权责与保密并建立边界",
         "skill_description": "Explain the responsibilities, rights, and obligations of the help-seeker and the counselor, emphasize the confidentiality principle and its exceptions, complete the consent procedure when necessary, and let the client begin cooperating within informed and safe boundaries.",
-        "when_to_use": "初次会谈的结构化说明阶段或制定咨询方案时。",
+        "when_to_use": "At the structured explanation stage of the initial session or when formulating a counseling plan.",
         "trigger": "来访者对权责、保密或边界提出疑问或表现not安时。",
         "parent_ids": [
             "1",
@@ -4017,7 +4017,7 @@
         "skill_id": "433",
         "skill_name": "布置记录型作业以支持后续评估",
         "skill_description": "Before the end of the session, assign record-type homework (such as an event-emotion-cognition-behavior log / a thought-and-emotion record form / a counseling diary), explaining the filling-in method and the purpose, providing a basis for the next analysis and practice.",
-        "when_to_use": "首次或早期会谈结束阶段，进入实践与监测时。",
+        "when_to_use": "At the closing stage of the first or early sessions, when entering practice and monitoring.",
         "trigger": "When troubles need to be systematically organized and emotion-cognition patterns monitored, and the client is willing to do homework.",
         "parent_ids": [
             "1",
@@ -4054,7 +4054,7 @@
     },
     "421": {
         "skill_id": "421",
-        "skill_name": "串联并标注情境—思维—情绪—行为—结果回路",
+        "skill_name": "Linking and labeling the situation-thought-emotion-behavior-outcome loop",
         "skill_description": "通过连续Questioning回顾具体情境，依次标注trigger事件、自动思维、情绪、行为及结果/他人反馈，口头总结或用表格/图示呈现“这是一个循环”，突出维持因素与相互Reinforcement，为后续Intervention定位。",
         "when_to_use": "评估与个案概念化早期，当来访者描述困扰但缺乏清晰模式，需呈现维持性恶性循环并定位Intervention点时。",
         "trigger": "反复报告Anxiety、insomnia、Decreased efficiency或人际冲突，并自述“越来越糟/陷入循环”，且能提供一次具体情境。",
@@ -4144,7 +4144,7 @@
     },
     "475": {
         "skill_id": "475",
-        "skill_name": "用记录材料构建情境—思维—情绪—行为环路图",
+        "skill_name": "Using recorded materials to build a situation-thought-emotion-behavior loop diagram",
         "skill_description": "Take the concrete events recorded by the client in the homework as clues, and sort out in sequence the situation, the automatic thoughts at that moment, and the corresponding emotional and behavioral responses, presenting the interaction of elements and possible loop junctions in combination with the conceptualization chart.",
         "when_to_use": "The assessment and case conceptualization stage, or when reviewing specific situations such as discomfort in the study room.",
         "trigger": "The client can recall and describe the situation, emotions, and thoughts at the time, and is willing to cooperate with recording and diagrammatic presentation.",
@@ -4702,7 +4702,7 @@
         "skill_name": "构建问题发生时间线",
         "skill_description": "Review key events and psychological reactions in chronological order, linking nodes from setbacks to adaptation difficulties, forming a clear onset-development thread, used to grasp the course and key turning points.",
         "when_to_use": "After the chief complaint is preliminarily clear, when the starting point and key events need to be located and the illness course organized.",
-        "trigger": "来访者主动回忆或提及多次重要事件对其影响。",
+        "trigger": "When the client proactively recalls or mentions the impact of several important events on them.",
         "parent_ids": [
             "1",
             "5",
@@ -4986,7 +4986,7 @@
         "skill_id": "401",
         "skill_name": "评估宿舍与同学互动及适应",
         "skill_description": "了解与同学/舍友相处状况、交流频率与舒适度，记录回避、紧张与not自在等现象及其对学习生活的影响，判断人际功能是否受损或保持稳定。",
-        "when_to_use": "社会功能评估环节，聚焦人际互动与校园适应时。",
+        "when_to_use": "At the social functioning assessment stage, focusing on interpersonal interaction and campus adaptation.",
         "trigger": "Clues about getting along smoothly with classmates/roommates or showing avoidance, tension, staying in the dormitory for long periods, etc.",
         "parent_ids": [
             "1",
@@ -5376,7 +5376,7 @@
         "skill_id": "293",
         "skill_name": "use登记表结构化收集并核对基本信息",
         "skill_description": "依登记表逐项询问与记录年龄、性do not、籍贯、在读年级、家庭构成与经济状况等基础资料，并与来访者自述当场核对，确保背景信息完整一致、可用可靠。",
-        "when_to_use": "初诊首谈开始阶段，建立个案档案与背景画像时。",
+        "when_to_use": "At the start of the first diagnostic session, when establishing the case file and background profile.",
         "trigger": "首次来访尚without登记档案或既往信息not全需系统补充时。",
         "parent_ids": [
             "1",
@@ -5436,7 +5436,7 @@
         "skill_id": "428",
         "skill_name": "记录学业表现与社会角色",
         "skill_description": "记录学习成绩、在校职务与荣誉（如党员、Student干部、奖学金等）及人际概况，描绘当前身份与责任负荷，作为社会支持与功能评估的背景数据。",
-        "when_to_use": "建立基本档案并需要评估社会支持与功能背景时。",
+        "when_to_use": "When establishing the basic file and needing to assess social support and functional background.",
         "trigger": "When the client mentions study, grades, interpersonal interaction, or service/honor experiences.",
         "parent_ids": [
             "1",
@@ -5541,7 +5541,7 @@
         "skill_id": "360",
         "skill_name": "观察并记录外貌与当下情绪/行为",
         "skill_description": "At the start of the session, record observable appearance and behavioral states, such as hairstyle, clothing, face and posture, crying and reactions after being soothed, language fluency, supplementing objective descriptions of basic information and current adaptation.",
-        "when_to_use": "初访或入院首日评估时，用于建立基线表现。",
+        "when_to_use": "At the initial visit or first-day admission assessment, used to establish baseline performance.",
         "trigger": "When salient appearance features or immediate emotional/behavioral reactions (such as crying or a tense posture) are available for observation.",
         "parent_ids": [
             "1",
@@ -6015,7 +6015,7 @@
         "skill_id": "495",
         "skill_name": "收集成长背景与养育者特征印象",
         "skill_description": "记录家庭结构与资源、独生子Female与照料方式、主要养育者的社交与沟通特征及来访者对其的印象，提取与自理与交往能力相关的线索，用于理解当前问题。",
-        "when_to_use": "原因分析与纵向概念化阶段，需补充成长背景时。",
+        "when_to_use": "At the cause analysis and longitudinal conceptualization stage, when growth background needs to be supplemented.",
         "trigger": "When talking about family circumstances, sources of personality, the client's self-care/social difficulties, or evaluations of caregiver traits.",
         "parent_ids": [
             "1",
@@ -6030,7 +6030,7 @@
         "skill_id": "300",
         "skill_name": "回顾成长与抚养经历及父母期待",
         "skill_description": "鼓励回顾被抚养情况、严格要求/奖励机制与父母对学业的期待等具体经历，记录当时感受，对早期Family relationships与其影响做初步梳理。",
-        "when_to_use": "初诊或成长史收集阶段，了解家庭教育与期望时。",
+        "when_to_use": "At the initial diagnosis or growth history collection stage, when learning about family education and expectations.",
         "trigger": "When the client mentions getting along with family, being demanded of or neglected, or begins narrating details of family upbringing.",
         "parent_ids": [
             "1",
@@ -6060,7 +6060,7 @@
         "skill_id": "534",
         "skill_name": "回顾家庭氛围、父母关系与陪伴",
         "skill_description": "Guides recall of the early family atmosphere, parental relationship and conflicts, the frequency and ways of parental companionship, records the experience at the time, understanding its influence on the sense of security and emotional reactions.",
-        "when_to_use": "纵向概念化的早期教养探索或家庭背景讨论时。",
+        "when_to_use": "During early upbringing exploration in longitudinal conceptualization or family background discussion.",
         "trigger": "来访者提到家庭not和或暴力打斗、父亲长期not在家等带强情绪的经历时。",
         "parent_ids": [
             "1",
@@ -6285,7 +6285,7 @@
         "skill_id": "532",
         "skill_name": "追问早期分离、寄养与沟通模式",
         "skill_description": "Specifically learn about childhood foster care / boarding, absence due to parents being busy, communication styles, and willingness to confide, clarify early attachment and self-soothing patterns and their current impact, and trace back the changes in infant and toddler care.",
-        "when_to_use": "出现早年照料安排异常或长期情感忽视的迹象时。",
+        "when_to_use": "When signs of abnormal early caregiving arrangements or long-term emotional neglect appear.",
         "trigger": "When the client narrates experiences such as long-term care by grandparents, little communication, or changes in care during infancy and early childhood.",
         "parent_ids": [
             "1",
@@ -6300,7 +6300,7 @@
         "skill_id": "372",
         "skill_name": "梳理父母关系变迁与家庭重大事件",
         "skill_description": "围绕父母婚姻not和、离婚/再婚等重大事件建立时间轴，回忆当时体验与意义，呈现关系演变对情绪与适应的影响，作为纵向概念化依据。",
-        "when_to_use": "原生家庭与亲子关系影响评估、纵向概念化阶段。",
+        "when_to_use": "At the stage of assessing the influence of the family of origin and parent-child relationships, and longitudinal conceptualization.",
         "trigger": "来访者提及Divorced/再婚、与继亲相处或被隐瞒家庭事件等内容时。",
         "parent_ids": [
             "1",
@@ -6330,7 +6330,7 @@
         "skill_id": "349",
         "skill_name": "梳理主要养育者、抚养方式与期待",
         "skill_description": "梳理主要养育者与抚养方式（聚少离多、由Mother带大、重视成绩、要求严格）及来访者印象，作为纵向概念化中信念形成的背景线索。",
-        "when_to_use": "发展史采集与纵向概念化前的家庭背景探查。",
+        "when_to_use": "Developmental history collection and family background exploration before longitudinal conceptualization.",
         "trigger": "When the client mentions content such as who mainly raised them, parents' upbringing style, and expectations about grades.",
         "parent_ids": [
             "1",
@@ -6358,7 +6358,7 @@
     },
     "302": {
         "skill_id": "302",
-        "skill_name": "形成并记录诊断结论与依据（含服务范围与共病）",
+        "skill_name": "Forming and recording diagnostic conclusions and their basis (including service scope and comorbidity)",
         "skill_description": "在证据支持下给出诊断结论（如Average心理问题/具体表述），条目化陈述依据（症状四维度、病程与功能、量表分、排除项等），确认自知力完整、without幻觉妄想与重大躯体异常，必要时识do not并记录共病或特质，界定咨询范畴与服务去向。",
         "when_to_use": "After completing data integration and scale interpretation, when the diagnosis needs to be fed back before entering goal and plan formulation.",
         "trigger": "Diagnostic cues are sufficient and psychotic and severe problems have been excluded; scale and clinical information are consistent, or a hospital diagnosis is held and needs to be included in records with explanation.",
@@ -6438,7 +6438,7 @@
         "skill_id": "465",
         "skill_name": "精神状态检查与精神病性/suicide风险排查",
         "skill_description": "在会谈中检查并记录有without幻觉、妄想等精神病性症状及suicide意念或行为，明确“有/without”，结合自知力与逻辑思维判断，作为风险分级与诊断边界的依据。",
-        "when_to_use": "诊断阶段的风险评估与排除重性精神障碍时。",
+        "when_to_use": "During risk assessment in the diagnostic stage and excluding severe mental disorders.",
         "trigger": "来访者提及异常知觉、被害想法、self-injury/suicide念头，或需常规排查严重风险时。",
         "parent_ids": [
             "1",
@@ -6854,7 +6854,7 @@
     },
     "436": {
         "skill_id": "436",
-        "skill_name": "复测SAS/SDS并比较前后评估咨询效果",
+        "skill_name": "Re-administering SAS / SDS and comparing before-and-after to evaluate counseling effects",
         "skill_description": "在Consolidation and termination前再次让来访者完成Anxiety与抑郁自评量表，比较前后分值变化，以客观评定咨询效果并作为阶段性或结案依据；记录标准分变化用于效果评价与方案调整。",
         "when_to_use": "When counseling enters the late stage or closing assessment and periodic summary, when treatment outcomes need quantitative re-checking.",
         "trigger": "症状已有改善迹象或需对Intervention效果进行客观验证与记录，准备进行阶段评估或结束咨询。",
@@ -6898,7 +6898,7 @@
         "skill_id": "351",
         "skill_name": "量表前后比较并评估咨询效果",
         "skill_description": "Repeatedly administer SCL-90, SAS, and SDS before and after counseling, compare the score changes and calculate the score-reduction rate, combined with the improvement in social functioning, quantitatively evaluate the intervention effect and the course-of-treatment outcome.",
-        "when_to_use": "在评估/结束阶段或阶段性复盘需要总结疗效时。",
+        "when_to_use": "At the assessment/closing stage or when a stage review needs to summarize the treatment effect.",
         "trigger": "完成一段Intervention周期，需量化疗效或决定是否调整方案时。",
         "parent_ids": [
             "1",
@@ -6980,7 +6980,7 @@
     },
     "134": {
         "skill_id": "134",
-        "skill_name": "解读SDS/SAS分数判定严重程度并形成结论",
+        "skill_name": "Interpreting SDS/SAS scores to determine severity and forming conclusions",
         "skill_description": "依据SDS与SAS得分及分界区间，判定抑郁/Anxiety级do not（如轻、中、重），形成简明结论用于评估、沟通与记录，支撑后续决策。",
         "when_to_use": "量表评分出炉后，在个案评估总结与初步诊断环节use。",
         "trigger": "SDS or SAS scores indicate a moderate-to-high level, and the nature and severity of the problem need to be clarified.",

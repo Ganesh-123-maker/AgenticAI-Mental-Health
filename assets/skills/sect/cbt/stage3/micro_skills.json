@@ -257,7 +257,7 @@
     },
     "1234": {
         "skill_id": "1234",
-        "skill_name": "讨论应用所学方法应对残留症状并明确自我治疗",
+        "skill_name": "Discussing applying learned methods to residual symptoms and clarifying self-treatment",
         "skill_description": "When ending the session, guide the client, with regard to the remaining problems and symptoms, to discuss how to continue using the methods learned in the counseling to cope, and clarify the self-therapy work and tasks that need to be continued.",
         "when_to_use": "结束会谈阶段的展望环节，识do notnot yet完结问题时；正常完成疗程或终止疗程但仍有症状时。",
         "trigger": "来访者在结束前表示仍有部分症状存在（如Anxietynot yet全消），或担心离开咨询后仍难以应对这些问题。",
@@ -271,7 +271,7 @@
     },
     "1235": {
         "skill_id": "1235",
-        "skill_name": "持续运用已学技术并自布置家庭作业直至症状消除",
+        "skill_name": "Continuously applying learned techniques and self-assigning homework until symptoms are eliminated",
         "skill_description": "督促来访者延续会谈期间所用技术方法（如Anxiety的Exposure techniques），自行安排与执行家庭作业，持续练习直至全部残留症状消除。",
         "when_to_use": "结束会谈的not yet来应对策略制定时；存在残留症状且需要具体化延续练习方案时。",
         "trigger": "来访者仍报告特定症状残留（如“还有一些Anxiety”），并询问或表现出not确定如何继续练习与巩固。",
@@ -285,7 +285,7 @@
     },
     "1236": {
         "skill_id": "1236",
-        "skill_name": "让来访者主导议程与作业以独立处理残留症状",
+        "skill_name": "Letting the client lead the agenda and homework to independently handle residual symptoms",
         "skill_description": "在结束前逐步转由来访者主导会谈进程，包括议程设置、作业布置与认知技术应用训练，以Reinforcement其独立应对残留问题的能力。",
         "when_to_use": "At the ending stage or when session frequency gradually decreases, to raise the client's autonomy and confidence in facing residual symptoms after ending.",
         "trigger": "The client is highly dependent on the counselor's arrangements and hesitant about self-assigned tasks, or is about to enter the stage of reduced session frequency and termination.",
@@ -556,7 +556,7 @@
     },
     "1246": {
         "skill_id": "1246",
-        "skill_name": "引导来访者主导议程与作业并自主用认知技术",
+        "skill_name": "Guiding the client to lead the agenda and homework and autonomously use cognitive techniques",
         "skill_description": "尽早让来访者主导会谈进程，包括自行设定议程、布置家庭作业并应用自动思维的认知技术，逐步减少咨询师参与，增强其独立应对能力与自信心，以应对not yet来生活中的问题。",
         "when_to_use": "在结束前的“应对not yet来生活”讨论阶段及常规会谈逐渐减少时，用于提升独立性并为结束做准备。",
         "trigger": "The client can already handle problems with less counselor participation, or proactively proposes discussing the agenda and homework arrangements in the session.",
@@ -573,7 +573,7 @@
         "skill_name": "把进展归因于来访者以Reinforcement自我效能",
         "skill_description": "当来访者将治疗进展归功于咨询师时，强调其自身认知与行为的改变促成成功，并总结“改变认知和行为所以改变情绪”，以提升来访者的Self-efficacy与独立应对信心。",
         "when_to_use": "In the review and pre-closing summary stage of each session, used to consolidate gains and enhance independence.",
-        "trigger": "来访者将治疗进展、好转或成功归功于咨询师。",
+        "trigger": "When the client attributes treatment progress, improvement, or success to the counselor.",
         "parent_ids": [
             "1199",
             "1207",
@@ -1281,7 +1281,7 @@
         "skill_id": "1459",
         "skill_name": "综合评估并指出残留问题与风险",
         "skill_description": "整合量表、来访者报告与观察，明确已达成的改变与not yet尽处（如强迫、人际敏感仍存在），标注残留风险与需巩固领域，并给出“需后期咨询与巩固”的提示。",
-        "when_to_use": "效果评估总结收尾，准备结束与后期安排前。",
+        "when_to_use": "At the efficacy evaluation summary closing, before preparing termination and later arrangements.",
         "trigger": "When retesting shows there are still problem factors, or the client still reports related distress and the residue and follow-up arrangements need to be explained.",
         "parent_ids": [
             "1199",
@@ -1379,7 +1379,7 @@
         "skill_id": "1356",
         "skill_name": "引导来访者自评并汇报他人反馈",
         "skill_description": "Guide the client to evaluate in their own words changes in confidence, mood, interpersonal relations, and so on, and to relay the changes observed by those around them, incorporating them into the subjective outcome indicators, cross-validating with objective measurements, and completing the comprehensive assessment.",
-        "when_to_use": "效果评估与回顾阶段，准备整合主客观证据时。",
+        "when_to_use": "At the effect evaluation and review stage, when preparing to integrate subjective and objective evidence.",
         "trigger": "The client begins self-assessment or proactively mentions feedback from friends/classmates about their changes.",
         "parent_ids": [
             "1199",
@@ -1547,7 +1547,7 @@
         "skill_id": "1336",
         "skill_name": "收集同伴评估佐证功能改善",
         "skill_description": "Collect feedback from classmates on changes in communication, participation in collective activities, speaking in class, learning efficiency, and so on, as external evidence of recovery in social functioning, cross-checking the client's self-ratings against the counselor's observations.",
-        "when_to_use": "效果评估时，用以验证社会功能改善与行为变化。",
+        "when_to_use": "At effect evaluation, used to verify social functioning improvement and behavior change.",
         "trigger": "Classmates or significant others can provide concrete feedback on classroom participation, communication and learning performance.",
         "parent_ids": [
             "1199",
@@ -1911,7 +1911,7 @@
         "skill_id": "1365",
         "skill_name": "建立并练习正向自我对话",
         "skill_description": "Guide the client to replace negative self-statements with positive statements (such as 'I can try'), and carry out brief positive self-statement practice daily, so as to improve cognitive evaluation and raise confidence and the willingness to act, as a general self-support tool.",
-        "when_to_use": "日常自我支持与压力情境下需要增强自我效能时。",
+        "when_to_use": "In daily self-support and stress situations, when self-efficacy needs to be enhanced.",
         "trigger": "Self-denial言语频繁、遇事倾向悲观或犹豫not决。",
         "parent_ids": [
             "1199",
@@ -2666,7 +2666,7 @@
         "skill_id": "1465",
         "skill_name": "咨询师综合评估并肯定进步",
         "skill_description": "The counselor makes an assessment integrating the cognitive, emotional, and behavioral changes, affirms the progress, points out points of attention for minor problems, and suggests applying the methods learned to daily life, improving self-efficacy and the consistency of the direction of subsequent consolidation.",
-        "when_to_use": "回顾总结末尾，用于形成专业反馈与巩固建议时。",
+        "when_to_use": "At the end of the review summary, used to form professional feedback and consolidation suggestions.",
         "trigger": "Scale, function, and self-evaluation information have been fully collected, and feedback needs to be integrated and suggestions proposed.",
         "parent_ids": [
             "1199",
@@ -2756,7 +2756,7 @@
         "skill_id": "1446",
         "skill_name": "对照初始与当前状态具体化变化",
         "skill_description": "带领来访者对照初期在人际与表达上的回避与紧张，与结束阶段的主动发言、社交参与等新行为，具体化改善轨迹，Reinforcement对进步的整体把握与Self-efficacy。",
-        "when_to_use": "效果评估与结束阶段，用于巩固对改善的认识。",
+        "when_to_use": "At the effect evaluation and closing stage, used to consolidate understanding of improvement.",
         "trigger": "When the client says 'some changes have occurred', or the counselor observes marked behavioral improvement needing before-after comparison.",
         "parent_ids": [
             "1199",
@@ -2831,7 +2831,7 @@
         "skill_id": "1471",
         "skill_name": "复测SAS/SDS并对比Anxiety抑郁变化",
         "skill_description": "在结束或随访节点再次施测SAS/SDS，与初诊分数对比，客观回顾Anxiety与抑郁变化轨迹，作为评估与回顾依据并与主观反馈互证。",
-        "when_to_use": "结案会谈或效果评估环节，需要量化进展时。",
+        "when_to_use": "At the closing session or efficacy evaluation stage, when progress needs to be quantified.",
         "trigger": "Preparing to end counseling or the client's chief complaint has improved and needs quantitative verification; re-testing has been arranged or completed.",
         "parent_ids": [
             "1199",
@@ -3366,7 +3366,7 @@
         "skill_id": "1452",
         "skill_name": "肯定积极反馈以提升自我效能",
         "skill_description": "在回顾中突出Anxiety评分下降、学习效率提升与关系改善等积极变化，给予具体正向反馈，帮助内化成就感，提升自我效能与维持动机，支持持续运用所学。",
-        "when_to_use": "巩固收益、提升坚持动机与自信心的关键时段。",
+        "when_to_use": "A key period for consolidating gains and enhancing adherence motivation and confidence.",
         "trigger": "When testing / self-evaluation shows significant progress, or the client doubts the effects and motivation weakens.",
         "parent_ids": [
             "1199",

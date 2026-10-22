@@ -68,7 +68,7 @@
         "skill_id": "886",
         "skill_name": "训练自我指导重复并泛化至随机场景",
         "skill_description": "在讨论后指导来访者进行自我引导的重复想象练习，逐步做到随机场景也能很好完成，以促进skill的自主化与多情境泛化。",
-        "when_to_use": "多次练习后提升来访者自主性与泛化能力阶段。",
+        "when_to_use": "Stage of enhancing client autonomy and generalization ability after multiple practices.",
         "trigger": "来访者在固定场景中想象稳定且表示“我能自己试试”或希望在更多情境use。",
         "parent_ids": [
             "916",
@@ -2587,7 +2587,7 @@
         "skill_id": "604",
         "skill_name": "进行基线肌电测量与短暂休息",
         "skill_description": "Intervention前测定肌电指标作为基线并记录，随后休息数分钟，为后续放松或收缩训练提供对照与评估依据。",
-        "when_to_use": "每次肌电反馈训练开始的反馈学习阶段之前。",
+        "when_to_use": "Before the feedback learning stage at the start of each EMG feedback training session.",
         "trigger": "来访者已静坐、呼吸自然、连接电极完毕且状态平稳，without外界干扰。",
         "parent_ids": [
             "916",
@@ -2651,7 +2651,7 @@
         "skill_id": "608",
         "skill_name": "指标without明显变化时检查理解与设备并调整",
         "skill_description": "若数次训练仍without指标变化，应检查来访者理解与配合、治疗师操作，并对仪器做必要检修，视情况调整训练策略。",
-        "when_to_use": "肌电反馈训练过程中疗效停滞或反馈异常时。",
+        "when_to_use": "During EMG feedback training, when efficacy stagnates or feedback is abnormal.",
         "trigger": "连续多次训练肌电指标not yet明显下降或改善，来访者困惑或反馈信号异常。",
         "parent_ids": [
             "916",
@@ -3950,7 +3950,7 @@
     },
     "585": {
         "skill_id": "585",
-        "skill_name": "引导式反馈训练：用暗示/放松促发心率下降",
+        "skill_name": "Guided feedback training: using suggestion / relaxation to prompt heart rate decrease",
         "skill_description": "The therapist starts the intervention procedure and, through verbal suggestion or relaxation instruction, guides the client to cooperate with the exercises, adjusts the strategies in combination with real-time feedback, and helps them, under instrument feedback, bring the physiological indicators to change toward the target direction.",
         "when_to_use": "反馈学习初期，来访者尚not yet掌握自主调节技巧，需要外部引导与策略示范时。",
         "trigger": "来访者紧张Anxiety、注意分散或指标持续偏高，难以凭自身调节使指标改善时。",
@@ -4372,7 +4372,7 @@
     },
     "719": {
         "skill_id": "719",
-        "skill_name": "念头出现时实施橡皮筋轻惩罚并同步厌恶想象",
+        "skill_name": "When a thought appears, applying a rubber band light punishment together with aversive imagery",
         "skill_description": "在not良念头出现的当下弹橡皮筋等轻惩罚，同时引导其想象被抓住、旁观者厌恶与鄙视等场景，以增强厌恶联结效果。",
         "when_to_use": "会谈内外监测到目标行为念头或冲动的实时情境，用于即时Intervention。",
         "trigger": "来访者自述“突然又想……”“控制not住想做”，或出现朝向目标行为的准备动作。",
@@ -4434,7 +4434,7 @@
         "skill_id": "723",
         "skill_name": "建立辨do not性条件反射防止泛化",
         "skill_description": "明确仅将厌恶联结到目标行为，并加入区分线索，防止对非目标的正常行为产生not必要的回避或兴趣下降。",
-        "when_to_use": "治疗设计与过程评估阶段，与厌恶配对同步推进。",
+        "when_to_use": "In the treatment design and process evaluation stage, proceeding in sync with aversion pairing.",
         "trigger": "来访者报告对其他非目标行为也出现厌恶或Reduced interest、回避等not良泛化反应。",
         "parent_ids": [
             "916",
@@ -5246,7 +5246,7 @@
         "skill_id": "774",
         "skill_name": "暴露后放松收尾与迁移运用",
         "skill_description": "在结束暴露后进行放松训练帮助回归现实，讨论体验与疗效，鼓励来访者在日常中以重新体验Anxiety的方式巩固消退，促进skill迁移与维持。",
-        "when_to_use": "每次想象满灌暴露结束后的收尾与巩固阶段。",
+        "when_to_use": "At the closing and consolidation stage after each imaginal flooding exposure ends.",
         "trigger": "This exposure has reached the ending criterion, the client's response has markedly subsided, and they are ready to leave the situation.",
         "parent_ids": [
             "916",
@@ -5518,7 +5518,7 @@
         "skill_id": "756",
         "skill_name": "识do not并制止回避行为",
         "skill_description": "在暴露过程中密切观察回避迹象（如闭眼、塞耳、面壁、转身回避等），通过劝说与引导及时制止，确保暴露的not可逃避性与剂量充足。",
-        "when_to_use": "暴露进行中，出现回避或逃避倾向时立即介入。",
+        "when_to_use": "During exposure, intervening immediately when avoidance or escape tendencies appear.",
         "trigger": "来访者出现闭眼、遮耳、Displacement视线、面壁、后退等试图削弱暴露刺激的行为。",
         "parent_ids": [
             "916",
@@ -5637,7 +5637,7 @@
         "skill_id": "763",
         "skill_name": "会后放松回归与自我练习鼓励",
         "skill_description": "暴露结束后实施简短放松帮助回归现实，总结体验并鼓励在日常中重复以类似方式重新体验Anxiety，巩固消退与应对信心。",
-        "when_to_use": "每次实地满灌暴露结束后的收尾与巩固阶段。",
+        "when_to_use": "At the closing and consolidation stage after each in vivo flooding exposure ends.",
         "trigger": "After the exposure ends, the client still has residual tension, fatigue, or worry, and needs a transitional return and consolidation of the learning gains.",
         "parent_ids": [
             "916",
@@ -6517,7 +6517,7 @@
         "skill_id": "929",
         "skill_name": "记录分级脱敏Anxiety评分与进展",
         "skill_description": "每次想象或现实暴露训练后，记录各级情境下的主观Anxiety评分，标注是否低于阈值（如40分）及是否进入下一等级，同时记录情绪反应与完成度，持续更新分级清单，评估训练效果并安排下一步。",
-        "when_to_use": "每次分级想象/现实暴露训练结束或阶段总结时。",
+        "when_to_use": "At the end of each graded imaginal/in-vivo exposure training or at the stage summary.",
         "trigger": "完成某一情境的暴露练习，或来访者报告本次各等级的Anxiety分数与感受，需要决定是否推进时。",
         "parent_ids": [
             "916",
