@@ -84,7 +84,7 @@
           "response_instruction": "use委婉、克制的语气，强调丈夫很忙、自己应该忍耐，避免直接提出具体请求或分担方案"
         },
         {
-          "trigger_condition": "当咨询师提出‘在儿子练习期间预留10分钟阅读’的行为实验时",
+          "trigger_condition": "When the counselor proposes the behavioral experiment of 'setting aside 10 minutes for reading while the son practices'",
           "interpretation": "将潜在的突发状况视为必然发生，Reinforcement对失败的Anticipation，从而保持距离以避免失望（移情）",
           "defense_mechanism": "Intellectualization",
           "response_instruction": "In a calm, pragmatic tone, raises hypothetical obstacles (for example 'inevitably will be interrupted'), uses many reasons to downplay the meaning of trying, while avoiding touching their own emotional needs"
@@ -172,13 +172,13 @@
     "bt": {
       "target_behavior": [
         {
-          "behavior": "在儿子足球活动密集时出现的高强度压力与易怒（情绪化反应）",
+          "behavior": "High-intensity stress and irritability appearing when the son's soccer activities are dense (emotional reactions)",
           "antecedent": [
             "每周儿子训练、对抗和比赛安排密集时",
             "临时增加的接送任务或忘记的活动安排"
           ],
           "core_reason": "对失去个人时间的灾难化与过度概括认知（相信“永远have not时间”）",
-          "function": "逃避与表达自我需求相关的内疚和潜在家庭冲突，维持家庭运转",
+          "function": "Evades guilt related to expressing one's needs and potential family conflict, maintains family functioning",
           "consequence": "Sleep disturbance、Low mood、与儿子Relationship tension，整体Decline in sense of well-being"
         },
         {
@@ -189,7 +189,7 @@
           ],
           "core_reason": "担心给丈夫增加负担、被评为自私或引发冲突",
           "function": "避免可能的负面评价与Relationship tension，维持表面和谐",
-          "consequence": "独自承担全部接送与照料任务，个人时间进一步被压缩，压力加剧"
+          "consequence": "Bears all transport and care tasks alone, personal time further compressed, stress intensifies"
         }
       ]
     }

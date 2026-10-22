@@ -186,7 +186,7 @@
         "skill_name": "布置观察型首次会面后任务",
         "skill_description": "在首次会谈结束前，邀请来访者于两次会谈间观察并记录家庭、生活、婚姻、Interpersonal relationships中“希望再次发生”的事件，并在下次会谈汇报结果。",
         "when_to_use": "When the first session nears the end and enters the feedback stage, used to continue change and provide concrete material for the next session.",
-        "trigger": "来访者已表达其问题、观点与经历，会谈进入收尾或反馈环节。",
+        "trigger": "The client has expressed one's problems, views and experiences; the session enters the closing or feedback step.",
         "parent_ids": [
             "1",
             "10",
@@ -198,8 +198,8 @@
         "skill_id": "61",
         "skill_name": "在布置FFST前确认被理解与Empathy",
         "skill_description": "在提出改变或任务前，确保来访者获得充分的被理解与接纳，先Listening并确认其叙述与感受，再引入观察任务以维持合作与参与度。",
-        "when_to_use": "在首次会谈中，准备转向任务布置前以巩固关系与理解感。",
-        "trigger": "来访者刚完成对问题、观点与经历的陈述，期待被理解与回应。",
+        "when_to_use": "In the first session, before moving to task assignment, to consolidate the relationship and sense of understanding.",
+        "trigger": "The client has just completed stating the problem, views and experiences, and expects to be understood and responded to.",
         "parent_ids": [
             "1",
             "10",
@@ -211,7 +211,7 @@
         "skill_id": "62",
         "skill_name": "第二次会谈复盘FFST并辨识可延续事件",
         "skill_description": "在第二次会谈开场，询问来访者观察到的事件与其希望not yet来继续发生的部分，聚焦具体细节，为制定后续延续与扩大计划奠定基础。",
-        "when_to_use": "第二次会谈开始阶段，用于将观察结果转化为目标与计划。",
+        "when_to_use": "At the beginning of the second session, to convert observation results into goals and plans.",
         "trigger": "The client brings observation records or mentions recent positive changes and what they want to continue.",
         "parent_ids": [
             "1",
@@ -289,7 +289,7 @@
         "skill_id": "41",
         "skill_name": "在外化Questioning中一致use已命名问题",
         "skill_description": "Uses the named word/phrase as the subject to launch externalizing questions (such as 'how long has X influenced?' 'how does X oppress you?'), consolidating the separation of the person and the problem.",
-        "when_to_use": "问题完成命名之后，转入外化交谈、探究问题历史与影响的阶段。",
+        "when_to_use": "After the problem is named, transitioning into externalizing conversations, exploring the problem's history and influence.",
         "trigger": "The client acknowledges and accepts the name and is ready to further discuss the problem's concrete impact on life and its trajectory.",
         "parent_ids": [
             "1",
@@ -606,7 +606,7 @@
         "skill_id": "31",
         "skill_name": "细描并整合新叙事细节",
         "skill_description": "在发现例外后，邀请来访者详述当时的情绪、想法、行动与情境，将其系统整合进新故事，使新叙事更翔实、连续并连接过去与not yet来。",
-        "when_to_use": "“丰富新故事”阶段，为巩固替代性叙事、避免流于口号化时。",
+        "when_to_use": "At the 'enriching the new story' stage, to consolidate alternative narratives and avoid becoming mere slogans.",
         "trigger": "The client has produced new descriptions or hopes, but the content is brief and jumpy, lacking concrete details and coherence.",
         "parent_ids": [
             "1",
@@ -620,7 +620,7 @@
         "skill_id": "32",
         "skill_name": "运用仪式与庆祝巩固改变",
         "skill_description": "At key junctures create brief rituals (such as awarding certificates, giving cards, sending congratulations), making the change 'real', affirming and encouraging at the right moment, strengthening motivation and maintenance effects, and defining phased achievements.",
-        "when_to_use": "阶段性进步、旧故事告一段落或治疗结束前后，用于巩固与过渡。",
+        "when_to_use": "At phased progress, when the old story comes to an end, or around treatment termination, used for consolidation and transition.",
         "trigger": "The client reaches a milestone, expresses achievement, or wishes to commemorate a turning point; slightly wavering about maintaining the change.",
         "parent_ids": [
             "1",
@@ -634,7 +634,7 @@
         "skill_id": "33",
         "skill_name": "Inviting witnesses to jointly witness change",
         "skill_description": "With the client's consent, invite significant others to participate in witnessing, share observations and support, making the new story take root in their social network, enhancing confidence and realization, and extending the change's impact.",
-        "when_to_use": "来访者新叙事已形成，准备结尾或需社会支持维持改变时。",
+        "when_to_use": "The client's new narrative has formed; when preparing to close or when social support is needed to maintain change.",
         "trigger": "来访者提到家人/朋友支持或渴望被看见；对把改变带回生活感到not确定。",
         "parent_ids": [
             "1",
@@ -676,7 +676,7 @@
         "skill_id": "36",
         "skill_name": "外化积极品质以Reinforcement身份",
         "skill_description": "将来访者的优点与长处同样外化为可被谈论与发展的话题，使其脱离问题主导，帮助其与积极品质结盟，Reinforcement正向身份实践。",
-        "when_to_use": "外化对话进行中，为平衡问题话语、构建更具力量的自我定位时。",
+        "when_to_use": "During externalizing conversations, when balancing problem discourse and building a more powerful self-positioning.",
         "trigger": "来访者提到自身优点或被他人肯定的特质，但not yet深入展开或很快回到问题。",
         "parent_ids": [
             "1",
