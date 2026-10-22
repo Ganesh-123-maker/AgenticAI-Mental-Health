@@ -1,4 +1,7 @@
 """Recompute v2 uncertainty labels from the full-vs-ambiguous context diff.
+Note: the committed risk_review_sheet.csv carries English translations of the
+excerpts (translated 2026-10-22 at the owner's instruction); re-running this
+script regenerates excerpts in the source profiles' original language.
 
 Rule (structural, stated in advance): a case is UNCERTAIN iff the ambiguous
 context withholds information the full context has - i.e. at least one leaf
