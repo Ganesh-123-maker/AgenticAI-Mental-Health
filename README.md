@@ -5,13 +5,19 @@
 > *Academic Research Project — Department of Computer Science & Engineering*  
 > *Repository:* [https://github.com/Ganesh-123-maker/AgenticAI-Mental-Health](https://github.com/Ganesh-123-maker/AgenticAI-Mental-Health)
 
+> **Relationship to upstream:** This project builds on **PsychAgent** (Yang et al., East China Normal University / Shanghai AI Laboratory), arXiv:2604.00931, upstream repository: https://github.com/ECNU-ICALK/PsychAgent
+>
+> *What upstream PsychAgent provides:* the base psychological-counselor agent design — a Memory-Augmented Planning Engine for longitudinal multi-session interaction, a Skill Evolution Engine that extracts skills from counseling trajectories, a Reinforced Internalization Engine, and the foundational prompt and skill assets this codebase derives from.
+>
+> *What this project adds:* an explicit 11-agent decision and safety layer around the counseling core (uncertainty detection, risk detection, a clarification/reassessment loop, priority orchestration, a fail-closed safety supervisor, and outcome/memory-update agents); a synthetic ambiguous-case benchmark (200 case files on disk; the published evaluation used a 25-case slice) with an offline comparison of Systems A–F plus 6 ablations; a full-stack web application with agent-trace inspection; and migration of the skill-embedding store from BGE-M3 (1024-dim) to Gemini `gemini-embedding-001` (768-dim).
+
 ---
 
 ## 1. Abstract & Overview
 
 Conversational artificial intelligence applied to mental healthcare confronts severe structural challenges: premature therapeutic advice based on incomplete client statements, single-point safety failures during acute crises, and an inability to maintain coherent longitudinal therapeutic memory across sessions.
 
-**Agentic AI for Mental Health** resolves these vulnerabilities by replacing opaque monolithic prompting with a coordinated 11-agent architecture. Rather than relying on a single prompt to simultaneously assess, counsel, monitor safety, and remember, the platform divides responsibilities across specialized, collaborating agents. The system quantifies epistemic uncertainty, screens crisis risk with clause-level negation parsing, dynamically solicits clarifications when context is ambiguous, routes discourse according to clinical priority, executes multi-school psychotherapy interventions, and enforces safety boundaries via an independent real-time safety supervisor.
+**Agentic AI for Mental Health** is designed to address these vulnerabilities by replacing opaque monolithic prompting with a coordinated 11-agent architecture. Rather than relying on a single prompt to simultaneously assess, counsel, monitor safety, and remember, the platform divides responsibilities across specialized, collaborating agents. The system quantifies epistemic uncertainty, screens crisis risk with clause-level negation parsing, dynamically solicits clarifications when context is ambiguous, routes discourse according to clinical priority, executes multi-school psychotherapy interventions, and enforces safety boundaries via an independent real-time safety supervisor.
 
 ```
 +---------------------------------------------------------------------------------------------------------+
@@ -65,15 +71,15 @@ Conversational artificial intelligence applied to mental healthcare confronts se
 ## 2. Research Objective & Key Contributions
 
 ### Research Question
-> *"Does explicit uncertainty assessment, risk assessment, clarification, reassessment, orchestration, safety supervision, and longitudinal memory coordination improve the reliability and quality of mental-health counseling compared with simpler configurations?"*
+> *"Does separating uncertainty detection and risk detection into explicit, gateable steps reduce false-certainty and missed-risk rates compared with a single-pass counseling LLM, and at what latency and token cost?"*
 
 ### Key Contributions
-1. **Explicit Epistemic Uncertainty Layer**: Implements `UncertaintyAgent`, reducing the False Certainty Rate from **0.36 to 0.12** across ambiguous clinical vignettes.
-2. **Two-Tier Defense-in-Depth Safety**: Combines upstream negation-aware risk screening with downstream fail-closed supervision, achieving **1.00 Safety Recall** and **1.00 Escalation Accuracy**.
+1. **Explicit Epistemic Uncertainty Layer**: Implements `UncertaintyAgent`, reducing the False Certainty Rate from **0.36 to 0.12** across ambiguous clinical vignettes (offline benchmark, N=25 evaluated cases; see §8).
+2. **Two-Tier Defense-in-Depth Safety**: Combines upstream negation-aware risk screening with downstream fail-closed supervision, achieving **1.00 Safety Recall** and **1.00 Escalation Accuracy** on the evaluated slice (N=3 acute crisis cases — low statistical confidence; see §8).
 3. **Closed-Loop Clarification & Reassessment**: Bounded ambiguity-resolution loop (`max_reassess_turns = 1`) that actively clarifies missing data before intervention.
-4. **Longitudinal Memory & Factual Synthesis**: Cross-session state extraction achieving **1.00 Memory Consistency** while resolving factual contradictions across visits.
-5. **Inspectable Agent Telemetry**: Real-time agent execution trace visualizing internal decision states for clinical auditing in the web interface.
-6. **Audited Empirical Evaluation**: Systematic 12-configuration benchmark over 300 runs with 545 classified failure records.
+4. **Longitudinal Memory & Factual Synthesis**: Cross-session state extraction achieving **1.00 Memory Consistency** (multi-session cases within the N=25 evaluated slice) while flagging factual contradictions across visits.
+5. **Inspectable Agent Telemetry**: Real-time agent execution trace visualizing internal decision states for inspection in the web interface.
+6. **Audited Empirical Evaluation**: Systematic 12-configuration benchmark over 300 runs (12 configurations × 25 evaluated cases, drawn from 200 case files on disk) with 545 classified failure records.
 
 ---
 
@@ -93,7 +99,7 @@ Located in `src/sample/agents/`:
 | **`CounselingAgent`** | `src/sample/agents/counseling_agent.py` | Formulates evidence-based therapeutic responses using retrieved clinical micro-skills. |
 | **`SafetySupervisor`** | `src/sample/agents/safety_supervisor.py` | Operates as a downstream fail-closed safety gatekeeper enforcing `ALLOW`, `REVISE`, or `ESCALATE`. |
 | **`OutcomeAgent`** | `src/sample/agents/outcome_agent.py` | Evaluates immediate session outcomes and client engagement signals post-turn. |
-| **`MemoryUpdateAgent`** | `src/sample/agents/memory_update_agent.py` | Extracts durable clinical facts, resolves contradictions, and updates persistent longitudinal memory. |
+| **`MemoryUpdateAgent`** | `src/sample/agents/memory_update_agent.py` | Extracts durable clinical facts, reconciles contradictions, and updates persistent longitudinal memory. |
 
 ---
 
@@ -128,7 +134,7 @@ The counseling module supports five evidence-based psychotherapeutic orientation
 
 ## 7. Full-Stack Web Application
 
-The platform includes a complete, production-grade web application:
+The platform includes a complete web application:
 - **FastAPI Backend (`src/web/backend/`)**: RESTful endpoints on port 8000 with SQLModel/SQLite database persistence, user-level data isolation, and session lifecycle management.
 - **Vite React Frontend (`src/web/src/`)**: Modern UI on port 5173 with therapy course creation, multi-session chat, and real-time **Agent Execution Trace** visualization (`RightPanel.jsx`).
 
@@ -137,6 +143,8 @@ The platform includes a complete, production-grade web application:
 ## 8. Audited Experimental Results
 
 *Source: Audited Benchmark Evaluation (`data/research_evaluation/final_results.json`)*
+
+All figures in this section come from the **offline, deterministic** benchmark (rule-based pipelines, mock LLM judge). A live-LLM comparison of Systems A–F is **NOT YET RUN**. Results obtained with the dummy backend are not comparable to live-model results.
 
 | Evaluation Metric | System A (Monolithic) | System B (Skill RAG) | System C (Triage) | System D (+ Clarif.) | System E (+ Guard) | System F (Full Multi-Agent) | Subgroup Case Count & Confidence |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---|
@@ -164,7 +172,7 @@ The platform includes a complete, production-grade web application:
 ├── assets/skills/            # Clinical meta-skills and micro-skill trigger embeddings
 ├── configs/                  # Baseline, prompt, and runtime configurations
 ├── data/
-│   ├── benchmark/            # 25 multi-modal ambiguous clinical benchmark cases
+│   ├── benchmark/            # 200 ambiguous-case files (5 modalities × 40; tracks: ordinary 100, safety 100); published evaluation slice N=25
 │   └── research_evaluation/  # Audited experimental results, failure taxonomy, metrics
 ├── docs/                     # Comprehensive research, presentation, and defense documentation
 ├── prompts/psychagent/       # Jinja2 prompt suites across all 5 therapy modalities
@@ -176,7 +184,7 @@ The platform includes a complete, production-grade web application:
 │   │   ├── core/             # Data schemas (AgentMessage, PublicMemory, SessionContext)
 │   │   └── skill_manager.py  # Embedding-based clinical micro-skill retriever
 │   └── web/                  # Full-stack application (FastAPI backend + Vite React frontend)
-└── tests/                    # 31-suite automated unit and integration test harness
+└── tests/                    # Automated unit and integration tests (24 files, 200 tests)
 ```
 
 ---
@@ -227,7 +235,7 @@ FRONTEND_PORT=5173
 ### Running Automated Unit & Integration Tests
 ```bash
 python -m pytest -q
-# Verified: 31 passed in ~28s
+# Verified 2026-10-21: 200 passed (two consecutive full runs)
 ```
 
 ### Skill Embeddings Migration & Regeneration
@@ -251,7 +259,7 @@ python -X utf8 src/experiments/failure_analysis.py --eval-dir data/research_eval
 #### Start Backend (FastAPI on Port 8000)
 ```bash
 # With offline deterministic configuration:
-pwsh -NoProfile -Command "& { `$env:PYTHONPATH='src'; python -m uvicorn src.web.main:app --host 127.0.0.1 --port 8000 }"
+pwsh -NoProfile -Command "& { `$env:PYTHONPATH='src'; python -m uvicorn web.main:app --host 127.0.0.1 --port 8000 }"
 ```
 API Documentation: `http://127.0.0.1:8000/docs`
 
@@ -282,6 +290,8 @@ Web Interface: `http://localhost:5173`
 ---
 
 ## 13. Limitations & Ethical Considerations
+
+**Standing limitations (summary).** The benchmark is synthetic; all quality scoring is automated (mock LLM judge rubrics) with no clinician validation; the safety-case sample size is small (N=3 acute crisis cases in the evaluated slice); agent confidence values are uncalibrated; and results obtained with the dummy/offline backend are not comparable to live-model results. The live-LLM comparison of Systems A–F has not yet been run.
 
 ### Academic Limitations & Scientific Validity Gaps
 
@@ -345,4 +355,4 @@ Scientific transparency requires disclosing key methodology boundaries and valid
 
 ## 15. License
 
-This project is distributed under the terms of the MIT License. See [LICENSE](LICENSE) for details.
+**License: undecided.** This repository does not currently include a LICENSE file, and no license has been selected for this project. The upstream PsychAgent repository (https://github.com/ECNU-ICALK/PsychAgent) also carries no license file (checked 2026-10-21). Earlier MIT wording was removed because it was not backed by a license file; the project owner will decide the license.
