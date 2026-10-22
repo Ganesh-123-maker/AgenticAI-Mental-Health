@@ -15,7 +15,7 @@
     "161": {
         "skill_id": "161",
         "skill_name": "详述特殊事例的情绪、想法与行动",
-        "skill_description": "引导来访者对特殊事例进行细节化叙述，包含当下的情绪、想法与具体行动，增加新故事的丰满度并为后续整合奠定素材。",
+        "skill_description": "Guides the client to narrate special examples in detail, including the emotions, thoughts and concrete actions at the time, increasing the fullness of the new story and laying material for later integration.",
         "when_to_use": "当已发现特殊事例后，需要充实新叙事、深化具体描写以增强故事厚度时。",
         "trigger": "来访者仅泛泛描述例外事件，缺乏情绪、认知与行为细节，叙述模糊或过于简略。",
         "parent_ids": [
@@ -42,7 +42,7 @@
         "skill_id": "258",
         "skill_name": "运用预设性询问转向解决焦点",
         "skill_description": "Influence the client's perception with suggestive questions, prompting them to take responsibility and turn to 'what can be done' thinking, e.g., 'Facing something like this, what do you think I can help you with?' Used to shift the conversation from tracing causes to solution paths.",
-        "when_to_use": "建构解决的对话阶段之初或面谈陷入困境时，用于澄清目标、创造改变的环境，并把会谈导向解决与行动。",
+        "when_to_use": "At the beginning of the solution-building conversation stage or when the interview falls into difficulty, used to clarify goals, create an environment for change, and direct the session toward solutions and action.",
         "trigger": "来访者反复讨论成因、期待咨询师给出答案、表达被动或without力感，谈话停留在抱怨与问题饱和叙述。",
         "parent_ids": [
             "93",
@@ -105,7 +105,7 @@
     "262": {
         "skill_id": "262",
         "skill_name": "use评量询问量化状态与进展",
-        "skill_description": "以0—10刻度评估当前与期望状态，追问分数差异所代表的具体行为，并规划可使分数提升的微小行动，促使路径清晰与进度自评。",
+        "skill_description": "Assess the current and expected states on a 0-10 scale, ask in detail about the specific behaviors represented by the difference in scores, and plan minute actions that can raise the score, prompting a clear path and self-assessment of progress.",
         "when_to_use": "建构解决的对话阶段或正向反馈阶段，用于具体化目标、制定微小可行步与追踪改变。",
         "trigger": "来访者以抽象词汇形容困扰或目标，难以评估现状与进展，需要将改变具体化并设定小步提升。",
         "parent_ids": [
@@ -123,7 +123,7 @@
         "skill_name": "针对具体优点与行为进行鼓舞式肯定",
         "skill_description": "Around the client's strengths, things done well, and their positive beliefs, motivations, and behaviors, give cheerleading-style, spirited positive affirmation, making them see their own resources and abilities, raising self-concept and promoting action change.",
         "when_to_use": "在建构解决的对话阶段与正向反馈阶段，用于巩固小改变、增强希望与信心，目标是Reinforcement成功经验并推动持续行动。",
-        "trigger": "来访者描述或展示积极行为与进展（如按时面谈、完成任务、语气更积极），或表达具有建设性的信念与动机。",
+        "trigger": "The client describes or shows positive behavior and progress (such as attending sessions on time, completing tasks, a more positive tone), or expresses constructive beliefs and motivation.",
         "parent_ids": [
             "93",
             "100",
@@ -135,7 +135,7 @@
     "191": {
         "skill_id": "191",
         "skill_name": "结合非言语动作Reinforcement鼓舞效果",
-        "skill_description": "在口头鼓舞时同步运用非言语配合，如钦佩状、点头、微笑、开放式姿态与鼓舞性的语调，增强鼓励的感染力与真切感，传递支持与认可。",
+        "skill_description": "While giving verbal encouragement, simultaneously use nonverbal accompaniment, such as an admiring expression, nodding, smiling, an open posture, and an encouraging tone of voice, to strengthen the infectiousness and sincerity of the encouragement and convey support and recognition.",
         "when_to_use": "在表达鼓舞的当下与正向反馈阶段，尤其来访者需要情感支持或口头鼓励难以充分触达时。",
         "trigger": "来访者分享进展却显得not自信、表情紧张或犹疑；获得鼓励时反应平淡、沉默后轻微微笑等需要情感加持的信号。",
         "parent_ids": [
@@ -149,7 +149,7 @@
     "192": {
         "skill_id": "192",
         "skill_name": "在发现例外或解决方法时加油鼓劲",
-        "skill_description": "当来访者找到例外或提出有效做法时，立即给予振奋性加油与认可，放大例外的价值，帮助其看到改变的可能并增强持续实施的动能。",
+        "skill_description": "When the client finds an exception or proposes an effective approach, immediately give invigorating encouragement and recognition, amplify the value of the exception, and help them see the possibility of change and strengthen the momentum to continue implementing it.",
         "when_to_use": "在例外询问、咨询前改变探查、产生解决与正向反馈阶段，用于巩固与扩展新策略。",
         "trigger": "来访者描述问题not yet发生的情境、报告咨询前积极改变，或提出具体可行的解决步骤与尝试。",
         "parent_ids": [
@@ -163,7 +163,7 @@
     "193": {
         "skill_id": "193",
         "skill_name": "鼓舞后追问资源与能力归因",
-        "skill_description": "在鼓舞肯定之后，以开放问句引导来访者讲述“如何做到”的细节，梳理其策略、资源与条件，增强自我效能并促进可复制的改变路径。",
+        "skill_description": "After encouragement and affirmation, with open questions guide the client to narrate the details of 'how they did it', sort out their strategies, resources and conditions, enhance self-efficacy, and promote a replicable path of change.",
         "when_to_use": "紧随鼓舞表达之后，在建构解决阶段用于将鼓励转化为对资源与方法的觉察与总结。",
         "trigger": "来访者在被肯定后点头认同、愿意分享做法，或自发提到“我坚持/我努力”的线索。",
         "parent_ids": [
@@ -217,7 +217,7 @@
     "169": {
         "skill_id": "169",
         "skill_name": "物化改变以营造仪式氛围",
-        "skill_description": "通过颁发证书、赠送鲜花、赞美卡等象征性物品营造仪式氛围，将抽象改变具体化、可被看见，真实化并巩固新故事，适时给予肯定与鼓舞。",
+        "skill_description": "By means of symbolic objects such as granting certificates, giving flowers, or praise cards, create a ritual atmosphere, making abstract change concrete and visible, authenticating and consolidating the new story, and giving affirmation and encouragement at appropriate moments.",
         "when_to_use": "在界定问题、取得阶段性进步或结束治疗的庆祝环节，需要Reinforcement正向体验与可持续动机时。",
         "trigger": "来访者达成阶段目标、呈现有效行为或表达渴望被肯定与纪念其改变的需求。",
         "parent_ids": [
@@ -243,7 +243,7 @@
     "171": {
         "skill_id": "171",
         "skill_name": "引导来访者自我见证新生活",
-        "skill_description": "鼓励来访者亲自见证并陈述其新生活、新思想与新希望，将自我肯定与新叙事内化，提升持续性与自助能力。",
+        "skill_description": "Encourage the client to personally witness and state their new life, new thoughts, and new hopes, internalizing self-affirmation and the new narrative, enhancing persistence and self-help ability.",
         "when_to_use": "新故事已建立并需要加强自我认同与内在动机的巩固阶段，或仪式结束后的延续环节。",
         "trigger": "来访者能以新语言描述特殊事例与新策略，表达希望长期维持改变或担心回落。",
         "parent_ids": [
@@ -333,7 +333,7 @@
         "skill_name": "在Empathy基础上给予具体赞许",
         "skill_description": "First, based on the client's language and emotions, empathically understand, then give concrete, fitting affirmation and confirmation of their positive strengths, resources, and efforts, enhancing authenticity and effectiveness and bringing about a safe, cooperative relationship.",
         "when_to_use": "建构解决的对话阶段中；来访者描述目标、例外、资源或小改变时，用于巩固合作与正向聚焦。",
-        "trigger": "来访者在叙述中显露积极行为、资源或有效尝试；在被理解后情绪缓和，或自述为目标采取了具体行动。",
+        "trigger": "The client reveals positive behaviors, resources, or effective attempts in narration; after being understood, emotions ease, or they report having taken concrete action toward a goal.",
         "parent_ids": [
             "93",
             "100",
@@ -377,7 +377,7 @@
         "skill_id": "242",
         "skill_name": "共同绘制目标力场",
         "skill_description": "围绕既定目标，协助来访者识do not并列出促进行动与阻碍行动的具体因素，归类为积极力量与消极力量，形成清晰的力场图谱，为后续增促降阻策略提供依据。",
-        "when_to_use": "在焦点解决短期咨询的建构解决对话或正向反馈阶段，当目标已明确、需要将讨论转向可执行策略与资源整合时。",
+        "when_to_use": "In the solution-building dialogue or positive feedback stage of solution-focused brief therapy, when the goals are already clear and the discussion needs to turn to executable strategies and resource integration.",
         "trigger": "来访者开始描述“有哪些在帮助我/拖我后腿”的因素，或反复提到担心情境恶化、依附without效做法、感到进展受阻。",
         "parent_ids": [
             "93",
@@ -531,7 +531,7 @@
         "skill_id": "219",
         "skill_name": "追溯已有相似时刻确认征兆",
         "skill_description": "通过“现在有have not时候有一点类似这种情况发生过”询问，引导来访者识do not已出现的微小例外或改变片段，视为最先征兆并将其作为行动与Reinforcement的素材。",
-        "when_to_use": "在讨论最先迹象时，需从既往或当下经验中寻找已发生的例外以增强可行性与信心；用于连接目标与现实。",
+        "when_to_use": "When discussing the earliest signs, exceptions that have already occurred need to be found from past or present experience to enhance feasibility and confidence; used to connect goals with reality.",
         "trigger": "来访者表示“改变难以开始”或对not yet来征兆缺乏具体感受，提到曾有些时刻略好但not yet加以关注。",
         "parent_ids": [
             "93",
@@ -586,7 +586,7 @@
     "186": {
         "skill_id": "186",
         "skill_name": "设计微小可行的提升步骤",
-        "skill_description": "以“再提高一点”为引导，协助来访者提出能让分数上升小幅度的具体行动，并将其转化为当下可执行的实践计划。",
+        "skill_description": "Using 'raise it a little more' as the guide, assisting the client to propose concrete actions that can raise the score by a small amount, and converting them into a practice plan executable at present.",
         "when_to_use": "当前评分与目标明确后，需要把改善转化为近期可行行动时。",
         "trigger": "来访者表达愿望“想好一点”“希望能再前进”，或对如何提升感到犹豫not决。",
         "parent_ids": [
@@ -600,7 +600,7 @@
     "187": {
         "skill_id": "187",
         "skill_name": "在具体问题域设定刻度与目标增量",
-        "skill_description": "把评量应用于特定议题（如睡眠），定义该域内的0与10含义，询问当前刻度、期望刻度及本次会谈希望前进的点数，使目标更贴近情境。",
+        "skill_description": "Apply scaling to a specific topic (such as sleep), define what 0 and 10 mean within that domain, ask for the current rating, the desired rating, and how many points they hope to move forward in this session, making the goal more closely fitted to the situation.",
         "when_to_use": "围绕特定症状或功能问题开展评估与目标设定时。",
         "trigger": "来访者提出具体困扰（如“cannot sleep”“工作效率很低”），需要领域化衡量与目标。",
         "parent_ids": [
@@ -668,7 +668,7 @@
     "151": {
         "skill_id": "151",
         "skill_name": "识do not并替换消极用语",
-        "skill_description": "与来访者共同辨识旧叙事中的习惯性消极措辞与思维模式，以新的语言框架重述经验，减弱问题支配性，重塑意义。",
+        "skill_description": "Jointly identifying with the client the habitual negative wording and thinking patterns in the old narrative, restating the experience in a new language framework, weakening the problem's dominance, and reshaping meaning.",
         "when_to_use": "在重写故事过程中，当来访者语言充满问题渗透与负向标签，需要通过语言改变推动意义转换时。",
         "trigger": "来访者频繁use绝对化、贬损、自我贴标签的表述，如“我总是失败”“我就是not用”。",
         "parent_ids": [
@@ -681,7 +681,7 @@
     "152": {
         "skill_id": "152",
         "skill_name": "以质询与阐释挑战旧叙事",
-        "skill_description": "结合询问、质疑、解释、阐述及适度忽视等谈话技术，分解固化自我认识，检视并挑战对生活经验的单一叙述。",
+        "skill_description": "Combine conversational techniques such as inquiry, questioning, interpretation, elaboration, and moderate ignoring to break down fixed self-perceptions and examine and challenge the single narrative of life experience.",
         "when_to_use": "在重写故事阶段，当需动摇主导故事、打开新理解空间，促使来访者松动问题饱和叙述时。",
         "trigger": "来访者坚持单一因果叙述、排除其他可能，防御性高、叙事僵化，反复固守旧解释。",
         "parent_ids": [
@@ -694,7 +694,7 @@
     "153": {
         "skill_id": "153",
         "skill_name": "共建新意义语境生成新叙事",
-        "skill_description": "通过对话创造新颖意义的语境，邀请来访者以替代性视角组织事件，逐步形成具连续性与差异度的新生活文本。",
+        "skill_description": "Through dialogue, create a context of novel meaning, invite the client to organize events from an alternative perspective, and gradually form a new life text with continuity and distinctiveness.",
         "when_to_use": "在重写故事中，已获得例外与新素材但需整合为连贯新故事、推进叙事转换时。",
         "trigger": "来访者开始出现not同理解或可能性，但叙述零散、not连贯，难以形成新的自我定义。",
         "parent_ids": [
@@ -707,7 +707,7 @@
     "154": {
         "skill_id": "154",
         "skill_name": "评估改变准备度与问题影响力",
-        "skill_description": "引导来访者评估当前改变时机与问题力量强弱，明确需要更多时间还是可立即行动，以便设定可行的重写步伐。",
+        "skill_description": "Guide the client to assess the timing of change and the strength of the problem, clarifying whether more time is needed or action can be taken immediately, so as to set a feasible pace for rewriting.",
         "when_to_use": "重写故事初期，用于确定推进速度与策略，平衡动机与现实可控度，防止过快或过慢。",
         "trigger": "来访者表述“还not准备好”“问题太强”“需要时间考虑”等，对改变节奏拿not准。",
         "parent_ids": [
@@ -806,7 +806,7 @@
     "288": {
         "skill_id": "288",
         "skill_name": "构建not yet来远景（奇迹询问）",
-        "skill_description": "通过奇迹、水晶球、结局式问句，帮助来访者描绘问题解决后的具体生活图景，将愿望转化为清晰的长期远景目标。",
+        "skill_description": "Through miracle, crystal ball, and outcome-style questions, helping the client depict the concrete picture of life after the problem is solved, converting wishes into clear long-term vision goals.",
         "when_to_use": "当来访者目标模糊或仅停留在问题叙述，需要转向not yet来、形成长远方向时。",
         "trigger": "来访者难以描述期望状态，只反复谈过去与症状，或说“我也not知道要变成什么样”。",
         "parent_ids": [
@@ -853,7 +853,7 @@
         "skill_name": "布置家庭作业Reinforcement改变",
         "skill_description": "在每次咨询后依照会谈内容协商具体作业，如寻找例外、Self-exploration、Reinforcement已有效的行为，鼓励在会谈外做not同尝试，以巩固并扩大改变效应。",
         "when_to_use": "在初次或后续会谈结束、特do not是正向反馈阶段，用于将解决路径转化为行动，支持来访者立即练习并在下次会谈反馈。",
-        "trigger": "来访者已描述有效做法或例外，表示“我该怎么做”“我愿意试试”，或主动提出愿在会谈外尝试新行为。",
+        "trigger": "The client has described effective practices or exceptions, says 'what should I do' and 'I am willing to try', or proactively proposes willingness to try new behaviors outside the session.",
         "parent_ids": [
             "93",
             "100",
@@ -868,7 +868,7 @@
         "skill_name": "回顾有效途径并提出行动建议",
         "skill_description": "在正向反馈阶段整理来访者前段谈话中的有效解决途径，给予肯定并转化为具体下一步建议或作业，促使其采取行动并维持改变。",
         "when_to_use": "休息阶段后进入正向反馈时，用于巩固已形成的建构性转变，明确近期可执行的步骤与方向。",
-        "trigger": "来访者此前已指出“哪些方法有用”“出现过例外”，在暂停后期待咨询师建议或以点头、沉默等待反馈的姿态出现。",
+        "trigger": "The client has previously pointed out 'which methods are useful' 'exceptions have occurred', after a pause expects the counselor's suggestions or appears in a posture of nodding, silence waiting for feedback.",
         "parent_ids": [
             "93",
             "100",
@@ -896,7 +896,7 @@
     "301": {
         "skill_id": "301",
         "skill_name": "评量与追踪以维持并计划结束",
-        "skill_description": "运用量表、纸笔测验与评量设计协商进度评估与后续计划，量化改变、增强信念，明确影响并安排追踪，以维持持续努力与收束咨询。",
+        "skill_description": "Use scales, paper-and-pencil tests and assessment design to negotiate progress assessment and follow-up plans, quantify the change, strengthen the belief, clarify the influence and arrange tracking, to maintain sustained effort and draw the counseling to a close.",
         "when_to_use": "在正向反馈与“评价与计划结束”阶段，用于检视改变、巩固动力并商定后续任务与追踪时间点。",
         "trigger": "来访者对进展感到not确定、表达维持改变的担心，或询问“下一步怎么安排”“是否已经接近结束”。",
         "parent_ids": [
@@ -971,7 +971,7 @@
     "273": {
         "skill_id": "273",
         "skill_name": "use评量问句具体化现状与目标",
-        "skill_description": "借0–10刻度让来访者为当前状态、理想状态与会谈目标打分，连接分数变化的意义与可行步骤，使抽象感受转化为可操作的小进步。",
+        "skill_description": "With a 0-10 scale, have the client score the current state, the ideal state and the session goal, connect the significance of changes in the scores to feasible steps, and turn abstract feelings into actionable small progress.",
         "when_to_use": "建构解决的对话与正向反馈阶段，用于设定可行目标、监测进展及巩固小改变。",
         "trigger": "来访者对困扰与期望表达抽象、含混，难以把握改变幅度或需要看到进展的证据。",
         "parent_ids": [
@@ -1016,7 +1016,7 @@
     "276": {
         "skill_id": "276",
         "skill_name": "运用振奋性鼓舞Reinforcement自我效能",
-        "skill_description": "对来访者的优点、动机与成功片段给予有声势的正向肯定，在发现例外或解决方法时重点喝彩，提升行动意愿与希望感。",
+        "skill_description": "Gives voiced positive affirmation of the client's strengths, motivation and success fragments, cheering emphatically when exceptions or solutions are found, raising action willingness and a sense of hope.",
         "when_to_use": "建构解决与正向反馈阶段，尤其是在来访者辨识到资源或初步改变后，用于巩固改变氛围。",
         "trigger": "来访者描述已做的努力、呈现优势或报告微小进步与有效尝试，出现Self-doubt摇摆。",
         "parent_ids": [
@@ -1047,7 +1047,7 @@
         "skill_id": "263",
         "skill_name": "以行为化问句设定具体微小正向目标",
         "skill_description": "引导来访者用行为语言描述并发展具体、微小、正向且有意义的目标，如“谈完后有什么not一样”。将抽象诉求转为可操作的行为改变。",
-        "when_to_use": "建构解决的对话阶段开始的目标架构环节，用于澄清并建立咨询目标，促进入门后的目标具体化与可实施性。",
+        "when_to_use": "At the goal-framing segment at the start of the solution-building conversation stage, used to clarify and establish counseling goals, promoting goal concretization and implementability after entry.",
         "trigger": "来访者以笼统抱怨或抽象词汇描述困扰，难以说出希望的具体not同之处，在叙述后出现停顿或重复“很糟”“not顺利”。",
         "parent_ids": [
             "93",
@@ -1094,7 +1094,7 @@
     "266": {
         "skill_id": "266",
         "skill_name": "用评量询问为目标刻度化",
-        "skill_description": "引导来访者用0～10量尺为当前状态与期望目标打分，明确希望前进的刻度与代表的行为差异，使目标可评估与跟踪。",
+        "skill_description": "Guides the client to score the current state and expected goal with a 0-10 scale, clarifying the scale hoped to advance to and the behavioral differences it represents, making the goal assessable and trackable.",
         "when_to_use": "目标架构时需将抽象目标具体化与可评估，或在设定目标后界定起点与近期推进幅度。",
         "trigger": "来访者用“很差”“稍微好些”等抽象程度词语，难以量化期望与进展，需要具体刻度来界定目标。",
         "parent_ids": [
@@ -1110,9 +1110,9 @@
     "267": {
         "skill_id": "267",
         "skill_name": "以建设性预设问句启动目标讨论",
-        "skill_description": "用带暗示性的预设问句引导来访者承担改变责任并开启目标讨论，如“你想我可以帮你什么”，促进正向聚焦。",
+        "skill_description": "Use suggestive presuppositional questions to guide the client to take responsibility for change and open goal discussion, such as 'What do you think I can help you with', promoting positive focus.",
         "when_to_use": "建构解决的对话阶段之初或谈话陷入停滞时，用于快速把焦点转向解决与目标设定。",
-        "trigger": "咨询开场时来访者期待专家给答案、被动等待；或面谈陷入困境、话题围绕成因打转难以进入目标层面。",
+        "trigger": "At the opening of counseling, the client expects the expert to give answers and waits passively; or the interview is stuck, with topics circling around causes and hard to enter the goal level.",
         "parent_ids": [
             "93",
             "100",
@@ -1126,7 +1126,7 @@
     "268": {
         "skill_id": "268",
         "skill_name": "澄清可改变议题并将抱怨转为目标陈述",
-        "skill_description": "协助界定可改变的问题与立场，将持续抱怨重构为面向解决的目标，促使来访者停止责难并聚焦可执行改变。",
+        "skill_description": "Help define changeable problems and stances, reframing persistent complaining into solution-oriented goals, prompting the client to stop blaming and focus on executable change.",
         "when_to_use": "目标架构时需把问题叙述转化为可改变的目标与行动方向，以便后续方案生成与实施。",
         "trigger": "来访者持续抱怨与追溯原因、语言负向且指向他人过错，缺乏面向解决的目标与自我行动承诺。",
         "parent_ids": [
@@ -1198,7 +1198,7 @@
     "250": {
         "skill_id": "250",
         "skill_name": "整理建议以诱发新想法",
-        "skill_description": "在收集完成后对建议进行归类与组合，利用整理产生新的联想与变体方案，通过结构化梳理促发更多可行策略。",
+        "skill_description": "After collection is complete, categorize and combine the suggestions, use the organizing to generate new associations and variant plans, and through structured sorting stimulate more feasible strategies.",
         "when_to_use": "完成首轮建议收集后，进入方案归类与二次创生的会谈阶段。",
         "trigger": "已记录了多条建议，出现可按主题、情境或资源进行归类整合的素材。",
         "parent_ids": [
@@ -1212,7 +1212,7 @@
     "251": {
         "skill_id": "251",
         "skill_name": "完成后暂搁置并循环流程",
-        "skill_description": "在一轮建议收集与整理结束后，将结果短暂搁置，随后再次重复同样程序，以时间与循环促进新视角与新方案的涌现。",
+        "skill_description": "After a round of suggestion collection and organizing ends, sets the results aside briefly, then repeats the same procedure again, with time and cycles promoting the emergence of new perspectives and new solutions.",
         "when_to_use": "一次“产生解决”流程完成后，需要通过间隔与复盘促成进一步创生时。",
         "trigger": "本轮记录与整理工作已结束，来访者准备进入下一轮方案生成循环。",
         "parent_ids": [
@@ -1227,7 +1227,7 @@
         "skill_id": "180",
         "skill_name": "用预设性问句启动并赋权责任",
         "skill_description": "在会谈开场use带暗示的问句，如“面对这样的事，你想我可以帮你什么”，促使来访者承担责任与明确期待，使话语从问题转向解决与行动。",
-        "when_to_use": "初始评估与建构解决的对话阶段开始时，需建立合作关系、创造改变的环境，并将焦点由问题转向目标与行动。",
+        "when_to_use": "At the start of the initial assessment and solution-building conversation stage, a collaborative relationship needs to be built, an environment for change created, and the focus shifted from problem to goals and action.",
         "trigger": "来访者刚开始谈话，主要停留在问题陈述或泛泛抱怨，尚Not specified希望的改变或需要咨询师如何协助。",
         "parent_ids": [
             "93",
@@ -1254,8 +1254,8 @@
     "182": {
         "skill_id": "182",
         "skill_name": "设计建设性预设问句的方向与措辞",
-        "skill_description": "精心选择问句的指向与表达，使其具暗示与教育作用，影响来访者注意焦点，诱发正向、寻找解决方法的思考与语言，形成解决导向的对话。",
-        "when_to_use": "在目标架构、例外架构、假设解决架构中，需要引导来访者从问题回到目标、例外与解决方案的讨论。",
+        "skill_description": "Carefully choose the direction and phrasing of the questions so that they carry suggestion and educational effect, influence the client's focus of attention, induce positive, solution-oriented thinking and language, and form a solution-focused dialogue.",
+        "when_to_use": "In the goal framework, exception framework, and hypothetical solution framework, the client needs to be guided from the problem back to discussion of goals, exceptions, and solutions.",
         "trigger": "来访者持续聚焦于问题或原因，缺少对目标、例外或解决思路的表述，谈话偏离解决方向。",
         "parent_ids": [
             "93",
@@ -1297,7 +1297,7 @@
         "skill_id": "241",
         "skill_name": "协同其他询问技术深化概述",
         "skill_description": "将“一词一语”的概述与其他询问技术协同use。以概述句为锚点配合后续追问，细化其含义与细节，帮助揭示主要感受与关注点，增强聚焦，并促使把概述进一步转化为积极、具体的咨询目标与行动。",
-        "when_to_use": "在概述语句已形成后，需要进一步澄清状态、评估进度或拓展解决思路时；贯穿建构解决的对话与正向反馈阶段。",
+        "when_to_use": "After the summary statement has been formed, when the state needs further clarification, progress assessed, or solution ideas expanded; throughout the solution-building dialogue and positive feedback stage.",
         "trigger": "来访者对概述语句的含义仍含糊，或对期望与下一步行动拿not准；出现“只有口号、缺少具体化”的迹象。",
         "parent_ids": [
             "93",
@@ -1325,8 +1325,8 @@
         "skill_id": "205",
         "skill_name": "扩大并详述例外差异",
         "skill_description": "采用A步骤，要求来访者详细说明例外发生时与问题发生时的not同，例外如何形成，自己发挥了哪些作用，扩大例外的细节与影响，使改变更具体可感。",
-        "when_to_use": "在已引出一个例外之后继续深入时；用于第二次及后续咨询中具体化改变、连接目标，帮助来访者看见差异与自身作用。",
-        "trigger": "来访者提到小的积极变化，如“工作态度比较积极一点”“关系稍有改善”，但缺乏细节与具体行为。",
+        "when_to_use": "When continuing to go deeper after one exception has been drawn out; used in the second and subsequent counseling sessions to concretize change, connect goals, helping the client see the differences and their own role.",
+        "trigger": "The client mentions small positive changes, such as 'work attitude somewhat more positive' or 'relationship slightly improved', but lacks details and concrete behaviors.",
         "parent_ids": [
             "93",
             "100",
@@ -1339,8 +1339,8 @@
         "skill_id": "206",
         "skill_name": "增强与赞许例外中的成功与力量",
         "skill_description": "Use step R, with respectful, non-evaluative affirmation and appreciation, highlight the client's success, strength, and effort in exception situations, enhance self-efficacy and the belief in maintaining change, and consolidate positive behavior.",
-        "when_to_use": "在来访者已描述出自身行动与差异之后，用于正向反馈阶段或EARS流程第三步，巩固改变并提升动力与信心。",
-        "trigger": "来访者描述“做了很多”“很辛苦”“坚持尝试”等努力与承担，或在叙述中显现出成功片段与力量感。",
+        "when_to_use": "After the client has described their own actions and differences, used in the positive feedback stage or the third step of the EARS process, consolidating change and enhancing motivation and confidence.",
+        "trigger": "The client describes efforts and burdens such as 'did a lot', 'it was very hard', 'kept trying', or shows successful fragments and a sense of strength in narration.",
         "parent_ids": [
             "93",
             "100",
@@ -1405,7 +1405,7 @@
     "158": {
         "skill_id": "158",
         "skill_name": "细化描绘例外的情绪、想法与行动",
-        "skill_description": "引导来访者详细描述例外时的情绪、想法、具体行动与情境细节，使新故事更翔实，并为再现与扩展提供线索。",
+        "skill_description": "Guide the client to describe in detail the emotions, thoughts, concrete actions, and situational details of the exception, making the new story richer and providing cues for re-enactment and expansion.",
         "when_to_use": "在“丰富新故事”阶段，用于充实重写后的叙事内容。",
         "trigger": "来访者仅笼统提及例外，细节缺失或对如何复制这些片段感到迷惘。",
         "parent_ids": [
@@ -1431,9 +1431,9 @@
     "208": {
         "skill_id": "208",
         "skill_name": "将有效途径转化为行动任务",
-        "skill_description": "在正向反馈阶段把会谈中提到的有效解决途径整理为具体、可操作的家庭作业，明确行为、情境与频率，促使来访者在日常实施并维持改变。",
+        "skill_description": "In the positive-feedback phase, organize the effective solutions mentioned in the session into specific, doable homework, clarifying the behavior, the situation, and the frequency, urging the client to carry it out in daily life and maintain the change.",
         "when_to_use": "每次会谈的正向反馈阶段或结束前，用于把对话中的成效转化为生活中的行动，巩固与延伸改变。",
-        "trigger": "来访者在本次会谈中提到“比较好的事”“有效途径”或“最先的改变迹象”，并表达愿意采取行动。",
+        "trigger": "In this session the client mentions 'better things', 'effective approaches', or 'the first signs of change', and expresses willingness to take action.",
         "parent_ids": [
             "93",
             "100",
@@ -1460,7 +1460,7 @@
         "skill_id": "210",
         "skill_name": "布置Self-exploration情境日志",
         "skill_description": "安排Self-exploration日志，记录本周trigger、反应与应对，聚焦具体行为与情境，使问题与资源具体化，增强自我觉察与选择，为下次会谈提供材料。",
-        "when_to_use": "初始或后续会谈结束时，当来访者对问题与应对的描述仍抽象，需要具体化与自我观察以支持下一次对话。",
+        "when_to_use": "At the end of the initial or a later session, when the client's description of the problem and coping is still abstract, concretization and self-observation are needed to support the next conversation.",
         "trigger": "来访者以抱怨为主、缺少行为与情境细节，难以明确改变切入点。",
         "parent_ids": [
             "93",
@@ -1502,7 +1502,7 @@
         "skill_id": "163",
         "skill_name": "识do not并弱化单薄叙事的偏见过滤",
         "skill_description": "Guide the client to become aware of the biases in the thin story and their 'filter' role, invite them to retell new experiences in a richer, more complete way, to reduce filtering and weaken negative influence, opening the narrative's transition from thin to thick.",
-        "when_to_use": "在叙事治疗实施“由薄到厚”策略的初始阶段，用于转变来访者单一、偏见主导的叙事风格，为重建积极自我观念铺路。",
+        "when_to_use": "In the initial stage of implementing the 'from thin to thick' strategy in narrative therapy, used to transform the client's single, prejudice-dominated narrative style, paving the way for rebuilding a positive self-concept.",
         "trigger": "来访者以单一标签叙述自我，频用“总是”“绝对”等绝对化词语，明显忽略或排除与主导故事not符的经历。",
         "parent_ids": [
             "93",
@@ -1567,7 +1567,7 @@
     "214": {
         "skill_id": "214",
         "skill_name": "指出困扰的普遍性与发展性",
-        "skill_description": "指出该困扰为许多人在发展阶段常见的暂时性困难，将其置于普遍性与情境框架中，帮助来访者正常化看待、降低灾难化。",
+        "skill_description": "Points out that this distress is a temporary difficulty common to many people at developmental stages, places it within a universality and situational framework, helping the client view it normalized and reduce catastrophizing.",
         "when_to_use": "在探讨困扰的意义与背景时，用于将问题放回发展与情境框架，Displacement注意力到可行的解决路径。",
         "trigger": "来访者将困扰视为个do not异常或without望，或叙述典型发展任务中的困难（如毕业求职not顺）。",
         "parent_ids": [
@@ -1595,7 +1595,7 @@
     "278": {
         "skill_id": "278",
         "skill_name": "调查与理清既有资源",
-        "skill_description": "引导来访者盘点过往成功经验、兴趣与才能及社会支持，作为解决材料与行动基础，并将资源与目标连接以提升效能。",
+        "skill_description": "Guides the client to inventory past successful experiences, interests and talents and social support, as solution material and action foundation, and connects resources with goals to raise efficacy.",
         "when_to_use": "建构解决的对话阶段，已澄清目标与例外后，开始制定可行方案时。",
         "trigger": "来访者表示“not知道从哪里开始”或自述曾有擅长领域、兴趣、支持者却not yet善用。",
         "parent_ids": [
@@ -1625,7 +1625,7 @@
     "280": {
         "skill_id": "280",
         "skill_name": "挖掘咨询前改变",
-        "skill_description": "以咨询前询问发现首次会谈前已出现的积极改变，追问“如何发生、效果如何”，提炼为当前可延续的资源。",
+        "skill_description": "Use pre-session inquiry to discover positive changes that occurred before the first session, asking 'how did it happen, what was the effect', refining them into resources that can be continued now.",
         "when_to_use": "会谈开始阶段，尤其首次咨询开场时，用于迅速建立改变基线。",
         "trigger": "来访者提到近期状态有些好转、尝试过新的做法或环境变化产生的积极影响。",
         "parent_ids": [
@@ -1655,7 +1655,7 @@
     "282": {
         "skill_id": "282",
         "skill_name": "赞许来访者的优势与行动",
-        "skill_description": "针对来访者有效的信念与行为给予具体、及时的赞许，观察接纳度并调整表达，以增强正向自我概念。",
+        "skill_description": "Gives concrete, timely praise for the client's effective beliefs and behaviors, observes acceptance and adjusts expression, to strengthen a positive self-concept.",
         "when_to_use": "正向反馈阶段及任何出现有效行为的时点，用于巩固建构性转变。",
         "trigger": "来访者完成任务、找到例外或描述采取了有效步骤并获得他人肯定时。",
         "parent_ids": [
@@ -1685,7 +1685,7 @@
     "284": {
         "skill_id": "284",
         "skill_name": "关系询问扩展支持网络",
-        "skill_description": "通过关系询问引导来访者设想重要他人会注意到的变化与可能支持，具体化改变的现实感并链接社会资源。",
+        "skill_description": "Through relationship questions, guide the client to imagine the changes significant others would notice and the possible support, concretizing the realism of change and linking social resources.",
         "when_to_use": "目标架构与奇迹询问配合时，用于增强改变的可见度与外部支持。",
         "trigger": "来访者频繁提及Mother、伴侣、老板等重要他人，或表达需要获得他们的支持与认可。",
         "parent_ids": [
@@ -1771,7 +1771,7 @@
     "235": {
         "skill_id": "235",
         "skill_name": "useEARS结构巩固例外",
-        "skill_description": "运用EARS流程：引出例外(E)、扩大详述差异(A)、增强与赞许(R)、再次探索更多(S)，在后续会谈中系统巩固与扩增例外。",
+        "skill_description": "Use the EARS process: elicit the exception (E), amplify the detail of the difference (A), reinforce and praise (R), start again to explore more (S), systematically consolidating and expanding exceptions in later sessions.",
         "when_to_use": "第二次及后续会谈，或刚发现例外后需系统化巩固与拓展时。",
         "trigger": "来访者出现一些好转或例外但叙述零散、信心not足，需要结构化巩固与扩大。",
         "parent_ids": [
@@ -1828,8 +1828,8 @@
         "skill_id": "197",
         "skill_name": "给予具体行为式赞许",
         "skill_description": "围绕来访者已出现的正向力量、资源与有效行为进行直接且具体的肯定，点名表扬可复制的做法；在会谈暂停后以正向反馈再次Reinforcement，区do not于空泛取悦式表述，增强其持续与重复。",
-        "when_to_use": "在建构解决的对话与正向反馈阶段，用于巩固已出现的小改变与有效途径，促进来访者从问题谈论转向解决与行动。",
-        "trigger": "来访者描述咨询前改变、例外情境、完成任务/行动、量表评分上升，或呈现自身资源与有效策略时。",
+        "when_to_use": "In the solution-building dialogue and positive feedback stage, used to consolidate small changes and effective approaches that have appeared, promoting the client to shift from problem talk toward solutions and action.",
+        "trigger": "When the client describes pre-counseling changes, exception situations, completing tasks/actions, scale scores rising, or presents their own resources and effective strategies.",
         "parent_ids": [
             "93",
             "100",
@@ -1873,7 +1873,7 @@
         "skill_id": "200",
         "skill_name": "在例外情境中Reinforcement赞许",
         "skill_description": "当识do not到问题not yet发生或较轻的例外时，采用EARS中的增强步骤，明确赞许来访者在例外中的成功与力量，放大差异并肯定其角色；随后再次询问，促使更多例外被发现与维持。",
-        "when_to_use": "在探索例外与应用EARS询问时，用于把例外转化为可被觉察、被复制的成功经验并形成正向循环。",
+        "when_to_use": "When exploring exceptions and applying EARS inquiry, used to convert exceptions into successful experiences that can be noticed and replicated, forming a positive cycle.",
         "trigger": "来访者叙述“有些时候问题not发生”“这次处理得更好”等例外片段，或EARS引出较好的事件时。",
         "parent_ids": [
             "93",
@@ -1984,7 +1984,7 @@
         "skill_id": "291",
         "skill_name": "use来访者用语与立场建立信任",
         "skill_description": "在建立合作关系时，配合甚至use来访者的用语，理解其信念与立场，以传递平等与尊重，降低防御，促进入谈共识，为后续目标与任务协商奠定基础。",
-        "when_to_use": "建构解决的对话阶段开始，用于建立合作咨询关系与信任，进入共同语言，降低权威感并提高参与度。",
+        "when_to_use": "At the start of the solution-building dialogue stage, used to build a cooperative counseling relationship and trust, enter a common language, lower the sense of authority, and raise participation.",
         "trigger": "会谈开场时来访者开始叙述其信念与立场，use其特定术语或价值判断，语气试探、对咨询师用语敏感。",
         "parent_ids": [
             "93",
@@ -1998,7 +1998,7 @@
     "292": {
         "skill_id": "292",
         "skill_name": "正常化来访者困扰以非病理化",
-        "skill_description": "以较轻的词句重述来访者的表述，强调困扰的普遍性与发展性，将问题回归为可理解的经历，减轻负面情绪与羞耻，促进合作与信任。",
+        "skill_description": "Restate the client's expression in lighter words and phrases, emphasize the universality and developmental nature of the trouble, bring the problem back to an understandable experience, reduce negative emotions and shame, and promote cooperation and trust.",
         "when_to_use": "在建构解决的对话阶段早期，需降低病理化与紧张氛围，增强来访者的安全感与合作意愿。",
         "trigger": "来访者扩大问题的严重性或情绪过于激动，出现“我一定”“完全not救”等绝对化语句。",
         "parent_ids": [
@@ -2028,7 +2028,7 @@
     "294": {
         "skill_id": "294",
         "skill_name": "振奋性鼓舞以增强参与动机",
-        "skill_description": "以真诚的口语与非言语支持，突出来访者的优点、信念与行动，像拉拉队般鼓舞，提升希望与行动力，促进合作与改变，尤其在例外出现时。",
+        "skill_description": "With sincere verbal and nonverbal support, highlight the client's strengths, beliefs, and actions, cheer them on like a cheerleading team, increase hope and the drive to act, and promote cooperation and change, especially when exceptions appear.",
         "when_to_use": "在关系建立与讨论例外、解决方案或行动计划时，需提升信心与动机以维持合作与投入。",
         "trigger": "来访者找到例外或新方法后仍显犹疑、语气消沉，自我评价低、迟疑开始行动。",
         "parent_ids": [
@@ -2043,7 +2043,7 @@
     "295": {
         "skill_id": "295",
         "skill_name": "采用预设性询问设定合作框架",
-        "skill_description": "通过暗示性问句引导来访者界定期望与责任，凸显“咨询师协助、来访者主导”的合作角色，促使其投入解决导向，减少依赖与被动。",
+        "skill_description": "Through suggestive questions guide the client to define expectations and responsibilities, highlight the cooperative roles of 'counselor assists, client leads', prompt their investment in a solution orientation, and reduce dependence and passivity.",
         "when_to_use": "咨询一开始或面谈陷入困境时，用于重设对话焦点与合作框架，澄清角色与目标。",
         "trigger": "对话停滞或游离，来访者期待咨询师给答案、角色边界not清或推卸责任。",
         "parent_ids": [
@@ -2103,7 +2103,7 @@
         "skill_id": "177",
         "skill_name": "四点细化咨询前改变",
         "skill_description": "围绕“有什么not一样、如何发生、效果如何、是否有帮助”四个核心问题，细化来访前已出现的改变，转化为可观察、可描述的细节。",
-        "when_to_use": "当来访者已承认存在某些咨询前改变后，用于具体化改变内容，增强其可见性、可描述性与可复制性。",
+        "when_to_use": "After the client has admitted certain pre-counseling changes exist, used to concretize the change content, enhancing its visibility, describability, and replicability.",
         "trigger": "来访者出现“好了一点”“not那么严重了”“我试着做了…”等表述，表明已注意到差异或尝试。",
         "parent_ids": [
             "93",
@@ -2116,7 +2116,7 @@
     "178": {
         "skill_id": "178",
         "skill_name": "提炼并延续有效做法",
-        "skill_description": "基于已觉察的咨询前改变，协助来访者从中找出更为详细、明确的做法，并鼓励沿着这些有效做法继续行动以扩大改变。",
+        "skill_description": "Based on the perceived pre-session change, assists the client to find more detailed, clear practices from it, and encourages continuing to act along these effective practices to expand the change.",
         "when_to_use": "在识do not出一至数个咨询前改变事件后，需将其转化为具体策略与下一步行动，巩固与放大改变时。",
         "trigger": "来访者已描述具体在来访前发生的not同做法或事件，且对其效果表示肯定或犹豫待定。",
         "parent_ids": [
@@ -2130,9 +2130,9 @@
     "179": {
         "skill_id": "179",
         "skill_name": "标识并唤醒既有资源",
-        "skill_description": "把咨询前改变视为来访者既存的力量与资源，及时指出、命名并予以肯定，作为后续对资源的提醒与开发的起点。",
+        "skill_description": "Treating pre-counseling change as the client's existing strength and resource, pointing it out, naming it, and affirming it in time, as the starting point for later reminders about and development of resources.",
         "when_to_use": "初访早期或梳理咨询前改变时，用于建立资源导向框架，增强自我效能与希望感，指导后续Intervention聚焦优势。",
-        "trigger": "来访者透露改变背后的做法、支持或动机，如“朋友提醒我…”“我坚持做…”，或表露对改变的积极体验。",
+        "trigger": "The client reveals the practices, support, or motivation behind the change, such as 'a friend reminded me...' and 'I kept doing...', or shows a positive experience of the change.",
         "parent_ids": [
             "93",
             "100",
@@ -2206,7 +2206,7 @@
         "skill_name": "运用纸笔测评评估咨询进步",
         "skill_description": "At the positive feedback stage, select or briefly design suitable scales/paper-and-pencil tests to evaluate the client's change and goal progress, obtaining concrete, comparable progress indicators as a basis for subsequent feedback and planning.",
         "when_to_use": "Solution-focused brief therapy每次会谈的正向反馈阶段，用于“评价与计划结束”前需要对本次与累积改变进行量化梳理时。",
-        "trigger": "会谈已进入正向反馈阶段；需要评估“改变是否发生/到何种程度”；来访者对进展感到模糊或难以具体描述。",
+        "trigger": "The session has entered the positive feedback stage; 'whether change has occurred/to what extent' needs to be assessed; the client feels vague about progress or has difficulty describing it concretely.",
         "parent_ids": [
             "93",
             "100",
@@ -2220,7 +2220,7 @@
         "skill_id": "371",
         "skill_name": "基于测评结果进行正向反馈与计划调整",
         "skill_description": "Use the paper-and-pencil assessment results for positive feedback, strengthening the client's belief in the change that has occurred, and on this basis review the effective practices, refine or adjust the next goals and tasks, and help maintain and expand the existing changes.",
-        "when_to_use": "完成纸笔测评并获得结果后，在正向反馈阶段需要“巩固建构性转变、回顾任务行为、构建解决方法、发展新策略”之际。",
+        "when_to_use": "After completing the paper-and-pencil assessment and obtaining results, in the positive feedback stage, when it is necessary to 'consolidate constructive change, review task behaviors, construct solutions, develop new strategies'.",
         "trigger": "测评结果显示进步迹象或需要澄清改变影响；来访者需要增强信心并确定下一步可行计划。",
         "parent_ids": [
             "93",
@@ -2234,7 +2234,7 @@
     "372": {
         "skill_id": "372",
         "skill_name": "以纸笔测评持续追踪会后改变",
-        "skill_description": "在会谈结束后安排简短纸笔测评或记录表，定期收集来访者在关键领域的变化数据，用于后续随访与评估，支持其维持改变并及时调整方案。",
+        "skill_description": "After the session ends, arrange a brief paper-and-pencil assessment or record sheet, and regularly collect data on the client's changes in key areas for subsequent follow-up and evaluation, supporting them in maintaining change and adjusting the plan in a timely manner.",
         "when_to_use": "阶段性会谈结束或进入随访阶段，需要持续监测改变保持度与泛化效果时。",
         "trigger": "本次会谈已完成“评价与计划结束”；需要对后续一段时间内的改变进行跟踪记录与复盘。",
         "parent_ids": [
@@ -2249,7 +2249,7 @@
     "373": {
         "skill_id": "373",
         "skill_name": "选用量表与纸笔测验构建评量方案",
-        "skill_description": "依据来访者目标与关注的改变维度，选取合适的量表与纸笔测验，明确评估内容与指标，用于评估咨询进步并服务于正向反馈与计划制定。",
+        "skill_description": "According to the goals set by the client and the dimensions of change they focus on, select suitable scales and paper-and-pencil tests, and clarify the assessment contents and indicators, to be used to assess the progress of counseling and to serve positive feedback and plan formulation.",
         "when_to_use": "在正向反馈阶段进入“评价与计划结束”时，需要以客观信息回顾进展并支撑后续策略制定之际。",
         "trigger": "来访者在反馈环节主动汇报变化、询问自己是否有进步，或表达希望了解目标达成度与影响。",
         "parent_ids": [
@@ -2264,7 +2264,7 @@
     "374": {
         "skill_id": "374",
         "skill_name": "在正向反馈环节组织实施评量",
-        "skill_description": "将评量作为正向反馈阶段的固定步骤实施，系统收集当次会谈的改变证据，以便巩固建构性转变、回顾任务行为并为新策略提供依据。",
+        "skill_description": "Implement assessment as a fixed step in the positive feedback stage, systematically collect the evidence of change in the session, in order to consolidate constructive shifts, review task behaviors and provide a basis for new strategies.",
         "when_to_use": "每次会谈的正向反馈阶段，特do not是在需要对本次行动与变化做阶段性总结时。",
         "trigger": "来访者在会谈末段开始总结近期变化、描述最先改变迹象或对下一步行动征询建议。",
         "parent_ids": [
@@ -2294,7 +2294,7 @@
     "376": {
         "skill_id": "376",
         "skill_name": "设计并执行结案后追踪评估",
-        "skill_description": "在咨询结束时明确随访安排，持续追踪来访者改变状况，以监测维持与进展，并在需要时依据追踪结果提供调整建议。",
+        "skill_description": "At the end of counseling clarifies follow-up arrangements, continuously tracks the client's change status, to monitor maintenance and progress, and when needed provides adjustment suggestions based on tracking results.",
         "when_to_use": "咨询临近结束或进入结案安排阶段，需要保障改变维持与后续支持时。",
         "trigger": "来访者达到阶段目标、同意结案，或表达对维持改变和后续支持的关切与需求。",
         "parent_ids": [
@@ -2311,7 +2311,7 @@
         "skill_name": "运用“产生解决”技术生成方案清单",
         "skill_description": "依照产生解决技术要领：写下每一条建议、not批评任何建议、先求数量后评估、整理组合建议以产出新方案、完成后暂搁再复盘，快速生成多样可行的解决方案清单。",
         "when_to_use": "在Solution-focused brief therapy的正向反馈阶段或建构解决对话阶段，需要与来访者共同商议可行做法、把谈话成果转化为操作性方案时。",
-        "trigger": "来访者已澄清目标或述说过例外/有效做法，并表达“下一步该怎么做”；或会谈出现“缺少具体办法”的停滞迹象。",
+        "trigger": "The client has clarified goals or told of exceptions/effective practices, and expresses 'what to do next'; or the session shows stagnation signs of 'lacking concrete methods'.",
         "parent_ids": [
             "93",
             "100",
@@ -2324,7 +2324,7 @@
         "skill_id": "348",
         "skill_name": "从例外提炼可重复步骤",
         "skill_description": "结合例外询问与EARS，详询问题not yet发生或较轻时的具体行为、情境与自身角色，放大细节并Reinforcement成功，将成功片段整理为可复用的行动步骤与提示条件。",
-        "when_to_use": "在正向反馈阶段构建方案的前后，用于把前期谈到的成功经验与例外情境转化为具体可操作的计划内容。",
+        "when_to_use": "Before and after building a plan at the positive-feedback stage, used to turn the successful experiences and exception situations discussed earlier into concrete, operable plan content.",
         "trigger": "来访者描述“有时not那么严重”“上周更顺利”“我那次做了X”等例外或进展迹象，能够回忆起改善时的具体差异。",
         "parent_ids": [
             "93",
@@ -2381,7 +2381,7 @@
         "skill_name": "运用赞许与振奋性鼓舞Reinforcement改变",
         "skill_description": "At the positive feedback stage, regarding the client's exceptions and effective attempts that have appeared, give concrete, genuine praise and inspiring encouragement, reinforcing their positive self-concept and motivation to act, and consolidate new changes with positive feedback after a pause.",
         "when_to_use": "初次会谈的休息阶段之后进入正向反馈阶段，用于巩固已出现的改变与新叙事，来访者已表现出合作并开始产生小幅正向变化时。",
-        "trigger": "来访者报告“比较好的事”、描述已找到的例外或有效做法；或在叙述中显现更积极的语气、姿态放松，对改变流露期待。",
+        "trigger": "The client reports 'relatively good things', describes exceptions or effective practices already found; or shows a more positive tone in the narration, relaxed posture, and reveals expectation of change.",
         "parent_ids": [
             "93",
             "100",
@@ -2488,7 +2488,7 @@
     "334": {
         "skill_id": "334",
         "skill_name": "回顾并整理有效解决途径线索",
-        "skill_description": "在休息期间系统回看第一阶段内容，筛选并归类来访者已提及的有效做法与例外情境，提炼可操作的解决路径要点。",
+        "skill_description": "During the break, systematically reviewing the content of the first stage, screening and categorizing the effective practices and exception situations the client mentioned, and distilling operable key points of the solution path.",
         "when_to_use": "咨询师离开咨询室后的休息时段，用于为后续反馈做内容准备。",
         "trigger": "第一阶段已产出目标、例外、资源等信息，需要梳理出“有效的解决途径”清单时。",
         "parent_ids": [
@@ -2599,7 +2599,7 @@
         "skill_id": "352",
         "skill_name": "运用“产生解决”头脑风暴",
         "skill_description": "引导来访者用“产生解决”技术生成新做法：写下每一条建议、暂not评价或批评、先追求数量再评估、将建议整理重组以产生新建议，短暂搁置后再重复一轮，促发创造性与灵活度。",
-        "when_to_use": "正向反馈阶段，在已出现小改变且需要进一步拓展解决路径时，用于共同生成多样化的新策略以维持与放大改变。",
+        "when_to_use": "The positive feedback stage, when small changes have appeared and solution paths need further expansion, used to jointly generate diverse new strategies to maintain and amplify change.",
         "trigger": "来访者表示“not知道还能怎么做”“想试试do not的方法”或对现有做法感到受限、停滞，流露出需要新点子的期待。",
         "parent_ids": [
             "93",
@@ -2627,7 +2627,7 @@
         "skill_id": "354",
         "skill_name": "将例外推广到新情境",
         "skill_description": "鼓励把已奏效的“例外”行为从原有场景向not同情境迁移运用，并与咨询目标连接，强调not只是增加频率，也要在新场合尝试，以拓展改变范围与稳定度。",
-        "when_to_use": "正向反馈阶段，在单一场景已有成效，但来访者希望扩大到更多人际/时间/地点时，需设计迁移与泛化。",
+        "when_to_use": "At the positive-feedback stage, effectiveness has been achieved in a single scenario, but the client hopes to expand to more people/times/places, and transfer and generalization need to be designed.",
         "trigger": "来访者说“在家能做到，但在公司就难”“只在早上有效”，或表达想把当前成效扩展到其他场景。",
         "parent_ids": [
             "93",
@@ -2713,7 +2713,7 @@
         "skill_id": "366",
         "skill_name": "探索分数差异的意义与促成因素",
         "skill_description": "当本次评分与上次或目标分数not同，追问这一差异代表的具体意义，并引导来访者识do not已采取的有效行为与条件，从而Reinforcement可复制的改变机制与资源。",
-        "when_to_use": "在正向反馈阶段回顾改变、巩固有效策略时，用于从分数变化中提炼经验与资源，形成维持改变的依据。",
+        "when_to_use": "At the positive-feedback stage, when reviewing change and consolidating effective strategies, used to distill experience and resources from score changes, forming a basis for maintaining change.",
         "trigger": "来访者报告“比上次好/差一些”或提供not同于既往的分数，或在量表讨论中出现分数变动。",
         "parent_ids": [
             "93",
@@ -2801,7 +2801,7 @@
         "skill_id": "343",
         "skill_name": "赞许与振奋性鼓舞Reinforcement有效行动",
         "skill_description": "Combine praise with inspiring encouragement; in the review, give genuine, concrete positive feedback on the client's efforts, resources, and concrete effective behaviors, strengthening self-efficacy and the motivation to continue acting, and consolidating constructive transformation.",
-        "when_to_use": "正向反馈阶段总结进展时，或来访者报告完成作业、出现例外、展现坚持时，用于巩固信心与维持改变。",
+        "when_to_use": "When summarizing progress at the positive-feedback stage, or when the client reports completing homework, exceptions appearing, or showing persistence, used to consolidate confidence and maintain change.",
         "trigger": "来访者呈现出切实努力（如按时面谈、按计划尝试）、报告小改变或表达Self-doubt但仍在行动的迹象。",
         "parent_ids": [
             "93",
@@ -2886,7 +2886,7 @@
     "304": {
         "skill_id": "304",
         "skill_name": "Average化（正常化）降低灾难化与病理化",
-        "skill_description": "以正常化表述将本非病理的问题回归常见发展困境，用较低严重度的词汇重述来访者语言，帮助情绪降温，减少灾难化与自我病理化。",
+        "skill_description": "With normalizing expressions, bring non-pathological problems back to common developmental difficulties, restate the client's language in words of lower severity, help cool the emotions, and reduce catastrophizing and self-pathologizing.",
         "when_to_use": "在重构问题时，需降低问题威胁感、营造可改变感与合作氛围时。",
         "trigger": "来访者扩大问题严重性或情绪过于激动，将自身标签化、病理化。",
         "parent_ids": [
@@ -3021,7 +3021,7 @@
     "323": {
         "skill_id": "323",
         "skill_name": "询问最先的改变迹象",
-        "skill_description": "请来访者具体描绘若改变刚开始出现他人或自己首先会注意到的可见微小差异，以此界定起步行动并启动行为实验。",
+        "skill_description": "Asking the client to concretely depict the visible small differences that others or themselves would first notice if change just began to appear, thereby defining the starting action and launching a behavioral experiment.",
         "when_to_use": "当来访者已描述目标或奇迹情境、准备由想法走向行动时，用于确定第一步。",
         "trigger": "来访者说“想改变但not知道从哪开始”，或已勾勒理想状态但缺少可观察的起步指标。",
         "parent_ids": [
@@ -3081,7 +3081,7 @@
     "327": {
         "skill_id": "327",
         "skill_name": "振奋性鼓舞Reinforcement动机",
-        "skill_description": "像拉拉队般针对来访者的优点、动机与有效行为给予真诚、有声势的正向肯定，提升自我效能与行动动力，注意真实适度与非语言配合。",
+        "skill_description": "Like a cheerleader, give sincere and spirited positive affirmation toward the client's strengths, motivation and effective behavior, raising self-efficacy and the drive to act, taking care of genuineness and appropriateness and of nonverbal matching.",
         "when_to_use": "会谈过程中每当来访者呈现资源、采取行动或找到解决方法时，用于及时Reinforcement与推动继续行动。",
         "trigger": "来访者描述或展示了坚持、尝试新方法、成功的片段或表达积极信念与动机。",
         "parent_ids": [
@@ -3292,7 +3292,7 @@
         "skill_id": "495",
         "skill_name": "运用奇迹询问构建具体not yet来叙事",
         "skill_description": "以“昨晚一个奇迹发生了”为引，邀请来访者闭眼想象问题已解决的not yet来，从早到晚细致描绘理想日常，指出确认奇迹已发生的第一征兆与可观察行为，将现实中已出现的理想片段与偏好情境转化为新叙事的起点，澄清目标并激发希望。",
-        "when_to_use": "在建立关系后、目标建构初期或第二次会谈，需要激发希望、明确目标；或在目标初步明确但需具体化、构建问题解决后的生活图景时。",
+        "when_to_use": "After building the relationship, in the early stage of goal construction or at the second session, where hope needs to be aroused and the goal clarified; or where the goal is initially clear but needs to be made specific and a picture of life after the problem is solved constructed.",
         "trigger": "来访者陷于问题叙述、对not yet来缺乏具体图景或目标表述抽象含混；对现状低落、改变路径模糊；已分享例外并愿意想象“状态极好”；或承认Anxiety困扰、既有方法仅暂时有效。",
         "parent_ids": [
             "93",
@@ -3320,7 +3320,7 @@
         "skill_name": "用量表与量尺评估进展与任务效果",
         "skill_description": "Invite the client to score the current state and weekly goals with a 0-10 scale or standardized scales (such as the SDS, parent-child relationship rating), compare score changes before and after, ask where even a tiny '1-point difference' comes from, clarify which actions contributed to the improvement and which remain difficult; cross-validate objective data with subjective experience, clearly present counseling effects and the progress trajectory, and guide the next steps.",
         "when_to_use": "每次正向反馈或阶段性总结、回顾任务阶段开始，或需要评估Intervention成效、状态波动时。",
-        "trigger": "开始回顾作业或进展；来访者完成会谈外行动或报告情绪/关系状态变化，难以描述改进或需界定当前状态与目标。",
+        "trigger": "Beginning to review homework or progress; the client completes out-of-session actions or reports changes in emotional/relationship state, finds it hard to describe improvements, or needs to define the current state and goals.",
         "parent_ids": [
             "93",
             "100",
@@ -3394,7 +3394,7 @@
         "skill_name": "引导生成并整理可行方案清单",
         "skill_description": "围绕目标与例外，useQuestioning如“还能尝试do not的事情吗”“哪些具体措施能让状态更好”“你能归纳一下吗”，促使来访者主动列出多项可行做法，结合成功片段总结有效方法，并由其选择与整合，转化为可执行计划，提升自主性与创造性。",
         "when_to_use": "中期的解决方案讨论阶段；当已明确方向/目标与例外或识do not到成功片段，需要扩展选项并将思路落实为具体行动计划时。",
-        "trigger": "来访者愿意尝试改变但方案单一或笼统；或已提出方向/愿景、有线索或成功片段但缺具体步骤与系统整理。",
+        "trigger": "The client is willing to try change but the plan is single or general; or a direction/vision has been proposed, with cues or success fragments, but lacking concrete steps and systematic organization.",
         "parent_ids": [
             "93",
             "100",
@@ -3421,7 +3421,7 @@
         "skill_id": "489",
         "skill_name": "安排并执行新叙事练习与观察记录",
         "skill_description": "Based on the new narrative in the session and the action blueprint of the narrative letter, arrange daily retelling and self-reminders, make concrete attempts between the two sessions (such as 'give it a try'), and remind the client to observe and record the new experiences, new ideas and progress that appear, bringing them into the next discussion, to maintain and expand the change in life situations.",
-        "when_to_use": "会谈尾声或阶段总结，及两次会谈之间的实践期，用于将会谈收获迁移到生活、安排并执行练习与记录。",
+        "when_to_use": "At the end of a session or stage summary, and during the practice period between two sessions, used to transfer what was gained in the session to life and to arrange and carry out practice and recording.",
         "trigger": "来访者已有新叙事雏形并愿意持续练习或尝试新方法，或需要将叙事信件中的行动蓝图落地为行动；以及在生活中察觉到与以往not同的感受、念头或反应时。",
         "parent_ids": [
             "93",
@@ -3462,7 +3462,7 @@
     "508": {
         "skill_id": "508",
         "skill_name": "用一个词或短句命名核心烦恼",
-        "skill_description": "邀请来访者用一个词或短句为主要困扰命名，迅速提炼并聚焦其核心感受，形成共同语言，为后续讨论差异、例外与应对提供清晰的指称。",
+        "skill_description": "Invite the client to name the main distress with a word or a short phrase, quickly distilling and focusing the core feeling, forming a shared language, and providing a clear referent for later discussion of differences, exceptions, and coping.",
         "when_to_use": "初次会谈或会谈早期，需要快速聚焦并形成共同语言以推进具体工作时。",
         "trigger": "来访者表达笼统的苦恼或大量抱怨、情绪化描述但焦点not清，且愿意尝试给困扰命名。",
         "parent_ids": [
@@ -3506,7 +3506,7 @@
         "skill_id": "473",
         "skill_name": "正常化与去病理化并传递希望",
         "skill_description": "以正常化与Average化陈述，强调体验的普遍性与可理解性，淡化病理化标签与特殊化痛感，Rationalization情绪并传递希望，缓解羞耻与孤绝感，重置对话基调，使叙事从“我有严重问题”转向“常见困境可被应对”，为解决导向铺垫。",
-        "when_to_use": "会谈初期或深入阶段开始，当来访者把状态病理化、异常化或对抗情绪明显、需要降压与重构意义时。",
+        "when_to_use": "At the early stage of a session or the start of the in-depth stage, when the client pathologizes or abnormalizes their state or confrontation emotions are obvious, pressure reduction and meaning reconstruction are needed.",
         "trigger": "诉“压力大”“心情很差”“经常哭”“not如do not人”“只有我这样”等绝对化抱怨，自责与Intensified sense of isolation，或担忧被评判。",
         "parent_ids": [
             "93",
@@ -3588,7 +3588,7 @@
     "515": {
         "skill_id": "515",
         "skill_name": "结束阶段肯定并鼓励持续应用",
-        "skill_description": "在结束阶段总结与巩固时，具体点名来访者的进步与付出，鼓励其持续应用已学方法与沟通练习，维持改进与行动动机。",
+        "skill_description": "In the ending stage summary and consolidation, concretely names the client's progress and effort, encourages continued application of the learned methods and communication exercises, maintaining improvement and action motivation.",
         "when_to_use": "第9-10次会谈的效果Consolidation and termination环节，或回顾进步、讨论后续自助计划时。",
         "trigger": "回顾进步、练习情绪处理方法或讨论后续自助计划。",
         "parent_ids": [
@@ -3713,8 +3713,8 @@
         "skill_id": "423",
         "skill_name": "捕捉并放大早期进展征兆",
         "skill_description": "从记录或叙述中抓取并点明最微小的not同（如多学一个知识点、学习时长增加、当场回复信息、表达真实感受、情绪略好转、姿态更放松、睡眠好了些、更有期待），予以命名与肯定，具体化为行动起点并加以Reinforcement，滚雪球推进后续改变。",
-        "when_to_use": "在咨询早期或改变刚萌芽、开始尝试新行为时，或任何出现细微改善的时刻，需要巩固动机并设定下一步小目标时。",
-        "trigger": "来访者报告细小改动或可观察的微小提升，自发提到“事情有了进展”，当场回复信息或表达真实感受，或说到睡眠好转与期待感上升。",
+        "when_to_use": "In the early stage of counseling or when change is just budding and new behaviors begin to be tried, or at any moment when subtle improvement appears, when needing to consolidate motivation and set the next small goal.",
+        "trigger": "The client reports small modifications or observable slight improvements, spontaneously mentions that 'things have made progress', replies to a message or expresses genuine feelings then and there, or speaks of sleep improving and a sense of anticipation rising.",
         "parent_ids": [
             "93",
             "100",
@@ -3769,7 +3769,7 @@
         "skill_id": "416",
         "skill_name": "生成并试验新的例外与奇迹实践",
         "skill_description": "鼓励在既有成效上继续生成新的例外与奇迹实践，布置会谈外小任务，在not同情境下按“例外”做法进行练习与体验改变，主动持续搜索更多例外，以保持创造性与灵活性并拓展成功经验与策略库。",
-        "when_to_use": "在后续会晤与作业布置时，用于拓展改变至更多情境与行为；在已有初步例外后，为巩固与提升自主性时。",
+        "when_to_use": "In later meetings and homework assignment, used to extend change to more situations and behaviors; after preliminary exceptions exist, to consolidate and enhance autonomy.",
         "trigger": "来访者已体验到例外或奇迹情境；完成初步尝试并愿意在生活情境中继续实验与练习。",
         "parent_ids": [
             "93",
@@ -3812,8 +3812,8 @@
         "skill_id": "412",
         "skill_name": "将赞许与任务衔接以巩固行为",
         "skill_description": "After giving affirmation, set simple and feasible repeated practice and observation tasks, requiring starting from small things, deliberately repeating successful experiences to consolidate and expand exceptions; when necessary, guide continued exploration and review, so effective strategies are maintained.",
-        "when_to_use": "当来访者已出现积极行为或例外并愿意继续改进、需要把改变转化为可持续行动时；或在成功体验与作业反馈之后。",
-        "trigger": "来访者认可赞许并愿意实践、询问下一步做法；已完成或部分完成前次作业，或报告具体改善与成功做法。",
+        "when_to_use": "When the client has shown positive behaviors or exceptions and is willing to keep improving, needing to turn change into sustainable action; or after a successful experience and homework feedback.",
+        "trigger": "The client accepts the affirmation and is willing to practice, asking about next-step practices; has completed or partially completed the previous homework, or reports concrete improvements and successful practices.",
         "parent_ids": [
             "93",
             "100",
@@ -3842,7 +3842,7 @@
         "skill_id": "379",
         "skill_name": "即时肯定并促述说例外片段",
         "skill_description": "When the client recalls an exception or effective action, promptly reinforce it with concise, concrete affirmation, invite them to continue giving examples and elaborating or summarizing effective practices, link internal resources, expand positive experience, and support maintenance.",
-        "when_to_use": "在例外询问过程中、作业反馈或叙事重构的中期会谈，当出现可行情境或成功片段时用于巩固与拓展。",
+        "when_to_use": "During exception inquiry, homework feedback, or middle narrative reconstruction sessions, when feasible situations or successful fragments appear, used to consolidate and expand.",
         "trigger": "来访者描述注意力集中的时刻、成就感或被表扬的经历；主动化解冲突、改进作息、参与社交等例外行为，或报告多个例外事件。",
         "parent_ids": [
             "93",
@@ -3872,7 +3872,7 @@
         "skill_id": "487",
         "skill_name": "外化命名并第三人称对话",
         "skill_description": "引导来访者为困扰命名并拟人化，如将“Anxiety”等视作独立角色，在后续以第三人称与其对话与管理；通过“那股Anxiety在对你说什么？”等Questioning，使人与问题持续分离，减少自责与标签化，削弱问题的支配力，稳固以解决为中心的叙事。",
-        "when_to_use": "在外化工作的起始与具体化阶段，或当来访者将自我与问题等同、需要稳固外化视角时；亦可在叙述冲突与强烈情绪出现时作为起点。",
+        "when_to_use": "In the initial and specific stages of the externalization work, or when the client equates the self with the problem and the externalized perspective needs to be stabilized; it can also be a starting point when narrative conflicts and strong emotions appear.",
         "trigger": "来访者use病理化或自责语言，将困扰等同为“我就是这样”；描述被催促时的Anxiety/愤怒等身心反应；或已能识do not问题特征并愿意尝试命名与拉开距离。",
         "parent_ids": [
             "93",
@@ -3929,7 +3929,7 @@
         "skill_name": "刻度化目标与中间标准并规划微步",
         "skill_description": "On the 0-10 scale clarify both the current and ideal positions, agree on operable middle standards (such as the concrete manifestation of 5 points), compare the gap and the degree of improvement accordingly, discuss concrete actions to raise the current score by one point, quantify progress, and form staged goals.",
         "when_to_use": "目标细化与进展规划阶段，或确立方向后需把总体愿望分解为阶段标准与微小可行步伐时。",
-        "trigger": "来访者目标模糊、难以衡量进展或难以描述“做到更好”的具体表现；对从现在到理想的路径感到迷茫。",
+        "trigger": "The client's goals are vague, progress is hard to measure, or the concrete form of 'doing better' is hard to describe; they feel lost about the path from the present to the ideal.",
         "parent_ids": [
             "93",
             "100",
@@ -3970,7 +3970,7 @@
         "skill_id": "479",
         "skill_name": "邀请选择协助并协商节奏与安排",
         "skill_description": "Through asking 'from what aspect do you hope I help you', invite the client to jointly determine the support methods and role division; on an equal footing negotiate the counseling stages, number of sessions and frequency, and advance according to their readiness, appropriately extending the intervals when necessary, taking both support and autonomy into account, raising the sense of participation, safety and cooperation.",
-        "when_to_use": "初次会谈需确定合作关系与流程时，或进入巩固期需要调整频率与安排；目标初步明确后需共定角色与介入重点时。",
+        "when_to_use": "When the first session needs to establish the cooperative relationship and process, or entering the consolidation period needs adjusting the frequency and arrangements; after the goals are preliminarily clear, needing to jointly set roles and intervention focuses.",
         "trigger": "来访者愿意尝试改变并期待咨询师参与；对咨询流程与时间not熟或not安；出现犹豫、沉默，需要按其节奏推进。",
         "parent_ids": [
             "93",
@@ -3984,7 +3984,7 @@
     "431": {
         "skill_id": "431",
         "skill_name": "共同协商并明确咨询目标与方案",
-        "skill_description": "以协商姿态与来访者共同明确咨询目标与方案，确保目标由其认可并看见达成路径，作为后续会谈的共同依据与指引，增强投入与合作意愿。",
+        "skill_description": "With a consultative posture, clarify the counseling goals and plan together with the client, ensure the goals are endorsed by the client and the path to achieving them is visible, and use this as the shared basis and guide for later sessions, enhancing commitment and willingness to cooperate.",
         "when_to_use": "初期目标设定与方案制定环节，或阶段转换时需就焦点与目标达成共识。",
         "trigger": "来访者表达改变愿望或困扰not清、对会谈期待与方向提出疑问，愿意共同讨论目标与咨询安排。",
         "parent_ids": [
@@ -4014,7 +4014,7 @@
     "509": {
         "skill_id": "509",
         "skill_name": "采用来访者语言与隐喻外化并命名问题",
-        "skill_description": "邀请来访者为困扰命名，采用其原话与贴近体验的隐喻，共同建立共享语言与外化框架，减少标签化与自责，提升参与感与协作氛围。",
+        "skill_description": "Invite the client to name the trouble, using their own original words and metaphors close to their experience, jointly build a shared language and an externalizing frame, reduce labeling and self-blame, and raise the sense of participation and the atmosphere of cooperation.",
         "when_to_use": "进入问题探讨与外化阶段，或需建立共同语言、降低标签化与对立感时。",
         "trigger": "来访者为烦恼提出称呼或对命名表现兴趣，或愿以形象语言描述具体困境与情绪。",
         "parent_ids": [
@@ -4029,7 +4029,7 @@
     "486": {
         "skill_id": "486",
         "skill_name": "明确同盟并以人—问题分离共同面对",
-        "skill_description": "明确与来访者结成同盟，采用合作姿态一起面对问题，通过人—问题分离降低标签化与自责，提升参与度与改变动机。",
+        "skill_description": "Clearly forms an alliance with the client, adopts a cooperative posture to face the problem together, through person-problem separation reduces labeling and self-blame, raising participation and change motivation.",
         "when_to_use": "外化与重塑对话前，需确立合作框架与共同目标时。",
         "trigger": "来访者把问题全归咎于自我、对咨询有期待但not知如何参与，或已准备以外化视角讨论。",
         "parent_ids": [
@@ -4074,7 +4074,7 @@
         "skill_id": "484",
         "skill_name": "从重要他人视角描绘自我形象与评价",
         "skill_description": "Ask questions such as 'what kind of student are you in the counselor's eyes' and 'which trait of yours do classmates appreciate', and inquire about evaluations by friends and roommates, expanding self-cognition and positive identity from others' perspectives and providing clues for interpersonal repair and support mobilization.",
-        "when_to_use": "重塑对话阶段或初次信息收集与问题澄清时，需要扩大身份认同范围与资源网络或重建关系与自我观时。",
+        "when_to_use": "At the dialogue-reshaping stage or during initial information collection and problem clarification, when the scope of identity and the resource network need to be expanded, or relationships and self-view rebuilt.",
         "trigger": "来访者忽视正面评价、沉浸负面舆论与自责；或需要了解他人如何看待自己以便重建关系。",
         "parent_ids": [
             "93",
@@ -4117,7 +4117,7 @@
         "skill_name": "以EmpathyListening与接纳稳定情绪",
         "skill_description": "以真诚Listening、Empathy回应与without条件积极关注，配合温和语气、微笑、简短鼓励与情绪容纳，必要时提供接纳的心理与物理空间，允许沉默与停顿；传递被理解与被尊重的信息，增强信任与安全感，降低紧张与防御，促进入谈与情绪稳定。",
         "when_to_use": "首次或早期会谈、评估与关系建立阶段，以及情绪激动或应激后需先稳定情绪以继续对话时。",
-        "trigger": "来访者哭泣、激动、肢体收缩或难以连贯表达；紧张拘谨、担忧被评判、迟疑或长时间沉默、言语僵化等。",
+        "trigger": "The client cries, is agitated, limbs contract, or has difficulty expressing coherently; tense and reserved, worried about being judged, hesitant or silent for a long time, speech rigid, etc.",
         "parent_ids": [
             "93",
             "100",
@@ -4131,7 +4131,7 @@
         "skill_id": "411",
         "skill_name": "用肯定赞赏与鼓励Reinforcement正向体验",
         "skill_description": "Give concrete, fitting praise and affirmation for the client's attempts, decisions and progress, reflect their positive emotions and state, and with encouragement consolidate effective behaviors and abilities; combined with presuppositional questions inject hope, strengthen self-efficacy and change motivation, help maintain and spread the change, creating a warm, supportive session atmosphere.",
-        "when_to_use": "在各阶段，当来访者呈现努力、进步、积极体验或主动求助，或在建构解决与反馈总结时，用于巩固改变与提升动机。",
+        "when_to_use": "At each stage, when the client presents effort, progress, positive experiences or active help-seeking, or in solution building and feedback summary, used to consolidate change and raise motivation.",
         "trigger": "来访者报告睡眠改善、完成任务与成就体验、心态平和或面带笑容；讲述曾经的尝试与支持、主动求助或表达愿意改变；或自评without动力、对前景悲观需注入希望时。",
         "parent_ids": [
             "93",
@@ -4236,7 +4236,7 @@
         "skill_id": "462",
         "skill_name": "搜寻例外并提炼可复制做法与资源",
         "skill_description": "引导回忆问题not yet发生或较轻、愉快与被尊重的时刻，细化当时的情境、行为与支持，追问“如何做到”“复现条件”，将社会支持与内在优势整合为可复制的解决策略，Reinforcement自我效能并促使小改变持续发生。",
-        "when_to_use": "在聚焦解决方案、需把注意力从原因与失败转向成功经验与可行策略时；或例外已出现、需要提炼条件与做法时。",
+        "when_to_use": "When focusing on solutions and needing to shift attention from causes and failures to successful experiences and feasible strategies; or when exceptions have appeared and their conditions and practices need distilling.",
         "trigger": "来访者挫败或Self-denial、难以描述问题not发生的情况；或能回忆愉快、被关怀、互动顺畅、notAnxiety等片段并愿意细化。",
         "parent_ids": [
             "93",
@@ -4297,7 +4297,7 @@
         "skill_name": "评量问句量化现状并促成微步前进",
         "skill_description": "use1–10量尺定位现状与期望分值，追问该分数背后的努力与资源，讨论“如何加一分”与可观察指标（如信心、任务完成度、启动时间），设定阶段阈值，转化为具体可行的小步骤。",
         "when_to_use": "在回顾进展或制定目标与路径时，需把抽象目标量化为可操作标准并明确下一步行动。",
-        "trigger": "来访者给出现状分数后对提升困惑；目标笼统、难以把握进展；报告进步/停滞/波动需量化并讨论下一步。",
+        "trigger": "After giving a current-state score, the client is perplexed about improvement; goals are general and progress hard to grasp; reported progress/stagnation/fluctuation needs quantification and discussion of next steps.",
         "parent_ids": [
             "93",
             "100",
@@ -4355,7 +4355,7 @@
         "skill_name": "具体赞美并归因于自我资源巩固自我概念",
         "skill_description": "When the client presents new understandings, behaviors or results, aiming at the concrete bright spots give sincere, concrete praise and imagery feedback, clarify that the progress originates from their self-control and effective use of resources, attribute the change to their own abilities, strengthen the positive self-schema and self-efficacy, promoting the maintenance and expansion of the change.",
         "when_to_use": "正向反馈阶段的总结与鼓励环节，或结束前回顾，当来访者已出现进步、资源被看见或完成任务后，需要稳定与扩大改变时。",
-        "trigger": "来访者展示作品、描述进步或新做法（如vlog、发型变化、学习策略）、自评状态提升；分享执行计划成效、自我管理得当或生活恢复。",
+        "trigger": "The client presents work, describes progress or new practices (such as a vlog, a change of hairstyle, learning strategies), or self-assesses an improved state; shares the results of implementing plans, sound self-management, or the restoration of their life.",
         "parent_ids": [
             "93",
             "100",
@@ -4368,8 +4368,8 @@
         "skill_id": "471",
         "skill_name": "提炼成功机制并记录积极感受巩固策略",
         "skill_description": "引导来访者总结近期改变的关键机理（如合适目标与拆解、环境激励、评量监控），比较当下与既往的not同并命名自身变化与意义，鼓励记录与回味练习中的愉悦、成就等正向体验，使有效做法内化为可复制的自我叙事与个人策略。",
-        "when_to_use": "连续几周出现积极变化后，准备维持、提升或推广到新情境前；或在复盘练习与总结阶段，用正向体验维持新行为与动机。",
-        "trigger": "来访者能连贯回顾“如何做到”的路径或自发总结有效做法要点；提到练习过程的体验、好的感觉持续；看到自我变化并开始评价其意义。",
+        "when_to_use": "After several consecutive weeks of positive change, before preparing to maintain, improve or promote to new situations; or in the review-practice and summary stage, uses positive experiences to maintain new behaviors and motivation.",
+        "trigger": "The client can coherently recount the route of 'how it was done' or spontaneously summarize the key points of effective approaches; mentions the experience of the practice process, the good feelings persisting; sees their own change and begins to evaluate its meaning.",
         "parent_ids": [
             "93",
             "100",
@@ -4412,7 +4412,7 @@
         "skill_id": "420",
         "skill_name": "将目标具体化并量化为可执行项",
         "skill_description": "Refine the goals into concrete, clear, feasible, measurable monitorable items, focus on controllable domains (such as emotions and sleep, cognitive correction, interpersonal improvement), and in negotiation adjust them into reasonable quantification and time limits (such as studying 4 hours daily, persisting for 1 month), facilitating execution and review assessment.",
-        "when_to_use": "目标协商过程中或开始设定目标时，当抽象愿望需转化为可执行计划，或原目标过高需重设为可行目标时。",
+        "when_to_use": "During goal negotiation or when starting to set goals, when abstract wishes need to be turned into executable plans, or the original goal is too high and needs to be reset as a feasible goal.",
         "trigger": "来访者目标表述笼统或not可行、对改变方向模糊；或因without法按计划完成而产生挫败与压力。",
         "parent_ids": [
             "93",
@@ -4428,7 +4428,7 @@
         "skill_id": "516",
         "skill_name": "将目标转化为可操作计划与步骤",
         "skill_description": "Around domains such as sleep, emotion, interpersonal matters and acceptance, with concretizing questions and follow-ups, turn abstract goals into daily executable plans and behavioral steps, such as joining a club, attending self-study, signing up for a competition, communicating with team members, advancing with small-step actions to test and promote, and clarify time arrangements and resources, for implementation and assessment.",
-        "when_to_use": "制定或细化目标时，当总体目标已明确或初步出现，需要把笼统期望落地为具体行动路径与当下尝试时。",
+        "when_to_use": "When formulating or refining goals, when the overall goal is already clear or preliminarily present, and vague expectations need to be grounded into concrete action paths and present attempts.",
         "trigger": "来访者以抽象语句表述困扰与目标、缺少明确步骤；已提供信息并愿合作确定目标；提出愿望（如考研）且对计划与步骤not清晰，或出现可实践机会。",
         "parent_ids": [
             "93",
@@ -4491,7 +4491,7 @@
         "skill_id": "469",
         "skill_name": "接纳并感谢来访者的真实分享",
         "skill_description": "在安全、稳定的关系中，以接纳、not评判的态度对其真实与自我表达给予感谢与肯定；当其详述困扰后，用积极、赞赏的语言承认其努力与能力，增强被理解与支持感，促进信任与对改变的信心。",
-        "when_to_use": "建立关系初期与目标澄清时，或叙事介入开始、披露敏感内容及详述痛苦之后，用于增强安全与合作并赋能改变。",
+        "when_to_use": "In the early stage of building the relationship and clarifying goals, or at the start of narrative intervention, after disclosing sensitive content and detailing suffering, used to enhance safety and cooperation and empower change.",
         "trigger": "来访者坦诚描述状态、目标或困扰，开始分享主线或敏感内容，表达羞耻/难过等强烈情绪，或对改变感到without力、迷茫并寻求支持。",
         "parent_ids": [
             "93",
@@ -4657,7 +4657,7 @@
         "skill_name": "协商并归类具体目标清单",
         "skill_description": "Combined with the assessment and current state, negotiate and list a clear itemized goal list, classified by difficulty domain and short-term/long-term or general/concrete, such as relieving emotions and improving sleep, changing binge eating and developing normal eating, facing grief and working through family relationships, improving communication and self-empowerment, clarifying the direction and priorities, making execution and tracking convenient.",
         "when_to_use": "在首次会谈明确咨询目的后，或评估与个案概念化完成、进入目标制定阶段的开始时。",
-        "trigger": "来访者求助动机清晰，愿意讨论期望与改变方向；叙述涉及多方面问题、目标模糊，需形成可操作的近期目标结构。",
+        "trigger": "The client's motivation to seek help is clear and they are willing to discuss expectations and the direction of change; the narrative involves multiple problems and vague goals, needing to form an operable near-term goal structure.",
         "parent_ids": [
             "93",
             "100",
@@ -4671,7 +4671,7 @@
         "skill_id": "445",
         "skill_name": "区分并记录远期与短期目标框架",
         "skill_description": "与来访者区分并记录短期可推进任务（如缓解Anxiety、建立关系、外化对话、走出失恋、人际恢复）与远期/最终方向（如重构身份、强壮自我价值、恢复学习、完善个性、形成合理观念与自我调整能力、增强社会适应、整合内部冲突、改善与Mother关系、增强依恋安全、重建认同与力量、运用所学维持改变），形成阶段推进的清晰框架并与近期目标衔接。",
-        "when_to_use": "在评估与计划制定阶段，或具体目标确定后、近期危机缓解时，需要明确更长期方向并与短期安排衔接。",
+        "when_to_use": "At the assessment and plan-formulation stage, or after concrete goals are set and a recent crisis has eased, when a longer-term direction needs to be clarified and connected with short-term arrangements.",
         "trigger": "来访者同时表达近期诉求与长期愿景需被区分；开始关注长期成长与适应，询问咨询终点或希望维持改变与完善人格；目标陈述混杂或在短期与长期诉求间摇摆not定。",
         "parent_ids": [
             "93",
@@ -4701,7 +4701,7 @@
         "skill_name": "扩展并Reinforcement例外并鼓励重复",
         "skill_description": "After finding one exception, through praise and nonverbal encouragement, narrating again and refining the unique outcome, naming the success model and abilities, ask about the positive influence and meaning of the exception, explore more related or similar exception events, highlight the client's role and strengths; encourage continued use of the same approaches, expand frequency and scope and connect them to identity, to consolidate the change.",
         "when_to_use": "在例外细化后或识do not到独特结果、例外被具体化时，需要巩固其积极意义、再次探索更多样本并扩大频率与范围。",
-        "trigger": "来访者已点出促成成功的因素、对一个例外有清晰叙述；或展示成功经验与有效策略、表达积极感受并愿意尝试延续。",
+        "trigger": "The client has pointed out the factors contributing to success, has a clear narration of an exception; or shows successful experiences and effective strategies, expresses positive feelings and is willing to try continuing.",
         "parent_ids": [
             "93",
             "100",
@@ -4714,7 +4714,7 @@
         "skill_id": "491",
         "skill_name": "将例外转化为可重复行动并追踪",
         "skill_description": "把发现的例外转化为可执行方案（如学习效率not高时记录vlog），约定继续练习与重复use；在后续会谈再探效果，系统回顾近期出现的例外并更新清单，使改变具体化与可见化，巩固并扩展成功经验的频率与范围。",
-        "when_to_use": "例外被发现后，希望固化为习惯并追踪成效时；或在正向反馈与结束回顾阶段，准备巩固并延展改变时。",
+        "when_to_use": "After an exception is discovered, when it is hoped to solidify it into a habit and track results; or at the positive-feedback and ending-review stages, preparing to consolidate and extend the change.",
         "trigger": "来访者认可某行为让自己“好一点”并愿意尝试延续；或自述最近有轻松、专注、被赞许等体验，报告具体例外事件或提交了记录。",
         "parent_ids": [
             "93",
@@ -4729,7 +4729,7 @@
         "skill_name": "具体化并详细化例外细节以便复现",
         "skill_description": "引导来访者把例外事件具体化，如询问“这次与以往有何not同”“你是如何做到的”，详细化当时做了什么、家人的反馈与自身感受，澄清关键行为与差异，以便复现与扩展。",
         "when_to_use": "在发现或提及一次问题减轻/not发生的情境后，或出现例外时刻后，需要扩大影响并形成可持续路径。",
-        "trigger": "来访者描述某次相处较舒适、控制住冲突或出现顺利经历；或报告旅行相处愉快、主动做饭获回应等具体例外事件。",
+        "trigger": "The client describes a time when they got along relatively comfortably, controlled a conflict, or had a smooth experience; or reports concrete exception events such as a pleasant trip together or proactively cooking and receiving a response.",
         "parent_ids": [
             "93",
             "100",
@@ -4756,7 +4756,7 @@
         "skill_id": "468",
         "skill_name": "追问如何做到与发生条件以巩固改变",
         "skill_description": "After the client reports progress or positive experiences, continue to be curious about their 'how did you do it' and 'when, where, and how can it happen again', refine the concrete practices and situational conditions, identify the changes and scope of influence the effort brought, find the replicable key steps and environmental elements, to consolidate and expand the change.",
-        "when_to_use": "复盘“一小步”成效、巩固成功经验时；或在积极体验被唤起与增强之后，用于巩固改变与规划复现。",
+        "when_to_use": "When reviewing the effect of 'one small step' and consolidating successful experience; or after positive experiences are evoked and enhanced, used to consolidate change and plan reproduction.",
         "trigger": "The client describes changes such as rising scores, task progress, or improved efficiency; hopes to maintain this feeling, is willing to take initiative and try new responses; or mentions concrete actions such as taking medication on time, exercising, reviewing, then stays at the descriptive level.",
         "parent_ids": [
             "93",
@@ -4785,7 +4785,7 @@
         "skill_name": "总结并肯定例外，连接到个人资源",
         "skill_description": "在例外被识do not与具体化后，指出其中体现的能力与成功经验，强调来访者的作用并给予肯定，帮助其看见力量与坚韧，将这些资源视为克服问题的依据并准备复用。",
         "when_to_use": "第四次咨询的“咨询前改变之询问”与深入阶段，或在例外被识do not与具体化之后需要整合资源时。",
-        "trigger": "来访者描述被他人赞赏或自己感到舒适的互动；报告多个例外或非典型表现，并对自身能力产生怀疑或低估。",
+        "trigger": "The client describes interactions where they were appreciated by others or felt comfortable; reports multiple exceptions or atypical performances, and doubts or underestimates their own abilities.",
         "parent_ids": [
             "93",
             "100",
@@ -4869,7 +4869,7 @@
         "skill_name": "复盘成功并滚动设定下一步",
         "skill_description": "Guide the client to share recent successful experiences and self-changes, distill effective practices and resources; accordingly set rolling next-step small, feasible action plans, and where necessary break the goals into clear small steps and set observation indicators, maintaining motivation and consolidating change.",
         "when_to_use": "症状有所缓解或收到积极反馈时，需要在复盘基础上滚动规划下一步行动。",
-        "trigger": "出现“内耗少了”“能与感觉待在一起”“强迫停止了”等反馈；或表达“以全新姿态投入学习”的意愿。",
+        "trigger": "Feedback such as 'less internal friction', 'can stay with the feeling', and 'the compulsion has stopped' appears; or expresses the willingness to 'engage in learning with a brand-new posture'.",
         "parent_ids": [
             "93",
             "100",
@@ -4883,7 +4883,7 @@
         "skill_id": "398",
         "skill_name": "共拟具体可测的小步作业与短期计划",
         "skill_description": "Turn general goals into executable tasks and short-term plans: start from small changes, be concrete and feasible, clarify the timing and key points, set self-observation and record indicators (such as emotions, persistence situation); when necessary negotiate a '21-day diet plan', facilitating subsequent assessment and adjustment and habit formation.",
-        "when_to_use": "每次会谈结束前或在认知调整后转入行动设计阶段，需要将讨论落地为下一步练习并建立结构化安排时。",
+        "when_to_use": "Before the end of every session or when turning to action design after cognitive adjustment, when discussion needs to be grounded into next-step practice and a structured arrangement established.",
         "trigger": "来访者愿意尝试、已形成初步策略但缺乏结构化安排或坚持框架；目标模糊not可测；或提出具体难题却without清晰改进路径。",
         "parent_ids": [
             "93",
@@ -4914,7 +4914,7 @@
         "skill_name": "布置小步家庭作业并设检视",
         "skill_description": "At the end of the session, negotiate with the client a concrete, feasible, situation-close small-step homework, clarify the key points of self-observation and recording, and agree that the next review will start from 'what did you do'; encourage practicing in real situations and bringing back feedback, jointly summarize experience and adjust strategies, forming a cycle of practice - feedback - optimization.",
         "when_to_use": "每次会谈结束时，或初步形成目标或可尝试行为后，需要将意向转化为现实练习并建立反馈机制时。",
-        "trigger": "来访者对具体尝试表现出开放与意愿、同意记录与检视；或已与咨询师对具体步骤达成共识并具备实际练习机会。",
+        "trigger": "The client shows openness and willingness toward concrete attempts, agrees to recording and review; or has reached consensus with the counselor on concrete steps and has actual practice opportunities.",
         "parent_ids": [
             "93",
             "100",
@@ -4928,7 +4928,7 @@
         "skill_id": "450",
         "skill_name": "引导回忆并识do not例外时刻",
         "skill_description": "以具体追问与好奇姿态，邀请来访者回忆问题not yet发生或影响较弱的片段，探问当时发生了什么、如何发生、与以往not同在哪里，定位情境、人物与自我照料等细节，标注这些独特事件，作为可利用的资源线索与改变起点。",
-        "when_to_use": "在评估现状或第二至第三次咨询的“寻找例外”阶段，用于启动解决导向对话并发现问题之外的片段。",
+        "when_to_use": "At the 'finding exceptions' stage of assessing the current state or the second to third session, used to start solution-oriented dialogue and discover fragments beyond the problem.",
         "trigger": "来访者提到问题并非时时发生，或描述某些日子/情境中情绪较稳、功能较好；或反复抱怨without计可施、仅呈现消极记忆时。",
         "parent_ids": [
             "93",
@@ -4954,7 +4954,7 @@
         "skill_id": "474",
         "skill_name": "例外Questioning定位not yet受困扰片段",
         "skill_description": "采用直接或时间聚焦的例外问句，邀请来访者回忆问题not yet出现或较轻的具体片段，具体化事件、场景、行为与感受，命名缓解策略与独特结果，作为发现资源与新故事开端，弱化被痛苦主线占据的叙述。",
-        "when_to_use": "当问题故事笼罩叙述、案主认为行为难以改变或自我评价偏低时，进入“寻找例外故事”以收集真实片段。",
+        "when_to_use": "When the problem story overshadows the narrative, the client believes the behavior is hard to change, or self-evaluation is low, enter 'searching for exception stories' to collect real fragments.",
         "trigger": "来访者use“可能改not了”“我就会这样做”“一直如此”“utterly hopeless”“一without是处”等泛化negate；或出现“瞬间缓解许多”“坚持到今日”等例外迹象。",
         "parent_ids": [
             "93",
@@ -4980,7 +4980,7 @@
         "skill_id": "437",
         "skill_name": "持续扩展与重复例外",
         "skill_description": "After discovering exceptions, continue asking 'what else is comparatively good?', in subsequent sessions continuously look for more exceptions, concretize the related behaviors and feelings, amplify their meaning to consolidate the change, and when tiny progress or negative self-generalizations appear, use direct exception inquiry to counter the across-the-board generalizations.",
-        "when_to_use": "已发现例外后与后续咨询阶段，用于拓展有效经验、再次澄清目标与方向，或在听到细微变化时放大其作用。",
+        "when_to_use": "After exceptions have been discovered and in later consultation stages, used to expand effective experiences, clarify goals and direction again, or amplify the effect when hearing subtle changes.",
         "trigger": "存在至少一个例外且来访者可回顾近期变化与进步片段；或来访者use“一直”“总是”“哪方面都not行”等泛化表述。",
         "parent_ids": [
             "93",
@@ -5046,7 +5046,7 @@
         "skill_name": "设定分阶段评估节点与随访时间点",
         "skill_description": "With the client, set the assessment and follow-up timeline by process: pre-test at the first visit or before sessions 1-2, retest at session 5, ending test at session 6; once a week, 50 minutes as fixed assessment nodes; at each ending, book the next appointment and bring the record homework; follow-up assessments at one week and at 1 and 2 months after the ending, to continuously track, consolidate and adjust strategies.",
         "when_to_use": "制定咨询方案与评量计划时，或进入中期与收尾阶段需明确评估与随访安排时。",
-        "trigger": "开始正式咨询并已确立目标与频次；会谈结束需预约下次并携带记录作业；或准备结案、问题明显改善需安排随访评估。",
+        "trigger": "Formal counseling has begun and goals and frequency established; at session end needs to book the next session and bring record homework; or preparing to close the case, the problem clearly improved and follow-up evaluation needs arranging.",
         "parent_ids": [
             "93",
             "100",
@@ -5076,7 +5076,7 @@
         "skill_name": "将目标量化并设定追踪节点",
         "skill_description": "Convert the established short-term and long-term goals into quantifiable, executable indicators and cycles (such as studying 4 hours a day, sustained for 1 month), and set staged evaluation time points and tasks, so progress can be monitored and reviewed, facilitating strategy adjustment and formulating the case-closing arrangements.",
         "when_to_use": "当需把明确的目标转化为可监测的指标与时间点，或原有目标难以坚持、产生挫败需调整为可行且可评估的目标与时间表时。",
-        "trigger": "来访者与咨询师已明确目标，需建立追踪节点；或来访者只能短期坚持计划并反馈挫败感，需要明确且可执行的期限。",
+        "trigger": "The client and counselor have clarified goals, need to establish tracking nodes; or the client can only persist with the plan short-term and feeds back a sense of frustration, needing clear and executable deadlines.",
         "parent_ids": [
             "93",
             "100",
@@ -5091,7 +5091,7 @@
         "skill_name": "会谈尾声收集反馈并建立桥梁",
         "skill_description": "Reserve 5-10 minutes at the end of the session: the counselor organizes a review and invites the client to give feedback on 'what was helpful today', gives praise, builds a bridge, and offers concrete small-step suggestions, prompting them to think and turn this session's gains into an executable next-step plan, preparing for assessment and closing.",
         "when_to_use": "每次会谈接近尾声的评估反馈环节，需巩固变化并连接到后续行动时。",
-        "trigger": "会谈进入尾段、主要议题已完成，需暂离情境客观整理并规划反馈内容，来访者可回顾并指出有用部分时。",
+        "trigger": "The session enters the final segment and the main topics are completed; there is a need to temporarily leave the situation to objectively organize and plan feedback content, and the client can review and point out the useful parts.",
         "parent_ids": [
             "93",
             "100",
@@ -5106,7 +5106,7 @@
         "skill_name": "结案前系统复盘并规划结束与随访",
         "skill_description": "在末次或收尾阶段系统复盘：回顾近况与变化，按例外比例、资源优势、改善点与当前状态评分整合成功经验；咨询师总结鼓励，讨论not yet来计划与后续咨询设置，安排结束后回访评估，明确随访或再咨询路径以支持维持。",
         "when_to_use": "咨询后期或结案前一节，用于系统评估成效、巩固改变并制定结束与随访安排时。",
-        "trigger": "来访者状态趋于稳定并报告改善，需系统评估与协商结束；或即将结束咨询，需明确后续支持、联系与回访评估。",
+        "trigger": "The client's state tends toward stability and they report improvement, needing systematic assessment and negotiated ending; or counseling is about to end, needing to clarify follow-up support, contact, and return-visit evaluation.",
         "parent_ids": [
             "93",
             "100",
@@ -5232,7 +5232,7 @@
         "skill_id": "422",
         "skill_name": "从例外提炼解决方向与优势",
         "skill_description": "Unfold discussion around the exception moments that have appeared, help the client distill feasible solution directions and next attempts from the positive experiences; give praise and encouragement for the successes and strengths shown in the exceptions, connect the exceptions with the goals; ask about their meaning, value and abilities, and jointly enrich the subsequent possibility plot, gradually constructing an alternative new story.",
-        "when_to_use": "当例外被唤起并产生积极感受、细节已被描述后，需要将关注转向解决方向并巩固动机，或在例外片段基础上发展承载希望的新叙事时。",
+        "when_to_use": "When an exception has been aroused and positive feelings produced, and the details described, and the focus needs to be turned toward the direction of solution and the motivation consolidated, or on the basis of an exception fragment a new narrative bearing hope is to be developed.",
         "trigger": "来访者已辨识到顺畅片段并愿意探讨意义与改进方向；叙述按时服药、运动、稳定上课等有效应对；或完成事实叙述后开始评价其影响但对not yet来图景not清。",
         "parent_ids": [
             "93",
@@ -5248,7 +5248,7 @@
         "skill_id": "441",
         "skill_name": "回忆并具体化not发生时刻与应对",
         "skill_description": "use例外问句引导来访者回忆问题not yet发生或较轻的时期，细化当时活动、行为、他人作用、情境与感受，识do notnot同做法与结果，聚焦发生时间与trigger因素，使可行策略浮现，松动消极叙述并为后续建构解决铺垫。",
-        "when_to_use": "在初次或第二次咨询的正向架构阶段、叙事治疗解构问题环节或心理支持与中期资源挖掘时，需打破消极定势并寻找例外。",
+        "when_to_use": "In the positive-framing stage of the 1st or 2nd session, the problem-deconstruction segment of narrative therapy, or psychological support and middle-stage resource excavation, needing to break the negative set and find exceptions.",
         "trigger": "来访者认为问题without例外或关系持续对立，只呈现负面回忆与Self-denial；或提到成功阻止暴食、唱歌或画画令其自信与放松的片段；或长期负性却提及过去有恢复经历。",
         "parent_ids": [
             "93",
@@ -5264,7 +5264,7 @@
         "skill_id": "395",
         "skill_name": "分析例外成因并提炼可复制策略",
         "skill_description": "与来访者共同分析例外为何出现，围绕时间、地点、行为、感受与支持因素丰富例外图景，归纳可复制的行为策略（如刷牙洗澡、打电话、唱歌、画画、游戏等Displacement注意），比较not同情境的共同点并扩展例外类型，点明优于基线的例外并追问“如何做到”，以便复制应用。",
-        "when_to_use": "在引出或回忆出例外后，需要把正向时刻具体化并转化为可复制的解决方案，或当信息单薄需扩充与比较时。",
+        "when_to_use": "After exceptions are elicited or recalled, when positive moments need to be concretized and turned into replicable solutions, or when information is thin and needs expansion and comparison.",
         "trigger": "来访者描述某次使暴食not yet发生的具体活动，指出哪些做法能让冲动减弱；仅给出单一例外或细节not够具体；或记录/口述显示一次表现显著好于日常。",
         "parent_ids": [
             "93",
@@ -5313,7 +5313,7 @@
         "skill_name": "持续练习并搜寻与运用例外",
         "skill_description": "依据已识do not的例外事件中的具体做法进行学习与练习，同时在日常生活中主动寻找更多例外事件，明确在后续困难情境中继续use并巩固这些策略，使例外逐渐扩大为常态。",
         "when_to_use": "第二或第三次咨询结束时已确立“寻找例外、关注资源”为会谈目标后，或在识do not出具体有效策略之后需增强继续实践的信心与动机时。",
-        "trigger": "会谈中已讨论到至少一个例外或资源线索；来访者清晰说出可行的缓解方法并呈现积极态度或情绪有所缓解。",
+        "trigger": "At least one exception or resource cue has been discussed in the session; the client clearly states feasible relief methods and shows a positive attitude or some emotional relief.",
         "parent_ids": [
             "93",
             "100",
@@ -5344,7 +5344,7 @@
         "skill_id": "472",
         "skill_name": "放大例外并连接价值与目标",
         "skill_description": "将识do not出的例外与“有能力、有价值”的自我认知及改造目标相连，明确这些片段是其自身的优势与能力，强调他人支持，提升希望感与行动意愿，并把积极片段标定为可用的内部资源。",
-        "when_to_use": "当例外被发现后用于巩固正向意义并将其转化为目标与行动的支点；或在例外被说清后需要把积极片段连接为可用资源时。",
+        "when_to_use": "Used after an exception is discovered, to consolidate positive meaning and convert it into a pivot for goals and actions; or after the exception is made clear, needing to connect positive fragments into usable resources.",
         "trigger": "来访者提到被家人认可、被惦记的经验并出现希望或松动；对例外的意义not自觉或仍陷悲观评价；或对自身评价消极、Insufficient motivation需Reinforcement积极改变与希望感。",
         "parent_ids": [
             "93",
