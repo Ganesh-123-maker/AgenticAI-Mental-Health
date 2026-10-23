@@ -7,18 +7,18 @@
       "occupation": "Not disclosed",
       "educational_background": "High school graduate",
       "marital_status": "Single",
-      "family_status": "与家人成员Relationship tension",
-      "social_status": "Interpersonal relationships受影响,难以与他人建立紧密联系;有少数朋友可倾诉",
-      "medical_history": "No major physical illness;not yet接受过类似心理咨询",
-      "language_features": "表达清晰,思路较为连贯,配合度高;倾向use绝对化,Self-denial的表述,并常negate正向反馈"
+      "family_status": "Relationship tension with family members",
+      "social_status": "Interpersonal relationships affected, struggling to build close connections with others; has a few friends to confide in",
+      "medical_history": "No major physical illness; never received similar counseling",
+      "language_features": "Clear expression, fairly coherent thinking, highly cooperative; tends to use absolutized, Self-denial expressions, and often negates positive feedback"
     },
-    "main_problem": "与家人相处困难,常对日常生活感到失望,并因Relationship tension而担心被家人抛弃.这些问题自青少年时期持续至今,近年因误解与冲突加剧.",
+    "main_problem": "Difficulty getting along with family, often feeling disappointed with daily life, and worrying about being abandoned by family due to Relationship tension. These problems have persisted since adolescence, worsening in recent years due to misunderstandings and conflicts.",
     "topic": "Family relationships",
     "core_demands": "Negative emotions are affecting overall well-being and enjoyment of daily life; hopes through counseling to change negative thinking, relieve disappointment and the fear of abandonment, and improve life experience.",
     "growth_experiences": [
-      "自青少年时期开始Strained relationships with family members,常出现误解与冲突;压力由中等逐渐升高,几乎每天在与家人互动后体验失望与被抛弃的Fear.曾尝试疏远家庭活动并以兴趣分散注意,但情绪困扰仍持续.",
-      "过去一年在Work中销售业绩下降;随着公司及行业向数字化,without纸化推进,与同事的业绩比较加重了自责与'not够好'的感受,进一步影响与同事的关系及自我照料与饮食习惯.",
-      "Weak social support:家庭支持not足,仅有少数朋友可谈心."
+      "Since adolescence, Strained relationships with family members began, with frequent misunderstandings and conflicts; stress gradually rising from moderate, experiencing disappointment and Fear of abandonment almost daily after interacting with family. Tried distancing from family activities and distracting with interests, but emotional distress persists.",
+      "In the past year, sales performance at Work declined; as the company and industry advance toward digitalization and paperlessness, performance comparisons with colleagues intensified self-blame and feelings of 'not being good enough', further affecting relationships with colleagues and self-care and eating habits.",
+      "Weak social support: insufficient family support, only a few friends to talk to."
     ]
   },
   "theory": {
@@ -31,30 +31,30 @@
       "special_situations": [
         {
           "event": "After interacting with family, emotions intensify due to misunderstanding and conflict",
-          "conditional_assumptions": "如果我without法与家人相处融洽,关系必然恶化,最终会被他们抛弃",
+          "conditional_assumptions": "If I cannot get along well with family, the relationship will inevitably worsen, and eventually I will be abandoned by them",
           "compensatory_strategies": "Reduces joining family activities, keeps distance from family, uses interests to distract attention",
           "automatic_thoughts": "They will abandon me sooner or later",
           "cognitive_pattern": "Fortune Telling"
         },
         {
           "event": "At work, sees colleagues achieve performance targets while one's own sales decline",
-          "conditional_assumptions": "如果我的表现not如同事,就说明I am not suited for this job,I am a failure",
+          "conditional_assumptions": "If my performance is not as good as colleagues', it means I am not suited for this job, I am a failure",
           "compensatory_strategies": "Avoids contacting new clients, avoids situations where failure is possible",
-          "automatic_thoughts": "我永远not可能像他们那样好",
+          "automatic_thoughts": "I can never be as good as them",
           "cognitive_pattern": "Comparing and Despairing"
         },
         {
           "event": "Receives clients' positive feedback or completes a small sale",
-          "conditional_assumptions": "除非有显著的整体业绩提升,否则任何积极反馈都not算数",
-          "compensatory_strategies": "将成功归因于运气,negate自身能力",
-          "automatic_thoughts": "这只是运气,not什么用",
+          "conditional_assumptions": "Unless there is significant overall performance improvement, no positive feedback counts",
+          "compensatory_strategies": "Attributing success to luck, negating one's own abilities",
+          "automatic_thoughts": "This is just luck, not useful",
           "cognitive_pattern": "Disqualifying the Positive"
         },
         {
           "event": "Receives feedback from the manager about sales targets",
-          "conditional_assumptions": "如果not yet达标就证明I am not good enough,且以后也not会改善",
+          "conditional_assumptions": "If I have not yet met the target, it proves I am not good enough, and it will not improve in the future",
           "compensatory_strategies": "Avoids challenging tasks to reduce the shame brought by failure",
-          "automatic_thoughts": "我not可能改进,达not到目标就是失败",
+          "automatic_thoughts": "I cannot improve; failing to reach the target is failure",
           "cognitive_pattern": "All-or-Nothing Thinking"
         }
       ]
@@ -62,16 +62,16 @@
     "pdt": {
       "core_conflict": {
         "wish": "Longs to be steadily accepted and trusted by family and significant others, gaining affirmation and belonging",
-        "fear": "害怕被抛弃与Being rejected,担心关系破裂与被淘汰",
+        "fear": "Fearing being abandoned and Being rejected, worrying about relationship breakdown and elimination",
         "defense_goal": [
-          "通过保持距离与回避来降低受伤与被negate的风险,维持脆弱的Self-protection"
+          "Lowering the risk of injury and being negated through keeping distance and avoidance, maintaining fragile Self-protection"
         ]
       },
       "object_relations": [
         {
-          "self_representation": "not够好的,随时可能Being rejected的孩子",
+          "self_representation": "A not-good-enough child who may be Being rejected at any time",
           "object_representation": "Family members who easily misunderstand, criticize, and may abandon oneself",
-          "linking_affect": "Anxiety,失望,Fear"
+          "linking_affect": "Anxiety, disappointment, Fear"
         },
         {
           "self_representation": "A failure with poor performance",
@@ -82,21 +82,21 @@
       "behavioral_response_patterns": [
         {
           "trigger_condition": "When asked or reminded to attend to positive feedback and small successes (e.g. client praise, completing a small deal)",
-          "interpretation": "将积极证据视为偶然,not足以动摇'失败者'的自我认知",
+          "interpretation": "Treating positive evidence as incidental, insufficient to shake the 'loser' self-cognition",
           "defense_mechanism": "Rationalization",
-          "response_instruction": "以平淡语气轻描淡写积极事实,强调'运气''not够重要',避免深入情感体验."
+          "response_instruction": "Downplaying positive facts in a flat tone, emphasizing 'luck' 'not important enough', avoiding deep emotional experience."
         },
         {
-          "trigger_condition": "当与家人发生误解或冲突,或预感关系not稳时",
-          "interpretation": "将内在的被抛弃AnxietyProjection为'他们一定会离开我/看not起我'",
+          "trigger_condition": "When misunderstandings or conflicts occur with family, or when sensing the relationship is unstable",
+          "interpretation": "Projecting the inner Anxiety of being abandoned as 'they will definitely leave me/look down on me'",
           "defense_mechanism": "Projection",
           "response_instruction": "Expressing guesses about others' negative intentions, withdrawing or distancing interactions in advance in a worried tone."
         },
         {
           "trigger_condition": "Facing tasks with possible failure (such as proactively contacting new clients)",
-          "interpretation": "将外界压力与失败Fear转向自我,Reinforcement自责以避免外在冲突",
+          "interpretation": "Turning external pressure and Fear of failure toward the self, Reinforcing self-blame to avoid external conflict",
           "defense_mechanism": "Turning against the self",
-          "response_instruction": "use自我批评式表述(如'It is all my problem'),语气低落,并以回避行为结束对话或行动."
+          "response_instruction": "Using self-critical expressions (such as 'It is all my problem'), low tone, ending conversations or actions with avoidance."
         }
       ]
     },
@@ -107,11 +107,11 @@
           "manifestations": [
             "Weak family support, hard to build close connections with others",
             "After interacting with family, frequently experiences fear of abandonment",
-            "疏远家庭活动以Self-protection"
+            "Distancing from family activities for Self-protection"
           ],
           "outcomes": [
             "Reduced sense of social connection and isolation",
-            "Persistent anxiety与not安全感",
+            "Persistent anxiety and insecurity",
             "Relationships growing more distant"
           ]
         },
@@ -119,11 +119,11 @@
           "theme": "Meaninglessness",
           "manifestations": [
             "Often disappointed with daily life",
-            "经常白日梦式地Fantasy逃离现实",
+            "Often Fantasying escaping reality in a daydream-like way",
             "Work performance affected by emotional distress"
           ],
           "outcomes": [
-            "Decreased drive与Anhedonia",
+            "Decreased drive and Anhedonia",
             "Impaired functioning (work and self-care)",
             "Negative self-evaluation and avoidance behaviors"
           ]
@@ -135,14 +135,14 @@
           "definition": "The individual attributes feelings they find hard to accept to others, corresponding to 'possession'.",
           "manifestations": [
             "Interprets the inner fear of abandonment as 'my family is going to abandon me'",
-            "在职场将他人的成功体验为对自己的negate"
+            "Experiencing others' success in the workplace as negation of oneself"
           ]
         },
         {
           "mode": "Self-monitoring",
           "definition": "The individual has a poor capacity for self-reflection and introspection, with excessive self-restriction and self-blame, and is overly cautious about contact.",
           "manifestations": [
-            "频繁use绝对化的Self-denial(如'I am a failure''我not可能改善')",
+            "Frequently using absolutized Self-denial (such as 'I am a failure' 'I cannot improve')",
             "Avoids contacting new clients to avoid possible failure"
           ]
         },
@@ -159,8 +159,8 @@
     "pmt": {
       "exception_events": [
         {
-          "target_problem": "在Work中与同事比较或接受业绩反馈时,来访者通常会产生'I am not good enough / I am a failure'的想法,继而回避联系新客户,导致业绩进一步下降.",
-          "unique_outcome": "上个月完成了几笔较为困难的成交,客户对服务表示满意;当下体验到一定的肯定,与以往一概视为失败not同.",
+          "target_problem": "When comparing with colleagues at Work or receiving performance feedback, the client usually develops 'I am not good enough / I am a failure' thoughts, then avoids contacting new clients, leading to further performance decline.",
+          "unique_outcome": "Last month completed several relatively difficult deals, with clients expressing satisfaction with the service; currently experiencing some affirmation, unlike the past blanket view of failure.",
           "reason": "Clue: that time obtained the client's positive feedback and concrete successful experience, providing observable evidence for ability, making them briefly weaken the 'failure' narrative."
         }
       ],
@@ -171,10 +171,10 @@
           "Has a few trustworthy friends to confide in and for support"
         ],
         "negative_force": [
-          "灾难化与跳跃性结论(读心术,预测not yet来)",
-          "negate正面反馈,维持失败者自我图式",
+          "Catastrophizing and jumping to conclusions (mind reading, predicting the future)",
+          "negating positive feedback, maintaining the failure self-schema",
           "Avoidant behavior (reduced family interaction, avoiding contacting new clients)",
-          "被抛弃Fear与家庭Lack of support导致的持续not安全感"
+          "persistent insecurity from fear of abandonment and lack of family support"
         ]
       }
     },
@@ -187,9 +187,9 @@
             "Receiving performance-metric feedback from manager",
             "Thinking of the recent sales decline"
           ],
-          "core_reason": "对自身能力的全或without认知与灾难化预测(认为'not可能改善''再次失败会证明I am a failure')",
-          "function": "逃避可能的失败与羞耻,短期降低Anxiety",
-          "consequence": "业绩进一步下降,Tense relationships with colleagues,Self-efficacy降低"
+          "core_reason": "all-or-nothing perception of one's abilities and catastrophic prediction (believing 'it cannot improve' 'another failure would prove I am a failure')",
+          "function": "avoiding possible failure and shame, temporarily reducing anxiety",
+          "consequence": "further decline in performance,Tense relationships with colleagues,lowered Self-efficacy"
         },
         {
           "behavior": "Distancing/avoiding family activities",
@@ -199,17 +199,17 @@
           ],
           "core_reason": "Fear of abandonment and catastrophic interpretation of relationship breakdown",
           "function": "Escapes being judged and conflict, maintains short-term safety",
-          "consequence": "Family relationships进一步疏离,Loneliness感与not安全感加重"
+          "consequence": "Family relationships growing more distant, increased Loneliness and insecurity"
         },
         {
-          "behavior": "negate正面反馈并将成功归因于运气",
+          "behavior": "negating positive feedback and attributing success to luck",
           "antecedent": [
             "Receiving positive client feedback",
             "Completing small or difficult deals"
           ],
-          "core_reason": "维持'失败者'核心信念,通过negate正向证据避免认知not一致带来的not适",
-          "function": "减少对自我价值的期待以回避Anxiety",
-          "consequence": "积极体验被削弱,Self-efficacy难以提升,持续低落与自责"
+          "core_reason": "maintaining the 'failure' core belief, avoiding the discomfort of cognitive inconsistency by negating positive evidence",
+          "function": "lowering expectations of self-worth to avoid anxiety",
+          "consequence": "positive experiences weakened,Self-efficacy hard to improve, persistent low mood and self-blame"
         }
       ]
     }
