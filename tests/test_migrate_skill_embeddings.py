@@ -35,12 +35,20 @@ def mig():
 
 
 def test_est_tokens_cjk_aware(mig):
-    assert mig._est_tokens("hello world") == pytest.approx(4.0)
-    assert mig._est_tokens("abcd") == pytest.approx(1.0)
-    assert mig._est_tokens("ab hello") == pytest.approx(0.5 + 2.0)
-    assert mig._est_tokens("ab hello", multiplier=2.0) == pytest.approx(5.0)
-    assert mig._est_tokens_optimistic("abcd") == pytest.approx(1.0)
-    assert mig._est_tokens_optimistic("hello world") == pytest.approx(1.0)
+    # CJK sample built with chr() so this source file contains no literal
+    # CJK characters (the repo-wide translation removed the original
+    # literals). U+4E00..U+4E09 are CJK Unified Ideographs.
+    cjk_text = "".join(chr(0x4E00 + i) for i in range(10))
+    ascii_text = "a" * 40
+    # The conservative estimator: about 1 token per CJK character,
+    # about 0.25 per ASCII character.
+    assert mig._est_tokens(cjk_text) == pytest.approx(10.0)
+    assert mig._est_tokens(ascii_text) == pytest.approx(10.0)
+    assert mig._est_tokens(cjk_text + ascii_text) == pytest.approx(20.0)
+    assert mig._est_tokens(cjk_text, multiplier=2.0) == pytest.approx(20.0)
+    # The legacy optimistic estimator is len/4 regardless of script.
+    assert mig._est_tokens_optimistic(cjk_text) == pytest.approx(2.5)
+    assert mig._est_tokens_optimistic(ascii_text) == pytest.approx(10.0)
 
 
 def test_pacer_interval_cjk_tpm_binding(mig):

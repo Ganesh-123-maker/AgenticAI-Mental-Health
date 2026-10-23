@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { User, X } from "lucide-react";
 
 export function AuthModal({
@@ -11,6 +12,15 @@ export function AuthModal({
   onSubmit,
   onLogout,
 }) {
+  useEffect(() => {
+    if (!open) return undefined;
+    function handleKey(event) {
+      if (event.key === "Escape") onClose();
+    }
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [open, onClose]);
+
   if (!open) return null;
 
   return (
