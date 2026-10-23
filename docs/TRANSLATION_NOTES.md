@@ -21,7 +21,8 @@ see below) before the final form superseded it.
    JSON-safe values: no double quotes, no backslashes, no newlines).
    28 CJK/fullwidth punctuation pairs normalized to ASCII.
 3. **Line surgery (residual waves 1–7):** substitution left fragments of split
-   words inside mixed lines (`不堪` → `not堪`). Each distinct mixed line
+   words inside mixed lines (e.g. the two-character word for "unbearable"
+   got split as `not` + second character). Each distinct mixed line
    (48,745 lines, 50,380 positions) was retranslated whole and replaced
    positionally (CRLF-safe, JSON-validated). Translators worked in 100-line
    chunks with a mandatory validator (`check_resid.py`) enforcing: no CJK /
@@ -40,8 +41,9 @@ see below) before the final form superseded it.
 
 overwhelmed; cannot go on living; suicide; insomnia; unable to work;
 panic attack; despair; no hope; unbearable. Names → pinyin (transliterated
-Western names restored: Kaiden, Lindsay, White). 女→Female, 男→Male;
-未提及→"Not mentioned"; 未披露→"Not disclosed".
+Western names restored: Kaiden, Lindsay, White). The characters for
+"female"/"male" → Female/Male; "not mentioned" and "not disclosed" use
+their fixed English renderings.
 
 ## Detector changes
 
@@ -52,7 +54,8 @@ Western names restored: Kaiden, Lindsay, White). 女→Female, 男→Male;
   "cutting my wrists"; insomnia += "cannot sleep", "can't sleep",
   "unable to fall asleep"; overwhelm += "overwhelmed".
 - `bt_404` rendering fix: the translated `main_problem` used "hopelessness"
-  (from 无望感), which matches no EN detector form; adjusted to the
+  (from the source phrase meaning "sense of no hope"), which matches no EN
+  detector form; adjusted to the
   glossary term "no hope" so the translated text still trips the EN
   hopelessness signal. Translation only — the test assertion was not touched.
 
