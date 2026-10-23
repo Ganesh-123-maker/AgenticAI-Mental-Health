@@ -21,7 +21,7 @@ const MAX_NOTIFICATIONS = 20;
 
 export default function App() {
   const app = useMindCareApp();
-  const { online: backendOnline, lastChecked } = useBackendStatus(30000);
+  const { online: backendOnline, lastChecked } = useBackendStatus();
 
   const [view, setView] = useState("sessions");
   const [drawerOpen, setDrawerOpen] = useState(false);
