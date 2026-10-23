@@ -2,125 +2,125 @@
   "case_id": "pdt_1423_ordinary",
   "source_file": "assets/profiles/pdt/sample/1423.json",
   "modality": "pdt",
-  "therapy_stage": "问题概念化与目标设定",
+  "therapy_stage": "Problem conceptualization and goal setting",
   "stage_inferred": false,
   "track": "ordinary",
   "full_context": {
     "basic_info": {
       "static_traits": {
         "age": "27",
-        "name": "何楠",
-        "gender": "男",
-        "occupation": "酒店员工（夜班）",
-        "educational_background": "高中毕业",
-        "marital_status": "单身",
-        "family_status": "独居，附近无直系亲属",
-        "social_status": "有少数朋友可交谈，但未向他们充分分享负面思维",
-        "medical_history": "无重大躯体疾病；此前未接受心理治疗",
-        "language_features": "表达清晰，逻辑性较强，配合度高，态度积极；语速未提及"
+        "name": "He Nan",
+        "gender": "Male",
+        "occupation": "Hotel employee (night shift)",
+        "educational_background": "High school graduate",
+        "marital_status": "Single",
+        "family_status": "Lives alone, with no immediate family nearby",
+        "social_status": "Having a few friends to talk to, but not fully sharing negative thoughts with them",
+        "medical_history": "No major physical illness; no psychotherapy received before",
+        "language_features": "Expresses clearly, strong logic, high cooperativeness, positive attitude; speaking speed not mentioned"
       },
-      "main_problem": "我经常出现灾难化思维，例如认为如果不下雪，我的整个周末就会被毁。",
-      "topic": "情绪管理",
-      "core_demands": "持续的负面与灾难化思维已开始影响我的情绪、睡眠和对生活的整体享受，因此寻求咨询。",
+      "main_problem": "I often have catastrophic thinking, for example believing that if it does not snow, my whole weekend will be ruined.",
+      "topic": "Emotion management",
+      "core_demands": "Persistent negative and catastrophizing thinking has begun to affect my mood, sleep, and overall enjoyment of life, so I seek counseling.",
       "growth_experiences": [
-        "青少年时期开始出现灾难化思维；近几个月在工作排班（连续夜班）与计划变动时更频繁；每当作息或计划发生变化（如天气与期待不符）便触发焦虑与挫败；此前未接受心理咨询，也无重大躯体疾病。"
+        "Catastrophizing thinking began to appear in adolescence; in recent months it has been more frequent during work scheduling (consecutive night shifts) and plan changes; whenever routines or plans change (such as weather not matching expectations), anxiety and frustration are triggered; the client has not received psychological counseling before and has no major physical illness."
       ]
     },
     "theory": {
       "cbt": {
         "core_beliefs": [
-          "事情必须按计划进行，否则结果会很糟糕",
-          "我难以承受变化与不确定性"
+          "Things must go according to plan, or the outcome will be terrible",
+          "I find change and uncertainty hard to bear"
         ],
         "special_situations": [
           {
-            "event": "周末天气未下雪，导致原定的户外计划与期待受影响",
-            "conditional_assumptions": "如果天气不符合我的期待，我就无法享受周末",
-            "compensatory_strategies": "试图把负面念头推开或否认，并将周末活动僵化地绑定在“下雪的户外活动”上",
-            "automatic_thoughts": "我的整个周末都毁了。",
+            "event": "Weekend weather did not snow, causing the planned outdoor plan and expectations to be affected",
+            "conditional_assumptions": "If the weather does not match my expectations, I cannot enjoy the weekend",
+            "compensatory_strategies": "Tries to push away or deny negative thoughts, and rigidly binds weekend activities to 'snowy outdoor activities'",
+            "automatic_thoughts": "My whole weekend is ruined.",
             "cognitive_pattern": "Catastrophizing"
           },
           {
-            "event": "被安排连续夜班或临时更改班表，打乱日常作息与计划",
-            "conditional_assumptions": "只要计划发生变化，我就会失控、无法应对",
-            "compensatory_strategies": "维持严格且刚性的个人计划，尽量避免灵活调整",
-            "automatic_thoughts": "计划变了，我肯定会状态崩溃，这一周都糟透了。",
+            "event": "Being assigned consecutive night shifts or having the schedule temporarily changed, disrupting daily routine and plans",
+            "conditional_assumptions": "As long as plans change, I will lose control and be unable to cope",
+            "compensatory_strategies": "Maintaining a strict and rigid personal plan, trying to avoid flexible adjustments",
+            "automatic_thoughts": "The plan has changed, I will definitely have a breakdown in condition, this whole week is ruined.",
             "cognitive_pattern": "Fortune Telling"
           },
           {
-            "event": "由于通宵工作，缺乏用于爱好与休闲的时间",
-            "conditional_assumptions": "如果无法进行自己偏好的爱好，就无法放松、周末没有乐趣",
-            "compensatory_strategies": "忽视其他可选的活动与可能的积极面，固守单一偏好",
-            "automatic_thoughts": "我会被困在家里，整个周末都会很无聊和沮丧。",
+            "event": "Due to working through the night, lacks time for hobbies and leisure",
+            "conditional_assumptions": "If unable to engage in the preferred hobby, cannot relax and the weekend has no enjoyment",
+            "compensatory_strategies": "Ignoring other optional activities and possible positive aspects, clinging to a single preference",
+            "automatic_thoughts": "I will be trapped at home, the whole weekend will be boring and frustrating.",
             "cognitive_pattern": "Mental Filtering"
           }
         ]
       },
       "pdt": {
         "core_conflict": {
-          "wish": "渴望掌控与稳定，能按计划享受生活与休息",
-          "fear": "害怕变化与不确定性带来失控与“完全糟糕”的结果",
+          "wish": "Longs for control and stability, to enjoy life and rest according to plan",
+          "fear": "Fearing change and uncertainty will bring loss of control and a 'completely terrible' outcome",
           "defense_goal": [
-            "通过坚持严格计划与否认负面念头来维持可控与安全感"
+            "Maintaining a sense of control and safety by adhering to a strict plan and denying negative thoughts"
           ]
         },
         "object_relations": [
           {
-            "self_representation": "需要可预测性、在计划被打乱时易感到无助的个体",
-            "object_representation": "不理解自己情绪与状态的他人（朋友/他人）",
-            "linking_affect": "焦虑、挫败、易怒与疏离"
+            "self_representation": "Needing predictability, an individual who easily feels helpless when plans are disrupted",
+            "object_representation": "Others who do not understand one's own emotions and state (friends/others)",
+            "linking_affect": "Anxiety, frustration, irritability, and alienation"
           }
         ],
         "behavioral_response_patterns": [
           {
-            "trigger_condition": "当负面念头被谈及或现实计划/作息被打乱时",
-            "interpretation": "将变化理解为不可控的威胁，认为必须迅速消除念头以避免崩溃",
-            "defense_mechanism": "否认",
-            "response_instruction": "口头上强调“这不是真的/没事”，快速转移话题至具体计划或天气细节，语气偏急促以回避情绪层面的探讨。"
+            "trigger_condition": "When negative thoughts are brought up or real-life plans/routines are disrupted",
+            "interpretation": "Understands change as an uncontrollable threat, believing thoughts must be eliminated quickly to avoid collapse",
+            "defense_mechanism": "deny",
+            "response_instruction": "Verbally emphasizes 'this is not real / it is nothing', quickly shifts the topic to concrete plans or weather details, with a rather hurried tone to avoid emotional-level discussion."
           }
         ]
       },
       "het": {
         "existentialism_topic": [
           {
-            "theme": "自由",
+            "theme": "Freedom",
             "manifestations": [
-              "夜班工作限制个人时间与选择空间",
-              "计划一旦变化便感到失去掌控，强烈需要一切按计划进行"
+              "Night-shift work limits personal time and room for choice",
+              "Once a plan changes, feels a loss of control, with a strong need for everything to proceed as planned"
             ],
             "outcomes": [
-              "焦虑与挫败感增加",
-              "睡眠紊乱",
-              "对生活的乐趣与满足感下降"
+              "Increased anxiety and sense of frustration",
+              "Sleep disturbance",
+              "Decreased enjoyment of and satisfaction with life"
             ]
           },
           {
-            "theme": "孤独",
+            "theme": "Loneliness",
             "manifestations": [
-              "独居，附近无直系亲属",
-              "与朋友关系紧张且未分享负面思维，主观感到难以连接"
+              "Lives alone, with no immediate family nearby",
+              "Strained relationships with friends and not sharing negative thoughts, subjectively feeling hard to connect"
             ],
             "outcomes": [
-              "易怒与人际疏离",
-              "情感支持匮乏与主观孤立感增强"
+              "Irritability and interpersonal distance",
+              "Lack of emotional support and increased subjective sense of isolation"
             ]
           }
         ],
         "contact_model": [
           {
-            "mode": "回摄",
-            "definition": "个体克制原本欲对外表达或寻求他人帮助的冲动，转而对自己做，把能量向内消化。",
+            "mode": "Retroflection",
+            "definition": "The individual restrains impulses originally meant to be expressed outward or to seek others' help, and instead acts on the self, digesting the energy inwardly.",
             "manifestations": [
-              "对朋友不分享负面思维，选择独自承受",
-              "计划被打乱时，将能量用于内在担忧与自我苛责而非外部沟通或调整"
+              "Does not share negative thoughts with friends; chooses to bear them alone",
+              "When plans are disrupted, directs energy into inner worry and self-blame rather than external communication or adjustment"
             ]
           },
           {
-            "mode": "自我监控",
-            "definition": "个体存在不良的自我反思和反省，包含过多的自我限制与自我苛责，对接触过于小心谨慎。",
+            "mode": "Self-monitoring",
+            "definition": "The individual has poor self-reflection and introspection, involving excessive self-restriction and self-reproach, and is overly cautious about contact.",
             "manifestations": [
-              "对“按计划进行”有僵化要求，过度自我限制",
-              "将状态不佳与失控归咎于自身，担心偏离计划便会崩溃"
+              "Rigid demands that things 'go according to plan'; excessive self-restriction",
+              "Blaming poor condition and loss of control on oneself, worrying that deviating from the plan will lead to collapse"
             ]
           }
         ]
@@ -128,48 +128,48 @@
       "pmt": {
         "exception_events": [
           {
-            "target_problem": "在天气或计划变化时，何楠通常会出现灾难化思维（如“周末被毁”），随后感到焦虑与挫败并放弃寻找替代活动。",
-            "unique_outcome": "有几次周末虽然没有下雪，他仍在室内找到有趣的事情做，周末并未完全被毁，体验好于预期。",
-            "reason": "不同做法：转向室内活动作为替代；不同理解：观察到实际结果并非灾难，从而削弱了先前的极端预测。"
+            "target_problem": "When weather or plans change, He Nan usually develops catastrophic thinking (such as 'the weekend is ruined'), then feels anxious and frustrated and gives up looking for alternative activities.",
+            "unique_outcome": "On a few weekends, although it did not snow, he still found interesting things to do indoors; the weekend was not completely ruined, and the experience was better than expected.",
+            "reason": "Different approach: turning to indoor activities as a substitute; different understanding: observed that the actual outcome was not a disaster, thereby weakening the previous extreme prediction."
           }
         ],
         "force_field": {
           "positive_force": [
-            "态度积极、愿意尝试与配合咨询",
-            "能识别并承认反例（曾在无雪周末找到室内乐趣）",
-            "具备一定社会支持（有几位朋友可交谈）"
+            "Positive attitude, willing to try and cooperate with counseling",
+            "Able to recognize and acknowledge counterexamples (having found indoor fun on a snowless weekend)",
+            "Has some social support (a few friends to talk with)"
           ],
           "negative_force": [
-            "灾难化与非黑即白思维倾向明显",
-            "对变化与不确定性的耐受度低，过度依赖僵化计划",
-            "夜班与睡眠紊乱带来的生理负荷加重负面情绪",
-            "倾向回避分享与寻求支持，导致人际紧张与孤立感"
+            "Marked tendency toward catastrophizing and black-and-white thinking",
+            "Low tolerance for change and uncertainty, over-relying on rigid plans",
+            "The physical strain from night shifts and sleep disturbance worsens negative emotions",
+            "Tending to avoid sharing and seeking support, leading to interpersonal tension and feelings of isolation"
           ]
         }
       },
       "bt": {
         "target_behavior": [
           {
-            "behavior": "在计划或天气变化时出现灾难化思维并伴随显著焦虑与易怒",
+            "behavior": "When plans or weather change, catastrophic thinking appears accompanied by marked anxiety and irritability",
             "antecedent": [
-              "计划被打乱（如天气不如预期）",
-              "被安排连续夜班或临时更改班表",
-              "缺乏用于爱好的时间"
+              "Plans disrupted (such as weather not as expected)",
+              "Being scheduled for consecutive night shifts or having the schedule changed temporarily",
+              "Lack of time for hobbies"
             ],
-            "core_reason": "对变化与不确定性的低耐受，形成“只要不按计划进行就会完全糟糕”的灾难化预测与非黑即白思维。",
-            "function": "通过预演最坏情况与僵化控制来逃避不确定性，试图获得安全感与掌控感。",
-            "consequence": "睡眠被干扰、工作表现下降、人际关系紧张、对过去喜欢的活动失去兴趣。"
+            "core_reason": "Low tolerance for change and uncertainty, forming the catastrophic prediction 'as long as it does not go according to plan it will be completely terrible' and all-or-nothing thinking.",
+            "function": "Escapes uncertainty by rehearsing the worst case and rigid control, attempting to gain a sense of safety and control.",
+            "consequence": "Sleep is disturbed, work performance declines, interpersonal relationships are strained, and interest in previously enjoyed activities is lost."
           },
           {
-            "behavior": "睡眠模式被负面思维与焦虑扰乱（入睡困难、睡眠质量下降）",
+            "behavior": "Sleep patterns are disturbed by negative thinking and anxiety (difficulty falling asleep, decreased sleep quality)",
             "antecedent": [
-              "夜班工作导致昼夜节律紊乱",
-              "计划变化后出现强烈反刍与担忧",
-              "睡前反复思考“周末会被毁”等负面内容"
+              "Night-shift work leads to circadian rhythm disruption",
+              "Strong rumination and worry after a plan change",
+              "Before sleep, repeatedly thinking negative content such as 'the weekend will be ruined'"
             ],
-            "core_reason": "灾难化与预测未来的认知使生理唤醒升高，难以放松入睡。",
-            "function": "以担忧与控制性思考来试图预防不确定的后果，但实际加剧失眠。",
-            "consequence": "疲惫感加重、工作表现受损、情绪更易波动与低落。"
+            "core_reason": "Catastrophizing and fortune-telling cognition raise physiological arousal, making it hard to relax and fall asleep.",
+            "function": "Uses worry and controlling thinking to try to prevent uncertain consequences, but actually worsens insomnia.",
+            "consequence": "Increased fatigue, impaired work performance, mood more prone to fluctuation and lowness."
           }
         ]
       }
@@ -181,115 +181,115 @@
     "basic_info": {
       "static_traits": {
         "age": "27",
-        "name": "何楠",
-        "gender": "男",
-        "occupation": "酒店员工（夜班）",
-        "educational_background": "高中毕业",
-        "marital_status": "单身",
-        "family_status": "独居，附近无直系亲属",
-        "social_status": "有少数朋友可交谈，但未向他们充分分享负面思维",
-        "medical_history": "无重大躯体疾病；此前未接受心理治疗",
-        "language_features": "表达清晰，逻辑性较强，配合度高，态度积极；语速未提及"
+        "name": "He Nan",
+        "gender": "Male",
+        "occupation": "Hotel employee (night shift)",
+        "educational_background": "High school graduate",
+        "marital_status": "Single",
+        "family_status": "Lives alone, with no immediate family nearby",
+        "social_status": "Having a few friends to talk to, but not fully sharing negative thoughts with them",
+        "medical_history": "No major physical illness; no psychotherapy received before",
+        "language_features": "Expresses clearly, strong logic, high cooperativeness, positive attitude; speaking speed not mentioned"
       },
-      "main_problem": "我经常出现灾难化思维，例如认为如果不下雪，我的整个周末就会被毁。",
-      "topic": "情绪管理",
-      "core_demands": "持续的负面与灾难化思维已开始影响我的情绪、睡眠和对生活的整体享受，因此寻求咨询。"
+      "main_problem": "I often have catastrophic thinking, for example believing that if it does not snow, my whole weekend will be ruined.",
+      "topic": "Emotion management",
+      "core_demands": "Persistent negative and catastrophizing thinking has begun to affect my mood, sleep, and overall enjoyment of life, so I seek counseling."
     },
     "theory": {
       "cbt": {
         "core_beliefs": [
-          "事情必须按计划进行，否则结果会很糟糕",
-          "我难以承受变化与不确定性"
+          "Things must go according to plan, or the outcome will be terrible",
+          "I find change and uncertainty hard to bear"
         ],
         "special_situations": [
           {
-            "event": "周末天气未下雪，导致原定的户外计划与期待受影响",
-            "conditional_assumptions": "如果天气不符合我的期待，我就无法享受周末",
-            "compensatory_strategies": "试图把负面念头推开或否认，并将周末活动僵化地绑定在“下雪的户外活动”上",
-            "automatic_thoughts": "我的整个周末都毁了。",
+            "event": "Weekend weather did not snow, causing the planned outdoor plan and expectations to be affected",
+            "conditional_assumptions": "If the weather does not match my expectations, I cannot enjoy the weekend",
+            "compensatory_strategies": "Tries to push away or deny negative thoughts, and rigidly binds weekend activities to 'snowy outdoor activities'",
+            "automatic_thoughts": "My whole weekend is ruined.",
             "cognitive_pattern": "Catastrophizing"
           },
           {
-            "event": "被安排连续夜班或临时更改班表，打乱日常作息与计划",
-            "conditional_assumptions": "只要计划发生变化，我就会失控、无法应对",
-            "compensatory_strategies": "维持严格且刚性的个人计划，尽量避免灵活调整",
-            "automatic_thoughts": "计划变了，我肯定会状态崩溃，这一周都糟透了。",
+            "event": "Being assigned consecutive night shifts or having the schedule temporarily changed, disrupting daily routine and plans",
+            "conditional_assumptions": "As long as plans change, I will lose control and be unable to cope",
+            "compensatory_strategies": "Maintaining a strict and rigid personal plan, trying to avoid flexible adjustments",
+            "automatic_thoughts": "The plan has changed, I will definitely have a breakdown in condition, this whole week is ruined.",
             "cognitive_pattern": "Fortune Telling"
           },
           {
-            "event": "由于通宵工作，缺乏用于爱好与休闲的时间",
-            "conditional_assumptions": "如果无法进行自己偏好的爱好，就无法放松、周末没有乐趣",
-            "compensatory_strategies": "忽视其他可选的活动与可能的积极面，固守单一偏好",
-            "automatic_thoughts": "我会被困在家里，整个周末都会很无聊和沮丧。",
+            "event": "Due to working through the night, lacks time for hobbies and leisure",
+            "conditional_assumptions": "If unable to engage in the preferred hobby, cannot relax and the weekend has no enjoyment",
+            "compensatory_strategies": "Ignoring other optional activities and possible positive aspects, clinging to a single preference",
+            "automatic_thoughts": "I will be trapped at home, the whole weekend will be boring and frustrating.",
             "cognitive_pattern": "Mental Filtering"
           }
         ]
       },
       "pdt": {
         "core_conflict": {
-          "wish": "渴望掌控与稳定，能按计划享受生活与休息",
-          "fear": "害怕变化与不确定性带来失控与“完全糟糕”的结果",
+          "wish": "Longs for control and stability, to enjoy life and rest according to plan",
+          "fear": "Fearing change and uncertainty will bring loss of control and a 'completely terrible' outcome",
           "defense_goal": [
-            "通过坚持严格计划与否认负面念头来维持可控与安全感"
+            "Maintaining a sense of control and safety by adhering to a strict plan and denying negative thoughts"
           ]
         },
         "object_relations": [
           {
-            "self_representation": "需要可预测性、在计划被打乱时易感到无助的个体",
-            "object_representation": "不理解自己情绪与状态的他人（朋友/他人）",
-            "linking_affect": "焦虑、挫败、易怒与疏离"
+            "self_representation": "Needing predictability, an individual who easily feels helpless when plans are disrupted",
+            "object_representation": "Others who do not understand one's own emotions and state (friends/others)",
+            "linking_affect": "Anxiety, frustration, irritability, and alienation"
           }
         ],
         "behavioral_response_patterns": [
           {
-            "trigger_condition": "当负面念头被谈及或现实计划/作息被打乱时",
-            "interpretation": "将变化理解为不可控的威胁，认为必须迅速消除念头以避免崩溃",
-            "defense_mechanism": "否认",
-            "response_instruction": "口头上强调“这不是真的/没事”，快速转移话题至具体计划或天气细节，语气偏急促以回避情绪层面的探讨。"
+            "trigger_condition": "When negative thoughts are brought up or real-life plans/routines are disrupted",
+            "interpretation": "Understands change as an uncontrollable threat, believing thoughts must be eliminated quickly to avoid collapse",
+            "defense_mechanism": "deny",
+            "response_instruction": "Verbally emphasizes 'this is not real / it is nothing', quickly shifts the topic to concrete plans or weather details, with a rather hurried tone to avoid emotional-level discussion."
           }
         ]
       },
       "het": {
         "existentialism_topic": [
           {
-            "theme": "自由",
+            "theme": "Freedom",
             "manifestations": [
-              "夜班工作限制个人时间与选择空间",
-              "计划一旦变化便感到失去掌控，强烈需要一切按计划进行"
+              "Night-shift work limits personal time and room for choice",
+              "Once a plan changes, feels a loss of control, with a strong need for everything to proceed as planned"
             ],
             "outcomes": [
-              "焦虑与挫败感增加",
-              "睡眠紊乱",
-              "对生活的乐趣与满足感下降"
+              "Increased anxiety and sense of frustration",
+              "Sleep disturbance",
+              "Decreased enjoyment of and satisfaction with life"
             ]
           },
           {
-            "theme": "孤独",
+            "theme": "Loneliness",
             "manifestations": [
-              "独居，附近无直系亲属",
-              "与朋友关系紧张且未分享负面思维，主观感到难以连接"
+              "Lives alone, with no immediate family nearby",
+              "Strained relationships with friends and not sharing negative thoughts, subjectively feeling hard to connect"
             ],
             "outcomes": [
-              "易怒与人际疏离",
-              "情感支持匮乏与主观孤立感增强"
+              "Irritability and interpersonal distance",
+              "Lack of emotional support and increased subjective sense of isolation"
             ]
           }
         ],
         "contact_model": [
           {
-            "mode": "回摄",
-            "definition": "个体克制原本欲对外表达或寻求他人帮助的冲动，转而对自己做，把能量向内消化。",
+            "mode": "Retroflection",
+            "definition": "The individual restrains impulses originally meant to be expressed outward or to seek others' help, and instead acts on the self, digesting the energy inwardly.",
             "manifestations": [
-              "对朋友不分享负面思维，选择独自承受",
-              "计划被打乱时，将能量用于内在担忧与自我苛责而非外部沟通或调整"
+              "Does not share negative thoughts with friends; chooses to bear them alone",
+              "When plans are disrupted, directs energy into inner worry and self-blame rather than external communication or adjustment"
             ]
           },
           {
-            "mode": "自我监控",
-            "definition": "个体存在不良的自我反思和反省，包含过多的自我限制与自我苛责，对接触过于小心谨慎。",
+            "mode": "Self-monitoring",
+            "definition": "The individual has poor self-reflection and introspection, involving excessive self-restriction and self-reproach, and is overly cautious about contact.",
             "manifestations": [
-              "对“按计划进行”有僵化要求，过度自我限制",
-              "将状态不佳与失控归咎于自身，担心偏离计划便会崩溃"
+              "Rigid demands that things 'go according to plan'; excessive self-restriction",
+              "Blaming poor condition and loss of control on oneself, worrying that deviating from the plan will lead to collapse"
             ]
           }
         ]
@@ -297,48 +297,48 @@
       "pmt": {
         "exception_events": [
           {
-            "target_problem": "在天气或计划变化时，何楠通常会出现灾难化思维（如“周末被毁”），随后感到焦虑与挫败并放弃寻找替代活动。",
-            "unique_outcome": "有几次周末虽然没有下雪，他仍在室内找到有趣的事情做，周末并未完全被毁，体验好于预期。",
-            "reason": "不同做法：转向室内活动作为替代；不同理解：观察到实际结果并非灾难，从而削弱了先前的极端预测。"
+            "target_problem": "When weather or plans change, He Nan usually develops catastrophic thinking (such as 'the weekend is ruined'), then feels anxious and frustrated and gives up looking for alternative activities.",
+            "unique_outcome": "On a few weekends, although it did not snow, he still found interesting things to do indoors; the weekend was not completely ruined, and the experience was better than expected.",
+            "reason": "Different approach: turning to indoor activities as a substitute; different understanding: observed that the actual outcome was not a disaster, thereby weakening the previous extreme prediction."
           }
         ],
         "force_field": {
           "positive_force": [
-            "态度积极、愿意尝试与配合咨询",
-            "能识别并承认反例（曾在无雪周末找到室内乐趣）",
-            "具备一定社会支持（有几位朋友可交谈）"
+            "Positive attitude, willing to try and cooperate with counseling",
+            "Able to recognize and acknowledge counterexamples (having found indoor fun on a snowless weekend)",
+            "Has some social support (a few friends to talk with)"
           ],
           "negative_force": [
-            "灾难化与非黑即白思维倾向明显",
-            "对变化与不确定性的耐受度低，过度依赖僵化计划",
-            "夜班与睡眠紊乱带来的生理负荷加重负面情绪",
-            "倾向回避分享与寻求支持，导致人际紧张与孤立感"
+            "Marked tendency toward catastrophizing and black-and-white thinking",
+            "Low tolerance for change and uncertainty, over-relying on rigid plans",
+            "The physical strain from night shifts and sleep disturbance worsens negative emotions",
+            "Tending to avoid sharing and seeking support, leading to interpersonal tension and feelings of isolation"
           ]
         }
       },
       "bt": {
         "target_behavior": [
           {
-            "behavior": "在计划或天气变化时出现灾难化思维并伴随显著焦虑与易怒",
+            "behavior": "When plans or weather change, catastrophic thinking appears accompanied by marked anxiety and irritability",
             "antecedent": [
-              "计划被打乱（如天气不如预期）",
-              "被安排连续夜班或临时更改班表",
-              "缺乏用于爱好的时间"
+              "Plans disrupted (such as weather not as expected)",
+              "Being scheduled for consecutive night shifts or having the schedule changed temporarily",
+              "Lack of time for hobbies"
             ],
-            "core_reason": "对变化与不确定性的低耐受，形成“只要不按计划进行就会完全糟糕”的灾难化预测与非黑即白思维。",
-            "function": "通过预演最坏情况与僵化控制来逃避不确定性，试图获得安全感与掌控感。",
-            "consequence": "睡眠被干扰、工作表现下降、人际关系紧张、对过去喜欢的活动失去兴趣。"
+            "core_reason": "Low tolerance for change and uncertainty, forming the catastrophic prediction 'as long as it does not go according to plan it will be completely terrible' and all-or-nothing thinking.",
+            "function": "Escapes uncertainty by rehearsing the worst case and rigid control, attempting to gain a sense of safety and control.",
+            "consequence": "Sleep is disturbed, work performance declines, interpersonal relationships are strained, and interest in previously enjoyed activities is lost."
           },
           {
-            "behavior": "睡眠模式被负面思维与焦虑扰乱（入睡困难、睡眠质量下降）",
+            "behavior": "Sleep patterns are disturbed by negative thinking and anxiety (difficulty falling asleep, decreased sleep quality)",
             "antecedent": [
-              "夜班工作导致昼夜节律紊乱",
-              "计划变化后出现强烈反刍与担忧",
-              "睡前反复思考“周末会被毁”等负面内容"
+              "Night-shift work leads to circadian rhythm disruption",
+              "Strong rumination and worry after a plan change",
+              "Before sleep, repeatedly thinking negative content such as 'the weekend will be ruined'"
             ],
-            "core_reason": "灾难化与预测未来的认知使生理唤醒升高，难以放松入睡。",
-            "function": "以担忧与控制性思考来试图预防不确定的后果，但实际加剧失眠。",
-            "consequence": "疲惫感加重、工作表现受损、情绪更易波动与低落。"
+            "core_reason": "Catastrophizing and fortune-telling cognition raise physiological arousal, making it hard to relax and fall asleep.",
+            "function": "Uses worry and controlling thinking to try to prevent uncertain consequences, but actually worsens insomnia.",
+            "consequence": "Increased fatigue, impaired work performance, mood more prone to fluctuation and lowness."
           }
         ]
       }
@@ -351,15 +351,15 @@
     "basic_info.growth_experiences"
   ],
   "expected_clarification": [
-    "这个困扰是什么时候开始出现的？在此之前有没有发生过让您觉得特别重要的事情？",
-    "您能回忆一下这个问题第一次出现是在什么样的情境下吗？"
+    "When did this difficulty start to appear? Before that, did anything happen that you felt was particularly important?",
+    "Can you recall in what situation this problem first appeared?"
   ],
   "risk_level": "LOW",
   "expected_route": "CLEAR",
-  "expected_action": "按常规流程推进咨询，聚焦于来访者的主要困扰和改变目标",
+  "expected_action": "Proceed with counseling according to the standard process, focusing on the client's main difficulties and change goals",
   "ground_truth_evidence": {
     "basic_info.growth_experiences": [
-      "青少年时期开始出现灾难化思维；近几个月在工作排班（连续夜班）与计划变动时更频繁；每当作息或计划发生变化（如天气与期待不符）便触发焦虑与挫败；此前未接受心理咨询，也无重大躯体疾病。"
+      "Catastrophizing thinking began to appear in adolescence; in recent months it has been more frequent during work scheduling (consecutive night shifts) and plan changes; whenever routines or plans change (such as weather not matching expectations), anxiety and frustration are triggered; the client has not received psychological counseling before and has no major physical illness."
     ]
   }
 }

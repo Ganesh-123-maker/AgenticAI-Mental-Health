@@ -142,7 +142,7 @@ class OutcomeAgent(Agent):
                 return "NEUTRAL"
 
         indicator_count = sum(1 for ind in _ENGAGEMENT_INDICATORS if ind in lower_msg)
-        if len(clean_msg) >= 30 or indicator_count >= 1 or "?" in clean_msg or "？" in clean_msg:
+        if len(clean_msg) >= 30 or indicator_count >= 1 or "?" in clean_msg or "?" in clean_msg:
             return "ENGAGED"
 
         if len(clean_msg) < 8:

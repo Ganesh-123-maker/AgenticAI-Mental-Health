@@ -2,127 +2,127 @@
   "basic_info": {
     "static_traits": {
       "age": "39",
-      "name": "帕特里克·诺克斯",
-      "gender": "男",
-      "occupation": "未提及",
-      "educational_background": "未提及",
-      "marital_status": "未提及",
-      "family_status": "未提及",
-      "social_status": "有少数朋友可交谈，但尚未向其分享财务与情绪困境；人际关系因自我隔离而紧张",
-      "medical_history": "过去有经济困难但无重大躯体疾病；未接受过类似心理治疗",
-      "language_features": "表达清晰，能具体描述感受与经历；合作度较高、态度中性；常出现绝对化与负性自我陈述（如“永远”“失败”）"
+      "name": "Patrick Knox",
+      "gender": "Male",
+      "occupation": "Not mentioned",
+      "educational_background": "Not mentioned",
+      "marital_status": "Not mentioned",
+      "family_status": "Not mentioned",
+      "social_status": "Has a few friends to talk to, but has not yet shared financial and emotional struggles with them; Interpersonal relationships strained due to self-isolation",
+      "medical_history": "Had financial difficulties in the past but No major physical illness; has not yet received similar psychotherapy",
+      "language_features": "Expresses clearly, can describe feelings and experiences concretely; fairly cooperative, Neutral attitude; often uses absolutist and negative self-statements (such as 'forever' and 'failure')"
     },
-    "main_problem": "因财务困难（与居住在波士顿郊区相关）长期感到绝望与无望，担忧自己会被困在当地、无法改善经济状况；压力持续多年并日常化，看到他人财务稳定时加剧。",
-    "topic": "情绪管理",
-    "core_demands": "持续的绝望与无望感影响身心与生活质量，希望通过咨询获得支持，学习以更积极、现实的方式看待当前处境并改善思维模式。",
+    "main_problem": "Long-term feelings of despair and hopelessness due to financial difficulties (related to living in the Boston suburbs), worrying about being trapped there, unable to improve the financial situation; stress has persisted for years and become part of daily life, intensifying when seeing others financially stable.",
+    "topic": "Emotion management",
+    "core_demands": "Ongoing despair and hopelessness affect body, mind, and quality of life; hoping to gain support through counseling, Learning to view the current situation in a more positive, realistic way and improve thinking patterns.",
     "growth_experiences": [
-      "几年前遭遇财务挫折，起初仍抱有改善希望，但随后进展不理想，逐步发展为持续性的高压力与负面认知。此后几乎每天担心被困在波士顿郊区、无法改善财务状况；看到周围人实现财务稳定时自责与失落加重。虽尝试过预算与寻找额外工作，但主观的无望感仍未缓解。"
+      "Suffered a financial setback a few years ago; initially still held hope for improvement, but progress was not ideal, gradually developing into persistent high stress and negative cognition. Since then, worries almost daily about being trapped in the Boston suburbs, unable to improve the financial situation; self-blame and disappointment intensify when seeing people around achieving financial stability. Although tried budgeting and finding extra Work, the subjective sense of hopelessness has not yet eased."
     ]
   },
   "theory": {
     "cbt": {
       "core_beliefs": [
-        "我被困住，无法改善自己的处境",
-        "我在经济上是失败者，未来也不会好转"
+        "I am trapped, unable to improve my situation",
+        "I am a financial failure, and the future will not get better either"
       ],
       "special_situations": [
         {
-          "event": "查看银行账户时发现进展很少",
-          "conditional_assumptions": "如果我看不到明显的财务进步，就意味着我不可能摆脱困境",
-          "compensatory_strategies": "尝试严格预算与寻找额外工作来证明自己可以改变现状",
-          "automatic_thoughts": "我永远走不出这个坑",
+          "event": "Finding little progress when checking the bank account",
+          "conditional_assumptions": "If I do not see obvious financial progress, it means I cannot get out of this predicament",
+          "compensatory_strategies": "Tries strict budgeting and finding extra work to prove oneself can change the status quo",
+          "automatic_thoughts": "I will never get out of this hole",
           "cognitive_pattern": "Fortune Telling"
         },
         {
-          "event": "看到周围的人实现财务稳定或表现良好",
-          "conditional_assumptions": "如果我不如他人稳定，就说明我是失败者",
-          "compensatory_strategies": "回避社交、减少与朋友联系以避免被比较与评价",
-          "automatic_thoughts": "我不如他们，我是个失败者",
+          "event": "Seeing people around achieve financial stability or perform Good",
+          "conditional_assumptions": "If I am not as stable as others, it means I am a failure",
+          "compensatory_strategies": "Avoids socializing, reducing contact with friends to avoid being compared and judged",
+          "automatic_thoughts": "I am not as good as them,I am a failure",
           "cognitive_pattern": "Comparing and Despairing"
         },
         {
-          "event": "想到自己住在波士顿郊区且经济拮据",
-          "conditional_assumptions": "如果我现在很贫穷，就会永远被困在这里，无法改变",
-          "compensatory_strategies": "以非黑即白方式评估未来、反复担忧以试图掌控不确定性",
-          "automatic_thoughts": "我可能永远出不去",
+          "event": "Thinking of living in a Boston suburb with financial strain",
+          "conditional_assumptions": "If I am poor now, I will be trapped here forever, unable to change",
+          "compensatory_strategies": "Evaluating the future in black-and-white terms, worrying repeatedly to try to control uncertainty",
+          "automatic_thoughts": "I may never get out",
           "cognitive_pattern": "All-or-Nothing Thinking"
         },
         {
-          "event": "夜间入睡前反复思考财务问题",
-          "conditional_assumptions": "如果我无法立即解决财务难题，就意味着没有希望",
-          "compensatory_strategies": "用负面自我对话施压自己以促使改变",
-          "automatic_thoughts": "无论我做什么都没用",
+          "event": "Repeatedly thinking about financial problems before falling asleep at night",
+          "conditional_assumptions": "If I cannot solve the financial problem immediately, it means no hope",
+          "compensatory_strategies": "Uses negative self-talk to pressure oneself into change",
+          "automatic_thoughts": "No matter what I do it is useless",
           "cognitive_pattern": "Emotional Reasoning"
         }
       ]
     },
     "pdt": {
       "core_conflict": {
-        "wish": "渴望摆脱经济困境、重获掌控与希望，并被他人理解与支持",
-        "fear": "害怕被视为失败者、暴露脆弱后遭到羞耻与评判；害怕永远被困住、无法改变命运",
+        "wish": "Longs to escape financial difficulty, regain control and hope, and be understood and supported by others",
+        "fear": "Fear of being seen as a failure, facing shame and judgment after exposing vulnerability; fear of being trapped forever, unable to change fate",
         "defense_goal": [
-          "通过与他人保持距离来避免羞耻与负面评价",
-          "以预先悲观和灾难化来降低期望、避免再度失望"
+          "Avoids shame and negative evaluation by keeping distance from others",
+          "Lowers expectations through preemptive pessimism and catastrophizing to avoid disappointment again"
         ]
       },
       "object_relations": [
         {
-          "self_representation": "被困住且失败的自己",
-          "object_representation": "他人/社会是评判性的旁观者，会看不起我",
-          "linking_affect": "羞耻、绝望、孤立"
+          "self_representation": "Trapped and failing self",
+          "object_representation": "Others/society are judgmental onlookers who will look down on me",
+          "linking_affect": "Shame, despair, isolation"
         }
       ],
       "behavioral_response_patterns": [
         {
-          "trigger_condition": "当被询问是否向朋友寻求支持，或在咨询中被邀请分享个人财务与情绪困境时",
-          "interpretation": "他人会看不起我、觉得我失败；暴露真实状况会带来羞耻与拒绝（移情：投射）",
-          "defense_mechanism": "投射",
-          "response_instruction": "使用委婉与含混的表达，避免细节，强调“这太个人、很尴尬”，语气轻缓、绕开核心问题，转向泛泛的描述。"
+          "trigger_condition": "When asked whether they have sought support from friends, or invited in counseling to share personal financial and emotional difficulties",
+          "interpretation": "Others will look down on me and think I am a failure; exposing the real situation will bring shame and rejection (transference: Projection)",
+          "defense_mechanism": "Projection",
+          "response_instruction": "Use euphemistic and vague expressions, avoid details, emphasize 'this is too personal, very embarrassing', keep a gentle tone, skirt the core issue, and turn to general descriptions."
         }
       ]
     },
     "het": {
       "existentialism_topic": [
         {
-          "theme": "自由",
+          "theme": "Freedom",
           "manifestations": [
-            "反复担忧“被困在波士顿郊区”“永远出不去”",
-            "将财务限制体验为选择与可能性的丧失"
+            "Repeatedly worrying about 'being trapped in the Boston suburbs' and 'never getting out'",
+            "Experiences financial limitations as a loss of choices and possibilities"
           ],
           "outcomes": [
-            "无力感与绝望加重",
-            "工作表现下降与睡眠受扰",
-            "社交退缩与自我隔离"
+            "Worsening sense of powerlessness and despair",
+            "Decline in work performance and Sleep disturbed",
+            "Social withdrawal and self-isolation"
           ]
         },
         {
-          "theme": "无意义",
+          "theme": "Meaninglessness",
           "manifestations": [
-            "自我贴上“失败者”标签",
-            "对生活的希望感下降、难以看到积极面"
+            "Labeling oneself a 'failure'",
+            "Sense of hope for life declines; hard to see the positive side"
           ],
           "outcomes": [
-            "动力不足与注意力下降",
-            "日常节律被打乱（睡眠、锻炼受影响）",
-            "人际关系紧张"
+            "Insufficient motivation and Decreased attention",
+            "Daily rhythm is disrupted (sleep and exercise are affected)",
+            "Interpersonal tension"
           ]
         }
       ],
       "contact_model": [
         {
-          "mode": "回摄",
-          "definition": "个体克制想对其他人或物做出的行为冲动，或放弃向外寻求别人为其做某事，转而对自己做（将能量由外转向自身）。",
+          "mode": "Retroflection",
+          "definition": "The individual restrains behavioral impulses toward other people or things, or gives up seeking others to do something for them and instead does it to oneself (turning energy from outward Turning against the self).",
           "manifestations": [
-            "明知有朋友可谈却不分享困境",
-            "将求助的冲动压回自我，转为自我隔离与独自承受"
+            "Knowing there are friends to talk to but not sharing the struggles",
+            "Presses the impulse to seek help back into oneself, turns into self-isolation and bearing it alone"
           ]
         },
         {
-          "mode": "自我监控",
-          "definition": "个体存在不良的自我反思与反省，包含过多的自我限制和自我苛责，对接触过于小心谨慎。",
+          "mode": "Self-monitoring",
+          "definition": "The individual has poor self-reflection and introspection, with excessive self-restriction and self-blame, and is overly cautious about contact.",
           "manifestations": [
-            "频繁以“失败者”定义自己",
-            "对分享个人问题过度谨慎，担心引发他人负面评价"
+            "Frequently defining oneself as a 'failure'",
+            "Overly cautious about sharing personal problems, worried about triggering others' negative evaluations"
           ]
         }
       ]
@@ -130,47 +130,47 @@
     "pmt": {
       "exception_events": [
         {
-          "target_problem": "在面对财务压力或比较他人稳定时，来访者通常会灾难化思考、认为自己永远无法改善，从而陷入绝望并自我隔离。",
-          "unique_outcome": "在某个“好的一天”，来访者能够想到“也许事情没有我想得那么糟；我曾经挺过难关”，从而获得更为平衡的视角与些许希望感。",
-          "reason": "线索：当日能够回忆并认可过往的韧性与应对成功的经历，因此当下出现了更为平衡的认知偏离点。"
+          "target_problem": "When facing financial pressure or comparing with others' stability, the client usually thinks catastrophically, believing they can never improve, thus sinking into despair and self-isolating.",
+          "unique_outcome": "On a 'good day', the client was able to think 'maybe things are not as bad as I thought; I have gotten through hard times before', thus gaining a more balanced perspective and a glimmer of hope.",
+          "reason": "Cue: that day she was able to recall and acknowledge past resilience and successful coping experiences, so a more balanced cognitive deviation point appeared in the moment."
         }
       ],
       "force_field": {
         "positive_force": [
-          "偶尔能产生更平衡的视角并回忆自身韧性",
-          "愿意尝试改变思维方式与参与咨询",
-          "主动采取实际措施（预算、寻找额外工作）",
-          "拥有少数可依靠的朋友资源"
+          "Occasionally able to produce a more balanced perspective and recall one's own resilience",
+          "Willing to try changing thinking styles and participating in counseling",
+          "Proactively takes practical measures (budgeting, looking for extra work)",
+          "Having a few reliable friends as resources"
         ],
         "negative_force": [
-          "灾难化、非黑即白、过度概括、个人化、预测未来等认知偏差强",
-          "羞耻感与“失败者”自我标签导致社交回避",
-          "长期压力致睡眠受扰、工作表现下降与日常节律打乱",
-          "对不确定性的强烈焦虑与担忧，感到缺乏控制感"
+          "Strong cognitive biases such as catastrophizing, black-and-white thinking, overgeneralization, personalization, and predicting the future",
+          "Shame and the 'failure' self-label lead to Social avoidance",
+          "Long-term stress causes Sleep disturbed, Decline in work performance, and disrupted daily rhythms",
+          "Intense Anxiety and worry about uncertainty, feeling a lack of control"
         ]
       }
     },
     "bt": {
       "target_behavior": [
         {
-          "behavior": "社交回避与自我隔离",
+          "behavior": "Social avoidance and self-isolation",
           "antecedent": [
-            "看到周围人财务稳定时",
-            "想到向朋友分享困境时感到尴尬与羞耻"
+            "When seeing those around financially stable",
+            "When thinking about sharing his difficulties with friends, feels embarrassment and shame"
           ],
-          "core_reason": "担心被评判与羞耻，内化“我是失败者”的负性自我图式",
-          "function": "逃避被评价与负面情绪体验",
-          "consequence": "与朋友和家人关系紧张，支持系统弱化，孤独感加重"
+          "core_reason": "Worrying about being judged and shame, internalizing the negative self-schema of 'I am a failure'",
+          "function": "Escaping being judged and negative emotional experiences",
+          "consequence": "Relationship tension with friends and family, Weakened support system, worsened sense of Loneliness"
         },
         {
-          "behavior": "灾难化思维与反复担忧财务状况",
+          "behavior": "Catastrophic thinking and repeated worry about finances",
           "antecedent": [
-            "查看银行账户时",
-            "想到居住在波士顿郊区且经济拮据时"
+            "When checking the bank account",
+            "When thinking of living in a Boston suburb with financial strain"
           ],
-          "core_reason": "过度预测负面结果与非黑即白思维；过去财务挫折引发的控制感丧失",
-          "function": "试图通过持续担忧获得对不确定性的主观控制与“心理准备”（不适应的自我保护）",
-          "consequence": "情绪绝望化、睡眠受扰、注意力与工作表现下降，进一步强化负性循环"
+          "core_reason": "Excessive prediction of negative outcomes and black-and-white thinking; loss of sense of control triggered by past financial setbacks",
+          "function": "Trying to gain subjective control over uncertainty and 'mental preparation' through constant worrying (maladaptive Self-protection)",
+          "consequence": "Emotional despair, Sleep disturbed, declining attention and work performance, further reinforcing the negative cycle"
         }
       ]
     }

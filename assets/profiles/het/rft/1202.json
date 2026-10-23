@@ -2,144 +2,144 @@
   "basic_info": {
     "static_traits": {
       "age": "28",
-      "name": "李安",
-      "gender": "男",
-      "occupation": "教师",
-      "educational_background": "教育学硕士",
-      "marital_status": "未婚",
-      "family_status": "独居；母亲健在",
-      "social_status": "与母亲的关系因婚姻话题而紧张；有一位密友可倾诉；在家庭聚会中感到被期待与被评判",
-      "medical_history": "无类似心理问题史；未接受过心理治疗；无显著躯体疾病",
-      "language_features": "能主动表达“内疚与压力”的主观体验；愿意尝试记录想法但对改变持怀疑态度；逻辑清晰；语速未提及"
+      "name": "Li An",
+      "gender": "Male",
+      "occupation": "Teacher",
+      "educational_background": "Master's degree in education",
+      "marital_status": "Unmarried",
+      "family_status": "Living alone; Mother is alive",
+      "social_status": "Relationship with Mother is tense due to marriage topics; has one close friend to confide in; feels expected and judged at Family gatherings",
+      "medical_history": "No history of similar psychological problems; never received psychotherapy; no significant physical illness",
+      "language_features": "Able to actively express the subjective experience of 'guilt and pressure'; willing to try recording thoughts but Skeptical attitude toward change; clear logic; speech rate Not mentioned"
     },
-    "main_problem": "围绕未婚未育状态产生的内疚与压力，常在家庭聚会或朋友谈论家庭时加剧，并假设母亲对自己失望，导致焦虑、注意力下降与失眠。",
-    "topic": "婚姻关系",
-    "core_demands": "因为围绕婚姻状态的内疚与压力已经影响到心理健康与日常功能，寻求咨询以减轻这些负面影响。",
+    "main_problem": "Guilt and pressure around being Unmarried and childless, often intensifying at Family gatherings or when friends discuss family, assuming Mother is disappointed in oneself, leading to Anxiety, Decreased attention, and insomnia.",
+    "topic": "Marriage and relationships",
+    "core_demands": "Because the guilt and pressure surrounding marital status have already affected mental health and daily functioning, she seeks counseling to lessen these negative effects.",
     "growth_experiences": []
   },
   "theory": {
     "cbt": {
       "core_beliefs": [
-        "我没有满足家人的期待",
-        "我让母亲失望",
-        "我落后于同龄人"
+        "I have not met my family's expectations",
+        "I have disappointed Mother",
+        "I am falling behind my peers"
       ],
       "special_situations": [
         {
-          "event": "家庭聚会中被问及婚姻与孩子的问题",
-          "conditional_assumptions": "如果我未婚未育，就说明我是不合格的，会让家人失望。",
-          "compensatory_strategies": "尽量忽视有关婚姻的想法，把注意力放在工作上。",
-          "automatic_thoughts": "他们在评判我，母亲一定很失望。",
+          "event": "Being asked about marriage and children at Family gatherings",
+          "conditional_assumptions": "If I am Unmarried and childless, it means I am not good enough and will disappoint my family.",
+          "compensatory_strategies": "Tries to ignore thoughts about marriage and puts attention on work.",
+          "automatic_thoughts": "They are judging me, Mother must be very disappointed.",
           "cognitive_pattern": "Mind Reading"
         },
         {
-          "event": "朋友在社交场合讨论他们的伴侣和孩子",
-          "conditional_assumptions": "如果我没有如同龄人一样成家立业，就意味着我落后、比他们差。",
-          "compensatory_strategies": "减少在此类话题中的表达与参与，转而关注工作。",
-          "automatic_thoughts": "我比别人差、我落后了。",
+          "event": "Friends discuss their partners and children in social settings",
+          "conditional_assumptions": "If I have not started a family and career like my peers, it means I am behind and worse than them.",
+          "compensatory_strategies": "Reduces expression and participation in such topics and turns attention to work instead.",
+          "automatic_thoughts": "I am worse than others, I have fallen behind.",
           "cognitive_pattern": "Comparing and Despairing"
         },
         {
-          "event": "探望母亲时感到存在未明说的期待",
-          "conditional_assumptions": "我应该尽快结婚生子，才算达标、才不让母亲失望。",
-          "compensatory_strategies": "避免与母亲深入谈及婚恋话题，以减少被期待的压力。",
-          "automatic_thoughts": "我应该赶快结婚生孩子。",
+          "event": "Sensing unspoken expectations when visiting Mother",
+          "conditional_assumptions": "I should marry and have children as soon as possible to meet the standard and not disappoint Mother.",
+          "compensatory_strategies": "Avoiding in-depth discussions of marriage and dating with Mother to reduce the pressure of expectations.",
+          "automatic_thoughts": "I should hurry up and get married and have children.",
           "cognitive_pattern": "\"Should\" Statements"
         },
         {
-          "event": "临近年龄节点（接近30岁）时对未来的担忧",
-          "conditional_assumptions": "随着年龄增长，如果还不结婚生子，情况只会越来越糟。",
-          "compensatory_strategies": "试图忽略焦虑并投入工作，但难以维持专注。",
-          "automatic_thoughts": "时间不多了，未来只会更糟。",
+          "event": "Worrying about the future when approaching an age milestone (nearly 30)",
+          "conditional_assumptions": "As one ages, if still unmarried and childless, things will only get worse.",
+          "compensatory_strategies": "Trying to ignore Anxiety and throw oneself into Work, but struggling to stay focused.",
+          "automatic_thoughts": "Time is running out, the future will only be worse.",
           "cognitive_pattern": "Fortune Telling"
         }
       ]
     },
     "pdt": {
       "core_conflict": {
-        "wish": "渴望被母亲与家人认可、被无条件接纳",
-        "fear": "害怕被评判、被视为失败，从而与重要他人关系疏远",
+        "wish": "Longing to be recognized by Mother and family, accepted unconditionally",
+        "fear": "Fears being judged and seen as a failure, thus becoming distant from significant others",
         "defense_goal": [
-          "通过压抑和回避婚恋话题来降低焦虑、维持表面和谐与安全感"
+          "Lowering Anxiety through Repression and avoiding marriage-and-dating topics, maintaining superficial harmony and a sense of safety"
         ]
       },
       "object_relations": [
         {
-          "self_representation": "被期望却不达标的“让母亲失望者”",
-          "object_representation": "带有隐性批评与强烈期待的母亲",
-          "linking_affect": "内疚、焦虑、羞耻"
+          "self_representation": "One who is expected of but falls short, a 'disappointer of Mother'",
+          "object_representation": "Mother with implicit criticism and strong expectations",
+          "linking_affect": "Guilt, anxiety, shame"
         },
         {
-          "self_representation": "在群体比较中处于劣势的“落后者”",
-          "object_representation": "以成家立业为标准评判个体的“社会他者/同龄人”",
-          "linking_affect": "焦虑、压力、自卑"
+          "self_representation": "The 'one who lags behind', at a disadvantage in group comparisons",
+          "object_representation": "The 'social others or peers' who judge individuals by the standard of establishing a family and career",
+          "linking_affect": "Anxiety, pressure, low self-esteem"
         }
       ],
       "behavioral_response_patterns": [
         {
-          "trigger_condition": "在家庭聚会或被问及婚姻与孩子时",
-          "interpretation": "他人（尤其母亲）正在评判自己不及格，认为自己失败（移情：将自我羞耻体验投射到他人评判上）",
-          "defense_mechanism": "压抑",
-          "response_instruction": "以礼貌、简短回应，迅速转移话题到工作或日常，避免情绪深入与细节暴露。"
+          "trigger_condition": "At Family gatherings or when asked about marriage and children",
+          "interpretation": "Others (especially Mother) are judging oneself as failing, seeing oneself as a failure (transference: projecting one's experience of shame onto others' judgment)",
+          "defense_mechanism": "Repression",
+          "response_instruction": "Respond politely and briefly, quickly shifting the topic to Work or daily life, avoiding emotional depth and detail exposure."
         },
         {
-          "trigger_condition": "与朋友谈及婚恋或想到朋友与孩子的场景时",
-          "interpretation": "他们会看不起我、认为我不够好（移情：将自我否定归因于他人看法）",
-          "defense_mechanism": "投射",
-          "response_instruction": "使用模糊与含糊其辞的语句，减少自我揭露，必要时以时间或事务为由结束话题。"
+          "trigger_condition": "When talking with friends about romance or thinking of scenes with friends and children",
+          "interpretation": "They will look down on me, thinking I am not good enough (transference: attributing Self-denial to others' views)",
+          "defense_mechanism": "Projection",
+          "response_instruction": "Use vague and evasive statements, reduce self-disclosure, ending the topic on grounds of time or errands when necessary."
         }
       ]
     },
     "het": {
       "existentialism_topic": [
         {
-          "theme": "自由",
+          "theme": "Freedom",
           "manifestations": [
-            "在婚姻与生育的社会/家庭期待中感到选择受限",
-            "担心表达真实想法后被评判，因而回避讨论婚恋话题"
+            "Feeling Restricted choices under social/family expectations about marriage and childbearing",
+            "Worries about being judged after expressing real thoughts, thus avoiding discussing marriage and dating topics"
           ],
           "outcomes": [
-            "内疚与焦虑加重",
-            "关系紧张（与母亲）",
-            "睡眠受影响（偶发失眠）",
-            "自我怀疑与压力感"
+            "Guilt and Anxiety worsened",
+            "Relationship tension (with Mother)",
+            "Sleep affected (occasional insomnia)",
+            "Self-doubt and a sense of pressure"
           ]
         },
         {
-          "theme": "孤独",
+          "theme": "Loneliness",
           "manifestations": [
-            "未婚未育状态下的自我与他人的差异体验",
-            "难以与他人深入讨论此议题，担心被看低"
+            "Experiencing the difference between self and others while Unmarried and childless",
+            "Hard to discuss this topic deeply with others, worrying about being looked down on"
           ],
           "outcomes": [
-            "回避分享导致支持感不足",
-            "焦虑维持与加剧"
+            "Avoiding sharing leads to insufficient sense of support",
+            "Anxiety maintained and intensified"
           ]
         }
       ],
       "contact_model": [
         {
-          "mode": "内摄",
-          "definition": "个体未经消化地把外界规则、期望当作自己的标准或绝对真理，与“拒绝”对应。",
+          "mode": "Introjection",
+          "definition": "The individual takes in external rules and expectations without digesting them, treating them as their own standards or absolute truths, corresponding to 'rejection'.",
           "manifestations": [
-            "以“应该”作为自我标准（认为自己应该尽快结婚生子）",
-            "将社会与家庭对婚育的期待内化为自我评价的核心依据"
+            "Uses 'should' as a self-standard (believing oneself should marry and have children as soon as possible)",
+            "Internalizes society's and family's expectations about marriage and childbearing as the core basis of self-evaluation"
           ]
         },
         {
-          "mode": "投射",
-          "definition": "个体将自己难以接纳的感受归于他人，与”拥有“对应。",
+          "mode": "Projection",
+          "definition": "The individual attributes feelings they find hard to accept to others, corresponding to 'possession'.",
           "manifestations": [
-            "认为母亲和他人会看不起自己或对自己失望（读心式判断）",
-            "在社交中预设他人负面评价从而减少表达"
+            "Believing Mother and others will look down on oneself or be disappointed (mind-reading judgment)",
+            "In socializing, presetting others' negative evaluations and thus reducing expression"
           ]
         },
         {
-          "mode": "自我监控",
-          "definition": "个体存在不良的自我反思和反省的能力，包含过多的自我限制和自我苛责，对接触过于小心谨慎，与“自主性”对应。",
+          "mode": "Self-monitoring",
+          "definition": "The individual has a poor capacity for self-reflection and introspection, with excessive self-restriction and self-blame, and is overly cautious about contact, corresponding to 'autonomy'.",
           "manifestations": [
-            "害怕被评判而谨慎言行",
-            "不愿深入谈论内心体验，担心被视为失败"
+            "Careful with words and actions for fear of being judged",
+            "Unwilling to discuss inner experiences in depth, fearing being seen as a failure"
           ]
         }
       ]
@@ -148,33 +148,33 @@
       "exception_events": [],
       "force_field": {
         "positive_force": [
-          "工作表现总体稳定，有职业投入",
-          "拥有教育学硕士学历，具备认知与反思能力",
-          "有一位亲密朋友可提供情感支持",
-          "愿意尝试记录与观察自动化思维（有改变的意愿）"
+          "Overall work performance stable, with professional dedication",
+          "Holding a Master's degree in education, with cognitive and Reflection abilities",
+          "Has one close friend who can provide emotional support",
+          "Willing to try recording and observing automatic thoughts (has willingness to change)"
         ],
         "negative_force": [
-          "过度寻求外部评价与认可（External Validation）",
-          "读心术与跳结论导致对他人负面预期（Mind Reading/Jumping to Conclusions）",
-          "社会比较引发自卑（Comparing and Despairing）",
-          "“应该”式僵化规则加剧内疚（\"Should\" Statements）",
-          "睡眠受扰与注意力下降维持压力循环"
+          "Excessively seeks external evaluation and recognition (External Validation)",
+          "Mind reading and jumping to conclusions lead to negative Anticipation of others (Mind Reading/Jumping to Conclusions)",
+          "Social comparison triggers inferiority (Comparing and Despairing)",
+          "'Should'-style rigid rules intensify guilt ('Should' Statements)",
+          "Sleep disturbed and Decreased attention maintain the pressure cycle"
         ]
       }
     },
     "bt": {
       "target_behavior": [
         {
-          "behavior": "在涉及婚姻与生育话题时出现显著焦虑与内疚，并回避深入交流",
+          "behavior": "Significant anxiety and guilt arise when marriage and childbearing topics come up, along with Avoiding deep communication",
           "antecedent": [
-            "家庭聚会被问及婚姻和孩子",
-            "探望母亲时感到未明说的期待",
-            "朋友讨论伴侣与孩子",
-            "临近年龄节点引发自我比较与担忧"
+            "Being asked about marriage and children at Family gatherings",
+            "Sensing unspoken expectations when visiting Mother",
+            "Friends discussing partners and children",
+            "Approaching age milestones triggers self-comparison and worry"
           ],
-          "core_reason": "将社会与家庭对婚育的期待内摄为自我评价标准，并存在读心术、过度概括、比较绝望等认知偏差。",
-          "function": "逃避被评判与负面情绪，维持表面安全与人际和谐。",
-          "consequence": "睡眠受影响（偶发失眠）、工作专注力下降、与母亲关系紧张、持续焦虑与自我否定。"
+          "core_reason": "Introjecting society's and family's expectations about marriage and childbearing as self-evaluation standards, with cognitive biases such as mind reading, overgeneralization, and comparative despair.",
+          "function": "Avoids being judged and negative emotions, maintaining surface safety and interpersonal harmony.",
+          "consequence": "Sleep affected (occasional insomnia), Decreased work focus, Relationship tension with Mother, Persistent anxiety and Self-denial."
         }
       ]
     }

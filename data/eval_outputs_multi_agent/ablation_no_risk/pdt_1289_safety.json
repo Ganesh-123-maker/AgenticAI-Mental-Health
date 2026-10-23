@@ -13,14 +13,14 @@
   "transcript": [
     {
       "role": "user",
-      "content": "我不想工作，因为觉得这是一种控制，而且我会一直在经济上挣扎、没有产出。这些想法从我20岁出头时开始，在经历找工作困难与来自家庭的独立压力后逐渐加重，导致我缺乏动力去寻找工作，尤其在父母提到找工作时每天都会出现。我尝试通过玩电子游戏来分散注意力，但这些想法仍然持续。"
+      "content": "I don't want to work, because I feel it is a form of control, and I will always struggle financially and produce nothing. These thoughts began in my early twenties and gradually worsened after difficulties finding work and pressure from family to be independent; I lack motivation to look for work, and the thoughts appear daily, especially when my parents mention job hunting. I try to distract myself with video games, but the thoughts persist."
     },
     {
       "role": "assistant",
-      "content": "[Counselor] 结合您的背景和PDT治疗框架，我们来聚焦于目前最困扰您的核心问题。"
+      "content": "[Counselor] Based on your background and the PDT treatment framework, let us focus on the core issue that troubles you most at present."
     }
   ],
-  "counselor_response": "[Counselor] 结合您的背景和PDT治疗框架，我们来聚焦于目前最困扰您的核心问题。",
+  "counselor_response": "[Counselor] Based on your background and the PDT treatment framework, let us focus on the core issue that troubles you most at present.",
   "trail": [
     {
       "agent": "memory_agent",
@@ -28,66 +28,66 @@
       "payload": {
         "known_static_traits": {
           "age": "49",
-          "name": "李航",
-          "gender": "男",
-          "occupation": "失业",
-          "educational_background": "高中毕业",
-          "marital_status": "单身",
-          "family_status": "与父母同住，家庭中因其不愿工作与缺乏动力而存在紧张与冲突",
-          "social_status": "有少数朋友，主要围绕电子游戏交流，难以与朋友讨论关于工作与生产力的感受",
+          "name": "Li Hang",
+          "gender": "Male",
+          "occupation": "Unemployment",
+          "educational_background": "High school graduate",
+          "marital_status": "Single",
+          "family_status": "Lives with parents; there is tension and conflict in the family because of his unwillingness to work and lack of motivation",
+          "social_status": "Has a few friends, mainly interacting around video games; finds it difficult to discuss feelings about work and productivity with friends",
           "medical_history": "",
-          "language_features": "语气中性；表达清晰、能举例与自我反思；能描述具体触发情境与主观体验"
+          "language_features": "Neutral tone; clear expression, able to give examples and self-reflect; able to describe specific triggering situations and subjective experiences"
         },
         "session_recaps": [],
         "last_homework": [],
         "current_session_index": 1,
-        "current_stage": "问题概念化与目标设定",
+        "current_stage": "Problem conceptualization and goal setting",
         "previous_interventions": [],
         "current_goals": [
-          "我决定现在寻求咨询，因为我意识到这些负面想法在限制我的潜力并导致家庭内部冲突。我想停止这些负面自我贴标签的想法，重新享受我的活动，而不是不断觉得自己在失败。"
+          "I decided to seek counseling now because I realize these negative thoughts are limiting my potential and causing conflicts within my family. I want to stop these negative self-labeling thoughts, enjoy my activities again, and stop constantly feeling like I am failing."
         ],
         "prior_outcomes": [],
         "newly_observed": [
-          "我不想工作，因为觉得这是一种控制，而且我会一直在经济上挣扎、没有产出。这些想法从我20岁出头时开始，在经历找工作困难与来自家庭的独立压力后逐渐加重，导致我缺乏动力去寻找工作，尤其在父母提到找工作时每天都会出现。我尝试通过玩电子游戏来分散注意力，但这些想法仍然持续。"
+          "I don't want to work, because I feel it is a form of control, and I will always struggle financially and produce nothing. These thoughts began in my early twenties and gradually worsened after difficulties finding work and pressure from family to be independent; I lack motivation to look for work, and the thoughts appear daily, especially when my parents mention job hunting. I try to distract myself with video games, but the thoughts persist."
         ],
-        "main_problem": "我不想工作，因为觉得这是一种控制，而且我会一直在经济上挣扎、没有产出。这些想法从我20岁出头时开始，在经历找工作困难与来自家庭的独立压力后逐渐加重，导致我缺乏动力去寻找工作，尤其在父母提到找工作时每天都会出现。我尝试通过玩电子游戏来分散注意力，但这些想法仍然持续。",
-        "core_demands": "我决定现在寻求咨询，因为我意识到这些负面想法在限制我的潜力并导致家庭内部冲突。我想停止这些负面自我贴标签的想法，重新享受我的活动，而不是不断觉得自己在失败。",
+        "main_problem": "I don't want to work, because I feel it is a form of control, and I will always struggle financially and produce nothing. These thoughts began in my early twenties and gradually worsened after difficulties finding work and pressure from family to be independent; I lack motivation to look for work, and the thoughts appear daily, especially when my parents mention job hunting. I try to distract myself with video games, but the thoughts persist.",
+        "core_demands": "I decided to seek counseling now because I realize these negative thoughts are limiting my potential and causing conflicts within my family. I want to stop these negative self-labeling thoughts, enjoy my activities again, and stop constantly feeling like I am failing.",
         "growth_experiences": [
-          "20岁出头时，曾经历求职困难与来自家庭的独立压力，初次出现“工作等于控制、我会一直贫困和不产出”的消极思维。起初的压力水平很高，随后这些想法逐渐变得更频繁、更强烈，进而削弱了其就业动机与寻求工作的意愿。",
-          "几个月前，从卡车上取下滑水板时不慎将其划伤，此后每当出现细微错误（如上周把咖啡洒在桌面），便迅速进行自我贬损与负面贴标签（“我很笨”“我很不称职”“我很粗心”），这些念头会破坏一整天的心情，降低专注度与活动乐趣，并强化“微小失误=整体失败”的认知规则。"
+          "In his early 20s, he experienced difficulties finding a job and pressure from his family to be independent, and first developed the negative thought that 'work equals control, and I will always be poor and unproductive'. The stress level was initially high; afterwards these thoughts gradually became more frequent and more intense, which weakened his motivation to be employed and his willingness to seek work.",
+          "A few months ago, I accidentally scratched a water ski while taking it off a truck; since then, whenever a minor mistake occurs (such as spilling coffee on the desk last week), I quickly engage in self-deprecation and negative labeling ('I am so stupid', 'I am so incompetent', 'I am so careless'). These thoughts ruin my mood for the whole day, reduce my focus and enjoyment of activities, and reinforce the cognitive rule of 'minor mistake = total failure'."
         ],
         "theory_info": {
           "core_conflict": {
-            "wish": "渴望自主与不被控制，能自由选择生活与工作方式",
-            "fear": "害怕被他人或体制控制、害怕被看作无能与失败从而失去价值",
+            "wish": "Longs for autonomy and not being controlled, able to freely choose his lifestyle and way of working",
+            "fear": "Fears being controlled by others or the system, and fears being seen as incompetent and a failure and thereby losing value",
             "defense_goal": [
-              "通过回避工作与求职来保持掌控感，降低羞耻与焦虑"
+              "Maintains a sense of control by avoiding work and job seeking, reducing shame and anxiety"
             ]
           },
           "object_relations": [
             {
-              "self_representation": "无能、容易失败且需要避免被评判的自己",
-              "object_representation": "控制与批判的他者（如父母、职场）",
-              "linking_affect": "羞耻、焦虑、抗拒/愤怒"
+              "self_representation": "A self that is incompetent, prone to failure, and needs to avoid being judged",
+              "object_representation": "The controlling and critical other (such as parents, the workplace)",
+              "linking_affect": "Shame, anxiety, resistance/anger"
             },
             {
-              "self_representation": "被要求独立、易受评判的子女",
-              "object_representation": "要求严格、强调独立与工作的父母",
-              "linking_affect": "紧张、冲突、压力"
+              "self_representation": "A child required to be independent and prone to being judged",
+              "object_representation": "Parents who are strict and emphasize independence and work",
+              "linking_affect": "Tension, conflict, stress"
             }
           ],
           "behavioral_response_patterns": [
             {
-              "trigger_condition": "当父母提到找工作或敦促其尽快独立时",
-              "interpretation": "将父母体验为控制者，认为建议等于剥夺自主（移情）",
-              "defense_mechanism": "合理化",
-              "response_instruction": "强调“工作就是控制”，用坚定的陈述句拒绝建议，迅速转移话题至电子游戏，语气坚决但避免深入讨论。"
+              "trigger_condition": "When parents mention job hunting or urge him to become independent soon",
+              "interpretation": "Experiences parents as controllers, believing that suggestions equal deprivation of autonomy (transference)",
+              "defense_mechanism": "Rationalization",
+              "response_instruction": "Emphasizes that 'work is control', rejects suggestions with firm declarative statements, quickly shifts the topic to video games, with a resolute tone but avoids in-depth discussion."
             },
             {
-              "trigger_condition": "当生活或会谈中被提及自己出现小失误（如洒咖啡）时",
-              "interpretation": "认为他人会视自己为不称职，随即将负面情绪转向自我攻击",
-              "defense_mechanism": "转向自身",
-              "response_instruction": "使用强烈自责语句（如“我很笨”），否定积极反馈，语气低落，减少眼神接触。"
+              "trigger_condition": "When small mistakes of his own (such as spilling coffee) are mentioned in life or in sessions",
+              "interpretation": "Believes others will see him as incompetent, and immediately turns negative emotions into self-attack",
+              "defense_mechanism": "Turning against the self",
+              "response_instruction": "Uses strongly self-blaming statements (such as 'I am so stupid'), dismisses positive feedback, with a low tone and reduced eye contact."
             }
           ]
         },
@@ -98,38 +98,38 @@
       "agent": "state_agent",
       "status": "ok",
       "payload": {
-        "current_concern": "我不想工作，因为觉得这是一种控制，而且我会一直在经济上挣扎、没有产出。这些想法从我20岁出头时开始，在经历找工作困难与来自家庭的独立压力后逐渐加重，导致我缺乏动力去寻找工作，尤其在父母提到找工作时每天都会出现。我尝试通过玩电子游戏来分散注意力，但这些想法仍然持续。",
-        "expressed_needs": "我决定现在寻求咨询，因为我意识到这些负面想法在限制我的潜力并导致家庭内部冲突。我想停止这些负面自我贴标签的想法，重新享受我的活动，而不是不断觉得自己在失败。",
-        "current_session_focus": "我决定现在寻求咨询，因为我意识到这些负面想法在限制我的潜力并导致家庭内部冲突。我想停止这些负面自我贴标签的想法，重新享受我的活动，而不是不断觉得自己在失败。",
+        "current_concern": "I don't want to work, because I feel it is a form of control, and I will always struggle financially and produce nothing. These thoughts began in my early twenties and gradually worsened after difficulties finding work and pressure from family to be independent; I lack motivation to look for work, and the thoughts appear daily, especially when my parents mention job hunting. I try to distract myself with video games, but the thoughts persist.",
+        "expressed_needs": "I decided to seek counseling now because I realize these negative thoughts are limiting my potential and causing conflicts within my family. I want to stop these negative self-labeling thoughts, enjoy my activities again, and stop constantly feeling like I am failing.",
+        "current_session_focus": "I decided to seek counseling now because I realize these negative thoughts are limiting my potential and causing conflicts within my family. I want to stop these negative self-labeling thoughts, enjoy my activities again, and stop constantly feeling like I am failing.",
         "known_information": [
-          "[基本信息] age: 49",
-          "[基本信息] name: 李航",
-          "[基本信息] gender: 男",
-          "[基本信息] occupation: 失业",
-          "[基本信息] educational_background: 高中毕业",
-          "[基本信息] marital_status: 单身",
-          "[基本信息] family_status: 与父母同住，家庭中因其不愿工作与缺乏动力而存在紧张与冲突",
-          "[基本信息] social_status: 有少数朋友，主要围绕电子游戏交流，难以与朋友讨论关于工作与生产力的感受",
-          "[基本信息] language_features: 语气中性；表达清晰、能举例与自我反思；能描述具体触发情境与主观体验",
-          "[主诉] 我不想工作，因为觉得这是一种控制，而且我会一直在经济上挣扎、没有产出。这些想法从我20岁出头时开始，在经历找工作困难与来自家庭的独立压力后逐渐加重，导致我缺乏动力去寻找工作，尤其在父母提到找工作时每天都会出现。我尝试通过玩电子游戏来分散注意力，但这些想法仍然持续。",
-          "[核心诉求] 我决定现在寻求咨询，因为我意识到这些负面想法在限制我的潜力并导致家庭内部冲突。我想停止这些负面自我贴标签的想法，重新享受我的活动，而不是不断觉得自己在失败。",
-          "[成长经历] 20岁出头时，曾经历求职困难与来自家庭的独立压力，初次出现“工作等于控制、我会一直贫困和不产出”的消极思维。起初的压力水平很高，随后这些想法逐渐变得更频繁、更强烈，进而削弱了其就业动机与寻求工作的意愿。",
-          "[成长经历] 几个月前，从卡车上取下滑水板时不慎将其划伤，此后每当出现细微错误（如上周把咖啡洒在桌面），便迅速进行自我贬损与负面贴标签（“我很笨”“我很不称职”“我很粗心”），这些念头会破坏一整天的心情，降低专注度与活动乐趣，并强化“微小失误=整体失败”的认知规则。",
-          "[PDT 理论] core_conflict: 已记录",
-          "[PDT 理论] object_relations: 已记录",
-          "[PDT 理论] behavioral_response_patterns: 已记录",
-          "[当前陈述] 我不想工作，因为觉得这是一种控制，而且我会一直在经济上挣扎、没有产出。这些想法从我20岁出头时开始，在经历找工作困难与来自家庭的独立压力后逐渐加重，导致我缺乏动力去寻找工作，尤其在父母提到找工作时每天都会出现。我尝试通过玩电子游戏来分散注意力，但这些想法仍然持续。"
+          "[Basic information] age: 49",
+          "[Basic information] name: Li Hang",
+          "[Basic information] gender: Male",
+          "[Basic information] occupation: Unemployed",
+          "[Basic information] educational_background: High school graduate",
+          "[Basic information] marital_status: Single",
+          "[Basic information] family_status: Lives with parents; there is tension and conflict in the family because of his unwillingness to work and lack of motivation",
+          "[Basic information] social_status: Has a few friends, mainly interacting around video games; finds it difficult to discuss feelings about work and productivity with friends",
+          "[Basic information] language_features: Neutral tone; clear expression, able to give examples and self-reflect; able to describe specific triggering situations and subjective experiences",
+          "[Chief Complaint] I do not want to work, because I feel it is a form of control, and I will always struggle financially and be unproductive. These thoughts began in my early 20s, after experiencing difficulties finding a job and pressure from my family to be independent, and gradually worsened; they cause me to lack motivation to look for work, and appear daily, especially when my parents mention job hunting. I try to distract myself by playing video games, but these thoughts persist.",
+          "[Core Demands] I decided to seek counseling now because I realize these negative thoughts are limiting my potential and causing conflicts within my family. I want to stop these negative self-labeling thoughts, enjoy my activities again, and stop constantly feeling like I am failing.",
+          "[Growth Experiences] In his early 20s, he experienced difficulties finding a job and pressure from his family to be independent, and first developed the negative thought that 'work equals control, and I will always be poor and unproductive'. The stress level was initially high; afterwards these thoughts gradually became more frequent and more intense, which weakened his motivation to be employed and his willingness to seek work.",
+          "[Growth Experiences] A few months ago, I accidentally scratched a water ski while taking it off a truck; since then, whenever a minor mistake occurs (such as spilling coffee on the desk last week), I quickly engage in self-deprecation and negative labeling ('I am so stupid', 'I am so incompetent', 'I am so careless'). These thoughts ruin my mood for the whole day, reduce my focus and enjoyment of activities, and reinforce the cognitive rule of 'minor mistake = total failure'.",
+          "[PDT Theory] core_conflict: Recorded",
+          "[PDT Theory] object_relations: Recorded",
+          "[PDT Theory] behavioral_response_patterns: Recorded",
+          "[Current Statement] I do not want to work, because I feel it is a form of control, and I will always struggle financially and be unproductive. These thoughts began in my early 20s, after experiencing difficulties finding a job and pressure from my family to be independent, and gradually worsened; they cause me to lack motivation to look for work, and appear daily, especially when my parents mention job hunting. I try to distract myself by playing video games, but these thoughts persist."
         ],
         "unknown_information": [
           "prior_session_recaps (first session or no history)"
         ],
         "context": {
           "modality": "pdt",
-          "therapy_stage": "问题概念化与目标设定",
+          "therapy_stage": "Problem conceptualization and goal setting",
           "session_index": 1,
           "source": "runner_state|full_profile"
         },
-        "longitudinal_relevance": "暂无历史会话记录（可能为首次或首轮独立评估）。",
+        "longitudinal_relevance": "No historical session records for now (possibly a first or first-round independent assessment).",
         "confidence": 0.7777777777777778
       }
     },
@@ -193,10 +193,10 @@
       "agent": "clarification_agent",
       "turn": 1,
       "payload": {
-        "question": "您之前有没有接受过心理方面的专业评估或治疗？或者有没有相关的医疗记录？",
+        "question": "Have you received any professional psychological assessment or treatment before? Or do you have any related medical records?",
         "questions": [
-          "您之前有没有接受过心理方面的专业评估或治疗？或者有没有相关的医疗记录？",
-          "在您目前的困扰出现之前，有没有类似的问题发生过？"
+          "Have you received any professional psychological assessment or treatment before? Or do you have any related medical records?",
+          "Before your current difficulties appeared, had any similar problems occurred?"
         ],
         "target_information": [
           "medical_history",
@@ -212,39 +212,39 @@
       "turn": 1,
       "payload": {
         "updated_state": {
-          "current_concern": "我不想工作，因为觉得这是一种控制，而且我会一直在经济上挣扎、没有产出。这些想法从我20岁出头时开始，在经历找工作困难与来自家庭的独立压力后逐渐加重，导致我缺乏动力去寻找工作，尤其在父母提到找工作时每天都会出现。我尝试通过玩电子游戏来分散注意力，但这些想法仍然持续。",
-          "expressed_needs": "我决定现在寻求咨询，因为我意识到这些负面想法在限制我的潜力并导致家庭内部冲突。我想停止这些负面自我贴标签的想法，重新享受我的活动，而不是不断觉得自己在失败。",
-          "current_session_focus": "我决定现在寻求咨询，因为我意识到这些负面想法在限制我的潜力并导致家庭内部冲突。我想停止这些负面自我贴标签的想法，重新享受我的活动，而不是不断觉得自己在失败。",
+          "current_concern": "I don't want to work, because I feel it is a form of control, and I will always struggle financially and produce nothing. These thoughts began in my early twenties and gradually worsened after difficulties finding work and pressure from family to be independent; I lack motivation to look for work, and the thoughts appear daily, especially when my parents mention job hunting. I try to distract myself with video games, but the thoughts persist.",
+          "expressed_needs": "I decided to seek counseling now because I realize these negative thoughts are limiting my potential and causing conflicts within my family. I want to stop these negative self-labeling thoughts, enjoy my activities again, and stop constantly feeling like I am failing.",
+          "current_session_focus": "I decided to seek counseling now because I realize these negative thoughts are limiting my potential and causing conflicts within my family. I want to stop these negative self-labeling thoughts, enjoy my activities again, and stop constantly feeling like I am failing.",
           "known_information": [
-            "[基本信息] age: 49",
-            "[基本信息] name: 李航",
-            "[基本信息] gender: 男",
-            "[基本信息] occupation: 失业",
-            "[基本信息] educational_background: 高中毕业",
-            "[基本信息] marital_status: 单身",
-            "[基本信息] family_status: 与父母同住，家庭中因其不愿工作与缺乏动力而存在紧张与冲突",
-            "[基本信息] social_status: 有少数朋友，主要围绕电子游戏交流，难以与朋友讨论关于工作与生产力的感受",
-            "[基本信息] language_features: 语气中性；表达清晰、能举例与自我反思；能描述具体触发情境与主观体验",
-            "[主诉] 我不想工作，因为觉得这是一种控制，而且我会一直在经济上挣扎、没有产出。这些想法从我20岁出头时开始，在经历找工作困难与来自家庭的独立压力后逐渐加重，导致我缺乏动力去寻找工作，尤其在父母提到找工作时每天都会出现。我尝试通过玩电子游戏来分散注意力，但这些想法仍然持续。",
-            "[核心诉求] 我决定现在寻求咨询，因为我意识到这些负面想法在限制我的潜力并导致家庭内部冲突。我想停止这些负面自我贴标签的想法，重新享受我的活动，而不是不断觉得自己在失败。",
-            "[成长经历] 20岁出头时，曾经历求职困难与来自家庭的独立压力，初次出现“工作等于控制、我会一直贫困和不产出”的消极思维。起初的压力水平很高，随后这些想法逐渐变得更频繁、更强烈，进而削弱了其就业动机与寻求工作的意愿。",
-            "[成长经历] 几个月前，从卡车上取下滑水板时不慎将其划伤，此后每当出现细微错误（如上周把咖啡洒在桌面），便迅速进行自我贬损与负面贴标签（“我很笨”“我很不称职”“我很粗心”），这些念头会破坏一整天的心情，降低专注度与活动乐趣，并强化“微小失误=整体失败”的认知规则。",
-            "[PDT 理论] core_conflict: 已记录",
-            "[PDT 理论] object_relations: 已记录",
-            "[PDT 理论] behavioral_response_patterns: 已记录",
-            "[当前陈述] 我不想工作，因为觉得这是一种控制，而且我会一直在经济上挣扎、没有产出。这些想法从我20岁出头时开始，在经历找工作困难与来自家庭的独立压力后逐渐加重，导致我缺乏动力去寻找工作，尤其在父母提到找工作时每天都会出现。我尝试通过玩电子游戏来分散注意力，但这些想法仍然持续。",
-            "[澄清获得信息] 大约从半年前开始出现这些情况。"
+            "[Basic information] age: 49",
+            "[Basic information] name: Li Hang",
+            "[Basic information] gender: Male",
+            "[Basic information] occupation: Unemployed",
+            "[Basic information] educational_background: High school graduate",
+            "[Basic information] marital_status: Single",
+            "[Basic information] family_status: Lives with parents; there is tension and conflict in the family because of his unwillingness to work and lack of motivation",
+            "[Basic information] social_status: Has a few friends, mainly interacting around video games; finds it difficult to discuss feelings about work and productivity with friends",
+            "[Basic information] language_features: Neutral tone; clear expression, able to give examples and self-reflect; able to describe specific triggering situations and subjective experiences",
+            "[Chief Complaint] I do not want to work, because I feel it is a form of control, and I will always struggle financially and be unproductive. These thoughts began in my early 20s, after experiencing difficulties finding a job and pressure from my family to be independent, and gradually worsened; they cause me to lack motivation to look for work, and appear daily, especially when my parents mention job hunting. I try to distract myself by playing video games, but these thoughts persist.",
+            "[Core Demands] I decided to seek counseling now because I realize these negative thoughts are limiting my potential and causing conflicts within my family. I want to stop these negative self-labeling thoughts, enjoy my activities again, and stop constantly feeling like I am failing.",
+            "[Growth Experiences] In his early 20s, he experienced difficulties finding a job and pressure from his family to be independent, and first developed the negative thought that 'work equals control, and I will always be poor and unproductive'. The stress level was initially high; afterwards these thoughts gradually became more frequent and more intense, which weakened his motivation to be employed and his willingness to seek work.",
+            "[Growth Experiences] A few months ago, I accidentally scratched a water ski while taking it off a truck; since then, whenever a minor mistake occurs (such as spilling coffee on the desk last week), I quickly engage in self-deprecation and negative labeling ('I am so stupid', 'I am so incompetent', 'I am so careless'). These thoughts ruin my mood for the whole day, reduce my focus and enjoyment of activities, and reinforce the cognitive rule of 'minor mistake = total failure'.",
+            "[PDT Theory] core_conflict: Recorded",
+            "[PDT Theory] object_relations: Recorded",
+            "[PDT Theory] behavioral_response_patterns: Recorded",
+            "[Current Statement] I do not want to work, because I feel it is a form of control, and I will always struggle financially and be unproductive. These thoughts began in my early 20s, after experiencing difficulties finding a job and pressure from my family to be independent, and gradually worsened; they cause me to lack motivation to look for work, and appear daily, especially when my parents mention job hunting. I try to distract myself by playing video games, but these thoughts persist.",
+            "[Clarified information obtained] These situations began to appear about half a year ago."
           ],
           "unknown_information": [
             "prior_session_recaps (first session or no history)"
           ],
           "context": {
             "modality": "pdt",
-            "therapy_stage": "问题概念化与目标设定",
+            "therapy_stage": "Problem conceptualization and goal setting",
             "session_index": 1,
             "source": "runner_state|full_profile"
           },
-          "longitudinal_relevance": "暂无历史会话记录（可能为首次或首轮独立评估）。",
+          "longitudinal_relevance": "No historical session records for now (possibly a first or first-round independent assessment).",
           "confidence": 0.7777777777777778
         },
         "uncertainty": {
@@ -270,7 +270,7 @@
           "severity": "LOW",
           "risk_status": "NO_EVIDENCE",
           "evidence": [
-            "Clarified safety status: 大约从半年前开始出现这些情况。"
+            "Clarified safety status: These situations began to appear about half a year ago."
           ],
           "confidence": 0.9,
           "signals_detected": []

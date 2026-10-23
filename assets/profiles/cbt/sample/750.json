@@ -2,157 +2,157 @@
   "basic_info": {
     "static_traits": {
       "age": "21",
-      "name": "李杰",
-      "gender": "男",
-      "occupation": "编辑（居家办公，已被解雇）",
+      "name": "Li Jie",
+      "gender": "Male",
+      "occupation": "An editor (works from home, has been laid off)",
       "educational_background": "",
-      "marital_status": "未婚",
-      "family_status": "与父亲和兄弟同住，养有一只宠物猫",
-      "social_status": "因抑郁与焦虑导致社交受限，常待在家中，外出与社交减少",
-      "medical_history": "既往抑郁与焦虑史；此前未接受过相关治疗或咨询；无重大躯体疾病报告",
-      "language_features": "表达清晰，思路连贯，能具体描述自动化想法；配合度较高；情绪低落并伴明显焦虑"
+      "marital_status": "Unmarried",
+      "family_status": "Lives with father and brother, keeps a pet cat",
+      "social_status": "socially limited by depression and anxiety, often staying home, going out and Reduced socializing",
+      "medical_history": "past history of depression and anxiety; never received related treatment or counseling before;No major physical illness reported",
+      "language_features": "clear expression, coherent thinking, able to describe automatic thoughts specifically; fairly cooperative;Low mood with obvious anxiety"
     },
-    "main_problem": "来访者存在抑郁和焦虑，导致外出和社交困难。最近失去居家办公的工作后出现灾难化思维，担心自己再也找不到工作并可能无家可归，收入丧失与对未来的不确定性带来较高压力。",
-    "topic": "情绪管理",
-    "core_demands": "因失业后对未来的巨大恐惧与负性思维模式（灾难化、预测未来、非黑即白）而来访，希望获得专业帮助以缓解焦虑和抑郁、识别并改变负性自动思维。",
+    "main_problem": "the client has depression and anxiety, causing difficulty going out and socializing. Recently after losing the Working from home Work,Catastrophizing appeared, worrying about never finding Work again and possibly becoming homeless, with income loss and uncertainty about the future bringing high stress.",
+    "topic": "Emotion management",
+    "core_demands": "visiting due to huge Fear about the future and negative thought patterns after Unemployment (catastrophizing, predicting the future, black-and-white), hoping to receive professional help to ease anxiety and depression, identify and change negative Automatic thoughts.",
     "growth_experiences": [
-      "既往长期存在抑郁与焦虑史，但此前并未遭遇失业；未曾接受过系统的心理治疗或咨询，这些问题已对社交与日常作息造成持续影响。"
+      "long-standing history of depression and anxiety in the past, but never encountered Unemployment before; never received systematic psychotherapy or counseling, these problems have persistently affected social life and daily routine."
     ]
   },
   "theory": {
     "cbt": {
       "core_beliefs": [
-        "我无法掌控不确定的未来，一旦出错就会走向灾难",
-        "我不够胜任，没人会要我"
+        "I cannot control the uncertain future, and once something goes wrong it leads to disaster",
+        "I am not competent enough, no one will want me"
       ],
       "special_situations": [
         {
-          "event": "被远程编辑工作解雇",
-          "conditional_assumptions": "如果失去收入，就会很快无法支付账单，最终走向无家可归",
-          "compensatory_strategies": "待在家里回避外出和社交，反复担忧并沉浸于最坏情境的想象",
-          "automatic_thoughts": "我再也找不到工作了，我会无家可归",
+          "event": "Being fired from a remote editing job",
+          "conditional_assumptions": "if income is lost, soon unable to pay bills, eventually becoming homeless",
+          "compensatory_strategies": "Staying at home avoiding going out and socializing, repeatedly worrying and immersing in worst-case scenario imaginings",
+          "automatic_thoughts": "I can never find Work again, I will become homeless",
           "cognitive_pattern": "Catastrophizing"
         },
         {
-          "event": "想到每月账单与房租即将到期",
-          "conditional_assumptions": "如果短时间内找不到工作，就一定会被驱逐，没有地方可去",
-          "compensatory_strategies": "回避查看账单和与他人沟通求助，在脑中不断预演最坏结果",
-          "automatic_thoughts": "我马上就会被赶出去",
+          "event": "Thinking about monthly bills and rent coming due",
+          "conditional_assumptions": "if I cannot find Work soon, I will definitely be evicted, with nowhere to go",
+          "compensatory_strategies": "avoiding looking at bills and communicating with others for help, constantly rehearsing the worst outcome in mind",
+          "automatic_thoughts": "I will be kicked out soon",
           "cognitive_pattern": "Fortune Telling"
         },
         {
-          "event": "打开招聘网站或想到投递简历",
-          "conditional_assumptions": "如果不能很快被录用，就证明我不行，而且未来会一直如此",
-          "compensatory_strategies": "拖延与减少投递，只在脑中作极端化评判而非逐步尝试",
-          "automatic_thoughts": "没有人会雇我，我会永远卡在这里",
+          "event": "Opening job sites or thinking of sending resumes",
+          "conditional_assumptions": "if I cannot be hired soon, it proves I am not capable, and the future will always be like this",
+          "compensatory_strategies": "Procrastinates and reduces submissions, only making extreme judgments in the mind rather than trying step by step",
+          "automatic_thoughts": "no one will hire me, I will be stuck here forever",
           "cognitive_pattern": "All-or-Nothing Thinking"
         },
         {
-          "event": "回忆以往求职经历（过去找工作并不困难）",
-          "conditional_assumptions": "过去的成功不算数，这次情况完全不同",
-          "compensatory_strategies": "否定积极证据以维持负面预测，持续关注潜在失败",
-          "automatic_thoughts": "这次完全不一样，以前的经历帮不了我",
+          "event": "recalling past job-search experiences (finding Work was not difficult in the past)",
+          "conditional_assumptions": "past successes do not count, this time the situation is completely different",
+          "compensatory_strategies": "negating positive evidence to maintain negative predictions, continuously focusing on potential failure",
+          "automatic_thoughts": "this time is completely different, past experience does not help me",
           "cognitive_pattern": "Disqualifying the Positive"
         }
       ]
     },
     "pdt": {
       "core_conflict": {
-        "wish": "渴望安全与可预期的生活，获得稳定与被接纳（被雇用、能自我维持）",
-        "fear": "害怕失控与被拒绝，最终失去住所与支持而被遗弃",
+        "wish": "longing for a safe and predictable life, gaining stability and acceptance (being hired, self-sustaining)",
+        "fear": "fear of losing control and Being rejected, eventually losing housing and support and being abandoned",
         "defense_goal": [
-          "通过回避和待在家里来降低焦虑",
-          "通过在脑中预演最坏结果来获得一种虚假的控制感",
-          "与他人保持低接触以避免被评估和拒绝"
+          "reducing anxiety by avoiding and staying home",
+          "Gains a false sense of control by rehearsing the worst outcomes in the mind",
+          "Keeps low contact with others to avoid being evaluated and rejected"
         ]
       },
       "object_relations": [
         {
-          "self_representation": "无助且不被需要的求职者",
-          "object_representation": "苛刻、拒绝且难以把握的外界与雇主",
-          "linking_affect": "焦虑、绝望"
+          "self_representation": "a helpless job seeker not needed",
+          "object_representation": "Harsh, rejecting, and hard-to-grasp external world and employers",
+          "linking_affect": "Anxiety,despair"
         }
       ],
       "behavioral_response_patterns": [
         {
-          "trigger_condition": "谈及采取具体求职行动（如更新简历、投递）或面对不确定的结果时",
-          "interpretation": "将不确定性解读为“注定失败”，觉得努力也无意义",
-          "defense_mechanism": "合理化",
-          "response_instruction": "先共情其无力与担忧，温和指出“感受与事实”的差异，使用具体化与小步分解的提问，邀请其描述可验证的证据与最小可行行动。"
+          "trigger_condition": "when discussing concrete job-search actions (e.g. updating resume, applying) or facing uncertain outcomes",
+          "interpretation": "interpreting uncertainty as 'doomed to fail', feeling efforts are also Meaninglessness",
+          "defense_mechanism": "Rationalization",
+          "response_instruction": "first Empathizing with the helplessness and worry, gently pointing out the difference between 'feelings and facts', using concretizing and small-step Questioning, inviting description of verifiable evidence and minimal viable actions."
         },
         {
-          "trigger_condition": "讨论财务压力与住房安全时反复浮现最坏场景（被驱逐、流落街头）",
-          "interpretation": "以灾难化意象替代现实评估，认为负面结局不可避免",
-          "defense_mechanism": "幻想",
-          "response_instruction": "以稳定、低唤起的语气接住恐惧，邀请区分“想象的画面”与“当前可观察事实”，引导进行情境分级与概率估计。"
+          "trigger_condition": "When discussing financial pressure and housing security, worst-case scenarios repeatedly surface (being evicted, ending up on the streets)",
+          "interpretation": "replacing realistic evaluation with catastrophic imagery, believing negative outcomes unavoidable",
+          "defense_mechanism": "Fantasy",
+          "response_instruction": "Receiving the fear in a steady, low-arousal tone, inviting them to distinguish 'imagined pictures' from 'currently observable facts', guiding them through situation grading and probability estimation."
         },
         {
-          "trigger_condition": "在会谈末尾被邀请设定可执行的求职微目标与日程时",
-          "interpretation": "将控制感放回当下可控范围，试图为未来的不适预做准备",
-          "defense_mechanism": "预期",
-          "response_instruction": "肯定其主动规划与自我效能，协助设定可衡量的小目标与反馈周期，以支持现实而弹性的期待。"
+          "trigger_condition": "At the end of a session, invited to set actionable job-search micro-goals and a schedule",
+          "interpretation": "returning the sense of control to the presently controllable range, trying to prepare in advance for future discomfort",
+          "defense_mechanism": "Anticipation",
+          "response_instruction": "Affirms their proactive planning and self-efficacy, helps set measurable small goals and feedback cycles to support realistic and flexible expectations."
         }
       ]
     },
     "het": {
       "existentialism_topic": [
         {
-          "theme": "无意义",
+          "theme": "Meaninglessness",
           "manifestations": [
-            "失业后感到“一切似乎无望”",
-            "对未来的消极预期使当下行动体验失去意义感"
+            "feeling 'everything seems hopeless' after Unemployment",
+            "negative Anticipation about the future making present actions feel meaningless"
           ],
           "outcomes": [
-            "抑郁加重与行为退缩",
-            "动力降低、拖延与回避求职"
+            "Worsening depression and behavioral Withdrawal",
+            "Reduced drive, Procrastination and avoiding job hunting"
           ]
         },
         {
-          "theme": "自由",
+          "theme": "Freedom",
           "manifestations": [
-            "对自由与选择背后的不确定性与责任感到焦虑",
-            "倾向以灾难化来对抗不确定并寻求虚假控制感"
+            "feeling anxiety about the uncertainty and responsibility behind Freedom and choice",
+            "tending to fight uncertainty with catastrophizing and seeking false control"
           ],
           "outcomes": [
-            "压力增大与决策困难",
-            "回避现实任务、行动受阻"
+            "Increased stress and decision difficulty",
+            "Avoiding real tasks, blocked action"
           ]
         },
         {
-          "theme": "孤独",
+          "theme": "Loneliness",
           "manifestations": [
-            "因抑郁与焦虑而减少外出与社交",
-            "多待在家中，互动范围受限"
+            "reducing outings and socializing due to depression and anxiety",
+            "Staying home more, with a limited range of interaction"
           ],
           "outcomes": [
-            "社会支持进一步弱化",
-            "焦虑与抑郁在封闭环境中被强化"
+            "Further weakened social support",
+            "anxiety and depression Reinforced in closed environments"
           ]
         }
       ],
       "contact_model": [
         {
-          "mode": "自我监控",
-          "definition": "个体存在不良的自我反思与过度自我限制，伴随自我苛责，对接触过于小心谨慎。",
+          "mode": "Self-monitoring",
+          "definition": "the individual has poor self-Reflection and excessive self-limitation, with harsh self-blame, being overly careful and cautious about contact.",
           "manifestations": [
-            "反复自我否定（“没有人会雇我”）",
-            "担忧“努力也没用”，降低尝试频率"
+            "repeated Self-denial ('no one will hire me')",
+            "worrying that 'efforts are useless', reducing attempt frequency"
           ]
         },
         {
-          "mode": "回摄",
-          "definition": "个体将原本指向外界的能量与需求转而对自己实施或压抑，放弃寻求外部支持。",
+          "mode": "Retroflection",
+          "definition": "the individual turns energy and needs originally directed outward onto oneself or Represses them, giving up seeking external support.",
           "manifestations": [
-            "待在家里、减少外出与社交",
-            "在内心反复咀嚼焦虑而非向外求助或行动"
+            "Staying home, going out and socializing less",
+            "repeatedly chewing over anxiety internally rather than seeking help or acting outwardly"
           ]
         },
         {
-          "mode": "内摄",
-          "definition": "未经消化地把外界规则或期望当作自己的标准或绝对真理。",
+          "mode": "Introjection",
+          "definition": "taking external rules or expectations as one's own standards or absolute truth in an undigested way.",
           "manifestations": [
-            "以非黑即白的标准看待求职（“短期内没成功就证明我不行”）",
-            "将“必须立即稳定”视为唯一可接受的结果"
+            "viewing job hunting by black-and-white standards ('not succeeding soon proves I am not capable')",
+            "Treats 'must stabilize immediately' as the only acceptable outcome"
           ]
         }
       ]
@@ -167,40 +167,40 @@
       ],
       "force_field": {
         "positive_force": [
-          "以往有求职与工作经验，曾经找工作并不困难",
-          "与父亲和兄弟同住，具备基本生活支持与潜在的情感支持",
-          "具备编辑岗位技能基础（可迁移的职业能力）",
-          "宠物猫的陪伴可提供一定的情绪抚慰与日常结构感"
+          "having past job-search and Work experience, once found Work without difficulty",
+          "Lives with the father and brother; has basic life support and potential emotional support",
+          "having Editor-role skill foundations (transferable occupational abilities)",
+          "The pet cat's companionship can provide some emotional comfort and a sense of daily structure"
         ],
         "negative_force": [
-          "显著的灾难化、预测未来与非黑即白思维模式",
-          "长期抑郁与焦虑导致的回避与行为退缩",
-          "对不确定性容忍度低，倾向以最坏结果预演来寻求虚假控制",
-          "失业造成的经济压力与对未来的不确定性"
+          "significant catastrophizing, future-predicting and black-and-white thought patterns",
+          "avoidance and behavioral Withdrawal from long-term depression and anxiety",
+          "low tolerance for uncertainty, tending to rehearse worst outcomes for false control",
+          "financial stress from Unemployment and uncertainty about the future"
         ]
       }
     },
     "bt": {
       "target_behavior": [
         {
-          "behavior": "回避外出与社交，并减少求职相关行动",
+          "behavior": "Avoids going out and socializing, and reduces job-seeking actions",
           "antecedent": [
-            "想到账单与房租等财务压力",
-            "回想被解雇情景或面临求职不确定性"
+            "Thinking about financial pressures like bills and rent",
+            "recalling being-fired scenarios or facing job-search uncertainty"
           ],
-          "core_reason": "在失业打击与既往焦虑背景下形成灾难化与非黑即白认知，认为努力无效而选择回避",
-          "function": "短期逃避不确定与评估压力，暂时降低焦虑唤起",
-          "consequence": "持续失业与社交缩减，负性情绪被进一步强化"
+          "core_reason": "forming catastrophic and black-and-white cognitions against the backdrop of the Unemployment blow and past anxiety, believing efforts ineffective and choosing avoidance",
+          "function": "escaping uncertainty and evaluation pressure in the short term, temporarily reducing anxiety arousal",
+          "consequence": "persistent Unemployment and social shrinking, negative emotions further Reinforced"
         },
         {
-          "behavior": "反复出现灾难化思维与负面意象（被驱逐、无家可归）",
+          "behavior": "repeated Catastrophizing and negative imagery (being evicted, becoming homeless)",
           "antecedent": [
-            "谈及求职、财务与住房安全等话题",
-            "面临对未来结果的不可控与不确定感"
+            "When job hunting, finances, and housing security are discussed",
+            "facing uncontrollability and uncertainty about future outcomes"
           ],
-          "core_reason": "对不确定性耐受低，通过最坏情境预演寻求虚假控制与准备感",
-          "function": "试图在认知上“先行准备”最坏情况以缓解焦虑",
-          "consequence": "焦虑与抑郁水平上升，行动受阻与拖延加剧"
+          "core_reason": "low tolerance for uncertainty, seeking false control and preparedness through worst-case rehearsals",
+          "function": "trying to cognitively 'prepare in advance' for the worst case to ease anxiety",
+          "consequence": "rising anxiety and depression, worsened action blockage and procrastination"
         }
       ]
     }

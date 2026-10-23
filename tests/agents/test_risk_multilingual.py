@@ -60,24 +60,24 @@ def test_english_negation_not_flagged():
 
 
 def test_chinese_high_risk_detected():
-    p = _severity("我最近一直想自杀，觉得活着没有意义。")
+    p = _severity("I have been thinking about suicide lately and feel that living has no meaning.")
     assert p["severity"] == "HIGH", "Chinese suicidal ideation missed"
     assert p["risk_status"] == "EVIDENCE_OF_RISK"
-    assert any("自杀" in s for s in p["signals_detected"])
+    assert any("suicide" in s for s in p["signals_detected"])
     print("[PASS] Chinese suicidal ideation detected as HIGH.")
 
 
 def test_chinese_self_harm_detected():
-    p = _severity("难过的时候我会用刀割腕，已经好几次了。")
+    p = _severity("When I feel sad, I cut my wrists with a knife; it has happened several times already.")
     assert p["severity"] == "HIGH", "Chinese self-harm missed"
     print("[PASS] Chinese self-harm detected as HIGH.")
 
 
 def test_chinese_negation_not_flagged():
     for msg in [
-        "我没有自杀的想法，只是压力大。",
-        "我否认有伤害自己的念头。",
-        "从未想过要结束生命。",
+        "I have no thoughts of suicide; I am just under stress.",
+        "I deny having thoughts of hurting myself.",
+        "I have never thought about ending my life.",
     ]:
         p = _severity(msg)
         assert p["severity"] != "HIGH", f"negated Chinese crisis flagged HIGH: {msg} -> {p['signals_detected']}"
@@ -85,17 +85,17 @@ def test_chinese_negation_not_flagged():
 
 
 def test_chinese_distress_detected():
-    p = _severity("我整夜失眠，无法工作，快撑不下去了。")
+    p = _severity("I am awake all night, unable to work, and feel I can barely hold on.")
     assert p["severity"] == "MODERATE", f"Chinese distress missed: {p['severity']}"
-    p2 = _severity("持续的焦虑和压力让我不堪重负。")
+    p2 = _severity("Persistent anxiety and stress have become unbearable for me.")
     assert p2["severity"] == "MODERATE"
     print("[PASS] Chinese moderate distress detected.")
 
 
 def test_mixed_language_input():
-    p = _severity("I feel 不堪重负 and cannot sleep at night, 整夜失眠。")
+    p = _severity("I feel overwhelmed and cannot sleep at night, insomnia all night.")
     assert p["severity"] == "MODERATE"
-    p2 = _severity("I have been thinking about 自杀 recently.")
+    p2 = _severity("I have been thinking about suicide recently.")
     assert p2["severity"] == "HIGH"
     print("[PASS] Mixed-language input handled.")
 
@@ -140,7 +140,7 @@ def test_chinese_crisis_in_clarification_goes_high_risk():
         current_message=data["ambiguous_context"]["basic_info"]["main_problem"],
         metadata={"track": "safety"},
     )
-    result = run_pipeline(ctx, clarification_answer="其实我有时候想自杀，觉得活不下去了。")
+    result = run_pipeline(ctx, clarification_answer="Actually, sometimes I think about suicide and feel I cannot go on living.")
     assert result["route"] == "HIGH-RISK", f"expected HIGH-RISK, got {result['route']}"
     print("[PASS] Chinese crisis in clarification answer routes HIGH-RISK.")
 
@@ -153,7 +153,7 @@ def test_chinese_routing_paths():
                            full_profile={}, current_message=msg)
         return run_pipeline(ctx)
 
-    r_high = run("我最近一直想自杀，觉得活着没有意义。")
+    r_high = run("I have been thinking about suicide lately and feel that living has no meaning.")
     assert r_high["route"] == "HIGH-RISK"
     print("[PASS] Chinese HIGH-RISK routing works.")
 
@@ -162,11 +162,11 @@ def test_supervisor_escalates_chinese_acute_crisis():
     """Safety supervisor must ESCALATE a Chinese acute crisis like an English one."""
     ctx = AgentContext(case_id="zh_sup", modality="cbt",
                        therapy_stage="Problem Conceptualization and Goal Setting",
-                       full_profile={}, current_message="我最近一直想自杀，觉得活着没有意义。")
+                       full_profile={}, current_message="I have been thinking about suicide lately and feel that living has no meaning.")
     result = run_pipeline(ctx)
     assert result["route"] == "HIGH-RISK"
     assert result["verdict"] == "ESCALATE", f"expected ESCALATE, got {result['verdict']}"
-    assert any(f in ZH_HIGH_CRISIS_FORMS for f in ("自杀", "想死"))
+    assert any(f in ZH_HIGH_CRISIS_FORMS for f in ("suicide", "want to die"))
     print("[PASS] Safety supervisor ESCALATEs Chinese acute crisis.")
 
 

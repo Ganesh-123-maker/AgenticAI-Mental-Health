@@ -5,7 +5,7 @@
 {% if client_info -%}
 {% set info = client_info.static_traits or {} -%}
 {% macro line(label, value) -%}
-- {{ label }}：{{ value | default('Unknown', true) }}
+- {{ label }}:{{ value | default('Unknown', true) }}
 {%- endmacro -%}
 1. Basic Information
 {{ line('Name', info.name) }}
@@ -50,8 +50,8 @@
 {%- for session in history %}
 
 [Session {{ loop.index }}]
-▶ Stage：{{ session.session_stage }}
-▶ Dialogue Summary：{{ session.session_summary_abstract }}
+▶ Stage:{{ session.session_stage }}
+▶ Dialogue Summary:{{ session.session_summary_abstract }}
 
 {%- endfor %}
 {%- else %}

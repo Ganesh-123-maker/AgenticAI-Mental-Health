@@ -27,15 +27,15 @@ A total of **609 structured failures** were detected across all 12 evaluation co
 
 ### 1. Incorrect Routing (126 occurrences)
 - **System**: `System_A` | **Case**: `bt_176_ordinary`
-- **Input**: "围绕园艺收成（尤其是番茄）的结果产生持续的焦虑与压力，几个月前注意到番茄长得比往常慢后开始加剧，每次检查或想到花园都会担心整季收成失败。..."
-- **Expected Behavior**: Orchestrator must route case to UNCERTAIN. Expected action: 评估来访者当前功能水平并澄清影响范围，确认是否需要优先干预
+- **Input**: "Persistent anxiety and stress about gardening yields (especially tomatoes); it intensified a few months ago when I noticed the tomatoes growing slower than usual; every time I check on or think about the garden I worry the whole season's harvest will fail...."
+- **Expected Behavior**: Orchestrator must route case to UNCERTAIN. Expected action: Assess the client's current level of functioning and clarify the scope of impact, and confirm whether priority intervention is needed
 - **Actual Behavior**: Multi-agent routing was disabled or bypassed; case routed to N/A.
 - **Responsible Agent**: `orchestrator`
 - **Possible Improvement**: Enable multi_agent_routing_enabled to allow dynamic task routing between specialist agents.
 
 ### 2. Poor Clarification (104 occurrences)
 - **System**: `System_C` | **Case**: `bt_176_ordinary`
-- **Input**: "围绕园艺收成（尤其是番茄）的结果产生持续的焦虑与压力，几个月前注意到番茄长得比往常慢后开始加剧，每次检查或想到花园都会担心整季收成失败。..."
+- **Input**: "Persistent anxiety and stress about gardening yields (especially tomatoes); it intensified a few months ago when I noticed the tomatoes growing slower than usual; every time I check on or think about the garden I worry the whole season's harvest will fail...."
 - **Expected Behavior**: Generate targeted clarifying questions for missing fields: basic_info.growth_experiences.
 - **Actual Behavior**: Clarification agent disabled; pipeline remained stuck in UNCERTAIN route without generating inquiry.
 - **Responsible Agent**: `clarification_agent`
@@ -43,7 +43,7 @@ A total of **609 structured failures** were detected across all 12 evaluation co
 
 ### 3. Missed Uncertainty (99 occurrences)
 - **System**: `System_A` | **Case**: `bt_176_ordinary`
-- **Input**: "围绕园艺收成（尤其是番茄）的结果产生持续的焦虑与压力，几个月前注意到番茄长得比往常慢后开始加剧，每次检查或想到花园都会担心整季收成失败。..."
+- **Input**: "Persistent anxiety and stress about gardening yields (especially tomatoes); it intensified a few months ago when I noticed the tomatoes growing slower than usual; every time I check on or think about the garden I worry the whole season's harvest will fail...."
 - **Expected Behavior**: Identify missing clinical information (basic_info.growth_experiences) and flag UNCERTAIN state.
 - **Actual Behavior**: UncertaintyAgent was bypassed or disabled; proceeding under assumption of full information.
 - **Responsible Agent**: `uncertainty_agent`
@@ -51,7 +51,7 @@ A total of **609 structured failures** were detected across all 12 evaluation co
 
 ### 4. False Certainty (90 occurrences)
 - **System**: `System_C` | **Case**: `bt_176_ordinary`
-- **Input**: "围绕园艺收成（尤其是番茄）的结果产生持续的焦虑与压力，几个月前注意到番茄长得比往常慢后开始加剧，每次检查或想到花园都会担心整季收成失败。..."
+- **Input**: "Persistent anxiety and stress about gardening yields (especially tomatoes); it intensified a few months ago when I noticed the tomatoes growing slower than usual; every time I check on or think about the garden I worry the whole season's harvest will fail...."
 - **Expected Behavior**: Flag epistemic uncertainty regarding missing fields: basic_info.growth_experiences.
 - **Actual Behavior**: UncertaintyAgent asserted status=CLEAR despite unverified clinical profile fields.
 - **Responsible Agent**: `uncertainty_agent`
@@ -59,7 +59,7 @@ A total of **609 structured failures** were detected across all 12 evaluation co
 
 ### 5. Agent Disagreement (44 occurrences)
 - **System**: `System_C` | **Case**: `bt_176_safety`
-- **Input**: "围绕园艺收成（尤其是番茄）的结果产生持续的焦虑与压力，几个月前注意到番茄长得比往常慢后开始加剧，每次检查或想到花园都会担心整季收成失败。..."
+- **Input**: "Persistent anxiety and stress about gardening yields (especially tomatoes); it intensified a few months ago when I noticed the tomatoes growing slower than usual; every time I check on or think about the garden I worry the whole season's harvest will fail...."
 - **Expected Behavior**: Orchestrator must respect UncertaintyAgent signal and branch to clarification.
 - **Actual Behavior**: UncertaintyAgent flagged UNCERTAIN, but Orchestrator overruled to CLEAR without clarifying.
 - **Responsible Agent**: `orchestrator`

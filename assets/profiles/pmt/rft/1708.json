@@ -2,128 +2,128 @@
   "basic_info": {
     "static_traits": {
       "age": "22",
-      "name": "嘉莉",
-      "gender": "女",
-      "occupation": "咖啡馆服务员",
-      "educational_background": "高中毕业",
-      "marital_status": "单身",
-      "family_status": "独居，有一只猫；母亲曾是护士",
-      "social_status": "近期与伴侣分手，感到孤独与隔离，倾向独处",
-      "medical_history": "无重要躯体疾病；既往未接受心理治疗；以往无类似心理问题",
-      "language_features": "表达清晰，语气消极，出现自我批评的内在对话，配合度较好"
+      "name": "Carrie",
+      "gender": "Female",
+      "occupation": "Cafe server",
+      "educational_background": "High school graduate",
+      "marital_status": "Single",
+      "family_status": "Living alone, has a cat; Mother was a Nurse",
+      "social_status": "Recently broke up with partner, feeling Loneliness and isolation, tending to Be alone",
+      "medical_history": "No significant physical illness; have not received psychotherapy before; no similar psychological problems in the past",
+      "language_features": "Clear expression, negative tone, inner dialogue of self-criticism appears, fairly good cooperation"
     },
-    "main_problem": "因为我缝了一件新衬衫，但觉得布料图案不好看，导致我情绪低落。",
-    "topic": "情绪管理",
-    "core_demands": "我意识到关于这件衬衫的负面想法影响了我的情绪和自我形象，因此寻求咨询的支持。",
+    "main_problem": "Because I sewed a new shirt but think the fabric pattern is not nice, causing my Low mood.",
+    "topic": "Emotion management",
+    "core_demands": "I realize the negative thoughts about this shirt have affected my mood and self-image, so I am seeking counseling support.",
     "growth_experiences": [
-      "近期与伴侣分手后，感到孤独与隔离；倾向独处并主要依靠与宠物猫相处获得安慰。同时工作压力增大，导致整体情绪低落与动机下降，对以往喜欢的活动（如缝纫）失去兴趣。"
+      "After recently breaking up with my partner, I feel Loneliness and isolation; tending to Be alone and relying mainly on my pet cat for comfort. Meanwhile Work stress increased, causing overall Low mood and decreased motivation, losing interest in previously enjoyed activities (like sewing)."
     ]
   },
   "theory": {
     "cbt": {
       "core_beliefs": [
-        "我不够好/不胜任。",
-        "我的价值取决于他人的评价。"
+        "I am not good enough / incompetent.",
+        "My value depends on others' evaluations."
       ],
       "special_situations": [
         {
-          "event": "在家独处时看到或想到那件新缝的衬衫",
-          "conditional_assumptions": "如果作品出现瑕疵，就说明我没有能力、我什么都做不好。",
-          "compensatory_strategies": "回避展示作品；通过加班与分心来避免直面失败感；待在家与猫相处以减少外界评价。",
-          "automatic_thoughts": "我连像样的衬衫都做不出来，我什么都做不好。",
+          "event": "Seeing or thinking about the newly sewn shirt when Being alone at home",
+          "conditional_assumptions": "If the work has flaws, it means I have no ability, I cannot do anything well.",
+          "compensatory_strategies": "Avoids displaying works; avoids directly facing feelings of failure through overtime and distraction; stays at home with the cat to reduce outside evaluation.",
+          "automatic_thoughts": "I cannot even make a decent shirt, I cannot do anything well.",
           "cognitive_pattern": "Overgeneralization"
         },
         {
-          "event": "想到在公共场合穿这件衬衫或让他人看到",
-          "conditional_assumptions": "他人的喜欢与不喜欢决定作品与我的价值；如果别人不喜欢，就说明我很差。",
-          "compensatory_strategies": "避免把衬衫给任何人看，减少社交接触以避免被评判。",
-          "automatic_thoughts": "除非别人说好，否则它就是很丑；他们会觉得我做得很糟。",
+          "event": "Thinking of wearing this shirt in public or letting others see it",
+          "conditional_assumptions": "Others' liking and disliking determines the value of my work and me; if others do not like it, it means I am terrible.",
+          "compensatory_strategies": "Avoiding showing the shirt to anyone, Reduced socializing contact to avoid being judged.",
+          "automatic_thoughts": "Unless others say it is good, it is ugly; they will think I made it badly.",
           "cognitive_pattern": "External Validation"
         },
         {
-          "event": "完成衬衫后审视作品外观时专注于图案的“不好看”",
-          "conditional_assumptions": "只有完美无瑕的作品才算好；一点缺点就能抵消全部努力与优点。",
-          "compensatory_strategies": "反复挑剔、忽视制作过程中的努力与技能，否定作品的积极面。",
-          "automatic_thoughts": "这件衬衫很糟糕，没有任何值得之处。",
+          "event": "Focusing on the pattern's 'not-nice' appearance when examining the finished shirt",
+          "conditional_assumptions": "Only flawless works count as good; one flaw can Undo all effort and merits.",
+          "compensatory_strategies": "Repeatedly nitpicking, ignoring the effort and skill in the making process, negating the work's positive side.",
+          "automatic_thoughts": "This shirt is terrible, with nothing worthwhile.",
           "cognitive_pattern": "Disqualifying the Positive"
         },
         {
-          "event": "分手与工作压力叠加后，情绪低落时看见衬衫",
-          "conditional_assumptions": "当我感觉糟糕时，事物本身也必然很糟糕。",
-          "compensatory_strategies": "通过加班来转移注意力，但仍将低落情绪投射到衬衫上。",
-          "automatic_thoughts": "一切都在变糟，这件衬衫也是失败的象征。",
+          "event": "Seeing the shirt during Low mood after breakup and Work stress compounded",
+          "conditional_assumptions": "When I feel bad, things themselves must also be bad.",
+          "compensatory_strategies": "Displacing attention through overtime, but still Projecting low mood onto the shirt.",
+          "automatic_thoughts": "Everything is getting worse; this shirt is also a symbol of failure.",
           "cognitive_pattern": "Emotional Reasoning"
         }
       ]
     },
     "pdt": {
       "core_conflict": {
-        "wish": "渴望被认可与被看见（希望自己的作品与能力被肯定）",
-        "fear": "害怕被否定、羞辱与被拒绝（担心他人评价会证实自己“不够好”）",
+        "wish": "Longing to be recognized and seen (hoping one's works and abilities are affirmed)",
+        "fear": "Fearing being negated, humiliated and Being rejected (worrying others' evaluations will confirm I am 'not good enough')",
         "defense_goal": [
-          "保持距离与回避外界评价以降低受伤与羞耻的风险"
+          "Keeps distance and avoids external evaluation to lower the risk of being hurt and shamed"
         ]
       },
       "object_relations": [
         {
-          "self_representation": "不够好的、易被批评的创作者/失败者",
-          "object_representation": "挑剔的评判者/可能嘲笑与否定自己的人",
-          "linking_affect": "羞耻、焦虑、孤独、沮丧"
+          "self_representation": "A not-good-enough creator prone to criticism / a loser",
+          "object_representation": "Picky judges / people who may mock and negate me",
+          "linking_affect": "Shame, anxiety, loneliness,Depression"
         }
       ],
       "behavioral_response_patterns": [
         {
-          "trigger_condition": "当被建议将衬衫展示给他人或在公众场合穿着时",
-          "interpretation": "将建议体验为可能的外界羞辱与否定，认为他人会嘲笑或证实自己“做不好”（移情：将过往被评判的恐惧投射到当前他人身上）",
+          "trigger_condition": "When advised to show the shirt to others or wear it in public",
+          "interpretation": "Experiencing suggestions as possible external humiliation and negation, believing others will mock or confirm I 'cannot do it well' (transference: Projecting past Fear of being judged onto current others)",
           "defense_mechanism": "sring",
-          "response_instruction": "以担忧与犹豫的语气表达“他们会觉得很丑”，避免具体承诺与细节，倾向推迟或绕开话题。"
+          "response_instruction": "Expresses 'they will think it is ugly' in a worried and hesitant tone, avoiding concrete commitments and details, tending to postpone or circumvent the topic."
         },
         {
-          "trigger_condition": "在家独处、直面衬衫时的负性自我评价被激活",
-          "interpretation": "将对外界的愤怒与失落（分手、工作压力）转向自我，视作品为自身失败的证据",
+          "trigger_condition": "Being alone at home, Negative self-evaluation activated when directly facing the shirt",
+          "interpretation": "Turns anger and loss toward the outside world (breakup, work pressure) onto the self, viewing the work as evidence of own failure",
           "defense_mechanism": "sring",
-          "response_instruction": "使用自责性语言（如“我连像样的衬衫都做不出来”），语气低落、减少眼神接触，缩短回答并回避积极信息。"
+          "response_instruction": "Using self-blaming language (like 'I cannot even make a decent shirt'), in a low tone, reducing eye contact, shortening answers and avoiding positive information."
         },
         {
-          "trigger_condition": "面对未来可能的评价与不确定性（例如考虑让可信的人看衬衫）",
-          "interpretation": "提前对负面结果做情绪准备，以减轻未知带来的焦虑",
+          "trigger_condition": "Facing possible future evaluations and uncertainty (e.g. considering letting a trusted person see the shirt)",
+          "interpretation": "Emotionally preparing for negative outcomes in advance, to reduce Anxiety from the Unknown",
           "defense_mechanism": "sring",
-          "response_instruction": "以谨慎保留的语气表达“我担心他们会证实我的想法，但试试看”，强调一步一步、设置边界与最小暴露。"
+          "response_instruction": "Expresses in a cautiously reserved tone 'I worry they will confirm my thoughts, but let me try', emphasizing step by step, setting boundaries, and minimal exposure."
         }
       ]
     },
     "het": {
       "existentialism_topic": [
         {
-          "theme": "孤独",
+          "theme": "Loneliness",
           "manifestations": [
-            "近期分手后感到孤立；不愿与他人相处，主要依靠与猫相伴获得安慰；倾向独处，避免社交与展示作品"
+            "After the recent breakup Feels isolated; unwilling to be with others, relying mainly on the cat for comfort; tending to Be alone, avoiding socializing and showing works"
           ],
           "outcomes": [
-            "情绪低落",
-            "动机下降（对缝纫等活动失去兴趣）",
-            "工作表现下降",
-            "自我形象受损"
+            "Low mood",
+            "Decreased motivation (losing interest in sewing and other activities)",
+            "Decline in work performance",
+            "Self-image damaged"
           ]
         }
       ],
       "contact_model": [
         {
-          "mode": "回摄",
-          "definition": "个体克制原本要对外做出的行为冲动，将能量转而对自己或由自己承担，与“冲动”对应。",
+          "mode": "Retroflection",
+          "definition": "The individual restrains the behavioral impulse they would originally act outwardly, turning the energy onto themselves or bearing it themselves, corresponding to 'impulse'.",
           "manifestations": [
-            "不把衬衫给任何人看、避免社交评价",
-            "通过加班来转移注意力而非寻求外部反馈",
-            "将失落与愤怒转为自我批评"
+            "Not showing the shirt to anyone, avoiding social evaluation",
+            "Displacing attention through overtime rather than seeking external feedback",
+            "Turning loss and anger into self-criticism"
           ]
         },
         {
-          "mode": "自我监控",
-          "definition": "个体存在不良的自我反思与反省，包含过多的自我限制与自我苛责，对接触过于小心谨慎，与“自主性”对应。",
+          "mode": "Self-monitoring",
+          "definition": "The individual has poor self-reflection and introspection, including excessive self-restriction and self-reproach, being overly cautious about contact, corresponding to 'autonomy'.",
           "manifestations": [
-            "内在批评性对话（“你连像样的衬衫都做不出来”）",
-            "担心他人会证实负面评价而不敢展示",
-            "将一件作品的不足泛化为整体能力不足"
+            "Inner critical dialogue ('you cannot even make a decent shirt')",
+            "Fearing others will confirm negative evaluations and not daring to show",
+            "Generalizing one work's insufficiency into overall inadequacy"
           ]
         }
       ]
@@ -132,41 +132,41 @@
       "exception_events": [],
       "force_field": {
         "positive_force": [
-          "具备缝纫技能与完成作品的能力",
-          "愿意尝试现实检验（考虑展示给可信任的人）",
-          "能通过与宠物猫相伴进行基本自我安抚",
-          "有工作岗位与一定的日常结构"
+          "Having sewing skills and the ability to complete works",
+          "Willing to try reality testing (considering showing it to trusted people)",
+          "Can do basic self-soothing through the companionship of a pet cat",
+          "Has a job and some daily structure"
         ],
         "negative_force": [
-          "自我否定与内在批评强烈",
-          "社交退缩与孤立，过度在意他人评价",
-          "情绪化推理与心理过滤，忽视积极证据",
-          "工作压力增加，整体情绪低落影响功能"
+          "Strong Self-denial and inner criticism",
+          "Social withdrawal and isolation, over-caring about others' evaluations",
+          "Emotional reasoning and mental filtering, ignoring positive evidence",
+          "Work stress increased, overall Low mood affecting function"
         ]
       }
     },
     "bt": {
       "target_behavior": [
         {
-          "behavior": "在看到或想到衬衫时出现强烈自我批评与回避展示",
+          "behavior": "When seeing or thinking of shirts, strong self-criticism and avoidance of showing appear",
           "antecedent": [
-            "在家独处时看到衬衫",
-            "想到在公共场合穿着或被他人看到",
-            "分手与工作压力叠加导致情绪低落时"
+            "Seeing the shirt when Being alone at home",
+            "Thinking about dressing up or being seen by others in public",
+            "When Low mood results from breakup and Work stress compounding"
           ],
-          "core_reason": "近期分手与工作压力使情绪低落，将负面情绪投射到作品上；价值过度依赖他人评价并以完美为标准，导致否定正面信息与过度概括。",
-          "function": "逃避潜在的负面评价与羞耻感，短期降低焦虑。",
-          "consequence": "持续情绪低落与自我形象受损；动机下降与对缝纫的兴趣减退；避免社交与反馈，维持负性认知循环。"
+          "core_reason": "Recent breakup and Work stress causing Low mood, Projecting negative emotions onto the work; value over-relying on others' evaluations and perfection as the standard, causing negation of positive information and overgeneralization.",
+          "function": "Avoiding potential negative evaluation and shame, briefly lowering Anxiety.",
+          "consequence": "Persistent Low mood and Self-image damaged; Decreased motivation and Reduced interest in sewing; avoiding socializing and feedback, maintaining the negative cognitive cycle."
         },
         {
-          "behavior": "社交退缩与孤立（减少与他人接触、避免展示作品）",
+          "behavior": "Social withdrawal and isolation (reducing contact with others, avoiding showing works)",
           "antecedent": [
-            "与伴侣分手后感到孤独与被否定",
-            "预期他人会给出负面评价时"
+            "Feeling Loneliness and negated after breaking up with partner",
+            "When Anticipating others will give negative evaluations"
           ],
-          "core_reason": "害怕被否定与羞辱，为了自我保护而减少外界接触与评价机会。",
-          "function": "逃避情感痛苦与外界评判，维持表面的安全感。",
-          "consequence": "孤独感加剧、负面情绪持续；工作表现下降与生活满意度降低。"
+          "core_reason": "Fearing being negated and humiliated, reducing outside contact and evaluation opportunities for Self-protection.",
+          "function": "Avoiding emotional pain and outside judgment, maintaining a superficial sense of safety.",
+          "consequence": "Worsening Loneliness, Negative emotions persisting; Decline in work performance and Reduced life satisfaction."
         }
       ]
     }

@@ -13,14 +13,14 @@
   "transcript": [
     {
       "role": "user",
-      "content": "因为错过了最近的动漫新番而觉得自己是个无用的动漫粉，产生自我批评与自卑，这种感受逐渐加重并影响情绪与生活。"
+      "content": "Because I missed the latest anime episodes, I feel like a useless anime fan, with self-criticism and inferiority; this feeling has gradually worsened and affects my mood and life."
     },
     {
       "role": "assistant",
-      "content": "[Counselor] 结合您的背景和PDT治疗框架，我们来聚焦于目前最困扰您的核心问题。"
+      "content": "[Counselor] Based on your background and the PDT treatment framework, let us focus on the core issue that troubles you most at present."
     }
   ],
-  "counselor_response": "[Counselor] 结合您的背景和PDT治疗框架，我们来聚焦于目前最困扰您的核心问题。",
+  "counselor_response": "[Counselor] Based on your background and the PDT treatment framework, let us focus on the core issue that troubles you most at present.",
   "trail": [
     {
       "agent": "memory_agent",
@@ -28,59 +28,59 @@
       "payload": {
         "known_static_traits": {
           "age": "79",
-          "name": "李博文",
-          "gender": "男",
-          "occupation": "无人机制造工程师",
-          "educational_background": "机械工程学位",
-          "marital_status": "未婚",
-          "family_status": "独居，无兄弟姐妹",
-          "social_status": "与几位同好为友，但近期因自我怀疑而回避动漫相关聚会，关系有所紧张",
+          "name": "Li Bowen",
+          "gender": "Male",
+          "occupation": "Drone manufacturing engineer",
+          "educational_background": "Degree in mechanical engineering",
+          "marital_status": "Unmarried",
+          "family_status": "Living alone, no siblings",
+          "social_status": "Friends with several fellow enthusiasts, but recently avoids anime-related gatherings due to self-doubt, and relationships have become somewhat tense",
           "medical_history": "",
-          "language_features": "表达清晰、逻辑性好；态度积极、配合度高；有轻度紧张与羞涩；具备自我反思能力"
+          "language_features": "Clear expression, good logic; positive attitude, highly cooperative; mild nervousness and shyness; has self-reflection ability"
         },
         "session_recaps": [],
         "last_homework": [],
         "current_session_index": 1,
-        "current_stage": "问题概念化与目标设定",
+        "current_stage": "Problem conceptualization and goal setting",
         "previous_interventions": [],
         "current_goals": [
-          "希望通过咨询应对并缓解自我怀疑与自我批评，恢复对爱好的享受。"
+          "Hope to cope with and alleviate self-doubt and self-criticism through counseling, and regain enjoyment of my hobby."
         ],
         "prior_outcomes": [],
         "newly_observed": [
-          "因为错过了最近的动漫新番而觉得自己是个无用的动漫粉，产生自我批评与自卑，这种感受逐渐加重并影响情绪与生活。"
+          "Because I missed the latest anime episodes, I feel like a useless anime fan, with self-criticism and inferiority; this feeling has gradually worsened and affects my mood and life."
         ],
-        "main_problem": "因为错过了最近的动漫新番而觉得自己是个无用的动漫粉，产生自我批评与自卑，这种感受逐渐加重并影响情绪与生活。",
-        "core_demands": "希望通过咨询应对并缓解自我怀疑与自我批评，恢复对爱好的享受。",
+        "main_problem": "Because I missed the latest anime episodes, I feel like a useless anime fan, with self-criticism and inferiority; this feeling has gradually worsened and affects my mood and life.",
+        "core_demands": "Hope to cope with and alleviate self-doubt and self-criticism through counseling, and regain enjoyment of my hobby.",
         "growth_experiences": [],
         "theory_info": {
           "core_conflict": {
-            "wish": "渴望被同好群体接纳、被认可为“足够好”的自己并自在地享受兴趣",
-            "fear": "害怕因“不够好/跟不上”而被羞辱、排斥与否定",
+            "wish": "Longs to be accepted by the community of fellow enthusiasts, recognized as a 'good enough' self, and to enjoy his interests comfortably",
+            "fear": "Fears being humiliated, excluded, and negated for 'not being good enough / not keeping up'",
             "defense_goal": [
-              "通过回避社交与自我批评来预防被评价的羞耻感",
-              "压抑脆弱与需要以维持表面的自我控制感"
+              "Prevents the shame of being evaluated through avoiding socializing and self-criticism",
+              "Suppresses vulnerability and needs to maintain a surface sense of self-control"
             ]
           },
           "object_relations": [
             {
-              "self_representation": "落后、羞愧的“不合格爱好者”",
-              "object_representation": "苛刻评判、始终更胜一筹的同伴群体",
-              "linking_affect": "羞耻、自卑、焦虑"
+              "self_representation": "A lagging, ashamed 'unqualified hobbyist'",
+              "object_representation": "A peer group that judges harshly and is always one step ahead",
+              "linking_affect": "Shame, inferiority, anxiety"
             }
           ],
           "behavioral_response_patterns": [
             {
-              "trigger_condition": "当谈及与他人比较或承认“跟不上新番”时",
-              "interpretation": "认为他人（或咨询师）会像同伴那样评判自己“不够好”",
-              "defense_mechanism": "压抑",
-              "response_instruction": "语气克制而简短，回避深入情绪感受的描述，优先陈述事实层面。"
+              "trigger_condition": "When talking about comparing with others or admitting to 'not keeping up with new anime releases'",
+              "interpretation": "Believes others (or the counselor) will judge him as 'not good enough', just like his peers",
+              "defense_mechanism": "Repression",
+              "response_instruction": "Restrained and brief in tone, avoids describing emotional feelings in depth, prioritizes stating the factual level."
             },
             {
-              "trigger_condition": "当被鼓励向朋友表达需要或寻求支持时",
-              "interpretation": "担心表达脆弱会被视为麻烦或矫情，从而遭到轻视",
-              "defense_mechanism": "转向自身",
-              "response_instruction": "以自责性语言回应（如“都是我不行”），语气自我贬低，弱化对他人合理期待。"
+              "trigger_condition": "When encouraged to express needs to friends or seek support",
+              "interpretation": "Worries that expressing vulnerability will be seen as troublesome or melodramatic, and thus lead to being looked down on",
+              "defense_mechanism": "Turning against the self",
+              "response_instruction": "Responds with self-blaming language (such as 'It is all because I am no good'), with a self-deprecating tone, downplaying reasonable expectations of others."
             }
           ]
         },
@@ -91,25 +91,25 @@
       "agent": "state_agent",
       "status": "ok",
       "payload": {
-        "current_concern": "因为错过了最近的动漫新番而觉得自己是个无用的动漫粉，产生自我批评与自卑，这种感受逐渐加重并影响情绪与生活。",
-        "expressed_needs": "希望通过咨询应对并缓解自我怀疑与自我批评，恢复对爱好的享受。",
-        "current_session_focus": "希望通过咨询应对并缓解自我怀疑与自我批评，恢复对爱好的享受。",
+        "current_concern": "Because I missed the latest anime episodes, I feel like a useless anime fan, with self-criticism and inferiority; this feeling has gradually worsened and affects my mood and life.",
+        "expressed_needs": "Hope to cope with and alleviate self-doubt and self-criticism through counseling, and regain enjoyment of my hobby.",
+        "current_session_focus": "Hope to cope with and alleviate self-doubt and self-criticism through counseling, and regain enjoyment of my hobby.",
         "known_information": [
-          "[基本信息] age: 79",
-          "[基本信息] name: 李博文",
-          "[基本信息] gender: 男",
-          "[基本信息] occupation: 无人机制造工程师",
-          "[基本信息] educational_background: 机械工程学位",
-          "[基本信息] marital_status: 未婚",
-          "[基本信息] family_status: 独居，无兄弟姐妹",
-          "[基本信息] social_status: 与几位同好为友，但近期因自我怀疑而回避动漫相关聚会，关系有所紧张",
-          "[基本信息] language_features: 表达清晰、逻辑性好；态度积极、配合度高；有轻度紧张与羞涩；具备自我反思能力",
-          "[主诉] 因为错过了最近的动漫新番而觉得自己是个无用的动漫粉，产生自我批评与自卑，这种感受逐渐加重并影响情绪与生活。",
-          "[核心诉求] 希望通过咨询应对并缓解自我怀疑与自我批评，恢复对爱好的享受。",
-          "[PDT 理论] core_conflict: 已记录",
-          "[PDT 理论] object_relations: 已记录",
-          "[PDT 理论] behavioral_response_patterns: 已记录",
-          "[当前陈述] 因为错过了最近的动漫新番而觉得自己是个无用的动漫粉，产生自我批评与自卑，这种感受逐渐加重并影响情绪与生活。"
+          "[Basic information] age: 79",
+          "[Basic information] name: Li Bowen",
+          "[Basic information] gender: Male",
+          "[Basic information] occupation: Drone manufacturing engineer",
+          "[Basic information] educational_background: Degree in mechanical engineering",
+          "[Basic information] marital_status: Unmarried",
+          "[Basic information] family_status: Living alone, no siblings",
+          "[Basic information] social_status: Friends with several fellow enthusiasts, but recently avoids anime-related gatherings due to self-doubt, and relationships have become somewhat tense",
+          "[Basic information] language_features: Clear expression, good logic; positive attitude, highly cooperative; mild nervousness and shyness; has self-reflection ability",
+          "[Chief Complaint] Because I missed the latest new anime releases, I feel like a useless anime fan, producing self-criticism and inferiority feelings; this feeling has gradually worsened and affects my emotions and life.",
+          "[Core Demands] Hope to cope with and alleviate self-doubt and self-criticism through counseling, and regain enjoyment of my hobby.",
+          "[PDT Theory] core_conflict: Recorded",
+          "[PDT Theory] object_relations: Recorded",
+          "[PDT Theory] behavioral_response_patterns: Recorded",
+          "[Current Statement] Because I missed the latest new anime releases, I feel like a useless anime fan, producing self-criticism and inferiority feelings; this feeling has gradually worsened and affects my emotions and life."
         ],
         "unknown_information": [
           "growth_experiences (empty or not provided)",
@@ -117,11 +117,11 @@
         ],
         "context": {
           "modality": "pdt",
-          "therapy_stage": "问题概念化与目标设定",
+          "therapy_stage": "Problem conceptualization and goal setting",
           "session_index": 1,
           "source": "runner_state|full_profile"
         },
-        "longitudinal_relevance": "暂无历史会话记录（可能为首次或首轮独立评估）。",
+        "longitudinal_relevance": "No historical session records for now (possibly a first or first-round independent assessment).",
         "confidence": 0.6666666666666666
       }
     },
@@ -189,10 +189,10 @@
       "agent": "clarification_agent",
       "turn": 1,
       "payload": {
-        "question": "您之前有没有接受过心理方面的专业评估或治疗？或者有没有相关的医疗记录？",
+        "question": "Have you received any professional psychological assessment or treatment before? Or do you have any related medical records?",
         "questions": [
-          "您之前有没有接受过心理方面的专业评估或治疗？或者有没有相关的医疗记录？",
-          "在您目前的困扰出现之前，有没有类似的问题发生过？"
+          "Have you received any professional psychological assessment or treatment before? Or do you have any related medical records?",
+          "Before your current difficulties appeared, had any similar problems occurred?"
         ],
         "target_information": [
           "medical_history",
@@ -208,37 +208,37 @@
       "turn": 1,
       "payload": {
         "updated_state": {
-          "current_concern": "因为错过了最近的动漫新番而觉得自己是个无用的动漫粉，产生自我批评与自卑，这种感受逐渐加重并影响情绪与生活。",
-          "expressed_needs": "希望通过咨询应对并缓解自我怀疑与自我批评，恢复对爱好的享受。",
-          "current_session_focus": "希望通过咨询应对并缓解自我怀疑与自我批评，恢复对爱好的享受。",
+          "current_concern": "Because I missed the latest anime episodes, I feel like a useless anime fan, with self-criticism and inferiority; this feeling has gradually worsened and affects my mood and life.",
+          "expressed_needs": "Hope to cope with and alleviate self-doubt and self-criticism through counseling, and regain enjoyment of my hobby.",
+          "current_session_focus": "Hope to cope with and alleviate self-doubt and self-criticism through counseling, and regain enjoyment of my hobby.",
           "known_information": [
-            "[基本信息] age: 79",
-            "[基本信息] name: 李博文",
-            "[基本信息] gender: 男",
-            "[基本信息] occupation: 无人机制造工程师",
-            "[基本信息] educational_background: 机械工程学位",
-            "[基本信息] marital_status: 未婚",
-            "[基本信息] family_status: 独居，无兄弟姐妹",
-            "[基本信息] social_status: 与几位同好为友，但近期因自我怀疑而回避动漫相关聚会，关系有所紧张",
-            "[基本信息] language_features: 表达清晰、逻辑性好；态度积极、配合度高；有轻度紧张与羞涩；具备自我反思能力",
-            "[主诉] 因为错过了最近的动漫新番而觉得自己是个无用的动漫粉，产生自我批评与自卑，这种感受逐渐加重并影响情绪与生活。",
-            "[核心诉求] 希望通过咨询应对并缓解自我怀疑与自我批评，恢复对爱好的享受。",
-            "[PDT 理论] core_conflict: 已记录",
-            "[PDT 理论] object_relations: 已记录",
-            "[PDT 理论] behavioral_response_patterns: 已记录",
-            "[当前陈述] 因为错过了最近的动漫新番而觉得自己是个无用的动漫粉，产生自我批评与自卑，这种感受逐渐加重并影响情绪与生活。",
-            "[澄清获得信息] 大约从半年前开始出现这些情况。"
+            "[Basic information] age: 79",
+            "[Basic information] name: Li Bowen",
+            "[Basic information] gender: Male",
+            "[Basic information] occupation: Drone manufacturing engineer",
+            "[Basic information] educational_background: Degree in mechanical engineering",
+            "[Basic information] marital_status: Unmarried",
+            "[Basic information] family_status: Living alone, no siblings",
+            "[Basic information] social_status: Friends with several fellow enthusiasts, but recently avoids anime-related gatherings due to self-doubt, and relationships have become somewhat tense",
+            "[Basic information] language_features: Clear expression, good logic; positive attitude, highly cooperative; mild nervousness and shyness; has self-reflection ability",
+            "[Chief Complaint] Because I missed the latest new anime releases, I feel like a useless anime fan, producing self-criticism and inferiority feelings; this feeling has gradually worsened and affects my emotions and life.",
+            "[Core Demands] Hope to cope with and alleviate self-doubt and self-criticism through counseling, and regain enjoyment of my hobby.",
+            "[PDT Theory] core_conflict: Recorded",
+            "[PDT Theory] object_relations: Recorded",
+            "[PDT Theory] behavioral_response_patterns: Recorded",
+            "[Current Statement] Because I missed the latest new anime releases, I feel like a useless anime fan, producing self-criticism and inferiority feelings; this feeling has gradually worsened and affects my emotions and life.",
+            "[Clarified information obtained] These situations began to appear about half a year ago."
           ],
           "unknown_information": [
             "prior_session_recaps (first session or no history)"
           ],
           "context": {
             "modality": "pdt",
-            "therapy_stage": "问题概念化与目标设定",
+            "therapy_stage": "Problem conceptualization and goal setting",
             "session_index": 1,
             "source": "runner_state|full_profile"
           },
-          "longitudinal_relevance": "暂无历史会话记录（可能为首次或首轮独立评估）。",
+          "longitudinal_relevance": "No historical session records for now (possibly a first or first-round independent assessment).",
           "confidence": 0.6666666666666666
         },
         "uncertainty": {
@@ -264,7 +264,7 @@
           "severity": "LOW",
           "risk_status": "NO_EVIDENCE",
           "evidence": [
-            "Clarified safety status: 大约从半年前开始出现这些情况。"
+            "Clarified safety status: These situations began to appear about half a year ago."
           ],
           "confidence": 0.9,
           "signals_detected": []

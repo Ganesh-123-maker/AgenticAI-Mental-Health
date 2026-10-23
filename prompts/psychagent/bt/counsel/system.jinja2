@@ -15,7 +15,7 @@
 {% if client_info -%}
 {% set info = client_info.static_traits or {} -%}
 {% macro line(label, value) -%}
-- {{ label }}：{{ value | default('Unknown', true) }}
+- {{ label }}:{{ value | default('Unknown', true) }}
 {%- endmacro -%}
 1. Basic Information
 {{ line('Name', info.name) }}
@@ -50,8 +50,8 @@
 {%- for s in client_info.target_behavior -%}
   {% if s.behavior is defined %}
   - Behavior {{ loop.index }}:
-    - Behavior Name：{{ s.behavior | default('Unknown', true) }}
-    - Triggering Context / Antecedents：
+    - Behavior Name:{{ s.behavior | default('Unknown', true) }}
+    - Triggering Context / Antecedents:
     {%- if s.antecedent %}
       {%- for a in s.antecedent if a %}
       - {{ a }}
@@ -59,9 +59,9 @@
     {%- else %}
       None recorded
     {% endif %}
-    - Core Reason：{{ s.core_reason | default('Unknown', true) }}
-    - Behavioral Function：{{ s.function | default('Unknown', true) }}
-    - Behavioral Consequences：{{ s.consequence | default('Unknown', true) }}
+    - Core Reason:{{ s.core_reason | default('Unknown', true) }}
+    - Behavioral Function:{{ s.function | default('Unknown', true) }}
+    - Behavioral Consequences:{{ s.consequence | default('Unknown', true) }}
   {% else -%}
   - Behavior {{ loop.index }}:{{ s }}
   {% endif -%}
@@ -84,16 +84,16 @@
 {%- for session in history %}
 
 [Session {{ loop.index }}]
-▶ Stage：{{ session.session_stage }}
-▶ Dialogue Summary：{{ session.session_summary_abstract }}
+▶ Stage:{{ session.session_stage }}
+▶ Dialogue Summary:{{ session.session_summary_abstract }}
 {%- if session.client_state_analysis %}
 
 ▶ Client State Analysis:
-- Affective State：{{ session.client_state_analysis.affective_state }}
+- Affective State:{{ session.client_state_analysis.affective_state }}
 - Target Behavior: {{ session.client_state_analysis.target_behavior }}
-- Behavioral Patterns：{{ session.client_state_analysis.behavioral_patterns }}
-- Therapeutic Alliance：{{ session.client_state_analysis.therapeutic_alliance }}
-- Unresolved Points / Tensions：{{ session.client_state_analysis.unresolved_points_or_tensions }}
+- Behavioral Patterns:{{ session.client_state_analysis.behavioral_patterns }}
+- Therapeutic Alliance:{{ session.client_state_analysis.therapeutic_alliance }}
+- Unresolved Points / Tensions:{{ session.client_state_analysis.unresolved_points_or_tensions }}
 {%- endif %}
 
 {%- endfor %}

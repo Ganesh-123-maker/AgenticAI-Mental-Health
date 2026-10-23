@@ -2,139 +2,139 @@
   "basic_info": {
     "static_traits": {
       "age": "35",
-      "name": "马杰",
-      "gender": "男",
-      "occupation": "未提及",
-      "educational_background": "未提及",
-      "marital_status": "未提及",
-      "family_status": "父亲在来访者2岁时去世；其余未提及",
-      "social_status": "未提及",
-      "medical_history": "无重大躯体疾病；既往未接受心理治疗或精神科治疗",
-      "language_features": "表达清晰，能进行自我反思，配合度较高；语气平和，存在自我苛责与负面自我标签倾向"
+      "name": "Ma Jie",
+      "gender": "Male",
+      "occupation": "Not mentioned",
+      "educational_background": "Not mentioned",
+      "marital_status": "Not mentioned",
+      "family_status": "Father died when the client was 2; the rest Not mentioned",
+      "social_status": "Not mentioned",
+      "medical_history": "No major physical illness; no psychotherapy or psychiatric treatment received in the past",
+      "language_features": "Clear expression, able to self-reflect, fairly cooperative; calm tone, tending toward self-reproach and negative self-labeling"
     },
-    "main_problem": "我非常热爱钓鱼，但我一直担心自己再也不能钓到了。",
-    "topic": "情绪管理",
-    "core_demands": "对失去钓鱼能力的恐惧已变得压倒性，并影响了我对这项活动的享受，因此我寻求咨询以获得帮助。",
+    "main_problem": "I love fishing very much, but I keep worrying I will never catch anything again.",
+    "topic": "Emotion management",
+    "core_demands": "The fear of losing the ability to fish has become overwhelming and has affected my enjoyment of this activity, so I am seeking counseling for help.",
     "growth_experiences": [
-      "原生家庭事件：来访者在2岁时父亲去世，长期处于缺失父性支持的环境中；这一早期丧失可能带来持续的孤独与支持匮乏感。",
-      "学业经历：在本学年开始时注意到成绩下滑，进而将自己贴上“懒惰、无效”的标签；在晚上和周末缺乏结构时，该自我标签与负面情绪加剧，出现睡眠增多、内疚与动力下降的循环；曾尝试通过设定闹钟与制定学习计划来改善，但效果有限。"
+      "Family-of-origin event: the client's Father died when they were 2, growing up long-term in an environment lacking paternal support; this early loss may have brought persistent Loneliness and a sense of support deprivation.",
+      "Academic experience: noticing Declining grades at the start of this school year, then labeling myself 'lazy, ineffective'; when evenings and weekends lacked structure, this self-label and negative emotions intensified, producing a cycle of increased sleep, guilt and Decreased drive; tried improving by setting alarms and making Learning plans, but with limited effect."
     ]
   },
   "theory": {
     "cbt": {
       "core_beliefs": [
-        "我不够好，无法在任何事情上成功",
-        "我是个懒惰的废物"
+        "I am not good enough, unable to succeed at anything",
+        "I am a lazy waste"
       ],
       "special_situations": [
         {
-          "event": "最近一次钓鱼之旅中遇到多重挑战，难以上鱼",
-          "conditional_assumptions": "如果钓鱼时遇到困难或没有收获，就证明我没有能力，未来也不会再钓到鱼",
-          "compensatory_strategies": "通过观看教学视频、向其他渔友请教来提升技巧与减少失败",
-          "automatic_thoughts": "我再也钓不到鱼了",
+          "event": "On the most recent fishing trip, encountered multiple challenges, hard to catch fish",
+          "conditional_assumptions": "If I meet difficulties or have no catch while fishing, it proves I have no ability, and I will never catch fish again in the future",
+          "compensatory_strategies": "Improves technique and reduces failures by watching tutorial videos and asking other anglers for advice",
+          "automatic_thoughts": "I will never catch fish again",
           "cognitive_pattern": "Fortune Telling"
         },
         {
-          "event": "每次想到要去钓鱼时，强烈担忧与恐惧涌现",
-          "conditional_assumptions": "如果我在想到钓鱼时感到焦虑，说明我不适合继续这项活动",
-          "compensatory_strategies": "事前查阅教程与寻求建议以降低不确定性，但焦虑仍持续",
-          "automatic_thoughts": "我会再次失败，去也不会有任何乐趣",
+          "event": "Every time he thinks about going fishing, intense worry and fear surge up",
+          "conditional_assumptions": "If I feel Anxiety when thinking about fishing, it means I am not suited to continue this activity",
+          "compensatory_strategies": "Checking tutorials and seeking advice beforehand to reduce uncertainty, but Anxiety persists",
+          "automatic_thoughts": "I will fail again; going will bring no fun at all",
           "cognitive_pattern": "Emotional Reasoning"
         },
         {
-          "event": "本学年开始后成绩下滑",
-          "conditional_assumptions": "一旦成绩下降，就说明我本质上是懒惰且无能的",
-          "compensatory_strategies": "设置闹钟与制定学习计划，试图用更严格的自我要求来纠正",
-          "automatic_thoughts": "我是个懒惰的废物；我不够好，什么都不会成功",
+          "event": "Grades slipping since this school year began",
+          "conditional_assumptions": "Once grades drop, it shows I am essentially lazy and incapable",
+          "compensatory_strategies": "Sets alarms and makes study plans, trying to correct herself with stricter self-demands",
+          "automatic_thoughts": "I am a lazy waste; I am not good enough, nothing will succeed",
           "cognitive_pattern": "Overgeneralization"
         },
         {
-          "event": "在没有学习任务的晚上与周末缺乏结构",
-          "conditional_assumptions": "我应该一直高效；如果没有产出就一文不值",
-          "compensatory_strategies": "强制自我制定严格计划，但很快又拖延并睡得更多",
-          "automatic_thoughts": "我不该休息，我应该更努力，否则我就是失败者",
+          "event": "Unstructured evenings and weekends without Learning tasks",
+          "conditional_assumptions": "I should always be efficient; if there is no output I am worthless",
+          "compensatory_strategies": "Forcibly makes strict plans for oneself, but soon procrastinates again and sleeps more",
+          "automatic_thoughts": "I should not rest, I should work harder, otherwise I am just a failure",
           "cognitive_pattern": "\"Should\" Statements"
         }
       ]
     },
     "pdt": {
       "core_conflict": {
-        "wish": "渴望被认可为有能力，并在重要领域（如钓鱼、学业）保持掌控感与自尊",
-        "fear": "害怕失败与被否定，被视为“懒惰/无能”，从而失去价值感与乐趣",
+        "wish": "Longs to be recognized as capable, and maintain a sense of control and self-esteem in important domains (such as fishing, studies)",
+        "fear": "Fearing failure and being negated, being seen as 'lazy/incapable', thereby losing the sense of worth and enjoyment",
         "defense_goal": [
-          "通过自我批评与高标准约束自己以避免失败",
-          "通过增加准备与学习来降低不确定性与被否定的风险",
-          "避免向亲友透露担忧以防被评价或羞耻"
+          "Constrains himself through self-criticism and high standards to avoid failure",
+          "Reducing uncertainty and the risk of being negated by increasing preparation and Learning",
+          "Avoids revealing worries to family and friends to prevent being judged or shamed"
         ]
       },
       "object_relations": [
         {
-          "self_representation": "失去支持的孩子，渴望被看见与被支撑",
-          "object_representation": "缺席的父亲或无法提供稳定支持的客体",
-          "linking_affect": "孤独、空缺感"
+          "self_representation": "A child who has lost support, longing to be seen and supported",
+          "object_representation": "The absent Father or an object unable to provide stable support",
+          "linking_affect": "Loneliness, sense of emptiness"
         },
         {
-          "self_representation": "被贴上“懒惰/无能”标签的失败者",
-          "object_representation": "苛刻的评判者（内化的外界标准与期待）",
-          "linking_affect": "羞耻、内疚、无力"
+          "self_representation": "A failure labeled 'lazy/incapable'",
+          "object_representation": "A harsh critic (internalized external standards and expectations)",
+          "linking_affect": "Shame, guilt, helplessness"
         }
       ],
       "behavioral_response_patterns": [
         {
-          "trigger_condition": "当咨询师探索来访者的负面自我评价与失败体验时",
-          "interpretation": "将外界的“必须高效与成功”的标准内化为对自己的苛刻审判，认为稍有不佳即等同失败者",
-          "defense_mechanism": "转向自身",
-          "response_instruction": "使用温和、共情且不评判的语气；承认其痛苦，邀请其具体化体验；帮助识别自我攻击的声音并与之拉开距离。"
+          "trigger_condition": "When the counselor explores the client's negative self-evaluation and failure experiences",
+          "interpretation": "Internalizing the outside world's 'must be efficient and successful' standard into harsh self-judgment, believing that any slight inadequacy equals being a failure",
+          "defense_mechanism": "Turning against the self",
+          "response_instruction": "Use a gentle, Empathy and non-judgmental tone; acknowledge their pain, invite them to specify the experience; help identify the voice of self-attack and distance from it."
         },
         {
-          "trigger_condition": "当被建议与亲友分享恐惧、寻求反馈时",
-          "interpretation": "担心暴露脆弱会被看轻或被贴上“懒惰/无能”的标签",
-          "defense_mechanism": "压抑",
-          "response_instruction": "以安全与允许的姿态逐步暴露；建议小步验证，先与最信任的朋友分享一个小且具体的担忧。"
+          "trigger_condition": "When advised to share fears with family and friends and seek feedback",
+          "interpretation": "Worrying that exposing vulnerability will be looked down upon or labeled 'lazy/incapable'",
+          "defense_mechanism": "Repression",
+          "response_instruction": "Gradually expose with a safe and permissive posture; suggest small-step verification, first sharing one small, concrete worry with the most trusted friend."
         }
       ]
     },
     "het": {
       "existentialism_topic": [
         {
-          "theme": "孤独",
+          "theme": "Loneliness",
           "manifestations": [
-            "父亲在2岁时去世，原生支持缺失",
-            "与亲近的钓友未分享自己的恐惧与脆弱"
+            "Father died when I was 2; family-of-origin support missing",
+            "Not yet sharing my Fear and vulnerability with close fishing friends"
           ],
           "outcomes": [
-            "情绪与动机下降",
-            "在重要活动中难以获得联结与支持"
+            "Low mood and Decreased motivation",
+            "Difficulty gaining connection and support at important events"
           ]
         },
         {
-          "theme": "无意义",
+          "theme": "Meaninglessness",
           "manifestations": [
-            "担心再也无法享受钓鱼",
-            "每次想到钓鱼即被恐惧占据，乐趣被剥夺"
+            "Worrying I can never enjoy fishing again",
+            "Every time thinking of fishing, fear takes over and the joy is stripped away"
           ],
           "outcomes": [
-            "乐趣丧失",
-            "动力下降与拖延"
+            "Loss of pleasure",
+            "Decreased drive and procrastination"
           ]
         }
       ],
       "contact_model": [
         {
-          "mode": "自我监控",
-          "definition": "个体存在不良的自我反思和反省的能力，包含过多的自我限制和自我苛责，对接触过于小心谨慎，与“自主性”对应。",
+          "mode": "Self-monitoring",
+          "definition": "The individual has a poor capacity for self-reflection and introspection, with excessive self-restriction and self-blame, and is overly cautious about contact, corresponding to 'autonomy'.",
           "manifestations": [
-            "频繁自我标签为“懒惰的废物”",
-            "将成绩下滑完全归因于自身缺乏努力",
-            "在咨询中强调“我不够好”并担心无法改变"
+            "Frequently labeling oneself 'a lazy good-for-nothing'",
+            "Fully attributes grade decline to own lack of effort",
+            "Emphasizing 'I am not good enough' in counseling and worrying change is impossible"
           ]
         },
         {
-          "mode": "内摄",
-          "definition": "个体未经消化地把外界规则、期望当作自己的标准或绝对真理，与“拒绝”对应。语言表现为：“我必须/应该…”，“大家都这样”等。",
+          "mode": "Introjection",
+          "definition": "The individual takes in external rules and expectations without digesting them, treating them as their own standards or absolute truths, corresponding to 'rejection'. Language manifestations include: 'I must/should...', 'Everyone is like this', and so on.",
           "manifestations": [
-            "在无结构时段认为“我应该一直高效”，否则就是失败者",
-            "使用“我不该休息，我应该更努力”类自我要求"
+            "Believing 'I should always be efficient' during unstructured periods, otherwise being a failure",
+            "Using 'I should not rest, I should work harder'-type self-Demands"
           ]
         }
       ]
@@ -142,56 +142,56 @@
     "pmt": {
       "exception_events": [
         {
-          "target_problem": "在没有学习任务的晚上和周末时，来访者通常会自我标签为懒惰、拖延并睡得过多，随后感到内疚与动力下降。",
-          "unique_outcome": "来访者表示曾经有几次能按时完成作业，这些时刻目标更清晰、并对自己更有信心。",
-          "reason": "线索：在目标更具体、并且自我效能感稍高的情况下，出现了与以往不同的表现（更投入并完成任务）。"
+          "target_problem": "On evenings and weekends without Learning tasks, the client usually self-labels as lazy, procrastinates and sleeps too much, then feels guilt and Decreased drive.",
+          "unique_outcome": "The client says there were several times they could complete homework on time, and in those moments the goals were clearer and they had more confidence in themselves.",
+          "reason": "Clue: when goals were more specific and Self-efficacy slightly higher, performance different from usual appeared (more engaged and completing tasks)."
         }
       ],
       "force_field": {
         "positive_force": [
-          "在目标清晰与自信提升时能够完成任务",
-          "愿意寻求帮助与学习（观看教程、向渔友请教、制定计划）",
-          "态度积极，愿意尝试现实检验与认知重构"
+          "Able to complete tasks when goals are clear and confidence rises",
+          "Willing to seek help and learn (watches tutorials, asks anglers for advice, makes plans)",
+          "Positive attitude, willing to try reality testing and cognitive restructuring"
         ],
         "negative_force": [
-          "灾难化与预测未来导致回避与焦虑",
-          "过度自我标签与自我苛责",
-          "在无结构时段动机低下与睡眠过多",
-          "对他人支持保持沉默，缺乏外部反馈"
+          "Catastrophizing and predicting the future leading to avoidance and Anxiety",
+          "Excessive self-labeling and self-reproach",
+          "Low motivation and excessive sleep during unstructured periods",
+          "Keeps silent about others' support, lacking external feedback"
         ]
       }
     },
     "bt": {
       "target_behavior": [
         {
-          "behavior": "对钓鱼失败的强烈担忧与灾难化思维",
+          "behavior": "Strong worry about fishing failure and catastrophic thinking",
           "antecedent": [
-            "最近一次钓鱼之旅遇到多重挑战且未能顺利上鱼",
-            "每次想到要去钓鱼时"
+            "The most recent fishing trip met multiple challenges and has not yet managed a smooth catch",
+            "Whenever thinking about going fishing"
           ],
-          "core_reason": "基于过度概括与预测未来的认知偏差，将一次或几次不顺视为永久失败。",
-          "function": "逃避潜在失败与负面情绪，试图通过担忧来提前控制结果",
-          "consequence": "钓鱼的乐趣显著下降，持续焦虑，难以享受活动"
+          "core_reason": "Based on the cognitive biases of overgeneralization and predicting the future, treating one or a few unsuccessful attempts as permanent failure.",
+          "function": "Avoids potential failure and negative emotions; tries to control outcomes in advance through worry",
+          "consequence": "Fishing enjoyment significantly decreased, Persistent anxiety, difficulty enjoying the activity"
         },
         {
-          "behavior": "自我标签与自我批评（如“我是懒惰的废物”“我不够好”）",
+          "behavior": "Self-labeling and self-criticism (e.g. 'I am lazy waste' 'I am not good enough')",
           "antecedent": [
-            "本学年开始成绩下滑",
-            "在没有结构的晚上和周末"
+            "Grades declining since this school year started",
+            "On unstructured evenings and weekends"
           ],
-          "core_reason": "内摄的高标准与全或无思维，将短期表现视为全局自我价值。",
-          "function": "用自我惩罚驱动改变或防止他人批评",
-          "consequence": "情绪低落与内疚加重，进一步拖延与失去动力"
+          "core_reason": "Introjected high standards and all-or-nothing thinking, treating short-term performance as global self-worth.",
+          "function": "Uses self-punishment to drive change or prevent others' criticism",
+          "consequence": "Worsening Low mood and guilt, further procrastination and loss of motivation"
         },
         {
-          "behavior": "睡眠过多与拖延",
+          "behavior": "Sleeping too much and procrastinating",
           "antecedent": [
-            "晚上与周末无学习任务或结构",
-            "自我批评后感到低落与无力"
+            "Evenings and weekends without Learning tasks or structure",
+            "Feeling low and helpless after self-criticism"
           ],
-          "core_reason": "通过回摄将对外的行动能量转向自身，用睡眠逃避压力与失败感。",
-          "function": "短期逃避焦虑与内疚，寻求暂时舒适",
-          "consequence": "任务积压、动力进一步下降，形成恶性循环"
+          "core_reason": "Turning outward action energy against the self through Retroflection, using sleep to escape pressure and failure feelings.",
+          "function": "Briefly escaping Anxiety and guilt, seeking temporary comfort",
+          "consequence": "Tasks pile up and motivation drops further, forming a vicious cycle"
         }
       ]
     }

@@ -94,7 +94,7 @@ def test_high_persists_over_benign(db, backend):
 def test_moderate_persists_over_benign(db, backend):
     """MODERATE-risk T1 -> benign T2 remains at least MODERATE."""
     visit = _make_visit(db)
-    _send(db, backend, "u1", visit, "我最近不堪重负，整夜失眠。")
+    _send(db, backend, "u1", visit, "I have been feeling overwhelmed lately and have insomnia all night.")
     snap1 = _snap(db, visit)
     sev1 = (snap1.profile_payload.get("longitudinal_risk") or {}).get("severity")
     assert sev1 == "MODERATE", f"setup failed: {sev1}"

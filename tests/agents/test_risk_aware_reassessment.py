@@ -50,7 +50,7 @@ def test_high_risk_unanswered_safety_goes_high_risk():
     """HIGH risk + safety question: clarification answer with crisis -> HIGH-RISK."""
     data = json.loads(pathlib.Path("data/benchmark/ambiguous_cases/bt/bt_176_safety.json").read_text(encoding="utf-8"))
     ctx = _safety_ctx(data["ambiguous_context"]["basic_info"]["main_problem"], "case_alpha_101")
-    result = run_pipeline(ctx, clarification_answer="其实我有时候想自杀，觉得活不下去了。")
+    result = run_pipeline(ctx, clarification_answer="Actually, sometimes I think about suicide and feel I cannot go on living.")
     assert result["route"] == "HIGH-RISK"
     print("[PASS] HIGH risk + safety question -> HIGH-RISK.")
 
@@ -58,7 +58,7 @@ def test_high_risk_unanswered_safety_goes_high_risk():
 def test_moderate_risk_unanswered_safety_stays_uncertain():
     """MODERATE risk + unanswered safety question -> UNCERTAIN (blocking)."""
     data = json.loads(pathlib.Path("data/benchmark/ambiguous_cases/bt/bt_176_safety.json").read_text(encoding="utf-8"))
-    msg = "我最近不堪重负，整夜失眠。" + data["ambiguous_context"]["basic_info"]["main_problem"]
+    msg = "I have been feeling overwhelmed lately and have insomnia all night." + data["ambiguous_context"]["basic_info"]["main_problem"]
     ctx = _safety_ctx(msg, "case_alpha_102")
     result = run_pipeline(ctx, clarification_answer="This started about six months ago.")
     p = _payload(result)
@@ -88,7 +88,7 @@ def test_low_risk_unanswered_non_safety_clears():
 def test_moderate_irrelevant_answer_never_resolves():
     """MODERATE risk + irrelevant answer: safety item stays unresolved, stays UNCERTAIN."""
     data = json.loads(pathlib.Path("data/benchmark/ambiguous_cases/bt/bt_176_safety.json").read_text(encoding="utf-8"))
-    msg = "我最近不堪重负，整夜失眠。" + data["ambiguous_context"]["basic_info"]["main_problem"]
+    msg = "I have been feeling overwhelmed lately and have insomnia all night." + data["ambiguous_context"]["basic_info"]["main_problem"]
     ctx = _safety_ctx(msg, "case_alpha_103")
     result = run_pipeline(ctx, clarification_answer="The weather has been quite nice for gardening.")
     p = _payload(result)
@@ -101,7 +101,7 @@ def test_moderate_irrelevant_answer_never_resolves():
 def test_moderate_genuine_answer_resolves_without_risk_downgrade():
     """Answering the safety question resolves it AND preserves prior MODERATE distress."""
     data = json.loads(pathlib.Path("data/benchmark/ambiguous_cases/bt/bt_176_safety.json").read_text(encoding="utf-8"))
-    msg = "我最近不堪重负，整夜失眠。" + data["ambiguous_context"]["basic_info"]["main_problem"]
+    msg = "I have been feeling overwhelmed lately and have insomnia all night." + data["ambiguous_context"]["basic_info"]["main_problem"]
     ctx = _safety_ctx(msg, "case_alpha_104")
     result = run_pipeline(
         ctx,
@@ -132,7 +132,7 @@ def test_chinese_negation_not_flagged_in_reassessment():
     """Negated Chinese crisis in clarification answer must not trigger HIGH-RISK."""
     data = json.loads(pathlib.Path("data/benchmark/ambiguous_cases/bt/bt_176_safety.json").read_text(encoding="utf-8"))
     ctx = _safety_ctx(data["ambiguous_context"]["basic_info"]["main_problem"], "case_alpha_105")
-    result = run_pipeline(ctx, clarification_answer="我没有自杀的想法，只是最近压力比较大。")
+    result = run_pipeline(ctx, clarification_answer="I have no thoughts of suicide; I have just been under a lot of stress lately.")
     p = _payload(result)
     assert p["reassessment_agent"]["route_decision"] != "HIGH-RISK"
     print("[PASS] Negated Chinese crisis not flagged in reassessment.")
@@ -220,6 +220,6 @@ def test_routing_paths_intact():
         case_id="rp_h", modality="cbt",
         therapy_stage="Problem Conceptualization and Goal Setting",
         full_profile={},
-        current_message="我最近一直想自杀。"))
+        current_message="I have been thinking about suicide lately."))
     assert r_high["route"] == "HIGH-RISK"
     print("[PASS] CLEAR / UNCERTAIN / HIGH-RISK routing intact.")

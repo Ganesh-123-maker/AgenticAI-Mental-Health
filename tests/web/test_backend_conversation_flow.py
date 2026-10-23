@@ -109,7 +109,7 @@ def test_second_clarification_turn(db, backend):
     asyncio.run(vs.send_visit_message(
         db, "u1", visit.visit_id,
         "It's about... that thing, you know. I've been feeling off.", call_llm))
-    t2_msg = "It's still about that thing... 我最近不堪重负，整夜失眠。"
+    t2_msg = "It's still about that thing... I have been feeling overwhelmed lately and have insomnia all night."
     asyncio.run(vs.send_visit_message(db, "u1", visit.visit_id, t2_msg, call_llm))
     snap2 = _persisted(db, visit)
     assert snap2.profile_payload.get("latest_route") == "UNCERTAIN"

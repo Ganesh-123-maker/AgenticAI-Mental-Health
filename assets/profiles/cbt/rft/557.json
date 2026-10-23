@@ -2,133 +2,133 @@
   "basic_info": {
     "static_traits": {
       "age": "36",
-      "name": "张敏",
-      "gender": "女",
-      "occupation": "杂货店员工",
-      "educational_background": "高中毕业",
-      "marital_status": "未婚",
-      "family_status": "独居",
-      "social_status": "与同事关系紧张；有几位朋友可交流，但尚未分享与工作相关的担忧",
-      "medical_history": "无显著躯体疾病；既往未经历类似心理问题；未接受过心理治疗",
-      "language_features": "表达清晰，能配合探索，但持怀疑态度并伴随明显自我否定"
+      "name": "Zhang Min",
+      "gender": "Female",
+      "occupation": "Grocery store employee",
+      "educational_background": "High school graduate",
+      "marital_status": "Unmarried",
+      "family_status": "Living alone",
+      "social_status": "Tense relationships with colleagues; a few friends to talk with, but work-related worries not yet shared with them",
+      "medical_history": "No significant physical illness; never experienced similar psychological problems; not yet received psychotherapy",
+      "language_features": "Clear expression, cooperative in exploration, but skeptical with marked self-denial"
     },
-    "main_problem": "在工作中感到不够胜任，并反复出现“我永远不会被晋升”的想法；这一切始于约六个月前一次因疏忽导致蔬菜报损的失误。",
-    "topic": "职业发展",
-    "core_demands": "我决定现在寻求咨询，是因为这些想法正在影响我的自尊和工作满意度。",
+    "main_problem": "Feeling not competent enough at work, with recurring thoughts of 'I will never be promoted'; it all started with a negligence-caused vegetable write-off loss about six months ago.",
+    "topic": "Career development",
+    "core_demands": "I decided to seek counseling now because these thoughts are affecting my self-esteem and job satisfaction.",
     "growth_experiences": [
-      "约六个月前，来访者在杂货店工作时因疏忽让一批蔬菜报损。虽然雇主并未当场责备或明确表达负面评价，但该事件在她心中挥之不去。自此，她持续反复回想这次失误，并相信它严重阻碍了自己的晋升机会；每当出现晋升机会的消息或讨论，她都会自动联想到这次失误并认为“他们不会考虑我”。在此影响下，她开始加倍工作、格外勤勉以“弥补”错误，同时与同事的关系因她的焦虑和自我怀疑而趋于紧张，逐渐减少与同事交流。她也未将这些担忧与朋友分享，生活中对原本喜欢的活动失去兴趣，自尊与工作满意度明显下降。"
+      "About six months ago, while working at a grocery store, the client caused a batch of vegetables to be written off due to negligence. Although the employer did not blame her on the spot or explicitly express negative evaluation, the incident lingered in her mind. Since then, she keeps replaying this mistake, believing it seriously blocked her promotion chances; whenever promotion news or discussion arises, she automatically associates it with the mistake and thinks 'they will not consider me'. Under its influence, she began working twice as hard, extra diligent to 'make up' for the error, while her relationships with colleagues grew tense from her anxiety and self-doubt, gradually reducing communication with them. She has not yet shared these worries with friends; she lost interest in previously enjoyed activities, with markedly lowered self-esteem and work satisfaction."
     ]
   },
   "theory": {
     "cbt": {
       "core_beliefs": [
-        "我不够胜任（不够好）"
+        "I am not competent enough (not good enough)"
       ],
       "special_situations": [
         {
-          "event": "六个月前在工作中因疏忽导致一批蔬菜报损",
-          "conditional_assumptions": "如果我犯一次明显的错误，就会永久性地破坏我的晋升机会",
-          "compensatory_strategies": "加班加点、更加勤勉来“弥补”错误",
-          "automatic_thoughts": "我把晋升机会都毁了",
+          "event": "Six months ago at work, negligence caused a batch of vegetables to be written off",
+          "conditional_assumptions": "If I make one obvious mistake, I will permanently destroy my promotion opportunity",
+          "compensatory_strategies": "Works overtime and more diligently to 'make up' for mistakes",
+          "automatic_thoughts": "I ruined all my promotion chances",
           "cognitive_pattern": "Overgeneralization"
         },
         {
-          "event": "公司出现晋升机会的公告或讨论",
-          "conditional_assumptions": "如果我不是完美无错，就不可能被晋升",
-          "compensatory_strategies": "在晋升临近时对自己加压、过度工作以求“完美表现”",
-          "automatic_thoughts": "我永远不会被晋升",
+          "event": "Announcements or discussions of promotion opportunities at the company",
+          "conditional_assumptions": "If I am not perfectly without fault, I cannot be promoted",
+          "compensatory_strategies": "When promotion approaches, pressures oneself and overworks to seek 'perfect performance'",
+          "automatic_thoughts": "I will never be promoted",
           "cognitive_pattern": "Fortune Telling"
         },
         {
-          "event": "雇主当时未对失误进行明确责备或说明",
-          "conditional_assumptions": "如果没有明确的赞许或说明，就代表他们对我失去信任",
-          "compensatory_strategies": "减少与管理层的沟通以避免被注意或评价",
-          "automatic_thoughts": "他们已经对我失去信心了",
+          "event": "The employer did not explicitly blame or address the mistake at the time",
+          "conditional_assumptions": "Without explicit approval or explanation, it means they have lost trust in me",
+          "compensatory_strategies": "Reducing communication with management to avoid being noticed or evaluated",
+          "automatic_thoughts": "They have already lost confidence in me",
           "cognitive_pattern": "Mind Reading"
         },
         {
-          "event": "与同事的日常互动与协作",
-          "conditional_assumptions": "如果同事觉得我有问题，说明我确实不合格",
-          "compensatory_strategies": "回避与同事交谈，减少社交接触",
-          "automatic_thoughts": "他们可能认为我有问题",
+          "event": "Daily interaction and collaboration with colleagues",
+          "conditional_assumptions": "If colleagues think something is wrong with me, it means I am truly unqualified",
+          "compensatory_strategies": "Avoiding conversations with colleagues, reduced social contact",
+          "automatic_thoughts": "They may think something is wrong with me",
           "cognitive_pattern": "Personalization"
         }
       ]
     },
     "pdt": {
       "core_conflict": {
-        "wish": "渴望被认可与被晋升，获得他人的信任与肯定",
-        "fear": "害怕被否定、被视为无能，担心一次错误导致持续的羞耻与被拒绝",
+        "wish": "Longs to be recognized and promoted, to gain others' trust and affirmation",
+        "fear": "Fear of being negated, seen as incompetent, worried one mistake leads to lasting shame and rejection",
         "defense_goal": [
-          "通过过度勤勉与自我苛责来维持价值感并避免外界负面评价",
-          "保持疏离与减少沟通以降低被批评或再次暴露不足的风险"
+          "Through excessive diligence and self-criticism, maintains a sense of value and avoids negative external evaluations",
+          "Keeping distance and reducing communication to lower the risk of criticism or exposing inadequacy again"
         ]
       },
       "object_relations": [
         {
-          "self_representation": "不够胜任、容易犯错并需要不断补偿的员工",
-          "object_representation": "冷静但潜在严苛、随时可能否定自己的评判者（上级/同事）",
-          "linking_affect": "羞愧、焦虑、无助"
+          "self_representation": "An employee not competent enough, prone to mistakes and needing constant compensation",
+          "object_representation": "A calm but potentially harsh judge (superior / colleagues) who may negate her at any time",
+          "linking_affect": "Shame, anxiety, helplessness"
         }
       ],
       "behavioral_response_patterns": [
         {
-          "trigger_condition": "当咨询师提出进行行为实验以检验其关于晋升的信念时",
-          "interpretation": "潜意识将“损害已不可逆”视为合理前提，认为咨询难以改变现实（类似对改变的悲观预设）",
-          "defense_mechanism": "合理化",
-          "response_instruction": "以礼貌但怀疑的语气表达担忧（如“我不确定这能改变什么”），语速平稳、保持基本合作，但强调自身顾虑。"
+          "trigger_condition": "When the counselor proposes a behavioral experiment to test his belief about promotion",
+          "interpretation": "Subconsciously treating 'damage is irreversible' as a valid premise, believing counseling can hardly change reality (a pessimistic preset about change)",
+          "defense_mechanism": "Rationalization",
+          "response_instruction": "Expressing concerns in a polite but skeptical tone (like 'I am not sure this can change anything'), steady pace, maintaining basic cooperation but emphasizing her own concerns."
         },
         {
-          "trigger_condition": "当咨询师追问其关于“他人失去信任”的具体证据并进行事实核对时",
-          "interpretation": "将内在的自我否定与不被认可的担忧归因于他人，相信他人已对自己失望（移情：将内在不安投向他人）",
-          "defense_mechanism": "投射",
-          "response_instruction": "坚持对他人负面看法的主观判断，使用含糊的措辞（如“他们一定记着我的错误”），回避细节证据，同时保持基本交流。"
+          "trigger_condition": "When the counselor probes for concrete evidence about 'others losing trust' and conducts a fact check",
+          "interpretation": "Attributing inner self-denial and worries of not being recognized to others, believing others are already disappointed in her (transference: projecting inner unease onto others)",
+          "defense_mechanism": "Projection",
+          "response_instruction": "Insisting on subjective judgments of others' negative views, using vague wording (like 'they must remember my mistake'), avoiding detailed evidence, while maintaining basic communication."
         }
       ]
     },
     "het": {
       "existentialism_topic": [
         {
-          "theme": "孤独",
+          "theme": "Loneliness",
           "manifestations": [
-            "独居且未向朋友分享工作相关担忧",
-            "减少与同事的交流，关系趋于紧张"
+            "Living alone and not yet sharing work-related worries with friends",
+            "Reduces communication with colleagues; relationships grow strained"
           ],
           "outcomes": [
-            "社交支持减弱",
-            "焦虑增加",
-            "自我怀疑加重"
+            "Weakened social support",
+            "Increased anxiety",
+            "Self-doubt worsens"
           ]
         },
         {
-          "theme": "无意义",
+          "theme": "Meaninglessness",
           "manifestations": [
-            "工作满意度下降",
-            "对以往喜欢的活动失去兴趣"
+            "Decline in job satisfaction",
+            "Losing interest in previously enjoyed activities"
           ],
           "outcomes": [
-            "动机降低",
-            "情绪低落",
-            "职业投入感下降"
+            "Reduced motivation",
+            "Low mood",
+            "Declining career engagement"
           ]
         }
       ],
       "contact_model": [
         {
-          "mode": "自我监控",
-          "definition": "个体存在不良的自我反思和反省的能力，包含过多的自我限制和自我苛责，对接触过于小心谨慎，与“自主性”对应。",
+          "mode": "Self-monitoring",
+          "definition": "The individual has a poor capacity for self-reflection and introspection, with excessive self-restriction and self-blame, and is overly cautious about contact, corresponding to 'autonomy'.",
           "manifestations": [
-            "反复自责“我不够好”",
-            "在晋升机会出现时过度自我审视与施压",
-            "担心他人的评价而缩减交流"
+            "Repeatedly reproaching herself 'I am not good enough'",
+            "Excessive self-scrutiny and pressure when promotion opportunities arise",
+            "Reducing communication for fear of others' judgment"
           ]
         },
         {
-          "mode": "投射",
-          "definition": "个体将自己难以接纳的感受归于他人，与”拥有“对应，语言表现为：“他在看不起我”，“他们想排挤我”等",
+          "mode": "Projection",
+          "definition": "The individual attributes feelings they find hard to accept to others, corresponding to 'possession'. Language manifestations include: 'He is looking down on me', 'They want to exclude me', and so on",
           "manifestations": [
-            "认为上级已对自己失去信任，尽管缺乏明确证据",
-            "觉得同事“可能认为我有问题”并由此减少接触"
+            "Believing my superior has lost trust in me, despite lacking clear evidence",
+            "Feeling colleagues 'may think I have a problem' and reducing contact because of it"
           ]
         }
       ]
@@ -137,40 +137,40 @@
       "exception_events": [],
       "force_field": {
         "positive_force": [
-          "愿意尝试行为实验，具备一定的合作意愿",
-          "在工作中持续努力、勤勉以提升表现",
-          "具备一定社会支持（有几位朋友可交流）"
+          "Willing to try behavioral experiments, with some willingness to cooperate",
+          "Keeps working hard and diligently at work to improve performance",
+          "Has some social support (several friends to talk to)"
         ],
         "negative_force": [
-          "过度概括与预测未来等认知偏差强化自我否定",
-          "自我价值过度依赖外部评价（如晋升）",
-          "与同事互动回避导致支持减少与关系紧张",
-          "自尊受损、兴趣下降影响职业投入"
+          "Cognitive distortions like overgeneralization and predicting the future reinforcing self-denial",
+          "Self-worth excessively dependent on external evaluation (like promotion)",
+          "Avoiding interaction with colleagues leads to decreased support and relationship tension",
+          "Impaired self-esteem, decreased interest affecting career engagement"
         ]
       }
     },
     "bt": {
       "target_behavior": [
         {
-          "behavior": "回避与同事交流（减少社交互动）",
+          "behavior": "Avoiding communication with colleagues (reduced social interaction)",
           "antecedent": [
-            "在工作中想起六个月前的失误",
-            "公司发布或讨论晋升机会时",
-            "感到他人可能在评价自己"
+            "Recalling a mistake six months ago at work",
+            "When the company announces or discusses promotion opportunities",
+            "Feeling that others may be evaluating oneself"
           ],
-          "core_reason": "将一次失误视为对自身能力的全面否定，并将内在的自我怀疑投射为他人“不信任/认为我有问题”的看法以致回避交流",
-          "function": "逃避被负面评价与可能的羞耻感，短期缓解焦虑",
-          "consequence": "与同事关系紧张、社交支持减弱，进一步加剧孤立与焦虑"
+          "core_reason": "Seeing one mistake as a total negation of her ability, and projecting inner self-doubt as others' view of 'not trusting me / thinking something is wrong with me', leading to avoiding communication",
+          "function": "Escaping negative evaluation and possible shame, briefly relieving anxiety",
+          "consequence": "Tense relationships with colleagues, weakened social support, further intensifying isolation and anxiety"
         },
         {
-          "behavior": "过度勤勉与自我施压（加班加点以“弥补”错误）",
+          "behavior": "Excessive diligence and self-pressure (working overtime to 'make up for' mistakes)",
           "antecedent": [
-            "出现晋升机会或绩效评估时",
-            "回想起蔬菜报损事件"
+            "When promotion opportunities or performance reviews arise",
+            "Recalling the vegetable loss incident"
           ],
-          "core_reason": "以“必须完美无错才能被认可”的条件假设来抵消“我不够胜任”的核心信念，从而通过过度努力寻求安全感与价值感",
-          "function": "试图获得认可并降低被否定的风险",
-          "consequence": "持续压力与疲惫，工作满意度下降，可能进一步强化自我怀疑"
+          "core_reason": "Using the conditional assumption 'must be perfect without fault to be recognized' to undo the core belief 'I am not competent enough', thereby seeking security and worth through overwork",
+          "function": "Trying to gain recognition and lower the risk of being negated",
+          "consequence": "Ongoing pressure and exhaustion, decline in job satisfaction, possibly further reinforcing self-doubt"
         }
       ]
     }

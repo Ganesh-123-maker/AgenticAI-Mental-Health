@@ -2,76 +2,76 @@
   "basic_info": {
     "static_traits": {
       "age": "52",
-      "name": "方珊",
-      "gender": "女",
-      "occupation": "学生",
-      "educational_background": "高中",
-      "marital_status": "单身",
-      "family_status": "与父母及兄弟姐妹同住",
-      "social_status": "与朋友和家人疏远；有支持性的朋友但尚未谈及与学校相关的问题",
-      "medical_history": "此前有学业压力与应激的类似感受但未如此严重；未接受过心理治疗或咨询；无显著躯体疾病",
-      "language_features": "表达清晰、配合度高，能具体描述触发情境与感受；自我评价明显消极，常用“绝望、无望”等词；语速与逻辑细节未提及"
+      "name": "Fang Shan",
+      "gender": "Female",
+      "occupation": "Student",
+      "educational_background": "High school",
+      "marital_status": "Single",
+      "family_status": "Living with parents and siblings",
+      "social_status": "Growing distant from friends and family; has supportive friends but has not yet discussed school-related issues",
+      "medical_history": "Previously had similar feelings of academic pressure and stress but not this severe; has not yet received psychotherapy or counseling; no significant physical illness",
+      "language_features": "Clear expression, high cooperation, able to specifically describe triggering situations and feelings; markedly negative self-evaluation, often using words like 'despair, hopelessness'; speech-rate and logic details not mentioned"
     },
-    "main_problem": "我讨厌学校，并形成了“我永远无法毕业”的信念，这导致我感到绝望和无望。",
-    "topic": "学业压力",
-    "core_demands": "持续的消极想法与学业表现下滑让我意识到需要寻求咨询，以处理这些影响我未来的问题。我想找到应对这些想法的方法，并让自己对学校和自我感觉好一些。",
+    "main_problem": "I hate school and have formed the belief 'I will never be able to graduate', which makes me feel despair and hopelessness.",
+    "topic": "Academic pressure",
+    "core_demands": "Persistent negative thoughts and declining academic performance have made me realize I need counseling to address these issues affecting my future. I want to find ways to cope with these thoughts and feel better about school and myself.",
     "growth_experiences": [
-      "在高中开始时，来访者对学校产生强烈厌恶，并形成“我永远无法毕业”的信念。压力来源于跟上学业进度与同伴表现的期待，近来愈加强烈。由于压力与“无论如何也不够好”的担忧，来访者的成绩下降，常常逃课，日常在上学前或需要学习、备考时出现强烈负性自动化思维（绝望、无望）。她逐渐与朋友和家人疏远，虽有支持性朋友却未向其谈及学校相关问题；曾尝试提升成绩与出勤，但因动力不足与压力感而失败。此前未接受任何心理治疗或咨询，且无重大躯体病史。"
+      "At the start of high school, the client developed a strong dislike of school and formed the belief 'I will never be able to graduate'. Pressure from keeping up with schoolwork and peer performance expectations has recently intensified. Due to stress and worry that 'no matter what, I am not good enough', the client's grades dropped and she often skips school; in daily life before going to school or when needing to study or prepare for exams, strong negative automatic thoughts arise (despair, hopelessness). She is gradually growing distant from friends and family; although she has supportive friends, she has not yet discussed school-related issues with them; she tried improving grades and attendance but failed due to insufficient motivation and stress. She has not yet received any psychotherapy or counseling, and has no major physical illness history."
     ]
   },
   "theory": {
     "cbt": {
       "core_beliefs": [
-        "我不够好",
-        "我一无是处/没有价值",
-        "我注定不会成功（永远无法毕业）"
+        "I am not good enough",
+        "I am worthless / I have no value",
+        "I am doomed never to succeed (never able to graduate)"
       ],
       "special_situations": [
         {
-          "event": "大考或重要考试来临之前",
-          "conditional_assumptions": "如果我这次考不好，就证明我不够好，未来会被毁掉",
-          "compensatory_strategies": "逃课、回避备考与学习任务，以减少当下的焦虑",
-          "automatic_thoughts": "这次考不好我就完了，我永远也毕业不了",
+          "event": "Before major or important exams",
+          "conditional_assumptions": "If I do not do well on this exam, it proves I am not good enough and my future will be ruined",
+          "compensatory_strategies": "Skipping school, avoiding exam-prep and learning tasks, to reduce current anxiety",
+          "automatic_thoughts": "If I do not do well this time I am done; I will never be able to graduate",
           "cognitive_pattern": "Catastrophizing"
         },
         {
-          "event": "收到低于预期的成绩单",
-          "conditional_assumptions": "如果成绩比预期低，就说明我是失败者，将来也会一直失败",
-          "compensatory_strategies": "短暂地尝试提高出勤与学习来“证明自己”，但很快因压力与无力感而放弃",
-          "automatic_thoughts": "我就是失败者，我永远赶不上别人",
+          "event": "Receiving a report card lower than expected",
+          "conditional_assumptions": "If grades are lower than expected, it means I am a failure and will keep failing in the future",
+          "compensatory_strategies": "Briefly trying to improve attendance and learning to 'prove oneself', but soon giving up due to stress and powerlessness",
+          "automatic_thoughts": "I am just a failure; I can never catch up with others",
           "cognitive_pattern": "Overgeneralization"
         },
         {
-          "event": "看到朋友或同学表现很好、取得好成绩",
-          "conditional_assumptions": "如果我不如同伴，就意味着我不行、不值得，被他们超越就是我的失败",
-          "compensatory_strategies": "减少社交、与朋友和家人疏远，以避免比较和被评价",
-          "automatic_thoughts": "我不如他们，我永远比不上他们",
+          "event": "Sees friends or classmates perform very well and achieve good results",
+          "conditional_assumptions": "If I am not like my peers, it means I am no good and worthless; being surpassed by them is my failure",
+          "compensatory_strategies": "Reduced socializing, growing distant from friends and family, to avoid comparison and being judged",
+          "automatic_thoughts": "I am not as good as them; I can never compare to them",
           "cognitive_pattern": "Comparing and Despairing"
         },
         {
-          "event": "每天在上学前或需要学习、做作业时",
-          "conditional_assumptions": "如果我无法保持动力去学习，就说明我注定无法毕业",
-          "compensatory_strategies": "拖延或逃课，暂时逃离学习情境以缓解焦虑",
-          "automatic_thoughts": "我做不到，我注定不能毕业",
+          "event": "Every day before school or when needing to study and do homework",
+          "conditional_assumptions": "If I cannot maintain motivation to study, it means I am doomed never to graduate",
+          "compensatory_strategies": "Procrastinating or skipping school, temporarily escaping learning situations to relieve anxiety",
+          "automatic_thoughts": "I cannot do it; I am doomed never to graduate",
           "cognitive_pattern": "Fortune Telling"
         }
       ]
     },
     "pdt": {
       "core_conflict": {
-        "wish": "渴望被认可为有能力，顺利毕业并拥有有价值的未来",
-        "fear": "害怕失败与被评判、无法自立，担心未来会很糟糕",
+        "wish": "Longing to be recognized as capable, graduating smoothly and having a valuable future",
+        "fear": "Fearing failure and being judged, unable to be self-reliant, worrying the future will be terrible",
         "defense_goal": [
-          "通过回避学校相关情境来降低焦虑",
-          "与他人保持距离以避免比较与羞耻",
-          "通过努力提高成绩与出勤来暂时重建自我价值感"
+          "Reducing anxiety by avoiding school-related situations",
+          "Keeps distance from others to avoid comparison and shame",
+          "Temporarily rebuilds self-worth through working to improve grades and attendance"
         ]
       },
       "object_relations": [
         {
-          "self_representation": "不够好、容易失败的自己",
-          "object_representation": "他人（同伴、家人、老师）是苛刻的评判者与比较者",
-          "linking_affect": "羞耻、恐惧、绝望"
+          "self_representation": "A self that is not good enough and prone to failure",
+          "object_representation": "Others (peers, family, teachers) are harsh judges and comparers",
+          "linking_affect": "Shame, fear,despair"
         }
       ],
       "behavioral_response_patterns": []
@@ -79,27 +79,27 @@
     "het": {
       "existentialism_topic": [
         {
-          "theme": "无意义",
+          "theme": "Meaninglessness",
           "manifestations": [
-            "将学业失败视为“人生被毁”，认为自己“永远无法毕业、无法做值得的事”",
-            "对未来充满绝望与无望"
+            "Seeing academic failure as 'a ruined life', believing one 'will never be able to graduate or do anything worthwhile'",
+            "Full of despair and hopelessness about the future"
           ],
           "outcomes": [
-            "动力显著下降",
-            "逃课与学习回避",
-            "自我评价低下与绝望感增强"
+            "Motivation significantly declining",
+            "Skipping school and study avoidance",
+            "Lowered self-evaluation and increased despair"
           ]
         },
         {
-          "theme": "孤独",
+          "theme": "Loneliness",
           "manifestations": [
-            "与朋友和家人疏远",
-            "虽有支持性朋友但不愿谈及学校相关问题"
+            "Growing distant from friends and family",
+            "Having supportive friends but unwilling to discuss school-related issues"
           ],
           "outcomes": [
-            "社会支持未被利用",
-            "负性情绪维持与加重",
-            "主观孤独感增加"
+            "Social support not yet utilized",
+            "Negative emotions persist and worsen",
+            "Increased subjective sense of Loneliness"
           ]
         }
       ],
@@ -109,43 +109,43 @@
       "exception_events": [],
       "force_field": {
         "positive_force": [
-          "有支持性的朋友可供倾诉（虽暂未开启）",
-          "曾通过努力通过课程，具备一定成功经验的证据基础",
-          "已主动寻求咨询与帮助，态度积极、愿意尝试策略",
-          "能识别并表达自己的触发情境与消极思维，具备自我观察能力"
+          "Having supportive friends to confide in (though not yet approached)",
+          "Has passed courses through effort before, with an evidence base of some success experience",
+          "Has actively sought counseling and help, positive attitude, willing to try strategies",
+          "Able to identify and express one's triggering situations and negative thinking, with self-observation ability"
         ],
         "negative_force": [
-          "灾难化、过度概括、非黑即白等消极认知模式突出",
-          "核心信念“我不够好”“我不会成功”强化自我否定",
-          "逃课与学习回避维持问题循环",
-          "与朋友和家人疏远，外部支持未被使用",
-          "同伴比较与被评价的压力加剧自卑与无望"
+          "Negative cognitive patterns such as catastrophizing, overgeneralization, all-or-nothing stand out",
+          "Core beliefs 'I am not good enough' and 'I will not succeed' reinforcing self-denial",
+          "Skipping school and study avoidance maintaining the problem cycle",
+          "Growing distant from friends and family, external support not yet utilized",
+          "Increasing stress from peer comparison and being judged; inferiority and hopelessness"
         ]
       }
     },
     "bt": {
       "target_behavior": [
         {
-          "behavior": "逃课与学习回避",
+          "behavior": "Skipping school and study avoidance",
           "antecedent": [
-            "上学前或临近学习/备考的时刻",
-            "收到低于预期的成绩后",
-            "看到同伴取得好成绩或表现优异"
+            "Before school or when study/exam time approaches",
+            "after receiving grades below Anticipation",
+            "Seeing peers get good grades or perform excellently"
           ],
-          "core_reason": "在“我不够好/注定失败”的核心信念驱动下产生灾难化与预测未来的认知，强烈焦虑促使其通过回避来减少被评判与失败感",
-          "function": "逃避被认为的失败与负面评价，短期缓解焦虑与羞耻",
-          "consequence": "学业表现进一步下滑、对“无法毕业”的担忧加剧、绝望感增强、日常作息被打乱"
+          "core_reason": "Driven by the core belief 'I am not good enough / doomed to fail', producing catastrophizing and future-predicting cognitions; strong anxiety drives avoidance to reduce being judged and feelings of failure",
+          "function": "Escaping perceived failure and negative evaluation, briefly relieving anxiety and shame",
+          "consequence": "Academic performance declining further, increasing worry about 'being unable to graduate', increased despair, daily routine disrupted"
         },
         {
-          "behavior": "社交退缩与孤立",
+          "behavior": "Social withdrawal and isolation",
           "antecedent": [
-            "看到朋友或同学表现优秀时",
-            "想到他人对自己学业的期望或评价时",
-            "被问及与学校相关的情况时"
+            "When seeing friends or classmates perform well",
+            "When thinking of others' expectations or evaluations of one's studies",
+            "When asked about school-related matters"
           ],
-          "core_reason": "与他人比较触发自卑与无价值感，害怕暴露失败并被评判",
-          "function": "避免比较与负面评价，维持脆弱的自尊与安全感",
-          "consequence": "社会支持未被利用，主观孤独感增加，负性情绪维持并加重"
+          "core_reason": "Comparing with others triggers inferiority and worthlessness; fearing exposure of failure and being judged",
+          "function": "Avoids comparison and negative evaluation, maintaining fragile self-esteem and a sense of safety",
+          "consequence": "Social support not yet utilized, increased subjective loneliness, negative emotions persisting and worsening"
         }
       ]
     }

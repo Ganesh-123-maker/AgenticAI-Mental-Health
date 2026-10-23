@@ -2,73 +2,73 @@
   "basic_info": {
     "static_traits": {
       "age": "20",
-      "name": "林静",
-      "gender": "女",
-      "occupation": "零售店员工",
-      "educational_background": "高中毕业",
-      "marital_status": "单身",
-      "family_status": "独居",
-      "social_status": "有少数密友可倾诉，但他们并不能充分理解其认知扭曲；因对潜在灾难的担忧而经常临时取消与朋友的计划，友谊因此受损",
-      "medical_history": "无显著躯体疾病；以往无类似心理问题的治疗或经历",
-      "language_features": "态度中性，略感焦虑；能清晰表达并愿意配合记录与反思"
+      "name": "Lin Jing",
+      "gender": "Female",
+      "occupation": "Retail store employee",
+      "educational_background": "High school graduate",
+      "marital_status": "Single",
+      "family_status": "Living alone",
+      "social_status": "Has a few close friends to confide in, but they cannot fully understand the cognitive distortions; frequently canceling plans with friends last-minute out of worry about potential disasters, friendships thus damaged",
+      "medical_history": "No significant physical illness; no prior treatment or experience with similar psychological problems",
+      "language_features": "Neutral attitude, slightly Anxious; able to express clearly and willing to cooperate with recording and Reflection"
     },
-    "main_problem": "我倾向于把事情灾难化，尤其在事情不按计划发展时。比如最近汽车抛锚，我立刻觉得它是一辆一文不值的车并且感到不堪重负。这样的灾难化模式在几年前开始，并在压力情境下变得更频繁，导致我避免某些情境或采取极端措施来防止想象中的灾难，同时焦虑增加、决策能力受影响。",
-    "topic": "情绪管理",
-    "core_demands": "当我注意到这些思维模式影响我在工作中的决策并导致焦虑增加时，我决定寻求咨询。",
+    "main_problem": "I tend to catastrophize, especially when things do not go as planned. For example, when my car broke down recently, I immediately felt it was a worthless car and felt overwhelmed. This catastrophizing pattern began years ago and became more frequent under stress, leading me to avoid certain situations or take extreme measures to prevent imagined disasters, while Increased anxiety and impaired decision-making.",
+    "topic": "Emotion management",
+    "core_demands": "When I noticed these thinking patterns affecting my Work decisions and causing Increased anxiety, I decided to seek counseling.",
     "growth_experiences": [
-      "几年前开始出现灾难化思维，在工作压力与经济压力增大的情境下愈发频繁；在面对突发情况（如汽车爆胎）时迅速预设最坏结果，逐渐形成回避与分心的应对习惯。"
+      "Catastrophizing began years ago, becoming more frequent under Work pressure and financial Increased stress; when facing sudden situations (e.g. a car blowout) quickly presuming the worst outcome, gradually forming avoidance and Distraction coping habits."
     ]
   },
   "theory": {
     "cbt": {
       "core_beliefs": [
-        "一旦事情出错就会发展成最坏的情况",
-        "我无法有效应对突发状况"
+        "Once something goes wrong it will develop into the worst case",
+        "I cannot effectively handle sudden situations"
       ],
       "special_situations": [
         {
-          "event": "上班途中汽车因轮胎漏气而抛锚",
-          "conditional_assumptions": "如果出现车辆故障，就意味着车一文不值、问题会难以解决且花费巨大，我会处理不好",
-          "compensatory_strategies": "通过分心（购物）与回避（推迟处理、难以集中工作）来缓解焦虑",
-          "automatic_thoughts": "这辆车一文不值，我修不好，会花很多钱",
+          "event": "Car breaks down from a flat tire on the way to work",
+          "conditional_assumptions": "If a vehicle breakdown occurs, it means the car is worthless, the problem will be hard to solve and very expensive, and I will handle it poorly",
+          "compensatory_strategies": "Relieving Anxiety through Distraction (shopping) and avoidance (delaying handling, struggling to focus at Work)",
+          "automatic_thoughts": "This car is worthless; I cannot fix it; it will cost a lot of money",
           "cognitive_pattern": "Catastrophizing"
         },
         {
-          "event": "在工作中面对挑战或压力任务",
-          "conditional_assumptions": "如果我在工作上处理不顺利，就等于彻底失败，后果会很糟",
-          "compensatory_strategies": "回避某些情境或采取极端措施以预防设想中的灾难",
-          "automatic_thoughts": "事情会彻底失败，我应付不了",
+          "event": "Facing challenging or stressful tasks at work",
+          "conditional_assumptions": "If Work does not go smoothly, it equals total failure with terrible consequences",
+          "compensatory_strategies": "Avoids certain situations or takes extreme measures to prevent imagined disasters",
+          "automatic_thoughts": "Things will fail completely; I cannot cope",
           "cognitive_pattern": "All-or-Nothing Thinking"
         },
         {
-          "event": "面临或担忧财务压力",
-          "conditional_assumptions": "如果出现财务问题，生活会变得不可承受，事情会一团糟",
-          "compensatory_strategies": "用临时的分心方式（购物）来降低焦虑",
-          "automatic_thoughts": "钱不够，接下来会一团糟",
+          "event": "Facing or worrying about financial pressure",
+          "conditional_assumptions": "If financial problems arise, life will become unbearable and things will be a mess",
+          "compensatory_strategies": "Using temporary Distraction (shopping) to lower Anxiety",
+          "automatic_thoughts": "Money is not enough; things will become a mess",
           "cognitive_pattern": "Mental Filtering"
         },
         {
-          "event": "与朋友约定的社交安排临近",
-          "conditional_assumptions": "一旦外出或事情不按计划发展，灾难就会发生，我将无法应对",
-          "compensatory_strategies": "临时取消计划以避免潜在灾难",
-          "automatic_thoughts": "如果出去可能会出事，我会崩溃",
+          "event": "Upcoming social plans agreed with friends",
+          "conditional_assumptions": "Once going out or things do not go as planned, disaster will strike and I will be unable to cope",
+          "compensatory_strategies": "Temporarily cancels plans to avoid potential disaster",
+          "automatic_thoughts": "If I go out something might happen; I would break down",
           "cognitive_pattern": "Overgeneralization"
         }
       ]
     },
     "pdt": {
       "core_conflict": {
-        "wish": "渴望可控与安全、希望被理解与支持",
-        "fear": "害怕失控与最坏结果发生，担心无法承受后果",
+        "wish": "Longs for controllability and safety, hopes to be understood and supported",
+        "fear": "Fearing losing control and worst outcomes happening, worrying about being unable to bear the consequences",
         "defense_goal": [
-          "通过回避与分心来降低焦虑、维持表面上的可控感"
+          "Reducing Anxiety and maintaining a surface sense of control through avoidance and Distraction"
         ]
       },
       "object_relations": [
         {
-          "self_representation": "脆弱且难以应对突发情况的个体",
-          "object_representation": "世界/事件是不可控且充满风险的，他人并不真正理解我",
-          "linking_affect": "焦虑、不安"
+          "self_representation": "A fragile individual who struggles to cope with emergencies",
+          "object_representation": "The world/events as uncontrollable and full of risks; others as not truly understanding me",
+          "linking_affect": "Anxiety, unease"
         }
       ],
       "behavioral_response_patterns": []
@@ -76,34 +76,34 @@
     "het": {
       "existentialism_topic": [
         {
-          "theme": "孤独",
+          "theme": "Loneliness",
           "manifestations": [
-            "独居",
-            "因担忧潜在灾难而临时取消与朋友的计划，友谊受损",
-            "自觉他人难以理解自己的认知扭曲"
+            "Living alone",
+            "Temporarily cancels plans with friends out of worry about potential disaster; friendships are damaged",
+            "Feeling that others can hardly understand one's cognitive distortions"
           ],
           "outcomes": [
-            "社交回避增加",
-            "焦虑加重",
-            "睡眠紊乱"
+            "Increased social avoidance",
+            "Anxiety worsened",
+            "Sleep disturbance"
           ]
         }
       ],
       "contact_model": [
         {
-          "mode": "偏转",
-          "definition": "个体忽略或避开来自内部或外部环境的某个刺激，有意避免直接接触，与”接受“对应。",
+          "mode": "Deflection",
+          "definition": "The individual ignores or avoids a stimulus from the internal or external environment, deliberately avoiding direct contact, corresponding to 'acceptance'.",
           "manifestations": [
-            "在灾难化思维出现时以购物来分心",
-            "试图忽略负性自动思维而非直接面对与加工"
+            "Using shopping as a distraction when catastrophic thoughts appear",
+            "Tries to ignore negative automatic thoughts rather than face and process them directly"
           ]
         },
         {
-          "mode": "回摄",
-          "definition": "个体克制想对其他人或物做出某个行为的冲动，或放弃了向外寻求别人为其做某事，转而对自己做，即个体将原欲对外发出的能量转而对自己，与“冲动”对应。",
+          "mode": "Retroflection",
+          "definition": "The individual restrains the impulse to act toward other people or objects, or gives up seeking others to do something for them and instead does it to themselves; that is, the individual redirects energy originally intended outward toward themselves, corresponding to 'impulse'.",
           "manifestations": [
-            "面对社交计划时临时取消外出，将能量转为自我消耗（担忧、分心）",
-            "在压力情境中不去寻求外部支持，而是独自忍受并以分心方式自我处理"
+            "When facing social plans, cancels outings at the last minute, turning energy into self-exhaustion (worrying, distraction)",
+            "Not seeking external support in stressful situations, instead enduring alone and self-handling with Distraction"
           ]
         }
       ]
@@ -111,56 +111,56 @@
     "pmt": {
       "exception_events": [
         {
-          "target_problem": "在车辆出现故障等突发情境时，来访者通常会灾难化、感到不堪重负，并在工作中难以集中且采取回避行为。",
-          "unique_outcome": "那次只是轮胎漏气，来访者及时将轮胎修好，费用不高，最坏情况并未发生。",
-          "reason": "线索：采取了及时处理的做法并获得事实证据（问题可被快速修复、成本不高），因此这次没有发展为灾难。"
+          "target_problem": "In sudden situations like vehicle breakdowns, the client usually catastrophizes, feels overwhelmed, and struggles to focus at Work with avoidant behavior.",
+          "unique_outcome": "That time it was just a flat tire; the client fixed it promptly, cost not high, the worst case never happened.",
+          "reason": "Clues: took timely action and gained factual evidence (the problem could be quickly fixed, cost not high), hence this time it did not develop into a disaster."
         }
       ],
       "force_field": {
         "positive_force": [
-          "愿意记录与检视自动化思维与证据（现实检验）",
-          "能意识到“最坏情况通常没有发生”的实例",
-          "愿意寻求咨询支持并配合作业"
+          "Willing to record and examine automatic thoughts and evidence (reality testing)",
+          "Able to recognize instances where 'the worst case usually did not happen'",
+          "Willing to seek counseling support and cooperate with homework"
         ],
         "negative_force": [
-          "灾难化、非黑即白与过度概括等认知偏差突出",
-          "回避行为与临时分心（购物）习惯化，导致问题未被加工",
-          "工作中的压力与财务担忧强化负性思维",
-          "焦虑影响决策、注意与睡眠，进而损及人际"
+          "Cognitive biases such as catastrophizing, black-and-white thinking, and overgeneralization are prominent",
+          "Avoidance and temporary Distraction (shopping) Habituation, leaving the problem unprocessed",
+          "Work pressure and Financial worries reinforcing negative thinking",
+          "Anxiety affecting decisions, attention, and sleep, further harming relationships"
         ]
       }
     },
     "bt": {
       "target_behavior": [
         {
-          "behavior": "在压力情境下出现灾难化思维伴随显著焦虑与回避",
+          "behavior": "Catastrophizing with Significant anxiety and avoidance under stressful situations",
           "antecedent": [
-            "工作中的挑战与压力任务",
-            "财务担忧",
-            "突发事件（如汽车轮胎漏气）"
+            "Challenging and stressful tasks at work",
+            "Financial worries",
+            "Sudden incidents (e.g. a leaking car tire)"
           ],
-          "core_reason": "对潜在负面结果的灾难化解释与非黑即白思维，过度聚焦负面线索而忽视客观证据",
-          "function": "逃避不受欢迎的情绪与感知风险，寻求短期缓解",
-          "consequence": "决策能力下降、注意力与工作表现受损、睡眠紊乱、社交回避加重"
+          "core_reason": "Catastrophic interpretation of potential negative outcomes and black-and-white thinking, over-focusing on negative cues while ignoring objective evidence",
+          "function": "Escaping unwelcome emotions and perceived risks, seeking short-term relief",
+          "consequence": "Declining decision-making ability, impaired attention and Work performance, Sleep disturbance, worsening Social avoidance"
         },
         {
-          "behavior": "临时取消与朋友的计划以避免设想中的灾难",
+          "behavior": "Temporarily cancels plans with friends to avoid imagined disasters",
           "antecedent": [
-            "与朋友的社交安排临近",
-            "担心事情不按计划发展"
+            "Social plans with friends approaching",
+            "Worrying things will not go as planned"
           ],
-          "core_reason": "灾难化与过度概括导致对外出情境的最坏预期",
-          "function": "逃避潜在威胁、降低当下焦虑",
-          "consequence": "友谊受损、社交机会减少"
+          "core_reason": "Catastrophizing and overgeneralization leading to worst-case Anticipation of going-out situations",
+          "function": "Escaping potential threats, reducing present Anxiety",
+          "consequence": "Damaged friendships, fewer social opportunities"
         },
         {
-          "behavior": "以购物分心来暂时缓解焦虑",
+          "behavior": "Temporarily relieving Anxiety with shopping Distraction",
           "antecedent": [
-            "灾难化思维与焦虑出现时"
+            "When Catastrophizing and Anxiety appear"
           ],
-          "core_reason": "寻求外部短期刺激以中断负性思维与情绪",
-          "function": "获得短期愉悦与缓解，回避对问题的直接加工",
-          "consequence": "焦虑短期降低但很快反弹，问题未得到解决"
+          "core_reason": "Seeks external short-term stimulation to interrupt negative thoughts and emotions",
+          "function": "Obtains short-term pleasure and relief, avoids directly processing the problem",
+          "consequence": "Anxiety reduced in the short term but quickly rebounding, the problem not yet resolved"
         }
       ]
     }

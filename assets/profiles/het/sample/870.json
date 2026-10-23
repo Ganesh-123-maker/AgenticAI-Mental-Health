@@ -1,115 +1,115 @@
 {
   "basic_info": {
     "static_traits": {
-      "age": "36岁",
-      "name": "张薇",
-      "gender": "女性",
-      "occupation": "秘书",
-      "educational_background": "高中毕业（文凭）",
-      "marital_status": "单身",
-      "family_status": "独居，与3只猫共同生活",
-      "social_status": "社交支持薄弱，因内疚而与亲友疏离",
-      "medical_history": "无明显躯体疾病；既往未出现类似心理问题；未接受过心理治疗或咨询",
-      "language_features": "表达清晰、能自我反思、配合度良好；语速未提及"
+      "age": "36 years old",
+      "name": "Zhang Wei",
+      "gender": "Female",
+      "occupation": "Secretary",
+      "educational_background": "High school graduate (diploma)",
+      "marital_status": "Single",
+      "family_status": "Living alone, living with 3 cats",
+      "social_status": "Weak social support, alienated from relatives and friends due to guilt",
+      "medical_history": "No obvious physical illness; no similar psychological problems before; has not received psychotherapy or counseling",
+      "language_features": "Clear expression, able to self-Reflect, Good cooperation; speech rate Not mentioned"
     },
-    "main_problem": "因三只猫最近都生病，我觉得自己是个糟糕的猫妈妈，这让我非常痛苦并充满内疚。",
-    "topic": "情绪管理",
-    "core_demands": "因猫生病带来的压倒性的痛苦与内疚而求助，希望获得支持与指导。",
+    "main_problem": "Because all three cats have been sick recently, I feel I am a bad cat mother, which makes me very distressed and full of guilt.",
+    "topic": "Emotion management",
+    "core_demands": "Seeks help due to the overwhelming pain and guilt brought by the cat's illness, hoping to obtain support and guidance.",
     "growth_experiences": []
   },
   "theory": {
     "cbt": {
       "core_beliefs": [
-        "我是个糟糕的猫妈妈",
-        "我的失职会伤害我所爱之物"
+        "I am a terrible cat mom",
+        "My negligence will harm what I love"
       ],
       "special_situations": [
         {
-          "event": "三只猫在短时间内先后生病",
-          "conditional_assumptions": "如果我的猫生病了，就说明我没有尽到照护责任",
-          "compensatory_strategies": "不断上网查养猫知识、加倍清洁环境、频繁联系兽医以弥补“过失”",
-          "automatic_thoughts": "都是我的错，我是个糟糕的猫妈妈",
+          "event": "Three cats falling ill one after another in a short time",
+          "conditional_assumptions": "If my cat gets sick, it means I have not fulfilled my caregiving responsibility",
+          "compensatory_strategies": "Constantly searching online for cat-care knowledge, doubling cleaning efforts, frequently contacting the Veterinarian to make up for 'mistakes'",
+          "automatic_thoughts": "It is all my fault,I am a terrible cat mom",
           "cognitive_pattern": "Overgeneralization"
         },
         {
-          "event": "看到猫不舒服或症状加重时",
-          "conditional_assumptions": "好主人应该能更早发现并阻止所有疾病",
-          "compensatory_strategies": "反复自我检讨、以“应该”要求自己做到完美照护",
-          "automatic_thoughts": "我应该更早发现并带它们去看医生",
+          "event": "When seeing the cat uncomfortable or symptoms worsening",
+          "conditional_assumptions": "A good owner should have detected and prevented all diseases earlier",
+          "compensatory_strategies": "Repeatedly self-examines, demands of oneself with 'shoulds' to provide perfect care",
+          "automatic_thoughts": "I should have noticed earlier and taken them to see the Doctor",
           "cognitive_pattern": "\"Should\" Statements"
         },
         {
-          "event": "兽医未指出她有任何过错",
-          "conditional_assumptions": "即使没有明确证据，我也应为负面结果负责",
-          "compensatory_strategies": "忽视中性或正面信息，强化自责与过度归因",
-          "automatic_thoughts": "他们只是没有明说，其实是我让猫生病了",
+          "event": "The Veterinarian has not yet pointed out any fault of hers",
+          "conditional_assumptions": "Even without clear evidence, I should be responsible for negative outcomes",
+          "compensatory_strategies": "Ignoring neutral or positive information, reinforcing self-blame and over-attribution",
+          "automatic_thoughts": "They just did not say it outright; actually I made the cat sick",
           "cognitive_pattern": "Mind Reading"
         },
         {
-          "event": "在工作或生活中想到猫的病情时",
-          "conditional_assumptions": "如果我真的在乎，就不该体验快乐或投入其他事务",
-          "compensatory_strategies": "自我惩罚（回避社交、降低自我照顾），用内疚压制积极体验",
-          "automatic_thoughts": "在它们受苦时我不配开心或专注工作",
+          "event": "When thinking about the cat's illness at work or in life",
+          "conditional_assumptions": "If I truly care, I should not experience happiness or engage in other matters",
+          "compensatory_strategies": "Self-punishment (Avoids socializing, reducing self-care), suppressing positive experiences with guilt",
+          "automatic_thoughts": "While they suffer, I do not deserve to be happy or focus on Work",
           "cognitive_pattern": "Emotional Reasoning"
         }
       ]
     },
     "pdt": {
       "core_conflict": {
-        "wish": "渴望成为可靠且能保护所爱之物的照护者",
-        "fear": "害怕自己的疏忽会伤害所爱之物并被视为不负责任",
+        "wish": "Longs to be a reliable caregiver who can protect what they love",
+        "fear": "Fear that one's negligence will hurt loved ones and be seen as irresponsible",
         "defense_goal": [
-          "通过自责与严格自我要求来避免再次失误",
-          "保持高控制与警觉以获得安全感"
+          "Avoids repeating mistakes through self-blame and strict self-demands",
+          "Maintains high control and vigilance to feel safe"
         ]
       },
       "object_relations": [
         {
-          "self_representation": "内疚、不称职的照护者",
-          "object_representation": "脆弱、依赖且需要被保护的猫（被照料者）",
-          "linking_affect": "内疚、焦虑、失望"
+          "self_representation": "Guilty, an incompetent caregiver",
+          "object_representation": "A fragile, dependent cat that needs protection (the one being cared for)",
+          "linking_affect": "Guilt, anxiety, disappointment"
         }
       ],
       "behavioral_response_patterns": [
         {
-          "trigger_condition": "当被询问“有哪些证据表明你造成了猫的生病”或被鼓励用事实检验自责时",
-          "interpretation": "倾向将不可控的因素理解为自己的失职，并认为必须做到完美照护",
+          "trigger_condition": "When asked 'what evidence is there that you caused the cat's illness' or encouraged to test the self-blame with facts",
+          "interpretation": "Tending to interpret uncontrollable factors as one's own dereliction, and believing one must provide perfect care",
           "defense_mechanism": "sring",
-          "response_instruction": "语气内疚而谨慎，频繁使用“我应该…”“都是我的错”，淡化外部因素，难以接受安慰或中性证据。"
+          "response_instruction": "Guilty and cautious tone, frequently using 'I should...' and 'It is all my fault', downplaying external factors, struggling to accept comfort or neutral evidence."
         }
       ]
     },
     "het": {
       "existentialism_topic": [
         {
-          "theme": "孤独",
+          "theme": "Loneliness",
           "manifestations": [
-            "因内疚而主动疏离朋友与家人",
-            "社交支持薄弱，缺少倾诉渠道"
+            "Actively distances from friends and family out of guilt",
+            "Weak social support; lacks outlets for confiding"
           ],
           "outcomes": [
-            "社交退缩与孤立",
-            "情绪痛苦加剧",
-            "工作与日常功能受损"
+            "Social withdrawal and isolation",
+            "Emotional pain intensifying",
+            "Impaired work and daily functioning"
           ]
         }
       ],
       "contact_model": [
         {
-          "mode": "自我监控",
-          "definition": "个体存在不良的自我反思和反省的能力，包含过多的自我限制和自我苛责，对接触过于小心谨慎",
+          "mode": "Self-monitoring",
+          "definition": "The individual has a poor capacity for self-reflection and introspection, with excessive self-restriction and self-blame, and is overly cautious about contact",
           "manifestations": [
-            "频繁自责并以“我不配开心”限制自己",
-            "用“我应该/必须…”苛责自己",
-            "与他人接触时过度谨慎，倾向退回到自我批评"
+            "Frequently blaming oneself and limiting oneself with 'I do not deserve to be happy'",
+            "Reproaches oneself with 'I should/must...'",
+            "Overly cautious when in contact with others, tends to retreat into self-criticism"
           ]
         },
         {
-          "mode": "回摄",
-          "definition": "个体克制想对其他人或物做出某个行为的冲动，或是放弃了向外寻求别人为其做某事，转而对自己做",
+          "mode": "Retroflection",
+          "definition": "An individual restraining the impulse to act toward other people or things, or giving up seeking others to do something for them and instead doing it to oneself",
           "manifestations": [
-            "本可寻求朋友家人的支持却选择自我隔离",
-            "将关切与能量转为自我惩罚（加重内疚）而非表达求助"
+            "Could have sought support from friends and family but chose self-isolation",
+            "Turns concern and energy into self-punishment (worsening guilt) rather than expressing and seeking help"
           ]
         }
       ]
@@ -124,39 +124,39 @@
       ],
       "force_field": {
         "positive_force": [
-          "与三只猫之间存在稳定的依恋与信任（生病时仍寻求她的安慰）",
-          "能主动采取照护行动（及时就医、查阅养护资料）",
-          "具备自我反思与现实检验的意愿（可识别事实与情绪的不一致）"
+          "Has a stable attachment and trust with the three cats (still seeks her comfort when sick)",
+          "Able to proactively take care actions (seek medical care promptly, look up care materials)",
+          "Willing to engage in self-Reflection and reality testing (able to identify the inconsistency between facts and emotions)"
         ],
         "negative_force": [
-          "个人化、过度概括与读心术等认知偏差加剧内疚",
-          "社交支持薄弱且因内疚而主动隔离",
-          "以“应该”句式苛责自我，追求完美照护",
-          "持续的自我惩罚与情绪化推理导致功能受损（工作、日常、自我照护）"
+          "Cognitive biases such as personalization, overgeneralization, and mind reading intensify guilt",
+          "Weak social support and self-isolates due to guilt",
+          "Berates oneself with 'should' statements, pursuing perfect caregiving",
+          "Persistent self-punishment and emotional reasoning lead to functional impairment (work, daily life, self-care)"
         ]
       }
     },
     "bt": {
       "target_behavior": [
         {
-          "behavior": "过度内疚与自责",
+          "behavior": "Excessive guilt and self-blame",
           "antecedent": [
-            "看到或想到三只猫的病情",
-            "在日常工作或自我照护过程中回忆猫的不适"
+            "Seeing or thinking about the three cats' illness",
+            "Recalling the cat's discomfort during daily Work or self-care"
           ],
-          "core_reason": "将猫的生病个人化为自己的失职，并以“应该”与完美标准要求自己（过度概括、读心术、情绪化推理）",
-          "function": "通过自责获得道德上的控制感与自我惩罚以缓解焦虑",
-          "consequence": "工作表现受损、日常自我照护被打乱、情绪痛苦加剧"
+          "core_reason": "Personalizes the cat's illness as their own dereliction of duty, and demands of themselves with 'should' statements and perfection standards (overgeneralization, mind reading, emotional reasoning)",
+          "function": "Gaining moral control and self-punishment through self-blame to ease Anxiety",
+          "consequence": "Impaired work performance, disrupted daily self-care, intensified emotional distress"
         },
         {
-          "behavior": "社交回避与自我隔离",
+          "behavior": "Social avoidance and self-isolation",
           "antecedent": [
-            "感到强烈内疚时",
-            "朋友或家人尝试联系时"
+            "When feeling intense guilt",
+            "When friends or family try to reach out"
           ],
-          "core_reason": "认为在猫受苦时自己不配享受社交与支持，担心被视为不负责任",
-          "function": "逃避来自他人的接触与可能的评价，减少不适情绪",
-          "consequence": "社会支持进一步下降，孤独与痛苦增加"
+          "core_reason": "Believing one does not deserve socializing and support while the cat suffers, worrying about being seen as irresponsible",
+          "function": "Avoiding contact from others and possible judgment, reducing uncomfortable emotions",
+          "consequence": "Further decline in Social support, increased Loneliness and suffering"
         }
       ]
     }

@@ -2,127 +2,127 @@
   "basic_info": {
     "static_traits": {
       "age": "34",
-      "name": "许贝妮",
-      "gender": "女",
-      "occupation": "退休",
-      "educational_background": "高中毕业",
-      "marital_status": "丧偶",
-      "family_status": "独居于乡间",
-      "social_status": "社交互动有限，仅与少数邻居偶尔交流",
-      "medical_history": "无重大躯体疾病；过去未接受心理治疗；此前未出现类似心理问题",
-      "language_features": "未提及"
+      "name": "Xu Beini",
+      "gender": "Female",
+      "occupation": "Retired",
+      "educational_background": "High school graduate",
+      "marital_status": "Widowed",
+      "family_status": "Living alone in the countryside",
+      "social_status": "Social interaction is limited; only occasionally communicates with a few neighbors",
+      "medical_history": "No major physical illness; has not received psychotherapy in the past; no similar psychological problems before",
+      "language_features": "Not mentioned"
     },
-    "main_problem": "因花园里自己种植的植物不断枯死而感到显著痛苦，并由此认定“我是一个很糟糕的人”。",
-    "topic": "情绪管理",
-    "core_demands": "我意识到关于“因为植物枯死我就是一个很糟糕的人”的想法正在影响我的心理健康和我享受爱好的能力，因此寻求咨询。",
+    "main_problem": "Feeling significant distress because plants she grows in the garden keep dying, and therefore concluding 'I am a terrible person'.",
+    "topic": "Emotion management",
+    "core_demands": "I realize that the thought 'because a plant withered and died, I am a very terrible person' is affecting my mental health and my ability to enjoy hobbies, so I sought counseling.",
     "growth_experiences": [
-      "丧偶后长期独居在乡间，社交互动有限，仅有少数邻居且交流不多。",
-      "几个月前花园里的植物未按预期生长并陆续枯死；她曾尝试调整浇水计划和更换植物类型仍未见效，由此开始将失败归因于自身，感到尴尬而不愿与邻居分享，压力逐渐增加并影响日常与园艺的乐趣。"
+      "After being widowed she has long lived alone in the countryside, with limited social interaction, only a few neighbors and little communication.",
+      "A few months ago garden plants failed to grow as anticipated and died off one after another; she tried adjusting watering schedules and changing plant types without effect, and began attributing failure to herself, feeling embarrassed and unwilling to share with neighbors; stress gradually increased, affecting daily life and gardening enjoyment."
     ]
   },
   "theory": {
     "cbt": {
       "core_beliefs": [
-        "我是一个糟糕的人",
-        "我不够好、做不好事情"
+        "I am a terrible person",
+        "I am not good enough, cannot do things well"
       ],
       "special_situations": [
         {
-          "event": "在尝试照料花园时，看到植物再次枯死",
-          "conditional_assumptions": "如果连植物都养不好，就说明我作为一个人很糟糕、很不称职",
-          "compensatory_strategies": "频繁调整浇水时间并更换植物类型，努力证明自己能够把植物养好",
-          "automatic_thoughts": "为什么我什么都做不好？我就是个失败者/糟糕的人。",
+          "event": "When trying to tend the garden, sees the plants wither and die again",
+          "conditional_assumptions": "If I cannot even keep plants alive, it means I am terrible as a person, very incompetent",
+          "compensatory_strategies": "Frequently adjusts watering times and changes plant types, striving to prove they can keep plants alive well",
+          "automatic_thoughts": "Why can I not do anything well? I am just a failure/a terrible person.",
           "cognitive_pattern": "Overgeneralization"
         },
         {
-          "event": "每当准备开始打理花园时都会感到显著压力",
-          "conditional_assumptions": "如果这次植物仍然不行，就再次证明我不行、我不值得",
-          "compensatory_strategies": "继续更改养护方案（浇水频率、选择不同植物），试图避免再次失败",
-          "automatic_thoughts": "这次恐怕也会失败，我可能什么都不行。",
+          "event": "Whenever preparing to start tending the garden, feels marked pressure",
+          "conditional_assumptions": "If the plants still fail this time, it again proves I am incapable, I am worthless",
+          "compensatory_strategies": "Continuing to change care plans (watering frequency, choosing different plants), trying to avoid failing again",
+          "automatic_thoughts": "This time will probably fail too; I may be good at nothing.",
           "cognitive_pattern": "Fortune Telling"
         },
         {
-          "event": "在反思植物枯死的原因时，忽略环境与外部因素",
-          "conditional_assumptions": "失败主要源自我个人的缺陷，若承认外因则无法解释我的“不称职”",
-          "compensatory_strategies": "把注意力集中在自我责备上，较少考虑土壤与天气等因素",
-          "automatic_thoughts": "都是我的错，我就是不能把任何事情做好。",
+          "event": "When reflecting on why plants died, ignoring environmental and external factors",
+          "conditional_assumptions": "Failure stems mainly from my personal flaws; acknowledging external causes could not explain my 'incompetence'",
+          "compensatory_strategies": "Focuses attention on self-blame; gives less consideration to factors such as soil and weather",
+          "automatic_thoughts": "It is all my fault, I just cannot do anything well.",
           "cognitive_pattern": "Personalization"
         },
         {
-          "event": "回顾园艺的结果时主要关注枯死的植物",
-          "conditional_assumptions": "只有完美养护才算好，任何问题都说明我很差",
-          "compensatory_strategies": "过滤掉自己付出的努力与可能的客观条件，强化自我批评",
-          "automatic_thoughts": "我做得一无是处，根本没有任何值得肯定的地方。",
+          "event": "When reviewing gardening results, mainly focuses on the withered plants",
+          "conditional_assumptions": "Only perfect care counts as good; any problem means I am very bad",
+          "compensatory_strategies": "Filtering out one's efforts and possible objective conditions, reinforcing self-criticism",
+          "automatic_thoughts": "What I do is utterly worthless, with nothing worthy of affirmation at all.",
           "cognitive_pattern": "Mental Filtering"
         }
       ]
     },
     "pdt": {
       "core_conflict": {
-        "wish": "渴望被认可为一个有能力、能照料生命与事物的人",
-        "fear": "害怕被证明不够好、被评价为无能，从而失去自我价值与尊严",
+        "wish": "Longs to be recognized as a capable person who can care for life and things",
+        "fear": "Fearing being proven not good enough, judged as incompetent, thus losing self-worth and dignity",
         "defense_goal": [
-          "通过自我责备与自我贬低来获得一种对失败的“控制感”，避免寻求他人帮助以减少尴尬与被评判的风险"
+          "Gains a kind of 'sense of control' over failure through self-reproach and self-deprecation, avoiding seeking help from others in order to reduce embarrassment and the risk of being judged"
         ]
       },
       "object_relations": [
         {
-          "self_representation": "不称职的失败者、无法妥善照看事物的人",
-          "object_representation": "可能评判自己、让自己尴尬的旁观者（如邻居/他人）",
-          "linking_affect": "羞愧、孤独、无助"
+          "self_representation": "An incompetent failure, someone unable to properly care for things",
+          "object_representation": "Bystanders who may judge oneself and embarrass oneself (such as neighbors / others)",
+          "linking_affect": "Shame, loneliness, helplessness"
         }
       ],
       "behavioral_response_patterns": [
         {
-          "trigger_condition": "当被询问植物枯死的原因或再次面对植物养护失败时",
-          "interpretation": "将失败直接等同于自我价值缺失，认为“一切都是我的错”，强化自我批评（移情：把外在问题内化为自我缺陷）",
-          "defense_mechanism": "转向自身",
-          "response_instruction": "以自责的语气表达，用绝对化词语（如“我就是不行”），回避讨论环境因素或外部条件。"
+          "trigger_condition": "When asked about the cause of a plant dying or facing plant-care failure again",
+          "interpretation": "Directly equating failure with lack of self-worth, believing 'it is all my fault', reinforcing self-criticism (transference: internalizing external problems as self-defects)",
+          "defense_mechanism": "Turning against the self",
+          "response_instruction": "Expressing in a self-blaming tone, using absolute words (e.g., 'I am just incapable'), avoiding discussion of environmental or external conditions."
         }
       ]
     },
     "het": {
       "existentialism_topic": [
         {
-          "theme": "孤独",
+          "theme": "Loneliness",
           "manifestations": [
-            "丧偶后独居乡间、社交互动有限",
-            "因尴尬而不与邻居分享园艺困扰",
-            "在园艺失败中感到自我孤立"
+            "Living alone in the countryside after being widowed, limited social interaction",
+            "Not sharing gardening troubles with neighbors out of embarrassment",
+            "Feeling self-isolated in gardening failures"
           ],
           "outcomes": [
-            "情绪痛苦加重",
-            "自我否定与自尊受损",
-            "兴趣与生活乐趣下降"
+            "Emotional pain worsening",
+            "Self-denial and impaired self-esteem",
+            "Interests and decreased enjoyment of life"
           ]
         },
         {
-          "theme": "无意义",
+          "theme": "Meaninglessness",
           "manifestations": [
-            "原本喜爱的园艺变成持续压力与挫败源",
-            "将个体价值与园艺成败过度绑定，质疑自我意义"
+            "The once-loved gardening becomes a continuous source of stress and frustration",
+            "Overly binds individual worth to gardening success or failure, questioning self-meaning"
           ],
           "outcomes": [
-            "体验到生活乐趣与意义感的下降",
-            "动力减弱、回避分享与求助"
+            "Experiences declining enjoyment of life and sense of meaning",
+            "Reduced motivation, avoiding sharing and seeking help"
           ]
         }
       ],
       "contact_model": [
         {
-          "mode": "回摄",
-          "definition": "个体克制想对其他人或物做出某个行为的冲动，或是放弃了向外寻求别人为其做某事，转而对自己做，即个体将原欲对外发出的能量转而对自己，与“冲动”对应。",
+          "mode": "Retroflection",
+          "definition": "The individual restrains the impulse to act toward other people or objects, or gives up seeking others to do something for them and instead does it to themselves; that is, the individual redirects energy originally intended outward toward themselves, corresponding to 'impulse'.",
           "manifestations": [
-            "因尴尬不与邻居分享园艺问题",
-            "不主动寻求外部资源或支持，将压力转向自责与内耗"
+            "Not sharing gardening problems with neighbors out of embarrassment",
+            "Not actively seeking external resources or support, turning stress into self-blame and internal friction"
           ]
         },
         {
-          "mode": "自我监控",
-          "definition": "个体存在不良的自我反思和反省的能力，包含过多的自我限制和自我苛责，对接触过于小心谨慎，与“自主性”对应。",
+          "mode": "Self-monitoring",
+          "definition": "The individual has a poor capacity for self-reflection and introspection, with excessive self-restriction and self-blame, and is overly cautious about contact, corresponding to 'autonomy'.",
           "manifestations": [
-            "用苛刻标签评价自己（如“我是个糟糕的人”）",
-            "过度将失败归因于自身，限制了探索外部因素的空间"
+            "Evaluates oneself with harsh labels (such as 'I am a terrible person')",
+            "Overly attributes failure to herself, limiting the room to explore external factors"
           ]
         }
       ]
@@ -131,28 +131,28 @@
       "exception_events": [],
       "force_field": {
         "positive_force": [
-          "对问题具有一定的行动意愿，曾尝试调整浇水与更换植物类型",
-          "愿意寻求心理咨询并开放地讨论想法",
-          "附近有少数邻居可作为潜在支持资源"
+          "Has a certain willingness to act on the problem, has tried adjusting watering and changing plant types",
+          "Willing to seek psychological counseling and discuss thoughts openly",
+          "A few neighbors nearby can serve as potential support resources"
         ],
         "negative_force": [
-          "自我标签化与过度概括，常以全局性否定评价自己",
-          "将问题个人化，忽视环境与外部因素（如土壤、天气）",
-          "独居与社交受限带来的孤独与尴尬，降低了求助与资源链接的可能性"
+          "Self-labeling and overgeneralization, often evaluating oneself with global negation",
+          "Personalizes the problem, ignoring environmental and external factors (such as soil, weather)",
+          "Loneliness and embarrassment from living alone and limited social contact, reducing the likelihood of seeking help and linking resources"
         ]
       }
     },
     "bt": {
       "target_behavior": [
         {
-          "behavior": "在照料花园相关情境中出现显著的自责与焦虑（负性自动思维与自我贬低）",
+          "behavior": "Significant self-blame and Anxiety around garden-care situations (negative automatic thoughts and self-deprecation)",
           "antecedent": [
-            "看到或意识到植物再次枯死",
-            "准备开始打理花园时"
+            "Seeing or realizing plants have withered again",
+            "When preparing to start tending the garden"
           ],
-          "core_reason": "将植物的成败过度绑定为个人价值的证明，并在独居与社交受限的背景下强化自我责备与羞愧感",
-          "function": "通过自责来获得对失败的“控制感”，同时回避向外求助以减少尴尬与被评判的风险",
-          "consequence": "兴趣与生活乐趣下降，日常受影响，自信心进一步降低，问题从园艺蔓延到其他领域的自我怀疑"
+          "core_reason": "Over-binding plant success/failure as proof of personal worth, and reinforcing self-reproach and shame against the background of living alone and limited social interaction",
+          "function": "Gains a 'sense of control' over failure through self-blame, while avoiding seeking help outwardly to reduce the risk of embarrassment and being judged",
+          "consequence": "Interests and decreased enjoyment of life, daily life affected, further lowered self-confidence, problems spreading from gardening to Self-doubt in other areas"
         }
       ]
     }

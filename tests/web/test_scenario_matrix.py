@@ -88,7 +88,7 @@ def test_matrix_uncertain_irrelevant_capped(db, backend):
     """UNCERTAIN, irrelevant answer -> loop capped, safe handling."""
     v = _make_course_visit(db, "m3")
     _send(db, backend, "m3", v, "It's about... that thing, you know.")
-    _send(db, backend, "m3", v, "It's still about that thing... 我最近不堪重负。")
+    _send(db, backend, "m3", v, "It's still about that thing... I have been feeling overwhelmed lately.")
     r = _route(db, v)
     assert r in ("UNCERTAIN", "CLEAR", "HIGH-RISK")
     print(f"[PASS] matrix: irrelevant answer -> capped ({r}).")
@@ -106,7 +106,7 @@ def test_matrix_new_risk_disclosed(db, backend):
 def test_matrix_moderate_then_benign(db, backend):
     """MODERATE then benign -> risk remains recorded."""
     v = _make_course_visit(db, "m5")
-    _send(db, backend, "m5", v, "我最近不堪重负，整夜失眠。")
+    _send(db, backend, "m5", v, "I have been feeling overwhelmed lately and have insomnia all night.")
     snap1 = vs.get_visit_psych_context_snapshot(db, v.visit_id)
     assert (snap1.profile_payload.get("longitudinal_risk") or {}).get("severity") == "MODERATE"
     _send(db, backend, "m5", v, "Today was fine.")
