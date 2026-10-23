@@ -116,6 +116,31 @@ def test_moderate_safety_gap_survives_cap(db, backend):
     print("[PASS] MODERATE + safety gap at cap: safety clarification kept / route UNCERTAIN.")
 
 
+def test_safety_question_asked_once_no_loop_state_kept(db, backend):
+    """Safety slot: asked once even beyond the budget; ignoring it twice
+    forms no loop, and proceeding keeps the MODERATE risk state visible
+    (longitudinal floor + trace) for the supervisor and framing."""
+    visit = _start_visit(db, backend)
+    _seed_cap_exhausted(db, visit)
+    r1 = _send(db, backend, visit,
+               "I'm worried about my exams next week and just feel overwhelmed.")
+    assert "professional psychological evaluation" in r1
+
+    r2 = _send(db, backend, visit, "The library was quiet today, nothing much happened.")
+    assert "professional psychological evaluation" not in r2
+    snap2 = _snap(db, visit)
+    pp2 = snap2.profile_payload
+    assert (pp2.get("longitudinal_risk") or {}).get("severity") == "MODERATE"
+    risk_steps = [s for s in pp2.get("latest_agent_trace") or [] if s.get("agent") == "risk_agent"]
+    assert risk_steps and risk_steps[0]["payload"].get("severity") == "MODERATE"
+
+    r3 = _send(db, backend, visit, "I had pasta for lunch and took a walk.")
+    assert "professional psychological evaluation" not in r3
+    state = pp2.get("clarification_state") or {}
+    assert state.get("safety_asked_targets"), "safety ask was not recorded in visit state"
+    print("[PASS] Safety question asked once, no loop on ignores, MODERATE state kept.")
+
+
 def test_request_with_indirect_risk_not_waved_through(db, backend):
     """(b) Direct request + indirect risk statement.
 

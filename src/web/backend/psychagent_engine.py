@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 from sample.agents.base import AgentContext
+from sample.agents.clarification_agent import is_safety_relevant_item
 from sample.agents.pipeline import run_pipeline
 from sample.agents.safety_supervisor import SafetySupervisor
 from sample.backends.base import BackendSettings, ModelBackend
@@ -182,6 +183,18 @@ class PsychAgentWebBackend:
                 current_route = pipeline_res["route"]
                 trail = pipeline_res["trail"]
                 longitudinal_risk = self._updated_longitudinal_risk(pipeline_res)
+                if longitudinal_risk is None and carried_severity:
+                    # Monotonic floor: a turn whose refreshed assessment
+                    # computes nothing worth carrying must not wipe the
+                    # confirmed severity already persisted for this visit
+                    # (the supervisor and later turns rely on it).
+                    prev_longitudinal = (
+                        psych_context.profile_payload.get("longitudinal_risk")
+                        if psych_context and isinstance(psych_context.profile_payload, dict)
+                        else None
+                    )
+                    if isinstance(prev_longitudinal, dict) and prev_longitudinal.get("severity") == carried_severity:
+                        longitudinal_risk = prev_longitudinal
 
                 if current_route == "HIGH-RISK" or pipeline_res.get("verdict") == "ESCALATE":
                     safe_text = pipeline_res.get("response") or (
@@ -203,22 +216,54 @@ class PsychAgentWebBackend:
                     targets = [str(t) for t in (clar_payload.get("target_information") or []) if str(t)]
                     new_targets = [t for t in targets if t not in clar_state["asked_targets"]]
                     risk_severity = str((ctx.risk_output or {}).get("severity", "")).upper()
+                    is_safety_q = bool(targets) and any(
+                        is_safety_relevant_item(t) for t in targets
+                    )
                     direct_request = (
-                        risk_severity == "LOW" and self._looks_like_direct_request(user_query)
+                        not is_safety_q
+                        and risk_severity == "LOW"
+                        and self._looks_like_direct_request(user_query)
                     )
-                    can_ask = (
-                        bool(clar_q)
-                        and bool(clar_payload.get("clarification_required"))
-                        and clar_state["turns"] < self._MAX_CLARIFICATION_TURNS
-                        and bool(new_targets)
-                        and not direct_request
-                    )
+                    if is_safety_q:
+                        # Safety-relevant slots sit outside the intake
+                        # budget (which counts non-safety clarification
+                        # only) but are asked at most once per visit.
+                        fresh_safety = [
+                            t for t in targets
+                            if t not in clar_state["safety_asked_targets"]
+                            and t not in clar_state["asked_targets"]
+                        ]
+                        can_ask = (
+                            bool(clar_q)
+                            and bool(clar_payload.get("clarification_required"))
+                            and bool(fresh_safety)
+                        )
+                    else:
+                        can_ask = (
+                            bool(clar_q)
+                            and bool(clar_payload.get("clarification_required"))
+                            and clar_state["turns"] < self._MAX_CLARIFICATION_TURNS
+                            and bool(new_targets)
+                            and not direct_request
+                        )
                     if can_ask:
-                        new_state = {
-                            "turns": clar_state["turns"] + 1,
-                            "asked_targets": clar_state["asked_targets"] + new_targets,
-                            "proceeded_with_unknowns": clar_state["proceeded_with_unknowns"],
-                        }
+                        if is_safety_q:
+                            new_state = {
+                                "turns": clar_state["turns"],
+                                "asked_targets": clar_state["asked_targets"] + new_targets,
+                                "safety_asked_targets": clar_state["safety_asked_targets"] + [
+                                    t for t in targets
+                                    if t not in clar_state["safety_asked_targets"]
+                                ],
+                                "proceeded_with_unknowns": clar_state["proceeded_with_unknowns"],
+                            }
+                        else:
+                            new_state = {
+                                "turns": clar_state["turns"] + 1,
+                                "asked_targets": clar_state["asked_targets"] + new_targets,
+                                "safety_asked_targets": clar_state["safety_asked_targets"],
+                                "proceeded_with_unknowns": clar_state["proceeded_with_unknowns"],
+                            }
                         return {"text": clar_q, "end": False, "agent_trace": trail, "route": current_route,
                                 "longitudinal_risk": longitudinal_risk,
                                 "clarification_state": new_state,
@@ -233,6 +278,7 @@ class PsychAgentWebBackend:
                     clar_state = {
                         "turns": clar_state["turns"],
                         "asked_targets": clar_state["asked_targets"],
+                        "safety_asked_targets": clar_state["safety_asked_targets"],
                         "proceeded_with_unknowns": unknowns,
                     }
                     trail.append({
@@ -697,11 +743,15 @@ class PsychAgentWebBackend:
     def _clarification_state(psych_context: Optional[VisitPsychContextOut]) -> Dict[str, Any]:
         """Per-visit clarification budget state persisted in profile_payload.
 
-        Returns {"turns": int, "asked_targets": [...],
+        Returns {"turns": int (non-safety clarification turns used),
+        "asked_targets": [...], "safety_asked_targets": [...],
         "proceeded_with_unknowns": [...]} with empty defaults for a fresh
         visit or a snapshot written before this state existed.
         """
-        state: Dict[str, Any] = {"turns": 0, "asked_targets": [], "proceeded_with_unknowns": []}
+        state: Dict[str, Any] = {
+            "turns": 0, "asked_targets": [], "safety_asked_targets": [],
+            "proceeded_with_unknowns": [],
+        }
         if psych_context and isinstance(psych_context.profile_payload, dict):
             raw = psych_context.profile_payload.get("clarification_state")
             if isinstance(raw, dict):
@@ -710,6 +760,9 @@ class PsychAgentWebBackend:
                 except (TypeError, ValueError):
                     state["turns"] = 0
                 state["asked_targets"] = [str(t) for t in (raw.get("asked_targets") or [])]
+                state["safety_asked_targets"] = [
+                    str(t) for t in (raw.get("safety_asked_targets") or [])
+                ]
                 state["proceeded_with_unknowns"] = [
                     str(t) for t in (raw.get("proceeded_with_unknowns") or [])
                 ]

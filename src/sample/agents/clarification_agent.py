@@ -130,6 +130,20 @@ def _template_already_asked(tmpl: Dict[str, Any], transcript: List[Dict[str, Any
     return False
 
 
+_SAFETY_ITEM_HINTS = ("medical", "safety", "suicide", "self_harm", "self-harm", "crisis")
+
+
+def is_safety_relevant_item(text: Any) -> bool:
+    """True when a field/missing-info item concerns client safety.
+
+    Mirrors the safety-topic notion used by the reassessment agent
+    (_SAFETY_TOPIC_HINTS) so all layers agree on what counts as a
+    safety-relevant slot.
+    """
+    lowered = str(text or "").lower()
+    return any(hint in lowered for hint in _SAFETY_ITEM_HINTS)
+
+
 _FALLBACK_FRAME = "background concerning"
 
 
@@ -176,6 +190,52 @@ class ClarificationAgent(Agent):
 
     def __init__(self, backend: Optional[Any] = None) -> None:
         self.backend = backend
+
+    @staticmethod
+    def _safety_question_pending(ctx: AgentContext, resolved_items: List[str], risk_severity: str) -> bool:
+        """True when a safety-relevant slot is unresolved and not yet asked.
+
+        The visit clarification budget bounds ordinary intake only: while
+        a safety-relevant gap is pending at MODERATE/UNCERTAIN/HIGH risk,
+        the cap must not stand the agent down (the pipeline invariant is
+        that such cases stay UNCERTAIN until the safety question has been
+        asked). The safety slot itself is asked at most once -- this
+        returns False once it appears in the transcript or in the
+        caller-reported asked targets, so no loop can form.
+        """
+        if risk_severity not in ("MODERATE", "UNCERTAIN", "HIGH"):
+            return False
+        unc_payload = ctx.uncertainty_output or {}
+        if not isinstance(unc_payload, dict):
+            return False
+        uncertainty_types = unc_payload.get("uncertainty_types", []) or []
+        uncertain_fields = unc_payload.get("uncertain_fields", []) or []
+        missing_info = unc_payload.get("missing_information", []) or []
+        safety_gap = (
+            "safety_status" in uncertainty_types
+            or any(is_safety_relevant_item(str(f)) for f in uncertain_fields)
+            or any(is_safety_relevant_item(str(m)) for m in missing_info)
+        )
+        if not safety_gap:
+            return False
+        safety_template = _CLARIFICATION_TEMPLATES["safety_status"]
+        safety_targets = safety_template["target"]
+        if any(
+            any(t.lower() in str(r).lower() for r in resolved_items)
+            for t in safety_targets
+        ):
+            return False
+        transcript = ctx.prior_transcript or []
+        if _template_already_asked(safety_template, transcript):
+            return False
+        metadata_asked = [
+            str(t) for t in ((ctx.metadata or {}).get("clarification_asked_targets") or [])
+        ]
+        if any(t in metadata_asked for t in safety_targets):
+            return False
+        if any(t in _fallback_asked_targets(transcript) for t in safety_targets):
+            return False
+        return True
 
     def run(self, ctx: AgentContext) -> AgentMessage:
         try:
@@ -245,7 +305,7 @@ class ClarificationAgent(Agent):
             turns_used = int((ctx.metadata or {}).get("clarification_turns_used", 0) or 0)
         except (TypeError, ValueError):
             turns_used = 0
-        if turns_used >= _MAX_CLARIFICATION_TURNS:
+        if turns_used >= _MAX_CLARIFICATION_TURNS and not self._safety_question_pending(ctx, resolved_items, risk_severity):
             remaining: List[str] = []
             for item in list(uncertain_fields) + list(missing_info):
                 if str(item) not in remaining:
@@ -287,9 +347,16 @@ class ClarificationAgent(Agent):
             "safety_status" in uncertainty_types
             or any("medical" in f or "safety" in f for f in uncertain_fields)
         )
+        # A safety-relevant item that appears only in missing_information
+        # (e.g. "medical_history (safety status absent)") also counts as a
+        # safety gap -- but only for prioritization at elevated risk. At
+        # LOW risk the normal clarification order remains (documented
+        # design), so an internal bookkeeping item cannot consume the
+        # safety question on unrelated turns.
+        missing_safety_gap = any(is_safety_relevant_item(str(m)) for m in missing_info)
 
         candidates: List[str] = []
-        if risk_severity in ("HIGH", "MODERATE", "UNCERTAIN") and has_safety_gap:
+        if risk_severity in ("HIGH", "MODERATE", "UNCERTAIN") and (has_safety_gap or missing_safety_gap):
             candidates.append("safety_status")
         if "contradictory_information" in uncertainty_types:
             candidates.append("contradictory_information")
