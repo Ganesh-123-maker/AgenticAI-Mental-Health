@@ -4,15 +4,15 @@
       "age": "61",
       "name": "Chen Diane",
       "gender": "Female",
-      "occupation": "时装设计Student",
+      "occupation": "Fashion design Student",
       "educational_background": "Studies at a well-known fashion design school",
       "marital_status": "Unmarried",
       "family_status": "Moved to New York alone for school",
       "social_status": "Relationships with classmates are tense due to self-criticism; although a few classmates can communicate, it is hard to openly talk about self-critical thoughts",
-      "medical_history": "既往史:not yet出现类似心理问题;not yet接受过心理咨询或治疗;No major physical illness",
-      "language_features": "表达清晰,逻辑Good;能具体描述情绪与思维;配合度高,Positive attitude;但倾向于聚焦负面反馈,negate正面成就"
+      "medical_history": "History: no similar psychological problems yet; no counseling or treatment received yet; No major physical illness",
+      "language_features": "Clear expression, Good logic; able to describe emotions and thoughts specifically; highly cooperative, Positive attitude; but tending to focus on negative feedback and negate positive achievements"
     },
-    "main_problem": "即便拿到5个A和1个B,我仍觉得自己是'差Student',产生without能感与自我批评,这些想法在每次学术评估后都会出现并影响自尊.",
+    "main_problem": "Even with 5 A's and 1 B, I still feel I am a 'bad Student', developing helplessness and self-criticism; these thoughts appear after every academic evaluation and affect self-esteem.",
     "topic": "Academic pressure",
     "core_demands": "I decided to seek counseling because these negative thoughts are affecting my motivation and passion for fashion design.",
     "growth_experiences": []
@@ -20,46 +20,46 @@
   "theory": {
     "cbt": {
       "core_beliefs": [
-        "我是一个糟糕的Student",
-        "我not如我的同学"
+        "I am a terrible Student",
+        "I am not as good as my classmates"
       ],
       "special_situations": [
         {
           "event": "Checks final exam results (5 A's and 1 B)",
-          "conditional_assumptions": "如果成绩not是完美(例如not是全A),就说明I am not good enough/是失败者",
+          "conditional_assumptions": "If grades are not perfect (e.g., not all A's), it means I am not good enough/a failure",
           "compensatory_strategies": "Focuses attention on negative grades for self-criticism; tries to use rational reminders of own achievements to offset negative thoughts; reduces interaction with classmates to avoid being evaluated",
-          "automatic_thoughts": "我是个差Student;一个B就证明I am not good enough",
+          "automatic_thoughts": "I am a bad Student; one B proves I am not good enough",
           "cognitive_pattern": "Mental Filtering"
         },
         {
           "event": "Received feedback on a design project (overall positive, but color-scheme issues were pointed out)",
-          "conditional_assumptions": "如果某一方面被批评,就说明整体能力not足,我not适合这个领域",
-          "compensatory_strategies": "将单点批评视为整体能力缺陷并加倍自我苛责;Social withdrawal以避免进一步的负面评价",
-          "automatic_thoughts": "连颜色都把握not好,我not该待在这里",
+          "conditional_assumptions": "If criticized in one aspect, it means overall ability is insufficient and I am not suited for this field",
+          "compensatory_strategies": "Treating single-point criticism as an overall ability deficit and doubling self-reproach; Social withdrawal to avoid further negative evaluation",
+          "automatic_thoughts": "I cannot even handle colors well; I should not be here",
           "cognitive_pattern": "Overgeneralization"
         },
         {
           "event": "Getting an A grade or receiving positive feedback",
-          "conditional_assumptions": "好的结果只是运气,not能说明我真的有能力",
-          "compensatory_strategies": "negate与贬低正面成就以防止'自满',继续强调not足来'督促'自己",
+          "conditional_assumptions": "Good results are just luck and cannot show I really have ability",
+          "compensatory_strategies": "Negating and belittling positive achievements to prevent 'complacency', continuing to emphasize shortcomings to 'push' oneself",
           "automatic_thoughts": "This is just luck; anyone could get an A",
           "cognitive_pattern": "Disqualifying the Positive"
         },
         {
           "event": "Each time receiving academic assessment (grades or mentor evaluations)",
-          "conditional_assumptions": "如果达not到同学的水平,就not配与他们相处",
+          "conditional_assumptions": "If I cannot reach my classmates' level, I do not deserve to be around them",
           "compensatory_strategies": "Keeps distance from classmates and reduces communication, avoiding being compared and evaluated",
-          "automatic_thoughts": "我永远比not上我的同学",
+          "automatic_thoughts": "I will never measure up to my classmates",
           "cognitive_pattern": "Comparing and Despairing"
         }
       ]
     },
     "pdt": {
       "core_conflict": {
-        "wish": "渴望被认可,被肯定为'有能力的Student'",
-        "fear": "害怕被批评和negate,害怕被视为not够好或not配属于这个领域",
+        "wish": "Longing to be recognized, affirmed as a 'capable Student'",
+        "fear": "Fearing being criticized and negated, fearing being seen as not good enough or not belonging in this field",
         "defense_goal": [
-          "通过自我批评与Social withdrawal来避免外界评价带来的Anxiety与羞耻"
+          "Avoiding Anxiety and shame from outside evaluation through self-criticism and Social withdrawal"
         ]
       },
       "object_relations": [
@@ -72,13 +72,13 @@
       "behavioral_response_patterns": [
         {
           "trigger_condition": "When receiving academic evaluations or criticism (such as negative feedback on color matching)",
-          "interpretation": "他人会把我看作not够好,这些评价证明我not适合该领域",
+          "interpretation": "Others will see me as not good enough; these evaluations prove I am not suited for this field",
           "defense_mechanism": "Projection",
-          "response_instruction": "use稳定而not评判的语气,先Empathy羞耻与Anxiety;再区分事实与推测,邀请具体化证据,并温和地检视'他人在想什么'的依据."
+          "response_instruction": "Use a steady, non-judgmental tone, first Empathy shame and Anxiety; then distinguish facts from speculation, invite specific evidence, and gently examine the basis for 'what others are thinking'."
         },
         {
           "trigger_condition": "When the counselor or others emphasize one's achievements and strengths",
-          "interpretation": "理性上知道有成就,但情绪上without法相信或连接,感觉'空洞'",
+          "interpretation": "Rationally knowing there are achievements, but emotionally unable to believe or connect, feeling 'empty'",
           "defense_mechanism": "Emotional isolation",
           "response_instruction": "Warm tone, slowed pace; guide the identification of bodily sensations and emotion labels, encourage staying with and experiencing them (rather than only rational analysis), and use specific moments of success to carry out emotion focusing and grounding exercises."
         }
@@ -90,13 +90,13 @@
           "theme": "Loneliness",
           "manifestations": [
             "Moved to New York alone for school",
-            "与同学Relationship tension并Social withdrawal",
+            "Relationship tension with classmates and Social withdrawal",
             "Finds it hard to open up to classmates about self-critical thoughts"
           ],
           "outcomes": [
             "Sleep and diet disturbance",
             "Decreased self-esteem",
-            "持续的Self-denial与Anxiety"
+            "Persistent Self-denial and Anxiety"
           ]
         },
         {
@@ -116,8 +116,8 @@
           "mode": "Self-monitoring",
           "definition": "The individual has a poor capacity for self-reflection and introspection, with excessive self-restriction and self-blame, and is overly cautious about contact, corresponding to 'autonomy'.",
           "manifestations": [
-            "not断自我批评与negate成就",
-            "与同学互动中感到'not配',从而Withdrawal",
+            "Constant self-criticism and negating achievements",
+            "Feeling 'undeserving' in interactions with classmates, thus Withdrawal",
             "Overly focuses on negative evaluations and ignores positive feedback"
           ]
         },
@@ -126,15 +126,15 @@
           "definition": "The individual takes in external rules and expectations without digesting them, treating them as their own standards or absolute truths, corresponding to 'rejection'.",
           "manifestations": [
             "Treats 'must be perfect / get all A's' as the absolute standard for measuring self-worth",
-            "把单点批评当作整体negate并内化为自我评价"
+            "Treating single-point criticism as overall negate and internalizing it as self-evaluation"
           ]
         },
         {
           "mode": "Retroflection",
           "definition": "The individual restrains the impulse to act toward other people or objects, or gives up seeking others to do something for them and instead does it to themselves; that is, the individual redirects energy originally intended outward toward themselves, corresponding to 'impulse'.",
           "manifestations": [
-            "在遭遇批评或比较时,not与他人沟通需求与感受,转为对自己苛责",
-            "Social withdrawal,减少与同学交流以避免被评价"
+            "When facing criticism or comparison, not communicating needs and feelings with others, turning to harshness toward oneself",
+            "Social withdrawal, reducing communication with classmates to avoid being evaluated"
           ]
         }
       ]
@@ -142,9 +142,9 @@
     "pmt": {
       "exception_events": [
         {
-          "target_problem": "在收到学术评估时,来访者通常会只关注负面部分(如一个B或批评),迅速产生Self-denial与失败感,随后影响睡眠,饮食与社交.",
-          "unique_outcome": "在那次查看期末成绩的当下,来访者曾短暂为5个A感到开心与自豪,并not yet立即陷入自我批评.",
-          "reason": "not同情境/理解:先注意到多个A并允许自己承认成就;当时灾难化与过滤性思维尚not yet占据全部注意力,因此出现了短暂的积极体验."
+          "target_problem": "When receiving academic evaluations, the client usually focuses only on the negative parts (such as a B or criticism), quickly developing Self-denial and a sense of failure, which then affects sleep, diet, and social life.",
+          "unique_outcome": "In the moment of checking final grades that time, the client briefly felt happy and proud of the 5 A's, and did not immediately fall into self-criticism.",
+          "reason": "Different situation/understanding: first noticing the multiple A's and allowing oneself to acknowledge achievement; at the time catastrophic and filtering thinking had not yet occupied all attention, so a brief positive experience appeared."
         }
       ],
       "force_field": {
@@ -154,44 +154,44 @@
           "Can acknowledge and experience one's own achievements in brief moments"
         ],
         "negative_force": [
-          "设定过高,僵化的标准,将not完美视为失败",
-          "心理过滤与过度概括,negate正向反馈",
-          "自我批评与Social withdrawal,减少外界支持",
-          "学术评估引发的Anxiety与反刍,导致Sleep and diet disturbance"
+          "Setting excessively high, rigid standards, viewing imperfection as failure",
+          "Mental filtering and overgeneralization, negating positive feedback",
+          "Self-criticism and Social withdrawal, reducing outside support",
+          "Anxiety and rumination triggered by academic evaluation, leading to Sleep and diet disturbance"
         ]
       }
     },
     "bt": {
       "target_behavior": [
         {
-          "behavior": "过度聚焦负面学术反馈并进行Self-denial(反复自我批评与失败化自我标签)",
+          "behavior": "Excessively focusing on negative academic feedback with Self-denial (repeated self-criticism and failure-oriented self-labels)",
           "antecedent": [
             "Checking grades (e.g. 5 As and 1 B)",
             "Receiving project feedback from mentors / judges",
             "Any academic assessment situation"
           ],
-          "core_reason": "对完美的高标准与非黑即白的评价方式,将单点负面信息泛化为整体not够好",
-          "function": "逃避失败感与被negate的可能性,试图通过自我苛责来维持对进步的控制感",
-          "consequence": "Decreased self-esteem,Study motivation impaired;Persistent anxiety与反刍,影响睡眠与饮食"
+          "core_reason": "High standards for perfection and black-and-white evaluation, generalizing single-point negative information into overall not-good-enough",
+          "function": "Avoiding the sense of failure and the possibility of being negated, trying to maintain a sense of control over progress through self-reproach",
+          "consequence": "Decreased self-esteem, Study motivation impaired; Persistent anxiety and rumination, affecting sleep and diet"
         },
         {
-          "behavior": "与同学的Social withdrawal与回避(减少交流,觉得not配与同学相处)",
+          "behavior": "Social withdrawal and avoidance with classmates (reducing communication, feeling undeserving of being around classmates)",
           "antecedent": [
-            "在成绩或反馈后想到自己'not如同学'",
+            "Thinking of oneself as 'not as good as classmates' after grades or feedback",
             "Occasions requiring discussing studies or presenting works with classmates"
           ],
-          "core_reason": "比较与despair引发的羞耻与Self-doubt,担心被评价或暴露not足",
-          "function": "逃避被比较与被负面评价的风险,短期降低Anxiety",
-          "consequence": "Interpersonal tension,Decreased support,Loneliness感上升,进一步削弱自信"
+          "core_reason": "Shame and Self-doubt triggered by comparison and despair, worrying about being evaluated or exposing shortcomings",
+          "function": "Avoiding the risk of being compared and negatively evaluated, reducing Anxiety in the short term",
+          "consequence": "Interpersonal tension, Decreased support, rising Loneliness, further weakening self-confidence"
         },
         {
           "behavior": "Sleep and diet patterns disturbed (difficulty falling asleep, appetite changes)",
           "antecedent": [
             "After receiving academic evaluation, ruminates and self-criticizes",
-            "在面对即将到来的评价时Anticipation负面结果"
+            "Anticipating negative outcomes when facing upcoming evaluations"
           ],
-          "core_reason": "持续反刍与Anxiety激活生理唤醒,干扰节律",
-          "function": "without效的情绪调节尝试(通过反刍试图获得确定感)",
+          "core_reason": "Persistent rumination and Anxiety activating physiological arousal, disrupting rhythms",
+          "function": "Ineffective emotion-regulation attempts (trying to gain certainty through rumination)",
           "consequence": "Physical and mental exhaustion and declining concentration further affect academic performance and interpersonal interaction"
         }
       ]
