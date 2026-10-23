@@ -9,8 +9,8 @@ Core Principles (Mandatory):
 5) Output Format: Output must be and only be a valid JSON object; no non-JSON text.
 
 ### 1. Evaluation Task
-Evaluate performance on 【Attuned to Client's Inner World (attuned to client‘s inner world)】.
-The JSON item key is strictly defined as: attuned to client‘s inner world
+Evaluate performance on [Attuned to Client's Inner World (attuned to client's inner world)].
+The JSON item key is strictly defined as: attuned to client's inner world
 
 ### 2. Evaluation Criteria
 [Evaluation Question]:
@@ -33,7 +33,7 @@ Output only a JSON object containing solely key 'items'; items length must be 1:
 {
   "items": [
     {
-      "item": "attuned to client‘s inner world",
+      "item": "attuned to client's inner world",
       "evidence_pos": [],
       "evidence_neg": [],
       "thought": "No evidence->4",

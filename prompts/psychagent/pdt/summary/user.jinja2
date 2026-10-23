@@ -6,7 +6,7 @@
 {% if client_info -%}
 {% set info = client_info.static_traits or {} -%}
 {% macro line(label, value) -%}
-- {{ label }}：{{ value | default('Unknown', true) }}
+- {{ label }}:{{ value | default('Unknown', true) }}
 {%- endmacro -%}
 1. Basic Information
 {{ line('Name', info.name) }}
@@ -98,16 +98,16 @@
 {%- for session in history %}
 
 [Session {{ loop.index }}]
-▶ Stage：{{ session.session_stage }}
-▶ Dialogue Summary：{{ session.session_summary_abstract }}
+▶ Stage:{{ session.session_stage }}
+▶ Dialogue Summary:{{ session.session_summary_abstract }}
 {%- if session.client_state_analysis %}
 
 ▶ Client State Analysis:
-- Affective State：{{ session.client_state_analysis.affective_state }}
+- Affective State:{{ session.client_state_analysis.affective_state }}
 - Subconscious Manifestation: {{ session.client_state_analysis.subconscious_manifestation }}
-- Behavioral Patterns：{{ session.client_state_analysis.behavioral_patterns }}
-- Therapeutic Alliance：{{ session.client_state_analysis.therapeutic_alliance }}
-- Unresolved Points / Tensions：{{ session.client_state_analysis.unresolved_points_or_tensions }}
+- Behavioral Patterns:{{ session.client_state_analysis.behavioral_patterns }}
+- Therapeutic Alliance:{{ session.client_state_analysis.therapeutic_alliance }}
+- Unresolved Points / Tensions:{{ session.client_state_analysis.unresolved_points_or_tensions }}
 {%- endif %}
 
 {%- endfor %}

@@ -25,7 +25,7 @@ Please assign a score from 0 to 4 to each item in the [Evaluation Items List] ac
 
 Scoring Rules (Mandatory - evaluate evidence first, then assign score):
 
-【1. Evidence Extraction (Must quote original text verbatim, no paraphrasing)】
+[1. Evidence Extraction (Must quote original text verbatim, no paraphrasing)]
 For each item, extract from the dialogue:
 - evidence_pos: Verbatim snippets directly supporting the fulfillment of this item (maximum 2)
 - evidence_neg: Verbatim snippets directly contradicting or showing failure of this item (maximum 2)
@@ -33,7 +33,7 @@ Requirements:
 - Paste only verbatim dialogue sentences or continuous short snippets; no paraphrasing or summarizing.
 - If no relevant content is found, the array must be empty [].
 
-【2. Item Key Elements List (For verifying coverage, mandatory)】
+[2. Item Key Elements List (For verifying coverage, mandatory)]
 1) Goal and Agenda Alignment Key Elements:
    - Identifies the explicit topic / goal / priority to address in this session
    - Aligns with client (seeking confirmation / joint choice) rather than unilaterally imposing agenda
@@ -43,7 +43,7 @@ Requirements:
    - Explicit next steps / homework / next session plan (made as concrete and actionable as possible)
    - If client expresses disagreement or confusion, counselor adjusts plan or clarifies
 
-【3. Score Gating (Mandatory to prevent score inflation)】
+[3. Score Gating (Mandatory to prevent score inflation)]
 A) Default score = 2
 - If evidence is insufficient, difficult to determine, or mixed: assign 2.
 
