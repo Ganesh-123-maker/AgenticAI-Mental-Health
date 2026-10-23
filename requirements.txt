@@ -16,4 +16,4 @@ openai>=1.0.0
 
 # Testing & Quality Assurance
 pytest>=8.0.0
-pytest-asyncio>=0.23  # required by the @pytest.mark.asyncio tests (test_phase8, test_multi_agent_eval); without it CI fails with "async def functions are not natively supported"
+pytest-asyncio==0.23.7  # pinned to the locally verified version; required by the @pytest.mark.asyncio tests (test_phase8, test_multi_agent_eval); without it CI fails with "async def functions are not natively supported"
