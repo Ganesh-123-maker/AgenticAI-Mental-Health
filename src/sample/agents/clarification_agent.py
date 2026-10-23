@@ -54,6 +54,22 @@ _FIELD_DISPLAY_PHRASES: Dict[str, str] = {
     "safety_status": "how safe you have been feeling",
 }
 
+
+def _base_field_name(target: Any) -> str:
+    """Strip a trailing parenthetical annotation from a field reference.
+
+    missing_information items arrive annotated, e.g.
+    "known_static_traits (not populated)" or
+    "main_problem (not in profile or context)". The annotation is internal
+    bookkeeping: display-phrase lookup and asked/resolved matching must
+    use the base field name, or the annotated string leaks into
+    user-visible text (as a raw key or the vague "what you described").
+    """
+    text = str(target or "").strip()
+    if text.endswith(")") and " (" in text:
+        return text[: text.rfind(" (")].strip()
+    return text
+
 _CLARIFICATION_TEMPLATES: Dict[str, Dict[str, Any]] = {
     "safety_status": {
         "questions": [
@@ -394,20 +410,21 @@ class ClarificationAgent(Agent):
             break
 
         def _field_asked(field: str) -> bool:
+            base = _base_field_name(field).lower()
             return any(
-                str(field).lower() == str(at).lower() or str(field).lower() in str(at).lower()
+                base == _base_field_name(at).lower() or base in _base_field_name(at).lower()
                 for at in asked_targets
             )
 
         if selected_template is None:
             candidate_fields = [
                 f for f in uncertain_fields
-                if not _target_resolved([str(f)]) and not _field_asked(str(f))
+                if not _target_resolved([_base_field_name(f)]) and not _field_asked(str(f))
             ]
             if not candidate_fields:
                 candidate_fields = [
                     m for m in missing_info
-                    if not _target_resolved([str(m)]) and not _field_asked(str(m))
+                    if not _target_resolved([_base_field_name(m)]) and not _field_asked(str(m))
                 ]
             if not candidate_fields:
                 payload = {
@@ -427,7 +444,7 @@ class ClarificationAgent(Agent):
                     payload=payload,
                 )
             target_str = candidate_fields[0]
-            display_target = _FIELD_DISPLAY_PHRASES.get(str(target_str), "what you described")
+            display_target = _FIELD_DISPLAY_PHRASES.get(_base_field_name(target_str), "what you described")
             questions = [f"Regarding what you mentioned, could you tell me more about the background concerning {display_target}?"]
             target_info = [str(target_str)]
             priority = unc_priority

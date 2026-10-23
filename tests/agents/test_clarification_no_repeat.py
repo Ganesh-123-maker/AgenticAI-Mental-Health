@@ -122,3 +122,57 @@ def test_visit_cap_stands_down_and_lists_unknowns():
     assert "main_problem" in payload["target_information"]
     assert "budget" in payload["reasoning_summary"].lower()
     print("[PASS] At the visit cap the agent stands down and lists remaining unknowns.")
+
+
+def _run_with_uncertainty(uncertainty, metadata=None, transcript=None):
+    ctx = AgentContext(
+        case_id="annotated",
+        modality="cbt",
+        current_message="I can't sleep at night.",
+        prior_transcript=transcript or [],
+        metadata=metadata or {},
+    )
+    ctx.uncertainty_output = uncertainty
+    ctx.risk_output = {"severity": "LOW"}
+    return ClarificationAgent().run(ctx).payload
+
+
+def test_annotated_target_uses_base_display_phrase():
+    # missing_information items arrive annotated; the fallback question
+    # must be phrased from the BASE field's display phrase. Before this
+    # fix, "known_static_traits (not populated)" missed the phrase map
+    # and surfaced as the vague "what you described".
+    payload = _run_with_uncertainty({
+        "status": "UNCERTAIN",
+        "uncertainty_types": ["primary_concern"],
+        "uncertain_fields": [],
+        "missing_information": ["known_static_traits (not populated)"],
+        "clarification_required": True,
+        "priority": "MEDIUM",
+    })
+    question = payload["question"]
+    assert payload["clarification_required"] is True
+    assert "your background" in question
+    assert "known_static_traits" not in question
+    assert "not populated" not in question
+    assert "what you described" not in question
+    print("[PASS] Annotated targets render via their base field's display phrase.")
+
+
+def test_annotated_variant_of_asked_field_is_not_reasked():
+    # The base field was already asked; its annotated variant must be
+    # recognized as the same slot, not asked again in annotated form.
+    payload = _run_with_uncertainty(
+        {
+            "status": "UNCERTAIN",
+            "uncertainty_types": ["primary_concern"],
+            "uncertain_fields": [],
+            "missing_information": ["known_static_traits (not populated)"],
+            "clarification_required": True,
+            "priority": "MEDIUM",
+        },
+        metadata={"clarification_asked_targets": ["known_static_traits"]},
+    )
+    assert payload["question"] == "" or "known_static_traits" not in str(payload["target_information"])
+    assert "your background" not in payload["question"]
+    print("[PASS] An annotated variant of an already-asked field is not re-asked.")
