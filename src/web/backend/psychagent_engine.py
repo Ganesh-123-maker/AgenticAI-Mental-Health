@@ -44,6 +44,11 @@ SESSION_FOCUS_DEFAULT: List[str] = [
 
 
 class PsychAgentWebBackend:
+    # Per-visit clarification budget in the web path: at most this many
+    # turns may be answered with an intake clarification question before
+    # the conversation proceeds to counseling with what is known.
+    _MAX_CLARIFICATION_TURNS = 2
+
     def __init__(
         self,
         *,
@@ -158,6 +163,10 @@ class PsychAgentWebBackend:
                 if carried_severity:
                     ctx.metadata["carried_risk_severity"] = carried_severity
 
+                clar_state = self._clarification_state(psych_context)
+                ctx.metadata["clarification_turns_used"] = clar_state["turns"]
+                ctx.metadata["clarification_asked_targets"] = list(clar_state["asked_targets"])
+
                 pipeline_res = run_pipeline(
                     ctx,
                     clarification_answer=clarification_answer,
@@ -182,17 +191,62 @@ class PsychAgentWebBackend:
                         "I am here to support you safely."
                     )
                     return {"text": safe_text, "end": False, "agent_trace": trail, "route": current_route,
-                            "longitudinal_risk": longitudinal_risk}
+                            "longitudinal_risk": longitudinal_risk,
+                            "clarification_state": clar_state,
+                            "reply_source": "template", "reply_model": None}
 
                 if current_route == "UNCERTAIN":
                     clar_payload = ctx.clarification_output or {}
                     clar_q = clar_payload.get("question")
                     if not clar_q and clar_payload.get("questions"):
                         clar_q = clar_payload["questions"][0]
-                    if not clar_q:
-                        clar_q = "Could you tell me a little more about what has been happening with that situation?"
-                    return {"text": clar_q, "end": False, "agent_trace": trail, "route": current_route,
-                            "longitudinal_risk": longitudinal_risk}
+                    targets = [str(t) for t in (clar_payload.get("target_information") or []) if str(t)]
+                    new_targets = [t for t in targets if t not in clar_state["asked_targets"]]
+                    risk_severity = str((ctx.risk_output or {}).get("severity", "")).upper()
+                    direct_request = (
+                        risk_severity == "LOW" and self._looks_like_direct_request(user_query)
+                    )
+                    can_ask = (
+                        bool(clar_q)
+                        and bool(clar_payload.get("clarification_required"))
+                        and clar_state["turns"] < self._MAX_CLARIFICATION_TURNS
+                        and bool(new_targets)
+                        and not direct_request
+                    )
+                    if can_ask:
+                        new_state = {
+                            "turns": clar_state["turns"] + 1,
+                            "asked_targets": clar_state["asked_targets"] + new_targets,
+                            "proceeded_with_unknowns": clar_state["proceeded_with_unknowns"],
+                        }
+                        return {"text": clar_q, "end": False, "agent_trace": trail, "route": current_route,
+                                "longitudinal_risk": longitudinal_risk,
+                                "clarification_state": new_state,
+                                "reply_source": "template", "reply_model": None}
+                    # Otherwise proceed to counseling with what is known:
+                    # the visit budget is exhausted, the slot was already
+                    # asked, the clarification agent stood down, or the
+                    # user made a direct low-risk request that should be
+                    # answered rather than held behind intake. Remaining
+                    # unknowns are noted in the persisted state and trail.
+                    unknowns = sorted(set(clar_state["proceeded_with_unknowns"]) | set(targets))
+                    clar_state = {
+                        "turns": clar_state["turns"],
+                        "asked_targets": clar_state["asked_targets"],
+                        "proceeded_with_unknowns": unknowns,
+                    }
+                    trail.append({
+                        "agent": "web_engine",
+                        "step": "clarification_budget",
+                        "action": "proceed_to_counseling",
+                        "reason": (
+                            "direct_low_risk_request" if direct_request
+                            else "budget_exhausted" if clar_state["turns"] >= self._MAX_CLARIFICATION_TURNS
+                            else "clarification_stood_down_or_repeat"
+                        ),
+                        "unknowns": unknowns,
+                    })
+                    current_route = "CLEAR"
 
                 suggested_skills: List[Dict[str, Any]] = []
                 if user_query:
@@ -240,8 +294,11 @@ class PsychAgentWebBackend:
                         if "false reassurance" in rationale.lower():
                             text = text.replace("Everything will be completely fine.", "We will take this one step at a time.")
 
+                reply_source, reply_model = self._reply_source()
                 return {"text": text, "end": should_end, "agent_trace": trail, "route": current_route,
-                        "longitudinal_risk": longitudinal_risk}
+                        "longitudinal_risk": longitudinal_risk,
+                        "clarification_state": clar_state,
+                        "reply_source": reply_source, "reply_model": reply_model}
 
             suggested_skills: List[Dict[str, Any]] = []
             if user_query:
@@ -269,7 +326,9 @@ class PsychAgentWebBackend:
             raw = await self._chat_once(messages)
             text, should_end = self._normalize_output_with_end(raw)
             if text:
-                return {"text": text, "end": should_end}
+                reply_source, reply_model = self._reply_source()
+                return {"text": text, "end": should_end,
+                        "reply_source": reply_source, "reply_model": reply_model}
             raise RuntimeError("empty response from PsychAgent prompt chain")
         except Exception as exc:
             self._logger.warning("PsychAgent prompt chain failed, falling back to baseline prompt: %s", exc)
@@ -277,7 +336,9 @@ class PsychAgentWebBackend:
             text, should_end = self._normalize_output_with_end(raw)
             if not text:
                 raise RuntimeError("empty response from fallback prompt")
-            return {"text": text, "end": should_end}
+            reply_source, reply_model = self._reply_source()
+            return {"text": text, "end": should_end,
+                    "reply_source": reply_source, "reply_model": reply_model}
 
     async def _chat_once(self, messages: List[Dict[str, str]]) -> str:
         return await self._backend.chat_text(
@@ -631,6 +692,59 @@ class PsychAgentWebBackend:
                 continue
             transcript.append({"role": message.role, "content": content})
         return transcript
+
+    @staticmethod
+    def _clarification_state(psych_context: Optional[VisitPsychContextOut]) -> Dict[str, Any]:
+        """Per-visit clarification budget state persisted in profile_payload.
+
+        Returns {"turns": int, "asked_targets": [...],
+        "proceeded_with_unknowns": [...]} with empty defaults for a fresh
+        visit or a snapshot written before this state existed.
+        """
+        state: Dict[str, Any] = {"turns": 0, "asked_targets": [], "proceeded_with_unknowns": []}
+        if psych_context and isinstance(psych_context.profile_payload, dict):
+            raw = psych_context.profile_payload.get("clarification_state")
+            if isinstance(raw, dict):
+                try:
+                    state["turns"] = int(raw.get("turns", 0) or 0)
+                except (TypeError, ValueError):
+                    state["turns"] = 0
+                state["asked_targets"] = [str(t) for t in (raw.get("asked_targets") or [])]
+                state["proceeded_with_unknowns"] = [
+                    str(t) for t in (raw.get("proceeded_with_unknowns") or [])
+                ]
+        return state
+
+    # General request/question forms (no topic vocabulary): a message in
+    # one of these forms asks for something — an exercise, an explanation,
+    # information — rather than disclosing intake information.
+    _DIRECT_REQUEST_PREFIXES = (
+        "walk me through", "show me", "teach me", "guide me", "help me",
+        "give me", "tell me how", "explain", "how do i", "how can i",
+        "how should i", "can you", "could you", "would you", "please",
+        "let's", "lets ", "i want to", "i'd like to", "i would like to",
+    )
+    _QUESTION_STARTERS = {
+        "what", "how", "why", "when", "where", "who", "which",
+        "can", "could", "is", "are", "do", "does",
+    }
+
+    @classmethod
+    def _looks_like_direct_request(cls, text: Optional[str]) -> bool:
+        msg = str(text or "").strip().lower()
+        if not msg:
+            return False
+        if any(msg.startswith(p) for p in cls._DIRECT_REQUEST_PREFIXES):
+            return True
+        first = msg.split(" ", 1)[0].strip("?!.,")
+        return msg.endswith("?") and first in cls._QUESTION_STARTERS
+
+    def _reply_source(self) -> tuple:
+        """How the counseling reply was produced: the dummy backend emits
+        templated text; a real model backend is an LLM (model id included)."""
+        if getattr(self._baseline_config, "backend", "") == "dummy":
+            return "template", None
+        return "llm", getattr(self._baseline_config, "model", None)
 
     @staticmethod
     def _clarification_pending(psych_context: Optional[VisitPsychContextOut]) -> bool:

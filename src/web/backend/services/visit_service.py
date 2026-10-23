@@ -822,6 +822,12 @@ async def send_visit_message(
             snapshot["profile_payload"]["latest_route"] = assistant_payload["route"]
         if "longitudinal_risk" in assistant_payload:
             snapshot["profile_payload"]["longitudinal_risk"] = assistant_payload["longitudinal_risk"]
+        if "clarification_state" in assistant_payload:
+            snapshot["profile_payload"]["clarification_state"] = assistant_payload["clarification_state"]
+        if "reply_source" in assistant_payload:
+            snapshot["profile_payload"]["latest_reply_source"] = assistant_payload["reply_source"]
+        if "reply_model" in assistant_payload:
+            snapshot["profile_payload"]["latest_reply_model"] = assistant_payload["reply_model"]
     save_visit_psych_context_snapshot(db, visit.visit_id, snapshot)
 
     if should_auto_close:
