@@ -2,7 +2,7 @@
   "basic_info": {
     "static_traits": {
       "age": "39",
-      "name": "迪安娜",
+      "name": "Diana",
       "gender": "Female",
       "occupation": "High school student",
       "educational_background": "就读私立High school并修读大学学分课程",
@@ -89,11 +89,11 @@
         {
           "theme": "Loneliness",
           "manifestations": [
-            "为专注奖学金申请而减少与朋友相处，避免谈及学业与财务担忧，感到“真的很Loneliness”"
+            "为专注奖学金申请而减少与朋友相处，避免谈及学业与Financial worries，感到“真的很Loneliness”"
           ],
           "outcomes": [
             "Increased sense of loneliness",
-            "压力加剧",
+            "Increasing stress",
             "Decreased drive"
           ]
         },
@@ -104,7 +104,7 @@
           ],
           "outcomes": [
             "Increased anxiety",
-            "回避尝试新策略",
+            "Avoiding trying new strategies",
             "Excessive control and planning disrupting daily routines"
           ]
         }
@@ -125,7 +125,7 @@
           "manifestations": [
             "Avoiding discussing academic and financial worries with friends",
             "Turning the need to seek support into self-pressure and completing the application alone",
-            "社交隔离"
+            "Social isolation"
           ]
         },
         {
@@ -142,7 +142,7 @@
       "exception_events": [],
       "force_field": {
         "positive_force": [
-          "学业表现Good，具备一定的学习与自我管理能力",
+          "学业表现Good，具备一定的Learning与自我管理能力",
           "Has a few friends they can reach out to"
         ],
         "negative_force": [
@@ -163,7 +163,7 @@
           ],
           "core_reason": "对“without法获得奖学金”的灾难化预测与过度概括",
           "function": "试图获得确定性与控制感，以缓解not确定性带来的Anxiety",
-          "consequence": "日常作息被打乱、压力加剧、Decreased drive"
+          "consequence": "Daily routine disrupted、Increasing stress、Decreased drive"
         },
         {
           "behavior": "Avoiding or delaying scholarship applications",
@@ -171,7 +171,7 @@
             "When preparing or submitting scholarship application materials",
             "When facing the application process and deadlines"
           ],
-          "core_reason": "Self-doubt与对Being rejected的恐惧（由过度概括与预测not yet来驱动）",
+          "core_reason": "Self-doubt与对Being rejected的Fear（由过度概括与预测not yet来驱动）",
           "function": "Escaping the pain of failure and rejection",
           "consequence": "Application progress blocked, may miss the opportunity"
         },

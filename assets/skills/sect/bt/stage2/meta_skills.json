@@ -2,7 +2,7 @@
     "898": {
         "skill_id": "898",
         "skill_name": "Exposure techniques",
-        "skill_description": "在控制条件下系统让来访者面对引发恐惧或Anxiety的刺激，通过实景或想象暴露逐步减少回避与Anxiety反应。适用于恐惧症、Anxiety、强迫等问题；需取得知情同意、做好安全评估，并常与其他Intervention联合以巩固疗效。",
+        "skill_description": "在控制条件下系统让来访者面对引发Fear或Anxiety的刺激，通过实景或想象暴露逐步减少回避与Anxiety反应。适用于Fear症、Anxiety、强迫等问题；需取得知情同意、做好安全评估，并常与其他Intervention联合以巩固疗效。",
         "parent_ids": [
             "916",
             "898"
@@ -11,7 +11,7 @@
     },
     "899": {
         "skill_id": "899",
-        "skill_name": "眼动脱敏与再加工治疗",
+        "skill_name": "Eye movement desensitization and reprocessing therapy",
         "skill_description": "EMDRConfluence想象暴露、认知重建与节律性眼动/双侧刺激，促进对创伤记忆的再加工以缓解PTSD等症状，也用于Anxiety、恐慌等。实施需重视来访者安全，治疗师须经系统训练与督导，以妥善处理可能出现的强烈反应。",
         "parent_ids": [
             "916",
@@ -32,7 +32,7 @@
     },
     "901": {
         "skill_id": "901",
-        "skill_name": "果断训练",
+        "skill_name": "Assertiveness training",
         "skill_description": "教会来访者在尊重他人权利与感受前提下有效表达需求与立场，替代not果断或攻击性模式。结合示范、排练、反馈与认知重建，挑战消极自我陈述与信念，常在团体中实施并需考虑文化敏感性。",
         "parent_ids": [
             "916",
@@ -43,8 +43,8 @@
     },
     "799": {
         "skill_id": "799",
-        "skill_name": "塑造、渐隐和链锁",
-        "skill_description": "塑造、渐隐和链锁是发展新行为的核心技术。塑造与链锁将skill分步训练，渐隐逐步撤去提示，确保个体在自然情境中独立泛化与运用。",
+        "skill_name": "Shaping, fading, and chaining",
+        "skill_description": "Shaping, fading, and chaining是发展新行为的核心技术。Shaping与Chaining将skill分步训练，Fading逐步撤去提示，确保个体在自然情境中独立泛化与运用。",
         "parent_ids": [
             "916",
             "799"
@@ -53,8 +53,8 @@
     },
     "800": {
         "skill_id": "800",
-        "skill_name": "塑造",
-        "skill_description": "塑造通过对连续趋近目标行为的反应实施区do notReinforcement，逐步提升标准，直至获得新行为。常用于语言、模仿及动作训练，需把握Reinforcement节奏避免停滞。",
+        "skill_name": "Shaping",
+        "skill_description": "Shaping通过对连续趋近目标行为的反应实施区do notReinforcement，逐步提升标准，直至获得新行为。常用于语言、模仿及动作训练，需把握Reinforcement节奏避免停滞。",
         "parent_ids": [
             "916",
             "799",
@@ -64,8 +64,8 @@
     },
     "801": {
         "skill_id": "801",
-        "skill_name": "渐隐",
-        "skill_description": "渐隐在反应保持not变的前提下逐渐改变控制刺激，弱化辅助至自然刺激仍能引发正确反应。关键在目标刺激选择、起始刺激与刺激促进及速度掌控。",
+        "skill_name": "Fading",
+        "skill_description": "Fading在反应保持not变的前提下逐渐改变控制刺激，弱化辅助至自然刺激仍能引发正确反应。关键在目标刺激选择、起始刺激与刺激促进及速度掌控。",
         "parent_ids": [
             "916",
             "799",
@@ -75,8 +75,8 @@
     },
     "802": {
         "skill_id": "802",
-        "skill_name": "链锁",
-        "skill_description": "链锁将复杂目标行为分解为刺激—反应链，按顺序逐一训练；每个反应既是下一步的辨do not刺激，也是对上一步的Reinforcement。适用于生活skill等系列行为。",
+        "skill_name": "Chaining",
+        "skill_description": "Chaining将复杂目标行为分解为刺激—反应链，按顺序逐一训练；每个反应既是下一步的辨do not刺激，也是对上一步的Reinforcement。适用于生活skill等系列行为。",
         "parent_ids": [
             "916",
             "799",
@@ -86,7 +86,7 @@
     },
     "803": {
         "skill_id": "803",
-        "skill_name": "全部任务呈现法",
+        "skill_name": "Whole-task presentation method",
         "skill_description": "In each training, practice the whole behavior chain from head to tail, give the individual necessary assistance with difficult steps, and practice repeatedly until mastery is achieved. Applies to shorter behavior chains, can promote independence and improve efficiency.",
         "parent_ids": [
             "916",
@@ -98,7 +98,7 @@
     },
     "804": {
         "skill_id": "804",
-        "skill_name": "逆向链锁",
+        "skill_name": "Backward chaining",
         "skill_description": "按逆序训练，先教最后一步，再逐步向前与已掌握步骤整合。Reinforcement接近终点的成功感，适合长、难链，但与自然顺序相反时迁移可能受限。",
         "parent_ids": [
             "916",
@@ -110,7 +110,7 @@
     },
     "805": {
         "skill_id": "805",
-        "skill_name": "顺向链锁",
+        "skill_name": "Forward chaining",
         "skill_description": "按自然顺序训练，从第一步开始逐步加入后续步骤并整合，直至完成全链。贴近日常情境，常用于训练儿童日常行为与较长的系列skill。",
         "parent_ids": [
             "916",
@@ -123,7 +123,7 @@
     "836": {
         "skill_id": "836",
         "skill_name": "Aversion therapy",
-        "skill_description": "通过将欲戒除的目标行为与not愉快或惩罚性刺激反复配对，建立厌恶性条件反射，使个体对该行为产生厌恶与回避，从而减少或放弃。原理源自经典条件反射与回避学习，应用须守伦理。",
+        "skill_description": "通过将欲戒除的目标行为与not愉快或惩罚性刺激反复配对，建立厌恶性条件反射，使个体对该行为产生厌恶与回避，从而减少或放弃。原理源自经典条件反射与回避Learning，应用须守伦理。",
         "parent_ids": [
             "916",
             "836"
@@ -143,8 +143,8 @@
     },
     "838": {
         "skill_id": "838",
-        "skill_name": "内隐致敏法",
-        "skill_description": "用语言引导来访者同时想象not良Reinforcement物与强烈厌恶情境，使两者在表象中配对，建立对not良行为的厌恶反应。安全、without场地限制，需较好想象力，效力较实刺激略弱。",
+        "skill_name": "Covert sensitization",
+        "skill_description": "用语言Guidance来访者同时想象not良Reinforcement物与强烈厌恶情境，使两者在表象中配对，建立对not良行为的厌恶反应。安全、without场地限制，需较好想象力，效力较实刺激略弱。",
         "parent_ids": [
             "916",
             "836",
@@ -167,7 +167,7 @@
     },
     "840": {
         "skill_id": "840",
-        "skill_name": "暂停技术",
+        "skill_name": "Time-out",
         "skill_description": "在特定时间撤除Reinforcement，将not良行为与隔离等withoutReinforcement的新情境联系，使来访者厌恶该情境并减少目标行为。初期可能复发，须保护自尊、避免滥用。",
         "parent_ids": [
             "916",
@@ -200,7 +200,7 @@
     },
     "890": {
         "skill_id": "890",
-        "skill_name": "观察记录单",
+        "skill_name": "Observation record sheet",
         "skill_description": "Filled in by the therapist before, during, and after treatment, used to record physiological and symptom data, target values, and practice status and make stage comparisons, judge efficacy and problems, and where necessary guide changing feedback indicators or adjusting treatment strategies, ensuring the training is scientific and effective.",
         "parent_ids": [
             "916",
@@ -213,7 +213,7 @@
     "916": {
         "skill_id": "916",
         "skill_name": "Consultative session",
-        "skill_description": "依据学习理论，灵活运用Reinforcement、抑制、暴露及模仿等Intervention策略；核心目的在于消除适应not良行为，塑造并巩固适应性新行为，通过针对性的训练实现行为的矫正与重塑。",
+        "skill_description": "依据Learning理论，灵活运用Reinforcement、Suppression、暴露及模仿等Intervention策略；核心目的在于消除适应not良行为，Shaping并巩固适应性新行为，通过针对性的训练实现行为的矫正与重塑。",
         "parent_ids": [
             "916"
         ],
@@ -222,7 +222,7 @@
     "449": {
         "skill_id": "449",
         "skill_name": "Intervention策略",
-        "skill_description": "行为疗法的核心Intervention包括学习、Reinforcement与抑制三大策略，基于经典与操作性条件作用，通过塑造适应行为、消退not良反应与暴露习惯化来改善症状并提升社会功能。",
+        "skill_description": "行为疗法的核心Intervention包括Learning、Reinforcement与Suppression三大策略，基于经典与操作性条件作用，通过Shaping适应行为、消退not良反应与暴露Habituation来改善症状并提升社会功能。",
         "parent_ids": [
             "916",
             "449"
@@ -231,8 +231,8 @@
     },
     "450": {
         "skill_id": "450",
-        "skill_name": "学习",
-        "skill_description": "学习策略通过传授新行为与skill、示范与模仿、社会skill训练及Biofeedback，在适当环境与Reinforcement下形成立即可操作的适应性反应，实现行为改变与巩固。",
+        "skill_name": "Learning",
+        "skill_description": "Learning策略通过传授新行为与skill、示范与模仿、社会skill训练及Biofeedback，在适当环境与Reinforcement下形成立即可操作的适应性反应，实现行为改变与巩固。",
         "parent_ids": [
             "916",
             "449",
@@ -242,8 +242,8 @@
     },
     "451": {
         "skill_id": "451",
-        "skill_name": "模仿技术/观察学习",
-        "skill_description": "依据班杜拉社会学习理论，来访者通过观察示范者行为及其结果习得新反应，产生示范、抑制/去抑制与诱发效应，用于获得与替代not良行为。",
+        "skill_name": "Modeling technique/observational learning",
+        "skill_description": "依据班杜拉社会Learning理论，来访者通过观察示范者行为及其结果习得新反应，产生示范、Suppression/去Suppression与诱发效应，用于获得与替代not良行为。",
         "parent_ids": [
             "916",
             "449",
@@ -254,7 +254,7 @@
     },
     "452": {
         "skill_id": "452",
-        "skill_name": "设计模仿示范程序",
+        "skill_name": "Designing modeling demonstration procedures",
         "skill_description": "按从易到难的渐进原则设计示范，选择与来访者相似的榜样，采用现场、录音录像等方式呈现正确与not当行为，为后续模仿与Reinforcement打基础。",
         "parent_ids": [
             "916",
@@ -267,7 +267,7 @@
     },
     "453": {
         "skill_id": "453",
-        "skill_name": "主动模仿学习",
+        "skill_name": "Active observational learning",
         "skill_description": "来访者在示范后参与Role playing与练习，通过Reinforcement与反馈巩固新反应，提高skill掌握与迁移，缩短尝试错误过程，增强自信与应对效能。",
         "parent_ids": [
             "916",
@@ -280,8 +280,8 @@
     },
     "454": {
         "skill_id": "454",
-        "skill_name": "被动模仿学习",
-        "skill_description": "来访者通过观看示范者行为与后果在without直接参与与without显性Reinforcement下形成内隐学习，如观看电视示范后行为改变，体现观察学习的获取效应。",
+        "skill_name": "Passive observational learning",
+        "skill_description": "来访者通过观看示范者行为与后果在without直接参与与without显性Reinforcement下形成内隐Learning，如观看电视示范后行为改变，体现观察Learning的获取效应。",
         "parent_ids": [
             "916",
             "449",
@@ -294,7 +294,7 @@
     "455": {
         "skill_id": "455",
         "skill_name": "社会skill训练",
-        "skill_description": "以Reinforcement与社会学习为基础，经原理解说、示范、Role playing、反馈与迁移练习，帮助来访者获得并保持社交skill，改善人际适应与功能。",
+        "skill_description": "以Reinforcement与社会Learning为基础，经原理解说、示范、Role playing、反馈与迁移练习，帮助来访者获得并保持社交skill，改善人际适应与功能。",
         "parent_ids": [
             "916",
             "449",
@@ -306,7 +306,7 @@
     "456": {
         "skill_id": "456",
         "skill_name": "社会skill训练原理解说",
-        "skill_description": "向来访者解释目标skill的原则与适用情境，结合文化与教育背景定制说明，为随后的示范、演练与迁移提供认知基础与动机支持。",
+        "skill_description": "向来访者Interpretation目标skill的原则与适用情境，结合文化与教育背景定制说明，为随后的示范、演练与迁移提供认知基础与动机支持。",
         "parent_ids": [
             "916",
             "449",
@@ -318,7 +318,7 @@
     },
     "457": {
         "skill_id": "457",
-        "skill_name": "示范与行为演练",
+        "skill_name": "Demonstration and behavioral rehearsal",
         "skill_description": "通过录像、音频或现场展示正确与not当应对，并安排来访者演练关键动作与言语反应，促进skill形成，减少Anxiety并提升情境应付。",
         "parent_ids": [
             "916",
@@ -344,7 +344,7 @@
     },
     "459": {
         "skill_id": "459",
-        "skill_name": "行为反馈",
+        "skill_name": "Behavioral feedback",
         "skill_description": "对演练中的恰当反应给予及时Reinforcement，对not足提供具体纠正意见，鼓励自我Reinforcement，使来访者建立稳定行为模式并提升自我评估。",
         "parent_ids": [
             "916",
@@ -357,8 +357,8 @@
     },
     "460": {
         "skill_id": "460",
-        "skill_name": "迁移训练",
-        "skill_description": "布置家庭作业与情境练习，指导将训练中的skill应用到自然环境，监测与反馈迁移效果，促进skill保持与广泛化应用。",
+        "skill_name": "Generalization training",
+        "skill_description": "布置Homework与情境练习，指导将训练中的skill应用到自然环境，监测与反馈迁移效果，促进skill保持与广泛化应用。",
         "parent_ids": [
             "916",
             "449",
@@ -370,7 +370,7 @@
     },
     "461": {
         "skill_id": "461",
-        "skill_name": "自信训练",
+        "skill_name": "Confidence training",
         "skill_description": "通过Role playing、示范与指导教授直接而有效的言语与非言语反应，用自信行为取代Anxiety与Withdrawal，提高表达、维护权益与情绪控制。",
         "parent_ids": [
             "916",
@@ -398,7 +398,7 @@
     "463": {
         "skill_id": "463",
         "skill_name": "Biofeedback techniques",
-        "skill_description": "运用仪器监测皮温、皮电、心率、血压、肌电与脑电，反馈生理信号促使来访者学习自我调节，降低自主唤醒，治疗Anxiety等身心问题。",
+        "skill_description": "运用仪器监测皮温、皮电、心率、血压、肌电与脑电，反馈生理信号促使来访者Learning自我调节，降低自主唤醒，治疗Anxiety等身心问题。",
         "parent_ids": [
             "916",
             "449",
@@ -409,8 +409,8 @@
     },
     "464": {
         "skill_id": "464",
-        "skill_name": "Biofeedback学习阶段",
-        "skill_description": "依序进行基线测量、休息、Intervention与自我调节训练，分小节重复Reinforcement反馈学习，使来访者掌握有效降低生理指标的自控方式。",
+        "skill_name": "BiofeedbackLearning阶段",
+        "skill_description": "依序进行基线测量、休息、Intervention与自我调节训练，分小节重复Reinforcement反馈Learning，使来访者掌握有效降低生理指标的自控方式。",
         "parent_ids": [
             "916",
             "449",
@@ -422,7 +422,7 @@
     },
     "465": {
         "skill_id": "465",
-        "skill_name": "皮温反馈技术",
+        "skill_name": "Skin-temperature biofeedback technique",
         "skill_description": "Through skin-temperature signal feedback, trains the client to regulate autonomic nervous balance and reduce sympathetic arousal, used to relieve tension and certain psychosomatic symptoms and promote the establishment of a whole-body relaxation state.",
         "parent_ids": [
             "916",
@@ -450,7 +450,7 @@
     },
     "467": {
         "skill_id": "467",
-        "skill_name": "心率反馈技术",
+        "skill_name": "Heart-rate biofeedback technique",
         "skill_description": "训练来访者通过反馈降低静息心率、提高心率变异性，改善运动耐量并减少Anxiety与抑郁，有助于心血管相关症状的调节。",
         "parent_ids": [
             "916",
@@ -464,7 +464,7 @@
     },
     "468": {
         "skill_id": "468",
-        "skill_name": "血压反馈技术",
+        "skill_name": "Blood-pressure biofeedback technique",
         "skill_description": "Using blood pressure feedback to promote voluntary regulation of blood pressure, assisting in the treatment of psychosomatic problems such as essential hypertension, combined with relaxation and cognitive strategies to enhance homeostasis and efficacy.",
         "parent_ids": [
             "916",
@@ -478,7 +478,7 @@
     },
     "469": {
         "skill_id": "469",
-        "skill_name": "肌电反馈技术",
+        "skill_name": "EMG biofeedback technique",
         "skill_description": "在前额等部位布置电极，反馈骨骼肌电活动以Reinforcement肌肉松弛或收缩训练，广泛用于Anxiety放松与局部痉挛、抽动及肌力康复。",
         "parent_ids": [
             "916",
@@ -492,7 +492,7 @@
     },
     "470": {
         "skill_id": "470",
-        "skill_name": "脑波反馈技术",
+        "skill_name": "Brainwave biofeedback technique",
         "skill_description": "通过EEG反馈训练如α波等节律活动，提升意识状态自控，辅助注意力问题与癫痫管理，并与放松与Systematic desensitization等技术结合。",
         "parent_ids": [
             "916",
@@ -506,7 +506,7 @@
     },
     "471": {
         "skill_id": "471",
-        "skill_name": "Biofeedback家庭作业布置",
+        "skill_name": "BiofeedbackHomework布置",
         "skill_description": "After treatment, arrange daily offline practice, consolidating the self-regulation patterns learned in feedback, emphasizing the instrument is only a stage-wise aid, the goal being to obtain stable self-control ability.",
         "parent_ids": [
             "916",
@@ -520,7 +520,7 @@
     "472": {
         "skill_id": "472",
         "skill_name": "Reinforcement",
-        "skill_description": "通过正负Reinforcement改变行为发生概率与强度，强调行为后果塑造行为维持或消退，教导自我Reinforcement以促进积极行为与治疗进展。",
+        "skill_description": "通过正负Reinforcement改变行为发生概率与强度，强调行为后果Shaping行为维持或消退，Teaching自我Reinforcement以促进积极行为与治疗进展。",
         "parent_ids": [
             "916",
             "449",
@@ -531,7 +531,7 @@
     "473": {
         "skill_id": "473",
         "skill_name": "Behavior modification techniques",
-        "skill_description": "依据操作性条件反射与差do notReinforcement，设置Reinforcement物与情境，实施塑造、消退、过度矫正与渐隐等程序，系统增进期望行为。",
+        "skill_description": "依据操作性条件反射与差do notReinforcement，设置Reinforcement物与情境，实施Shaping、消退、过度矫正与Fading等程序，系统增进期望行为。",
         "parent_ids": [
             "916",
             "449",
@@ -555,7 +555,7 @@
     },
     "475": {
         "skill_id": "475",
-        "skill_name": "代币法",
+        "skill_name": "Token economy",
         "skill_description": "采用可兑换物品的代币作为二级Reinforcement物，Reinforcement及时、标准统一，适用于医院、学校与集体场景的行为管理与矫治。",
         "parent_ids": [
             "916",
@@ -569,7 +569,7 @@
     },
     "476": {
         "skill_id": "476",
-        "skill_name": "行为契约",
+        "skill_name": "Behavioral contract",
         "skill_description": "治疗者与来访者约定目标行为与Reinforcement/惩罚安排，明确时间与标准，促进自我约束与程序化执行，提升依从性。",
         "parent_ids": [
             "916",
@@ -597,7 +597,7 @@
     },
     "478": {
         "skill_id": "478",
-        "skill_name": "消退疗法",
+        "skill_name": "Extinction",
         "skill_description": "在not良行为出现时取消其Reinforcement物，使反应逐渐减少；常与正Reinforcement替代行为结合，初期可能出现行为短暂爆发。",
         "parent_ids": [
             "916",
@@ -610,8 +610,8 @@
     },
     "479": {
         "skill_id": "479",
-        "skill_name": "矫枉过正法",
-        "skill_description": "包含恢复与正性练习两部分，要求修复环境并额外练习正确行为，配合Reinforcement以建立积极的维护与规范行为。",
+        "skill_name": "Overcorrection",
+        "skill_description": "包含Recovery与Positive practice两部分，Demands修复环境并额外练习正确行为，配合Reinforcement以建立积极的维护与规范行为。",
         "parent_ids": [
             "916",
             "449",
@@ -623,8 +623,8 @@
     },
     "480": {
         "skill_id": "480",
-        "skill_name": "恢复",
-        "skill_description": "针对损坏环境的not当行为，要求行为者恢复原貌，增加对行为后果的责任意识，为正性练习与Reinforcement奠基。",
+        "skill_name": "Recovery",
+        "skill_description": "针对损坏环境的not当行为，Demands行为者Recovery原貌，增加对行为后果的责任意识，为Positive practice与Reinforcement奠基。",
         "parent_ids": [
             "916",
             "449",
@@ -637,8 +637,8 @@
     },
     "481": {
         "skill_id": "481",
-        "skill_name": "正性练习",
-        "skill_description": "在恢复基础上反复练习正确维护行为，使环境优于原状，并对积极练习给予Reinforcement，稳固替代的适应性反应。",
+        "skill_name": "Positive practice",
+        "skill_description": "在Recovery基础上反复练习正确维护行为，使环境优于原状，并对积极练习给予Reinforcement，稳固替代的适应性反应。",
         "parent_ids": [
             "916",
             "449",
@@ -651,7 +651,7 @@
     },
     "482": {
         "skill_id": "482",
-        "skill_name": "渐隐法",
+        "skill_name": "Fading",
         "skill_description": "First use obvious prompts to help form the correct response, then gradually fade the cues so the behavior is maintained and generalized under natural cues, reducing dependence on external prompts.",
         "parent_ids": [
             "916",
@@ -664,8 +664,8 @@
     },
     "483": {
         "skill_id": "483",
-        "skill_name": "抑制",
-        "skill_description": "通过刺激控制、培养对抗性行为与习惯化，抑制not良反应发生；常用放松与暴露、厌恶等技术消退Anxiety与问题行为。",
+        "skill_name": "Suppression",
+        "skill_description": "通过Stimulus control、Cultivating antagonistic behaviors与Habituation，Suppressionnot良反应发生；常用放松与暴露、厌恶等技术消退Anxiety与问题行为。",
         "parent_ids": [
             "916",
             "449",
@@ -675,8 +675,8 @@
     },
     "484": {
         "skill_id": "484",
-        "skill_name": "刺激控制",
-        "skill_description": "调整not良行为的发生环境与线索，使其失去外部诱发而自动消失；作为抑制策略核心，常与自我管理联用。",
+        "skill_name": "Stimulus control",
+        "skill_description": "调整not良行为的发生环境与线索，使其失去外部诱发而自动消失；作为Suppression策略核心，常与自我管理联用。",
         "parent_ids": [
             "916",
             "449",
@@ -688,7 +688,7 @@
     "485": {
         "skill_id": "485",
         "skill_name": "Self-management method",
-        "skill_description": "教会来访者Self-monitoring、目标设定、刺激控制与安排Reinforcement/惩罚，借助社会支持与自我指令，增进期望行为、减少过剩反应。",
+        "skill_description": "教会来访者Self-monitoring、目标设定、Stimulus control与安排Reinforcement/惩罚，借助Social support与自我指令，增进期望行为、减少过剩反应。",
         "parent_ids": [
             "916",
             "449",
@@ -700,7 +700,7 @@
     },
     "486": {
         "skill_id": "486",
-        "skill_name": "前提控制法",
+        "skill_name": "Antecedent control",
         "skill_description": "通过呈现期望线索、安排已形成事件、降低反应难度，或移除not良线索与提高竞争行为难度，促进目标行为发生。",
         "parent_ids": [
             "916",
@@ -714,7 +714,7 @@
     },
     "487": {
         "skill_id": "487",
-        "skill_name": "目标建立和自我监督",
+        "skill_name": "Goal setting and self-monitoring",
         "skill_description": "设定具体、可测的目标并持续记录行为与情境，提升觉察与条件Reinforcement效应，为评估与调整自我管理计划提供依据。",
         "parent_ids": [
             "916",
@@ -742,7 +742,7 @@
     },
     "489": {
         "skill_id": "489",
-        "skill_name": "自我管理行为契约",
+        "skill_name": "Self-management behavioral contract",
         "skill_description": "以书面合同明确自我管理目标、Reinforcement与惩罚方式及监督安排，增强自我约束与防复发，提升执行一致性。",
         "parent_ids": [
             "916",
@@ -756,7 +756,7 @@
     },
     "490": {
         "skill_id": "490",
-        "skill_name": "社会支持",
+        "skill_name": "Social support",
         "skill_description": "动员重要他人参与监督与鼓励，防止自我Reinforcement“短路”，提高计划坚持度与成效，是自我管理成功的重要策略。",
         "parent_ids": [
             "916",
@@ -770,7 +770,7 @@
     },
     "491": {
         "skill_id": "491",
-        "skill_name": "自我指令及自我支持",
+        "skill_name": "Self-instruction and self-support",
         "skill_description": "通过积极的自我对话与提示改变内部语言，指导与Reinforcement目标行为，减少消极自述对行为的干扰，提升自控力。",
         "parent_ids": [
             "916",
@@ -784,8 +784,8 @@
     },
     "492": {
         "skill_id": "492",
-        "skill_name": "培养对抗性行为",
-        "skill_description": "以放松等与Anxietynot相容的反应替代not良反应，依据交互抑制原理抑制Anxiety，作为抑制策略的重要技术路径。",
+        "skill_name": "Cultivating antagonistic behaviors",
+        "skill_description": "以放松等与Anxietynot相容的反应替代not良反应，依据交互Suppression原理SuppressionAnxiety，作为Suppression策略的重要技术路径。",
         "parent_ids": [
             "916",
             "449",
@@ -796,7 +796,7 @@
     },
     "493": {
         "skill_id": "493",
-        "skill_name": "放松训练",
+        "skill_name": "Relaxation training",
         "skill_description": "源自雅各布森与沃尔普理论，通过肌肉与精神放松降低自主唤醒，缓解Anxiety与紧张，并可与Biofeedback和脱敏技术联合。",
         "parent_ids": [
             "916",
@@ -809,7 +809,7 @@
     },
     "494": {
         "skill_id": "494",
-        "skill_name": "渐进性肌肉放松法",
+        "skill_name": "Progressive muscle relaxation",
         "skill_description": "Alternately tense and relax by body part, experiencing the difference and memorizing the comfort, about 20 minutes each time and practicing daily, systematically covering the head, neck, shoulders, arms, trunk and lower limbs.",
         "parent_ids": [
             "916",
@@ -837,7 +837,7 @@
     },
     "496": {
         "skill_id": "496",
-        "skill_name": "指导想象",
+        "skill_name": "Guided imagery",
         "skill_description": "Guiding the client at a slow speech rate to imagine peaceful natural scenes, emphasizing visual dominance combined with hearing, touch, etc., maintaining interest and focus, and deepening the relaxation effect.",
         "parent_ids": [
             "916",
@@ -852,7 +852,7 @@
     },
     "497": {
         "skill_id": "497",
-        "skill_name": "呼吸放松法",
+        "skill_name": "Breathing relaxation",
         "skill_description": "教授缓慢均匀的深呼吸节律，随时可用以快速降低紧张与Anxiety，适合without法实施完整肌肉或意象放松的情境。",
         "parent_ids": [
             "916",
@@ -866,8 +866,8 @@
     },
     "498": {
         "skill_id": "498",
-        "skill_name": "精神放松训练法",
-        "skill_description": "引导注意集中于视觉、听觉、触觉等not同感官对象，细致观察与体会感受，达到心理的平静与放松状态。",
+        "skill_name": "Mental relaxation training",
+        "skill_description": "Guidance注意集中于视觉、听觉、触觉等not同感官对象，细致观察与体会感受，达到心理的平静与放松状态。",
         "parent_ids": [
             "916",
             "449",
@@ -880,7 +880,7 @@
     },
     "499": {
         "skill_id": "499",
-        "skill_name": "深呼吸放松法",
+        "skill_name": "Deep-breathing relaxation",
         "skill_description": "采用站立或舒适姿势，闭目、腹式呼吸配合指示语“深吸慢呼”，形成可自助的即时放松skill以应对紧张事件。",
         "parent_ids": [
             "916",
@@ -906,7 +906,7 @@
     },
     "501": {
         "skill_id": "501",
-        "skill_name": "物理厌恶",
+        "skill_name": "Physical aversion",
         "skill_description": "Linking physical stimuli such as electric shock with the target behavior or its imagination, with adjustable intensity and avoiding injury, ensuring the pain induced is within a tolerable range, emphasizing safety norms.",
         "parent_ids": [
             "916",
@@ -919,7 +919,7 @@
     },
     "502": {
         "skill_id": "502",
-        "skill_name": "化学厌恶",
+        "skill_name": "Chemical aversion",
         "skill_description": "use催吐剂或双硫仑等药物使目标行为引发恶心等not适，常用于酗酒与吸烟矫治，注意时程、环境与副作用管理。",
         "parent_ids": [
             "916",
@@ -932,7 +932,7 @@
     },
     "503": {
         "skill_id": "503",
-        "skill_name": "想象厌恶",
+        "skill_name": "Imaginal aversion",
         "skill_description": "通过内隐去敏让来访者想象强烈厌恶情境与not良行为相连，减少真实刺激副作用，同时结合橡皮筋等轻惩罚增强效果。",
         "parent_ids": [
             "916",
@@ -945,7 +945,7 @@
     },
     "504": {
         "skill_id": "504",
-        "skill_name": "习惯化",
+        "skill_name": "Habituation",
         "skill_description": "Through repeated exposure to the feared stimulus, physiological and psychological reactions gradually decline and fear loses its triggering power; providing the theoretical basis for exposure therapy and flooding therapy.",
         "parent_ids": [
             "916",
@@ -958,7 +958,7 @@
     "505": {
         "skill_id": "505",
         "skill_name": "Exposure techniques",
-        "skill_description": "通过呈现引发恐惧或厌恶的刺激以促使反应消退，包含Systematic desensitization与冲击疗法等形式，目标是打破逃避与负Reinforcement循环。",
+        "skill_description": "通过呈现引发Fear或厌恶的刺激以促使反应消退，包含Systematic desensitization与Flooding等形式，目标是打破逃避与负Reinforcement循环。",
         "parent_ids": [
             "916",
             "449",
@@ -971,7 +971,7 @@
     "506": {
         "skill_id": "506",
         "skill_name": "Systematic desensitization",
-        "skill_description": "依据交互抑制与反条件作用，先训练放松，再按Anxiety等级逐级暴露，将“刺激-放松”新联系Reinforcement，消除恐惧反应。",
+        "skill_description": "依据交互Suppression与反条件作用，先训练放松，再按Anxiety等级逐级暴露，将“刺激-放松”新联系Reinforcement，消除Fear反应。",
         "parent_ids": [
             "916",
             "449",
@@ -984,7 +984,7 @@
     },
     "507": {
         "skill_id": "507",
-        "skill_name": "快速脱敏法",
+        "skill_name": "Rapid desensitization",
         "skill_description": "Gradually expose to feared stimuli in real situations, with the therapist accompanying and supporting, suitable for agoraphobia and social phobia, shortening treatment time through real-life contact.",
         "parent_ids": [
             "916",
@@ -999,8 +999,8 @@
     },
     "508": {
         "skill_id": "508",
-        "skill_name": "接触脱敏法",
-        "skill_description": "让来访者亲自接触恐惧对象，治疗者先示范再引导渐近接触，特do not适用于特定物体恐惧如动物恐怖。",
+        "skill_name": "Contact desensitization",
+        "skill_description": "让来访者亲自接触Fear对象，治疗者先示范再Guidance渐近接触，特do not适用于特定物体Fear如动物恐怖。",
         "parent_ids": [
             "916",
             "449",
@@ -1014,7 +1014,7 @@
     },
     "509": {
         "skill_id": "509",
-        "skill_name": "自动化脱敏法",
+        "skill_name": "Automated desensitization",
         "skill_description": "Present graded stimuli by audio or video recordings, with the client carrying out desensitization at home at their own pace, saving session time and serving as a supplement to other forms.",
         "parent_ids": [
             "916",
@@ -1029,8 +1029,8 @@
     },
     "510": {
         "skill_id": "510",
-        "skill_name": "情绪性意象法",
-        "skill_description": "治疗者描述令人兴奋愉悦的情境诱发积极情绪，以与Anxiety反应对抗，逐步抑制并替代恐惧情绪的条件化反应。",
+        "skill_name": "Emotional imagery method",
+        "skill_description": "治疗者描述令人兴奋愉悦的情境诱发积极情绪，以与Anxiety反应对抗，逐步Suppression并替代Fear情绪的条件化反应。",
         "parent_ids": [
             "916",
             "449",
@@ -1044,8 +1044,8 @@
     },
     "511": {
         "skill_id": "511",
-        "skill_name": "想象脱敏法",
-        "skill_description": "要求来访者按Anxiety等级由低到高进行情景想象，并用全身放松与其相对抗，达到对高等级刺激的withoutAnxiety反应。",
+        "skill_name": "Imaginal desensitization",
+        "skill_description": "Demands来访者按Anxiety等级由低到高进行情景想象，并用全身放松与其相对抗，达到对高等级刺激的withoutAnxiety反应。",
         "parent_ids": [
             "916",
             "449",
@@ -1059,7 +1059,7 @@
     },
     "512": {
         "skill_id": "512",
-        "skill_name": "催眠脱敏法",
+        "skill_name": "Hypnotic desensitization",
         "skill_description": "Implement graded desensitization after hypnotic induction, reducing the risk of fear-emotion outbursts, providing more reliable exposure support for those with weak imagination ability or high tension.",
         "parent_ids": [
             "916",
@@ -1074,7 +1074,7 @@
     },
     "513": {
         "skill_id": "513",
-        "skill_name": "冲击/满灌疗法",
+        "skill_name": "Flooding therapy",
         "skill_description": "With the strongest stimulus exposed for a long time, escape prohibited, prompting the fear response to naturally extinguish after reaching its peak; can use in-vivo or imaginal forms, needs signing an agreement and assessment.",
         "parent_ids": [
             "916",
@@ -1088,7 +1088,7 @@
     },
     "514": {
         "skill_id": "514",
-        "skill_name": "实地满灌暴露",
+        "skill_name": "In-vivo flooding exposure",
         "skill_description": "Place the client directly in the most feared real situation, with continuous exposure until physiological and emotional reactions reverse, closely monitoring safety and giving support and encouragement.",
         "parent_ids": [
             "916",
@@ -1103,8 +1103,8 @@
     },
     "515": {
         "skill_id": "515",
-        "skill_name": "想象满灌暴露",
-        "skill_description": "采用强烈想象重现not可再现或not宜实地的创伤性情境，长时暴露促使恐惧记忆弱化，适合创伤后应激障碍等。",
+        "skill_name": "Imaginal flooding exposure",
+        "skill_description": "采用强烈想象重现not可再现或not宜实地的创伤性情境，长时暴露促使Fear记忆弱化，适合创伤后应激障碍等。",
         "parent_ids": [
             "916",
             "449",
@@ -1118,8 +1118,8 @@
     },
     "862": {
         "skill_id": "862",
-        "skill_name": "模仿示范技术",
-        "skill_description": "以班杜拉社会学习理论为基础，通过观察榜样促使来访者习得或增强适应行为、减少not良行为。实施中重视榜样选择与科学示范，常与Reinforcement等技术配合，适用于恐怖症与社交skill训练等。",
+        "skill_name": "Modeling demonstration technique",
+        "skill_description": "以班杜拉社会Learning理论为基础，通过观察榜样促使来访者习得或增强适应行为、减少not良行为。实施中重视榜样选择与科学示范，常与Reinforcement等技术配合，适用于恐怖症与社交skill训练等。",
         "parent_ids": [
             "916",
             "862"
@@ -1128,8 +1128,8 @@
     },
     "863": {
         "skill_id": "863",
-        "skill_name": "真实性示范",
-        "skill_description": "由真实榜样现场示范目标行为，来访者直接观察并模仿。过程生动可重复，能教导态度与社会skill；但成本较高且易受示范失误影响，需确保行为准确呈现，避免负面学习。",
+        "skill_name": "Live modeling",
+        "skill_description": "由真实榜样现场示范目标行为，来访者Direct observation并模仿。过程生动可重复，能Teaching态度与社会skill；但成本较高且易受示范失误影响，需确保行为准确呈现，避免负面Learning。",
         "parent_ids": [
             "916",
             "862",
@@ -1139,7 +1139,7 @@
     },
     "864": {
         "skill_id": "864",
-        "skill_name": "象征性示范",
+        "skill_name": "Symbolic modeling",
         "skill_description": "Present appropriate behavior (including self-demonstration) through symbolic media such as film, television, video, audio, and text. Materials are easily obtained, cost is low, and rhythm is controllable; the key features and sequence need rigorous design. Effective for phobias etc., and can be watched repeatedly to promote learning.",
         "parent_ids": [
             "916",
@@ -1150,8 +1150,8 @@
     },
     "865": {
         "skill_id": "865",
-        "skill_name": "参与性示范",
-        "skill_description": "在治疗师指导下，来访者一边观察榜样一边逐步参与并模仿，治疗师及时纠正与Reinforcement。常用于克服恐惧与skill训练，分阶段推进并确Security guard全，疗效优于前两种，可达80%—90%。",
+        "skill_name": "Participant modeling",
+        "skill_description": "在治疗师指导下，来访者一边观察榜样一边逐步参与并模仿，治疗师及时纠正与Reinforcement。常用于克服Fear与skill训练，分阶段推进并确Security guard全，疗效优于前两种，可达80%—90%。",
         "parent_ids": [
             "916",
             "862",
@@ -1161,8 +1161,8 @@
     },
     "866": {
         "skill_id": "866",
-        "skill_name": "内隐示范",
-        "skill_description": "治疗师描述情境与适当反应，要求来访者在心中想象榜样或自我实施并联结积极情绪；场景由易到难、反复训练。需Good想象力，可促进自我肯定行为与社交skill的外显化。",
+        "skill_name": "Covert modeling",
+        "skill_description": "治疗师描述情境与适当反应，Demands来访者在心中想象榜样或自我实施并联结积极情绪；场景由易到难、反复训练。需Good想象力，可促进自我肯定行为与社交skill的外显化。",
         "parent_ids": [
             "916",
             "862",
@@ -1173,7 +1173,7 @@
     "775": {
         "skill_id": "775",
         "skill_name": "Reinforcement",
-        "skill_description": "Reinforcement是通过呈现奖励或撤除not愉快后果来提高行为出现概率的过程，含正Reinforcement与负Reinforcement。在操作性条件反射中，行为的后果决定其保持或消退，Reinforcement用于塑造、维持与改善目标行为。",
+        "skill_description": "Reinforcement是通过呈现奖励或撤除not愉快后果来提高行为出现概率的过程，含正Reinforcement与负Reinforcement。在操作性条件反射中，行为的后果决定其保持或消退，Reinforcement用于Shaping、维持与改善目标行为。",
         "parent_ids": [
             "916",
             "775"

@@ -16,8 +16,8 @@
     "topic": "Family relationships",
     "core_demands": "Negative emotions are affecting overall well-being and enjoyment of daily life; hopes through counseling to change negative thinking, relieve disappointment and the fear of abandonment, and improve life experience.",
     "growth_experiences": [
-      "自青少年时期开始Strained relationships with family members，常出现误解与冲突；压力由中等逐渐升高，几乎每天在与家人互动后体验失望与被抛弃的恐惧。曾尝试疏远家庭活动并以兴趣分散注意，但情绪困扰仍持续。",
-      "过去一年在工作中销售业绩下降；随着公司及行业向数字化、without纸化推进，与同事的业绩比较加重了自责与“not够好”的感受，进一步影响与同事的关系及自我照料与饮食习惯。",
+      "自青少年时期开始Strained relationships with family members，常出现误解与冲突；压力由中等逐渐升高，几乎每天在与家人互动后体验失望与被抛弃的Fear。曾尝试疏远家庭活动并以兴趣分散注意，但情绪困扰仍持续。",
+      "过去一年在Work中销售业绩下降；随着公司及行业向数字化、without纸化推进，与同事的业绩比较加重了自责与“not够好”的感受，进一步影响与同事的关系及自我照料与饮食习惯。",
       "Weak social support：家庭支持not足，仅有少数朋友可谈心。"
     ]
   },
@@ -33,7 +33,7 @@
           "event": "After interacting with family, emotions intensify due to misunderstanding and conflict",
           "conditional_assumptions": "如果我without法与家人相处融洽，关系必然恶化，最终会被他们抛弃",
           "compensatory_strategies": "Reduces joining family activities, keeps distance from family, uses interests to distract attention",
-          "automatic_thoughts": "他们迟早会抛弃我",
+          "automatic_thoughts": "They will abandon me sooner or later",
           "cognitive_pattern": "Fortune Telling"
         },
         {
@@ -71,12 +71,12 @@
         {
           "self_representation": "not够好的、随时可能Being rejected的孩子",
           "object_representation": "Family members who easily misunderstand, criticize, and may abandon oneself",
-          "linking_affect": "Anxiety、失望、恐惧"
+          "linking_affect": "Anxiety、失望、Fear"
         },
         {
-          "self_representation": "业绩低下的失败者",
+          "self_representation": "A failure with poor performance",
           "object_representation": "Strict supervisors and colleagues who judge value by results",
-          "linking_affect": "自责、羞耻、紧张"
+          "linking_affect": "Self-blame, shame, tension"
         }
       ],
       "behavioral_response_patterns": [
@@ -94,9 +94,9 @@
         },
         {
           "trigger_condition": "Facing tasks with possible failure (such as proactively contacting new clients)",
-          "interpretation": "将外界压力与失败恐惧转向自我，Reinforcement自责以避免外在冲突",
+          "interpretation": "将外界压力与失败Fear转向自我，Reinforcement自责以避免外在冲突",
           "defense_mechanism": "Turning against the self",
-          "response_instruction": "use自我批评式表述（如“都是我的问题”），语气低落，并以回避行为结束对话或行动。"
+          "response_instruction": "use自我批评式表述（如“It is all my problem”），语气低落，并以回避行为结束对话或行动。"
         }
       ]
     },
@@ -112,7 +112,7 @@
           "outcomes": [
             "Reduced sense of social connection and isolation",
             "Persistent anxiety与not安全感",
-            "关系进一步疏离"
+            "Relationships growing more distant"
           ]
         },
         {
@@ -123,7 +123,7 @@
             "Work performance affected by emotional distress"
           ],
           "outcomes": [
-            "Decreased drive与快感缺失",
+            "Decreased drive与Anhedonia",
             "Impaired functioning (work and self-care)",
             "Negative self-evaluation and avoidance behaviors"
           ]
@@ -159,7 +159,7 @@
     "pmt": {
       "exception_events": [
         {
-          "target_problem": "在工作中与同事比较或接受业绩反馈时，来访者通常会产生“I am not good enough / I am a failure”的想法，继而回避联系新客户，导致业绩进一步下降。",
+          "target_problem": "在Work中与同事比较或接受业绩反馈时，来访者通常会产生“I am not good enough / I am a failure”的想法，继而回避联系新客户，导致业绩进一步下降。",
           "unique_outcome": "上个月完成了几笔较为困难的成交，客户对服务表示满意；当下体验到一定的肯定，与以往一概视为失败not同。",
           "reason": "Clue: that time obtained the client's positive feedback and concrete successful experience, providing observable evidence for ability, making them briefly weaken the 'failure' narrative."
         }
@@ -174,7 +174,7 @@
           "灾难化与跳跃性结论（读心术、预测not yet来）",
           "negate正面反馈，维持失败者自我图式",
           "Avoidant behavior (reduced family interaction, avoiding contacting new clients)",
-          "被抛弃恐惧与家庭支持缺失导致的持续not安全感"
+          "被抛弃Fear与家庭Lack of support导致的持续not安全感"
         ]
       }
     },
@@ -185,14 +185,14 @@
           "antecedent": [
             "Seeing colleagues hit performance targets",
             "Receiving performance-metric feedback from manager",
-            "想到近期销售下滑"
+            "Thinking of the recent sales decline"
           ],
           "core_reason": "对自身能力的全或without认知与灾难化预测（认为“not可能改善”“再次失败会证明I am a failure”）",
           "function": "逃避可能的失败与羞耻，短期降低Anxiety",
           "consequence": "业绩进一步下降，Tense relationships with colleagues，Self-efficacy降低"
         },
         {
-          "behavior": "疏远/回避家庭活动",
+          "behavior": "Distancing/avoiding family activities",
           "antecedent": [
             "Misunderstandings and conflicts after interacting with family",
             "Premonition that the relationship will worsen or one will be abandoned"
@@ -204,8 +204,8 @@
         {
           "behavior": "negate正面反馈并将成功归因于运气",
           "antecedent": [
-            "收到客户的正面反馈",
-            "完成小额或困难成交"
+            "Receiving positive client feedback",
+            "Completing small or difficult deals"
           ],
           "core_reason": "维持“失败者”核心信念，通过negate正向证据避免认知not一致带来的not适",
           "function": "减少对自我价值的期待以回避Anxiety",

@@ -8,7 +8,7 @@
       "educational_background": "High school education",
       "marital_status": "Single",
       "family_status": "Lives alone，养一只名为Speckles的猫",
-      "social_status": "与朋友关系受影响，因避免外出Reduced socializing",
+      "social_status": "Relationship with friends affected，因避免外出Reduced socializing",
       "medical_history": "without显著躯体疾病；without既往类似心理问题或治疗史",
       "language_features": "表达清晰，能具体描述问题与trigger情境；合作度较好；情绪基调Anxiety与消极；承认存在回避查看账单的行为"
     },
@@ -83,9 +83,9 @@
             "Feels embarrassed and hesitant about confiding financial difficulties to friends"
           ],
           "outcomes": [
-            "情绪支持减少，Loneliness感加重",
+            "情绪Decreased support，Loneliness感加重",
             "Anxiety持续存在并加剧",
-            "Sleep and eating disrupted，工作受影响"
+            "Sleep and eating disrupted，Work受影响"
           ]
         }
       ],
@@ -120,9 +120,9 @@
       "force_field": {
         "positive_force": [
           "Has a close friend to confide in; has potential social support",
-          "能够觉察trigger因素（工作压力、Loneliness）与回避行为（not看账单）",
+          "能够觉察trigger因素（Work压力、Loneliness）与回避行为（not看账单）",
           "Has tried budgeting and cutting expenses; has some motivation to change",
-          "愿意寻求专业帮助",
+          "Willing to seek professional help",
           "Pets provide some emotional comfort"
         ],
         "negative_force": [
@@ -137,14 +137,14 @@
     "bt": {
       "target_behavior": [
         {
-          "behavior": "情绪性购物/超支",
+          "behavior": "Emotional shopping/overspending",
           "antecedent": [
             "Feeling intense stress after work or when facing urgent work deadlines",
             "感到Loneliness时"
           ],
           "core_reason": "将购物作为缓解压力与Loneliness的主要方式，伴随对失控与债务的灾难化认知",
           "function": "Gains immediate emotional relief and self-soothing",
-          "consequence": "信用卡余额上升、财务Increased stress；Anxiety持续；与朋友关系受影响；睡眠与饮食被扰；Mild decline in work performance"
+          "consequence": "信用卡余额上升、财务Increased stress；Anxiety持续；Relationship with friends affected；睡眠与饮食被扰；Mild decline in work performance"
         },
         {
           "behavior": "Avoids checking bank / credit card statements",

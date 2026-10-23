@@ -31,7 +31,7 @@
       "special_situations": [
         {
           "event": "When alone recalling university experiences and her own 3.5 GPA",
-          "conditional_assumptions": "如果GPAnot是更高的分数，就说明我浪费了大学、我就是失败者",
+          "conditional_assumptions": "如果GPAnot是更高的分数，就说明我浪费了大学、I am just a failure",
           "compensatory_strategies": "用全或without的标准评估自我，negate大学期间的正面收获以维持“高标准”",
           "automatic_thoughts": "我的大学白费了；I am a failure",
           "cognitive_pattern": "All-or-Nothing Thinking"
@@ -47,7 +47,7 @@
           "event": "When family or friends discuss academic performance / achievement topics",
           "conditional_assumptions": "Must achieve the results others expect in order to have value, otherwise will be looked down on",
           "compensatory_strategies": "Avoids sharing true feelings to avoid being judged or disappointed",
-          "automatic_thoughts": "他们会觉得我失败",
+          "automatic_thoughts": "They will think I am a failure",
           "cognitive_pattern": "Mind Reading"
         },
         {
@@ -160,7 +160,7 @@
         "positive_force": [
           "Has a supportive network of friends",
           "Received commendation for university teaching practice, demonstrating teaching ability and practical experience",
-          "目前职业表现稳定，工作功能not yet受影响",
+          "目前职业表现稳定，Work功能not yet受影响",
           "Willing to seek counseling and try to change"
         ],
         "negative_force": [
@@ -175,9 +175,9 @@
     "bt": {
       "target_behavior": [
         {
-          "behavior": "反复出现的负面自动思维与自我贴标签（如“大学白费”“I am a failure”）",
+          "behavior": "反复出现的负面Automatic thoughts与自我贴标签（如“大学白费”“I am a failure”）",
           "antecedent": [
-            "回想大学与GPA",
+            "Recalling college and GPA",
             "Compares grades with classmates or sees others' higher GPAs",
             "Family or friends talk about academic performance/achievements"
           ],
@@ -190,11 +190,11 @@
           "antecedent": [
             "Plans social activities when feelings of failure arise",
             "Self-deprecation after comparing with classmates",
-            "被提及学业表现话题"
+            "Being asked about academic performance"
           ],
           "core_reason": "Worries about being judged; shame and fear of relationship deterioration",
           "function": "逃避not受欢迎的情绪与可能的负面评价，以短期减轻Anxiety",
-          "consequence": "Interpersonal tension、支持减少、生活质量与Decreased motivation"
+          "consequence": "Interpersonal tension、Decreased support、生活质量与Decreased motivation"
         }
       ]
     }

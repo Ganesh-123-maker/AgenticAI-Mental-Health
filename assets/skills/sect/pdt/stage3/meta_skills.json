@@ -2,7 +2,7 @@
     "1147": {
         "skill_id": "1147",
         "skill_name": "Consolidation session",
-        "skill_description": "结束阶段以巩固治疗成果为核心，包含回顾治疗、现实评价改变、计划not yet来与告do not。技术从开放转向收尾，关注强烈的移情与反移情，结束时长与治疗长度成比例。",
+        "skill_description": "结束阶段以巩固治疗成果为核心，包含回顾治疗、现实评价改变、计划not yet来与告do not。技术从开放转向收尾，关注强烈的移情与Countertransference，结束时长与治疗长度成比例。",
         "parent_ids": [
             "1147"
         ],
@@ -10,7 +10,7 @@
     },
     "1148": {
         "skill_id": "1148",
-        "skill_name": "巩固目标与评估",
+        "skill_name": "Consolidating goals and assessment",
         "skill_description": "Systematically assess progress and consolidation around the established goals, including symptom relief, self and reflective capacity, adaptability and independence, and so on, to judge whether termination is approaching and provide direction and emphasis for the closing stage.",
         "parent_ids": [
             "1147",
@@ -20,7 +20,7 @@
     },
     "1149": {
         "skill_id": "1149",
-        "skill_name": "症状改善",
+        "skill_name": "Symptom improvement",
         "skill_description": "检视心境、Anxiety与持续消极情感等症状是否实质改善，警惕仅有症状缓解而缺乏更深层改变的“假痊愈”，并讨论维持与复发风险。",
         "parent_ids": [
             "1147",
@@ -31,7 +31,7 @@
     },
     "1150": {
         "skill_id": "1150",
-        "skill_name": "自我功能",
+        "skill_name": "Ego functions",
         "skill_description": "Assess self-awareness and reality testing, adaptability and flexibility of defenses, and improvement of function in work and recreation, with attention to whether a stable, realistic appraisal of one's own talents and limitations is established.",
         "parent_ids": [
             "1147",
@@ -42,7 +42,7 @@
     },
     "1151": {
         "skill_id": "1151",
-        "skill_name": "独立性",
+        "skill_name": "Independence",
         "skill_description": "考察来访者是否将改变归因于自身而非治疗师，依赖性是否减少，能否在without持续治疗支持下维持改进；对脆弱与依赖性强的来访者尤为关键。",
         "parent_ids": [
             "1147",
@@ -54,7 +54,7 @@
     "1152": {
         "skill_id": "1152",
         "skill_name": "Reflection能力评估",
-        "skill_description": "评估自我Reflection与自我解释能力，能否识do not模式、联结情绪与行为，并在压力下运用新理解进行自我调节；此能力常提示已接近结束。",
+        "skill_description": "评估自我Reflection与自我Interpretation能力，能否识do not模式、联结情绪与行为，并在压力下运用新理解进行自我调节；此能力常提示已接近结束。",
         "parent_ids": [
             "1147",
             "1148",
@@ -64,8 +64,8 @@
     },
     "1153": {
         "skill_id": "1153",
-        "skill_name": "结束性治疗",
-        "skill_description": "计划性的收尾期，聚焦巩固收益、治疗回顾、现实评价与告do not。优先处理与结束相关的情感与事件，常见退行与哀伤，并需管理移情与反移情。",
+        "skill_name": "Termination-phase therapy",
+        "skill_description": "计划性的收尾期，聚焦巩固收益、Therapy review、现实评价与告do not。优先处理与结束相关的情感与事件，常见Regression与哀伤，并需管理移情与Countertransference。",
         "parent_ids": [
             "1147",
             "1153"
@@ -85,8 +85,8 @@
     },
     "1155": {
         "skill_id": "1155",
-        "skill_name": "退行和哀伤",
-        "skill_description": "Anticipation并识do not旧症状复现、迟到、嫉妒等退行及丧失带来的悲伤与哭泣；必要时评估抑郁与用药需求。承认失去治疗师的真实丧失，探索相关Fantasy。",
+        "skill_name": "Regression and mourning",
+        "skill_description": "Anticipation并识do not旧症状复现、迟到、嫉妒等Regression及丧失带来的悲伤与哭泣；必要时评估抑郁与用药需求。承认失去治疗师的真实丧失，探索相关Fantasy。",
         "parent_ids": [
             "1147",
             "1153",
@@ -119,7 +119,7 @@
     },
     "1158": {
         "skill_id": "1158",
-        "skill_name": "治疗回顾",
+        "skill_name": "Therapy review",
         "skill_description": "Guide reviewing the key changes and turning points in the treatment course, use concrete examples to mark the differences between old and new patterns, help integrate understanding of the self and the treatment, consolidating transferable gains.",
         "parent_ids": [
             "1147",
@@ -143,8 +143,8 @@
     },
     "1160": {
         "skill_id": "1160",
-        "skill_name": "真诚评价改变",
-        "skill_description": "以现实态度总结何者已变、何者not yet变，承认能力与局限，澄清“全愈”Fantasy；治疗师可分享对变化与挑战的观察，促进务实Anticipation与自我效能。",
+        "skill_name": "Sincerely evaluating change",
+        "skill_description": "以现实态度总结何者已变、何者not yet变，承认能力与局限，Clarification“全愈”Fantasy；治疗师可分享对变化与挑战的观察，促进务实Anticipation与自我效能。",
         "parent_ids": [
             "1147",
             "1160"

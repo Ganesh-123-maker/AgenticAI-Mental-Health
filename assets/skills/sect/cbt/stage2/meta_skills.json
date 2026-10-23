@@ -20,8 +20,8 @@
     },
     "662": {
         "skill_id": "662",
-        "skill_name": "评估心境",
-        "skill_description": "评估来访者当前情绪状态以把握问题严重度与改善趋势。常用抑郁/Anxiety量表按周评估，其他情绪或总体心境可用0-100情绪标尺，作为疗效监测依据。",
+        "skill_name": "Assessing mood",
+        "skill_description": "评估来访者当前情绪状态以把握问题严重度与改善趋势。常用抑郁/AnxietyScale按周评估，其他情绪或总体心境可用0-100情绪标尺，作为疗效监测依据。",
         "parent_ids": [
             "660",
             "661",
@@ -31,7 +31,7 @@
     },
     "663": {
         "skill_id": "663",
-        "skill_name": "获取最新信息",
+        "skill_name": "Obtaining the latest information",
         "skill_description": "Learn about the key events and changes since the last session. Encourage talking about the negative as well as attending to positive experiences; avoid getting into details, only an outline is needed, and when necessary include matters in the agenda to be handled in the middle segment.",
         "parent_ids": [
             "660",
@@ -42,7 +42,7 @@
     },
     "664": {
         "skill_id": "664",
-        "skill_name": "回顾家庭作业",
+        "skill_name": "Reviewing homework",
         "skill_description": "Jointly check with the client the completion of the homework assigned last time. This can strengthen the motivation to carry it out, present progress, and discover from the homework difficulties and clues worth discussion, including them in this agenda when necessary.",
         "parent_ids": [
             "660",
@@ -53,7 +53,7 @@
     },
     "665": {
         "skill_id": "665",
-        "skill_name": "确定会谈议程",
+        "skill_name": "Setting the session agenda",
         "skill_description": "在正式讨论前共同列出今日议题清单，明确优先级。议程可包含来访者关注的问题、咨询关系与设置相关事项及上次not yet竟主题，确保会谈聚焦高效。",
         "parent_ids": [
             "660",
@@ -84,7 +84,7 @@
     },
     "668": {
         "skill_id": "668",
-        "skill_name": "会谈总结",
+        "skill_name": "Session summary",
         "skill_description": "Review the core content, insights, and gains of this discussion, clarify the key points that need to be recorded and the matters to be followed up. The summary can strengthen learning and memory, helping the client grasp the progress and paving the way for the homework.",
         "parent_ids": [
             "660",
@@ -95,7 +95,7 @@
     },
     "669": {
         "skill_id": "669",
-        "skill_name": "家庭作业",
+        "skill_name": "Homework",
         "skill_description": "Before the end, clarify and confirm the homework, explain the goals and operating methods, and assess the willingness to complete and possible obstacles. When necessary adjust the difficulty or make it optional, because homework execution is closely related to treatment efficacy.",
         "parent_ids": [
             "660",
@@ -106,7 +106,7 @@
     },
     "670": {
         "skill_id": "670",
-        "skill_name": "会谈反馈",
+        "skill_name": "Session feedback",
         "skill_description": "邀请来访者反馈本次会谈的收获、感受与困惑，含重要收获、作业可行性、not适之处及not yet解问题。及时处理负面体验，维护咨询关系并规划下次议题。",
         "parent_ids": [
             "660",
@@ -117,8 +117,8 @@
     },
     "536": {
         "skill_id": "536",
-        "skill_name": "自动思维",
-        "skill_description": "自动思维是特定情境中自动冒出的想法，直接影响情绪、行为与生理。该阶段核心任务为识do not与评价思维；结束标志为来访者情绪明显改善、能有效处理情境，并学会识do not与评价自动思维。",
+        "skill_name": "Automatic thoughts",
+        "skill_description": "Automatic thoughts是特定情境中自动冒出的想法，直接影响情绪、行为与生理。该阶段核心任务为识do not与评价思维；结束标志为来访者情绪明显改善、能有效处理情境，并学会识do not与评价Automatic thoughts。",
         "parent_ids": [
             "660",
             "666",
@@ -128,8 +128,8 @@
     },
     "537": {
         "skill_id": "537",
-        "skill_name": "识do not自动思维和情绪",
-        "skill_description": "先识do not显著情绪，再追问当时的自动思维；可用Questioning、情景再现、提示或理性分析等方法定位情境、思维与感受，并区分情绪与想法，为后续评估与认知Intervention奠定基础。",
+        "skill_name": "识do notAutomatic thoughts和情绪",
+        "skill_description": "先识do not显著情绪，再追问当时的Automatic thoughts；可用Questioning、情景再现、提示或理性分析等方法定位情境、思维与感受，并区分情绪与想法，为后续评估与认知Intervention奠定基础。",
         "parent_ids": [
             "660",
             "666",
@@ -140,7 +140,7 @@
     },
     "538": {
         "skill_id": "538",
-        "skill_name": "评估自动思维和情绪",
+        "skill_name": "Assessing automatic thoughts and emotions",
         "skill_description": "In each agenda item, use a 0-100% scale to quantify emotion intensity and degree of belief in automatic thoughts; compare before and after to test session effectiveness, and adjust intervention strategies and homework arrangements accordingly, tracking treatment progress in a data-based way.",
         "parent_ids": [
             "660",
@@ -164,8 +164,8 @@
     },
     "540": {
         "skill_id": "540",
-        "skill_name": "学习识do not和评价自动思维",
-        "skill_description": "通过家庭作业系统练习，先学会识do not自动思维，再学习评价与修正；借助标准化工具与步骤形成skill，使来访者可自主应对not yet来问题并维持长期心理健康。",
+        "skill_name": "Learning识do not和评价Automatic thoughts",
+        "skill_description": "通过Homework系统练习，先学会识do notAutomatic thoughts，再Learning评价与修正；借助标准化工具与步骤形成skill，使来访者可自主应对not yet来问题并维持长期心理健康。",
         "parent_ids": [
             "660",
             "666",
@@ -176,8 +176,8 @@
     },
     "541": {
         "skill_id": "541",
-        "skill_name": "自动思维监控表",
-        "skill_description": "三栏表记录日期时间、情境、自动思维与情绪，并对信念与情绪强度评分；用于在日常中捕捉并练习识do not自动思维，是学习阶段的基础家庭作业工具。",
+        "skill_name": "Automatic thought monitoring form",
+        "skill_description": "三栏表记录日期时间、情境、Automatic thoughts与情绪，并对信念与情绪强度评分；用于在日常中捕捉并练习识do notAutomatic thoughts，是Learning阶段的基础Homework工具。",
         "parent_ids": [
             "660",
             "666",
@@ -189,7 +189,7 @@
     },
     "542": {
         "skill_id": "542",
-        "skill_name": "思维记录表",
+        "skill_name": "Thought record sheet",
         "skill_description": "On the basis of the monitoring form, add 'appropriate response' and 'conclusion', use 6 standard questions to evaluate the effectiveness and usefulness of thoughts, record changes in beliefs and emotions and the behavior to be taken, and promote the consolidation of cognition and behavior.",
         "parent_ids": [
             "660",
@@ -202,7 +202,7 @@
     },
     "543": {
         "skill_id": "543",
-        "skill_name": "评价自动思维和情绪",
+        "skill_name": "Evaluating automatic thoughts and emotions",
         "skill_description": "In cognitive behavioral therapy, use the shaping technique to examine and revise automatic thoughts, integrate the evidence to form alternative thoughts, and at the same time assess the degree of belief and the emotional intensity, so as to relieve negative emotions and promote behavioral change.",
         "parent_ids": [
             "660",
@@ -214,7 +214,7 @@
     },
     "544": {
         "skill_id": "544",
-        "skill_name": "控辩方证据技术",
+        "skill_name": "Prosecution-defense evidence technique",
         "skill_description": "Borrowing the trial framework, simultaneously collect evidence supporting the automatic thought and opposing viewpoints, sort out the evidence through four typical questions, and integrate positive and negative information to derive a more reasonable alternative thought, correcting cognitive distortions such as overgeneralization.",
         "parent_ids": [
             "660",
@@ -227,8 +227,8 @@
     },
     "545": {
         "skill_id": "545",
-        "skill_name": "发散思维技术",
-        "skill_description": "面对模糊情境，帮助来访者提出多种可能解释，为各解释寻找证据并估计概率，继而通过再联系、换号拨打等行动验证，从而缓解Anxiety与猜疑，扩大认知视角。",
+        "skill_name": "Divergent thinking technique",
+        "skill_description": "面对模糊情境，帮助来访者提出多种可能Interpretation，为各Interpretation寻找证据并估计概率，继而通过再联系、换号拨打等行动验证，从而缓解Anxiety与猜疑，扩大认知视角。",
         "parent_ids": [
             "660",
             "666",
@@ -240,7 +240,7 @@
     },
     "546": {
         "skill_id": "546",
-        "skill_name": "可能性区域技术",
+        "skill_name": "Possibility-region technique",
         "skill_description": "针对尚not yet发生的事件，构建从最糟到最好的结果区域，评估最可能结果，并为最坏情形准备应对，为理想结果筹划行动；通过证据权衡矫正对not yet来的消极Anticipation，降低Anxiety抑郁。",
         "parent_ids": [
             "660",
@@ -253,7 +253,7 @@
     },
     "547": {
         "skill_id": "547",
-        "skill_name": "行为试验技术",
+        "skill_name": "Behavioral trial technique",
         "skill_description": "在证据not足时先改行为以改认知，设计低风险试验情境，记录实际结果及新旧信念的相信程度，用行为结果检验并修正观念；亦用于鼓励尝试新行为，巩固替代思维与功能性习惯。",
         "parent_ids": [
             "660",
@@ -266,8 +266,8 @@
     },
     "548": {
         "skill_id": "548",
-        "skill_name": "代价–收益分析技术",
-        "skill_description": "借自经济学，比较坚持旧想法与采纳替代思维各自的好处与代价，激发选择更有利的观念并落实相应行动；亦用于处理阻抗，澄清改变与not改变的风险、成本与获益。",
+        "skill_name": "Cost-benefit analysis technique",
+        "skill_description": "借自经济学，比较坚持旧想法与采纳替代思维各自的好处与代价，激发选择更有利的观念并落实相应行动；亦用于Working through resistance，Clarification改变与not改变的风险、成本与获益。",
         "parent_ids": [
             "660",
             "666",
@@ -279,8 +279,8 @@
     },
     "549": {
         "skill_id": "549",
-        "skill_name": "情绪技术",
-        "skill_description": "本章聚焦以认知与行为方法改善情绪，not yet单列情绪技术。评估阶段常配合情绪命名与强度评分，结合替代思维与行为试验以缓解Anxiety、抑郁等情绪反应。",
+        "skill_name": "Emotion techniques",
+        "skill_description": "本章聚焦以认知与行为方法改善情绪，not yet单列Emotion techniques。评估阶段常配合情绪命名与强度评分，结合替代思维与Behavioral experiments以缓解Anxiety、抑郁等情绪反应。",
         "parent_ids": [
             "660",
             "666",
@@ -292,7 +292,7 @@
     },
     "550": {
         "skill_id": "550",
-        "skill_name": "注意力技术",
+        "skill_name": "Attention techniques",
         "skill_description": "The reference text mentions focusing attention on the answering task in examination situations and reducing rumination on threatening thoughts. Such attention management can be combined with cost-benefit analysis and behavioral experiments to help stabilize current performance and indirectly correct cognition.",
         "parent_ids": [
             "660",
@@ -305,7 +305,7 @@
     },
     "551": {
         "skill_id": "551",
-        "skill_name": "问题解决技术",
+        "skill_name": "Problem-solving technique",
         "skill_description": "The text repeatedly emphasizes verifying hypotheses by taking concrete actions and making checklists and steps to improve the situation, embodying a problem-solving approach. This technique usually turns alternative thoughts into executable plans, implemented step by step with effects evaluated.",
         "parent_ids": [
             "660",
@@ -318,7 +318,7 @@
     },
     "693": {
         "skill_id": "693",
-        "skill_name": "中间信念",
+        "skill_name": "Intermediate beliefs",
         "skill_description": "Intermediate beliefs are located between automatic thoughts and core beliefs, embodied as psychological strategies of attitudes, assumptions, and rules. The counseling goal is to correct the compensation strategies, transforming them into flexible coping strategies, and through verification and practice form new behavioral modes and habits.",
         "parent_ids": [
             "660",
@@ -329,8 +329,8 @@
     },
     "694": {
         "skill_id": "694",
-        "skill_name": "中间信念的识do not与提出",
-        "skill_description": "本子阶段通过识do not中间信念的组成、开展心理教育并评估利弊，促使来访者理解其假设的可检验性与可修正性，为后续评估、提炼新信念与行为改变奠定基础。",
+        "skill_name": "Intermediate beliefs的识do not与提出",
+        "skill_description": "本子阶段通过识do notIntermediate beliefs的组成、开展心理教育并评估利弊，促使来访者理解其假设的可检验性与可修正性，为后续评估、提炼新信念与行为改变奠定基础。",
         "parent_ids": [
             "660",
             "666",
@@ -341,8 +341,8 @@
     },
     "695": {
         "skill_id": "695",
-        "skill_name": "识do not中间信念",
-        "skill_description": "遵循四步识do not：界定问题领域/生活侧面；Clarify core beliefs through downward arrow；自自动思维提炼态度与规则；提出并澄清积极与消极假设，以获得可检验的中间信念表述。",
+        "skill_name": "识do notIntermediate beliefs",
+        "skill_description": "遵循四步识do not：界定问题领域/生活侧面；Clarify core beliefs through downward arrow；自Automatic thoughts提炼态度与规则；提出并Clarification积极与消极假设，以获得可检验的Intermediate beliefs表述。",
         "parent_ids": [
             "660",
             "666",
@@ -354,7 +354,7 @@
     },
     "696": {
         "skill_id": "696",
-        "skill_name": "中间信念心理教育",
+        "skill_name": "Psychoeducation on intermediate beliefs",
         "skill_description": "Explain to the client the structure and logic of intermediate beliefs (attitude - assumption - rule), explain that compensatory strategies fail as situations change, that assumptions can be verified, and emphasize their learned nature and modifiability, enhancing the sense of feasibility of change.",
         "parent_ids": [
             "660",
@@ -380,7 +380,7 @@
     },
     "698": {
         "skill_id": "698",
-        "skill_name": "中间信念评估",
+        "skill_name": "Intermediate belief assessment",
         "skill_description": "Use the 0-100% percentage scale to continuously record the degree of belief in the old / new beliefs, recommend daily tracking, so as to observe fluctuations and trends, monitor intervention effects, and guide the counseling process and goal adjustment.",
         "parent_ids": [
             "660",
@@ -392,7 +392,7 @@
     },
     "699": {
         "skill_id": "699",
-        "skill_name": "中间信念评价",
+        "skill_name": "Intermediate belief evaluation",
         "skill_description": "通过苏格拉底式Questioning与多种认知技术检验旧假设的证据与适用边界，提炼更具适应性的替代假设，并积累支持证据以提高新信念的可信度。",
         "parent_ids": [
             "660",
@@ -417,7 +417,7 @@
     },
     "701": {
         "skill_id": "701",
-        "skill_name": "提出新中间信念",
+        "skill_name": "Proposing new intermediate beliefs",
         "skill_description": "On the basis of evidence, rewrite the old assumption into a new assumption of 'positive wording + limiting conditions', and evaluate the degree of belief in it; test and strengthen it with life examples and subsequent practice, making it more feasible and adaptive.",
         "parent_ids": [
             "660",
@@ -430,8 +430,8 @@
     },
     "702": {
         "skill_id": "702",
-        "skill_name": "评估零点技术",
-        "skill_description": "针对最高标准/完美主义，设置更低的比较基准（评估零点），引导与零点而非完美点对照，即刻修正not合理比较带来的挫败，促进灵活、多元评价。",
+        "skill_name": "Zero-point assessment technique",
+        "skill_description": "针对最高标准/完美主义，设置更低的比较基准（评估零点），Guidance与零点而非完美点对照，即刻修正not合理比较带来的挫败，促进灵活、多元评价。",
         "parent_ids": [
             "660",
             "666",
@@ -443,7 +443,7 @@
     },
     "703": {
         "skill_id": "703",
-        "skill_name": "认知连续体技术",
+        "skill_name": "Cognitive continuum technique",
         "skill_description": "Use a continuous 0-100% scale to replace black-and-white thinking, construct more extreme scenarios for comparison and re-evaluation, so that the current situation obtains a more appropriate positioning in the continuum, reducing the catastrophic evaluation of 'It's awful'.",
         "parent_ids": [
             "660",
@@ -456,7 +456,7 @@
     },
     "704": {
         "skill_id": "704",
-        "skill_name": "饼图技术",
+        "skill_name": "Pie chart technique",
         "skill_description": "Decompose the causes of an event into multiple factors and weight them by proportion, balancing internal and external attributions, clarifying the bias of 'all caused by me/them', and helping form an objective assessment of responsibility and more reasonable follow-up countermeasures.",
         "parent_ids": [
             "660",
@@ -469,7 +469,7 @@
     },
     "705": {
         "skill_id": "705",
-        "skill_name": "多重环节技术",
+        "skill_name": "Multi-link technique",
         "skill_description": "把线性联想拆解为多个阶段，逐环节分析可能走向、条件与纠偏手段，发现转机与可控点，缓解连锁灾难化或过度乐观的非理性Anticipation。",
         "parent_ids": [
             "660",
@@ -495,7 +495,7 @@
     },
     "707": {
         "skill_id": "707",
-        "skill_name": "中间信念的应用",
+        "skill_name": "Application of intermediate beliefs",
         "skill_description": "On the basis of the new belief, through behavioral experiments and behavioral rehearsal turn the cognitive change into behavioral change; first verify in small steps and accumulate evidence, then practice at high intensity, and finally solidify into a stable habit.",
         "parent_ids": [
             "660",
@@ -507,7 +507,7 @@
     },
     "708": {
         "skill_id": "708",
-        "skill_name": "行为试验",
+        "skill_name": "Behavioral experiments",
         "skill_description": "Jointly design controllable, safe reality tests, compare the predictions and results of the old / new assumptions, gradually accumulate evidence to raise confidence in the new belief; applicable to the stage where confidence in the new belief is about 50-70%.",
         "parent_ids": [
             "660",
@@ -520,8 +520,8 @@
     },
     "709": {
         "skill_id": "709",
-        "skill_name": "行为表演",
-        "skill_description": "在近乎全信（约90%）的基础上，要求“像完全相信一样”去行动，逼真演练新行为脚本，以体验式成功Reinforcement新信念并加速习惯化。",
+        "skill_name": "Behavioral rehearsal",
+        "skill_description": "在近乎全信（约90%）的基础上，Demands“像完全相信一样”去行动，逼真演练新行为脚本，以体验式成功Reinforcement新信念并加速Habituation。",
         "parent_ids": [
             "660",
             "666",
@@ -533,7 +533,7 @@
     },
     "783": {
         "skill_id": "783",
-        "skill_name": "核心信念阶段咨询",
+        "skill_name": "Core belief stage counseling",
         "skill_description": "The core-belief stage is the root-treating segment of cognitive behavioral therapy, carried out on the basis of work on automatic thoughts and intermediate beliefs, aiming to repair the negative core views of self, others, and the world, use present experience to correct the past, and promote cognitive selfhood, self-acceptance, and development.",
         "parent_ids": [
             "660",
@@ -545,7 +545,7 @@
     "784": {
         "skill_id": "784",
         "skill_name": "识do not核心信念",
-        "skill_description": "识do not核心信念是发现来访者对自我、他人、世界的最概括判断。可从自动思维直接提取、跨情境归纳共性主题，或用箭头向下技术逐层追问抵达根信念。",
+        "skill_description": "识do not核心信念是发现来访者对自我、他人、世界的最概括判断。可从Automatic thoughts直接提取、跨情境归纳共性主题，或用箭头向下技术逐层追问抵达根信念。",
         "parent_ids": [
             "660",
             "666",
@@ -556,8 +556,8 @@
     },
     "785": {
         "skill_id": "785",
-        "skill_name": "从自动思维中识do not核心信念",
-        "skill_description": "当来访者报告与情境相关的自动思维时，常伴随显露核心信念。关注主语为“我/他人/世界”、表语为判断句的语式，如“I am incompetent”“世界很冷漠”等。",
+        "skill_name": "从Automatic thoughts中识do not核心信念",
+        "skill_description": "当来访者报告与情境相关的Automatic thoughts时，常伴随显露核心信念。关注主语为“我/他人/世界”、表语为判断句的语式，如“I am incompetent”“世界很冷漠”等。",
         "parent_ids": [
             "660",
             "666",
@@ -569,8 +569,8 @@
     },
     "786": {
         "skill_id": "786",
-        "skill_name": "通过归纳自动思维来识do not核心信念",
-        "skill_description": "在多个情境收集自动思维，比较其共同内核并归类，如反复出现能力、自我价值或被爱主题，据此提炼出“without能”“not可爱”等负性核心信念的类do not。",
+        "skill_name": "通过归纳Automatic thoughts来识do not核心信念",
+        "skill_description": "在多个情境收集Automatic thoughts，比较其共同内核并归类，如反复出现能力、自我价值或被爱主题，据此提炼出“without能”“not可爱”等负性核心信念的类do not。",
         "parent_ids": [
             "660",
             "666",
@@ -595,8 +595,8 @@
     },
     "788": {
         "skill_id": "788",
-        "skill_name": "评估核心信念",
-        "skill_description": "评估核心信念需界定其主题与性质（自我/他人/世界，正/负），辨识维护机制（选择性注意、deny、扭曲），并结合三层信念的验证难度，确定Intervention顺序与时机。",
+        "skill_name": "Evaluating core beliefs",
+        "skill_description": "Evaluating core beliefs需界定其主题与性质（自我/他人/世界，正/负），辨识维护机制（选择性注意、deny、扭曲），并结合三层信念的验证难度，确定Intervention顺序与时机。",
         "parent_ids": [
             "660",
             "666",
@@ -607,7 +607,7 @@
     },
     "789": {
         "skill_id": "789",
-        "skill_name": "核心信念的评价",
+        "skill_name": "Evaluating core beliefs",
         "skill_description": "Evaluation of core beliefs focuses on their origins and rationality judgments: combined with growth history data, examine significant others' expectations and evaluations, social comparison, traumatic experiences, and childhood interpretations and compensatory strategies, and scrutinize their evidence base.",
         "parent_ids": [
             "660",
@@ -619,7 +619,7 @@
     },
     "790": {
         "skill_id": "790",
-        "skill_name": "传记分析技术",
+        "skill_name": "Biographical analysis technique",
         "skill_description": "Through sorting out the individual's developmental history and interactions with significant others, trace back expectations and evaluations, social comparison, trauma, personal interpretations, and early behavioral styles, reconstruct the formation path, and locate the sources and maintaining factors of negative core beliefs.",
         "parent_ids": [
             "660",
@@ -632,7 +632,7 @@
     },
     "791": {
         "skill_id": "791",
-        "skill_name": "两个我的对话技术",
+        "skill_name": "The 'two selves' dialogue technique",
         "skill_description": "Guide a duel between the new and old beliefs, letting the new belief based on current positive experience dialogue and dialectically engage with the old negative belief, correcting early distorted interpretations, raising belief in 'capable/lovable' self-statements, and shaking the old schema.",
         "parent_ids": [
             "660",

@@ -17,7 +17,7 @@
         "skill_name": "Use personifying and third-person language to depict the problem",
         "skill_description": "用拟人化、压迫隐喻与第三人称表述问题，如“Anxiety如何来压迫你”，把人从问题中分离，使问题成为外在的实体，便于审视其作用与策略。",
         "when_to_use": "In an externalizing conversation, when the client's self-narrative of 'I am the problem' needs to be changed and a perspective separating the person from the problem established.",
-        "trigger": "来访者反复use自责或本质化表达（如“我就是失败者”），被问题主导、羞耻明显、关系冲突加剧。",
+        "trigger": "来访者反复use自责或本质化表达（如“I am just a failure”），被问题主导、羞耻明显、关系冲突加剧。",
         "parent_ids": [
             "1",
             "2",
@@ -54,7 +54,7 @@
     "46": {
         "skill_id": "46",
         "skill_name": "Pursuing counteracting moments and unique events",
-        "skill_description": "引导来访者回忆曾成功摆脱或削弱问题控制的时刻，详述当时的想法、行动与支持，识do not可复制的策略以削弱问题主导。",
+        "skill_description": "Guidance来访者回忆曾成功摆脱或削弱问题控制的时刻，详述当时的想法、行动与支持，识do not可复制的策略以削弱问题主导。",
         "when_to_use": "After the influence of externalization has been clarified, the stage of weakening the problem's power and turning to alternative narratives and resource mobilization.",
         "trigger": "来访者出现小幅好转、提到例外或成功经验片段，或表达希望寻求not同做法时。",
         "parent_ids": [
@@ -80,7 +80,7 @@
     "48": {
         "skill_id": "48",
         "skill_name": "Explain the benefits of externalization and establish a collaborative stance",
-        "skill_description": "向来访者解释外化的好处（减冲突、减失败感、促合作与新可能），共同约定以“人not是问题”的立场开展对话，增强安全感与参与度。",
+        "skill_description": "向来访者Interpretation外化的好处（减冲突、减失败感、促合作与新可能），共同约定以“人not是问题”的立场开展对话，增强安全感与参与度。",
         "when_to_use": "In the framework-setting and relationship-building stage before externalization is launched, or when the client doubts the method and shame is salient.",
         "trigger": "When the client resists discussion because of self-blame or labeling, worries about being judged, or interpersonal conflict is prominent and problems need to be faced cooperatively.",
         "parent_ids": [
@@ -94,7 +94,7 @@
         "skill_id": "49",
         "skill_name": "Externalize and amplify the client's positive qualities",
         "skill_description": "Likewise externalize positive traits such as resilience, patience, and resources into visible cultural products, thicken their evidence and influence in the narrative, to support the formation and maintenance of alternative stories.",
-        "when_to_use": "在外化问题的同时或其后，用于构建“由薄到厚”的新叙事，Reinforcement能力与希望感。",
+        "when_to_use": "在外化问题的同时或其后，用于构建“From thin to thick”的新叙事，Reinforcement能力与希望感。",
         "trigger": "The client reveals strengths or mentions support and success episodes; when excessive problem focus needs balancing and amplifying positive qualities.",
         "parent_ids": [
             "1",
@@ -105,7 +105,7 @@
     },
     "50": {
         "skill_id": "50",
-        "skill_name": "引导命名并拟人化问题",
+        "skill_name": "Guiding naming and personifying the problem",
         "skill_description": "Invite the client to name the difficulty and describe its characteristics in role-characterizing language; when necessary, provide word prompts but preserve the right to name. Precise naming helps externalization and control, making it convenient afterwards to explore the problem's mode of action.",
         "when_to_use": "In early narrative therapy, around externalizing conversations and expanding the initial story, needing to separate the 'problem' from the person and establish an operable object.",
         "trigger": "来访者笼统抱怨或难以明确描述困扰；use“总是”“很糟”但without具体指称；对问题感到失控。",
@@ -118,8 +118,8 @@
     },
     "51": {
         "skill_id": "51",
-        "skill_name": "探问问题的意图与要求",
-        "skill_description": "use拟人化问句探查问题的“目的”“策略”和对来访者的要求，如它如何控制、诱骗、压迫以及当其要求被满足会发生什么，从而揭示其操控机制。",
+        "skill_name": "Asking about the problem's intentions and demands",
+        "skill_description": "use拟人化问句探查问题的“目的”“策略”和对来访者的Demands，如它如何控制、诱骗、压迫以及当其Demands被满足会发生什么，从而揭示其操控机制。",
         "when_to_use": "After completing naming and preliminary externalization, entering the problem impact and relationship exploration stage, when the client's perspective on their relationship with the problem needs to be deepened.",
         "trigger": "来访者表述“Anxiety/愤怒控制我”“它压迫我”“我被它牵着走”等被动受控语言与情绪。",
         "parent_ids": [
@@ -131,7 +131,7 @@
     },
     "52": {
         "skill_id": "52",
-        "skill_name": "追溯问题出现与发展史",
+        "skill_name": "Tracing the problem's emergence and development history",
         "skill_description": "Guide the client to narrate the timeline of the problem's first appearance, evolution, and persistence, discuss the meaning and scope of impact if it continues for a period, providing the problem background to locate breakthrough points.",
         "when_to_use": "Used when, in externalizing conversation, the problem's context and evolution need framing, or the client lacks a clear sense of the distress's origin and persistence.",
         "trigger": "来访者时间线混乱、以“一直如此”绝对化描述，或without法回忆问题何时开始及如何加剧。",
@@ -264,7 +264,7 @@
         "skill_name": "Provide naming prompts while keeping decision rights",
         "skill_description": "当来访者一时想not到名称时，提供提示或若干词/短语备选以激发联想，但明确最终命名权归来访者。",
         "when_to_use": "已进入命名环节但来访者迟疑、卡壳或反复表示想not出合适称呼时。",
-        "trigger": "来访者沉默、说“想not到叫什么”“not知道怎么形容”等，显现命名困难。",
+        "trigger": "来访者Silence、说“想not到叫什么”“not知道怎么形容”等，显现命名困难。",
         "parent_ids": [
             "1",
             "2",
@@ -274,7 +274,7 @@
     },
     "40": {
         "skill_id": "40",
-        "skill_name": "与来访者精确化命名",
+        "skill_name": "Refining naming with the client",
         "skill_description": "Refine and polish the name of the problem together with the client, making the name apt and concrete, enhancing their sense of control over the problem, and preparing for externalizing the problem.",
         "when_to_use": "The client has proposed a preliminary name and, before turning to externalization and impact exploration, the aptness and directedness of the name need to be raised.",
         "trigger": "初定名称过于宽泛或含混，来访者对称呼not确定，或希望更准确地表达其体验。",
@@ -287,7 +287,7 @@
     },
     "41": {
         "skill_id": "41",
-        "skill_name": "在外化Questioning中一致use已命名问题",
+        "skill_name": "在外化Questioning中一致use已Naming the problem",
         "skill_description": "Uses the named word/phrase as the subject to launch externalizing questions (such as 'how long has X influenced?' 'how does X oppress you?'), consolidating the separation of the person and the problem.",
         "when_to_use": "After the problem is named, transitioning into externalizing conversations, exploring the problem's history and influence.",
         "trigger": "The client acknowledges and accepts the name and is ready to further discuss the problem's concrete impact on life and its trajectory.",
@@ -354,7 +354,7 @@
         "skill_id": "13",
         "skill_name": "Provide a safe, private environment and invite narration",
         "skill_description": "在会谈开始即确保空间安静、not受打扰，说明保密与尊重原则，邀请来访者讲述其所关注之事，营造可被Listening的安全场域，促发叙事开启。",
-        "when_to_use": "叙事会谈的开场与故事叙述初始阶段，用于建立关系与启动来访者的讲述；来访者初次到访、对咨询场域not熟且Anxiety时。",
+        "when_to_use": "叙事会谈的开场与Story narration初始阶段，用于建立关系与启动来访者的讲述；来访者初次到访、对咨询场域not熟且Anxiety时。",
         "trigger": "来访者表现紧张、迟疑开口或环顾环境；言语提及“这里安全吗”“not知从何说起”等警惕与顾虑信号。",
         "parent_ids": [
             "1",
@@ -381,7 +381,7 @@
     "15": {
         "skill_id": "15",
         "skill_name": "以好奇与“not知道”立场聆听",
-        "skill_description": "保持强烈兴趣与好奇心，以“not知道”的立场追问来访者经验，避免预设与定论，鼓励其展开与澄清，从而降低权威感并营造合作氛围。",
+        "skill_description": "保持强烈兴趣与好奇心，以“not知道”的立场追问来访者经验，避免预设与定论，鼓励其展开与Clarification，从而降低权威感并营造合作氛围。",
         "when_to_use": "全程贯穿叙事会谈，尤以故事聆听与探索例外初期，用于减少权威not对等、提升安全感与表达意愿。",
         "trigger": "The client expects directive answers (such as 'you tell me what to do'), or narrates problems in an absolute, rigid way and frequently seeks expert judgment.",
         "parent_ids": [
@@ -411,7 +411,7 @@
         "skill_name": "Use metaphors to create a relaxed narrative atmosphere",
         "skill_description": "在保证尊重与Empathy前提下，适度借助令人愉悦、感动的隐喻或故事，缓解紧张、防御，帮助来访者找到可述说的角度，促进入口与持续叙述。",
         "when_to_use": "At the early stage when starting the narration is difficult or the emotions are highly tense; it is necessary to lower the defenses and create a relaxed atmosphere in order to enter the story narration.",
-        "trigger": "来访者沉默、言语卡顿、反复说“说not清”“not知道怎么开口”；全身紧绷、回避目光等非言语紧张信号。",
+        "trigger": "来访者Silence、言语卡顿、反复说“说not清”“not知道怎么开口”；全身紧绷、回避目光等非言语紧张信号。",
         "parent_ids": [
             "1",
             "2",
@@ -534,10 +534,10 @@
     },
     "26": {
         "skill_id": "26",
-        "skill_name": "以积极关注邀请叙述",
+        "skill_name": "Inviting narration with positive attention",
         "skill_description": "在安全、not被打扰的氛围中，以尊重与积极关注邀请来访者讲述其关注事件，治疗师专注Listening，帮助其开启并维持叙述进程，降低防御，促进入门故事展开。",
         "when_to_use": "At the opening of narrative therapy and the 'telling the story' stage, used to build the relationship and initiate narration; the client enters for the first time and needs to build a sense of safety and willingness to express.",
-        "trigger": "来访者显得紧张、沉默或叙述零碎；用词谨慎、观望；坐姿收缩、目光游离，显露not安或迟疑。",
+        "trigger": "来访者显得紧张、Silence或叙述零碎；用词谨慎、观望；坐姿收缩、目光游离，显露not安或迟疑。",
         "parent_ids": [
             "1",
             "2",
@@ -548,7 +548,7 @@
     },
     "27": {
         "skill_id": "27",
-        "skill_name": "鼓励细化问题影响",
+        "skill_name": "Encouraging elaboration of the problem's impact",
         "skill_description": "When the narrative pauses naturally, encourage the client to describe more concretely the difficulty and its impact on life, collect memorable details as material for subsequent work, and help them shift from vagueness toward clarity.",
         "when_to_use": "While the story is being told or the narration becomes generalized, need to accumulate situational details and influence clues for rewriting and externalization.",
         "trigger": "The client pauses or only summarizes with general words such as 'always', 'very bad'; finds it hard to point to concrete events, impact, or situations.",
@@ -562,8 +562,8 @@
     },
     "28": {
         "skill_id": "28",
-        "skill_name": "运用外化问句减压赋能",
-        "skill_description": "通过命名问题并use外化问句（如“X影响了你多久？”“它怎样压迫你？”），把人和问题分开，减轻自责，增强对问题的掌控感与行动空间。",
+        "skill_name": "Using externalizing questions to relieve pressure and empower",
+        "skill_description": "通过Naming the problem并use外化问句（如“X影响了你多久？”“它怎样压迫你？”），把人和问题分开，减轻自责，增强对问题的掌控感与行动空间。",
         "when_to_use": "When the client equates the self with the problem and is sunk in a problem-saturated narrative; preparing to transition to the externalization and rewriting stage.",
         "trigger": "来访者自责或说“我就是问题”“我not救了”；Low mood、without力，语言中充满内化标签。",
         "parent_ids": [
@@ -576,7 +576,7 @@
     },
     "29": {
         "skill_id": "29",
-        "skill_name": "挖掘并放大特殊事例",
+        "skill_name": "Excavating and amplifying exceptional instances",
         "skill_description": "有意识寻找问题not yet发生或影响较弱的例外情境，邀请来访者重温当时的做法与内在资源，放大其意义以唤起信心，作为新故事的起点。",
         "when_to_use": "Entering the 'rewriting the story' or 'enriching the new story' stage, when hope needs raising and material for the new narrative needs providing.",
         "trigger": "The client mentions episodes of occasional improvement, having coped adequately before, or 'that time was okay'; holding hesitation about change but showing expectation.",
@@ -590,7 +590,7 @@
     },
     "30": {
         "skill_id": "30",
-        "skill_name": "由薄到厚放大正向认同",
+        "skill_name": "Amplifying positive identity from thin to thick",
         "skill_description": "识do not“单薄故事”中的偏见过滤，鼓励描绘被忽视的积极体验与能力，将被压缩的正向自我认同还原、扩写，形成更有力的自我观念。",
         "when_to_use": "In the re-authoring stage, the client's self-narrative is single and negative, and the self-picture and identity strength need to be reshaped.",
         "trigger": "来访者用“I am worthless”“从来not成功”等绝对化表述，忽略或轻描其积极片段。",
@@ -604,7 +604,7 @@
     },
     "31": {
         "skill_id": "31",
-        "skill_name": "细描并整合新叙事细节",
+        "skill_name": "Elaborating and integrating new narrative details",
         "skill_description": "在发现例外后，邀请来访者详述当时的情绪、想法、行动与情境，将其系统整合进新故事，使新叙事更翔实、连续并连接过去与not yet来。",
         "when_to_use": "At the 'enriching the new story' stage, to consolidate alternative narratives and avoid becoming mere slogans.",
         "trigger": "The client has produced new descriptions or hopes, but the content is brief and jumpy, lacking concrete details and coherence.",
@@ -716,9 +716,9 @@
     "77": {
         "skill_id": "77",
         "skill_name": "Explore the problem's concrete impact and the client's responses",
-        "skill_description": "系统询问问题对学习、睡眠、情绪、人际的具体影响，并与来访者共同梳理影响清单（如惴惴not安、without法专心、提学习就烦躁生气），同时了解其看法与回应，扩展叙述面向，为外化后的合作与选择奠定基础，减轻压力。",
+        "skill_description": "系统询问问题对Learning、睡眠、情绪、人际的具体影响，并与来访者共同梳理影响清单（如惴惴not安、without法专心、提Learning就烦躁生气），同时了解其看法与回应，扩展叙述面向，为外化后的合作与选择奠定基础，减轻压力。",
         "when_to_use": "After building the relationship, entering the problem exploration and externalizing dialogue stage, needing to start externalization and concretize the problem's impact, draw an influence map, and ask about the client's coping.",
-        "trigger": "来访者谈到入睡困难、Anxiety抑郁、人际受挫或自责、回避等反应；或谈及休学与复课担心，并呈现被情绪困扰牵引的学习与生活困难。",
+        "trigger": "来访者谈到Difficulty falling asleep、Anxiety抑郁、人际受挫或自责、回避等反应；或谈及休学与复课担心，并呈现被情绪困扰牵引的Learning与生活困难。",
         "parent_ids": [
             "1",
             "2",
@@ -742,9 +742,9 @@
     "73": {
         "skill_id": "73",
         "skill_name": "Concretely name the problem with nicknames or metaphors",
-        "skill_description": "引导来访者为关键情绪与困扰选取贴近自身的昵称、具体物象或隐喻并命名（如将失落称“失落君”、把“Anxiety”比作杂乱without序的毛线团），或贴上简短认知标签，提供心理与言语距离，使问题可被看见、指代与讨论，便于外化与Emotion management，开启重写路径。",
+        "skill_description": "Guidance来访者为关键情绪与困扰选取贴近自身的昵称、具体物象或隐喻并命名（如将失落称“失落君”、把“Anxiety”比作杂乱without序的毛线团），或贴上简短认知标签，提供心理与言语距离，使问题可被看见、指代与讨论，便于外化与Emotion management，开启重写路径。",
         "when_to_use": "Narrative therapy初期至中期、进入外化环节前，当来访者描述模糊、难以把握困扰或需要为情绪与问题建立可讨论的对象时。",
-        "trigger": "来访者反复提到“失落”“迷茫”“Anxiety”“自责”等抽象感受，表示“not知道怎么说、很乱”，或自述生活学习乱七八糟、难以说明困扰。",
+        "trigger": "来访者反复提到“失落”“迷茫”“Anxiety”“自责”等抽象感受，表示“not知道怎么说、很乱”，或自述生活Learning乱七八糟、难以说明困扰。",
         "parent_ids": [
             "1",
             "2",
@@ -757,7 +757,7 @@
         "skill_name": "ListeningEmpathy与积极关注营造安全氛围",
         "skill_description": "以专注Listening、真诚Empathy与without条件积极关注回应来访者，结合接纳与支持、肯定其努力与坚持，传递尊重与not评判，增强被理解与安全感，稳定咨访关系，促使其愿意继续讲述困扰与经历。",
         "when_to_use": "In the early session and story-telling stage, or the assessment and relationship-building stage, when the client needs to be understood and supported.",
-        "trigger": "来访者哭泣、沉默、语速缓慢或回避目光，出现without助、自责、Self-denial、紧张Anxiety及发抖出汗等生理反应。",
+        "trigger": "来访者哭泣、Silence、语速缓慢或回避目光，出现without助、自责、Self-denial、紧张Anxiety及发抖出汗等生理反应。",
         "parent_ids": [
             "1",
             "2",
@@ -785,7 +785,7 @@
         "skill_name": "Listening与Empathy促表达与信任建立",
         "skill_description": "在会谈伊始与过程中保持耐心专注的Listening与Empathy回应，以积极关注与人本态度陪伴，邀请来访者表达Repression的委屈与愤怒，降低防御与紧张，营造without评判、被理解的安全关系，促进入口叙述与互动稳定。",
         "when_to_use": "In the narrative deepening stage such as the first stage or the 2nd session, or when the client narrates with difficulty and emotional fluctuation.",
-        "trigger": "来访者沉默迟疑、神情紧张目光躲闪、自称社恐声音小、局促not安，或出现without望言语、急切倾诉、人际矛盾与学业Anxiety。",
+        "trigger": "来访者Silence迟疑、神情紧张目光躲闪、自称社恐声音小、局促not安，或出现without望言语、急切倾诉、人际矛盾与学业Anxiety。",
         "parent_ids": [
             "1",
             "2",
@@ -811,7 +811,7 @@
     "79": {
         "skill_id": "79",
         "skill_name": "Clarify confidentiality principles and sign informed consent",
-        "skill_description": "在开场完成知情同意与保密协议，解释保密原则及例外，明确双方权利、义务与责任，透明化记录use与隐私保护，降低顾虑与not安，形成安全、可信、可Anticipation的叙述边界。",
+        "skill_description": "在开场完成知情同意与保密协议，Interpretation保密原则及例外，明确双方权利、义务与责任，透明化记录use与隐私保护，降低顾虑与not安，形成安全、可信、可Anticipation的叙述边界。",
         "when_to_use": "Before counseling starts and at the first session, or at stage transitions and arrangement changes, used to build a safe and trustworthy session environment.",
         "trigger": "The client has doubts about privacy and procedures, is reserved and avoids eye contact or is highly defensive, proactively asks about diagnosis, medication, and procedure details, or appears tense and worried.",
         "parent_ids": [
@@ -824,9 +824,9 @@
     },
     "90": {
         "skill_id": "90",
-        "skill_name": "积极Listening澄清叙述并收集信息",
-        "skill_description": "在初次会谈专注耐心Listening，细致观察言语、情绪与行为线索，梳理Anxiety背后的事件与情境，澄清叙述与口误并把握关系脉络，真诚回应Questioning，稳定关系与期待，为判定关键问题与制定后续计划奠基。",
-        "when_to_use": "第1次会谈或会谈初期的故事叙述与关系建立阶段，当来访者详细讲述或主动Questioning时。",
+        "skill_name": "积极ListeningClarification叙述并收集信息",
+        "skill_description": "在初次会谈专注耐心Listening，细致观察言语、情绪与行为线索，梳理Anxiety背后的事件与情境，Clarification叙述与口误并把握关系脉络，真诚回应Questioning，稳定关系与期待，为判定关键问题与制定后续计划奠基。",
+        "when_to_use": "第1次会谈或会谈初期的Story narration与关系建立阶段，当来访者详细讲述或主动Questioning时。",
         "trigger": "The client begins narrating, emotional fluctuations such as crying or tension appear, the narration is confused or slips of the tongue need clarifying, or questions are raised about the process, diagnosis, and subsequent steps.",
         "parent_ids": [
             "1",
@@ -839,9 +839,9 @@
     "86": {
         "skill_id": "86",
         "skill_name": "Develop and assign between-session actions and records",
-        "skill_description": "在会谈末段，与来访者一起将学习目标转化为可执行清单，列出任务并按轻重缓急排序；于首次会面结束前布置逐日记录实际与有效学习时长、所看书目与掌握的知识点；同时给出清晰的首要行动提示（如“按计划完成任务，not玩手机”），并约定下次咨询的聚焦目标，以提升行动性与效率、形成清晰进程并承接动力。",
+        "skill_description": "在会谈末段，与来访者一起将Learning目标转化为可执行清单，列出任务并按轻重缓急排序；于首次会面结束前布置逐日记录实际与有效Learning时长、所看书目与掌握的知识点；同时给出清晰的首要行动提示（如“按计划完成任务，not玩手机”），并约定下次咨询的聚焦目标，以提升行动性与效率、形成清晰进程并承接动力。",
         "when_to_use": "At the end of the first meeting or at the end of any session, when goals and direction are clear and there is a need to enter between-session behavioral practice; or after a shift of emotion/stance when there is a need to clarify the next focus.",
-        "trigger": "来访者提出可行策略如“列计划表”“not玩手机”等并愿意行动；或报告难以投入学习、时长not稳定、对not yet掌握知识点Anxiety与without序；或在会谈中鼓起勇气表达、展现成长愿望并准备结束回到日常学习任务。",
+        "trigger": "来访者提出可行策略如“列计划表”“not玩手机”等并愿意行动；或报告难以投入Learning、时长not稳定、对not yet掌握知识点Anxiety与without序；或在会谈中鼓起勇气表达、展现成长愿望并准备结束回到日常Learning任务。",
         "parent_ids": [
             "1",
             "10",
@@ -852,7 +852,7 @@
     "78": {
         "skill_id": "78",
         "skill_name": "Review and sort through effective between-session actions",
-        "skill_description": "在随访或后续辅导中，按约定从上次完成情况开始，引导来访者回顾两次会谈间采取的具体做法与成效，use聚焦、具体化Questioning澄清“哪些方法有效、怎样做的”，锁定可延续的有效行动。",
+        "skill_description": "在随访或后续辅导中，按约定从上次完成情况开始，Guidance来访者回顾两次会谈间采取的具体做法与成效，use聚焦、具体化QuestioningClarification“哪些方法有效、怎样做的”，锁定可延续的有效行动。",
         "when_to_use": "At the beginning of subsequent sessions or at the assessment stage, when the recent situation needs to be reviewed and the change consolidated; used to take stock of the actual actions and effects after the previous session.",
         "trigger": "The client is willing to review the recent learning and emotional changes, or mentions attempts that were made and their effectiveness / confusion, needing further sorting out.",
         "parent_ids": [
@@ -891,9 +891,9 @@
     "91": {
         "skill_id": "91",
         "skill_name": "Find exceptions and unique outcomes to shift toward resources",
-        "skill_description": "当被问题故事困住时，以好奇Questioning回溯问题not yet发生或影响较轻的时刻，比较几次尝试的差异，细化当时的行为与感受，放大积极体验与可能性；若暂时找not出例外，可用假设情境引导思考与预演。",
-        "when_to_use": "来访者叙述充满not被接纳、成绩下滑、Self-denial等问题故事，或在解构负性叙事后需转向资源与可能性时；陷入习得性without助、难以看到改变时。",
-        "trigger": "反复说“not人喜欢我”“我很差劲”等without力感与负性自我认同；强调沟通困难或预设他人敌意；难以回忆notAnxiety、not恐惧的时刻；开始看见not同结果的线索。",
+        "skill_description": "当被问题故事困住时，以好奇Questioning回溯问题not yet发生或影响较轻的时刻，比较几次尝试的差异，细化当时的行为与感受，放大积极体验与可能性；若暂时找not出例外，可用假设情境Guidance思考与预演。",
+        "when_to_use": "来访者叙述充满not被接纳、Declining grades、Self-denial等问题故事，或在解构负性叙事后需转向资源与可能性时；陷入习得性without助、难以看到改变时。",
+        "trigger": "反复说“not人喜欢我”“我很差劲”等without力感与负性自我认同；强调沟通困难或预设他人敌意；难以回忆notAnxiety、notFear的时刻；开始看见not同结果的线索。",
         "parent_ids": [
             "1",
             "2",
@@ -932,7 +932,7 @@
     },
     "85": {
         "skill_id": "85",
-        "skill_name": "赞许并命名优势与进步",
+        "skill_name": "Praising and naming strengths and progress",
         "skill_description": "Immediately express appreciation and specifically name the strengths and efforts, such as actions, attitudes, wishes, and traits, give factual affirmation directed at the highlights and progress presented, reduce negative labels, expand attention to strengths and self-efficacy, and raise confidence in change.",
         "when_to_use": "Moments in the session when the client's strengths or efforts are discovered; at the feedback stage of each consultation or after exception exploration and homework review, used to consolidate the positive narrative.",
         "trigger": "The client shows effort, completes homework, change appears, scores rise, or presents positive behavior, unique insights, or progress related to goals.",
@@ -974,7 +974,7 @@
     },
     "92": {
         "skill_id": "92",
-        "skill_name": "即时具体肯定巩固动机",
+        "skill_name": "Immediate specific affirmation to consolidate motivation",
         "skill_description": "Respond to the client's attempts and progress with timely, concrete affirmation and positive feedback, discuss gains and meanings in homework and life review; name the resources and abilities shown; give enthusiastic affirmation for small progress and ask about the conditions that enabled it; on the spot, express joy with sincere positive feedback, enhancing the motivation to continue narrating and changing, and consolidating the new narrative.",
         "when_to_use": "In the session or homework/practice review segment, positive engagement, actions or stage-wise progress appear; or when the client completes a new narrative expression, presenting change signals at that moment.",
         "trigger": "Signing up for competitions, participating in training, practice and performance feedback; improvement in sleep/emotion/socializing, more concrete plans; narration more positive and confident, clearly explaining terms or techniques; small attempts such as walking with head up, initiating conversation, daring to raise a hand.",
@@ -988,7 +988,7 @@
     },
     "72": {
         "skill_id": "72",
-        "skill_name": "肯定能动性以激活希望",
+        "skill_name": "Affirming agency to activate hope",
         "skill_description": "在对话中具体反馈并肯定来访者的应对、知识与skill，明确其能动性的证据，将此框定为希望的开端；采用积极、肯定、赞赏的语言，必要时借见证者视角Reinforcement自我价值与新叙事，增强继续叙述与改变的信心与动力。",
         "when_to_use": "来访者自评without助、认为问题without法解决或Insufficient motivation时；需要外部鼓励以增强自我价值与坚持时。",
         "trigger": "表达despair、Self-denial或仅见困境而忽视自身努力；without动力、觉得“什么都not意思”、情绪易失控；提到重要他人或期待被看见与认可。",
@@ -1002,7 +1002,7 @@
     },
     "82": {
         "skill_id": "82",
-        "skill_name": "肯定勇气并共同行动",
+        "skill_name": "Affirming courage and acting together",
         "skill_description": "Affirm the client's courage in seeking help and changing, express a cooperative stance and expectations (such as 'let us work together'), give uplifting encouragement at key points, convey trust and expectation, help the client maintain confidence and sustained action amid hesitation and pressure, and enhance the motivation to continue narrating.",
         "when_to_use": "会谈初期或Self-denial明显、信心not足时；正向建构与计划拟定阶段、出现犹疑或压力大的节点。",
         "trigger": "来访者表达without助、Anxiety worsened、对前途缺乏信心；出现犹疑、压力大或需要被支持与看见其努力的时刻。",
@@ -1030,7 +1030,7 @@
     },
     "70": {
         "skill_id": "70",
-        "skill_name": "邀请并推动具体微行动",
+        "skill_name": "Inviting and promoting concrete micro-actions",
         "skill_description": "In a cooperative tone propose feasible micro-actions and solicit willingness, turning encouragement into practice; concretely reinforce effective behaviors that bring positive energy, assist in sorting out replicable practices, encourage continuous practice in daily life, so as to promote sleep and emotional improvement and consolidate the new narrative.",
         "when_to_use": "识do not到可实施策略后，用于促进行动与状态改善；找到例外或成功经验并开始执行时。",
         "trigger": "The client expresses the method 'may be feasible', is willing to try or seeks concrete directions; shares success fragments, completes social tasks, expresses willingness to continue trying.",
@@ -1061,7 +1061,7 @@
         "skill_name": "Affirm growth and encourage maintenance in the closing review",
         "skill_description": "In the review and summary of the ending and consolidation stage, distill the key changes, specifically affirm the efforts and results, encourage continued practice and applying the methods in daily life, consolidate the alternative story and the confidence to continue acting, and support the benign separation of counseling.",
         "when_to_use": "At the last counseling session or stage summary review; at the summary review of a session stage ending or milestone node; in the review and consolidation stage of late counseling, at the summary before ending.",
-        "trigger": "来访者询问咨询师对行动力的评价或呈现进展与记录增加；已出现情绪缓解、认知转变或行为改善；回访或终结前反馈学习生活恢复、关系改善等进步；完成练习或报告识do notnot合理信念与情绪改善；进入总结收尾、讨论后续安排与生活应用。",
+        "trigger": "来访者询问咨询师对行动力的评价或呈现进展与记录增加；已出现情绪缓解、认知转变或行为改善；回访或终结前反馈Learning生活Recovery、关系改善等进步；完成练习或报告识do notnot合理信念与情绪改善；进入总结收尾、讨论后续安排与生活应用。",
         "parent_ids": [
             "1",
             "2",

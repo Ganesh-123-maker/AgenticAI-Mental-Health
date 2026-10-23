@@ -10,7 +10,7 @@
       "family_status": "Living alone",
       "social_status": "The social support system is weak; tends to handle problems alone",
       "medical_history": "without重大身体疾病；过往not yet接受心理治疗；without类似问题史",
-      "language_features": "表达清晰、逻辑连贯，语气偏消极；配合度尚可但存在怀疑与自我批判；言谈中可见灾难化、读心术与预测not yet来的倾向；常以回避与分心策略应对Anxiety。"
+      "language_features": "表达清晰、逻辑连贯，语气偏消极；配合度尚可但存在怀疑与自我批判；言谈中可见灾难化、读心术与预测not yet来的倾向；常以回避与Distraction策略应对Anxiety。"
     },
     "main_problem": "I notice that I shop online excessively, and worry that others will judge me for it.",
     "topic": "Emotion management",
@@ -24,13 +24,13 @@
     "cbt": {
       "core_beliefs": [
         "I am not accepted by others",
-        "他人会负面评价我"
+        "Others will evaluate me negatively"
       ],
       "special_situations": [
         {
           "event": "Every time completing an online purchase and seeing the order or bill records",
           "conditional_assumptions": "如果我的行为被他人知道，他们一定会认为I am strange并因此疏远我",
-          "compensatory_strategies": "隐瞒网购、尝试限制购买、通过分心来缓解内疚与Anxiety",
+          "compensatory_strategies": "隐瞒网购、尝试限制购买、通过Distraction来缓解内疚与Anxiety",
           "automatic_thoughts": "他们会觉得I am strange；我做错了",
           "cognitive_pattern": "Mind Reading"
         },
@@ -38,20 +38,20 @@
           "event": "教堂独唱结束后，周围人几乎have not给予反馈",
           "conditional_assumptions": "如果do not人not主动称赞，就说明他们not喜欢我的表现",
           "compensatory_strategies": "Reduces attending choir rehearsals or solos, avoiding facing possible negative evaluation",
-          "automatic_thoughts": "大家都讨厌我的歌声",
+          "automatic_thoughts": "Everyone hates my singing voice",
           "cognitive_pattern": "Jumping to Conclusions"
         },
         {
           "event": "When a solo performance or rehearsal approaches",
           "conditional_assumptions": "如果我not能表现完美，就会彻底失败并被人嘲笑",
-          "compensatory_strategies": "提前回避演出、用分心方式DisplacementAnxiety",
-          "automatic_thoughts": "我一定会搞砸",
+          "compensatory_strategies": "提前回避演出、用Distraction方式DisplacementAnxiety",
+          "automatic_thoughts": "I will definitely mess up",
           "cognitive_pattern": "Fortune Telling"
         },
         {
           "event": "Facing financial reminders (such as bills and budget pressure)",
           "conditional_assumptions": "因为我已经购买过度，后果会not可收拾，我的生活与人际会被毁掉",
-          "compensatory_strategies": "Anxiety worsened后继续分心或再次购物以暂时缓解",
+          "compensatory_strategies": "Anxiety worsened后继续Distraction或再次购物以暂时缓解",
           "automatic_thoughts": "情况会越来越糟，我撑not住了",
           "cognitive_pattern": "Catastrophizing"
         }
@@ -75,8 +75,8 @@
       ],
       "behavioral_response_patterns": [
         {
-          "trigger_condition": "当表演或发言后have not收到他人反馈，或被邀请检视自动化思维时",
-          "interpretation": "将他人的沉默解读为拒绝与讨厌（移情：Projection）",
+          "trigger_condition": "当表演或发言后have notReceiving feedback from others，或被邀请检视自动化思维时",
+          "interpretation": "将他人的Silence解读为拒绝与讨厌（移情：Projection）",
           "defense_mechanism": "sring",
           "response_instruction": "采用谨慎、犹疑的语气，强调他人负面看法，避免直接探讨自身感受；必要时通过回避或Displacement话题来维持安全感。"
         }
@@ -92,14 +92,14 @@
           ],
           "outcomes": [
             "Anxiety worsened",
-            "回避与自我隔离",
+            "Avoidance and self-isolation",
             "Sleep affected"
           ]
         },
         {
           "theme": "Freedom",
           "manifestations": [
-            "难以控制网购冲动",
+            "Difficulty controlling online shopping impulses",
             "演出前被Anxiety裹挟，难以自主选择与表达"
           ],
           "outcomes": [
@@ -122,7 +122,7 @@
           "mode": "Deflection",
           "definition": "The individual ignores or avoids a stimulus from the internal or external environment, deliberately avoiding direct contact, corresponding to 'acceptance'.",
           "manifestations": [
-            "在夜间Anxiety时通过看电视或玩手机游戏来分心而非直面思维",
+            "在夜间Anxiety时通过看电视或玩手机游戏来Distraction而非直面思维",
             "在谈及Anxiety话题时倾向Displacement注意力"
           ]
         },
@@ -145,15 +145,15 @@
         },
         {
           "target_problem": "夜间出现对独唱与他人评价的担忧时，来访者通常会陷入持续Anxiety and insomnia。",
-          "unique_outcome": "某些夜晚来访者选择看电视或玩手机游戏进行分心，have not像以往那样持续反刍，Anxiety强度短暂下降。",
-          "reason": "线索：not同做法——采用分心策略，减少对负性思维的反刍与卷入。"
+          "unique_outcome": "某些夜晚来访者选择看电视或玩手机游戏进行Distraction，have not像以往那样持续反刍，Anxiety强度短暂下降。",
+          "reason": "线索：not同做法——采用Distraction策略，减少对负性思维的反刍与卷入。"
         }
       ],
       "force_field": {
         "positive_force": [
           "Having clear problem awareness and actively seeking help",
           "Willing to try cognitive and behavioral strategies (such as observing thoughts and alternative perspectives)",
-          "工作功能not yet受影响，具备基本自我效能",
+          "Work功能not yet受影响，具备基本自我效能",
           "Able to express troubles to significant others to some extent and receive support"
         ],
         "negative_force": [
@@ -172,9 +172,9 @@
           "antecedent": [
             "Habitual impulses formed after emotional distress",
             "在情绪Anxiety或夜间担忧时加剧",
-            "Being alone、缺乏社会支持时更易发生"
+            "Being alone、缺乏Social support时更易发生"
           ],
-          "core_reason": "以购物作为应对策略以暂时缓解情绪困扰与Loneliness，形成“冲动—短暂缓解”的Reinforcement循环",
+          "core_reason": "以购物作为Coping strategies以暂时缓解情绪困扰与Loneliness，形成“冲动—短暂缓解”的Reinforcement循环",
           "function": "逃避not受欢迎的内部状态（Anxiety、Loneliness）并获得短暂的安慰与控制感",
           "consequence": "财务压力加重，购买后内疚与Anxiety反复，进一步影响人际与日常生活"
         },
@@ -185,7 +185,7 @@
             "When a solo performance or rehearsal approaches",
             "When thinking about others' possible negative evaluations"
           ],
-          "core_reason": "将他人沉默解读为negate并灾难化Anticipation失败，trigger对羞耻与拒绝的恐惧",
+          "core_reason": "将他人Silence解读为negate并灾难化Anticipation失败，trigger对羞耻与拒绝的Fear",
           "function": "短期内避免可能的失败与羞辱，从而降低即时Anxiety",
           "consequence": "回避合唱练习与演出、Sleep affected、整体情绪与Decreased confidence"
         }

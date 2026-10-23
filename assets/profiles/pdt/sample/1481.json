@@ -2,7 +2,7 @@
   "basic_info": {
     "static_traits": {
       "age": "16",
-      "name": "宋凯",
+      "name": "Song Kai",
       "gender": "Male",
       "occupation": "Doctor办公室前台接待",
       "educational_background": "Studying radiology at a local university",
@@ -10,7 +10,7 @@
       "family_status": "Not mentioned",
       "social_status": "Relationships with colleagues are somewhat tense due to self-blame; has a few friends to talk to, but finds it hard to discuss feelings of guilt and self-blame with them",
       "medical_history": "deny既往心理治疗/咨询经历；without显著躯体疾病；此前without类似心理问题",
-      "language_features": "表达清晰、逻辑连贯，能够描述内心体验；显著的自责与内疚，情绪基调偏消极；可合作并愿意尝试探索与小实验；语速与音量Not mentioned"
+      "language_features": "表达清晰、逻辑连贯，能够描述内心体验；显著的Self-blame and guilt，情绪基调偏消极；可合作并愿意尝试探索与小实验；语速与音量Not mentioned"
     },
     "main_problem": "Because I missed answering an important call for my supervisor, I feel I ruined the whole day, which led to strong guilt and self-blame.",
     "topic": "Emotion management",
@@ -20,13 +20,13 @@
   "theory": {
     "cbt": {
       "core_beliefs": [
-        "我not胜任这份工作/I am a failure",
+        "我not胜任这份Work/I am a failure",
         "Making a mistake equals total failure and will disappoint everyone"
       ],
       "special_situations": [
         {
           "event": "在Doctor办公室担任前台时，错过了上司交代的重要电话",
-          "conditional_assumptions": "如果我在工作中犯错，就说明我without能，并且让所有人失望",
+          "conditional_assumptions": "如果我在Making a mistake at work，就说明我without能，并且让所有人失望",
           "compensatory_strategies": "not断道歉并努力补救，反复回放并自责以“防止再犯”",
           "automatic_thoughts": "I messed everything up, the whole day is ruined",
           "cognitive_pattern": "All-or-Nothing Thinking"
@@ -42,12 +42,12 @@
           "event": "想到同事或上司not yet来会如何看待这次失误",
           "conditional_assumptions": "若我犯一次错，do not人会一直记着并negate我",
           "compensatory_strategies": "Reduces communication with friends, maintains self-criticism to show 'responsibility'",
-          "automatic_thoughts": "他们肯定not再信任我了，这份工作可能保not住",
+          "automatic_thoughts": "他们肯定not再信任我了，这份Work可能保not住",
           "cognitive_pattern": "Fortune Telling"
         },
         {
           "event": "Making any small mistake at work",
-          "conditional_assumptions": "一旦犯错，就说明我根本not适合这份工作",
+          "conditional_assumptions": "一旦犯错，就说明我根本not适合这份Work",
           "compensatory_strategies": "Excessive effort and overtime; self-blame to avoid erring again",
           "automatic_thoughts": "I am not suited for this job",
           "cognitive_pattern": "Overgeneralization"
@@ -64,9 +64,9 @@
       },
       "object_relations": [
         {
-          "self_representation": "让人失望的失败者、需要not断自我监督的人",
+          "self_representation": "A disappointing failure、需要not断自我监督的人",
           "object_representation": "苛刻的评价者/容易失望与negate我的他者（如上司、同事）",
-          "linking_affect": "内疚、羞耻与Anxiety"
+          "linking_affect": "Guilt, shame与Anxiety"
         }
       ],
       "behavioral_response_patterns": [
@@ -89,7 +89,7 @@
         {
           "theme": "Loneliness",
           "manifestations": [
-            "有少数朋友可谈，但not愿向他们倾诉内疚与自责，避免“给do not人添麻烦”"
+            "有少数朋友可谈，但not愿向他们倾诉Guilt and self-blame，避免“给do not人添麻烦”"
           ],
           "outcomes": [
             "Anxiety与内疚加重",
@@ -151,17 +151,17 @@
           ],
           "core_reason": "形成了“犯错=失败/not被信任/让所有人失望”的灾难化与全或without信念，并以自责维持控制与避免再犯",
           "function": "逃避内在Anxiety并以自责作为自我驱动的方式（试图通过苛责来预防错误）",
-          "consequence": "Decreased attention、工作与学习表现受损，Interpersonal tension，Anxiety与内疚情绪维持甚至加重"
+          "consequence": "Decreased attention、Work与Learning表现受损，Interpersonal tension，Anxiety与内疚情绪维持甚至加重"
         },
         {
           "behavior": "Avoiding confiding in friends and seeking support",
           "antecedent": [
-            "出现强烈内疚/Self-blame emotions时",
+            "出现Strong guilt/Self-blame emotions时",
             "Worrying about troubling others or being judged"
           ],
           "core_reason": "Introjection的严格规则（应独自承担、not能给他人添麻烦）与对他人负面评价的预测",
           "function": "短期内避免羞耻/暴露与被评价的not适",
-          "consequence": "支持系统利用not足，Loneliness感与压力累积，负性情绪维持"
+          "consequence": "支持系统利用not足，Loneliness感与Accumulated stress，Negative emotions persisting"
         }
       ]
     }

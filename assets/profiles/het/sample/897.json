@@ -4,10 +4,10 @@
       "age": "34",
       "name": "Wang Lin",
       "gender": "Female",
-      "occupation": "办公室助理",
+      "occupation": "Office assistant",
       "educational_background": "High school graduate",
       "marital_status": "Unmarried",
-      "family_status": "Living alone，与一只宠物狗同住",
+      "family_status": "Living alone，Living with a pet dog",
       "social_status": "At the workplace, difficulty connecting with colleagues because of worry about being judged; has one close friend who can be confided in",
       "medical_history": "without显著躯体疾病；without既往类似心理问题或心理治疗史",
       "language_features": "表达清晰，逻辑较好，能自我Reflection并Identify automatic thoughts；情绪基调偏Anxiety、自我关注度高；配合度Good，语速平稳"
@@ -34,7 +34,7 @@
         {
           "event": "Pet or other personal topics come up in office conversation",
           "conditional_assumptions": "如果谈及个人兴趣，就会被负面评价，显得not专业",
-          "compensatory_strategies": "迅速Displacement话题或保持沉默，减少参与",
+          "compensatory_strategies": "迅速Displacement话题或保持Silence，减少参与",
           "automatic_thoughts": "They definitely think I am annoying and weird in their hearts",
           "cognitive_pattern": "Mind Reading"
         },
@@ -75,10 +75,10 @@
           "trigger_condition": "When office conversation turns to pets or other personal topics",
           "interpretation": "Experiences colleagues as belittling oneself like past negative commenters (viewing others as critics)",
           "defense_mechanism": "Projection",
-          "response_instruction": "迅速转回工作议题，use简短、客观的语句；避免自我披露，减少眼神接触。"
+          "response_instruction": "迅速转回Work议题，use简短、客观的语句；避免自我披露，减少眼神接触。"
         },
         {
-          "trigger_condition": "当觉察到对方表情not够热情或沉默时",
+          "trigger_condition": "当觉察到对方表情not够热情或Silence时",
           "interpretation": "Interprets neutral silence/fatigue as belittling and disgust toward oneself",
           "defense_mechanism": "Emotional isolation",
           "response_instruction": "Reporting work details rationally, avoiding expressing feelings, ending conversations in a flat tone."
@@ -114,7 +114,7 @@
           "mode": "Deflection",
           "definition": "The individual ignores or avoids a stimulus from the internal or external environment, deliberately avoiding direct contact, corresponding to 'acceptance'.",
           "manifestations": [
-            "当对话涉及宠物/个人内容时立刻Displacement至工作话题",
+            "当对话涉及宠物/个人内容时立刻Displacement至Work话题",
             "Avoids deep contact by minimizing participation and quickly ending conversations"
           ]
         }
@@ -123,9 +123,9 @@
     "pmt": {
       "exception_events": [
         {
-          "target_problem": "在办公室对话涉及个人/宠物话题时，Wang Lin通常会强烈Anxiety、读心式揣测被评判，并通过沉默或Displacement话题撤退，导致互动变得疏离。",
-          "unique_outcome": "在仅讨论工作相关内容的几次交流中，Wang Linhave not像往常那样回避，能够自然地参与讨论，互动顺畅，主观Anxiety明显较低。",
-          "reason": "线索：话题聚焦在工作、评价威胁较低；做法not同：将注意力放在任务与事实上，更易获得掌控感与安全感。"
+          "target_problem": "在办公室对话涉及个人/宠物话题时，Wang Lin通常会强烈Anxiety、读心式揣测被评判，并通过Silence或Displacement话题撤退，导致互动变得疏离。",
+          "unique_outcome": "在仅讨论Work相关内容的几次交流中，Wang Linhave not像往常那样回避，能够自然地参与讨论，互动顺畅，主观Anxiety明显较低。",
+          "reason": "线索：话题聚焦在Work、评价威胁较低；做法not同：将注意力放在任务与事实上，更易获得掌控感与安全感。"
         }
       ],
       "force_field": {
@@ -133,7 +133,7 @@
           "Has the willingness to seek help and is willing to try cognitive restructuring and reality testing",
           "能识do not自身的自动化思维并进行初步再评价",
           "Has one close friend to confide in who provides basic support",
-          "在非个人话题的工作交流中能Good互动，具备有效沟通能力"
+          "在非个人话题的Work交流中能Good互动，具备有效沟通能力"
         ],
         "negative_force": [
           "Excessive reliance on external evaluation to determine self-worth (External Validation)",
@@ -165,7 +165,7 @@
           ],
           "core_reason": "对外部评价的高度依赖与反刍式思维维持Anxiety",
           "function": "Tries to prevent potential social 'mistakes' through excessive worry, gaining a superficial sense of control",
-          "consequence": "入睡困难、Declining sleep quality、次日Anxiety与Decreased work efficiency"
+          "consequence": "Difficulty falling asleep、Declining sleep quality、次日Anxiety与Decreased work efficiency"
         }
       ]
     }

@@ -2,7 +2,7 @@
   "basic_info": {
     "static_traits": {
       "age": "55",
-      "name": "陈薇",
+      "name": "Chen Wei",
       "gender": "Female",
       "occupation": "Unemployment",
       "educational_background": "High school graduate",
@@ -79,14 +79,14 @@
       ],
       "behavioral_response_patterns": [
         {
-          "trigger_condition": "当咨询师要求对“被评判/not被接纳”的信念提供具体证据，或提出not同解释时（如讨论读书会的实际互动）",
-          "interpretation": "将内在的Being rejected恐惧视为外界真实判断，认为他人（包括群体）在评判自己（移情：将Self-denialProjection到他人）",
+          "trigger_condition": "当咨询师Demands对“被评判/not被接纳”的信念提供具体证据，或提出not同Interpretation时（如讨论读书会的实际互动）",
+          "interpretation": "将内在的Being rejectedFear视为外界真实判断，认为他人（包括群体）在评判自己（移情：将Self-denialProjection到他人）",
           "defense_mechanism": "Projection",
           "response_instruction": "语气温和、以Empathy为主；先承认其感受的合理性，再以好奇探询区分“感觉”与“证据”，邀请举具体事实并进行现实检验，避免直接negate其体验。"
         },
         {
           "trigger_condition": "When talking about whether to return to the book club or try new social opportunities",
-          "interpretation": "强调“避免更安全”以为回避辩护，将Withdrawal视为理性选择而非恐惧驱动（移情：将咨询师的邀请体验为潜在风险）",
+          "interpretation": "强调“避免更安全”以为回避辩护，将Withdrawal视为理性选择而非Fear驱动（移情：将咨询师的邀请体验为潜在风险）",
           "defense_mechanism": "Rationalization",
           "response_instruction": "先Empathy其对安全与掌控的需求，再以温柔的挑战提出小步尝试的替代方案；use具体化、正反证问题与协作式目标设定，保持支持与鼓励的语气。"
         }
@@ -132,7 +132,7 @@
           "mode": "Retroflection",
           "definition": "个体克制原本想对外发出的行动冲动，将能量Turning against the self，与“冲动”对应。",
           "manifestations": [
-            "在社交场合中选择提前离开或not参与互动",
+            "在Social situations中选择提前离开或not参与互动",
             "减少参加聚会与新关系尝试，将行动收回到Self-protection"
           ]
         }
@@ -155,7 +155,7 @@
         ],
         "negative_force": [
           "灾难化、过度概括、读心术与预测not yet来等认知歪曲显著",
-          "强烈的拒绝恐惧推动Social avoidance与疏离",
+          "强烈的拒绝Fear推动Social avoidance与疏离",
           "社交支持薄弱与Living alone加重Loneliness与悲伤",
           "求职动机not足导致功能下降",
           "倾向以回避维持安全并为此Rationalization"
@@ -165,13 +165,13 @@
     "bt": {
       "target_behavior": [
         {
-          "behavior": "Social avoidance（在社交场合提前离场、停留在家中、not参加聚会或新关系尝试）",
+          "behavior": "Social avoidance（在Social situations提前离场、停留在家中、not参加聚会或新关系尝试）",
           "antecedent": [
             "Meeting new people or trying to build connections",
             "Participating in group activities (e.g. book clubs)",
             "回想分手与Being rejected经历"
           ],
-          "core_reason": "分手后形成的“我not会被接纳”的核心信念与认知歪曲（读心术、预测not yet来、过度概括），伴随对再次Being rejected的强烈恐惧。",
+          "core_reason": "分手后形成的“我not会被接纳”的核心信念与认知歪曲（读心术、预测not yet来、过度概括），伴随对再次Being rejected的强烈Fear。",
           "function": "逃避Being rejected与Anxietynot适，短期维持主观安全感与控制感。",
           "consequence": "持续Loneliness与悲伤，Reduced social support，进一步Reinforcement负性信念并影响心理健康。"
         },
@@ -191,9 +191,9 @@
             "感到Loneliness与悲伤时",
             "After social setbacks or avoidance"
           ],
-          "core_reason": "负性情绪与Meaninglessness感降低能量与主动性，回避成为主要应对策略。",
+          "core_reason": "负性情绪与Meaninglessness感降低能量与主动性，回避成为主要Coping strategies。",
           "function": "Temporarily reduces external demands and self-imposed burdens to avoid further emotional fluctuations.",
-          "consequence": "Decreased quality of life，身心状态恶化，难以恢复积极的社会参与。"
+          "consequence": "Decreased quality of life，身心状态恶化，难以Recovery积极的社会参与。"
         }
       ]
     }

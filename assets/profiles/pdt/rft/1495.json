@@ -2,12 +2,12 @@
   "basic_info": {
     "static_traits": {
       "age": "11",
-      "name": "林墨",
+      "name": "Lin Mo",
       "gender": "Male",
       "occupation": "时装设计Student",
       "educational_background": "Studies at a well-known fashion design school in New York",
       "marital_status": "Single",
-      "family_status": "在纽约独立生活",
+      "family_status": "Living independently in New York",
       "social_status": "因对自身时尚感的not安，难以与同学建立联系",
       "medical_history": "此前not yet出现类似心理问题；not yet接受过心理治疗；without显著身体疾病",
       "language_features": "表达清晰，能描述具体trigger情境与自动化思维；能进行一定自我Reflection；态度中立，配合度较好"
@@ -81,7 +81,7 @@
           "trigger_condition": "When the counselor invites her to examine the evidence and distinguish facts from automatic thoughts",
           "interpretation": "来访者倾向以理性分析快速回应，以避免直接接触羞耻与not安的情绪",
           "defense_mechanism": "Intellectualization",
-          "response_instruction": "语气温和、支持性，use具体化与情感标注的Questioning（如“此刻你身体有什么感觉？”），减少抽象解释，鼓励停顿与体验。"
+          "response_instruction": "语气温和、支持性，use具体化与情感标注的Questioning（如“此刻你身体有什么感觉？”），减少抽象Interpretation，鼓励停顿与体验。"
         }
       ]
     },
@@ -95,7 +95,7 @@
           ],
           "outcomes": [
             "Anxiety intensified",
-            "睡眠被干扰",
+            "Sleep disrupted",
             "Decreased motivation、创作受阻"
           ]
         },
@@ -107,7 +107,7 @@
           ],
           "outcomes": [
             "Decline in self-consistency",
-            "Self-doubt、灾难化思维"
+            "Self-doubt、Catastrophizing"
           ]
         }
       ],
@@ -133,7 +133,7 @@
     "pmt": {
       "exception_events": [
         {
-          "target_problem": "在看到他人被赞美或临近展示时，来访者通常会陷入比较与自我贬低，进而产生强烈Anxiety，影响创作与表现。",
+          "target_problem": "在看到他人被赞美或临近展示时，来访者通常会陷入比较与Self-deprecation，进而产生强烈Anxiety，影响创作与表现。",
           "unique_outcome": "在过去的某些时刻，来访者专注于自己喜欢的风格并享受穿搭过程，而非关注他人评价；当时获得了他人赞美并感到自信，have not像往常那样陷入比较与Self-denial。",
           "reason": "not同做法：将注意力放在个人偏好与乐趣上，减少对外部评价的关注，从而打破了灾难化与比较的惯性。"
         }
@@ -149,7 +149,7 @@
           "Catastrophizing and overgeneralizing cognitive style",
           "Black-and-white thinking and excessive comparison, overly dependent on external validation",
           "negate积极经验（正向反馈被忽视）",
-          "睡眠被干扰导致精力下降与Reduced motivation",
+          "Sleep disrupted导致精力下降与Reduced motivation",
           "因not安而弱化同伴连接、Social avoidance倾向"
         ]
       }
@@ -160,7 +160,7 @@
           "behavior": "在看到他人被夸或临近展示时出现强烈Anxiety与Self-denial",
           "antecedent": [
             "Seeing classmates' outfits / designs praised",
-            "临近学校活动或展示",
+            "Upcoming school events or presentations",
             "Worrying about the day's outfit upon waking"
           ],
           "core_reason": "将一次穿搭not佳过度概括为整体失败，并以外部验证作为价值依据，triggerCatastrophizing and black-and-white thinking",
@@ -173,9 +173,9 @@
             "Before sleep, recalls the day's comparisons and scenes of others being praised",
             "The night before a presentation or event"
           ],
-          "core_reason": "对一次负面穿搭的灾难化解释与对not yet来失败的预测，持续反刍",
+          "core_reason": "对一次负面穿搭的灾难化Interpretation与对not yet来失败的预测，持续反刍",
           "function": "Tries to 'control risk' and avoid mistakes through mental rehearsal and worry",
-          "consequence": "Decreased motivation、白天疲惫与注意力受损，进一步影响学习与创作"
+          "consequence": "Decreased motivation、白天疲惫与注意力受损，进一步影响Learning与创作"
         }
       ]
     }

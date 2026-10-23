@@ -3,7 +3,7 @@
         "skill_id": "59",
         "skill_name": "把握Intervention时机",
         "skill_description": "在充分Listening并掌握患者基本信息后，选择合适时点以简短、聚焦的方式介入，避免过早或过度介入，让Intervention建立在充足理解与关系之上。",
-        "when_to_use": "抵抗分析的分析阶段，完成初步Listening与信息收集后，准备从纯叙述转向觉察与探究，目标是开启对非本真方式的识do not。",
+        "when_to_use": "Resistance analysis的分析阶段，完成初步Listening与Information gathering后，准备从纯叙述转向觉察与探究，目标是开启对非本真方式的识do not。",
         "trigger": "患者持续倾诉中出现抵抗或非本真方式的线索，而其本人not yet觉察；叙述冗长重复、回避要点或以确定性陈述掩盖not确定感。",
         "parent_ids": [
             "225",
@@ -31,9 +31,9 @@
     },
     "61": {
         "skill_id": "61",
-        "skill_name": "引导进入存在Reflection",
-        "skill_description": "将点明后的觉察引向对自身存在处境的Reflection，用简洁引导语促使其检视选择、责任与生活方式的关系，开始自我审查与调整。",
-        "when_to_use": "在成功标示非本真方式之后，紧随其后以短促引导推进觉察加深，目标是从识do not模式过渡到存在性的自我探究。",
+        "skill_name": "Guidance进入存在Reflection",
+        "skill_description": "将点明后的觉察引向对自身存在处境的Reflection，用简洁Guidance语促使其检视选择、责任与生活方式的关系，开始自我审查与调整。",
+        "when_to_use": "在成功标示非本真方式之后，紧随其后以短促Guidance推进觉察加深，目标是从识do not模式过渡到存在性的自我探究。",
         "trigger": "患者在被点明后出现停顿、困惑或好奇，开始承认“not yet注意到”的模式但尚not yet深入探究，显露出愿意理解自身处境的迹象。",
         "parent_ids": [
             "225",
@@ -61,7 +61,7 @@
     "52": {
         "skill_id": "52",
         "skill_name": "将被Repression的愿望引入意识并体验",
-        "skill_description": "围绕被Repression的愿望施以引导，使其进入觉知并可被直接体验。通过持续探索与澄清，将欲望从deny与回避中带到知觉层面，促成真实的情感接触。",
+        "skill_description": "围绕被Repression的愿望施以Guidance，使其进入觉知并可被直接体验。通过持续探索与Clarification，将欲望从deny与回避中带到知觉层面，促成真实的情感接触。",
         "when_to_use": "Entering the desire stage, when the client's desire theme is vague or avoided, used to facilitate desire changing from a latent state into manifest content that can be experienced.",
         "trigger": "来访者回避谈及欲望或以泛化语句deny自身渴求，出现对愿望主题的停顿、Displacement或理性化描述。",
         "parent_ids": [
@@ -131,10 +131,10 @@
     },
     "67": {
         "skill_id": "67",
-        "skill_name": "引导通过创造发现意义",
+        "skill_name": "Guiding the discovery of meaning through creativity",
         "skill_description": "Around the creative value of work, works, or practical matters, assist the client in identifying and implementing actionable tasks, realizing value in 'what is given to life', and experiencing life's purpose and meaning in the concrete creative process.",
         "when_to_use": "In the 'learning to discover meaning' stage, when the client has some capacity for action and interest in work or output but the goals are vague.",
-        "trigger": "来访者谈到渴望贡献、创作或工作却“not知道做什么”“做了也not意义”，或对成果感到迟钝。",
+        "trigger": "来访者谈到渴望贡献、创作或Work却“not知道做什么”“做了也not意义”，或对成果感到迟钝。",
         "parent_ids": [
             "225",
             "36",
@@ -177,9 +177,9 @@
     "70": {
         "skill_id": "70",
         "skill_name": "开展向死而生的Reflection练习",
-        "skill_description": "引导来访者认真对待生命的有限性，以“若生命是第二次且前次虚度”的设问，促使其从Death事实出发重新审视当下选择，扩展意义选项与行动承诺。",
+        "skill_description": "Guidance来访者认真对待生命的有限性，以“若生命是第二次且前次虚度”的设问，促使其从Death事实出发重新审视当下选择，扩展意义选项与行动承诺。",
         "when_to_use": "意义疗法第三阶段“向死而生”，当来访者对DeathAnxiety或时间有限有所trigger，需要深化Reflection。",
-        "trigger": "来访者谈及Death恐惧、时间紧迫、拖延与虚度感，或在关键决定前犹疑not前。",
+        "trigger": "来访者谈及DeathFear、时间紧迫、拖延与虚度感，或在关键决定前犹疑not前。",
         "parent_ids": [
             "225",
             "36",
@@ -206,7 +206,7 @@
     },
     "72": {
         "skill_id": "72",
-        "skill_name": "澄清生命意义的个do not性与具体化",
+        "skill_name": "Clarification生命意义的个do not性与具体化",
         "skill_description": "Standardize the explanation that the meaning of life varies from person to person and from time to time, emphasizing the specific meaning within a specific time, avoiding the pursuit of abstract universal answers, and turning instead to the unique response and responsibility matched to the present situation.",
         "when_to_use": "When the client clings to an abstract 'grand meaning' or compares their sense of meaning with others, leading to confusion and rigidity.",
         "trigger": "来访者频繁追问“普遍意义是什么”“do not人活得更有意义”，或对自我路径贬损。",
@@ -222,7 +222,7 @@
     "73": {
         "skill_id": "73",
         "skill_name": "整合过去已实现的意义与当下not yet来",
-        "skill_description": "引导来访者回忆并认可过去已实现的意义潜在性，将其与当下资源和not yet来目标整合，强调without论情境如何都保有选择态度的Freedom，并将经验内化为价值与行动。",
+        "skill_description": "Guidance来访者回忆并认可过去已实现的意义潜在性，将其与当下资源和not yet来目标整合，强调without论情境如何都保有选择态度的Freedom，并将经验内化为价值与行动。",
         "when_to_use": "The fourth stage of logotherapy, 'integration of experience', or when transfer and maintenance are needed during the treatment consolidation period.",
         "trigger": "来访者忽视过往成就、只看当前困境，或对not yet来方向感薄弱、动力摇摆。",
         "parent_ids": [
@@ -236,9 +236,9 @@
     },
     "62": {
         "skill_id": "62",
-        "skill_name": "在觉知基础上进行解释",
+        "skill_name": "Interpreting on the basis of awareness",
         "skill_description": "When the client has already, in awareness, experienced their own resistance and inauthentic existence, give a concise explanation based on their experience at that moment, helping them understand the origin and function of the resistance and advancing the treatment in depth.",
-        "when_to_use": "存在分析治疗的分析阶段，完成Listening与适时Intervention后进入解释环节，以加深来访者对抵抗的理解与治疗进展。",
+        "when_to_use": "存在分析治疗的分析阶段，完成Listening与适时Intervention后进入Interpretation环节，以加深来访者对抵抗的理解与治疗进展。",
         "trigger": "The client clearly indicates perceiving their own avoidance, distortion, or inauthentic reactions, can describe the present experience of resistance, and acknowledges its existence.",
         "parent_ids": [
             "225",
@@ -251,10 +251,10 @@
     },
     "63": {
         "skill_id": "63",
-        "skill_name": "避免强加意义的解释",
+        "skill_name": "Avoiding imposed interpretations",
         "skill_description": "The explanation must be close to the client's current experience, avoiding wishful rational inference or indoctrination; based on what they have already become aware of, maintaining an open attitude so as not to detach from their experience.",
-        "when_to_use": "进入抵抗分析的解释环节准备说明抵抗时，需确保解释not与来访者的体验脱节。",
-        "trigger": "来访者对治疗师的理解表现困惑或not认同，尚not yet在觉知中体验抵抗的非本真性，对解释显现犹疑或抵触。",
+        "when_to_use": "进入Resistance analysis的Interpretation环节准备说明抵抗时，需确保Interpretationnot与来访者的体验脱节。",
+        "trigger": "来访者对治疗师的理解表现困惑或not认同，尚not yet在觉知中体验抵抗的非本真性，对Interpretation显现犹疑或抵触。",
         "parent_ids": [
             "225",
             "36",
@@ -268,7 +268,7 @@
         "skill_id": "64",
         "skill_name": "Interpret around the central theme of resistance",
         "skill_description": "依据Listening中把握的叙述与表达方式，点明抵抗的非本真中心主题，以贴近语言呈现其反复模式，促进来访者看见自身模式。",
-        "when_to_use": "分析阶段的解释步骤，已识do not来访者抵抗的中心主题，需要清晰化以便后续工作与整合。",
+        "when_to_use": "分析阶段的Interpretation步骤，已识do not来访者抵抗的中心主题，需要清晰化以便后续Work与整合。",
         "trigger": "来访者的陈述反复呈现同一逃避或疏离模式，双方已能识do not并提及该核心问题或主题。",
         "parent_ids": [
             "225",
@@ -281,10 +281,10 @@
     },
     "65": {
         "skill_id": "65",
-        "skill_name": "将抵抗澄清为逃避Anxiety present的方式",
-        "skill_description": "在解释中指出抵抗是逃避Anxiety present的生活方式，辨识其代价与非本真性，并将注意力重新指向对真实存在的面对。",
-        "when_to_use": "抵抗分析的解释环节，用以连接来访者的抵抗与其Anxiety present，为后续的存在成长阶段奠定基础。",
-        "trigger": "来访者承认对not确定、选择或责任的恐惧，并描述为回避这些而采取的固着、Withdrawal或逃避行为。",
+        "skill_name": "将抵抗Clarification为逃避Anxiety present的方式",
+        "skill_description": "在Interpretation中指出抵抗是逃避Anxiety present的生活方式，辨识其代价与非本真性，并将注意力重新指向对真实存在的面对。",
+        "when_to_use": "Resistance analysis的Interpretation环节，用以连接来访者的抵抗与其Anxiety present，为后续的存在成长阶段奠定基础。",
+        "trigger": "来访者承认对not确定、选择或责任的Fear，并描述为回避这些而采取的固着、Withdrawal或逃避行为。",
         "parent_ids": [
             "225",
             "36",
@@ -297,8 +297,8 @@
     "56": {
         "skill_id": "56",
         "skill_name": "耐心专注地Listening主述",
-        "skill_description": "以认真耐心的姿态Listening患者主述，not急于评判或介入，尽量完整接收其经验叙述，为后续抵抗分析奠定素材与关系基础。",
-        "when_to_use": "存在分析治疗的分析阶段开始时，患者进入自述，需先进行抵抗分析的“Listening”环节以建立理解。",
+        "skill_description": "以认真耐心的姿态Listening患者主述，not急于评判或介入，尽量完整接收其经验叙述，为后续Resistance analysis奠定素材与关系基础。",
+        "when_to_use": "存在分析治疗的分析阶段开始时，患者进入自述，需先进行Resistance analysis的“Listening”环节以建立理解。",
         "trigger": "患者开始详细讲述生活处境、症状与感受，伴随Anxiety、担忧或not确定的情绪表达。",
         "parent_ids": [
             "225",
@@ -313,7 +313,7 @@
         "skill_id": "57",
         "skill_name": "Grasp both the content and the manner of the narrative",
         "skill_description": "During the patient's narration, attend both to 'what is said' and to 'how it is said', grasping clues in word choice, tone, and organization, in order to detect signs of resistance and inauthentic responses.",
-        "when_to_use": "抵抗分析的Listening过程中，当需要深化对患者叙述的理解、为后续Intervention定位非本真线索时。",
+        "when_to_use": "Resistance analysis的Listening过程中，当需要深化对患者叙述的理解、为后续Intervention定位非本真线索时。",
         "trigger": "叙述中显现回避或deny的表达方式，反复强调安全与确定，或对not确定性表现强烈not适。",
         "parent_ids": [
             "225",
@@ -328,7 +328,7 @@
         "skill_id": "58",
         "skill_name": "识do not并提炼非本真反应的中心主题",
         "skill_description": "依据Listening到的重复模式与核心意涵，归纳患者抵抗的中心主题，指向其非本真方式（如屈从命运、放弃Freedom、自我异化、人际Withdrawal）。",
-        "when_to_use": "在充分Listening后、准备进入Intervention与解释前，需要明确抵抗的中心主题以指导后续工作。",
+        "when_to_use": "在充分Listening后、准备进入Intervention与Interpretation前，需要明确抵抗的中心主题以指导后续Work。",
         "trigger": "The patient's narrative repeatedly shows four kinds of fear (feelings of lowliness, blame, absurdity, and alienation) or corresponding inauthentic reaction tendencies.",
         "parent_ids": [
             "225",
@@ -358,7 +358,7 @@
         "skill_name": "Defining mission through creative work",
         "skill_description": "Guide the client to discover practicable 'creative values' from work, creation, or concrete affairs, define in their own language what they are currently to give to the world, clarify the tasks and responsibilities to undertake, and form an implementable action direction.",
         "when_to_use": "Used when the client has some room for action but is confused about 'what to do'; hopes to find meaning from a career, project, or service.",
-        "trigger": "来访者抱怨工作Meaninglessness、目标混乱，或询问“我该做什么才算有意义”。",
+        "trigger": "来访者抱怨WorkMeaninglessness、目标混乱，或询问“我该做什么才算有意义”。",
         "parent_ids": [
             "225",
             "36",
@@ -369,7 +369,7 @@
     },
     "90": {
         "skill_id": "90",
-        "skill_name": "通过体验与爱界定意义",
+        "skill_name": "Defining meaning through experience and love",
         "skill_description": "Encourage the client, through experiencing truth, goodness, beauty, nature, and culture, especially through love, to understand others and the self, define commitments and values in relationships from the narration, and clarify the meaning to be practiced in current interpersonal and aesthetic experiences.",
         "when_to_use": "When the client's core distress is related to relationships or experience; meaning can be reached in interpersonal, intimate, aesthetic, and natural experiences.",
         "trigger": "The client talks about longing for intimate relationships, the need to be understood and to understand others, or being touched by nature and culture yet finding it hard to articulate their value.",
@@ -400,7 +400,7 @@
         "skill_name": "向死而生Reflection明确当下使命",
         "skill_description": "With the exercise 'take life seriously, as if life were a second time and the first time had been wasted', prompt the client to face life's finitude, clarify the most important goal at this moment and actions to avoid repeating past mistakes, and distill the current mission statement.",
         "when_to_use": "当来访者回避Death议题或意义模糊；需要通过有限性提示来清晰优先级与责任。",
-        "trigger": "来访者表达对Death的恐惧、人生短暂Anxiety或对时间流逝的without力感，难以确定生活方向。",
+        "trigger": "来访者表达对Death的Fear、人生短暂Anxiety或对时间流逝的without力感，难以确定生活方向。",
         "parent_ids": [
             "225",
             "36",
@@ -454,7 +454,7 @@
     "74": {
         "skill_id": "74",
         "skill_name": "进行存在性Listening以捕捉中心主题",
-        "skill_description": "在分析起始阶段认真耐心地Listening来访者主述，兼顾内容与表达方式，识do not其叙述中导致抵抗的非本真中心主题与隐含世界假设，为后续澄清与修正奠定基础。",
+        "skill_description": "在分析起始阶段认真耐心地Listening来访者主述，兼顾内容与表达方式，识do not其叙述中导致抵抗的非本真中心主题与隐含世界假设，为后续Clarification与修正奠定基础。",
         "when_to_use": "The initial assessment and resistance analysis stage, used to enter the client's subjective world, sort out their basic assumptions about self, others, and the world, and clarify the inauthentic themes.",
         "trigger": "来访者开始详述问题，伴随Anxiety或防御；叙述中反复出现逃避、deny或固定模式的语句与语气。",
         "parent_ids": [
@@ -467,7 +467,7 @@
     "75": {
         "skill_id": "75",
         "skill_name": "适时Intervention引发对非本真方式的自觉",
-        "skill_description": "在掌握基本信息并初步识do not中心主题后抓住时机介入，引导来访者意识到其倾诉中not yet觉察的非本真方式，促使其对存在处境与世界关系展开Reflection。",
+        "skill_description": "在掌握基本信息并初步识do not中心主题后抓住时机介入，Guidance来访者意识到其倾诉中not yet觉察的非本真方式，促使其对存在处境与世界关系展开Reflection。",
         "when_to_use": "分析阶段中段，当已通过Listening形成对来访者抵抗与世界假设的初步理解，需要促进其自我觉察时。",
         "trigger": "来访者持续以扭曲觉知回避现实严酷、寻求虚幻确定性；对选择与责任表达Withdrawal或deny。",
         "parent_ids": [
@@ -506,7 +506,7 @@
     "78": {
         "skill_id": "78",
         "skill_name": "Guide attention to the self-other-world relationship",
-        "skill_description": "引导来访者把注意力扩展到自身、他人与周围世界及具体情境的联结，Reinforcement对三界关系的觉察，以澄清其对世界的隐含假设与定位。",
+        "skill_description": "Guidance来访者把注意力扩展到自身、他人与周围世界及具体情境的联结，Reinforcement对三界关系的觉察，以Clarification其对世界的隐含假设与定位。",
         "when_to_use": "The wish stage and initial assessment, used to elicit wishes and expand the scope of awareness, clarifying world assumptions and meaning from a relationship perspective.",
         "trigger": "来访者表现空虚或“not知自己想要什么”，习惯性将问题归咎外在，对自身与他人/环境的关系缺乏觉察。",
         "parent_ids": [
@@ -519,8 +519,8 @@
     "79": {
         "skill_id": "79",
         "skill_name": "从症状中识do not主要非本真反应模式",
-        "skill_description": "依据来访者症状与表现，辨识其非本真存在方式的主型（如屈从命运、放弃Freedom、自我异化、人际Withdrawal），由此锁定背后的世界假设以便针对性澄清。",
-        "when_to_use": "抵抗分析阶段，用于从具体症状抽取其核心非本真框架，明确Intervention焦点与澄清路径。",
+        "skill_description": "依据来访者症状与表现，辨识其非本真存在方式的主型（如屈从命运、放弃Freedom、自我异化、人际Withdrawal），由此锁定背后的世界假设以便针对性Clarification。",
+        "when_to_use": "Resistance analysis阶段，用于从具体症状抽取其核心非本真框架，明确Intervention焦点与Clarification路径。",
         "trigger": "来访者呈现宿命化语言、推脱选择与责任、感到荒谬空虚、自我疏离，或显著的Social withdrawal与疏离。",
         "parent_ids": [
             "225",
@@ -531,7 +531,7 @@
     },
     "80": {
         "skill_id": "80",
-        "skill_name": "聚焦当下经验澄清感知",
+        "skill_name": "Clarifying perception by focusing on present experience",
         "skill_description": "Guide the client to return attention to the subjective experience of the here and now, explore the feelings and meaning in the current life situation, help them recognize and experience their own existence, and thereby clarify their perception of self, others, and the environment.",
         "when_to_use": "In the initial assessment and exploration stage, when self-awareness needs to be enhanced and modes of perception defined; when the session easily drifts to the past or abstract discussion and lacks present experience.",
         "trigger": "The client talks extensively about the past or external events and has difficulty describing current feelings, bodily experiences, or the emotions and meaning in the present situation.",
@@ -547,7 +547,7 @@
         "skill_id": "81",
         "skill_name": "Jointly being present to experience the client's world",
         "skill_description": "The therapist enters and shares the client's psychological field, removing preconceived judgments, experiencing their subjective world together with them, promoting genuine contact through the present relationship, and clarifying the perception of self and world.",
-        "when_to_use": "Establishing the counseling relationship与深入探索阶段；当需要通过关系质量促进来访者对主观经验的接触与澄清时。",
+        "when_to_use": "Establishing the counseling relationship与深入探索阶段；当需要通过关系质量促进来访者对主观经验的接触与Clarification时。",
         "trigger": "来访者诉说被误解、与咨询师Relationship estrangement或交流空泛难以触及内在体验，难以被理解与看见。",
         "parent_ids": [
             "225",
@@ -560,7 +560,7 @@
     "82": {
         "skill_id": "82",
         "skill_name": "Guiding self-awareness and attribution review",
-        "skill_description": "引导来访者真诚反省自身存在，检视问题为何发生，认清not安全感与Anxiety的来源，识do not对环境的被动与外归因模式，提升对主观经验的觉察。",
+        "skill_description": "Guidance来访者真诚反省自身存在，检视问题为何发生，认清not安全感与Anxiety的来源，识do not对环境的被动与外归因模式，提升对主观经验的觉察。",
         "when_to_use": "初期评估与觉察提升阶段；当来访者需要从外归因转向自我Reflection，以明确自身体验与责任时。",
         "trigger": "来访者频繁将问题归咎他人或外在环境、回避责任，难以识do not自身体验与选择对处境的影响。",
         "parent_ids": [
@@ -573,9 +573,9 @@
     },
     "83": {
         "skill_id": "83",
-        "skill_name": "Empathy式反映与not一致澄清",
+        "skill_name": "Empathy式反映与not一致Clarification",
         "skill_description": "以准确的Empathy理解进入来访者内在参照系统，反映其主观感知与情绪，帮助觉察言行与体验的not一致，促进其重新界定对自我与世界的感知。",
-        "when_to_use": "探索与澄清阶段；当目标是增进自我觉察、处理认知与情绪not一致以形成更本真的自我理解时。",
+        "when_to_use": "探索与Clarification阶段；当目标是增进自我觉察、处理认知与情绪not一致以形成更本真的自我理解时。",
         "trigger": "来访者处在not一致、脆弱或Anxiety状态，言行与体验相互矛盾，表达中出现混乱或犹疑。",
         "parent_ids": [
             "225",
@@ -588,7 +588,7 @@
     "84": {
         "skill_id": "84",
         "skill_name": "Sorting out perceptions under the three-world framework",
-        "skill_description": "结构化引导来访者分do not描述周围世界、Interpersonal relationships世界与与自我关系世界中的体验与看法，整合三者以全面理解其存在与知觉方式。",
+        "skill_description": "结构化Guidance来访者分do not描述周围世界、Interpersonal relationships世界与与自我关系世界中的体验与看法，整合三者以全面理解其存在与知觉方式。",
         "when_to_use": "The stage of defining modes of perception and integrating understanding; when the client's narration is one-sided and a more comprehensive self-other-environment three-dimensional perspective is needed.",
         "trigger": "The client focuses only on a single dimension (such as talking only about the environment or interpersonal relations), ignoring other aspects, leading to a biased or imbalanced understanding of one's self-image.",
         "parent_ids": [
@@ -603,7 +603,7 @@
         "skill_id": "85",
         "skill_name": "Listening识do not中心主题",
         "skill_description": "耐心细致地Listening来访者的主述内容与表达方式，辨识其反复出现的模式与非本真反应的中心主题，为后续Reflection与界定知觉提供抓手。",
-        "when_to_use": "分析与澄清阶段的开端；在尚not yet形成清晰问题框架、需要从叙述中提炼核心经验主题时。",
+        "when_to_use": "分析与Clarification阶段的开端；在尚not yet形成清晰问题框架、需要从叙述中提炼核心经验主题时。",
         "trigger": "来访者叙述中反复出现相似的用语、模式或对Anxiety的回避倾向，但其本人not yet能觉察其中主线。",
         "parent_ids": [
             "225",
@@ -629,8 +629,8 @@
     },
     "87": {
         "skill_id": "87",
-        "skill_name": "适时Intervention引导not yet觉察模式",
-        "skill_description": "在掌握基本信息后抓住时机点示来访者倾诉中not yet意识到的非本真方式，邀请其Reflection并体验这些模式，促进对存在与知觉的自我澄清。",
+        "skill_name": "适时InterventionGuidancenot yet觉察模式",
+        "skill_description": "在掌握基本信息后抓住时机点示来访者倾诉中not yet意识到的非本真方式，邀请其Reflection并体验这些模式，促进对存在与知觉的自我Clarification。",
         "when_to_use": "在已识do not中心主题后；当来访者尚not yet意识到自身反应模式、需要促进其自我Reflection与体验化时。",
         "trigger": "The client begins to touch on key themes but still has blind spots or self-contradictions, lacking awareness of their own reaction habits or avoidance styles.",
         "parent_ids": [
@@ -792,8 +792,8 @@
     },
     "184": {
         "skill_id": "184",
-        "skill_name": "鼓励感觉留置穿越回避",
-        "skill_description": "当来访者欲逃离not愉快情绪时，支持其在恐惧或not适中停留、细致探究与命名当下感受，帮助动员—行动—接触得以恢复。",
+        "skill_name": "Encouraging feelings to stay and move through avoidance",
+        "skill_description": "当来访者欲逃离not愉快情绪时，支持其在Fear或not适中停留、细致探究与命名当下感受，帮助动员—行动—接触得以Recovery。",
         "when_to_use": "When the cycle is interrupted by avoidance at the mobilization/action link, needing to restore flow through staying with and deepening the experience.",
         "trigger": "来访者表示“not想谈这个”“很害怕/not舒服”、试图Displacement话题或用Humor、抽象概括逃避。",
         "parent_ids": [
@@ -807,7 +807,7 @@
     "185": {
         "skill_id": "185",
         "skill_name": "Match assessment results to experiments to restore the cycle",
-        "skill_description": "根据阻滞环节选择相应实验：Deflection用回到主题与“我语言”，能量冻结用夸张练习，not yet完成事件用空椅子/重演，行动回避用预演与感觉留置。",
+        "skill_description": "根据阻滞环节选择相应实验：Deflection用回到主题与“我语言”，能量冻结用夸张练习，not yet完成事件用空椅子/重演，行动回避用预演与Staying with the feeling。",
         "when_to_use": "After completing the cycle and contact pattern assessment and clarifying the blockage points, when experiential experiments are needed to promote the natural figure-ground alternation.",
         "trigger": "检测到知觉空白、动员受阻、行动回避、接触中断或满足/消退not顺畅的具体线索。",
         "parent_ids": [
@@ -821,7 +821,7 @@
     "121": {
         "skill_id": "121",
         "skill_name": "Build a dialogic working alliance and safe environment",
-        "skill_description": "治疗首要任务是与来访者建立和谐的对话式关系，维持Good治疗环境以促进改变。现代Gestalt强调工作联盟为起始点与核心治疗因素，为后续觉察与实验奠定基础。",
+        "skill_description": "治疗首要任务是与来访者建立和谐的对话式关系，维持Good治疗环境以促进改变。现代Gestalt强调Work联盟为起始点与核心治疗因素，为后续觉察与实验奠定基础。",
         "when_to_use": "In the initial assessment and first-session stage, upon entering the therapeutic relationship; the goal is to form a cooperative, safe atmosphere and align the treatment direction and expectations.",
         "trigger": "来访者初次进入显得紧张或试探；表达对治疗目标not确定、需要支持与安全的迹象。",
         "parent_ids": [
@@ -846,7 +846,7 @@
     },
     "123": {
         "skill_id": "123",
-        "skill_name": "引导use现在时与“我”语言",
+        "skill_name": "Guidanceuse现在时与“我”语言",
         "skill_description": "坚持让来访者用现在时说话，常提“是什么”“如何”，鼓励以“我…”陈述，并将“not能”改为“not愿意”，减少去人格化与泛化，促进此时此地对话与自我责任。",
         "when_to_use": "Departing from the present, generalized or depersonalized expressions appear in the session; the goal is to focus on present experience and responsibility-taking.",
         "trigger": "来访者频繁use“它”“你”“not能”“也许”等措辞，沉湎过去或空泛计划，回避“我”陈述。",
@@ -872,8 +872,8 @@
     },
     "125": {
         "skill_id": "125",
-        "skill_name": "合作式面质言行not一致",
-        "skill_description": "以合作而非攻击的面质方式，邀请来访者检验言语与非言语、态度与行为间的not一致，探索被阻断的能量与接触模式，促进自我责任与对话质量。",
+        "skill_name": "合作式Confrontation言行not一致",
+        "skill_description": "以合作而非攻击的Confrontation方式，邀请来访者检验言语与非言语、态度与行为间的not一致，探索被阻断的能量与接触模式，促进自我责任与对话质量。",
         "when_to_use": "After establishing a basic connection, when needing to deepen dialogue and raise self-responsibility.",
         "trigger": "来访者微笑讲痛苦、言语deny但身体紧张，或自述与行为表现明显矛盾。",
         "parent_ids": [
@@ -924,9 +924,9 @@
     },
     "129": {
         "skill_id": "129",
-        "skill_name": "提出当下体验探问",
+        "skill_name": "Posing present-experience inquiries",
         "skill_description": "Use concrete questions to guide the client to focus on the experience of this moment, such as 'what is happening now', 'what do you feel at this moment', 'how are you interacting with the present', prompting the figure to stand out from the background and raising awareness and contact.",
-        "when_to_use": "在初始评估与整个治疗过程中，当治疗目标是提升觉察、建立接触、为实验奠基时use，帮助把会谈焦点回到此时此地。",
+        "when_to_use": "在初始评估与整个Therapeutic process中，当治疗目标是提升觉察、建立接触、为实验奠基时use，帮助把会谈焦点回到此时此地。",
         "trigger": "来访者大量谈过去或not yet来、语言抽象游离当下，或难以描述当前感受与身体体验时。",
         "parent_ids": [
             "225",
@@ -938,7 +938,7 @@
     "130": {
         "skill_id": "130",
         "skill_name": "use现在时与第一人称陈述",
-        "skill_description": "要求来访者以现在式并用“我”进行表达，减少去人格化的“它/你”表述与解释性语言，Reinforcement对当前体验的拥有与责任，巩固当下接触。",
+        "skill_description": "Demands来访者以现在式并用“我”进行表达，减少去人格化的“它/你”表述与Interpretation性语言，Reinforcement对当前体验的拥有与责任，巩固当下接触。",
         "when_to_use": "在全程会谈中use，尤其当来访者叙述疏离、自我责任感弱或与当下缺乏联系时。",
         "trigger": "来访者频繁说“它让我…”“你知道…”，用过去/not yet来时态描述体验，或以“我not能…”推卸当前选择责任时。",
         "parent_ids": [
@@ -964,7 +964,7 @@
     "132": {
         "skill_id": "132",
         "skill_name": "Encourage staying with current feelings and exploring deeply",
-        "skill_description": "当来访者欲回避not愉快或恐惧时，鼓励其继续停留于此刻感觉，命名、细化、定位与探究其意义，促进觉察、接触与自然改变。",
+        "skill_description": "当来访者欲回避not愉快或Fear时，鼓励其继续停留于此刻感觉，命名、细化、定位与探究其意义，促进觉察、接触与自然改变。",
         "when_to_use": "在表达阶段与实验中，当目标是突破逃避、增强自我支持与与当下的接触时use。",
         "trigger": "来访者说“我not想感觉这个”“我们换个话题吧”，或出现明显not适、Anxiety并欲Displacement时。",
         "parent_ids": [
@@ -1057,7 +1057,7 @@
     },
     "209": {
         "skill_id": "209",
-        "skill_name": "映射接触调整的极性谱",
+        "skill_name": "Mapping the polarity spectrum of contact adjustment",
         "skill_description": "按接触连续谱（Confluence—Withdrawal、内射—拒绝、Projection—拥有、自我中心—自发性、Deflection—接受、去敏化—敏感、内转—冲动）评估来访者位置与偏好极，描画其关系风格极性。",
         "when_to_use": "During the initial assessment and subsequent observation of relational interaction, used for process diagnosis and setting the priority order for polarity integration.",
         "trigger": "The client shows fixed style signs such as avoiding contact, excessive self-centeredness, talking about other things, deflection, or retroflected impulses.",
@@ -1073,7 +1073,7 @@
         "skill_id": "210",
         "skill_name": "定位能量冻结与Splitting部位",
         "skill_description": "识do not并标注能量冻结焦点（肌肉紧张、呼吸短促、紧闭双唇、颤抖、声音异常、麻木、回避眼神），作为进入两极对话与整合的切入点与现场锚点。",
-        "when_to_use": "鉴do not阶段或强情绪/阻塞出现时，准备实验或躯体觉察工作前，用于选定介入通道。",
+        "when_to_use": "鉴do not阶段或强情绪/阻塞出现时，准备实验或躯体觉察Work前，用于选定介入通道。",
         "trigger": "来访者出现明显躯体紧张、抖动、目光看do not处、感觉麻木、音调异常或主动报告身体not适。",
         "parent_ids": [
             "225",
@@ -1114,7 +1114,7 @@
     "213": {
         "skill_id": "213",
         "skill_name": "以梦境成分识do not自我Projection对立",
-        "skill_description": "把梦中各部分视为自我Projection，要求用现在时回述并“成为”各角色/物体，据此识do not内在对立与not yet完成事件的部件，确定两极整合的实验焦点。",
+        "skill_description": "把梦中各部分视为自我Projection，Demands用现在时回述并“成为”各角色/物体，据此识do not内在对立与not yet完成事件的部件，确定两极整合的实验焦点。",
         "when_to_use": "来访者带来或遗漏近期梦境时，准备两极对话、整合或not yet完成事件处理之前。",
         "trigger": "The client proactively talks about dreams or mentions memorable dreams; dreams contain conflict figures/situations, strong emotions, or spontaneous expression.",
         "parent_ids": [
@@ -1143,8 +1143,8 @@
     "159": {
         "skill_id": "159",
         "skill_name": "识do not并评估社会化禁令的现时适用性",
-        "skill_description": "引导来访者列出内化的文化戒条（如“家丑not可外扬”“not许质疑父母”），讨论其在当前生活中的有效性与代价，支持来访者有选择地保留、修正或放下not再适用的规范。",
-        "when_to_use": "表达与鉴do not阶段，当过去规范明显干扰当前接触、亲密或责任承担时，作为促进觉察和选择的工作重点。",
+        "skill_description": "Guidance来访者列出内化的文化戒条（如“家丑not可外扬”“not许质疑父母”），讨论其在当前生活中的有效性与代价，支持来访者有选择地保留、修正或放下not再适用的规范。",
+        "when_to_use": "表达与鉴do not阶段，当过去规范明显干扰当前接触、亲密或责任承担时，作为促进觉察和选择的Work重点。",
         "trigger": "来访者use“应该/必须”等绝对化语句、以道德命令自我约束，或因文化规范回避亲密、表达与决定。",
         "parent_ids": [
             "225",
@@ -1189,7 +1189,7 @@
         "skill_id": "162",
         "skill_name": "Seek consent before the experiment and clarify the right to stop",
         "skill_description": "Before proposing any experiment, first ask the client's wishes and explain the right and the bounds to stop at any time; secure safety through consent and choice, avoid pushing forcefully and re-traumatization, and strengthen the sense of control over the process.",
-        "when_to_use": "设计与启动所有实验、Role playing、夸张练习或梦重演前，用于建立安全框架与工作联盟。",
+        "when_to_use": "设计与启动所有实验、Role playing、夸张练习或梦重演前，用于建立安全框架与Work联盟。",
         "trigger": "来访者表达担忧、畏惧失控、说“not自然/not想做”，或明确提出not适与界限需求。",
         "parent_ids": [
             "225",
@@ -1204,7 +1204,7 @@
         "skill_id": "163",
         "skill_name": "Assesses treatment orientation and cultural fit and adjusts or refers",
         "skill_description": "在首次会谈评估Gestalt方法与来访者文化与期望的匹配度；根据适配性调整策略（如更多支持与对话）或善意转介更合适的治疗师。",
-        "when_to_use": "初始阶段的评估与诊断、制定治疗计划时，用于预防取向not匹配并保障治疗效能与安全。",
+        "when_to_use": "初始阶段的评估与诊断、Developing the treatment plan时，用于预防取向not匹配并保障治疗效能与安全。",
         "trigger": "来访者显著not接受此时此地聚焦或实验方式、期待not同取向，或其文化规范与常规Intervention发生冲突。",
         "parent_ids": [
             "225",
@@ -1217,10 +1217,10 @@
     },
     "164": {
         "skill_id": "164",
-        "skill_name": "以对话与Empathy进行文化敏感的面质反馈",
-        "skill_description": "在指出not一致与阻断时采纳Empathy式询问与清晰但支持性的对话，避免攻击性面质，降低文化防御，促进接触与觉察。",
-        "when_to_use": "鉴do not阶段或反馈非言语与言语not一致时，尤其来访者对强势面质易感或来自重礼仪/面子的文化。",
-        "trigger": "来访者对强烈面质出现防御、羞辱感或Withdrawal，或明确表达not适于对抗式风格。",
+        "skill_name": "以对话与Empathy进行文化敏感的Confrontation反馈",
+        "skill_description": "在指出not一致与阻断时采纳Empathy式询问与清晰但支持性的对话，避免攻击性Confrontation，降低文化防御，促进接触与觉察。",
+        "when_to_use": "鉴do not阶段或反馈非言语与言语not一致时，尤其来访者对强势Confrontation易感或来自重礼仪/面子的文化。",
+        "trigger": "来访者对强烈Confrontation出现防御、羞辱感或Withdrawal，或明确表达not适于对抗式风格。",
         "parent_ids": [
             "225",
             "96",
@@ -1272,7 +1272,7 @@
     "217": {
         "skill_id": "217",
         "skill_name": "在治疗关系中阻止suicide企图",
-        "skill_description": "保持以现在为中心，及时阻止来访者表现出的without助、疯狂、suicide等not成熟企图，引导其回到觉察与成长的过程。",
+        "skill_description": "保持以现在为中心，及时阻止来访者表现出的without助、疯狂、suicide等not成熟企图，Guidance其回到觉察与成长的过程。",
         "when_to_use": "会谈过程中出现危险行为或企图的苗头时，用于即时Intervention与稳定。",
         "trigger": "来访者出现without助、疯狂、suicide等not成熟的企图或相关言行。",
         "parent_ids": [
@@ -1286,7 +1286,7 @@
         "skill_id": "218",
         "skill_name": "Strengthening self and environmental support systems",
         "skill_description": "治疗中始终加强支持系统，发展自我支持与环境支持，帮助虚弱without能者稳定状态、降低风险与提升功能。",
-        "when_to_use": "整个治疗过程中，尤其在Increased stress或风险升高时，用于增强安全与功能。",
+        "when_to_use": "整个Therapeutic process中，尤其在Increased stress或风险升高时，用于增强安全与功能。",
         "trigger": "来访者缺乏自我支持，经常感到支离破碎或虚弱without能。",
         "parent_ids": [
             "225",
@@ -1297,8 +1297,8 @@
     },
     "165": {
         "skill_id": "165",
-        "skill_name": "初始会谈Reinforcement自我与社会支持",
-        "skill_description": "在初始评估中建立对话式关系与安全氛围，识do not并动员来访者的自我与社会支持资源，奠定后续工作的基础。",
+        "skill_name": "初始会谈Reinforcement自我与Social support",
+        "skill_description": "在初始评估中建立对话式关系与安全氛围，识do not并动员来访者的自我与Social support资源，奠定后续Work的基础。",
         "when_to_use": "At the initial assessment and relationship-building stage, the goal is to create a safe atmosphere and activate support resources.",
         "trigger": "来访者初次会谈时拘谨、防御、信任not足或表达对支持的渴求。",
         "parent_ids": [
@@ -1354,7 +1354,7 @@
     "169": {
         "skill_id": "169",
         "skill_name": "Stay with sensations to enhance tolerance and self-regulation",
-        "skill_description": "在来访者想回避恐惧或not愉快时，鼓励其停留并细致探究当下感受，训练耐受与自我调节，直面not yet完成情绪。",
+        "skill_description": "在来访者想回避Fear或not愉快时，鼓励其停留并细致探究当下感受，训练耐受与自我调节，直面not yet完成情绪。",
         "when_to_use": "在情绪加工环节，当来访者出现回避not适的倾向、not yet完成情绪浮现时。",
         "trigger": "来访者Displacement话题、轻描淡写、以笑遮痛、明确表示“not想谈/not想感受”。",
         "parent_ids": [
@@ -1382,8 +1382,8 @@
     "150": {
         "skill_id": "150",
         "skill_name": "Bring important past relationships into the here and now for reenactment",
-        "skill_description": "引导来访者把与重要他人的过去情境带到现场，use空椅子让其想象对方在对面，进行直接对话与表达，使not yet完成事件在当下被充分体验与处理。",
-        "when_to_use": "在初始表达与鉴do not阶段，用于把影响当前接触的旧关系模式转化为可操作的当下体验，准备进入实验与对话工作。",
+        "skill_description": "Guidance来访者把与重要他人的过去情境带到现场，use空椅子让其想象对方在对面，进行直接对话与表达，使not yet完成事件在当下被充分体验与处理。",
+        "when_to_use": "在初始表达与鉴do not阶段，用于把影响当前接触的旧关系模式转化为可操作的当下体验，准备进入实验与对话Work。",
         "trigger": "来访者频繁提及父母、伴侣等关系创伤，出现悔恨、愤怒、怨恨等not yet表达情绪，或自述被过去困扰难以进入当前接触。",
         "parent_ids": [
             "225",
@@ -1443,7 +1443,7 @@
         "skill_id": "154",
         "skill_name": "探询not yet完成事件的起因与信念",
         "skill_description": "系统追问并梳理not yet完成事件的起因、历史渊源及支撑其持续存在的核心信念，为后续重演与关系实验提供具体脉络与素材。",
-        "when_to_use": "在表达与鉴do not阶段，来访者情绪已浮现但事件脉络not清，需要为实验与角色工作构建清晰背景时。",
+        "when_to_use": "在表达与鉴do not阶段，来访者情绪已浮现但事件脉络not清，需要为实验与角色Work构建清晰背景时。",
         "trigger": "来访者反复提及过往创伤或关系纠葛，情绪强烈但叙述碎片化；自述被某信念长期牵制（如“not能反对父母”）。",
         "parent_ids": [
             "225",
@@ -1458,7 +1458,7 @@
         "skill_id": "155",
         "skill_name": "Focus on the most powerful figure",
         "skill_description": "Among multiple relational figures, help the client identify and select the figure with the strongest influence on them, and concentrate resources on re-enactment, empty-chair, and dialogue experiments.",
-        "when_to_use": "在进入实验前的聚焦阶段，需从众多关系线索中确定当前工作对象，以提升Intervention的聚焦性与效能。",
+        "when_to_use": "在进入实验前的聚焦阶段，需从众多关系线索中确定当前Work对象，以提升Intervention的聚焦性与效能。",
         "trigger": "The client mentions multiple significant others, but reacts more strongly to one of them (emotions, bodily reactions, speech acceleration/pauses), or repeatedly returns to the same person.",
         "parent_ids": [
             "225",
@@ -1487,7 +1487,7 @@
     "157": {
         "skill_id": "157",
         "skill_name": "Encouraging staying with relational emotional experiences",
-        "skill_description": "当来访者欲回避not愉快的关系情绪时，鼓励其在现场停留并深入探究恐惧、悲伤、愤怒等感觉，以触达被Repression的体验。",
+        "skill_description": "当来访者欲回避not愉快的关系情绪时，鼓励其在现场停留并深入探究Fear、悲伤、愤怒等感觉，以触达被Repression的体验。",
         "when_to_use": "在表达阶段或重演过程中，来访者出现回避、Displacement时，用于加深情绪加工，避免过早离开关键感受。",
         "trigger": "来访者在谈及重要他人时突然Displacement话题、淡化情绪或以Humor、概括绕开not适，表现出明显的Emotional avoidance。",
         "parent_ids": [
@@ -1501,7 +1501,7 @@
     },
     "196": {
         "skill_id": "196",
-        "skill_name": "观察并反馈非言语线索",
+        "skill_name": "Observing and feeding back nonverbal cues",
         "skill_description": "在鉴do not阶段敏锐观察脚部移动、音调变化、呼吸节律等非言语信号，并即时反馈，帮助来访者注意这些线索，使not yet完成事件浮现于觉知。",
         "when_to_use": "初始评估的表达与鉴do not阶段，用于识do notnot yet完成事件的当下线索，提升来访者此时此地的觉察。",
         "trigger": "来访者出现脚频繁移动、声音忽高忽低、呼吸忽快忽慢，或语言与肢体表现明显not一致。",
@@ -1543,7 +1543,7 @@
     },
     "199": {
         "skill_id": "199",
-        "skill_name": "以现在时重演过去情境",
+        "skill_name": "Reenacting past situations in the present tense",
         "skill_description": "鼓励来访者将与not yet完成事件相关的过去带入此时此地，以现在时描述或重演，评估其对当下体验的影响及not yet尽情绪。",
         "when_to_use": "Used in the expression stage, when the client talks about old events or entanglements with significant others, to bring the relevant situation into the present for assessment.",
         "trigger": "来访者叙述童年受伤、亲密关系冲突或反复困扰的旧事时情绪被明显trigger。",
@@ -1588,7 +1588,7 @@
         "skill_name": "识do not逃避策略作为线索",
         "skill_description": "记录来访者在接近not愉快情绪时的回避（Displacement话题、过度Humor、抽象化、以问代述等），评估其与not yet完成情结的关联。",
         "when_to_use": "表达与鉴do not阶段，当情绪临近而需要评估其被回避的方式与功能。",
-        "trigger": "来访者在表达痛苦或恐惧时突然泛化、改问问题、变得滑稽或迅速转到not相关话题。",
+        "trigger": "来访者在表达痛苦或Fear时突然泛化、改问问题、变得滑稽或迅速转到not相关话题。",
         "parent_ids": [
             "225",
             "96",
@@ -1614,7 +1614,7 @@
     "204": {
         "skill_id": "204",
         "skill_name": "通过梦境重演识do notnot yet完成事件",
-        "skill_description": "要求来访者以现在时重演梦境、扮演梦中各部分并进行对话，从Projection中识do not与not yet完成事件相关的信息与冲突。",
+        "skill_description": "Demands来访者以现在时重演梦境、扮演梦中各部分并进行对话，从Projection中识do not与not yet完成事件相关的信息与冲突。",
         "when_to_use": "当来访者报告反复或难忘的梦时，用于从梦的自发性表达中评估not yet完成事件。",
         "trigger": "The client proactively talks about recent dreams, recurring themes, or omitted but lingering dreams, and cares about the plot and emotions in them.",
         "parent_ids": [
@@ -1687,7 +1687,7 @@
     "147": {
         "skill_id": "147",
         "skill_name": "Encouraging feelings to linger in order to face the past",
-        "skill_description": "当历史记忆trigger恐惧或not适时，鼓励来访者停留在感觉中，细致探索并命名其体验，避免Displacement或回避。通过充分面对与体验，为not yet完成事件的弥合和成长创造条件。",
+        "skill_description": "当历史记忆triggerFear或not适时，鼓励来访者停留在感觉中，细致探索并命名其体验，避免Displacement或回避。通过充分面对与体验，为not yet完成事件的弥合和成长创造条件。",
         "when_to_use": "在重演过程中或情绪强度升高时，治疗目标是促进充分体验而非回避，为not yet完成事件的解决创造条件。",
         "trigger": "来访者表达“想换个话题”“not想再谈”“很害怕”等，或通过顾左右而言他、Displacement注意来逃避not愉快。",
         "parent_ids": [
@@ -1702,7 +1702,7 @@
     "148": {
         "skill_id": "148",
         "skill_name": "Use dream reenactment to sort through historical conflicts",
-        "skill_description": "将梦境视为此时此地的材料，要求来访者列举元素、分do not“成为”并让各部分对话与重演，以呈现与个人史相关的not yet完成事件和内在挣扎，提升觉察并为整合提供线索。",
+        "skill_description": "将梦境视为此时此地的材料，Demands来访者列举元素、分do not“成为”并让各部分对话与重演，以呈现与Personal history相关的not yet完成事件和内在挣扎，提升觉察并为整合提供线索。",
         "when_to_use": "When the client reports significant or recurring dreams, or when talking about symbolic content makes it easier to enter historical conflict, dream work is used to sort out personal history.",
         "trigger": "The client proactively talks about dreams, recurring or emotionally intense dreams; is curious or confused about figures or scenes in the dreams and is willing to explore.",
         "parent_ids": [
@@ -1748,7 +1748,7 @@
         "skill_name": "识do not接触边界中断模式",
         "skill_description": "依据Gestalt对not良接触的描述，辨识Projection、内射、内转、Deflection/混淆等模式的言行线索，记录具体例证，用以定位来访者主要的接触阻断方式并作为后续Intervention靶点。",
         "when_to_use": "表达与鉴do not阶段，发现来访者回避现实或责任时，需对其接触边界的混乱或阻断进行功能性评估。",
-        "trigger": "频繁use“应该/必须”并自责（内射）；将责任推给外界、称被控制（Projection）；明显抑制冲动伴躯体紧张（内转）；顾左右而言他、曲解重复他人话（Deflection）；强烈期待被接纳（混淆）。",
+        "trigger": "频繁use“应该/必须”并自责（内射）；将责任推给外界、称被控制（Projection）；明显Suppression冲动伴躯体紧张（内转）；顾左右而言他、曲解重复他人话（Deflection）；强烈期待被接纳（混淆）。",
         "parent_ids": [
             "225",
             "96",
@@ -1759,7 +1759,7 @@
     },
     "173": {
         "skill_id": "173",
-        "skill_name": "评估接触与回退的节律",
+        "skill_name": "Assessing the rhythm of contact and withdrawal",
         "skill_description": "关注边界的二元功能（连接与分离），观察来访者能否在接触后适时回退以整合经验，或是否固着于黏着/Withdrawal，判断其接触—回退的节律是否受阻。",
         "when_to_use": "Observe continuously during the session process; when the client's contact increases or avoidance is significant, assess her rhythm to prevent over-activation or stagnation.",
         "trigger": "来访者长时间黏着主题和关系、难以结束互动；或刚出现接触迹象即迅速Withdrawal、without法停留于体验进行整合。",
@@ -1789,7 +1789,7 @@
         "skill_id": "175",
         "skill_name": "Compare the consistency of verbal and bodily information",
         "skill_description": "Highly values body language, detects contradictions between spoken content and limbs/expressions, and gives immediate feedback to enhance awareness, as a basis for judging contact quality and blocking.",
-        "when_to_use": "鉴do not阶段或当口语与非言语出现not一致时，用于提升来访者对现时体验的觉察并评估接触功能。",
+        "when_to_use": "鉴do not阶段或当口语与非言语出现not一致时，用于提升来访者对现时体验的觉察并Assessing contact function。",
         "trigger": "来访者微笑时陈述愤怒或痛苦、口头deny紧张而身体明显绷紧、手势与陈述意图not符等非言语与言语错位现象。",
         "parent_ids": [
             "225",
@@ -1897,7 +1897,7 @@
         "skill_name": "开展not带评判的此时此地对话",
         "skill_description": "运用现象学的悬搁、描述与水平化，建立聚焦当前、非评判的对话框架，鼓励用现在时表达，常问“是什么”“如何”，减少评价Anxiety，提升安全感。",
         "when_to_use": "Used during information exchange and relationship laying in the initial stage, to lower defensiveness, promote present-moment contact, and experiences that can be seen.",
-        "trigger": "来访者自我批评、频繁use“应该/必须”，或陷入过度解释与过去/not yet来的臆测中。",
+        "trigger": "来访者自我批评、频繁use“应该/必须”，或陷入过度Interpretation与过去/not yet来的臆测中。",
         "parent_ids": [
             "225",
             "96",
@@ -1907,7 +1907,7 @@
     },
     "120": {
         "skill_id": "120",
-        "skill_name": "尊重并探询阻抗与犹豫",
+        "skill_name": "Respecting and inquiring about resistance and hesitation",
         "skill_description": "Regard the client's hesitation as a creative adaptation, give respect and explore with empathy the reasons behind it (including cultural norms), lower the participation threshold through negotiation, and maintain the safety of contact and the sense of self-dominance.",
         "when_to_use": "Used when the client shows hesitation about expressing or participating in an experiment, to protect safety and build trust and avoid confrontation or forceful pushing.",
         "trigger": "来访者称技术“做作/not真实”、担心失控或文化禁令限制表达，出现回避参与的言行。",
@@ -1949,7 +1949,7 @@
     "188": {
         "skill_id": "188",
         "skill_name": "识do notProjection并检验外归因的保护与代价",
-        "skill_description": "当来访者将not被接纳的感受或动机归因于外界时，具体化其外归因内容，探问此Projection如何让其回避责任、短期保护了什么，以及长期在人际与自我功能上的成本。",
+        "skill_description": "当来访者将not被接纳的感受或动机归因于外界时，具体化其外归因内容，探问此Projection如何让其回避责任、短期保护了什么，以及长期在人际与Ego functions上的成本。",
         "when_to_use": "评估接触调整时，用于辨识“Projection—拥有”失衡并探索其意义。",
         "trigger": "来访者强调“do not人在控制我”“他人do not有用心”，习惯将问题归咎外界，回避自我选择与责任。",
         "parent_ids": [
@@ -2005,7 +2005,7 @@
     "192": {
         "skill_id": "192",
         "skill_name": "Assess desensitization and numbness, focusing on body sensations",
-        "skill_description": "识do not“去敏化—敏感”谱端的麻木与低觉察，邀请其用现在时描述细微身体感觉与感受位置、强度与变化，作为恢复敏感与接触的起点。",
+        "skill_description": "识do not“去敏化—敏感”谱端的麻木与低觉察，邀请其用现在时描述细微身体感觉与感受位置、强度与变化，作为Recovery敏感与接触的起点。",
         "when_to_use": "When the client lacks awareness of emotional and bodily experience, used to assess and rebuild sensitivity.",
         "trigger": "来访者报告“not感觉”“麻木”“说not清”，伴随能量冻结迹象如呼吸浅、僵硬、眼神飘离。",
         "parent_ids": [
@@ -2019,7 +2019,7 @@
     "193": {
         "skill_id": "193",
         "skill_name": "Explore the protective function and cost of resistance",
-        "skill_description": "将发现的接触阻断视为创造性适应，合作探问它如何保护来访者免于某些经历，以及带来的关系与自我功能成本；保持not评判，支持其自我调节与选择。",
+        "skill_description": "将发现的接触阻断视为创造性适应，合作探问它如何保护来访者免于某些经历，以及带来的关系与Ego functions成本；保持not评判，支持其自我调节与选择。",
         "when_to_use": "识do not到任何接触中断或边界混乱后，用于加深意义理解并为改变提供线索。",
         "trigger": "The client shows resistance manifestations such as avoidance, external attribution, self-attack, or numbness, and doubts their necessity or side effects.",
         "parent_ids": [
@@ -2035,7 +2035,7 @@
         "skill_name": "用“是什么/如何”的现在时Questioning聚焦模式",
         "skill_description": "Persist in asking questions in the present tense, focusing on 'what / how', reduce 'why', guide the client to directly describe current behavior, feelings, and contact style, and diagnose their contact adjustment patterns by process.",
         "when_to_use": "全程评估与会谈中，需把注意力拉回此时此地体验与接触过程时use。",
-        "trigger": "来访者沉溺过去/not yet来、陷入解释或思辨，远离当前体验与接触质量的叙述。",
+        "trigger": "来访者沉溺过去/not yet来、陷入Interpretation或思辨，远离当前体验与接触质量的叙述。",
         "parent_ids": [
             "225",
             "96",
@@ -2106,7 +2106,7 @@
     "139": {
         "skill_id": "139",
         "skill_name": "促use第一人称与自我负责表达",
-        "skill_description": "将去个人化或deny能力的说法转换为第一人称与责任语言（如将“它/你”改为“我”、将“not能”澄清为“not愿意”，加入“我会为它负责”），以澄清与环境的关系与自主选择。",
+        "skill_description": "将去个人化或deny能力的说法转换为第一人称与责任语言（如将“它/你”改为“我”、将“not能”Clarification为“not愿意”，加入“我会为它负责”），以Clarification与环境的关系与自主选择。",
         "when_to_use": "During diagnosis and relationship clarification, used to raise awareness and self-support, avoiding the assessment being interfered with by depersonalized language.",
         "trigger": "来访者频繁use“它”“你”的非人称或笼统陈述，或以“not能”“也许”“我想”deny能力、回避承担。",
         "parent_ids": [
@@ -2168,7 +2168,7 @@
         "skill_name": "Sort out the current focus with the figure-ground framework",
         "skill_description": "运用图形-背景理论识do not当下最显著的注意焦点与隐退内容，协助将背景中的相关因素（如期望、资源）呈现为图形，用于完善环境评估与制定计划。",
         "when_to_use": "表达与鉴do not阶段，当情绪或主题凸显需厘清其与隐退因素的关系时。",
-        "trigger": "来访者出现明显的沮丧、失望、混乱或Anxiety，当前注意焦点频繁切换或单一情绪占据图形。",
+        "trigger": "来访者出现明显的Depression、失望、混乱或Anxiety，当前注意焦点频繁切换或单一情绪占据图形。",
         "parent_ids": [
             "225",
             "96",
@@ -2223,7 +2223,7 @@
     "30": {
         "skill_id": "30",
         "skill_name": "Resource-oriented exploration to enhance self-esteem and confidence",
-        "skill_description": "引导来访者探索自身潜能与成长体验，识do not可用优势与资源，支持其进行积极自我评价以提升自尊与自信。",
+        "skill_description": "Guidance来访者探索自身潜能与成长体验，识do not可用优势与资源，支持其进行积极自我评价以提升自尊与自信。",
         "when_to_use": "At the identification stage, when self-esteem and confidence need to be raised to support self-choice; sessions where the client shows self-deprecation and lack of confidence.",
         "trigger": "来访者deny能力、贬低自我价值，常说“我not行”“not什么可值得自信”，回避尝试与表达。",
         "parent_ids": [
@@ -2237,7 +2237,7 @@
     "31": {
         "skill_id": "31",
         "skill_name": "Administers standardized scales to assess personality, intelligence, and emotion baselines",
-        "skill_description": "在初始评估或训练前，采用EPQ、MMPI、韦氏量表、贝克Anxiety/抑郁自评等标准化工具，调查来访者人格、智力与情绪的基本特征，建立客观心理基线，为后续方案制定与效果比较提供参照。",
+        "skill_description": "在初始评估或训练前，采用EPQ、MMPI、韦氏Scale、贝克Anxiety/抑郁自评等标准化工具，调查来访者人格、智力与情绪的基本特征，建立客观心理基线，为后续方案制定与效果比较提供参照。",
         "when_to_use": "At the assessment stage of the first visit or before intervention; when a training/treatment plan needs to be formulated for the client or an objective reference established; the client is cooperative and the environment is quiet.",
         "trigger": "来访者表达“想了解自己的Anxiety/抑郁程度”“想知道人格或智力状况”；或对当前功能not满意、主动寻求帮助。",
         "parent_ids": [
@@ -2293,7 +2293,7 @@
     "35": {
         "skill_id": "35",
         "skill_name": "Guide self-report and emotional clarification alongside the assessment",
-        "skill_description": "在量表施测前后，用接纳、非评判的方式促进来访者Freedom表达当下情绪与体验，识do not并澄清含糊或消极情感，将主观自述与测评数据并置，以丰富理解并避免机械化解释。",
+        "skill_description": "在Scale施测前后，用接纳、非评判的方式促进来访者Freedom表达当下情绪与体验，识do not并Clarification含糊或消极情感，将主观自述与测评数据并置，以丰富理解并避免机械化Interpretation。",
         "when_to_use": "The preparation stage before testing and the feedback stage after testing; when scale scores need to be integrated with the client's experience; when results trigger emotional reactions.",
         "trigger": "来访者表达“说not清的Repression”“总是Anxiety却not知道原因”；对测评结果困惑或出现愧疚、敌意、疑虑等情绪。",
         "parent_ids": [
@@ -2320,8 +2320,8 @@
     },
     "10": {
         "skill_id": "10",
-        "skill_name": "澄清非指导性与not建议原则",
-        "skill_description": "明确以来访者为中心的非指导性原则：not指导、not判断、not主动，not以解释或建议控制来访者，问题决策由来访者自定并承担责任。",
+        "skill_name": "Clarification非指导性与not建议原则",
+        "skill_description": "明确以来访者为中心的非指导性原则：not指导、not判断、not主动，not以Interpretation或建议控制来访者，问题决策由来访者自定并承担责任。",
         "when_to_use": "When initially setting counseling expectations and role division, to prevent authority-based dependence on the counselor.",
         "trigger": "When the client directly requests 'tell me what to do', 'give me advice', or hopes the counselor will decide for them.",
         "parent_ids": [
@@ -2377,7 +2377,7 @@
     "14": {
         "skill_id": "14",
         "skill_name": "说明not评价、not追问历史的边界",
-        "skill_description": "说明not作消极评价、not解释来访者行为，not询问历史背景或探测性问题，避免审查感，尊重其独特性与自我决定。",
+        "skill_description": "说明not作消极评价、notInterpretation来访者行为，not询问历史背景或探测性问题，避免审查感，尊重其独特性与自我决定。",
         "when_to_use": "会谈契约与边界说明时，校准来访者对咨询风格的Anticipation。",
         "trigger": "The client worries about being scrutinized, asks 'will you interrogate me in detail about the past', or has concerns about being judged.",
         "parent_ids": [
@@ -2391,9 +2391,9 @@
     "15": {
         "skill_id": "15",
         "skill_name": "邀请Freedom表达与共同商讨",
-        "skill_description": "说明鼓励来访者Freedom表达（含消极与含糊情感），咨询师以友好、诚恳、接纳的态度促成表达，并与其共同澄清与商讨。",
+        "skill_description": "说明鼓励来访者Freedom表达（含消极与含糊情感），咨询师以友好、诚恳、接纳的态度促成表达，并与其共同Clarification与商讨。",
         "when_to_use": "In the first-session explanation stage, create an atmosphere where expression is possible and facilitate entry into exploration.",
-        "trigger": "来访者沉默、拘谨、用词含糊或Repression情绪，难以启动表达。",
+        "trigger": "来访者Silence、拘谨、用词含糊或Repression情绪，难以启动表达。",
         "parent_ids": [
             "225",
             "1",
@@ -2405,7 +2405,7 @@
     "16": {
         "skill_id": "16",
         "skill_name": "Explaining the autonomy principle of treatment termination",
-        "skill_description": "告知终止条件与流程：当来访者认为问题已解决、without需继续时，可结束咨询；同时共同澄清结束时的情感并自然收束关系。",
+        "skill_description": "告知终止条件与流程：当来访者认为问题已解决、without需继续时，可结束咨询；同时共同Clarification结束时的情感并自然收束关系。",
         "when_to_use": "初次说明流程与Anticipation时，或来访者询问疗程次数与结束方式时。",
         "trigger": "The client asks 'how many times do I need to come' or 'when will it end', or expresses guilt and worry about ending.",
         "parent_ids": [
@@ -2433,7 +2433,7 @@
     "18": {
         "skill_id": "18",
         "skill_name": "提供without条件积极关注与接纳",
-        "skill_description": "以not带价值判断的态度接纳来访者的一切感受，尊重其Freedom表达，use非批判性语言与Listening传达尊重。接纳情感并not等于认同其所有行为，保持接纳与界限并行。",
+        "skill_description": "以not带价值判断的态度接纳来访者的一切感受，尊重其Freedom表达，use非批判性语言与Listening传达尊重。Accepting emotions并not等于认同其所有行为，保持接纳与界限并行。",
         "when_to_use": "贯穿咨询全程，尤其在来访者自我not和谐、初期防御较强或需要安全支持时，建立温暖和谐的关系。",
         "trigger": "来访者表达敌意、Anxiety、愧疚、疑虑等消极或含糊情感，或在表达前显得犹豫、防御、封闭。",
         "parent_ids": [
@@ -2475,9 +2475,9 @@
     "21": {
         "skill_id": "21",
         "skill_name": "鼓励并承载Freedom的情感表达",
-        "skill_description": "以友好、诚恳、接纳的态度促进来访者Freedom表达，大多会先出现消极或含糊情感。咨询师需真心关怀与有效引导，让其在安全气氛中逐步打开与深入自我。",
+        "skill_description": "以友好、诚恳、接纳的态度促进来访者Freedom表达，大多会先出现消极或含糊情感。咨询师需真心关怀与有效Guidance，让其在安全气氛中逐步打开与深入自我。",
         "when_to_use": "Used from the early to middle stage of relationship building, to lower defensiveness, enhance the sense of safety and willingness to express, and promote contact at the emotional level.",
-        "trigger": "来访者出现敌意、Anxiety、愧疚、疑虑等消极情绪，或沉默、犹豫、仅谈外部事件、避免触及自我。",
+        "trigger": "来访者出现敌意、Anxiety、愧疚、疑虑等消极情绪，或Silence、犹豫、仅谈外部事件、避免触及自我。",
         "parent_ids": [
             "225",
             "1",
@@ -2488,7 +2488,7 @@
     },
     "22": {
         "skill_id": "22",
-        "skill_name": "识do not并澄清隐含的消极情感",
+        "skill_name": "识do not并Clarification隐含的消极情感",
         "skill_description": "After the client confides, be aware of the emotions and conflicts implied in their words, go deep into their inner world to experience and clarify, making them recognize themselves more clearly, and understand that negative emotions are also part of the self.",
         "when_to_use": "After the initial expression, at a stage when the relationship is stable, used to deepen understanding, promote self-awareness, and lower defensiveness.",
         "trigger": "来访者倾诉内容后仍显困惑或情感模糊，夹杂自责、Shame, fear等not yet被点明的情绪线索。",
@@ -2502,7 +2502,7 @@
     },
     "23": {
         "skill_id": "23",
-        "skill_name": "接纳积极情感而not评价或赞许",
+        "skill_name": "接纳积极情感而not评价或Approval",
         "skill_description": "对来访者表达的积极情感给予接纳与容纳，但not表扬或作道德评价，避免Reinforcement外在评价依赖，促使其自然达成领悟与更真实的自我了解。",
         "when_to_use": "Used when the client begins to reveal tentative positive feelings or new discoveries, to consolidate self-acceptance and sources of inner value.",
         "trigger": "来访者表达希望、轻松、喜悦或对自我新的肯定与向往，同时带有试探与not确定。",
@@ -2531,7 +2531,7 @@
     "25": {
         "skill_id": "25",
         "skill_name": "Give up directing and evaluating; maintain a non-directive stance",
-        "skill_description": "放下自身价值标准与控制欲，not评价not解释来访者，not询问引导性或探测性问题，not擅自决定咨询频率与时间，维护来访者的自我选择与主导。",
+        "skill_description": "放下自身价值标准与控制欲，not评价notInterpretation来访者，not询问Guidance性或探测性问题，not擅自决定咨询频率与时间，维护来访者的自我选择与主导。",
         "when_to_use": "贯穿咨询全程，用于维持以来访者为中心的关系取向，避免因权威Intervention破坏安全氛围。",
         "trigger": "The client directly requests advice or guidance and seeks to be judged; or is highly sensitive to external evaluation in expression and easily controlled by it.",
         "parent_ids": [
@@ -2560,8 +2560,8 @@
         "skill_id": "268",
         "skill_name": "Distill, restate, and name the core assumption",
         "skill_description": "通过具体Questioning让来访者说出对自我、他人、过去的信念与看法；当其出现普遍化、绝对化或“必须/not应该”“只有…才能…”等表述时，用“你认为…”等反映语句准确重述，并复述与标注关键表达（如“害怕do not人看你，也害怕看do not人”），结合具体事例帮助看见并命名核心假设（如“do not人not会喜欢外来者”），为后续检视与修正奠定基础。",
-        "when_to_use": "初诊与评估阶段或开始澄清信念时；当来访者急于弄清自身问题、概括性描述人际困扰，或在其陈述规则、因果信念与“必须/not应该”等语句之后。",
-        "trigger": "来访者出现泛化或绝对化判断、对人际的固定看法、Self-denial、反复思考，或use“只有…才能…”“not应该…”等表达，以及笼统恐惧表述（如“所有人都在看我”）。",
+        "when_to_use": "初诊与评估阶段或开始Clarification信念时；当来访者急于弄清自身问题、概括性描述人际困扰，或在其陈述规则、因果信念与“必须/not应该”等语句之后。",
+        "trigger": "来访者出现泛化或绝对化判断、对人际的固定看法、Self-denial、反复思考，或use“只有…才能…”“not应该…”等表达，以及笼统Fear表述（如“所有人都在看我”）。",
         "parent_ids": [
             "225",
             "36",
@@ -2572,7 +2572,7 @@
     "312": {
         "skill_id": "312",
         "skill_name": "Map the event timeline and contemporaneous thoughts",
-        "skill_description": "引导来访者按时间顺序重述与家人争吵、失恋等关键事件，明确情境、原因、当时的感受与想法，同时记录not合理信念、行为与思维方式，使隐含假设暴露并便于后续检视与澄清。",
+        "skill_description": "Guidance来访者按时间顺序重述与家人争吵、失恋等关键事件，明确情境、原因、当时的感受与想法，同时记录not合理信念、行为与思维方式，使隐含假设暴露并便于后续检视与Clarification。",
         "when_to_use": "评估与会谈开始阶段用于资料收集与初步概念化，需识do not隐含世界假设与维持因子时。",
         "trigger": "来访者描述近期重大事件叙述杂乱，反复出现“迷茫”“Self-doubt”“很痛苦”等表述。",
         "parent_ids": [
@@ -2585,9 +2585,9 @@
     "311": {
         "skill_id": "311",
         "skill_name": "Inventories key figures, stress, and support and marks the timeline",
-        "skill_description": "依据来访者叙述，梳理生活与工作中的关键人物、事件与情境，记录trigger线索、情绪反应及人际受阻点；核实名事件发生时间，标注症状持续时长与范围；盘点主要压力、现有支持与应对方式（如拒绝困难、代做他人工作、压力时频繁联系朋友），并汇总父母期望、毕业/实习要求等对决策与情绪的影响强度，用于判断问题是否由近期事件引发并影响当前功能，为后续沟通与技术选择提供线索。",
+        "skill_description": "依据来访者叙述，梳理生活与Work中的关键人物、事件与情境，记录trigger线索、情绪反应及人际受阻点；核实名事件发生时间，标注症状持续时长与范围；盘点主要压力、现有支持与应对方式（如拒绝困难、代做他人Work、压力时频繁联系朋友），并汇总父母期望、毕业/实习Demands等对决策与情绪的影响强度，用于判断问题是否由近期事件引发并影响当前功能，为后续沟通与技术选择提供线索。",
         "when_to_use": "初诊/评估阶段的资料收集与目标设置前，用于梳理压力源、时间线与Relationship tension，快速把握问题情境与决策压力，明确与谁、在何事上最受困扰。",
-        "trigger": "来访者提及近期重大事件、与家人冲突、失恋或被欺骗，或报告Low mood/失控与功能变化；临近毕业/实习节点Anxiety或困惑加剧；频繁谈及某人并表达愤怒或委屈、工作压力、替他人承担任务，或通过倾诉/上网搜帖缓解。",
+        "trigger": "来访者提及近期重大事件、与家人冲突、失恋或被欺骗，或报告Low mood/失控与功能变化；Approaching graduation/实习节点Anxiety或困惑加剧；频繁谈及某人并表达愤怒或委屈、Work压力、替他人承担任务，或通过倾诉/上网搜帖缓解。",
         "parent_ids": [
             "225",
             "96",
@@ -2600,9 +2600,9 @@
     "228": {
         "skill_id": "228",
         "skill_name": "识do not并记录满足与消退受阻信号",
-        "skill_description": "在初诊与随访评估或讨论失恋影响时，记录满足与消退受损或失败的迹象，如持续性Low mood、睡眠与食欲障碍、难以体验快乐与“生活Meaninglessness”，分手后反复回想与比较、睡前长久反刍致难以入睡等，以定位体验循环后段的卡滞，作为恢复循环节律与体验流动的重点观察目标。",
+        "skill_description": "在初诊与随访评估或讨论失恋影响时，记录满足与消退受损或失败的迹象，如持续性Low mood、睡眠与食欲障碍、难以体验快乐与“生活Meaninglessness”，分手后反复回想与比较、睡前长久反刍致难以入睡等，以定位体验循环后段的卡滞，作为Recovery循环节律与体验流动的重点观察目标。",
         "when_to_use": "In the early/initial consultation and follow-up assessment stage, or when discussing the impact of a breakup and the emotional aftermath, used to locate the sticking points in the satisfaction and extinction links and their impact on life.",
-        "trigger": "当来访者持续Low mood、出现睡眠或食欲障碍、难以体验快乐或回到平静；或分手后反复回想与比较、难以接受关系结束；或睡前长期反刍致入睡困难时。",
+        "trigger": "当来访者持续Low mood、出现睡眠或食欲障碍、难以体验快乐或回到平静；或分手后反复回想与比较、难以接受关系结束；或睡前长期反刍致Difficulty falling asleep时。",
         "parent_ids": [
             "225",
             "96",
@@ -2614,9 +2614,9 @@
     "241": {
         "skill_id": "241",
         "skill_name": "识do not并记录满足与消退完成信号",
-        "skill_description": "在行动或会谈后回顾、随访或阶段性效果评估时，记录满足与消退的完成信号，如会后“如释重负”“欢快奔跑”、行动后虚without减弱，以及“整理打包了”的感受、轻松感、情绪平稳、社交与学习恢复、他评改善或测验评分降低，以判断体验/接触循环是否达到满足与消退并评估完成度，从而指导后续介入。",
+        "skill_description": "在行动或会谈后回顾、随访或阶段性效果评估时，记录满足与消退的完成信号，如会后“如释重负”“欢快奔跑”、行动后虚without减弱，以及“整理打包了”的感受、轻松感、情绪平稳、社交与LearningRecovery、他评改善或测验评分降低，以判断体验/接触循环是否达到满足与消退并评估完成度，从而指导后续介入。",
         "when_to_use": "At the stage of reviewing after action or a session, or during follow-up and periodic effect assessment, used to judge the satisfaction and completion of the fading of the experience/contact cycle.",
-        "trigger": "来访者报告会后如释重负、欢快奔跑，或行动后虚without减弱；或出现轻松感、情绪平稳、功能恢复、他评改善或测验评分降低时。",
+        "trigger": "来访者报告会后如释重负、欢快奔跑，或行动后虚without减弱；或出现轻松感、情绪平稳、功能Recovery、他评改善或测验评分降低时。",
         "parent_ids": [
             "225",
             "96",
@@ -2672,7 +2672,7 @@
     "286": {
         "skill_id": "286",
         "skill_name": "识do not边界not清与难以拒绝表现",
-        "skill_description": "评估在人际中not敢沟通、难以拒绝、过度承担及频繁担心他人评价等现象，识do not回避与边界not清的调整方式及其代价，作为学习一致性表达与拒绝的训练起点。",
+        "skill_description": "评估在人际中not敢沟通、难以拒绝、过度承担及频繁担心他人评价等现象，识do not回避与边界not清的调整方式及其代价，作为Learning一致性表达与拒绝的训练起点。",
         "when_to_use": "来访者在人际中两难、without法拒绝或频繁担心他人评价时；或讨论人际冲突与回避行为时。",
         "trigger": "来访者提出“资料not合适却难以拒绝”“担心他not高兴”等；或自述害怕他人评价、not敢沟通、过度承担。",
         "parent_ids": [
@@ -2686,7 +2686,7 @@
     "258": {
         "skill_id": "258",
         "skill_name": "梳理并标记not yet完成事件及情绪主题",
-        "skill_description": "系统追溯成长史与近期事件，记录父亲离世、分手、宿舍矛盾等反复浮现的情绪情境，标注悲伤、恐惧、愤怒、委屈、被抛弃感等主题及强度与持续性，观察其对当下低落与Anxiety的干扰，确立后续工作目标与优先级。",
+        "skill_description": "系统追溯成长史与近期事件，记录Father离世、分手、宿舍矛盾等反复浮现的情绪情境，标注悲伤、Fear、愤怒、委屈、被抛弃感等主题及强度与持续性，观察其对当下低落与Anxiety的干扰，确立后续Work目标与优先级。",
         "when_to_use": "Early intake and assessment, first or follow-up assessment, early data collection and etiology exploration, before and after letter writing, or the plan-formulation stage; and when reviewing after a crisis or emotional peak.",
         "trigger": "The client repeatedly mentions major upheavals, interpersonal conflicts, or events such as a breakup, is long unable to let go, takes a long time to recover after conflicts or blames themselves for long periods, accompanied by strong or persistent emotional fluctuations; or mentions related themes many times in letters and conversations.",
         "parent_ids": [
@@ -2714,7 +2714,7 @@
     "247": {
         "skill_id": "247",
         "skill_name": "Encourage expression and clarify needs and goals",
-        "skill_description": "以without条件接纳、耐心Listening与Empathy，营造开放包容的表达环境，鼓励来访者说出想法与感受；围绕“你想要什么”进行具体化Questioning，澄清最关心与亟To be resolved的问题，界定关系中的需要与渴望，把模糊诉求转化为可表达的愿望与初步目标，为后续选择与行动奠定基础。",
+        "skill_description": "以without条件接纳、耐心Listening与Empathy，营造开放包容的表达环境，鼓励来访者说出想法与感受；围绕“你想要什么”进行具体化Questioning，Clarification最关心与亟To be resolved的问题，界定关系中的需要与渴望，把模糊诉求转化为可表达的愿望与初步目标，为后续选择与行动奠定基础。",
         "when_to_use": "首次评估与随后的交流中，当来访者情绪强烈或表达受抑、目标not yet明、negate现状或陷入两难时；探讨亲密/Interpersonal relationships需要界定真实需要与渴望时。",
         "trigger": "来访者悲伤、愤怒、委屈落泪，说话声音小、not敢正眼看咨询师；摇头negate当前方式，称“not知道怎么拒绝”“not想这样相处”；对问题表述含混或说“想改变却not知道从哪开始”；抱怨关系not平等、被忽视；广泛诉苦如“not敢与人交流”“Interpersonal relationships很not好”。",
         "parent_ids": [
@@ -2730,7 +2730,7 @@
         "skill_name": "Inquire about motivation and help needs and ask for intentions",
         "skill_description": "With an intake conversation and an opening of 'how can I help you', explore the motivation for coming to counseling and the specific help needed, and around their difficulty and hope invite them to express 'what they want'; before entering deeper exploration, directly ask whether they are willing to try together and obtain informed consent, while assessing and confirming their wish for treatment, so that present expectations and desires surface as the starting point for subsequent work.",
         "when_to_use": "第一次咨询的评估与关系建立阶段，或来访者deny心理问题、执着于查病因、持续诉说症状时；准备进入更深入探索或技术操作前需确认意愿之际。",
-        "trigger": "来访者表示“我have not心理问题”；急于查明病因、反复要求做检查；初次陈述困扰或表达“希望得到帮助”；not yet完全释怀但愿意合作并回应“可以”；主动求助、陈述痛苦持续影响学习生活或明确表示希望改善。",
+        "trigger": "来访者表示“我have not心理问题”；急于查明病因、反复Demands做检查；初次陈述困扰或表达“希望得到帮助”；not yet完全释怀但愿意合作并回应“可以”；主动求助、陈述痛苦持续影响Learning生活或明确表示希望改善。",
         "parent_ids": [
             "225",
             "36",
@@ -2744,7 +2744,7 @@
         "skill_name": "Agree on counseling goals and therapy to clarify expectations",
         "skill_description": "After completing the psychological tests and data collection, jointly agree with the client on the counseling goals and the therapy to be used, invite them to state the expected changes and directions, concretize the wish of 'wanting to change' into executable goals and plans, clarify both parties' tasks and commitments, enhance the motivation to change, as a basis for subsequent work.",
         "when_to_use": "At the end or beginning stage of the first session, after assessment and diagnosis are complete, when both parties' tasks and direction need to be clarified and a counseling plan formulated.",
-        "trigger": "来访者对缓解情绪、改善Interpersonal relationships等提出期待；表示“想要改变”、对会谈目的或目标迷茫，需明确工作任务与方法；求助意愿明确但目标与期待not yet具体化或存在迷茫。",
+        "trigger": "来访者对缓解情绪、改善Interpersonal relationships等提出期待；表示“想要改变”、对会谈目的或目标迷茫，需明确Work任务与方法；求助意愿明确但目标与期待not yet具体化或存在迷茫。",
         "parent_ids": [
             "225",
             "36",
@@ -2814,8 +2814,8 @@
         "skill_id": "294",
         "skill_name": "Empathy性反映与验证理解促具体表达",
         "skill_description": "Catch the emotions and needs in the client's experiences, with empathic reflections and summaries such as 'it sounds... / I understand your feelings' feed back their efforts, setbacks and concerns; check and adjust the understanding, affirm their seeking help, invite them to concretely explain the interpersonal difficulties and impacts; when expression is blocked, acknowledge the pain and convey acceptance, maintaining connection and paving the way for subsequent analysis.",
-        "when_to_use": "建立关系与信息收集阶段，当来访者谈及工作挫败、人际Loneliness或低自尊、丧亲与功能受损，或泛泛陈述人际困扰、表达困难时。",
-        "trigger": "叙述失败或not被喜欢时情绪波动、眼圈泛红、语速慢；持续描述胸闷、气喘、insomnia等not适并deny心理因素；自述人际很差或害怕交流；without法说清、语言停滞、憋闷烦躁；或报告Low mood、Reduced interest、睡眠食欲差、学习Decreased efficiency。",
+        "when_to_use": "建立关系与Information gathering阶段，当来访者谈及Work挫败、人际Loneliness或低自尊、丧亲与功能受损，或泛泛陈述人际困扰、表达困难时。",
+        "trigger": "叙述失败或not被喜欢时情绪波动、眼圈泛红、语速慢；持续描述胸闷、气喘、insomnia等not适并deny心理因素；自述人际很差或害怕交流；without法说清、语言停滞、憋闷烦躁；或报告Low mood、Reduced interest、睡眠食欲差、LearningDecreased efficiency。",
         "parent_ids": [
             "225",
             "36",
@@ -2897,7 +2897,7 @@
         "skill_name": "以Listening与Empathy反馈接纳情绪",
         "skill_description": "When the client talks about pain and vulnerability or emotions surge, listen carefully and accurately reflect their feelings and situation in empathic language, accept and accompany the expression and venting of emotions, let them feel understood and seen, relieve tension, and enhance the sense of safety and the willingness to continue expressing.",
         "when_to_use": "In the initial stage and throughout, especially when high-emotion topics such as trauma and family upheaval are discussed or the client's emotions are trapped.",
-        "trigger": "来访者哭泣、哽咽、频繁叹气；描述without助、悲伤、沮丧、暴力或“have not家”等经历。",
+        "trigger": "来访者哭泣、哽咽、频繁叹气；描述without助、悲伤、Depression、暴力或“have not家”等经历。",
         "parent_ids": [
             "225",
             "96",
@@ -2908,7 +2908,7 @@
     "298": {
         "skill_id": "298",
         "skill_name": "Explain confidentiality principles and exceptions and sign consent",
-        "skill_description": "在首次会谈明确说明保密原则与打破保密的例外，解释个人信息处理与use范围、转介与录音督导等事项，并与来访者签署知情同意或保密协议，回应疑问，降低隐私顾虑，建立清晰、安全、可信的合作边界。",
+        "skill_description": "在首次会谈明确说明保密原则与打破保密的例外，Interpretation个人信息处理与use范围、转介与录音督导等事项，并与来访者签署知情同意或保密协议，回应疑问，降低隐私顾虑，建立清晰、安全、可信的合作边界。",
         "when_to_use": "At the first session or the beginning stage, before entering formal work, used to establish safety boundaries and enhance trust.",
         "trigger": "初次来访或对保密与流程存疑；对隐私、记录或信息use有疑虑，态度谨慎或not安。",
         "parent_ids": [
@@ -2921,7 +2921,7 @@
     "237": {
         "skill_id": "237",
         "skill_name": "Clarifying the counseling setup process and goals",
-        "skill_description": "在前期澄清咨询的设置与安排，介绍咨询性质、流程与边界，讨论本次咨询目标，并明确双方权利与义务，提升可Anticipation性与信任感，减少not确定带来的紧张与防御，营造安全稳定的合作框架。",
+        "skill_description": "在前期Clarification咨询的设置与安排，介绍咨询性质、流程与边界，讨论本次咨询目标，并明确双方权利与义务，提升可Anticipation性与信任感，减少not确定带来的紧张与防御，营造安全稳定的合作框架。",
         "when_to_use": "At the first session and early relationship-building stage, used to clarify structure and direction and establish a foundation of safety.",
         "trigger": "首次到访、对咨询流程not熟或目标表述模糊、Anxietynot安；非自愿来访者对咨询存疑。",
         "parent_ids": [
@@ -3051,7 +3051,7 @@
     "281": {
         "skill_id": "281",
         "skill_name": "Empty-chair integration: venting again and connecting relational impact",
-        "skill_description": "在空椅子对话与角色转换后，引导来访者再次宣泄成长中的not满与难受，识do not亲子矛盾背后的其他关系影响，扩展与深化当前觉察，用于技术结束时的整合。",
+        "skill_description": "在空椅子对话与角色转换后，Guidance来访者再次宣泄成长中的not满与难受，识do not亲子矛盾背后的其他关系影响，扩展与深化当前觉察，用于技术结束时的整合。",
         "when_to_use": "The integration segment at the end of the empty-chair technique, when awareness and understanding need to be deepened.",
         "trigger": "仍有not yet尽情绪或对冲突原因理解片面。",
         "parent_ids": [
@@ -3064,7 +3064,7 @@
     "261": {
         "skill_id": "261",
         "skill_name": "Use the empty chair for present dialogue and reenactment",
-        "skill_description": "在咨询室设置两张椅子，引导来访者与重要他人或自我部分当下对话、轮换角色并现场重演冲突，表达被Repression的情绪与需要，练习换位与真诚沟通，整合内在冲突，增强临场感、自我觉察与改变。",
+        "skill_description": "在咨询室设置两张椅子，Guidance来访者与重要他人或自我部分当下对话、轮换角色并现场重演冲突，表达被Repression的情绪与需要，练习换位与真诚沟通，整合内在冲突，增强临场感、自我觉察与改变。",
         "when_to_use": "When emotion is suppressed, interpersonal conflict is prominent, or cognition is rigid, it is necessary to bring historical events into the present experience or to practice communication and perspective-taking on site.",
         "trigger": "Persistent prejudice or strong emotion toward specific figures, blocked communication; talks about grief/separation/guilt fragments; produces self-contradiction and pulling over rejection methods or election failure.",
         "parent_ids": [
@@ -3144,7 +3144,7 @@
         "skill_name": "Select and integrate orientations and method combinations to match goals",
         "skill_description": "Based on the assessment and diagnosis, select and integrate orientations and method combinations such as cognitive behavioral, client-centered, rational emotive, psychoanalytic or supportive psychotherapy, or clarify a person-centered orientation and core strategies; explain the core conditions and applicability to the client, reaching a consistent path and expectations.",
         "when_to_use": "When formulating the plan and pathway after completing the initial assessment; when the plan is being determined or advanced and the method orientation needs to be clarified.",
-        "trigger": "资料与测验已收集；存在not合理信念、渴望被理解或功能受刺激事件影响等线索，需选择并解释主要方法以建立协定。",
+        "trigger": "资料与测验已收集；存在not合理信念、渴望被理解或功能受刺激事件影响等线索，需选择并Interpretation主要方法以建立协定。",
         "parent_ids": [
             "225",
             "96",
@@ -3196,8 +3196,8 @@
     "289": {
         "skill_id": "289",
         "skill_name": "Explain the client-centered approach and role positioning",
-        "skill_description": "明确来访者是自身问题的专家，咨询师以陪伴与促进者身份协助其探索，遵循非指导性立场，not灌输价值观，帮助其按自己的节奏表达与领悟，澄清期待与方式。",
-        "when_to_use": "首次Evaluative session或关系建立之初，进行方法说明与期待澄清时。",
+        "skill_description": "明确来访者是自身问题的专家，咨询师以陪伴与促进者身份协助其探索，遵循非指导性立场，not灌输价值观，帮助其按自己的节奏表达与领悟，Clarification期待与方式。",
+        "when_to_use": "首次Evaluative session或关系建立之初，进行方法说明与期待Clarification时。",
         "trigger": "来访者对咨询方式not确定、期待被直接指导或担心问题太幼稚。",
         "parent_ids": [
             "225",
@@ -3210,7 +3210,7 @@
     "251": {
         "skill_id": "251",
         "skill_name": "Negotiate and establish goals and plans and confirm orientation fit",
-        "skill_description": "在完成初步评估后，与来访者共同商定短期与长期目标及实施方案，解释拟采用的疗法与原理，澄清可做与not能做并将模糊诉求可行化，确认其对方式与时程的认可与匹配度。",
+        "skill_description": "在完成初步评估后，与来访者共同商定短期与长期目标及实施方案，Interpretation拟采用的疗法与原理，Clarification可做与not能做并将模糊诉求可行化，确认其对方式与时程的认可与匹配度。",
         "when_to_use": "At the early-stage fit assessment and goal clarification stage, after the assessment is completed and basic trust is established.",
         "trigger": "来访者愿意协作、提出期待或询问方法与时程；目标尚not清或not现实，需要明确方向。",
         "parent_ids": [
@@ -3266,7 +3266,7 @@
     "290": {
         "skill_id": "290",
         "skill_name": "Explain the counseling methods, process, and technical features",
-        "skill_description": "系统介绍所采用的咨询取向与方法，说明整体流程与技术特点，如积极Listening、情感与内容反映、澄清与开放式Questioning，帮助来访者理解会谈如何进行与Anticipation路径，建立共同理解。",
+        "skill_description": "系统介绍所采用的咨询取向与方法，说明整体流程与技术特点，如积极Listening、情感与内容反映、Clarification与开放式Questioning，帮助来访者理解会谈如何进行与Anticipation路径，建立共同理解。",
         "when_to_use": "At the structure and method introduction step of the first or early sessions, before entering concrete techniques.",
         "trigger": "The client feels unfamiliar with or confused about the counseling process and methods, proactively asking about principles and ways.",
         "parent_ids": [
@@ -3308,7 +3308,7 @@
     "295": {
         "skill_id": "295",
         "skill_name": "Explains confidentiality principles and exceptions and obtains informed consent",
-        "skill_description": "在首次或早期会谈开场，清晰说明咨询的保密原则与保密例外，告知记录与信息use边界，回应与澄清来访者的疑虑；在解答后取得书面知情同意（含录音同意等），以建立安全与信任的合作基础。",
+        "skill_description": "在首次或早期会谈开场，清晰说明咨询的保密原则与保密例外，告知记录与信息use边界，回应与Clarification来访者的疑虑；在解答后取得书面知情同意（含录音同意等），以建立安全与信任的合作基础。",
         "when_to_use": "初次会谈启动阶段或建立合作框架时，涉及记录与信息use需明确边界时。",
         "trigger": "来访者首次到访、询问隐私保护或对录音与资料use心存疑虑与not安。",
         "parent_ids": [
@@ -3338,7 +3338,7 @@
         "skill_name": "鼓励来访者Freedom表达并营造非评判氛围",
         "skill_description": "明确邀请来访者按自身节奏Freedom叙述情感与经历，强调咨询师将以接纳与非评判态度陪伴，允许正负情绪充分呈现；必要时说明本次以宣泄为主的节奏，降低防御与压力，促进开放表达与Self-exploration。",
         "when_to_use": "At the early counseling and early exploration stage, used to create a safe, open atmosphere for expression; throughout, whenever emotional expression needs to be promoted.",
-        "trigger": "来访者显得拘谨或犹疑、Repression情绪、沉默或担心被评价，主动表达Anxiety、烦躁等困扰。",
+        "trigger": "来访者显得拘谨或犹疑、Repression情绪、Silence或担心被评价，主动表达Anxiety、烦躁等困扰。",
         "parent_ids": [
             "225",
             "1",
@@ -3350,7 +3350,7 @@
     "269": {
         "skill_id": "269",
         "skill_name": "Explain confidentiality rules and ethical boundaries and obtain consent",
-        "skill_description": "在首次会谈详细说明保密原则与保密例外、伦理要求与信息use边界，与来访者签订或确认保密协议并完成知情同意，缓解not安全与戒备，建立信任，促进入谈与真实表达。",
+        "skill_description": "在首次会谈详细说明保密原则与保密例外、伦理Demands与信息use边界，与来访者签订或确认保密协议并完成知情同意，缓解not安全与戒备，建立信任，促进入谈与真实表达。",
         "when_to_use": "At the setting step of the first consultation or before entering assessment, when boundaries need clarification and safety established.",
         "trigger": "When the client has concerns about privacy and confidentiality, appears guarded, or counseling will involve sensitive content.",
         "parent_ids": [
@@ -3364,7 +3364,7 @@
     "229": {
         "skill_id": "229",
         "skill_name": "Explaining confidentiality exceptions and completing notification and coordination in high-risk situations",
-        "skill_description": "在首次接触或评估显示suicide等高风险时，充分解释保密协议与可能的保密突破情形，明确何时需告知学院或家属；在取得来访者知情同意后再进行必要的风险反馈与联动，增强安全感与可控感。",
+        "skill_description": "在首次接触或评估显示suicide等高风险时，充分Interpretation保密协议与可能的保密突破情形，明确何时需告知学院或家属；在取得来访者知情同意后再进行必要的风险反馈与联动，增强安全感与可控感。",
         "when_to_use": "首次接触及评估为高风险时；来访者对保密边界not清楚或担心家长知情。",
         "trigger": "来访者询问保密并表现犹疑或拒绝持续咨询；评估显示suicide高风险需联动Intervention。",
         "parent_ids": [
@@ -3380,7 +3380,7 @@
         "skill_name": "Empathy跟随并反映当下体验",
         "skill_description": "以真诚与尊重在场，耐心Listening并紧贴来访者叙述，共同描述其此刻的语言、行为与情绪；通过询问与反映，帮助更清晰识do not困扰来源、感受与意义，反馈理解，促成信任、放松与深入披露。",
         "when_to_use": "关系建立与巩固阶段，尤其在早期会谈与情绪被激发时；当叙述含混或情感not yet被命名、需要被理解与接纳时。",
-        "trigger": "来访者停顿、沉默或用笼统词语描述“干扰”“not好的想法”；表达痛苦经历、低落或“很差劲”等自贬，渴望被理解而抗拒被分析。",
+        "trigger": "来访者停顿、Silence或用笼统词语描述“干扰”“not好的想法”；表达痛苦经历、低落或“很差劲”等自贬，渴望被理解而抗拒被分析。",
         "parent_ids": [
             "225",
             "96",
@@ -3443,7 +3443,7 @@
     "307": {
         "skill_id": "307",
         "skill_name": "有效沟通问询并真诚承认not确定",
-        "skill_description": "通过清晰、耐心的沟通与针对性问询，帮助明确来访者主要问题与形成原因；当会谈卡点或路径not清时，咨询师真实承认失误或not确定并邀请共同探讨，示范合作与诚信，增强信任与工作联盟。",
+        "skill_description": "通过清晰、耐心的沟通与针对性问询，帮助明确来访者主要问题与形成原因；当会谈卡点或路径not清时，咨询师真实承认失误或not确定并邀请共同探讨，示范合作与诚信，增强信任与Work联盟。",
         "when_to_use": "第一阶段的关系建立与资料收集时；或会谈出现困境、选择实验或Intervention路径not清晰的时段。",
         "trigger": "来访者愿意主动求助并积极陈述但互信尚not足；互动停滞、来访者质疑或Relationship tension的迹象出现。",
         "parent_ids": [
@@ -3468,10 +3468,10 @@
     },
     "292": {
         "skill_id": "292",
-        "skill_name": "开放式Questioning与澄清促进Self-exploration",
-        "skill_description": "以开放式Questioning邀请来访者描述感受、意义与需求，引导其Freedom表达并细化困扰，避免引导性与评判；通过澄清梳理主要问题、情绪来源、行为表现与时间线，探寻改变意愿，深化理解并巩固工作联盟。",
+        "skill_name": "开放式Questioning与Clarification促进Self-exploration",
+        "skill_description": "以开放式Questioning邀请来访者描述感受、意义与需求，Guidance其Freedom表达并细化困扰，避免Guidance性与评判；通过Clarification梳理主要问题、情绪来源、行为表现与时间线，探寻改变意愿，深化理解并巩固Work联盟。",
         "when_to_use": "In the early-middle stage when expression needs to be expanded and understanding deepened; the intake conversation and information collection stage, exploring problems and motivation.",
-        "trigger": "来访者叙述模糊或片面、陷入自我苛责或对自我需求not清晰；not yet清晰表达主要问题与改变动机，需要澄清情绪来源、行为表现与时间线。",
+        "trigger": "来访者叙述模糊或片面、陷入自我苛责或对自我需求not清晰；not yet清晰表达主要问题与改变动机，需要Clarification情绪来源、行为表现与时间线。",
         "parent_ids": [
             "225",
             "96",
@@ -3484,7 +3484,7 @@
         "skill_name": "Flexibly use open and closed inquiries to collect information",
         "skill_description": "Flexibly combine open and closed questions, systematically collect detailed data such as mental state and social functioning, expand the information surface and improve dialogue quality, promote effective communication and cooperation, and lay an empirical foundation for building trust and working together.",
         "when_to_use": "The assessment, diagnosis, and relationship-building stage, when needing to systematically understand the problem.",
-        "trigger": "来访者主动叙述少、回答简短或出现较长沉默、信息not足，或对问题的描述仍笼统、关键细节缺失。",
+        "trigger": "来访者主动叙述少、回答简短或出现较长Silence、信息not足，或对问题的描述仍笼统、关键细节缺失。",
         "parent_ids": [
             "225",
             "96",
@@ -3508,8 +3508,8 @@
     },
     "284": {
         "skill_id": "284",
-        "skill_name": "识do not并动员社会支持资源，规划外部支持",
-        "skill_description": "通过预设性询问、赞许与例外询问，发掘已有与潜在的社会与现实支持资源；与来访者共同梳理生活中的可用支持关系与资源，明确其来源与use方式，并在咨询中以鼓励、总结与计划连接或寻找其他资源与支持，减少without助感与对咨询的单一依赖。",
+        "skill_name": "识do not并动员Social support资源，规划外部支持",
+        "skill_description": "通过Presuppositional questions、Approval与Exception questions，发掘已有与潜在的社会与现实支持资源；与来访者共同梳理生活中的可用支持关系与资源，明确其来源与use方式，并在咨询中以鼓励、总结与计划连接或寻找其他资源与支持，减少without助感与对咨询的单一依赖。",
         "when_to_use": "评估或收尾阶段，或情绪改善后的总结与计划阶段，当Weak social support或Intervention需要外部支持配合时。",
         "trigger": "自述缺乏亲情支持、without法利用身边支持系统或表达without助与孤立；对结束咨询或not yet来问题感到not确定并谈及可获得的帮助与关系；开始表达能对抗困境、继续Self-exploration与寻找支持。",
         "parent_ids": [
@@ -3536,8 +3536,8 @@
     },
     "267": {
         "skill_id": "267",
-        "skill_name": "引导倾诉获取外界支持",
-        "skill_description": "引导来访者向老师、同学或亲友倾诉，并开放接纳劝慰与批评反馈；通过充分表露与外界信息回馈缓解紧张、Anxiety等情绪，校正not合理认知，并作为短期外部支持促其探索与联系他人。",
+        "skill_name": "Guiding disclosure to gain external support",
+        "skill_description": "Guidance来访者向老师、同学或亲友倾诉，并开放接纳劝慰与批评反馈；通过充分表露与外界信息回馈缓解紧张、Anxiety等情绪，校正not合理认知，并作为短期外部支持促其探索与联系他人。",
         "when_to_use": "当来访者without法独自排解消极情绪、需要借助他人支持与反馈时。",
         "trigger": "出现紧张、Anxiety、insomnia，或表达强烈倾诉与哭泣的冲动。",
         "parent_ids": [
@@ -3565,9 +3565,9 @@
     "245": {
         "skill_id": "245",
         "skill_name": "Assess the support system and social functioning from multiple information sources",
-        "skill_description": "基于摄入性谈话与详细资料收集，use登记表、保密说明与心理测验，结合辅导员反映与入室观察，系统梳理家庭、人际与校园支持现状与缺口；同时收集学习、人际、家人联系与睡眠等信息，并记录与人际困扰相关的薄弱点，以制定目标与后续Intervention计划。",
+        "skill_description": "基于摄入性谈话与详细资料收集，use登记表、保密说明与心理测验，结合辅导员反映与入室观察，系统梳理家庭、人际与校园支持现状与缺口；同时收集Learning、人际、家人联系与睡眠等信息，并记录与人际困扰相关的薄弱点，以制定目标与后续Intervention计划。",
         "when_to_use": "In the assessment and diagnosis stage of the initial visit, and the review before and after setting the counseling goals, when the influence of the support system on the current interpersonal trouble and the currently usable resources and weak links need to be determined.",
-        "trigger": "来访者描述与舍友关系not和、Loneliness感或既往缺乏家庭/学校支持的经历；呈现适应困难、Interpersonal alienation或家庭关怀缺失线索；Reduced socializing、学习或工作受损、insomnia等社会功能受损信号，或自身叙述信息not足需要旁证。",
+        "trigger": "来访者描述与舍友关系not和、Loneliness感或既往缺乏家庭/学校支持的经历；呈现适应困难、Interpersonal alienation或家庭关怀缺失线索；Reduced socializing、Learning或Work受损、insomnia等社会功能受损信号，或自身叙述信息not足需要旁证。",
         "parent_ids": [
             "225",
             "96",
@@ -3579,7 +3579,7 @@
     "266": {
         "skill_id": "266",
         "skill_name": "Provide integrated feedback, monitor, and consolidate the adjusted support system",
-        "skill_description": "持续收集并对照来访者自评、咨询师观察及同伴、Teacher报告，监测症状与功能变化，以判断社会支持介入是否有效，并据此巩固或调整支持系统。",
+        "skill_description": "持续收集并对照来访者自评、咨询师观察及同伴、Teacher报告，监测症状与功能变化，以判断Social support介入是否有效，并据此巩固或调整支持系统。",
         "when_to_use": "At the follow-up and effect evaluation stage, when whether the support system is effective and needs adjustment must be judged.",
         "trigger": "Evaluations from people around and school situation information are available, or symptom/function changes need external verification.",
         "parent_ids": [
@@ -3606,7 +3606,7 @@
     },
     "317": {
         "skill_id": "317",
-        "skill_name": "反馈并澄清自评结果",
+        "skill_name": "Giving feedback and clarifying self-assessment results",
         "skill_description": "After completing the self-rating scales, feed the scores and corresponding levels back to the client (such as mild depression), clarify the meaning of the results in combination with their statements to avoid misunderstanding, promote alignment of the motivation for entering counseling and the goals, and provide a reference for later conceptualization and plan setting.",
         "when_to_use": "After scale administration, before the first comprehensive assessment and case conceptualization are formed.",
         "trigger": "Standard scores of scales obtained and the level and meaning need to be understood; the client raises questions about the meaning of results or shows confusion.",
@@ -3623,7 +3623,7 @@
         "skill_name": "Explain and administer self-rating scales to establish a baseline",
         "skill_description": "At the initial assessment stage, explain the testing purpose and scope, guide independently and truthfully completing the SCL-90, the depression self-rating scale and so on, standardize recording the scores and key indicators, assess the emotions and symptoms of the past week, forming an objective baseline, for subsequent case conceptualization, goal setting and efficacy assessment.",
         "when_to_use": "At the first or early session of case assessment, used to establish an objective baseline of emotions and symptoms; or when quantitative comparison is needed at post-treatment assessment and symptom fluctuation.",
-        "trigger": "来访者首次到访并同意测评，主诉抑郁、Anxiety等需量化评估的症状；或计划阶段性评估、来访者自述症状改善或加重。",
+        "trigger": "来访者首次到访并同意测评，主诉抑郁、Anxiety等需量化评估的症状；或计划阶段性评估、来访者自述Symptom improvement或加重。",
         "parent_ids": [
             "225",
             "1",
@@ -3677,7 +3677,7 @@
     "255": {
         "skill_id": "255",
         "skill_name": "Feeds back and interprets SCL-90 results to formulate a plan",
-        "skill_description": "测评完成后清晰解释SCL-90各因子分与程度（如抑郁、Anxiety、人际敏感、偏执），联系来访者主诉与体验，归纳主要困扰领域，并将量表结果与观察、访谈资料整合，协商咨询目标与方法，提供客观参照。",
+        "skill_description": "测评完成后清晰InterpretationSCL-90各因子分与程度（如抑郁、Anxiety、人际敏感、偏执），联系来访者主诉与体验，归纳主要困扰领域，并将Scale结果与观察、访谈资料整合，协商咨询目标与方法，提供客观参照。",
         "when_to_use": "After the pre-test is completed and the scale report is obtained, when the results need to be fed back to the client and a brief conclusion formed at the assessment and diagnosis segment.",
         "trigger": "The assessment shows moderate or abnormal factor scores; the client is confused about the meaning of the results or objective results need to be used for diagnostic judgment and plan formulation.",
         "parent_ids": [
@@ -3705,8 +3705,8 @@
     "297": {
         "skill_id": "297",
         "skill_name": "Re-administer and compare scales to assess outcomes",
-        "skill_description": "在结束或随访阶段再次施测前期use的量表（如SAS、SDS、SCL-90），比较治疗前后总分、阳性项目数与因子分变化，记录随访得分并与初测或常模对比，判断Anxiety、抑郁等维度的改善幅度，作为咨询效果评估并与主观改善体验相互印证。",
-        "when_to_use": "阶段小结、结案评估或既定随访节点，用以检验Intervention成效与症状改善幅度。",
+        "skill_description": "在结束或随访阶段再次施测前期use的Scale（如SAS、SDS、SCL-90），比较治疗前后总分、阳性项目数与因子分变化，记录随访得分并与初测或常模对比，判断Anxiety、抑郁等维度的改善幅度，作为Counseling effectiveness evaluation并与主观改善体验相互印证。",
+        "when_to_use": "阶段小结、结案评估或既定随访节点，用以检验Intervention成效与Symptom improvement幅度。",
         "trigger": "Intervention基本完成或咨询接近尾声；来访者反馈状态改善或需要客观检验；到达治疗后随访节点。",
         "parent_ids": [
             "225",
@@ -3746,10 +3746,10 @@
     },
     "232": {
         "skill_id": "232",
-        "skill_name": "施测并解释SASAnxiety水平",
-        "skill_description": "在首次评估中指导完成SASAnxiety自评，计算粗分与标准分，记录分数并依据标准分解释Anxiety程度（如轻度/中度），建立量化基线，为后续Intervention和效果评估提供参照。",
+        "skill_name": "施测并InterpretationSASAnxiety水平",
+        "skill_description": "在首次评估中指导完成SASAnxiety自评，计算粗分与标准分，记录分数并依据标准分InterpretationAnxiety程度（如轻度/中度），建立量化基线，为后续Intervention和效果评估提供参照。",
         "when_to_use": "诊断评估阶段需了解Anxiety基线时；或结束巩固阶段复测对比疗效。",
-        "trigger": "来访者呈现紧张not安、恐惧、注意力欠佳、胸闷insomnia等Anxiety线索，需量化Anxiety程度。",
+        "trigger": "来访者呈现紧张not安、Fear、注意力欠佳、胸闷insomnia等Anxiety线索，需量化Anxiety程度。",
         "parent_ids": [
             "225",
             "1",
@@ -3802,10 +3802,10 @@
     },
     "264": {
         "skill_id": "264",
-        "skill_name": "积极Listening并鼓励充分表达",
-        "skill_description": "专注、not中断地聆听来访者的主诉与重要事件，适时复述要点、澄清与回应，鼓励其充分表达，在安全支持的氛围中把握困扰脉络与意义，促进信任与资料收集，为后续探索与合作奠定基础。",
+        "skill_name": "积极Listening并Encouraging full expression",
+        "skill_description": "专注、not中断地聆听来访者的主诉与重要事件，适时复述要点、Clarification与回应，鼓励其充分表达，在安全支持的氛围中把握困扰脉络与意义，促进信任与资料收集，为后续探索与合作奠定基础。",
         "when_to_use": "The stage of data collection and emotional expression, running through early assessment and subsequent sessions; entering the narrative stage or the early rapport-building phase; the first session and when expression is restricted.",
-        "trigger": "来访者开始连贯叙述症状、事件与人际困扰；沉默、迟疑或仅简短回应；情绪流露少、Intellectualization或部分Emotional isolation，需要更多陪伴与接纳。",
+        "trigger": "来访者开始连贯叙述症状、事件与人际困扰；Silence、迟疑或仅简短回应；情绪流露少、Intellectualization或部分Emotional isolation，需要更多陪伴与接纳。",
         "parent_ids": [
             "225",
             "1",
@@ -3817,9 +3817,9 @@
     "260": {
         "skill_id": "260",
         "skill_name": "准确Empathy并反馈来访者体验",
-        "skill_description": "保持专注与耐心，细听叙述并捕捉without助、恐惧、悲伤等感受；设身处地体会其感受与思维，以Empathy性语言准确反映核心体验与需要，传递接纳与关注，增强安全感，帮助调节情绪、深化连接与自我表达。",
-        "when_to_use": "全程use，尤其在初期及谈及家庭变故、重要事件与痛苦情绪时；关系加深与澄清误解阶段；强烈情绪或not yet完成事件的探索期。",
-        "trigger": "来访者流露without助、恐惧、哀伤等强烈情绪；谈失恋、舍友冲突、适应困难致情绪波动；自陈“not用”“毫without价值”等负性评价；紧张、Anxiety、insomnia或自我效能下降。",
+        "skill_description": "保持专注与耐心，细听叙述并捕捉without助、Fear、悲伤等感受；设身处地体会其感受与思维，以Empathy性语言准确反映核心体验与需要，传递接纳与关注，增强安全感，帮助调节情绪、深化连接与自我表达。",
+        "when_to_use": "全程use，尤其在初期及谈及家庭变故、重要事件与痛苦情绪时；关系加深与Clarification误解阶段；强烈情绪或not yet完成事件的探索期。",
+        "trigger": "来访者流露without助、Fear、哀伤等强烈情绪；谈失恋、舍友冲突、适应困难致情绪波动；自陈“not用”“毫without价值”等负性评价；紧张、Anxiety、insomnia或自我效能下降。",
         "parent_ids": [
             "225",
             "1",
@@ -3845,7 +3845,7 @@
     "325": {
         "skill_id": "325",
         "skill_name": "持续给予without条件积极关注与接纳",
-        "skill_description": "在互动中持续以not评判的接纳与关怀回应来访者的体验与选择，传达其价值被看见与尊重，缓冲自卑与被评价的恐惧，修复安全感与自我价值，使其敢于谈及痛苦经历与真实需要。",
+        "skill_description": "在互动中持续以not评判的接纳与关怀回应来访者的体验与选择，传达其价值被看见与尊重，缓冲自卑与被评价的Fear，修复安全感与自我价值，使其敢于谈及痛苦经历与真实需要。",
         "when_to_use": "贯穿全程，尤其在自我曝露、敏感议题或来访者表达痛苦、自责与担忧被negate时；关系巩固阶段。",
         "trigger": "来访者自卑、在乎他人看法、害怕拒绝或被抛弃；Anxiety抑郁或强迫症状致痛苦；自我批评、害怕被negate；谈及童年缺乏被爱与关注或被误解羞辱的经历。",
         "parent_ids": [
@@ -3858,7 +3858,7 @@
     },
     "272": {
         "skill_id": "272",
-        "skill_name": "以真诚一致的态度沟通",
+        "skill_name": "Communicating with a genuine and congruent attitude",
         "skill_description": "在互动中真实坦诚、言行一致，not伪装not扮演角色；以自然、诚恳的方式相处，降低来访者戒心，促成平等信任的关系，为深入探索与合作提供安全基础。",
         "when_to_use": "建立关系初期及全程维持；当关系受试探或出现not信任时。",
         "trigger": "来访者对他人评价敏感、自卑Anxiety或对咨询师动机心存顾虑。",
@@ -3888,8 +3888,8 @@
         "skill_id": "252",
         "skill_name": "以准确Empathy与情感反映回应体验",
         "skill_description": "When the client has difficulty expressing themselves or their emotions are strong, acknowledge their feelings and difficulty expressing with concrete emotional language; understand empathically and feed back the core emotions and meanings, keenly catch and accurately reflect them, keep the distance of 'as if', avoid rash advice or judgment, help them clarify and own the present emotions, relieving tension and agitation and promoting trust and self-awareness.",
-        "when_to_use": "咨询初期或来访者退行、坐立not安、频繁说“not知道”时；当其情绪强烈、叙述含混或Self-denial情感；在陈述负性经历与情绪、探索阶段及情绪高涨时。",
-        "trigger": "少对视、紧张烦躁、语言贫乏或回复“not知道”；沉默、语塞、理性压情绪或反复强调“not应该”；胸闷、Anxiety、insomnia、学习效率低；被批评、误解或恐惧污染的记忆；睡眠差、心情低落、人际敏感；眼圈泛红、without奈疲惫、被比较羞辱后的伤痛；哭诉竞选失利、人际冲突与家庭事件。",
+        "when_to_use": "咨询初期或来访者Regression、坐立not安、频繁说“not知道”时；当其情绪强烈、叙述含混或Self-denial情感；在陈述负性经历与情绪、探索阶段及情绪高涨时。",
+        "trigger": "少对视、紧张烦躁、语言贫乏或回复“not知道”；Silence、语塞、理性压情绪或反复强调“not应该”；胸闷、Anxiety、insomnia、Learning效率低；被批评、误解或Fear污染的记忆；睡眠差、Low mood、人际敏感；眼圈泛红、without奈疲惫、被比较羞辱后的伤痛；哭诉竞选失利、人际冲突与家庭事件。",
         "parent_ids": [
             "225",
             "1",
@@ -3944,7 +3944,7 @@
         "skill_id": "233",
         "skill_name": "及时肯定并具体Reinforcement积极变化与努力",
         "skill_description": "Promptly affirm and encourage the client's courage and effort (such as 'it is great that you can actively and bravely explore this'), give concrete, genuine positive feedback and congratulations for their strengths and progress, strengthening confidence and inner motivation and raising cooperation willingness; one may invite them to share experiences of harmonious interaction and study progress, consolidating connection and self-efficacy.",
-        "when_to_use": "来访者完成思考或提出洞见后；明确做出积极选择或采取行动时；在识do not其优势、努力或正向改变时；巩固阶段及各次会谈总结时。",
+        "when_to_use": "来访者完成思考或提出洞见后；明确做出积极选择或采取行动时；在识do not其优势、努力或正向改变时；巩固阶段及各次Session summary时。",
         "trigger": "The client proactively thinking, trying to respond, or carrying out graded classification; expressing positive statements such as 'I have thought it through' and 'make a wise choice'; mentioning their own highlights, completing tasks, or showing progress; after reporting progress, being accepted by peers, or completing established tasks.",
         "parent_ids": [
             "225",
@@ -3959,7 +3959,7 @@
         "skill_name": "Convey acceptance with a warm, genuine opening and nonverbal behavior",
         "skill_description": "With a warm tone, focused gaze and present posture, combined with nonverbal behaviors such as smiling, friendly greeting and gesturing to sit down, open with respect, enthusiasm and positive regard, thank and affirm the visit, convey the experience of safety and being valued, lowering tension and defenses, promoting trust building in the initial-visit stage.",
         "when_to_use": "At the opening of the first consultation and the early stage of relationship building, especially when the client is cautious or tense; at the opening of each session, used to quickly create a safe and warm atmosphere.",
-        "trigger": "来访者眼神躲闪、声音低、语速慢、拘谨not安；面露愁容、Low mood但愿意交流；初次来谈紧张或困惑；首次到访坐姿前半截、目光躲闪；沉默、抗拒或表达自卑与被评判的担忧。",
+        "trigger": "来访者眼神躲闪、声音低、语速慢、拘谨not安；面露愁容、Low mood但愿意交流；初次来谈紧张或困惑；首次到访坐姿前半截、目光躲闪；Silence、抗拒或表达自卑与被评判的担忧。",
         "parent_ids": [
             "225",
             "1",

@@ -2,7 +2,7 @@
   "basic_info": {
     "static_traits": {
       "age": "25",
-      "name": "张如迪",
+      "name": "Zhang Rudi",
       "gender": "Male",
       "occupation": "Mother",
       "educational_background": "High school graduate",
@@ -10,7 +10,7 @@
       "family_status": "与配偶共同生活，Has two children（其中一个被诊断为自闭症），养两只狗",
       "social_status": "Strained relationships with family members；虽有支持性配偶，但因内疚而减少倾诉",
       "medical_history": "without显著躯体疾病；without以往心理治疗史；孩子被诊断为自闭症后自责和失败感显著加重",
-      "language_features": "表达清晰、配合度高，整体语气消极与Self-denial；常use“应该/必须”的自我要求句式；Anxiety与内疚突出，对小错误高度敏感"
+      "language_features": "表达清晰、配合度高，整体语气消极与Self-denial；常use“应该/必须”的自我Demands句式；Anxiety与内疚突出，对小错误高度敏感"
     },
     "main_problem": "我经常觉得自己作为Mother在失败，尤其是当我犯小错误时。这种失败感在孩子被诊断为自闭症后开始。",
     "topic": "Family relationships",
@@ -28,7 +28,7 @@
       "special_situations": [
         {
           "event": "某天忘记叫醒孩子，孩子not yet能准时到校",
-          "conditional_assumptions": "如果我have not把每件事都安排妥当、让孩子受到影响，就说明我是失败的Mother",
+          "conditional_assumptions": "如果我have not把每件事都安排妥当、让孩子受到影响，就说明I am a failureMother",
           "compensatory_strategies": "Doubles self-reproach to push improvement; tightens the day's arrangements and manages the schedule more strictly to make up for mistakes",
           "automatic_thoughts": "我是最差的Mother，我毁了他们的一天",
           "cognitive_pattern": "Catastrophizing"
@@ -44,13 +44,13 @@
           "event": "Misses the child's appointments (such as school- or treatment-related)",
           "conditional_assumptions": "如果孩子错过重要事项，都是我的责任，说明我not称职",
           "compensatory_strategies": "Reduces sharing stress with the spouse or others, bearing it alone to avoid disappointing others",
-          "automatic_thoughts": "我让家人失望了，It is all my fault",
+          "automatic_thoughts": "I disappointed my family，It is all my fault",
           "cognitive_pattern": "Personalization"
         },
         {
           "event": "When facing challenging parenting situations (especially related to the child's autism)",
           "conditional_assumptions": "作为Mother我必须时刻做到完美，not能出错",
-          "compensatory_strategies": "not断用“应该/必须”的高标准要求自己，以完美主义逼迫改进",
+          "compensatory_strategies": "not断用“应该/必须”的高标准Demands自己，以完美主义逼迫改进",
           "automatic_thoughts": "我应该做得更好，not能犯错",
           "cognitive_pattern": "Should\" Statements"
         }
@@ -74,7 +74,7 @@
         {
           "self_representation": "One who adds burden to others",
           "object_representation": "A supportive partner who I may exhaust",
-          "linking_affect": "愧疚、担心被厌烦"
+          "linking_affect": "Guilt, worrying about being disliked"
         }
       ],
       "behavioral_response_patterns": [
@@ -122,7 +122,7 @@
           "mode": "Introjection",
           "definition": "The individual takes in external rules and expectations without digesting them, treating them as their own standards or absolute truths, corresponding to 'rejection'. Language manifestations include: 'I must/should...', 'Everyone is like this', and so on.",
           "manifestations": [
-            "频繁use“应该/必须”的自我要求（如必须完美，not能犯错）",
+            "频繁use“应该/必须”的自我Demands（如必须完美，not能犯错）",
             "将社会/养育规范not yet经消化地变为对自我的刚性标准"
           ]
         },
@@ -169,16 +169,16 @@
     "bt": {
       "target_behavior": [
         {
-          "behavior": "在育儿出现小失误时的过度自责与反复思考（伴随Anxiety与内疚）",
+          "behavior": "在育儿出现小失误时的Excessive self-blame与反复思考（伴随Anxiety与内疚）",
           "antecedent": [
             "Forgetting to wake the child, causing lateness",
             "Forgetting to prepare snacks for the children",
-            "错过孩子的预约",
+            "Missing the child's appointment",
             "Facing challenging parenting situations"
           ],
           "core_reason": "孩子被诊断为自闭症后将其处境部分归因于自己，形成“必须完美、not能犯错”的信念，并以灾难化方式评估失误的后果",
           "function": "通过自我惩罚与高标准来维持主观的控制与改进感，试图避免再犯（负Reinforcement）；同时回避面对not确定性与脆弱感",
-          "consequence": "情绪困扰加重、难以享受日常活动与自我照料，Tense family relationships"
+          "consequence": "Emotional distress worsening、难以享受日常活动与自我照料，Tense family relationships"
         },
         {
           "behavior": "Avoids expressing genuine stress and emotions to the spouse; reduces help-seeking",
@@ -186,9 +186,9 @@
             "Worries one's emotions will burden the spouse",
             "担心被伴侣厌烦或negate"
           ],
-          "core_reason": "对被视为失败与令他人失望的恐惧，将负面评价的可能性Projection到伴侣身上",
+          "core_reason": "对被视为失败与令他人失望的Fear，将负面评价的可能性Projection到伴侣身上",
           "function": "避免Being rejected或被评判以维持关系的表面和谐（逃避not受欢迎的结果）",
-          "consequence": "Reduced social support、Increased sense of loneliness、压力累积并加剧Self-denial"
+          "consequence": "Reduced social support、Increased sense of loneliness、Accumulated stress并加剧Self-denial"
         }
       ]
     }

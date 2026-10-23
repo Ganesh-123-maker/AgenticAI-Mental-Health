@@ -2,7 +2,7 @@
   "basic_info": {
     "static_traits": {
       "age": "13",
-      "name": "高文",
+      "name": "Gao Wen",
       "gender": "Male",
       "occupation": "Cafe server",
       "educational_background": "High school graduate",
@@ -17,7 +17,7 @@
     "core_demands": "Because financial stress affects mental health and overall well-being, seeking counseling support and guidance to reduce stress and gain a more balanced view.",
     "growth_experiences": [
       "六个月前开始在咖啡馆担任服务员后，首次经历持续的财务not安全与压力；最初压力中等，近一个月因储蓄计划not yet如Anticipation推进而显著升级，几乎每天在思考财务与not yet来时出现这些感受。",
-      "家庭与社会支持较为有限：目前Living alone，仅与一只宠物猫相伴；Mother曾是Nurse；更倾向Being alone，与朋友或家人联系有限，在讨论财务困境时常感到not堪。"
+      "家庭与Social support较为有限：目前Living alone，仅与一只宠物猫相伴；Mother曾是Nurse；更倾向Being alone，与朋友或家人联系有限，在讨论财务困境时常感到not堪。"
     ]
   },
   "theory": {
@@ -43,9 +43,9 @@
         },
         {
           "event": "思考自己的not yet来职业前景",
-          "conditional_assumptions": "如果目前收入低且看not到改善，就会一直被困在低薪工作里，without法改变",
+          "conditional_assumptions": "如果目前收入低且看not到改善，就会一直被困在低薪Work里，without法改变",
           "compensatory_strategies": "回避与他人讨论财务与not yet来、Reduced socializing",
-          "automatic_thoughts": "我会永远当服务员",
+          "automatic_thoughts": "I will be a waiter forever",
           "cognitive_pattern": "Fortune Telling"
         },
         {
@@ -82,9 +82,9 @@
         },
         {
           "trigger_condition": "When seeing a low bank balance or thinking of bills piling up",
-          "interpretation": "将强烈的without助与恐惧情绪与情境分离，优先呈现干巴巴的事实以避免被情绪压倒",
+          "interpretation": "将强烈的without助与Fear情绪与情境分离，优先呈现干巴巴的事实以避免被情绪压倒",
           "defense_mechanism": "Emotional isolation",
-          "response_instruction": "简要叙述数字与支出，快速转向行动或任务细节，not触及恐惧或羞耻等情绪体验。"
+          "response_instruction": "简要叙述数字与支出，快速转向行动或任务细节，not触及Fear或羞耻等情绪体验。"
         }
       ]
     },
@@ -105,7 +105,7 @@
           "theme": "Loneliness",
           "manifestations": [
             "更倾向Being alone，讨论财务困境时感到not堪而回避与他人接触",
-            "社会支持有限"
+            "Limited social support"
           ],
           "outcomes": [
             "Social withdrawal",
@@ -127,7 +127,7 @@
     "pmt": {
       "exception_events": [
         {
-          "target_problem": "在日常收入偏低的情况下，来访者通常会灾难化地认为储蓄without法增长、对not yet来感到despair，并出现insomnia与工作分心。",
+          "target_problem": "在日常收入偏低的情况下，来访者通常会灾难化地认为储蓄without法增长、对not yet来感到despair，并出现insomnia与Distraction at work。",
           "unique_outcome": "上个月一个周末因客流量很大而收入增加，比Anticipation多存了一些钱；其后几天心情稍有好转、压力相对缓解。",
           "reason": "情境not同：周末客流量大、收入波动向好；做法not同：主动加班与多接班次。"
         }
@@ -141,7 +141,7 @@
         "negative_force": [
           "灾难化、非黑即白、过度概括、预测not yet来等认知偏误维持without望感",
           "negate积极事件的影响，难以将短期好转整合进整体评估",
-          "社交隔离与支持not足导致压力循环",
+          "Social isolation与支持not足导致压力循环",
           "Impaired sleep and diet lower energy, further affecting work and mood"
         ]
       }
@@ -149,26 +149,26 @@
     "bt": {
       "target_behavior": [
         {
-          "behavior": "关于财务的灾难化与预测not yet来的自动思维",
+          "behavior": "关于财务的灾难化与预测not yet来的Automatic thoughts",
           "antecedent": [
             "Checking the bank account balance",
             "思考not yet来职业前景",
-            "看到账单或支出增加"
+            "Seeing bills or increased spending"
           ],
           "core_reason": "低收入引发的财务not安全感与认知偏误（灾难化、非黑即白、过度概括、预测not yet来）",
           "function": "通过预警最坏结果来尝试获得控制并降低not确定性（逃避失望）",
-          "consequence": "Anxiety与despair加重，insomnia增加，工作注意力与绩效下降"
+          "consequence": "Anxiety与despair加重，insomnia增加，Work注意力与绩效下降"
         },
         {
           "behavior": "Social avoidance and self-isolation",
           "antecedent": [
-            "被他人询问财务困境",
+            "Being asked by others about financial difficulties",
             "需要讨论not yet来计划或寻求支持的情境",
             "想到与他人分享压力时的not堪体验"
           ],
           "core_reason": "讨论财务困境时感到not堪与压力，倾向避免外界接触以减少情绪负荷",
           "function": "逃避not适情绪与可能的他人反应",
-          "consequence": "支持减少、Loneliness感上升，问题在自我循环中Reinforcement"
+          "consequence": "Decreased support、Loneliness感上升，问题在自我循环中Reinforcement"
         },
         {
           "behavior": "Sleep impaired（insomnia）与进食改变（跳过餐食）",
