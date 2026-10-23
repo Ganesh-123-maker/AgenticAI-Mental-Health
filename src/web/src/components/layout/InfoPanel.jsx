@@ -52,6 +52,8 @@ export function InfoPanel({ currentCourse, currentVisit }) {
   const sessionFocus = buildSessionFocus(currentVisit);
   const trace = currentVisit?.psych_context?.profile_payload?.latest_agent_trace;
   const route = currentVisit?.psych_context?.profile_payload?.latest_route;
+  const replySource = currentVisit?.psych_context?.profile_payload?.latest_reply_source;
+  const replyModel = currentVisit?.psych_context?.profile_payload?.latest_reply_model;
 
   useEffect(() => {
     let cancelled = false;
@@ -166,6 +168,14 @@ export function InfoPanel({ currentCourse, currentVisit }) {
                 {route || "CLEAR"}
               </span>
             </div>
+            {replySource ? (
+              <div className="flex items-center justify-between rounded-xl bg-[#FDF6EC] p-2 text-[11px] font-medium text-[#5B6B6B]">
+                <span>Reply Source:</span>
+                <span className="rounded-md bg-white px-1.5 py-0.5 font-mono font-semibold text-[#33484D]">
+                  {replySource === "llm" ? `LLM${replyModel ? ` · ${replyModel}` : ""}` : "Template"}
+                </span>
+              </div>
+            ) : null}
             <div className="space-y-1">
               {trace.map((step, idx) => {
                 const agentName = String(step.agent || "Agent")
