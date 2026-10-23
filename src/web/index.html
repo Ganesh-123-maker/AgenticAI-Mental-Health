@@ -11,30 +11,9 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: [
-                "Inter",
-                "\"Noto Sans SC\"",
-                "\"PingFang SC\"",
-                "\"Hiragino Sans GB\"",
-                "\"Microsoft YaHei\"",
-                "ui-sans-serif",
-                "system-ui",
-                "-apple-system",
-                "BlinkMacSystemFont",
-                "\"Segoe UI\"",
-                "sans-serif",
-              ],
-            },
-          },
-        },
-      };
-    </script>
+    <!-- Tailwind is bundled locally (see tailwind.config.js); the theme
+         config that used to be inlined here for the CDN Play script is
+         ported there unchanged. -->
   </head>
   <body class="bg-[#FDF1E7]">
     <div id="root"></div>
