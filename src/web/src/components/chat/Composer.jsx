@@ -58,7 +58,7 @@ export function Composer({ currentCourse, currentVisit, input, isTyping, onInput
         </div>
         <p className="mt-2.5 text-center text-[11px] leading-5 text-[#A08B6D]">
           AI responses are for research and educational reference only and do not replace professional medical
-          advice. If you are experiencing a crisis, please contact local emergency services immediately.
+          advice. If you are experiencing a crisis, call 112 or Tele-MANAS 14416, or contact local emergency services immediately.
         </p>
       </div>
     </div>

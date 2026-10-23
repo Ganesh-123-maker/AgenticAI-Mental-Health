@@ -110,7 +110,7 @@ export default function App() {
           </div>
 
           <footer className="shrink-0 px-4 pb-24 pt-1 text-center text-[11px] leading-5 text-[#A08B6D] lg:pb-3">
-            Research prototype — not medical advice. In crisis, contact local emergency services.
+            Research prototype — not a crisis service. In danger, call 112 or Tele-MANAS 14416.
           </footer>
         </div>
       </div>
