@@ -82,16 +82,16 @@
       ],
       "behavioral_response_patterns": [
         {
-          "trigger_condition": "当付出not yet被认可或关键时刻not yet获得他人感谢(如志愿活动顺利却without人致谢)",
-          "interpretation": "对方not重视我,我一定not够好(移情:将重要他人'not认可'的形象Projection到当下他人)",
+          "trigger_condition": "When efforts are not yet recognized or thanks from others are not yet received at key moments (e.g. a volunteer event going well but nobody thanking)",
+          "interpretation": "Others do not value me; I must not be good enough (transference: projecting the image of important others as 'not approving' onto current others)",
           "defense_mechanism": "Turning against the self",
-          "response_instruction": "以自责语气揽责,弱化他人因素,反复表达'我not做好/I am not good enough',降低自我表达需求."
+          "response_instruction": "Take blame in a self-reproaching tone, downplay others' factors, repeatedly express 'I did not do well/I am not good enough', reduce the need for self-expression."
         },
         {
-          "trigger_condition": "出现小差错或失误(如丢东西,Student一时not yet理解)",
+          "trigger_condition": "When small mistakes or errors occur (e.g. losing things, a Student not yet understanding for a moment)",
           "interpretation": "This is because I am naturally forgetful and lack organizational ability (simplifying a complex situation into an explanation of my own defects)",
           "defense_mechanism": "Rationalization",
-          "response_instruction": "use看似客观的归因('我就是健忘')迅速下结论,语气肯定,回避进一步探索其他可能因素."
+          "response_instruction": "Use seemingly objective attribution ('I am just forgetful') to jump to conclusions, tone certain, avoiding further exploration of other possible factors."
         }
       ]
     },
@@ -100,8 +100,8 @@
         {
           "theme": "Loneliness",
           "manifestations": [
-            "感到'隐形',努力without人看见(志愿活动without人道谢)",
-            "与Family relationships感到疏离,寻求肯定反而觉得更'需要人'"
+            "Feeling 'invisible', efforts seen by nobody (no one thanks at volunteer events)",
+            "Feeling distant from Family relationships; seeking affirmation instead makes one feel more 'needy'"
           ],
           "outcomes": [
             "Anxiety and insomnia",
@@ -112,11 +112,11 @@
         {
           "theme": "Meaninglessness",
           "manifestations": [
-            "在付出得not到认可后质疑'我为何还要努力'",
-            "将偶发失误Interpretation为自身without能,negate成就"
+            "Questioning 'why should I keep trying' after efforts go unrecognized",
+            "Interpreting occasional mistakes as one's own incompetence, negating achievements"
           ],
           "outcomes": [
-            "Decreased motivation与Sense of frustration上升",
+            "Decreased motivation and rising Sense of frustration",
             "Self-deprecation and negative labeling"
           ]
         }
@@ -126,8 +126,8 @@
           "mode": "Self-monitoring",
           "definition": "the individual has poor self-Reflection and introspection, containing excessive self-limitation and harsh self-blame, being overly careful and cautious about contact.",
           "manifestations": [
-            "频繁use自我贬损标签(如'I am a forgetful idiot''I am not good enough')",
-            "在not yet获他人明确肯定时迅速自责,收缩自我表达需要"
+            "Frequently using self-derogatory labels (e.g. 'I am a forgetful idiot''I am not good enough')",
+            "Quickly blaming oneself when not yet receiving clear affirmation from others, shrinking the need for self-expression"
           ]
         }
       ]
@@ -135,22 +135,22 @@
     "pmt": {
       "exception_events": [
         {
-          "target_problem": "在承担重要任务或角色时,来访者通常会担心自己not够好,害怕被忽视与negate,从而陷入自责与without力感.",
-          "unique_outcome": "上周在红十字会组织的一次大型活动顺利举行,整体运行Good,体现出其组织与协调能力(尽管not yet被当场感谢).",
-          "reason": "not同做法:主动承担并完成筹备与协调;not同支持:在瑞典已有一些朋友可交流(虽not yet充分倾诉但客观存在)."
+          "target_problem": "When taking on important tasks or roles, the client usually worries about not being good enough, fears being overlooked and negated, thus falling into self-blame and helplessness.",
+          "unique_outcome": "Last week a large event organized at the Red Cross went smoothly, overall running Good, demonstrating organizational and coordination ability (though not yet thanked on the spot).",
+          "reason": "Different actions: proactively took on and completed preparation and coordination; different support: already has some friends to talk with in Sweden (though not yet fully confided in, they objectively exist)."
         }
       ],
       "force_field": {
         "positive_force": [
           "Has the ability to organize and coordinate large events (volunteer activities held smoothly)",
-          "教学经验与总体Good的教学反馈(Student整体表现Good,曾获同事称赞)",
+          "Teaching experience and overall Good teaching feedback (Students' overall performance Good, praised by colleagues)",
           "Has some social support in Sweden (has friends to talk with)",
-          "愿意Reflection并尝试记录与重评自动化思维"
+          "Willing to Reflect and try recording and re-evaluating automatic thoughts"
         ],
         "negative_force": [
-          "Self-labeling and overgeneralization(小失误即全盘negate)",
-          "个人化与外部验证依赖(将他人not yet表达感谢归因为自己not够好)",
-          "在Anxiety时Avoids self-care (e.g. skipping yoga)",
+          "Self-labeling and overgeneralization (small mistakes lead to total negation)",
+          "Personalization and dependence on external validation (attributing others' not yet expressed thanks to oneself not being good enough)",
+          "Avoids self-care when Anxious (e.g. skipping yoga)",
           "Under stress and major life changes, attention lapses increase (more likely to lose things)"
         ]
       }
@@ -158,15 +158,15 @@
     "bt": {
       "target_behavior": [
         {
-          "behavior": "自我贬损式标签与Excessive self-blame(如'I am a forgetful idiot''I am not good enough')",
+          "behavior": "Self-derogatory labels and Excessive self-blame (e.g. 'I am a forgetful idiot''I am not good enough')",
           "antecedent": [
             "Losing items (like losing keys)",
-            "重要付出not yet被明确感谢或认可(如志愿活动后without人致谢)",
-            "教学中个do notStudent一时not yet理解内容"
+            "Important efforts not yet explicitly thanked or recognized (e.g. nobody thanking after volunteer events)",
+            "Individual Students not yet understanding the content for a moment in teaching"
           ],
-          "core_reason": "内在消极核心信念('I am not good enough/not可靠')被激活,将偶发失误泛化为稳定的人格缺陷,并以自责Interpretation事件.",
+          "core_reason": "Inner negative core belief ('I am not good enough/not reliable') activated, generalizing occasional mistakes into stable personality flaws, and interpreting events with self-blame.",
           "function": "Through self-blame, gains a sense of control and self-drive, and seeks external recognition to confirm self-worth.",
-          "consequence": "Anxiety and insomnia加重,回避自我照料(跳过瑜伽),Interpersonal relationships受影响,Declining work and daily functioning."
+          "consequence": "Anxiety and insomnia worsened, avoiding self-care (skipping yoga), Interpersonal relationships affected, Declining work and daily functioning."
         },
         {
           "behavior": "Under stress or major life changes, more prone to losing things",
@@ -176,7 +176,7 @@
           ],
           "core_reason": "In high-pressure and change situations, attention is more easily distracted and omissions increase (the client himself explains it as 'born forgetful, lacking organization').",
           "function": "Unintentional behavior, lacking a clear functional purpose.",
-          "consequence": "大量时间与精力用于寻找物品,日常生活被打断,挫败与Self-denial进一步加重."
+          "consequence": "Large amounts of time and energy spent looking for things, daily life disrupted, frustration and Self-denial further intensified."
         }
       ]
     }
