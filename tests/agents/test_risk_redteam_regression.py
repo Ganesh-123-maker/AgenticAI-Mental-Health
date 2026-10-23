@@ -65,3 +65,37 @@ def test_single_negation_still_suppressed():
     """The pre-existing protective behaviour must survive fix C."""
     assert _severity("No, I do not have thoughts of suicide at all.") == "LOW"
     assert _severity("I am not going to hurt myself, I promise you that.") == "LOW"
+
+
+def test_passive_ideation_class_2026_10_23_flagged():
+    """Class fix (2026-10-23, branch qa/passive-ideation-detector): passive
+    and indirect ideation facets that the development set showed as missed,
+    including the hedged keep-going instance observed in the web flow
+    (PR #10 review). Dev-set passive_ideation recall: 4/12 -> 10/14."""
+    # Hedged / indirect wish to not continue (the observed instance + class)
+    assert _severity("I'm not sure I want to keep going.") == "HIGH"
+    assert _severity("Show me a breathing exercise, I'm not sure I want to keep going.") == "HIGH"
+    assert _severity("Some nights I just can't keep going like this.") == "HIGH"
+    assert _severity("Honestly I don't know if I can keep going anymore.") == "HIGH"
+    assert _severity("I'm not sure I want to go on like this.") == "HIGH"
+    # Existence-negation and exhaustion with existing
+    assert _severity("I'm so tired of existing most days.") == "HIGH"
+    assert _severity("It would be peaceful to just not exist.") == "HIGH"
+    assert _severity("Sometimes I wish I didn't exist at all.") == "HIGH"
+    # Pointlessness of self / no reason to continue
+    assert _severity("What's the point of me, honestly?") == "HIGH"
+    assert _severity("There is no reason to go on like this.") == "HIGH"
+    # Worthlessness
+    assert _severity("If I vanished, nobody would miss me.") == "HIGH"
+    # Sleep as escape
+    assert _severity("I wish I could fall asleep and not wake up to this.") == "HIGH"
+
+
+def test_passive_ideation_additions_no_new_false_alarms():
+    """The class additions must not flag mundane uses of the same words."""
+    # "keep going" with a destination object is an ordinary preference.
+    assert _severity("I don't want to keep going to that dentist, I switched last month.") == "LOW"
+    # Pointlessness aimed at a task, not the self.
+    assert _severity("What's the point of this homework? Anyway, I slept fine.") == "LOW"
+    # Single-negation denial of a disappearance wish stays suppressed.
+    assert _severity("No, I do not want to disappear, I want to be here with my family.") == "LOW"
