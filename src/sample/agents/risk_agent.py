@@ -59,7 +59,16 @@ RISK_SIGNALS: Tuple[RiskSignal, ...] = (
             "don't want to be alive", "want to disappear", "wish I could disappear",
             "don't want to exist", "stop existing", "goodbye note",
             "end everything", "give up on life", "not being here anymore",
-            "tired of living", "unalive myself"),
+            "tired of living", "unalive myself",
+            # Passive / indirect ideation: hedged or negated wishes to not
+            # continue living, existence-negation, and worthlessness forms.
+            # (Development-set class fix, 2026-10-23; forms containing a
+            # negation cue are affirmed by the signal-contains-negation rule.)
+            "not sure I want to keep going", "not sure I want to go on",
+            "tired of existing",
+            "wish I didn't exist", "just not exist",
+            "wouldn't matter to anyone", "would not matter to anyone",
+            "nobody would miss me", "no one would miss me", "wouldn't be missed"),
         zh=("suicide", "want to die", "do not want to live", "end my life", "end one's own life"),
     ),
     RiskSignal(
@@ -75,7 +84,16 @@ RISK_SIGNALS: Tuple[RiskSignal, ...] = (
             "cannot survive", "better off dead", "better off without me",
             "not waking up", "don't want to wake up", "don't wake up",
             "never wake up", "not wake up", "wouldn't wake up",
-            "never been born", "wish I was dead", "wish I were dead"),
+            "never been born", "wish I was dead", "wish I were dead",
+            # Passive-ideation facets: inability to continue, pointlessness
+            # of self/life, and sleep-as-escape constructions.
+            "can't keep going", "cannot keep going",
+            "not sure I can keep going", "don't know if I can keep going",
+            "what's the point of me", "what is the point of me",
+            "what's the point of living", "no point in living",
+            "no point in going on", "no reason to live",
+            "no reason to go on", "no reason to keep going",
+            "fall asleep and not", "fall asleep and never wake up"),
         zh=("cannot go on living", "better off dead", "end it all once and for all", "do not want to wake up"),
     ),
     RiskSignal(
