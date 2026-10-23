@@ -277,16 +277,11 @@ Web Interface: `http://localhost:5173`
 ## 12. Key Research Documentation
 
 - **[Archival Research Paper](docs/FINAL_RESEARCH_DOCUMENT.md)**: Full thesis-style paper with problem definition, methodology, results, and failure analysis.
-- **[Research Narrative](docs/FINAL_RESEARCH_NARRATIVE.md)**: 21-section detailed theoretical and empirical narrative.
 - **[18-Slide Presentation](docs/FINAL_PRESENTATION.md)**: Slide deck formatted for academic defense.
-- **[Speaker Notes & Defense Guide](docs/FINAL_PRESENTATION_SPEAKER_NOTES.md)**: Natural spoken scripts, key points, and transitions.
-- **[5-Minute Pitch Script](docs/PRESENTATION_5_MINUTE_SCRIPT.md)**: Strict 5-minute timed presentation script.
-- **[10-Minute Presentation Script](docs/PRESENTATION_10_MINUTE_SCRIPT.md)**: Standard 10-minute academic presentation script.
 - **[Professor Defense Q&A (34 Questions)](docs/PROFESSOR_DEFENSE_QA.md)**: In-depth technical questions across Architecture, Memory, Research, Technical, and Limitations.
-- **[Hard Professor Questions](docs/HARD_PROFESSOR_QUESTIONS.md)**: Defensible answers to 12 challenging oral defense questions.
-- **[1-Page Defense Cheat Sheet](docs/PROJECT_CHEAT_SHEET.md)**: Rapid pre-defense review reference.
 - **[Verified References](docs/REFERENCES.md)**: Validated source literature, software, datasets, and models.
-- **[Deliverables Index](docs/FINAL_PROJECT_DELIVERABLES.md)**: Complete inventory of repository artifacts.
+- **[Live-Evidence Study](docs/LIVE_EVIDENCE_STUDY.md)** and **[Pre-Registration](docs/PREREGISTRATION.md)**: Design audit and pre-registered head-to-head study plan.
+- **[Evaluator Crisis Injection](docs/EVALUATOR_CRISIS_INJECTION.md)**: Why the offline benchmark's 1.00 safety figures are construction artefacts.
 
 ---
 
