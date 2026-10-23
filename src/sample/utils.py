@@ -70,7 +70,7 @@ def format_transcript(transcript: List[Dict[str, Any]], *, for_profile: bool = F
             continue
 
         speaker = "counsel" if role == "assistant" else "client"
-        lines.append(f"{speaker}：{content}")
+        lines.append(f"{speaker}: {content}")
 
     return "\n".join(lines)
 

@@ -15,14 +15,24 @@ from .backends.openai_api import OpenAIAPIBackend
 from .client.simulator import ClientSimulator
 from .core.contracts import CaseResumeDecision, CaseRunResult
 from .core.prompt_manager import PromptManager
-from .core.schemas import BaselineConfig, ClientCase, PublicMemory, RunResult, RuntimeConfig
+from .core.schemas import (
+    BaselineConfig,
+    ClientCase,
+    PublicMemory,
+    RunResult,
+    RuntimeConfig,
+)
 from .io.resume import inspect_case_resume
 from .io.store import ResultStore
 from .models import MODALITY_MODELS
 from .prompt_manager import PsychAgentPromptManager
 from .skill_manager import STAGE_MAP, SkillManager
-from .utils import extract_tag_content, format_transcript, safe_json_loads, strip_end_token
-
+from .utils import (
+    extract_tag_content,
+    format_transcript,
+    safe_json_loads,
+    strip_end_token,
+)
 
 DEFAULT_SESSION_FOCUS = [
     "Establish initial rapport and counseling framework: Greeting, confirm preferred address, outline first session structure, clarify frequency and duration, explain confidentiality and its limits.",
@@ -39,8 +49,6 @@ class MaxRetriesExceededError(Exception):
     """Raised when retry budget for one case/session is exhausted."""
 
 
-# Backward-compatible aliases for existing imports.
-# Downstream modules should import public contracts from sample.core.contracts.
 _CaseResumeDecision = CaseResumeDecision
 _CaseRunResult = CaseRunResult
 
@@ -312,9 +320,9 @@ class PsychAgentRunner:
             self.runtime_config, "longitudinal_enabled", True
         ):
             from .agents.base import AgentContext
-            from .agents.outcome_agent import OutcomeAgent
-            from .agents.memory_update_agent import MemoryUpdateAgent
             from .agents.memory_agent import MemoryAgent
+            from .agents.memory_update_agent import MemoryUpdateAgent
+            from .agents.outcome_agent import OutcomeAgent
 
             last_client_msg = ""
             prior_counselor_msg = ""

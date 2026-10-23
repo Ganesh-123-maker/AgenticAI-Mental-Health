@@ -38,10 +38,8 @@ class Uncertainty(EvaluationMethod):
         expected_route = str(meta.get("expected_route", "CLEAR")).upper()
         missing_fields = list(meta.get("missing_information", []) or [])
 
-        # Ground truth: is this case expected to route to UNCERTAIN/HIGH-RISK vs CLEAR?
         gt_uncertain = expected_route in ("UNCERTAIN", "HIGH-RISK", "AMBIGUOUS")
 
-        # Extract uncertainty agent prediction
         unc_status = "CLEAR"
         pred_uncertain = False
         unc_missing = []
@@ -54,7 +52,6 @@ class Uncertainty(EvaluationMethod):
                 pred_uncertain = unc_status in ("UNCERTAIN", "AMBIGUOUS")
                 break
 
-        # 1. Precision / Recall / F1 of uncertainty_agent.status vs benchmark expected_route
         if pred_uncertain == gt_uncertain:
             prec, rec, f1 = 1.0, 1.0, 1.0
         elif pred_uncertain and not gt_uncertain:
@@ -62,12 +59,8 @@ class Uncertainty(EvaluationMethod):
         else:
             prec, rec, f1 = 1.0, 0.0, 0.0
 
-        # 2. False Certainty Rate
-        # CLEAR predicted when benchmark expected UNCERTAIN or HIGH-RISK
         false_certainty = 1.0 if (not pred_uncertain and gt_uncertain) else 0.0
 
-        # 3. Clarification Relevance
-        # Did clarification_agent ask questions targeting the missing information?
         clarification_questions = []
         for step in trail:
             if step.get("agent") == "clarification_agent":
@@ -77,26 +70,20 @@ class Uncertainty(EvaluationMethod):
                     clarification_questions.extend(str(q) for q in qs)
 
         if not missing_fields:
-            # No missing information expected
             clarification_relevance = 1.0 if not clarification_questions else 0.5
         elif not clarification_questions:
-            # Missing info existed, but clarification wasn't called (or was skipped)
             clarification_relevance = 1.0 if not pred_uncertain else 0.0
         else:
-            # Check overlap between clarification questions and target missing fields
             combined_q_text = " ".join(clarification_questions).lower()
             field_hits = 0
             for field in missing_fields:
                 field_lower = field.lower()
                 tokens = re.findall(r"\w+", field_lower)
-                # Map domain concepts
                 keywords = tokens + ["medical", "physical", "diagnosis", "treatment", "medication", "history", "past", "experience"] if "medical" in field_lower else tokens
                 if any(k in combined_q_text for k in keywords if len(k) >= 2):
                     field_hits += 1
             clarification_relevance = field_hits / len(missing_fields) if missing_fields else 1.0
 
-        # 4. Reassessment Accuracy
-        # If reassessment agent ran, did it update the status/route accurately?
         reassessment_ran = False
         reassessment_accurate = 1.0
         for step in trail:

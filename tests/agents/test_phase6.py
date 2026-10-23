@@ -22,15 +22,13 @@ import pathlib
 import shutil
 import sys
 
-# Ensure src is on sys.path
 sys.path.insert(0, str(pathlib.Path(__file__).parent.parent.parent / "src"))
 
 from sample.agents.base import AgentContext
 from sample.agents.counseling_agent import CounselingAgent
 from sample.agents.orchestrator import Orchestrator
 from sample.agents.pipeline import run_pipeline
-from sample.agents.reassessment_agent import ReassessmentAgent
-from sample.core.schemas import BaselineConfig, ClientCase, RuntimeConfig
+from sample.core.schemas import RuntimeConfig
 from sample.io.config_loader import load_baseline_config, load_runtime_config
 from sample.runner import PsychAgentRunner
 
@@ -39,7 +37,6 @@ def test_orchestrator_routing_rules():
     """Verify Orchestrator routing rules and priorities."""
     orch = Orchestrator()
 
-    # 1. Clear low-risk + low uncertainty -> CLEAR
     ctx_clear = AgentContext(case_id="clear_case", modality="cbt")
     ctx_clear.uncertainty_output = {"status": "CLEAR", "uncertainty_level": "LOW", "clarification_required": False}
     ctx_clear.risk_output = {"severity": "LOW", "risk_status": "NO_EVIDENCE"}
@@ -49,7 +46,6 @@ def test_orchestrator_routing_rules():
     assert msg1.payload["required_action"] == "Proceed with normal counseling flow."
     print("[PASS] Orchestrator: Clear low-risk + low uncertainty -> CLEAR.")
 
-    # 2. Missing/uncertain safety information -> UNCERTAIN
     ctx_unc = AgentContext(case_id="unc_case", modality="cbt")
     ctx_unc.uncertainty_output = {
         "status": "UNCERTAIN",
@@ -64,7 +60,6 @@ def test_orchestrator_routing_rules():
     assert msg2.payload["required_action"] == "Obtain clarification before proceeding."
     print("[PASS] Orchestrator: Missing safety info -> UNCERTAIN.")
 
-    # 3. Explicit high-risk evidence -> HIGH-RISK
     ctx_high = AgentContext(case_id="high_risk_case", modality="cbt")
     ctx_high.uncertainty_output = {"status": "CLEAR", "uncertainty_level": "LOW", "clarification_required": False}
     ctx_high.risk_output = {
@@ -78,7 +73,6 @@ def test_orchestrator_routing_rules():
     assert msg3.payload["required_action"] == "Enter safety-controlled response flow."
     print("[PASS] Orchestrator: Explicit high-risk evidence -> HIGH-RISK.")
 
-    # 4. High-risk + high uncertainty -> HIGH-RISK (override confirmed)
     ctx_high_unc = AgentContext(case_id="high_unc_case", modality="cbt")
     ctx_high_unc.uncertainty_output = {
         "status": "UNCERTAIN",
@@ -95,7 +89,6 @@ def test_orchestrator_routing_rules():
     assert msg4.payload["next_agent"] == "safety_supervisor"
     print("[PASS] Orchestrator: High risk + high uncertainty -> HIGH-RISK (override verified).")
 
-    # 5. Reassessment resolving uncertainty -> route updated
     ctx_reassess = AgentContext(case_id="reassess_case", modality="cbt")
     ctx_reassess.uncertainty_output = {"status": "UNCERTAIN", "clarification_required": True}
     ctx_reassess.risk_output = {"severity": "LOW", "risk_status": "NO_EVIDENCE"}
@@ -126,11 +119,9 @@ async def _async_runner_execution_comparison():
     """Run runner with multi_agent_enabled=False vs multi_agent_enabled=True."""
     root = pathlib.Path(__file__).parent.parent.parent
 
-    # Load dummy configs
     baseline_cfg = load_baseline_config(str(root / "configs/baselines/psychagent_dummy_local.yaml"))
     runtime_raw = load_runtime_config(str(root / "configs/runtime/psychagent_dummy_local.yaml"))
 
-    # Load case using DatasetLoader from configs/datasets/profiles_sample.yaml
     from sample.io.config_loader import load_dataset_config
     from sample.io.dataset_loader import DatasetLoader
     dataset_cfg = load_dataset_config(root / "configs/datasets/profiles_sample.yaml")
@@ -146,7 +137,6 @@ async def _async_runner_execution_comparison():
     if save_dir_true.exists():
         shutil.rmtree(save_dir_true)
 
-    # 1. Run with multi_agent_enabled = False (default baseline behavior)
     cfg_false = RuntimeConfig(
         multi_agent_enabled=False,
         save_dir=str(save_dir_false),
@@ -179,7 +169,6 @@ async def _async_runner_execution_comparison():
 
     print("[PASS] Session with multi_agent_enabled=False completed successfully.")
 
-    # 2. Run with multi_agent_enabled = True (pipeline integration)
     cfg_true = RuntimeConfig(
         multi_agent_enabled=True,
         save_dir=str(save_dir_true),
@@ -212,7 +201,6 @@ async def _async_runner_execution_comparison():
 
     print("[PASS] Session with multi_agent_enabled=True completed successfully.")
 
-    # Verify structural equivalence of outputs
     assert set(course_data_false.keys()) == set(course_data_true.keys())
     assert set(session_data_false.keys()) == set(session_data_true.keys())
     assert len(session_data_false.get("transcript", [])) > 0
@@ -222,7 +210,6 @@ async def _async_runner_execution_comparison():
 
 def test_sop1_safety_on_high_risk():
     """Confirm HIGH-RISK path triggers existing SOP-1 crisis skill prioritization."""
-    # When RiskAgent detects high risk, route is HIGH-RISK
     ctx = AgentContext(
         case_id="sop1_test",
         modality="cbt",
@@ -231,7 +218,6 @@ def test_sop1_safety_on_high_risk():
     result = run_pipeline(ctx)
     assert result["route"] == "HIGH-RISK"
     assert result["next_agent"] == "safety_supervisor"
-    # Full agent trail logs routing and safety path
     agent_names = [step.get("agent") for step in result["trail"]]
     assert "risk_agent" in agent_names
     assert "orchestrator" in agent_names

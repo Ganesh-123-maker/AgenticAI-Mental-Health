@@ -5,13 +5,19 @@
 > *Academic Research Project — Department of Computer Science & Engineering*  
 > *Repository:* [https://github.com/Ganesh-123-maker/AgenticAI-Mental-Health](https://github.com/Ganesh-123-maker/AgenticAI-Mental-Health)
 
+> **Relationship to upstream:** This project builds on **PsychAgent** (Yang et al., East China Normal University / Shanghai AI Laboratory), arXiv:2604.00931, upstream repository: https://github.com/ECNU-ICALK/PsychAgent
+>
+> *What upstream PsychAgent provides:* the base psychological-counselor agent design — a Memory-Augmented Planning Engine for longitudinal multi-session interaction, a Skill Evolution Engine that extracts skills from counseling trajectories, a Reinforced Internalization Engine, and the foundational prompt and skill assets this codebase derives from.
+>
+> *What this project adds:* an explicit 11-agent decision and safety layer around the counseling core (uncertainty detection, risk detection, a clarification/reassessment loop, priority orchestration, a fail-closed safety supervisor, and outcome/memory-update agents); a synthetic ambiguous-case benchmark (200 case files on disk; the published evaluation used a 25-case slice) with an offline comparison of Systems A–F plus 6 ablations; a full-stack web application with agent-trace inspection; and migration of the skill-embedding store from BGE-M3 (1024-dim) to Gemini `gemini-embedding-001` (768-dim).
+
 ---
 
 ## 1. Abstract & Overview
 
 Conversational artificial intelligence applied to mental healthcare confronts severe structural challenges: premature therapeutic advice based on incomplete client statements, single-point safety failures during acute crises, and an inability to maintain coherent longitudinal therapeutic memory across sessions.
 
-**Agentic AI for Mental Health** resolves these vulnerabilities by replacing opaque monolithic prompting with a coordinated 11-agent architecture. Rather than relying on a single prompt to simultaneously assess, counsel, monitor safety, and remember, the platform divides responsibilities across specialized, collaborating agents. The system quantifies epistemic uncertainty, screens crisis risk with clause-level negation parsing, dynamically solicits clarifications when context is ambiguous, routes discourse according to clinical priority, executes multi-school psychotherapy interventions, and enforces safety boundaries via an independent real-time safety supervisor.
+**Agentic AI for Mental Health** is designed to address these vulnerabilities by replacing opaque monolithic prompting with a coordinated 11-agent architecture. Rather than relying on a single prompt to simultaneously assess, counsel, monitor safety, and remember, the platform divides responsibilities across specialized, collaborating agents. The system quantifies epistemic uncertainty, screens crisis risk with clause-level negation parsing, dynamically solicits clarifications when context is ambiguous, routes discourse according to clinical priority, executes multi-school psychotherapy interventions, and enforces safety boundaries via an independent real-time safety supervisor.
 
 ```
 +---------------------------------------------------------------------------------------------------------+
@@ -65,15 +71,15 @@ Conversational artificial intelligence applied to mental healthcare confronts se
 ## 2. Research Objective & Key Contributions
 
 ### Research Question
-> *"Does explicit uncertainty assessment, risk assessment, clarification, reassessment, orchestration, safety supervision, and longitudinal memory coordination improve the reliability and quality of mental-health counseling compared with simpler configurations?"*
+> *"Does separating uncertainty detection and risk detection into explicit, gateable steps reduce false-certainty and missed-risk rates compared with a single-pass counseling LLM, and at what latency and token cost?"*
 
 ### Key Contributions
-1. **Explicit Epistemic Uncertainty Layer**: Implements `UncertaintyAgent`, reducing the False Certainty Rate from **0.36 to 0.12** across ambiguous clinical vignettes.
-2. **Two-Tier Defense-in-Depth Safety**: Combines upstream negation-aware risk screening with downstream fail-closed supervision, achieving **1.00 Safety Recall** and **1.00 Escalation Accuracy**.
+1. **Explicit Epistemic Uncertainty Layer**: Implements `UncertaintyAgent`, reducing the False Certainty Rate from **0.36 to 0.12** across ambiguous clinical vignettes (offline benchmark, N=25 evaluated cases; see §8).
+2. **Two-Tier Defense-in-Depth Safety**: Combines upstream negation-aware risk screening with downstream fail-closed supervision, screening cases before counseling and checking drafts before delivery. On independently labeled held-out synthetic cases, the frozen rule-based detector's recall is **0.319 (29/91, Wilson 95% [0.232, 0.420])** with a false-alarm rate of **0.213 (19/89, [0.141, 0.310])** (`data/benchmark/redteam_heldout/`). The offline benchmark's 1.00 safety figures are artefacts of the evaluator's construction and are not measured safety performance (see §8 and `docs/EVALUATOR_CRISIS_INJECTION.md`).
 3. **Closed-Loop Clarification & Reassessment**: Bounded ambiguity-resolution loop (`max_reassess_turns = 1`) that actively clarifies missing data before intervention.
-4. **Longitudinal Memory & Factual Synthesis**: Cross-session state extraction achieving **1.00 Memory Consistency** while resolving factual contradictions across visits.
-5. **Inspectable Agent Telemetry**: Real-time agent execution trace visualizing internal decision states for clinical auditing in the web interface.
-6. **Audited Empirical Evaluation**: Systematic 12-configuration benchmark over 300 runs with 545 classified failure records.
+4. **Longitudinal Memory & Factual Synthesis**: Cross-session state extraction achieving **1.00 Memory Consistency** (multi-session cases within the N=25 evaluated slice) while flagging factual contradictions across visits.
+5. **Inspectable Agent Telemetry**: Real-time agent execution trace visualizing internal decision states for inspection in the web interface.
+6. **Audited Empirical Evaluation**: Systematic 12-configuration benchmark over 300 runs (12 configurations × 25 evaluated cases, drawn from 200 case files on disk) with 545 classified failure records.
 
 ---
 
@@ -88,12 +94,12 @@ Located in `src/sample/agents/`:
 | **`UncertaintyAgent`** | `src/sample/agents/uncertainty_agent.py` | Quantifies missing intake dimensions, linguistic vagueness, and intra-session contradictions. |
 | **`RiskAgent`** | `src/sample/agents/risk_agent.py` | Screens acute self-harm, suicidal ideation, and crisis severity with a 6-word negation parser. |
 | **`Orchestrator`** | `src/sample/agents/orchestrator.py` | Dynamically routes execution according to strict priority rules (`HIGH-RISK` > `UNCERTAIN` > `CLEAR`). |
-| **`ClarificationAgent`** | `src/sample/agents/clarification_agent.py` | Generates targeted, non-leading clinical queries when uncertainty exceeds calibrated thresholds. |
+| **`ClarificationAgent`** | `src/sample/agents/clarification_agent.py` | Generates targeted, non-leading clinical queries when rule-based uncertainty checks flag missing information. |
 | **`ReassessmentAgent`** | `src/sample/agents/reassessment_agent.py` | Re-evaluates client state following clarification responses to confirm whether uncertainty is resolved. |
 | **`CounselingAgent`** | `src/sample/agents/counseling_agent.py` | Formulates evidence-based therapeutic responses using retrieved clinical micro-skills. |
 | **`SafetySupervisor`** | `src/sample/agents/safety_supervisor.py` | Operates as a downstream fail-closed safety gatekeeper enforcing `ALLOW`, `REVISE`, or `ESCALATE`. |
 | **`OutcomeAgent`** | `src/sample/agents/outcome_agent.py` | Evaluates immediate session outcomes and client engagement signals post-turn. |
-| **`MemoryUpdateAgent`** | `src/sample/agents/memory_update_agent.py` | Extracts durable clinical facts, resolves contradictions, and updates persistent longitudinal memory. |
+| **`MemoryUpdateAgent`** | `src/sample/agents/memory_update_agent.py` | Extracts durable clinical facts, reconciles contradictions, and updates persistent longitudinal memory. |
 
 ---
 
@@ -128,7 +134,7 @@ The counseling module supports five evidence-based psychotherapeutic orientation
 
 ## 7. Full-Stack Web Application
 
-The platform includes a complete, production-grade web application:
+The platform includes a complete web application:
 - **FastAPI Backend (`src/web/backend/`)**: RESTful endpoints on port 8000 with SQLModel/SQLite database persistence, user-level data isolation, and session lifecycle management.
 - **Vite React Frontend (`src/web/src/`)**: Modern UI on port 5173 with therapy course creation, multi-session chat, and real-time **Agent Execution Trace** visualization (`RightPanel.jsx`).
 
@@ -137,6 +143,8 @@ The platform includes a complete, production-grade web application:
 ## 8. Audited Experimental Results
 
 *Source: Audited Benchmark Evaluation (`data/research_evaluation/final_results.json`)*
+
+All figures in this section come from the **offline, deterministic** benchmark (rule-based pipelines, mock LLM judge). A live-LLM comparison of Systems A–F is **NOT YET RUN**. Results obtained with the dummy backend are not comparable to live-model results.
 
 | Evaluation Metric | System A (Monolithic) | System B (Skill RAG) | System C (Triage) | System D (+ Clarif.) | System E (+ Guard) | System F (Full Multi-Agent) | Subgroup Case Count & Confidence |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---|
@@ -153,6 +161,7 @@ The platform includes a complete, production-grade web application:
 - **False Certainty Surge**: Removing `UncertaintyAgent` increased the False Certainty Rate from **0.12 (3/25 cases) to 0.36 (9/25 cases)** — flagged as **LOW STATISTICAL CONFIDENCE** due to $N < 10$ underlying cases.
 - **Clarification Handoff**: Full System F achieves **0.92 (23/25 cases)**; removing `ClarificationAgent` (`ablation_no_clarification`) drops handoff correctness to **0.72 (18/25 cases)**, logging 118 poor clarification failures across the ablation suite.
 - **Crisis Escalation Sample Size**: The benchmark contains exactly 3 acute crisis cases ($N=3$). Perfect 1.00 scores in Safety F1 and Escalation Accuracy must be understood in the context of this small sample size.
+- **Construction Caveat (2026-10-22)**: The offline evaluator appends a fixed crisis sentence to every stored-HIGH case before scoring (`docs/EVALUATOR_CRISIS_INJECTION.md`), and the stored HIGH labels cannot be reproduced from the repository (see `docs/LIVE_EVIDENCE_STUDY.md`). The Safety F1 and Escalation Accuracy values in this table therefore measure detection of the appended sentence, not of case content. For detector-level evidence, use the independently labeled sets in `data/benchmark/redteam/` (development) and `data/benchmark/redteam_heldout/` (held-out).
 - **Failure Taxonomy**: Out of 545 classified failure records in `data/research_evaluation/failure_analysis/failure_analysis.json`, **78% occurred in ablated configurations**, empirically proving that each agent targets a demonstrable failure mode.
 
 ---
@@ -164,7 +173,7 @@ The platform includes a complete, production-grade web application:
 ├── assets/skills/            # Clinical meta-skills and micro-skill trigger embeddings
 ├── configs/                  # Baseline, prompt, and runtime configurations
 ├── data/
-│   ├── benchmark/            # 25 multi-modal ambiguous clinical benchmark cases
+│   ├── benchmark/            # 200 ambiguous-case files (5 modalities × 40; tracks: ordinary 100, safety 100); published evaluation slice N=25
 │   └── research_evaluation/  # Audited experimental results, failure taxonomy, metrics
 ├── docs/                     # Comprehensive research, presentation, and defense documentation
 ├── prompts/psychagent/       # Jinja2 prompt suites across all 5 therapy modalities
@@ -176,7 +185,7 @@ The platform includes a complete, production-grade web application:
 │   │   ├── core/             # Data schemas (AgentMessage, PublicMemory, SessionContext)
 │   │   └── skill_manager.py  # Embedding-based clinical micro-skill retriever
 │   └── web/                  # Full-stack application (FastAPI backend + Vite React frontend)
-└── tests/                    # 31-suite automated unit and integration test harness
+└── tests/                    # Automated unit and integration tests (24 files, 200 tests)
 ```
 
 ---
@@ -227,8 +236,15 @@ FRONTEND_PORT=5173
 ### Running Automated Unit & Integration Tests
 ```bash
 python -m pytest -q
-# Verified: 31 passed in ~28s
+# Verified 2026-10-21: 200 passed (two consecutive full runs)
 ```
+
+### Skill Embeddings Migration & Regeneration
+```bash
+# Regenerate provenance-keyed embedding stores (micro_skills.<model>.<dim>.pt) from base assets:
+python scripts/migrate_skill_embeddings.py --runtime configs/runtime/multi_agent_gemini.yaml
+```
+*Note: Keyed skill embedding stores (`assets/skills/**/micro_skills.*.pt*`) are git-ignored and regenerated locally using `scripts/migrate_skill_embeddings.py`, preserving the original base artifacts.*
 
 ### Running Benchmark & Failure Analysis
 ```bash
@@ -244,7 +260,7 @@ python -X utf8 src/experiments/failure_analysis.py --eval-dir data/research_eval
 #### Start Backend (FastAPI on Port 8000)
 ```bash
 # With offline deterministic configuration:
-pwsh -NoProfile -Command "& { `$env:PYTHONPATH='src'; python -m uvicorn src.web.main:app --host 127.0.0.1 --port 8000 }"
+pwsh -NoProfile -Command "& { `$env:PYTHONPATH='src'; python -m uvicorn web.main:app --host 127.0.0.1 --port 8000 }"
 ```
 API Documentation: `http://127.0.0.1:8000/docs`
 
@@ -261,20 +277,17 @@ Web Interface: `http://localhost:5173`
 ## 12. Key Research Documentation
 
 - **[Archival Research Paper](docs/FINAL_RESEARCH_DOCUMENT.md)**: Full thesis-style paper with problem definition, methodology, results, and failure analysis.
-- **[Research Narrative](docs/FINAL_RESEARCH_NARRATIVE.md)**: 21-section detailed theoretical and empirical narrative.
 - **[18-Slide Presentation](docs/FINAL_PRESENTATION.md)**: Slide deck formatted for academic defense.
-- **[Speaker Notes & Defense Guide](docs/FINAL_PRESENTATION_SPEAKER_NOTES.md)**: Natural spoken scripts, key points, and transitions.
-- **[5-Minute Pitch Script](docs/PRESENTATION_5_MINUTE_SCRIPT.md)**: Strict 5-minute timed presentation script.
-- **[10-Minute Presentation Script](docs/PRESENTATION_10_MINUTE_SCRIPT.md)**: Standard 10-minute academic presentation script.
 - **[Professor Defense Q&A (34 Questions)](docs/PROFESSOR_DEFENSE_QA.md)**: In-depth technical questions across Architecture, Memory, Research, Technical, and Limitations.
-- **[Hard Professor Questions](docs/HARD_PROFESSOR_QUESTIONS.md)**: Defensible answers to 12 challenging oral defense questions.
-- **[1-Page Defense Cheat Sheet](docs/PROJECT_CHEAT_SHEET.md)**: Rapid pre-defense review reference.
 - **[Verified References](docs/REFERENCES.md)**: Validated source literature, software, datasets, and models.
-- **[Deliverables Index](docs/FINAL_PROJECT_DELIVERABLES.md)**: Complete inventory of repository artifacts.
+- **[Live-Evidence Study](docs/LIVE_EVIDENCE_STUDY.md)** and **[Pre-Registration](docs/PREREGISTRATION.md)**: Design audit and pre-registered head-to-head study plan.
+- **[Evaluator Crisis Injection](docs/EVALUATOR_CRISIS_INJECTION.md)**: Why the offline benchmark's 1.00 safety figures are construction artefacts.
 
 ---
 
 ## 13. Limitations & Ethical Considerations
+
+**Standing limitations (summary).** The benchmark is synthetic; all quality scoring is automated (mock LLM judge rubrics) with no clinician validation; the safety-case sample size is small (N=3 acute crisis cases in the evaluated slice); agent confidence values are uncalibrated; and results obtained with the dummy/offline backend are not comparable to live-model results. The live-LLM comparison of Systems A–F has not yet been run.
 
 ### Academic Limitations & Scientific Validity Gaps
 
@@ -293,12 +306,12 @@ Scientific transparency requires disclosing key methodology boundaries and valid
    - **Offline Rule/Signal Execution**: System F (full 11-agent pipeline) requires **1.66 ms/turn** vs. **0.73 ms/turn** for System B baseline, a **2.28x latency multiplier** on deterministic CPU execution.
    - **Live LLM API Execution**:
      - *System B (Baseline)*: Executes **1 to 2 LLM calls** per turn (1 skill retrieval + 1 response generation).
-     - *System F (Full System)*: Executes **3 to 5 LLM calls** per standard turn (counseling generation, safety supervision, longitudinal extraction) and up to **6 to 7 calls** when clarification or supervisor revision loops trigger.
-     - *Overhead*: This represents a **3.0x to 4.5x multiplier** in token volume, financial API cost, and network round-trip latency compared to a single-agent baseline.
+     - *System F (Full System)*: Executes **2 to 3 chat calls + 1 embedding call** per turn on the live path (skill-retrieval filtering/rewrite + counselor generation), plus **1 additional counselor call** when the Safety Supervisor returns REVISE. All gate agents — uncertainty, risk, routing, clarification, reassessment, supervision checks, longitudinal extraction — are **rule-based and make no LLM calls** (design audit: `docs/LIVE_EVIDENCE_STUDY.md`, Step 0).
+     - *Overhead*: Against a true single-prompt baseline (1 chat call), the pipeline's extra model spend is the retrieval filter/rewrite calls and the occasional supervisor-revision call — roughly 2-3x the calls, not the larger multipliers stated in earlier drafts; the pre-registered head-to-head that would price this precisely has not yet been run.
 
 4. **Statistical Sample Size & Low-Confidence Subgroups**:
    - The benchmark consists of $N=25$ cases. Within this dataset, **exactly 3 cases represent acute high-risk crisis presentations ($N=3$)**.
-   - Consequently, high-risk detection metrics (**1.00 Safety Recall, 1.00 Escalation Accuracy**) and risk-related ablation deltas are derived from a very small sample size ($N < 10$) and must be treated as **LOW STATISTICAL CONFIDENCE**. Subgroup findings should be interpreted as directional architectural proofs rather than statistically powered clinical trials.
+   - Consequently, high-risk detection metrics (**1.00 Safety Recall, 1.00 Escalation Accuracy**) and risk-related ablation deltas are derived from a very small sample size ($N < 10$) and must be treated as **LOW STATISTICAL CONFIDENCE**. Subgroup findings should be interpreted as directional architectural proofs rather than statistically powered clinical trials. In addition, per `docs/EVALUATOR_CRISIS_INJECTION.md`, the 1.00 recall/escalation values are artefacts of the evaluator's construction (a fixed crisis sentence is appended to HIGH cases before scoring) and are not measured safety performance at any sample size.
 
 ### Ethical Safeguards & Clinical Boundaries
 
@@ -336,6 +349,4 @@ Scientific transparency requires disclosing key methodology boundaries and valid
 
 ---
 
-## 15. License
 
-This project is distributed under the terms of the MIT License. See [LICENSE](LICENSE) for details.

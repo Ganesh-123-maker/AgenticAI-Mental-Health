@@ -5,18 +5,23 @@ import os
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-from sample.backends.base import BackendSettings, ModelBackend
-from sample.backends.dummy_backend import DummyBackend
-from sample.backends.openai_api import OpenAIAPIBackend
 from sample.agents.base import AgentContext
 from sample.agents.pipeline import run_pipeline
 from sample.agents.safety_supervisor import SafetySupervisor
+from sample.backends.base import BackendSettings, ModelBackend
+from sample.backends.dummy_backend import DummyBackend
+from sample.backends.openai_api import OpenAIAPIBackend
 from sample.core.schemas import BaselineConfig, RuntimeConfig
 from sample.io.config_loader import load_baseline_config, load_runtime_config
 from sample.models import MODALITY_MODELS
 from sample.prompt_manager import PsychAgentPromptManager
 from sample.skill_manager import SkillManager
-from sample.utils import extract_tag_content, format_transcript, safe_json_loads, strip_end_token
+from sample.utils import (
+    extract_tag_content,
+    format_transcript,
+    safe_json_loads,
+    strip_end_token,
+)
 
 from .domain import (
     school_to_psychagent_sect,
@@ -124,7 +129,6 @@ class PsychAgentWebBackend:
             user_query = self._last_user_query(transcript)
             diag_hist = self._build_diag_history(transcript[:-1])
 
-            # Multi-Agent Pipeline Execution
             multi_agent_enabled = getattr(self._runtime_config, "multi_agent_enabled", True)
             if multi_agent_enabled:
                 ctx = AgentContext(
@@ -146,18 +150,10 @@ class PsychAgentWebBackend:
                     else ""
                 )
 
-                # Explicit clarification-pending state: the next user message is
-                # a clarification answer only if the previous turn routed
-                # UNCERTAIN *and* the persisted pipeline trace shows the
-                # clarification agent actually produced a required question.
-                # No string heuristics on message text.
                 clarification_answer = None
                 if self._clarification_pending(psych_context):
                     clarification_answer = user_query
 
-                # Longitudinal risk carry-forward: a HIGH/MODERATE severity
-                # from a previous turn in this visit floors the fresh
-                # assessment so it cannot be downgraded by a benign message.
                 carried_severity = self._carried_risk_severity(psych_context)
                 if carried_severity:
                     ctx.metadata["carried_risk_severity"] = carried_severity
@@ -198,7 +194,6 @@ class PsychAgentWebBackend:
                     return {"text": clar_q, "end": False, "agent_trace": trail, "route": current_route,
                             "longitudinal_risk": longitudinal_risk}
 
-                # CLEAR route -> Generate counseling response draft
                 suggested_skills: List[Dict[str, Any]] = []
                 if user_query:
                     suggested_skills, _ = await self._skill_manager.retrive(
@@ -227,7 +222,6 @@ class PsychAgentWebBackend:
                 if not text:
                     text = "Thank you for sharing that with me. Let's focus on taking a concrete step forward together."
 
-                # Run draft response through Safety Supervisor
                 if getattr(self._runtime_config, "safety_supervisor_enabled", True):
                     sup = SafetySupervisor()
                     sup_msg = sup.run(ctx, draft_response=text)
@@ -249,7 +243,6 @@ class PsychAgentWebBackend:
                 return {"text": text, "end": should_end, "agent_trace": trail, "route": current_route,
                         "longitudinal_risk": longitudinal_risk}
 
-            # Multi-agent disabled: fallback direct path
             suggested_skills: List[Dict[str, Any]] = []
             if user_query:
                 suggested_skills, _ = await self._skill_manager.retrive(
@@ -606,7 +599,6 @@ class PsychAgentWebBackend:
             "topic": raw_info.get("topic") or course.title or course.goal_summary or "Current Concern",
             "core_demands": raw_info.get("core_demands") or course.goal_summary or "To be clarified",
             "growth_experiences": growth_experiences,
-            # Modality-specific profile fields (kept pure: no course/workflow metadata).
             "target_behavior": raw_info.get("target_behavior") if isinstance(raw_info.get("target_behavior"), list) else [],
             "core_beliefs": raw_info.get("core_beliefs") if isinstance(raw_info.get("core_beliefs"), list) else [],
             "special_situations": raw_info.get("special_situations")

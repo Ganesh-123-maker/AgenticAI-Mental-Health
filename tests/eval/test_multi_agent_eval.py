@@ -10,20 +10,19 @@ Tests:
    - Computes Longitudinal metrics on 2-session run output.
 """
 
-import asyncio
 import json
 import pathlib
-import pytest
 import sys
 
-# Ensure src is on sys.path
+import pytest
+
 sys.path.insert(0, str(pathlib.Path(__file__).parent.parent.parent / "src"))
 
 from eval.methods import METHOD_REGISTRY
 from eval.methods.multi_agent.coordination import Coordination
-from eval.methods.multi_agent.uncertainty import Uncertainty
-from eval.methods.multi_agent.safety import Safety
 from eval.methods.multi_agent.longitudinal import Longitudinal
+from eval.methods.multi_agent.safety import Safety
+from eval.methods.multi_agent.uncertainty import Uncertainty
 from sample.agents.base import AgentContext
 from sample.agents.pipeline import run_pipeline
 
@@ -44,14 +43,11 @@ def test_registry_registration():
 
 def test_missing_optional_fields_robustness():
     """2. Confirm none of the 4 methods crash on empty or missing optional fields."""
-    # Empty trail: routing/handoff metrics are NOT APPLICABLE (None), not 1.0.
-    # A system with no orchestrator route must not be scored as perfectly routed.
     coord_empty = Coordination.compute_metrics([])
     assert coord_empty["routing_accuracy"] is None
     assert coord_empty["unnecessary_invocation_rate"] == 0.0
     assert coord_empty["handoff_correctness"] is None
 
-    # Minimal trail with no clarification or reassessment
     minimal_trail = [
         {"agent": "memory_agent", "payload": {"next_agent": "state_agent"}},
         {"agent": "state_agent", "payload": {"next_agent": "orchestrator"}},
@@ -105,7 +101,6 @@ async def test_benchmark_evaluation_run():
         assert path.exists(), f"Benchmark case {cfile} not found"
         case_data = json.loads(path.read_text(encoding="utf-8"))
 
-        # Build AgentContext from benchmark case
         ctx = AgentContext(
             case_id=case_data.get("case_id", cfile),
             modality="cbt",
@@ -114,23 +109,18 @@ async def test_benchmark_evaluation_run():
             full_profile=case_data.get("full_context"),
         )
 
-        # Run pipeline
         res = run_pipeline(ctx)
         trail = res["trail"]
 
-        # Evaluate Coordination
         cm = await coord_eval.evaluate(dialogue={"trail": trail}, profile=case_data)
         coord_results.append(cm)
 
-        # Evaluate Uncertainty
         um = await unc_eval.evaluate(dialogue={"trail": trail}, profile=case_data)
         unc_results.append(um)
 
-        # Evaluate Safety
         sm = await safe_eval.evaluate(dialogue={"trail": trail}, profile=case_data)
         safe_results.append(sm)
 
-    # Average metrics over benchmark cases
     def avg(lst, key):
         vals = [d[key] for d in lst if key in d]
         return round(sum(vals) / len(vals), 4) if vals else 0.0
@@ -156,7 +146,6 @@ async def test_benchmark_evaluation_run():
     print(f"  false_positive_rate: {avg(safe_results, 'false_positive_rate')}")
     print(f"  escalation_accuracy: {avg(safe_results, 'escalation_accuracy')}")
 
-    # Evaluate Longitudinal on 2-session case from Phase 8
     sess1_file = root / "sample_outputs/test_phase8_multi/dummy_local/cbt/412/session_1.json"
     sess2_file = root / "sample_outputs/test_phase8_multi/dummy_local/cbt/412/session_2.json"
 
@@ -165,7 +154,6 @@ async def test_benchmark_evaluation_run():
         s2 = json.loads(sess2_file.read_text(encoding="utf-8"))
         long_metrics = await long_eval.evaluate(dialogue={"sessions": [s1, s2]})
     else:
-        # Synthesized 2-session data if files not present
         s1 = {
             "summary": {"next_session_plan": {"next_session_focus": ["Identify negative thoughts"]}},
             "memory_update": {"persistent": [{"fact": "Goal is to improve insomnia", "category": "goal"}]},

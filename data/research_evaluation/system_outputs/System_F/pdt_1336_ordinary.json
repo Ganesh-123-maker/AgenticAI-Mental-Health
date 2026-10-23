@@ -13,7 +13,7 @@
   "transcript": [
     {
       "role": "user",
-      "content": "我觉得自己把红色头发染错了，这让我相信自己愚蠢且无能；每次照镜子或听到别人对发色的评论时都会触发这些感受与负面想法。"
+      "content": "I feel I dyed my red hair the wrong color, which makes me believe I am stupid and incompetent; these feelings and negative thoughts are triggered every time I look in the mirror or hear comments about my hair color."
     },
     {
       "role": "assistant",
@@ -32,53 +32,53 @@
       "payload": {
         "known_static_traits": {
           "age": "29",
-          "name": "林瑞安",
-          "gender": "男",
-          "occupation": "零售店员工",
-          "educational_background": "高中毕业",
-          "marital_status": "单身",
-          "family_status": "独居，住在海岸附近",
-          "social_status": "有一位亲密朋友但未向其倾诉负面想法，近期回避社交",
-          "medical_history": "无明显躯体疾病；既往未出现类似心理问题；未接受过心理治疗",
-          "language_features": "表达清晰、配合度较高，语气低落，倾向自我贬损与反复纠结"
+          "name": "Lin Ruian",
+          "gender": "Male",
+          "occupation": "Retail store employee",
+          "educational_background": "High school graduate",
+          "marital_status": "Single",
+          "family_status": "Lives alone, near the coast",
+          "social_status": "Has one close friend but has not confided negative thoughts to them; recently avoids socializing",
+          "medical_history": "No obvious physical illness; no similar psychological problems before; has not received psychotherapy",
+          "language_features": "Clear expression, relatively cooperative, low tone, prone to self-deprecation and repeated rumination"
         },
         "session_recaps": [],
         "last_homework": [],
         "current_session_index": 1,
-        "current_stage": "问题概念化与目标设定",
+        "current_stage": "Problem conceptualization and goal setting",
         "previous_interventions": [],
         "current_goals": [
-          "我意识到这些关于自己智力的负面想法影响了自尊和日常功能，因此寻求咨询；希望能够从不同视角看待这件事，走出困扰，不再让它控制我的生活。"
+          "I realize these negative thoughts about my own intelligence have affected my self-esteem and daily functioning, so I am seeking counseling; I hope to view this matter from a different perspective, move beyond the distress, and stop letting it control my life."
         ],
         "prior_outcomes": [],
         "newly_observed": [
-          "我觉得自己把红色头发染错了，这让我相信自己愚蠢且无能；每次照镜子或听到别人对发色的评论时都会触发这些感受与负面想法。"
+          "I feel I dyed my red hair the wrong color, which makes me believe I am stupid and incompetent; these feelings and negative thoughts are triggered every time I look in the mirror or hear comments about my hair color."
         ],
-        "main_problem": "我觉得自己把红色头发染错了，这让我相信自己愚蠢且无能；每次照镜子或听到别人对发色的评论时都会触发这些感受与负面想法。",
-        "core_demands": "我意识到这些关于自己智力的负面想法影响了自尊和日常功能，因此寻求咨询；希望能够从不同视角看待这件事，走出困扰，不再让它控制我的生活。",
+        "main_problem": "I feel I dyed my red hair the wrong color, which makes me believe I am stupid and incompetent; these feelings and negative thoughts are triggered every time I look in the mirror or hear comments about my hair color.",
+        "core_demands": "I realize these negative thoughts about my own intelligence have affected my self-esteem and daily functioning, so I am seeking counseling; I hope to view this matter from a different perspective, move beyond the distress, and stop letting it control my life.",
         "growth_experiences": [],
         "theory_info": {
           "core_conflict": {
-            "wish": "渴望被认可与接纳，确认自己的能力与价值",
-            "fear": "害怕被他人嘲笑与否定，暴露自己的“无能”与缺陷",
+            "wish": "Longs to be recognized and accepted, to confirm his own abilities and value",
+            "fear": "Fears being ridiculed and negated by others, exposing his own 'incompetence' and flaws",
             "defense_goal": [
-              "通过自我贬损与回避社交来减少外界评价的威胁",
-              "维持谨慎与自我怀疑以避免承担更大风险与失败"
+              "Reduces the threat of external evaluation through self-deprecation and avoiding socializing",
+              "Maintains caution and self-doubt to avoid taking on greater risks and failure"
             ]
           },
           "object_relations": [
             {
-              "self_representation": "无能、可笑的失败者",
-              "object_representation": "挑剔、带有评判与嘲笑的他者",
-              "linking_affect": "羞耻、焦虑"
+              "self_representation": "An incompetent, ridiculous failure",
+              "object_representation": "The picky other, with judgment and ridicule",
+              "linking_affect": "Shame, anxiety"
             }
           ],
           "behavioral_response_patterns": [
             {
-              "trigger_condition": "当咨询或他人谈及外表错误、他人看法或要求其检视更大任务时",
-              "interpretation": "来访者倾向认为他人（包括咨询师）在评判或轻视自己（移情：将他人视为批判者）",
-              "defense_mechanism": "投射",
-              "response_instruction": "采用温和、验证性的语气；避免评判与标签化；多用开放式提问与短句；允许停顿与情感命名，帮助其区分事实与推测。"
+              "trigger_condition": "When counseling or others mention appearance mistakes, others' opinions, or ask him to examine larger tasks",
+              "interpretation": "The client tends to believe that others (including the counselor) are judging or looking down on him (transference: viewing others as critics)",
+              "defense_mechanism": "Projection",
+              "response_instruction": "Use a gentle, validating tone; avoid judgment and labeling; use more open-ended questions and short sentences; allow pauses and emotion naming, helping them distinguish facts from speculation."
             }
           ]
         },
@@ -89,26 +89,26 @@
       "agent": "state_agent",
       "status": "ok",
       "payload": {
-        "current_concern": "我觉得自己把红色头发染错了，这让我相信自己愚蠢且无能；每次照镜子或听到别人对发色的评论时都会触发这些感受与负面想法。",
-        "expressed_needs": "我意识到这些关于自己智力的负面想法影响了自尊和日常功能，因此寻求咨询；希望能够从不同视角看待这件事，走出困扰，不再让它控制我的生活。",
-        "current_session_focus": "我意识到这些关于自己智力的负面想法影响了自尊和日常功能，因此寻求咨询；希望能够从不同视角看待这件事，走出困扰，不再让它控制我的生活。",
+        "current_concern": "I feel I dyed my red hair the wrong color, which makes me believe I am stupid and incompetent; these feelings and negative thoughts are triggered every time I look in the mirror or hear comments about my hair color.",
+        "expressed_needs": "I realize these negative thoughts about my own intelligence have affected my self-esteem and daily functioning, so I am seeking counseling; I hope to view this matter from a different perspective, move beyond the distress, and stop letting it control my life.",
+        "current_session_focus": "I realize these negative thoughts about my own intelligence have affected my self-esteem and daily functioning, so I am seeking counseling; I hope to view this matter from a different perspective, move beyond the distress, and stop letting it control my life.",
         "known_information": [
           "[Basic Info] age: 29",
-          "[Basic Info] name: 林瑞安",
-          "[Basic Info] gender: 男",
-          "[Basic Info] occupation: 零售店员工",
-          "[Basic Info] educational_background: 高中毕业",
-          "[Basic Info] marital_status: 单身",
-          "[Basic Info] family_status: 独居，住在海岸附近",
-          "[Basic Info] social_status: 有一位亲密朋友但未向其倾诉负面想法，近期回避社交",
-          "[Basic Info] medical_history: 无明显躯体疾病；既往未出现类似心理问题；未接受过心理治疗",
-          "[Basic Info] language_features: 表达清晰、配合度较高，语气低落，倾向自我贬损与反复纠结",
-          "[Chief Complaint] 我觉得自己把红色头发染错了，这让我相信自己愚蠢且无能；每次照镜子或听到别人对发色的评论时都会触发这些感受与负面想法。",
-          "[Core Demands] 我意识到这些关于自己智力的负面想法影响了自尊和日常功能，因此寻求咨询；希望能够从不同视角看待这件事，走出困扰，不再让它控制我的生活。",
+          "[Basic Info] name: Lin Ruian",
+          "[Basic Info] gender: Male",
+          "[Basic Info] occupation: Retail store employee",
+          "[Basic Info] educational_background: High school graduate",
+          "[Basic Info] marital_status: Single",
+          "[Basic Info] family_status: Lives alone, near the coast",
+          "[Basic Info] social_status: Has one close friend but has not confided negative thoughts to them; recently avoids socializing",
+          "[Basic Info] medical_history: No obvious physical illness; no similar psychological problems before; has not received psychotherapy",
+          "[Basic Info] language_features: Clear expression, relatively cooperative, low tone, prone to self-deprecation and repeated rumination",
+          "[Chief Complaint] I feel I dyed my red hair wrong, which makes me believe I am stupid and incompetent; every time I look in the mirror or hear others comment on my hair color, these feelings and negative thoughts are triggered.",
+          "[Core Demands] I realize these negative thoughts about my own intelligence have affected my self-esteem and daily functioning, so I am seeking counseling; I hope to view this matter from a different perspective, move beyond the distress, and stop letting it control my life.",
           "[PDT Theory] core_conflict: Recorded",
           "[PDT Theory] object_relations: Recorded",
           "[PDT Theory] behavioral_response_patterns: Recorded",
-          "[Current Statement] 我觉得自己把红色头发染错了，这让我相信自己愚蠢且无能；每次照镜子或听到别人对发色的评论时都会触发这些感受与负面想法。"
+          "[Current Statement] I feel I dyed my red hair wrong, which makes me believe I am stupid and incompetent; every time I look in the mirror or hear others comment on my hair color, these feelings and negative thoughts are triggered."
         ],
         "unknown_information": [
           "growth_experiences (empty or not provided)",
@@ -116,7 +116,7 @@
         ],
         "context": {
           "modality": "pdt",
-          "therapy_stage": "问题概念化与目标设定",
+          "therapy_stage": "Problem conceptualization and goal setting",
           "session_index": 1,
           "source": "runner_state|full_profile"
         },
@@ -204,26 +204,26 @@
       "turn": 1,
       "payload": {
         "updated_state": {
-          "current_concern": "我觉得自己把红色头发染错了，这让我相信自己愚蠢且无能；每次照镜子或听到别人对发色的评论时都会触发这些感受与负面想法。",
-          "expressed_needs": "我意识到这些关于自己智力的负面想法影响了自尊和日常功能，因此寻求咨询；希望能够从不同视角看待这件事，走出困扰，不再让它控制我的生活。",
-          "current_session_focus": "我意识到这些关于自己智力的负面想法影响了自尊和日常功能，因此寻求咨询；希望能够从不同视角看待这件事，走出困扰，不再让它控制我的生活。",
+          "current_concern": "I feel I dyed my red hair the wrong color, which makes me believe I am stupid and incompetent; these feelings and negative thoughts are triggered every time I look in the mirror or hear comments about my hair color.",
+          "expressed_needs": "I realize these negative thoughts about my own intelligence have affected my self-esteem and daily functioning, so I am seeking counseling; I hope to view this matter from a different perspective, move beyond the distress, and stop letting it control my life.",
+          "current_session_focus": "I realize these negative thoughts about my own intelligence have affected my self-esteem and daily functioning, so I am seeking counseling; I hope to view this matter from a different perspective, move beyond the distress, and stop letting it control my life.",
           "known_information": [
             "[Basic Info] age: 29",
-            "[Basic Info] name: 林瑞安",
-            "[Basic Info] gender: 男",
-            "[Basic Info] occupation: 零售店员工",
-            "[Basic Info] educational_background: 高中毕业",
-            "[Basic Info] marital_status: 单身",
-            "[Basic Info] family_status: 独居，住在海岸附近",
-            "[Basic Info] social_status: 有一位亲密朋友但未向其倾诉负面想法，近期回避社交",
-            "[Basic Info] medical_history: 无明显躯体疾病；既往未出现类似心理问题；未接受过心理治疗",
-            "[Basic Info] language_features: 表达清晰、配合度较高，语气低落，倾向自我贬损与反复纠结",
-            "[Chief Complaint] 我觉得自己把红色头发染错了，这让我相信自己愚蠢且无能；每次照镜子或听到别人对发色的评论时都会触发这些感受与负面想法。",
-            "[Core Demands] 我意识到这些关于自己智力的负面想法影响了自尊和日常功能，因此寻求咨询；希望能够从不同视角看待这件事，走出困扰，不再让它控制我的生活。",
+            "[Basic Info] name: Lin Ruian",
+            "[Basic Info] gender: Male",
+            "[Basic Info] occupation: Retail store employee",
+            "[Basic Info] educational_background: High school graduate",
+            "[Basic Info] marital_status: Single",
+            "[Basic Info] family_status: Lives alone, near the coast",
+            "[Basic Info] social_status: Has one close friend but has not confided negative thoughts to them; recently avoids socializing",
+            "[Basic Info] medical_history: No obvious physical illness; no similar psychological problems before; has not received psychotherapy",
+            "[Basic Info] language_features: Clear expression, relatively cooperative, low tone, prone to self-deprecation and repeated rumination",
+            "[Chief Complaint] I feel I dyed my red hair wrong, which makes me believe I am stupid and incompetent; every time I look in the mirror or hear others comment on my hair color, these feelings and negative thoughts are triggered.",
+            "[Core Demands] I realize these negative thoughts about my own intelligence have affected my self-esteem and daily functioning, so I am seeking counseling; I hope to view this matter from a different perspective, move beyond the distress, and stop letting it control my life.",
             "[PDT Theory] core_conflict: Recorded",
             "[PDT Theory] object_relations: Recorded",
             "[PDT Theory] behavioral_response_patterns: Recorded",
-            "[Current Statement] 我觉得自己把红色头发染错了，这让我相信自己愚蠢且无能；每次照镜子或听到别人对发色的评论时都会触发这些感受与负面想法。",
+            "[Current Statement] I feel I dyed my red hair wrong, which makes me believe I am stupid and incompetent; every time I look in the mirror or hear others comment on my hair color, these feelings and negative thoughts are triggered.",
             "[Clarification Gained] This started about six months ago."
           ],
           "unknown_information": [
@@ -231,7 +231,7 @@
           ],
           "context": {
             "modality": "pdt",
-            "therapy_stage": "问题概念化与目标设定",
+            "therapy_stage": "Problem conceptualization and goal setting",
             "session_index": 1,
             "source": "runner_state|full_profile"
           },
@@ -340,7 +340,7 @@
         "newly_observed_information": [
           "Thank you, counselor",
           "That gives me valuable perspective",
-          "我觉得自己把红色头发染错了，这让我相信自己愚蠢且无能；每次照镜子或听到别人对发色的评论时都会触发这些感受与负面想法。"
+          "I feel I dyed my red hair the wrong color, which makes me believe I am stupid and incompetent; these feelings and negative thoughts are triggered every time I look in the mirror or hear comments about my hair color."
         ]
       }
     },
@@ -352,7 +352,7 @@
         "temporary": [
           "Thank you, counselor",
           "That gives me valuable perspective",
-          "我觉得自己把红色头发染错了，这让我相信自己愚蠢且无能；每次照镜子或听到别人对发色的评论时都会触发这些感受与负面想法。"
+          "I feel I dyed my red hair the wrong color, which makes me believe I am stupid and incompetent; these feelings and negative thoughts are triggered every time I look in the mirror or hear comments about my hair color."
         ],
         "target_fields": {
           "known_static_traits": {},
@@ -375,7 +375,7 @@
         "newly_observed_information": [
           "Thank you, counselor",
           "That gives me valuable perspective",
-          "我觉得自己把红色头发染错了，这让我相信自己愚蠢且无能；每次照镜子或听到别人对发色的评论时都会触发这些感受与负面想法。"
+          "I feel I dyed my red hair the wrong color, which makes me believe I am stupid and incompetent; these feelings and negative thoughts are triggered every time I look in the mirror or hear comments about my hair color."
         ]
       },
       "memory_update": {
@@ -383,7 +383,7 @@
         "temporary": [
           "Thank you, counselor",
           "That gives me valuable perspective",
-          "我觉得自己把红色头发染错了，这让我相信自己愚蠢且无能；每次照镜子或听到别人对发色的评论时都会触发这些感受与负面想法。"
+          "I feel I dyed my red hair the wrong color, which makes me believe I am stupid and incompetent; these feelings and negative thoughts are triggered every time I look in the mirror or hear comments about my hair color."
         ],
         "target_fields": {
           "known_static_traits": {},

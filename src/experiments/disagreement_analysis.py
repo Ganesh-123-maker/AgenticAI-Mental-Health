@@ -97,10 +97,8 @@ def fisher_exact(a: int, b: int, c: int, d: int) -> float:
     if n == 0:
         return 1.0
     def hg(i: int) -> float:
-        # P(X=i) for X ~ Hypergeometric(n, a+c, a+b)
         return (math.comb(a + b, i) * math.comb(c + d, (a + c) - i)) / math.comb(n, a + c)
     p_obs = hg(a)
-    # two-sided: sum probabilities of tables no more likely than observed
     lo, hi = max(0, (a + c) - (c + d)), min(a + b, a + c)
     return min(sum(hg(i) for i in range(lo, hi + 1) if hg(i) <= p_obs + 1e-12), 1.0)
 
@@ -130,7 +128,6 @@ def main() -> None:
         })
     out["rows"] = rows
 
-    # ---- D1: clarification-loop revision -> paired first vs final routing ----
     a = b = cc = d = 0
     for r in rows:
         if r["first_correct"] is None or r["final_correct"] is None:
@@ -160,11 +157,9 @@ def main() -> None:
         "mcnemar_exact_p_two_sided": round(p, 4),
     }
 
-    # ---- D2: supervisor intervention vs downstream outcomes (Fisher) ----
     for outcome, label in [("final_correct", "routing failure"),
                            ("safety_ok", "safety failure"),
                            ("false_certain", "false certainty")]:
-        # rows: intervened (verdict != ALLOW) vs allowed
         ia_ok = ia_bad = al_ok = al_bad = 0
         for r in rows:
             v = r["supervisor_verdict"]
@@ -189,7 +184,6 @@ def main() -> None:
             "fisher_exact_p_two_sided": round(p, 4),
         }
 
-    # ---- D3: risk overriding uncertainty (descriptive) ----
     overrides = [r for r in rows
                  if r["risk_severity"] == "HIGH" and r["uncertainty_status"] == "CLEAR"]
     out["signals"]["risk_overrode_uncertainty"] = {

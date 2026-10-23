@@ -2,82 +2,82 @@
   "basic_info": {
     "static_traits": {
       "age": "25",
-      "name": "李博文",
-      "gender": "男",
-      "occupation": "快餐厨师（短单厨师）",
-      "educational_background": "高中毕业",
-      "marital_status": "单身",
-      "family_status": "未提及",
-      "social_status": "有几位亲密朋友可倾诉，但他们并不了解这个具体问题",
-      "medical_history": "无显著躯体疾病；此前未有类似问题；未接受过心理治疗或咨询",
-      "language_features": "表达清晰，能具体描述经历；思维逻辑较好；语气偏消极但愿意尝试改变；自我反思能力较好；在会谈中配合度尚可"
+      "name": "Li Bowen",
+      "gender": "Male",
+      "occupation": "Fast-food chef (short-order chef)",
+      "educational_background": "High school graduate",
+      "marital_status": "Single",
+      "family_status": "Not mentioned",
+      "social_status": "has several close friends to confide in, but they do not understand this specific issue",
+      "medical_history": "no significant physical illness; no similar problems before; never received psychotherapy or counseling",
+      "language_features": "clear expression, able to describe experiences specifically; fairly good logical thinking; rather negative tone but willing to try change; good self-Reflection ability; acceptable cooperation in sessions"
     },
-    "main_problem": "我倾向于否定正面反馈，只关注负面评论，这影响了我的情绪和自尊。",
-    "topic": "情绪管理",
-    "core_demands": "持续关注负面反馈显著影响了我的情绪和工作表现，因此希望通过咨询得到帮助。",
+    "main_problem": "I tend to negate positive feedback and only focus on negative comments, which affects my mood and self-esteem.",
+    "topic": "Emotion management",
+    "core_demands": "Continuously attending to negative feedback has significantly affected my emotions and work performance, so I hope to get help through counseling.",
     "growth_experiences": [
-      "开始在本地餐馆担任短单厨师后，逐渐形成只关注负面反馈、否定正面评价的模式；最初压力中等，多由负面的顾客反馈触发，随着时间推移加重，任何批评都会压过正面反馈。该模式几乎每天在工作中出现，导致情绪低落、自尊受损、与同事关系受影响以及工作失误增多。"
+      "after starting as a short-order Chef at a local restaurant, gradually formed a pattern of focusing only on negative feedback and negating positive reviews; initially moderate stress, mostly triggered by negative customer feedback, worsening over time, any criticism outweighing positive feedback. This pattern appears almost daily at Work, causing Low mood,Impaired self-esteem,Relationship with colleagues affected, and more Work mistakes."
     ]
   },
   "theory": {
     "cbt": {
       "core_beliefs": [
-        "我是个失败者/我不胜任我的工作",
-        "我的价值取决于他人的评价（尤其是顾客的反馈）"
+        "I am a failure/I am not competent at my Work",
+        "My value depends on others' evaluations(especially customers' feedback)"
       ],
       "special_situations": [
         {
-          "event": "在一次晚餐服务中，尽管收到了很多称赞，但有一位客人表示不喜欢我的菜，情绪因此受到强烈影响",
-          "conditional_assumptions": "如果有任何一个人不满意，就说明我做得很差，这一天都被毁了",
-          "compensatory_strategies": "反复回想那条差评、忽略当晚的称赞，闷闷不乐以期“提醒自己不要再犯错”",
-          "automatic_thoughts": "她不喜欢我的菜，说明我厨艺很差；这一天都被毁了",
+          "event": "during one dinner service, despite receiving many compliments, one guest said they did not like my dish, and my mood was strongly affected",
+          "conditional_assumptions": "if anyone is not satisfied, it means I did terribly and the whole day is ruined",
+          "compensatory_strategies": "repeatedly recalling that bad review, ignoring the evening's praise, staying gloomy hoping to 'remind myself not to make mistakes again'",
+          "automatic_thoughts": "she did not like my dish, which means my cooking is terrible; the whole day is ruined",
           "cognitive_pattern": "Catastrophizing"
         },
         {
-          "event": "同一班次中既收到了“汉堡很棒”的称赞，也收到“薯条太咸”的抱怨，负评完全压过正评",
-          "conditional_assumptions": "如果连简单的薯条都做不好，我就一定是个失败者",
-          "compensatory_strategies": "自我苛责并在工作中变得过度紧张，试图以此避免再次被批评（反而更易出错）",
-          "automatic_thoughts": "我连薯条都做不好，我就是个失败者",
+          "event": "In the same shift, receiving both the praise 'the burger is great' and the complaint 'the fries are too salty', with the negative review completely outweighing the positive one",
+          "conditional_assumptions": "if I cannot even make simple fries well, I must be a failure",
+          "compensatory_strategies": "Self-reproach and becoming overly tense at work, trying thereby to avoid being criticized again (which instead makes mistakes more likely)",
+          "automatic_thoughts": "I cannot even make fries well,I am just a failure",
           "cognitive_pattern": "All-or-Nothing Thinking"
         },
         {
-          "event": "在工作中，即使有多位顾客称赞，我依然自动忽视正面反馈，只盯住一条负评",
-          "conditional_assumptions": "称赞往往不算数，真正反映水平的是批评",
-          "compensatory_strategies": "选择性注意负面信息；尝试提醒自己正面评价但难以坚持，最终仍回到负面循环",
-          "automatic_thoughts": "那些称赞不算数，真正说明问题的是批评",
+          "event": "At work, even when several customers praise me, I still automatically ignore the positive feedback and fixate on one negative review",
+          "conditional_assumptions": "praise usually does not count, what truly reflects ability is criticism",
+          "compensatory_strategies": "Selectively attends to negative information; tries to remind themselves of positive evaluations but finds it hard to persist, and eventually returns to the negative cycle",
+          "automatic_thoughts": "those compliments do not count, what really shows the problem is criticism",
           "cognitive_pattern": "Disqualifying the Positive"
         },
         {
-          "event": "在与同事互动时，被负面反馈影响后情绪低落、易怒并回避交流",
-          "conditional_assumptions": "我应该始终友好、不能有负面情绪，否则就是糟糕的同事",
-          "compensatory_strategies": "强行压抑情绪、减少与同事接触，情绪积累后出现“发火/顶撞”",
-          "automatic_thoughts": "我应该更友好，不能让别人看到我的状态",
+          "event": "when interacting with colleagues,Low mood after being affected by negative feedback, irritable and Avoids communication",
+          "conditional_assumptions": "I should always be friendly, cannot have negative emotions, otherwise I am a bad colleague",
+          "compensatory_strategies": "forcefully Repressing emotions, reducing contact with colleagues, with 'outbursts/talking back' after emotions accumulate",
+          "automatic_thoughts": "I should be friendlier, cannot let others see my state",
           "cognitive_pattern": "\"Should\" Statements"
         }
       ]
     },
     "pdt": {
       "core_conflict": {
-        "wish": "渴望被认可、被肯定，证明自己是胜任且有价值的",
-        "fear": "害怕被否定为“失败者”，害怕他人批评与拒绝",
+        "wish": "Longs to be recognized and affirmed, proving oneself competent and valuable",
+        "fear": "fear of being negated as a 'failure', fear of others' criticism and rejection",
         "defense_goal": [
-          "通过自我苛责和回避他人来降低再次被否定的风险",
-          "将挫败感转移到更安全的目标上以缓解紧张"
+          "reducing the risk of being negated again through harsh self-blame and avoiding others",
+          "Displacing Sense of frustration onto safer targets to relieve tension"
         ]
       },
       "object_relations": [
         {
-          "self_representation": "不称职、容易失败、需要他人认可的员工",
-          "object_representation": "苛刻挑剔、随时可能否定自己的评判者（顾客/他人）",
-          "linking_affect": "羞耻、焦虑、挫败"
+          "self_representation": "an incompetent employee, prone to failure, needing others' approval",
+          "object_representation": "harsh, picky judges (customers/others) who may negate oneself at any time",
+          "linking_affect": "Shame, anxiety, frustration"
         }
       ],
       "behavioral_response_patterns": [
         {
-          "trigger_condition": "在工作中收到顾客的负面反馈后与同事互动",
-          "interpretation": "将由顾客反馈引起的挫败与愤怒转移到同事身上，把同事体验为“令人恼火”的对象",
-          "defense_mechanism": "转移",
-          "response_instruction": "语气不耐烦、简短回应，减少眼神接触与交流，偶尔出现顶撞或冷处理。"
+          "trigger_condition": "Interacts with colleagues after receiving negative customer feedback at work",
+          "interpretation": "Displacing the frustration and anger caused by customer feedback onto colleagues, experiencing colleagues as 'annoying' objects",
+          "defense_mechanism": "Displacement",
+          "response_instruction": "impatient tone, short responses, reduced eye contact and communication, occasional talking back or cold treatment."
         }
       ]
     },
@@ -88,49 +88,49 @@
     "pmt": {
       "exception_events": [
         {
-          "target_problem": "在收到正负混合反馈时，李博文通常会忽视称赞、只关注负评，并因此情绪低落、表现变差。",
-          "unique_outcome": "有一次顾客称赞他的汉堡是“很久以来吃过的最好”的，他当下感到很开心，短暂地体验到“自己真的做得很好”。",
-          "reason": "不同支持/情境：正向反馈明确具体且强烈、及时；这种具体化的肯定更容易被注意并短暂地被内化。"
+          "target_problem": "when receiving mixed positive and negative feedback,Li Bowen usually ignores praise, focuses only on negative reviews, and thus feels Low mood and performs worse.",
+          "unique_outcome": "Once a customer praised his burger as 'the best I have had in a long time'; he felt very happy in the moment and briefly experienced 'I really did well'.",
+          "reason": "different supports/contexts: positive feedback is clear, specific, strong and timely; such concrete affirmation is easier to notice and briefly internalize."
         }
       ],
       "force_field": {
         "positive_force": [
-          "愿意尝试改变并参与咨询",
-          "能觉察到自身的思维模式（如忽视正面反馈）",
-          "在工作中曾获得清晰且强烈的正向反馈",
-          "有几位亲密朋友可提供基本支持"
+          "Willing to try changing and engage in counseling",
+          "Able to notice her own thinking patterns (such as ignoring positive feedback)",
+          "Has received clear and strong positive feedback at work",
+          "Has a few close friends who can provide basic support"
         ],
         "negative_force": [
-          "持续的心理过滤与否定正面思维模式",
-          "非黑即白的自我评价方式导致自尊受损",
-          "过度依赖外部评价决定自我价值",
-          "将挫败感带入同事关系，增加紧张与冲突",
-          "工作环境中负面反馈不可避免，触发频率高，形成恶性循环"
+          "persistent mental filtering and positive-negating thought patterns",
+          "black-and-white self-evaluation causing Impaired self-esteem",
+          "Excessively relies on external evaluation to determine self-worth",
+          "Bringing frustration into colleague relationships, increasing tension and conflict",
+          "negative feedback unavoidable in the Work environment, high trigger frequency, forming a vicious cycle"
         ]
       }
     },
     "bt": {
       "target_behavior": [
         {
-          "behavior": "在收到负面评价后持续反刍负评并否定正面反馈，情绪迅速下降",
+          "behavior": "persistently ruminating on negative reviews and negating positive feedback after receiving negative evaluations, mood dropping rapidly",
           "antecedent": [
-            "收到顾客负面反馈",
-            "在同一情境中出现正负混合反馈",
-            "高压或忙碌班次"
+            "Receiving negative feedback from customers",
+            "When mixed positive and negative feedback appears in the same situation",
+            "High-pressure or busy shifts"
           ],
-          "core_reason": "对自我价值高度依赖他人评价，并存在灾难化与非黑即白的认知模式",
-          "function": "通过自我苛责和聚焦问题来获得控制感与自我纠正的错觉，短期内逃避不确定感与焦虑",
-          "consequence": "情绪低落与自尊受损，注意力分散导致错误增多，工作表现下降"
+          "core_reason": "Self-worth highly depends on others' evaluations, with catastrophizing and black-and-white cognitive patterns",
+          "function": "gaining a sense of control and the illusion of self-correction through harsh self-blame and problem-focus, escaping uncertainty and anxiety in the short term",
+          "consequence": "Low mood and Impaired self-esteem, distracted attention leading to more errors,Decline in work performance"
         },
         {
-          "behavior": "对同事易怒或回避交流",
+          "behavior": "irritable with colleagues or Avoids communication",
           "antecedent": [
-            "在工作中刚收到顾客负评后",
-            "感到失败和耗竭时"
+            "Just after receiving a negative customer review at work",
+            "When feeling like a failure and exhausted"
           ],
-          "core_reason": "将对顾客/自我产生的挫败与愤怒转移到同事这一更安全的目标上",
-          "function": "短期释放紧张情绪并避免进一步的社交暴露",
-          "consequence": "同事关系受损，团队支持减少，进一步恶化工作氛围与表现"
+          "core_reason": "Displacing frustration and anger toward customers/oneself onto colleagues as a safer target",
+          "function": "Short-term release of tension and avoidance of further social exposure",
+          "consequence": "Damaged relationships with colleagues, team Decreased support, further worsening Work atmosphere and performance"
         }
       ]
     }

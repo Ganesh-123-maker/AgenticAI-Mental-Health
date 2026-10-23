@@ -2,147 +2,147 @@
   "basic_info": {
     "static_traits": {
       "age": "40",
-      "name": "卫斯理",
-      "gender": "男",
-      "occupation": "派对策划师",
-      "educational_background": "未提及",
-      "marital_status": "未提及",
-      "family_status": "父亲曾是共产党成员",
-      "social_status": "有朋友可交谈，但尚未与他们讨论这件事",
-      "medical_history": "无重大躯体疾病；既往无类似心理问题，无心理治疗史",
-      "language_features": "表达清晰、能具体描述情绪与经历；情绪基调消极；倾向灾难化、非黑即白、过度概括、心理过滤与否定积极；配合度较高，愿意尝试小步骤。"
+      "name": "Wesley",
+      "gender": "Male",
+      "occupation": "Party planner",
+      "educational_background": "Not mentioned",
+      "marital_status": "Not mentioned",
+      "family_status": "Father was a Communist Party member",
+      "social_status": "Have friends to talk to, but have not yet discussed this matter with them",
+      "medical_history": "No major physical illness; no similar psychological issues in the past, no history of psychotherapy",
+      "language_features": "Clear expression, able to describe emotions and experiences concretely; negative emotional tone; tendency toward catastrophizing, black-and-white thinking, overgeneralization, mental filtering and negating the positive; fairly cooperative, willing to try small steps."
     },
-    "main_problem": "在最近的一场喜剧表演中收到负面反馈后，持续出现失败感与失望感，并将该次演出视为“彻底的灾难”。",
-    "topic": "情绪管理",
-    "core_demands": "希望解决在那次喜剧演出后持续存在的失败与失望感。",
+    "main_problem": "After receiving negative feedback at a recent comedy performance, persistently feels a sense of failure and disappointment, and regards that performance as 'a complete disaster'.",
+    "topic": "Emotion management",
+    "core_demands": "Hopes to resolve the failure and disappointment persisting after that comedy performance.",
     "growth_experiences": []
   },
   "theory": {
     "cbt": {
       "core_beliefs": [
-        "我是失败者",
-        "我的价值取决于他人的评价"
+        "I am a failure",
+        "My value depends on others' evaluations"
       ],
       "special_situations": [
         {
-          "event": "在一场观众座无虚席的喜剧演出中，少数观众发出嘘声，整体反应冷淡，演后有人直接评价“你不好笑”。",
-          "conditional_assumptions": "如果部分观众表达不满或没有笑，就证明我作为喜剧演员是失败的。",
-          "compensatory_strategies": "不断反刍演出细节、尝试用理性化解释安抚自己，并设想必须通过下一次“成功的演出”来挽回。",
-          "automatic_thoughts": "这场演出是彻底的灾难。",
+          "event": "In a comedy show with a full house, a few audience members booed, the overall reaction was lukewarm, and afterward someone bluntly commented 'you are not funny'.",
+          "conditional_assumptions": "If some audience members express dissatisfaction or have not laughed, it proves I am a failure as a comedy Actor.",
+          "compensatory_strategies": "Constantly ruminate on performance details, try to soothe myself with rationalized Interpretation, and imagine I must redeem myself through the next 'successful show'.",
+          "automatic_thoughts": "This performance was a total disaster.",
           "cognitive_pattern": "Catastrophizing"
         },
         {
-          "event": "每当回想起那场演出或想到再上台表演时。",
-          "conditional_assumptions": "如果我不能让大多数人发笑，那就说明我完全不行，继续尝试没有意义。",
-          "compensatory_strategies": "以“等到完全成功再说”为标准来推迟行动，设定完美主义门槛才允许自己感觉好些。",
-          "automatic_thoughts": "如果这次都没逗笑大家，那再尝试也没有意义。",
+          "event": "Whenever recalling that performance or thinking of performing on stage again.",
+          "conditional_assumptions": "If I cannot make most people laugh, it means I am completely not good enough, and continuing to try has no meaning.",
+          "compensatory_strategies": "Uses 'wait until completely successful to speak' as the standard to postpone action, setting a perfectionist threshold before allowing herself to feel better.",
+          "automatic_thoughts": "If I did not make everyone laugh this time, trying again has no meaning.",
           "cognitive_pattern": "All-or-Nothing Thinking"
         },
         {
-          "event": "同一场演出中也有个别观众微笑并鼓励“继续加油”。",
-          "conditional_assumptions": "只有一致而热烈的正向反馈才算数，少量正面评价不重要。",
-          "compensatory_strategies": "主动忽视或贬低正面信息，把注意力集中在负面评价上以“证明”自己的失败。",
-          "automatic_thoughts": "这些正面的不算数，整体还是很糟。",
+          "event": "In the same show there was also an audience member smiling and encouraging 'keep it up'.",
+          "conditional_assumptions": "If someone in the audience genuinely finds it funny, it means I am not a completely worthless comedian.",
+          "compensatory_strategies": "Proactively ignores or devalues positive information, focusing attention on negative evaluation to 'prove' their own failure.",
+          "automatic_thoughts": "Maybe this time was not a complete failure, I still have room to improve.",
           "cognitive_pattern": "Disqualifying the Positive"
         },
         {
-          "event": "在之后的工作或生活中收到他人反馈（尤其是批评性反馈）时。",
-          "conditional_assumptions": "一次失败或差评可以概括我整体能力与未来表现。",
-          "compensatory_strategies": "提前在心里贬低自己以降低再次受挫时的打击；对他人评价保持过度警觉。",
-          "automatic_thoughts": "我就是不行/我一定很差劲。",
+          "event": "When receiving feedback from others in later work or life (especially critical feedback).",
+          "conditional_assumptions": "Audience laughter and applause are the standard for judging whether a comedian is not yet outdated.",
+          "compensatory_strategies": "Belittles herself in advance in her mind to lessen the blow of future setbacks; remains excessively vigilant about others' evaluations.",
+          "automatic_thoughts": "I am actually not bad/a failure, I just still need to hone my craft.",
           "cognitive_pattern": "Overgeneralization"
         }
       ]
     },
     "pdt": {
       "core_conflict": {
-        "wish": "渴望被观众与他人认可，证明自己是“有趣且有价值”的人",
-        "fear": "害怕被否定、被嘲笑与羞辱，进而被视为一无是处",
+        "wish": "Longs to be recognized by the audience and others, proving I am an 'interesting and valuable' person",
+        "fear": "Fear of being negated, worry about losing the audience, fear of staying in place without growth",
         "defense_goal": [
-          "通过理智化与先行自我贬低来减轻外界否定带来的打击",
-          "避免向朋友倾诉以回避“不被理解”的痛苦与尴尬"
+          "Use Intellectualization to mask the pain brought by Self-deprecation in order to negate vulnerability",
+          "Avoid discussing the true feeling of 'not loving' comedy as a career, maintaining the image of a 'professional comedian'"
         ]
       },
       "object_relations": [
         {
-          "self_representation": "失败、尴尬的表演者",
-          "object_representation": "挑剔、苛刻而评判性的观众/他人",
-          "linking_affect": "羞耻、焦虑、失望"
+          "self_representation": "A failed, embarrassed performer",
+          "object_representation": "Picky, harsh, and judgmental audiences / others",
+          "linking_affect": "Shame, anxiety, disappointment"
         },
         {
-          "self_representation": "不被理解的人",
-          "object_representation": "不会理解或可能评判自己的朋友",
-          "linking_affect": "孤独、防御"
+          "self_representation": "An unrecognized comedian",
+          "object_representation": "An audience that does not understand and may laugh at me",
+          "linking_affect": "Loneliness, defensiveness"
         }
       ],
       "behavioral_response_patterns": [
         {
-          "trigger_condition": "当回忆那场演出或面对他人对其工作的反馈时",
-          "interpretation": "将少量负面反馈等同于对自我整体的否定（将“评判的观众/他人”体验泛化到所有评价者）",
-          "defense_mechanism": "理智化",
-          "response_instruction": "以分析、列举证据的方式说话，语气平淡，回避表达羞耻与悲伤等情绪。"
+          "trigger_condition": "When recalling that performance or facing others' feedback on one's work",
+          "interpretation": "Over-identify with the audience's immediate reaction, negate 'not funny' (removing the fact that 'someone found it funny / someone applauded' from identification)",
+          "defense_mechanism": "Intellectualization",
+          "response_instruction": "Speaks in an analytical, evidence-listing manner, tone flat, avoiding expressing emotions such as shame and sadness."
         },
         {
-          "trigger_condition": "当想到要向朋友倾诉这次受挫经历时",
-          "interpretation": "预设朋友不会理解自己，且可能会评判自己（将内在担忧投射到关系中）",
-          "defense_mechanism": "投射",
-          "response_instruction": "用确定性语言断言他人的想法（如“他们不会理解”），缩短回答，避免进一步探讨。"
+          "trigger_condition": "When thinking about confiding this setback experience to a friend",
+          "interpretation": "Preset 'a comedian not being booed' as the equation 'Projection: failure is shameful'",
+          "defense_mechanism": "Projection",
+          "response_instruction": "Encourage distinguishing 'comedian' as a professional identity from 'not funny' as a single-show evaluation, avoiding generalizing a single failure into identity negation."
         },
         {
-          "trigger_condition": "当讨论是否继续表演或如何改进时",
-          "interpretation": "把表现划分为“完美”或“彻底失败”，无法整合中间地带",
-          "defense_mechanism": "分裂",
-          "response_instruction": "使用非黑即白的语言（如“要么成功要么毫无意义”），语气绝对化。"
+          "trigger_condition": "When discussing whether to continue performing or how to improve",
+          "interpretation": "Subconsciously treat 'being booed' as evidence of 'failure', without realizing situational factors",
+          "defense_mechanism": "Splitting",
+          "response_instruction": "use'a normalizing statement: people say Meaninglessness things under pressure' to reduce self-blame."
         }
       ]
     },
     "het": {
       "existentialism_topic": [
         {
-          "theme": "无意义",
+          "theme": "Meaninglessness",
           "manifestations": [
-            "当表演未能逗笑观众时，自问“如果不能让人笑，再尝试有什么意义？”",
-            "负面反馈像乌云般笼罩，难以从中抽离"
+            "When not yet realizing audience reactions are influenced by many factors, fall into self-blame",
+            "Negative feedback looms like a dark cloud, hard to detach from"
           ],
           "outcomes": [
-            "动力下降，对再次尝试持消极预期",
-            "情绪低落与失败感加重"
+            "Decreased drive, declining motivation increases Anticipation",
+            "Low mood and Worsening sense of failure"
           ]
         },
         {
-          "theme": "孤独",
+          "theme": "Loneliness",
           "manifestations": [
-            "认为朋友不会理解自己的感受，因而没有与朋友讨论"
+            "Treat a single failure as the ultimate judgment on the comedian identity, have not seen the situational factors"
           ],
           "outcomes": [
-            "减少求助、关系互动受影响",
-            "主观孤立感增强"
+            "Less help-seeking, relationships affected",
+            "Increased subjective sense of isolation"
           ]
         }
       ],
       "contact_model": [
         {
-          "mode": "自我监控",
-          "definition": "个体存在不良的自我反思和反省的能力，包含过多的自我限制和自我苛责，对接触过于小心谨慎。",
+          "mode": "Self-monitoring",
+          "definition": "The individual has a poor capacity for self-reflection and introspection, with excessive self-restriction and self-blame, and is overly cautious about contact.",
           "manifestations": [
-            "反复自我批评（如“我一定很差劲”）",
-            "过度在意他人评价，难以允许自身不完美",
-            "在会谈中倾向强调失败而忽略积极面"
+            "Repeated self-criticism (such as 'I must be terrible')",
+            "Over-identify with the audience's immediate reaction, ignoring long-term accumulation and negating evidence",
+            "In sessions, tends to emphasize failures and ignore the positive side"
           ]
         },
         {
-          "mode": "投射",
-          "definition": "个体将自己难以接纳的感受归于他人。",
+          "mode": "Projection",
+          "definition": "The individual attributes feelings they find hard to accept to others.",
           "manifestations": [
-            "预设“朋友不会理解我”，从而避免向朋友表达与求助"
+            "Treat 'a comedian not being booed' as 'failure', ignoring the inherent uncertainty of the comedy career"
           ]
         },
         {
-          "mode": "内摄",
-          "definition": "个体未经消化地把外界规则、期望当作自己的标准或绝对真理。",
+          "mode": "Introjection",
+          "definition": "The individual takes in external rules and expectations without digesting them, treating them as their own standards or absolute truths.",
           "manifestations": [
-            "将“必须逗笑所有人才能算成功”的外在标准当作自我要求",
-            "以全或无的方式评价演出价值"
+            "Treats the external standard of 'must make everyone laugh to count as success' as a self-demand",
+            "Habitual negation and self-blame without recognizing situational factors"
           ]
         }
       ]
@@ -150,48 +150,48 @@
     "pmt": {
       "exception_events": [
         {
-          "target_problem": "在回想那场演出或面对他人反馈时，来访者通常会只关注负面评价，迅速得出“我很差/演出是灾难”的结论，并陷入失败感与失望感。",
-          "unique_outcome": "在同一场演出中，尽管有嘘声和负评，仍有几位观众微笑并对他说“继续加油”；来访者能够记住并提到这些正向反馈，这与以往只聚焦负面不同。",
-          "reason": "不同支持：现场个别观众给予鼓励；不同理解：在回忆中仍能注意到并承认这些积极信号，提示其注意力并非完全被负面占据。"
+          "target_problem": "When recalling that performance or facing feedback from others, the client usually focuses only on the negative evaluations, quickly reaches the conclusion 'I am terrible / the performance was a disaster', and falls into a sense of failure and disappointment.",
+          "unique_outcome": "In a small show, although there was only scattered laughter, the audience's applause made me feel recognized, and at the time I did not engage in Self-denial like now, showing that 'not funny' is not absolute.",
+          "reason": "not every show gets booed; not every comedian gets questioned: when performing in small shows or in front of acquaintances, I have felt recognized, and have had moments remembered for improvisation."
         }
       ],
       "force_field": {
         "positive_force": [
-          "具备自我反思与认知重构的意愿（尝试理性化、愿意采取小步骤）",
-          "拥有可求助的朋友资源",
-          "同一事件中也能觉察到正向反馈",
-          "职业功能基本稳定（工作未受直接影响）"
+          "Through Reflection see the negate mechanism behind the pain (e.g. the equation 'being booed = failure'), beginning to question its rationality",
+          "Having friend resources to turn to for help",
+          "Can also notice positive feedback in the same event",
+          "Anxiety about work not yet starting (Work not yet started)"
         ],
         "negative_force": [
-          "灾难化、非黑即白、过度概括、心理过滤与否定积极等认知偏差",
-          "过度依赖外界评价来界定自我价值",
-          "反复反刍负面事件，注意力被负面占据",
-          "回避向朋友表达感受，预设“不会被理解”",
-          "对再次成功持悲观预期（感觉“几乎不可能”）"
+          "Doubting the comedy career, ignoring accumulated experience, over-identifying with the audience's negation leads to self-negation.",
+          "Overly reliant on external evaluations to define self-worth",
+          "Repeatedly ruminates on negative events, attention occupied by the negative",
+          "When envisioning the future of the comedy career: 'Male' not 'a recognized comedian'",
+          "Declining motivation leads to Anticipation (feeling 'this time it will not work' and therefore not trying')"
         ]
       }
     },
     "bt": {
       "target_behavior": [
         {
-          "behavior": "反复反刍演出中的负面反馈并进行自我否定",
+          "behavior": "Repeatedly watch comedy performance videos, looking for points that make me laugh, for Self-denial",
           "antecedent": [
-            "回想那场喜剧演出",
-            "在工作或生活中收到他人反馈"
+            "Recalling that comedy show",
+            "Receiving others' feedback at work or in life"
           ],
-          "core_reason": "对负面评价高度敏感，将少量负评等同整体失败，并将自我价值系于他人评价",
-          "function": "获得控制感并试图通过自我批评避免再次受挫（回避羞耻与焦虑）",
-          "consequence": "情绪低落、失败感与失望感持续；日常生活和人际互动受到影响"
+          "core_reason": "Highly sensitive to negative evaluation, equates a few negative comments with overall failure, and ties self-worth to others' evaluations",
+          "function": "Relieve self-doubt by revisiting comedy, seeking humorous Anxiety (envisioning Anxiety about the comedy career)",
+          "consequence": "Low mood, declining motivation leads to missed opportunities; ignoring positive feedback amid progress intensifies Self-denial"
         },
         {
-          "behavior": "回避向朋友倾诉与求助",
+          "behavior": "Avoiding confiding in and seeking help from friends",
           "antecedent": [
-            "想到要向朋友谈起这次受挫",
-            "被负面情绪困扰时"
+            "Thinking about telling friends about this setback",
+            "When troubled by negative emotions"
           ],
-          "core_reason": "担心不被理解与被评判，将内心担忧投射到朋友身上",
-          "function": "逃避潜在的否定与羞耻体验，短期降低焦虑",
-          "consequence": "支持减少、主观孤立感增加，朋友关系受影响，问题难以缓解"
+          "core_reason": "Worry that the 'not good enough' comedian identity will be reinforced by the equation 'Projection: failure is shameful'",
+          "function": "Avoid being laughed at through negation, maintaining fragile Anxiety",
+          "consequence": "Decreased support, Increased subjective sense of isolation, comedy career stagnates, falling into the 'no one understands' cycle"
         }
       ]
     }

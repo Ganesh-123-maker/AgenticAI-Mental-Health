@@ -6,7 +6,7 @@
 > **Initial Route Status**: `UNCERTAIN` | **Post-Clarification Route**: `CLEAR`  
 > **Verification Status**: Fresh Session Execution (Not Cached)
 
-> **Note on language in the trace below.** The JSON execution payloads reproduce, verbatim, the agent outputs for benchmark case `cbt_412_ordinary`, whose source client profile is in Chinese (original dataset content under `assets/profiles/`). The Chinese strings are preserved intentionally as faithful execution evidence — translating them would falsify the trace. All project-authored prose in this document is in English.
+> **Note on language in the trace below.** The JSON execution payloads reproduce the agent outputs for benchmark case `cbt_412_ordinary`, whose source client profile is in Chinese (original dataset content under `assets/profiles/`). **The payload strings are shown in English translation** (translated 2026-10-22 at the project owner's instruction that no Chinese text should appear in the project's documents). Field values are faithful renderings of the originals; the underlying source data itself is unchanged.
 
 ---
 
@@ -29,62 +29,62 @@
 {
   "known_static_traits": {
     "age": "27",
-    "name": "周诚",
-    "gender": "男",
-    "occupation": "服装零售店员工",
-    "educational_background": "高中毕业",
-    "marital_status": "已婚",
-    "family_status": "与配偶共同生活，有一个孩子",
-    "social_status": "与同事关系因对自我表现的负性想法而趋于紧张；家庭总体支持性较好，但他不愿与家人讨论与工作相关的问题",
-    "medical_history": "无重大躯体疾病；无既往心理问题的治疗或咨询史",
-    "language_features": "表达清晰，能觉察并描述情绪与想法，配合度较高；语速未提及"
+    "name": "Zhou Cheng",
+    "gender": "Male",
+    "occupation": "Clothing retail store employee",
+    "educational_background": "High school graduate",
+    "marital_status": "Married",
+    "family_status": "Lives with spouse, has one child",
+    "social_status": "Relationships with colleagues are strained due to negative thoughts about his own performance; family is generally supportive, but he is unwilling to discuss work-related problems with family members",
+    "medical_history": "No major physical illness; no prior treatment or counseling history for psychological problems",
+    "language_features": "Expresses himself clearly, able to notice and describe emotions and thoughts, highly cooperative; speech rate not mentioned"
   },
   "session_recaps": [],
   "last_homework": [],
   "current_session_index": null,
-  "current_stage": "问题概念化与目标设定",
+  "current_stage": "Problem conceptualization and goal setting",
   "previous_interventions": [],
   "current_goals": [
-    "未加薪与不足感影响了我的自尊与整体幸福感，这促使我寻求咨询。"
+    "Not receiving a raise and the feelings of inadequacy affected my self-esteem and overall well-being, which prompted me to seek counseling."
   ],
   "prior_outcomes": [],
   "newly_observed": [
     "I have been under heavy work pressure recently and feel I cannot do well."
   ],
-  "main_problem": "因为没有收到加薪，我在工作中觉得自己是个很糟糕的员工。",
-  "core_demands": "未加薪与不足感影响了我的自尊与整体幸福感，这促使我寻求咨询。",
+  "main_problem": "Because I did not receive a raise, I feel like a terrible employee at work.",
+  "core_demands": "Not receiving a raise and the feelings of inadequacy affected my self-esteem and overall well-being, which prompted me to seek counseling.",
   "growth_experiences": [],
   "theory_info": {
     "core_beliefs": [
-      "我不够好"
+      "I am not good enough"
     ],
     "special_situations": [
       {
-        "event": "看到同事获得表彰或奖励/加薪",
-        "conditional_assumptions": "如果我没有得到与同事相同的加薪或认可，就说明我能力差、是不称职的员工",
-        "compensatory_strategies": "更努力地工作并主动向主管寻求反馈，以证明自己",
-        "automatic_thoughts": "我不如他们，我一定是个糟糕的员工。",
+        "event": "Seeing colleagues receive commendations or rewards/raises",
+        "conditional_assumptions": "If I do not get the same raise or recognition as my colleagues, it means I am incapable and an incompetent employee",
+        "compensatory_strategies": "Work harder and proactively seek feedback from my supervisor to prove myself",
+        "automatic_thoughts": "I am not as good as them; I must be a terrible employee.",
         "cognitive_pattern": "Comparing and Despairing"
       },
       {
-        "event": "发现自己未获得加薪而同事获得加薪（约六个月前）",
-        "conditional_assumptions": "如果公司没有给我加薪，原因一定在我身上，说明我表现不好",
-        "compensatory_strategies": "自我反思并加倍用功，试图通过提升业绩换取认可",
-        "automatic_thoughts": "没有加薪就是我不行。",
+        "event": "Discovering I did not get a raise while colleagues did (about six months ago)",
+        "conditional_assumptions": "If the company did not give me a raise, the reason must be me; it means I performed poorly",
+        "compensatory_strategies": "Self-reflection and redoubled effort, trying to win recognition by improving performance",
+        "automatic_thoughts": "No raise means I am not good enough.",
         "cognitive_pattern": "Personalization"
       },
       {
-        "event": "在寻求主管反馈并更努力后仍未见明显改善",
-        "conditional_assumptions": "如果努力后仍看不到变化，就证明我永远也不会变好",
-        "compensatory_strategies": "回避向家人求助，选择独自承受压力",
-        "automatic_thoughts": "我可能永远得不到认可/不会被加薪。",
+        "event": "After seeking supervisor feedback and working harder, still seeing no obvious improvement",
+        "conditional_assumptions": "If I still see no change after trying hard, it proves I will never get better",
+        "compensatory_strategies": "Avoid asking family for help, choose to bear the pressure alone",
+        "automatic_thoughts": "I may never get recognition / never receive a raise.",
         "cognitive_pattern": "Fortune Telling"
       },
       {
-        "event": "歌手试音失利（嗓音破裂、忘词）",
-        "conditional_assumptions": "如果在公众场合失败，就说明我在这方面完全不行",
-        "compensatory_strategies": "回避唱歌与练习，以避免再次失败与尴尬",
-        "automatic_thoughts": "我再也唱不好了，再尝试也没有意义。",
+        "event": "Singer audition failure (voice cracked, forgot the lyrics)",
+        "conditional_assumptions": "If I fail in public, it means I am completely hopeless at this",
+        "compensatory_strategies": "Avoid singing and practicing, to avoid failing and being embarrassed again",
+        "automatic_thoughts": "I will never sing well again; trying again is pointless.",
         "cognitive_pattern": "All-or-Nothing Thinking"
       }
     ]
@@ -102,21 +102,21 @@
 ```json
 {
   "current_concern": "I have been under heavy work pressure recently and feel I cannot do well.",
-  "expressed_needs": "未加薪与不足感影响了我的自尊与整体幸福感，这促使我寻求咨询。",
-  "current_session_focus": "未加薪与不足感影响了我的自尊与整体幸福感，这促使我寻求咨询。",
+  "expressed_needs": "Not receiving a raise and the feelings of inadequacy affected my self-esteem and overall well-being, which prompted me to seek counseling.",
+  "current_session_focus": "Not receiving a raise and the feelings of inadequacy affected my self-esteem and overall well-being, which prompted me to seek counseling.",
   "known_information": [
     "[Basic Info] age: 27",
-    "[Basic Info] name: 周诚",
-    "[Basic Info] gender: 男",
-    "[Basic Info] occupation: 服装零售店员工",
-    "[Basic Info] educational_background: 高中毕业",
-    "[Basic Info] marital_status: 已婚",
-    "[Basic Info] family_status: 与配偶共同生活，有一个孩子",
-    "[Basic Info] social_status: 与同事关系因对自我表现的负性想法而趋于紧张；家庭总体支持性较好，但他不愿与家人讨论与工作相关的问题",
-    "[Basic Info] medical_history: 无重大躯体疾病；无既往心理问题的治疗或咨询史",
-    "[Basic Info] language_features: 表达清晰，能觉察并描述情绪与想法，配合度较高；语速未提及",
-    "[Chief Complaint] 因为没有收到加薪，我在工作中觉得自己是个很糟糕的员工。",
-    "[Core Demands] 未加薪与不足感影响了我的自尊与整体幸福感，这促使我寻求咨询。",
+    "[Basic Info] name: Zhou Cheng",
+    "[Basic Info] gender: Male",
+    "[Basic Info] occupation: Clothing retail store employee",
+    "[Basic Info] educational_background: High school graduate",
+    "[Basic Info] marital_status: Married",
+    "[Basic Info] family_status: Lives with spouse, has one child",
+    "[Basic Info] social_status: Relationships with colleagues are strained due to negative thoughts about his own performance; family is generally supportive, but he is unwilling to discuss work-related problems with family members",
+    "[Basic Info] medical_history: No major physical illness; no prior treatment or counseling history for psychological problems",
+    "[Basic Info] language_features: Expresses himself clearly, able to notice and describe emotions and thoughts, highly cooperative; speech rate not mentioned",
+    "[Chief Complaint] Because I did not receive a raise, I feel like a terrible employee at work.",
+    "[Core Demands] Not receiving a raise and the feelings of inadequacy affected my self-esteem and overall well-being, which prompted me to seek counseling.",
     "[CBT Theory] core_beliefs: Recorded",
     "[CBT Theory] special_situations: Recorded",
     "[Current Statement] I have been under heavy work pressure recently and feel I cannot do well."
@@ -127,7 +127,7 @@
   ],
   "context": {
     "modality": "cbt",
-    "therapy_stage": "问题概念化与目标设定",
+    "therapy_stage": "Problem conceptualization and goal setting",
     "session_index": null,
     "source": "none|full_profile"
   },
@@ -226,21 +226,21 @@
 {
   "updated_state": {
     "current_concern": "I have been under heavy work pressure recently and feel I cannot do well.",
-    "expressed_needs": "未加薪与不足感影响了我的自尊与整体幸福感，这促使我寻求咨询。",
-    "current_session_focus": "未加薪与不足感影响了我的自尊与整体幸福感，这促使我寻求咨询。",
+    "expressed_needs": "Not receiving a raise and the feelings of inadequacy affected my self-esteem and overall well-being, which prompted me to seek counseling.",
+    "current_session_focus": "Not receiving a raise and the feelings of inadequacy affected my self-esteem and overall well-being, which prompted me to seek counseling.",
     "known_information": [
       "[Basic Info] age: 27",
-      "[Basic Info] name: 周诚",
-      "[Basic Info] gender: 男",
-      "[Basic Info] occupation: 服装零售店员工",
-      "[Basic Info] educational_background: 高中毕业",
-      "[Basic Info] marital_status: 已婚",
-      "[Basic Info] family_status: 与配偶共同生活，有一个孩子",
-      "[Basic Info] social_status: 与同事关系因对自我表现的负性想法而趋于紧张；家庭总体支持性较好，但他不愿与家人讨论与工作相关的问题",
-      "[Basic Info] medical_history: 无重大躯体疾病；无既往心理问题的治疗或咨询史",
-      "[Basic Info] language_features: 表达清晰，能觉察并描述情绪与想法，配合度较高；语速未提及",
-      "[Chief Complaint] 因为没有收到加薪，我在工作中觉得自己是个很糟糕的员工。",
-      "[Core Demands] 未加薪与不足感影响了我的自尊与整体幸福感，这促使我寻求咨询。",
+      "[Basic Info] name: Zhou Cheng",
+      "[Basic Info] gender: Male",
+      "[Basic Info] occupation: Clothing retail store employee",
+      "[Basic Info] educational_background: High school graduate",
+      "[Basic Info] marital_status: Married",
+      "[Basic Info] family_status: Lives with spouse, has one child",
+      "[Basic Info] social_status: Relationships with colleagues are strained due to negative thoughts about his own performance; family is generally supportive, but he is unwilling to discuss work-related problems with family members",
+      "[Basic Info] medical_history: No major physical illness; no prior treatment or counseling history for psychological problems",
+      "[Basic Info] language_features: Expresses himself clearly, able to notice and describe emotions and thoughts, highly cooperative; speech rate not mentioned",
+      "[Chief Complaint] Because I did not receive a raise, I feel like a terrible employee at work.",
+      "[Core Demands] Not receiving a raise and the feelings of inadequacy affected my self-esteem and overall well-being, which prompted me to seek counseling.",
       "[CBT Theory] core_beliefs: Recorded",
       "[CBT Theory] special_situations: Recorded",
       "[Current Statement] I have been under heavy work pressure recently and feel I cannot do well.",
@@ -251,7 +251,7 @@
     ],
     "context": {
       "modality": "cbt",
-      "therapy_stage": "问题概念化与目标设定",
+      "therapy_stage": "Problem conceptualization and goal setting",
       "session_index": null,
       "source": "none|full_profile"
     },

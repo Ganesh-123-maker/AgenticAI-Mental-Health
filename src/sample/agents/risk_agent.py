@@ -44,90 +44,88 @@ class RiskSignal(NamedTuple):
     forms to existing concepts, not maintaining a parallel list. Each concept
     carries a stable id used in evidence strings.
     """
-    id: str          # e.g. "suicidal_ideation"
-    severity: str    # "HIGH" | "MODERATE"
-    en: Tuple[str, ...]  # English surface forms
-    zh: Tuple[str, ...]  # Chinese surface forms
+    id: str
+    severity: str
+    en: Tuple[str, ...]
+    zh: Tuple[str, ...]
 
 
 RISK_SIGNALS: Tuple[RiskSignal, ...] = (
-    # ---- HIGH severity ----
     RiskSignal(
         id="suicidal_ideation", severity="HIGH",
         en=("suicide", "suicidal", "want to die", "kill myself", "killing myself",
             "take my own life", "end my life", "ending my life", "end life",
-            "ending life", "end it all", "ending it all", "don't want to live"),
-        zh=("自杀", "想死", "不想活", "结束生命", "了结生命"),
+            "ending life", "end it all", "ending it all", "don't want to live",
+            "don't want to be alive", "want to disappear", "wish I could disappear",
+            "don't want to exist", "stop existing", "goodbye note",
+            "end everything", "give up on life", "not being here anymore",
+            "tired of living", "unalive myself"),
+        zh=("suicide", "want to die", "do not want to live", "end my life", "end one's own life"),
     ),
     RiskSignal(
         id="self_harm", severity="HIGH",
         en=("self-harm", "self harm", "self-injury", "hurt myself", "hurting myself",
-            "harm myself", "harming myself", "slit wrists"),
-        zh=("自残", "自伤", "伤害自己", "割腕"),
+            "harm myself", "harming myself", "slit wrists", "slit my wrists",
+            "cut my wrists", "cutting my wrists"),
+        zh=("self-mutilation", "self-injury", "hurt oneself", "slit wrists"),
     ),
     RiskSignal(
         id="hopeless_despair", severity="HIGH",
         en=("can't go on", "hopeless want to die", "leave this world",
             "cannot survive", "better off dead", "better off without me",
-            "not waking up", "don't want to wake up"),
-        # Note: 撑不下去 ("can't cope") is deliberately MODERATE, not HIGH:
-        # it appears in LOW-risk benchmark cases as general overwhelm.
-        zh=("活不下去", "不如死了", "一了百了", "不想醒来"),
+            "not waking up", "don't want to wake up", "don't wake up",
+            "never wake up", "not wake up", "wouldn't wake up",
+            "never been born", "wish I was dead", "wish I were dead"),
+        zh=("cannot go on living", "better off dead", "end it all once and for all", "do not want to wake up"),
     ),
     RiskSignal(
         id="acute_psychiatric_crisis", severity="HIGH",
         en=("psychiatric emergency", "involuntary hospitalization",
             "severe mental disorder", "severe violence", "jump off building"),
-        zh=("跳楼", "精神急诊", "严重精神障碍", "严重暴力行为"),
+        zh=("jump off a building", "psychiatric emergency", "severe mental disorder", "severe violent behavior"),
     ),
-    # ---- MODERATE severity ----
     RiskSignal(
         id="insomnia", severity="MODERATE",
-        en=("insomnia all night", "severe insomnia"),
-        zh=("整夜失眠", "严重失眠", "失眠", "睡不着觉", "睡不着"),
+        en=("insomnia all night", "severe insomnia", "cannot sleep", "can't sleep",
+            "unable to fall asleep"),
+        zh=("awake all night with insomnia", "severe insomnia", "insomnia", "unable to fall asleep", "cannot sleep"),
     ),
     RiskSignal(
         id="functional_impairment", severity="MODERATE",
         en=("unable to work", "cannot work"),
-        zh=("无法工作", "不能工作", "上不了班"),
+        zh=("unable to work", "cannot work", "unable to get to work"),
     ),
     RiskSignal(
         id="panic", severity="MODERATE",
         en=("extreme panic", "panic attack"),
-        zh=("惊恐发作", "极度恐慌", "恐慌发作"),
+        zh=("panic attack", "extreme panic", "panic episode"),
     ),
     RiskSignal(
         id="collapse", severity="MODERATE",
         en=("verge of collapse", "feeling broken"),
-        zh=("濒临崩溃", "快要崩溃", "崩溃边缘", "心力交瘁"),
+        zh=("on the verge of collapse", "about to collapse", "on the edge of collapse", "mentally and physically exhausted"),
     ),
     RiskSignal(
         id="hopelessness", severity="MODERATE",
         en=("completely hopeless", "no hope"),
-        zh=("完全绝望", "绝望", "毫无希望", "没有希望"),
+        zh=("completely hopeless", "despair", "utterly hopeless", "no hope"),
     ),
     RiskSignal(
         id="overwhelm", severity="MODERATE",
-        en=("unbearable", "can't bear it", "cannot bear it"),
-        zh=("不堪重负", "承受不住", "难以承受", "撑不下去"),
+        en=("unbearable", "can't bear it", "cannot bear it", "overwhelmed"),
+        zh=("overwhelmed", "cannot bear the strain", "hard to bear", "cannot hold on any longer"),
     ),
     RiskSignal(
         id="destruction", severity="MODERATE",
         en=("perishing", "destruction"),
-        zh=("毁灭",),
+        zh=("destruction",),
     ),
 )
 
-# Chinese surface forms of all HIGH-severity concepts, derived from the
-# concept table above (single source of truth). Exported for consumers that
-# perform their own language-aware crisis checks on utterances or on the
-# signal labels in `signals_detected` (e.g. SafetySupervisor.is_acute_crisis).
 ZH_HIGH_CRISIS_FORMS: Tuple[str, ...] = tuple(
     form for _s in RISK_SIGNALS if _s.severity == "HIGH" for form in _s.zh
 )
 
-# Negation cues that, when they precede a signal within the same clause, mark the
-# mention as explicitly denied (e.g. "I have never had thoughts of suicide").
 _NEGATION_CUES = (
     "no", "not", "never", "without", "denies", "denied", "deny", "don't", "do not", "didn't",
     "haven't", "have not", "hasn't", "wouldn't", "won't", "none", "nor",
@@ -143,6 +141,10 @@ def _find_signal(text: str, signal: str) -> Optional[str]:
     same clause (up to 6 words before the signal) and the signal itself does
     not already contain a negation (e.g. "don't want to live"). Ambiguous
     cases are resolved towards "affirmed" (i.e. towards flagging risk).
+
+    Two or more negation cues in the window form a double negation and count
+    as affirmed, not negated: "It's not like I haven't thought about ending
+    it all" discloses the thought rather than denying it.
     """
     lowered = text.lower()
     sig = signal.lower()
@@ -153,20 +155,15 @@ def _find_signal(text: str, signal: str) -> Optional[str]:
         breaks = list(_CLAUSE_BREAK.finditer(prefix))
         clause = prefix[breaks[-1].end():] if breaks else prefix
         window = " ".join(clause.split()[-6:])
-        if _NEGATION_RE.search(sig) or not _NEGATION_RE.search(window):
+        if _NEGATION_RE.search(sig) or len(_NEGATION_RE.findall(window)) != 1:
             return "affirmed"
         found_negated = True
         start = lowered.find(sig, start + len(sig))
     return "negated" if found_negated else None
 
 
-# Chinese negation cues for the character-window negation check below.
-_ZH_NEGATION_CUES = ("没有", "否认", "否定", "从未", "不曾", "没", "未", "别", "无", "不")
-# Clause boundaries for Chinese text (Chinese + ASCII punctuation, plus
-# common contrast conjunctions).
-_ZH_CLAUSE_BREAK = re.compile(r"[。，；！？、,.!?;]|但是|然而|不过|虽然")
-# Number of characters before a Chinese signal form examined for negation.
-# Chinese is denser than English; this mirrors the 6-word English window.
+_ZH_NEGATION_CUES = ("have not", "deny", "negate", "never", "never have", "not", "not yet", "do not", "without", "not")
+_ZH_CLAUSE_BREAK = re.compile(r"[.,;!?]|but|however|but|although")
 _ZH_NEG_WINDOW_CHARS = 8
 
 
@@ -194,6 +191,36 @@ def _find_signal_zh(text: str, form: str) -> Optional[str]:
     return "negated" if found_negated else None
 
 
+_LEET_TRANS = str.maketrans({"0": "o", "1": "i", "3": "e", "4": "a", "5": "s", "7": "t", "@": "a", "$": "s"})
+_LEET_CHARS = frozenset("013457@$")
+_SPACED_LETTERS_RE = re.compile(r"\b(?:[A-Za-z][ .]){2,}[A-Za-z]\b")
+
+
+def _normalize_for_matching(text: str) -> str:
+    """Return a de-obfuscated copy of text for signal matching.
+
+    Two general obfuscations are undone:
+    - letter-spaced or letter-dotted words ("s u i c i d e", "s.u.i.c.i.d.e")
+      are joined back into single words;
+    - leetspeak substitutions inside mixed letter/digit tokens ("k1lling",
+      "su1cide", "mys3lf") are mapped back to letters.
+
+    The original text is always matched as well; this copy only adds matches,
+    it never removes one, so it cannot loosen any existing rule.
+    """
+    def _join(m: "re.Match") -> str:
+        return re.sub(r"[ .]", "", m.group(0))
+
+    norm = _SPACED_LETTERS_RE.sub(_join, text)
+    out = []
+    for tok in norm.split(" "):
+        if any(c.isalpha() for c in tok) and any(c in _LEET_CHARS for c in tok):
+            out.append(tok.translate(_LEET_TRANS))
+        else:
+            out.append(tok)
+    return " ".join(out)
+
+
 _CJK_RE = re.compile(r"[\u4e00-\u9fff]")
 
 
@@ -209,12 +236,17 @@ def _match_signal(text: str, signal: RiskSignal) -> Tuple[Optional[str], Optiona
     if not text:
         return None, None
     negated_form: Optional[str] = None
+    en_texts = [text]
+    normalized = _normalize_for_matching(text)
+    if normalized != text:
+        en_texts.append(normalized)
     for form in signal.en:
-        hit = _find_signal(text, form)
-        if hit == "affirmed":
-            return form, "affirmed"
-        if hit == "negated" and negated_form is None:
-            negated_form = form
+        for candidate in en_texts:
+            hit = _find_signal(candidate, form)
+            if hit == "affirmed":
+                return form, "affirmed"
+            if hit == "negated" and negated_form is None:
+                negated_form = form
     if _CJK_RE.search(text):
         for form in signal.zh:
             hit = _find_signal_zh(text, form)
@@ -259,7 +291,6 @@ class RiskAgent(Agent):
             )
 
     def _run(self, ctx: AgentContext) -> AgentMessage:
-        # Extract inputs from state, memory, and raw message
         state_payload = ctx.state_output or {}
         if not isinstance(state_payload, dict):
             state_payload = {}
@@ -275,8 +306,6 @@ class RiskAgent(Agent):
         medical_history = str(static_traits.get("medical_history", "")).strip()
         unknown_info = state_payload.get("unknown_information", []) or []
 
-        # 1. Scan for explicit HIGH-RISK signals (language-aware concept matching;
-        #    negation-aware per language for client-authored text)
         high_signals: List[str] = []
         negated_signals: List[str] = []
         for signal in RISK_SIGNALS:
@@ -290,9 +319,6 @@ class RiskAgent(Agent):
                     high_signals.append(f"{label}:'{form}'")
                 elif hit == "negated":
                     negated_signals.append(f"negated:{label}:'{form}'")
-            # Note: in medical_history, check if it's an affirmative risk (e.g. past attempt)
-            # rather than a negated mention (e.g. "no prior attempts"). Uses the same
-            # language-aware concept matching so Chinese histories are not blind.
             if medical_history:
                 form, hit = _match_signal(medical_history, signal)
                 if hit == "affirmed":
@@ -317,7 +343,6 @@ class RiskAgent(Agent):
                 payload=payload,
             )
 
-        # 2. Check for UNCERTAIN safety status (safety status missing / unverified)
         safety_status_missing = False
         for item in unknown_info:
             item_str = str(item).lower()
@@ -326,12 +351,9 @@ class RiskAgent(Agent):
                 break
 
         if not medical_history or medical_history.lower() in ("(unavailable)", "not mentioned", "unknown"):
-            # If medical history is explicitly not populated or unknown in the context
             if any("medical_history" in str(x) for x in unknown_info) or any("medical_history" in str(x) for x in (ctx.metadata.get("missing_information") or [])):
                 safety_status_missing = True
 
-        # 3. Scan for MODERATE distress / functional impairment signals
-        #    (language-aware concept matching; affirmed matches only)
         moderate_signals: List[str] = []
         for signal in RISK_SIGNALS:
             if signal.severity != "MODERATE":
@@ -383,7 +405,6 @@ class RiskAgent(Agent):
                 payload=payload,
             )
 
-        # 4. NO EVIDENCE
         evidence = ["NO EVIDENCE: No risk or crisis signals detected in current message, state, or memory context"]
         if negated_signals:
             evidence.append(

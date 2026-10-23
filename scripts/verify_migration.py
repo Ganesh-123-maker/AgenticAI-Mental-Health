@@ -50,7 +50,7 @@ def _sha256(path: Path) -> str:
     return h.hexdigest()
 
 
-REPO_ROOT = DEFAULT_REPO_ROOT  # overridden by --repo-root in main()
+REPO_ROOT = DEFAULT_REPO_ROOT
 
 
 def _base_files(base_dir: Path) -> list[Path]:
@@ -131,7 +131,6 @@ def cmd_verify(args: argparse.Namespace) -> int:
     for pt in files:
         rel = str(pt.relative_to(REPO_ROOT))
         checked += 1
-        # 1. original unchanged
         exp = expected.get(rel)
         if exp is None:
             failures.append(f"{rel}: not in hash manifest")
@@ -140,7 +139,6 @@ def cmd_verify(args: argparse.Namespace) -> int:
         if actual_hash != exp["sha256"]:
             failures.append(f"{rel}: ORIGINAL MODIFIED (hash mismatch)")
             continue
-        # 2. keyed store exists
         keyed = pt.parent / keyed_name
         if not keyed.exists():
             failures.append(f"{rel}: keyed store {keyed_name} missing")
@@ -150,7 +148,6 @@ def cmd_verify(args: argparse.Namespace) -> int:
         except Exception as exc:  # noqa: BLE001
             failures.append(f"{rel}: keyed store unreadable: {type(exc).__name__}")
             continue
-        # 3. provenance matches config
         prov = store.pop("_provenance", None)
         if not isinstance(prov, dict):
             failures.append(f"{rel}: keyed store has no _provenance")
@@ -161,7 +158,6 @@ def cmd_verify(args: argparse.Namespace) -> int:
         if str(prov.get("embedding_provider")) != provider:
             failures.append(f"{rel}: provenance provider mismatch")
             continue
-        # 4. vectors valid, dims match, skill ids correspond
         base_skills = {k for k, v in _load_pt(pt).items() if isinstance(v, dict)}
         store_skills = {k for k, v in store.items() if isinstance(v, dict)}
         if base_skills != store_skills:
@@ -192,7 +188,6 @@ def cmd_verify(args: argparse.Namespace) -> int:
 
 
 def _cfg_get(cfg, name: str, default):
-    # Tolerant of trees where the new schema fields are not yet present.
     return getattr(cfg, name, default)
 
 

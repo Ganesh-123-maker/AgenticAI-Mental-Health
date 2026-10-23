@@ -97,7 +97,6 @@ class RatePacer:
             if delay > 0:
                 await asyncio.sleep(delay)
             self._last = asyncio.get_running_loop().time()
-            # Slow relax toward the base interval after each successful wait.
             if self.interval > self.base_interval:
                 self.interval = max(self.base_interval, self.interval * 0.95)
 
@@ -192,21 +191,61 @@ def _lock_token() -> str:
     return f"{os.getpid()}-{uuid.uuid4().hex[:8]}"
 
 
+def _pid_is_running(pid: object) -> bool:
+    """True if pid refers to a currently-running process. No signal is sent.
+
+    Windows: os.kill(pid, 0) is NOT used — on Windows signal 0 goes down the
+    Ctrl+C event path instead of acting as an existence check, and has been
+    observed killing the calling pytest process with KeyboardInterrupt.
+    Uses the native process API instead: OpenProcess with
+    PROCESS_QUERY_LIMITED_INFORMATION (0x1000), then GetExitCodeProcess;
+    only STILL_ACTIVE (259) counts as running. A process that exists but
+    cannot be opened (ERROR_ACCESS_DENIED = 5) is treated as alive.
+    POSIX: os.kill(pid, 0) delivers no signal; PermissionError means the
+    process exists but we may not signal it, so it counts as alive.
+    """
+    if not isinstance(pid, int) or pid <= 0:
+        return False
+    if os.name == "nt":
+        import ctypes
+        kernel32 = ctypes.WinDLL("kernel32", use_last_error=True)
+        kernel32.OpenProcess.restype = ctypes.wintypes.HANDLE
+        kernel32.OpenProcess.argtypes = (ctypes.wintypes.DWORD,
+                                         ctypes.wintypes.BOOL,
+                                         ctypes.wintypes.DWORD)
+        kernel32.GetExitCodeProcess.restype = ctypes.wintypes.BOOL
+        kernel32.GetExitCodeProcess.argtypes = (
+            ctypes.wintypes.HANDLE,
+            ctypes.POINTER(ctypes.wintypes.DWORD))
+        kernel32.CloseHandle.restype = ctypes.wintypes.BOOL
+        kernel32.CloseHandle.argtypes = (ctypes.wintypes.HANDLE,)
+        handle = kernel32.OpenProcess(0x1000, False, pid)
+        if not handle:
+            return ctypes.get_last_error() == 5
+        try:
+            code = ctypes.wintypes.DWORD()
+            if not kernel32.GetExitCodeProcess(handle, ctypes.byref(code)):
+                return False
+            return code.value == 259
+        finally:
+            kernel32.CloseHandle(handle)
+    try:
+        os.kill(pid, 0)
+        return True
+    except PermissionError:
+        return True
+    except (ProcessLookupError, OSError):
+        return False
+
+
 def _lock_owner_alive(info: dict) -> bool:
     """True if the lock records a currently-running process.
 
-    os.kill(pid, 0) is an existence check on both POSIX and Windows
-    (no signal is delivered). A live owner is NEVER displaced, no matter
-    how old the lock is.
+    Delegates to _pid_is_running (native API on Windows, os.kill(pid, 0)
+    on POSIX). A live owner is NEVER displaced, no matter how old the
+    lock is.
     """
-    pid = info.get("pid")
-    if isinstance(pid, int) and pid > 0:
-        try:
-            os.kill(pid, 0)
-            return True
-        except (OSError, ProcessLookupError):
-            return False
-    return False
+    return _pid_is_running(info.get("pid"))
 
 
 def _acquire_lock(lock_path: Path, race_timeout_sec: float = 30.0) -> str:
@@ -250,11 +289,10 @@ def _acquire_lock(lock_path: Path, race_timeout_sec: float = 30.0) -> str:
                 f"{info.get('at', 'unknown')}, age {age:.0f}s). Delete it "
                 f"only if no migration is running.")
 
-        # Stale lock: compare-and-swap takeover.
         try:
             before = lock_path.read_bytes()
         except OSError:
-            continue  # vanished between checks; retry the atomic create
+            continue
         tmp = lock_path.with_name(f"{lock_path.name}.{os.getpid()}.tmp")
         try:
             tmp.write_text(payload, encoding="utf-8")
@@ -263,14 +301,13 @@ def _acquire_lock(lock_path: Path, race_timeout_sec: float = 30.0) -> str:
             except OSError:
                 unchanged = False
             if not unchanged:
-                continue  # someone else acted; re-evaluate from the top
+                continue
             os.replace(str(tmp), str(lock_path))
         finally:
             try:
                 tmp.unlink()
             except OSError:
                 pass
-        # Confirm we still own it after the replace (closes the race window).
         time.sleep(0.05)
         try:
             cur = json.loads(lock_path.read_text(encoding="utf-8"))
@@ -285,7 +322,6 @@ def _acquire_lock(lock_path: Path, race_timeout_sec: float = 30.0) -> str:
             raise RuntimeError(
                 f"could not acquire lock {lock_path.name}: lost a takeover "
                 f"race. Another process may be starting; retry the command.")
-        # Lost the race; loop and re-evaluate (likely a live lock now).
 
 
 def _release_lock(lock_path: Path, token: str | None = None) -> None:
@@ -416,7 +452,6 @@ async def _migrate_one(manager: SkillManager, pt_path: Path, dry_run: bool,
     source_hash = _sha256_file(pt_path)
     provenance = manager._build_provenance(source_hash, len(skill_ids))
 
-    # Build texts (merge + retrieve are different texts; measured unique).
     merge_texts, retrieve_texts = [], []
     for sid in skill_ids:
         m, r = _skill_texts(skills[sid])
@@ -430,7 +465,6 @@ async def _migrate_one(manager: SkillManager, pt_path: Path, dry_run: bool,
     merge_batches = _batches(merge_texts)
     retrieve_batches = _batches(retrieve_texts)
     total_batches = len(merge_batches) + len(retrieve_batches)
-    # Self-check: the executed batching must match the demand estimate.
     expected = _file_batch_count(len(skill_ids), batch_size)
     if total_batches != expected:
         raise RuntimeError(
@@ -443,18 +477,11 @@ async def _migrate_one(manager: SkillManager, pt_path: Path, dry_run: bool,
     if dry_run:
         return {**stats, "status": "dry-run (no API calls, no writes)"}
 
-    # Resumability: completed keyed store with matching provenance.
     if keyed_path.exists():
         try:
             existing = torch.load(str(keyed_path), weights_only=False)
             if isinstance(existing, dict) and manager._provenance_matches(
                     existing.get("_provenance")):
-                # Validate only the expected skill ids: the keyed store also
-                # carries a "_provenance" entry, which must not be treated as
-                # a skill (v6 fix: the old existing.values() comprehension hit
-                # the provenance dict, raised KeyError, and the surrounding
-                # `except Exception: pass` silently disabled this skip path,
-                # so completed files were re-embedded on every run).
                 problem = _validate_vectors(
                     [existing[sid]["embedding_to_merge"] for sid in skill_ids
                      if isinstance(existing.get(sid), dict)],
@@ -463,12 +490,6 @@ async def _migrate_one(manager: SkillManager, pt_path: Path, dry_run: bool,
                     return {**stats, "status": "skipped (valid store present)"}
         except Exception:
             pass
-
-    # Lock against concurrent runs sharing the quota. Released in the
-    # finally block below, which also covers exceptions, KeyboardInterrupt
-    # and asyncio.CancelledError. The owner token prevents us from deleting
-    # another process's lock after a stale takeover.
-    lock_token = _acquire_lock(lock_path)
 
     checkpoint = ShardCheckpoint(keyed_path, source_hash, provenance,
                                  skill_ids, total_batches)
@@ -479,9 +500,10 @@ async def _migrate_one(manager: SkillManager, pt_path: Path, dry_run: bool,
             "resuming %s: %d/%d batches already done", keyed_path.name, reused, total_batches)
 
     dim = max(1, int(manager._runtime.psychagent_embedding_dimensions))
+
+    lock_token = _acquire_lock(lock_path)
     try:
         batch_idx = 0
-        # Order of batch indices: merge batches 0..M-1, retrieve batches M..M+R-1
         for batch in merge_batches:
             if batch_idx not in checkpoint.done:
                 await pacer.wait()
@@ -526,13 +548,9 @@ async def _migrate_one(manager: SkillManager, pt_path: Path, dry_run: bool,
     except Exception as exc:  # noqa: BLE001 - per-file failure, keep going
         msg = _redact(f"{type(exc).__name__}: {exc}", env_name)
         if "daily quota" in msg.lower():
-            # Abort the whole run: retrying sooner is pointless.
             raise DailyQuotaExhausted(msg[:220])
         return {**stats, "status": f"FAILED: {msg[:220]}"}
     finally:
-        # Always release the lock: success, failure, KeyboardInterrupt,
-        # asyncio.CancelledError. Stale locks from killed processes are
-        # detected on acquire.
         _release_lock(lock_path, lock_token)
 
 
@@ -599,7 +617,6 @@ async def _run(args: argparse.Namespace) -> int:
           f" -> interval {pacer.interval:.2f}s/request")
     if total_batches:
         cons_minutes = total_batches * pacer.interval / 60.0
-        # Optimistic duration under RPM pacing alone (no TPM binding).
         opt_interval = 60.0 / max(1.0, float(args.rpm))
         opt_minutes = total_batches * opt_interval / 60.0
         print(f"projected duration: ~{opt_minutes:.0f} min (optimistic) / "
@@ -607,8 +624,9 @@ async def _run(args: argparse.Namespace) -> int:
               f"({total_batches/1000*100:.0f}% of 1000/day free-tier requests)")
     print(f"target suffix .{manager._embedding_store_key()}.pt | "
           "originals are never modified; output goes to separate keyed files")
-    if args.rpd and total_batches > args.rpd:
-        print(f"FAIL: {total_batches} requests exceed --rpd {args.rpd}; refusing to start")
+    if args.rpd and total_texts > args.rpd:
+        print(f"FAIL: {total_texts} texts exceed --rpd {args.rpd}; refusing to start "
+              f"({total_batches} HTTP batches; Gemini bills quota per text, not per batch)")
         return 2
 
     if args.dry_run:
@@ -666,7 +684,8 @@ def main() -> int:
     ap.add_argument("--tpm", type=float, default=25000.0,
                     help="max estimated tokens per minute (default 25000; free-tier quota is 30000/min)")
     ap.add_argument("--rpd", type=float, default=1000.0,
-                    help="refuse to start if projected requests exceed this per-day budget (default 1000)")
+                    help="refuse to start if projected texts exceed this per-day budget "
+                         "(default 1000; Gemini counts each text, not each HTTP batch)")
     ap.add_argument("--token-multiplier", type=float, default=1.0,
                     help="headroom multiplier on the conservative CJK-aware token estimate (default 1.0; must be > 0)")
     args = ap.parse_args()
@@ -683,6 +702,5 @@ if __name__ == "__main__":
     try:
         sys.exit(main())
     except KeyboardInterrupt:
-        # Shard checkpoints are atomic per batch; re-running resumes cleanly.
         print("\ninterrupted by user; completed batches are checkpointed, re-run to resume")
         sys.exit(130)

@@ -2,116 +2,116 @@
   "basic_info": {
     "static_traits": {
       "age": "31",
-      "name": "张凯",
-      "gender": "男",
-      "occupation": "学生",
-      "educational_background": "本科在读",
-      "marital_status": "单身",
-      "family_status": "独居，远离家人",
-      "social_status": "有少数可交谈的朋友，但不愿就财务与学业困境进行分享，部分关系出现紧张",
-      "medical_history": "无重大躯体疾病；此前未接受心理治疗或存在其他心理问题；此前未经历相似问题",
-      "language_features": "未提及"
+      "name": "Zhang Kai",
+      "gender": "Male",
+      "occupation": "Student",
+      "educational_background": "Currently studying for a bachelor's degree",
+      "marital_status": "Single",
+      "family_status": "Living alone, far from family",
+      "social_status": "Has a few friends to talk to, but unwilling to share financial and academic struggles, with tension in some relationships",
+      "medical_history": "No major physical illness; no psychotherapy received before or other psychological issues; no similar problems experienced before",
+      "language_features": "Not mentioned"
     },
-    "main_problem": "因财务状况与学业表现而感到不堪重负和压力；过去一学期在意识到部分课程不及格、债务不断累积后，焦虑显著加重，几乎每天在收到成绩或债务通知时出现强烈焦虑；尝试忽视问题但只会增加焦虑与压力。",
-    "topic": "学业压力",
-    "core_demands": "因感到不堪重负、无法独自应对学业与财务困境而寻求咨询，希望获得支持以缓解压力并提升应对能力。",
+    "main_problem": "Feeling overwhelmed and stressed about finances and academic performance; last semester, after realizing some courses were being failed and debts kept accumulating, Anxiety worsened markedly, with intense Anxiety almost daily when Receiving grades or debt notices; trying to ignore the problems only increases Anxiety and stress.",
+    "topic": "Academic pressure",
+    "core_demands": "Seeking counseling because feeling overwhelmed and unable to cope with academic and financial difficulties alone, hoping for support to relieve stress and improve coping.",
     "growth_experiences": [
-      "在过去一学期，来访者意识到部分课程不及格，同时债务不断累积，感觉一切失控。每当收到成绩或债务通知，焦虑飙升，开始认为“没有出路”，每日担忧未来与债务管理、学业负担，引发学业受影响、人际关系紧张与日常节律被打乱。来访者尝试通过忽视问题来应对，但焦虑与压力反而加重。"
+      "Last semester, the client realized some courses were being failed while debts kept accumulating, feeling everything was out of control. Whenever Receiving grades or debt notices, Anxiety spikes, with thoughts of 'there is no way out'; daily worries about the future, debt management, and academic load trigger Academics affected, Interpersonal tension, and Daily rhythm disrupted. The client tries to cope by ignoring the problems, but Anxiety and stress only worsen."
     ]
   },
   "theory": {
     "cbt": {
       "core_beliefs": [
-        "我没有能力应对学业与财务问题",
-        "我的未来会被失败和债务毁掉"
+        "I lack the ability to handle academic and financial problems",
+        "My future will be ruined by failure and debt"
       ],
       "special_situations": [
         {
-          "event": "收到成绩或债务通知",
-          "conditional_assumptions": "如果一次评估表现不好或出现债务，就说明我没有能力，未来会被毁掉",
-          "compensatory_strategies": "回避与忽视账单或成绩信息，以暂时降低焦虑",
-          "automatic_thoughts": "我会一直被债务困住，这学期完了",
+          "event": "Receiving grades or debt notices",
+          "conditional_assumptions": "If one evaluation goes poorly or debts appear, it means I lack ability and my future will be ruined",
+          "compensatory_strategies": "Avoiding and ignoring bills or grade information to temporarily lower Anxiety",
+          "automatic_thoughts": "I will always be trapped by debt; this semester is over",
           "cognitive_pattern": "Catastrophizing"
         },
         {
-          "event": "意识到部分课程不及格",
-          "conditional_assumptions": "如果我挂了一门课，就等于我会全部失败，说明我不行",
-          "compensatory_strategies": "专注最坏结果、陷入惊慌而不去利用可用资源（如加分、辅导）",
-          "automatic_thoughts": "我会把所有课都挂掉，之后一切都完了",
+          "event": "Realizing some courses are being failed",
+          "conditional_assumptions": "If I fail one course, it means I will fail everything, showing I am not good enough",
+          "compensatory_strategies": "Focusing on the worst outcome, panicking instead of using available resources (e.g., extra credit, tutoring)",
+          "automatic_thoughts": "I will fail all my courses, and after that everything is over",
           "cognitive_pattern": "All-or-Nothing Thinking"
         },
         {
-          "event": "审视自身的收入与负债（年薪约10万美元，负债约2万美元）",
-          "conditional_assumptions": "只要存在负债，就意味着我失败并正在被债务毁掉",
-          "compensatory_strategies": "忽视积极面（稳定收入与还款能力），将注意力仅集中在负债上",
-          "automatic_thoughts": "我赚10万/年却有2万债务，这正在毁了我",
+          "event": "Examines own income and debt (annual salary about $100,000, debt about $20,000)",
+          "conditional_assumptions": "As long as debt exists, it means I am a failure and am being destroyed by debt",
+          "compensatory_strategies": "Ignores the positives (stable income and repayment ability), focusing attention only on the debt",
+          "automatic_thoughts": "I earn 100k a year but have 20k in debt, and this is ruining me",
           "cognitive_pattern": "Disqualifying the Positive"
         },
         {
-          "event": "在一次项目评估前（此前认为会失败）",
-          "conditional_assumptions": "如果我感觉自己没准备好，就必然会失败",
-          "compensatory_strategies": "在当下陷入恐慌，难以进行平衡思考",
-          "automatic_thoughts": "我肯定会挂这个项目",
+          "event": "Before a project evaluation (previously believed it would fail)",
+          "conditional_assumptions": "If I feel not ready, I am bound to fail",
+          "compensatory_strategies": "Panics in the present moment, finds balanced thinking difficult",
+          "automatic_thoughts": "I will definitely fail this project",
           "cognitive_pattern": "Fortune Telling"
         }
       ]
     },
     "pdt": {
       "core_conflict": {
-        "wish": "渴望重新获得对学业与财务的掌控与稳定，减轻焦虑并得到支持",
-        "fear": "害怕失败、被债务长期困住、未来失控",
+        "wish": "Longing to regain control and stability over academics and finances, easing Anxiety and receiving support",
+        "fear": "Fear of failure, being trapped by debt long-term, and a future out of control",
         "defense_goal": [
-          "通过回避与忽视不利信息来暂时降低焦虑、维持心理稳定"
+          "Temporarily lowering Anxiety and maintaining psychological stability by avoiding and ignoring unfavorable information"
         ]
       },
       "object_relations": [
         {
-          "self_representation": "被压力裹挟的孤立者与可能失败者",
-          "object_representation": "外界（教授、债务机构）被体验为严苛的评判者或持续的压力来源",
-          "linking_affect": "焦虑、无助感、羞愧"
+          "self_representation": "An isolated person swept up by stress and a possible failure",
+          "object_representation": "The outside (professors, debt agencies) is experienced as harsh judges or a continuous source of pressure",
+          "linking_affect": "Anxiety, helplessness, shame"
         }
       ],
       "behavioral_response_patterns": [
         {
-          "trigger_condition": "当被提醒或询问学业成绩、债务状况（如收到教授反馈或债务通知）时",
-          "interpretation": "将这些外界信息理解为对自身能力的否定与“失败判决”，感觉一切已失控",
-          "defense_mechanism": "否认",
-          "response_instruction": "倾向快速跳过细节，以笼统表述“没什么”，或说“我不想谈这个”，语气紧张但试图保持冷静；如被追问，转移到更一般的话题。"
+          "trigger_condition": "When reminded of or asked about academic grades and debt status (such as receiving professor feedback or a debt notice)",
+          "interpretation": "Interpreting this external information as negation of my abilities and a 'failure verdict', feeling everything is out of control",
+          "defense_mechanism": "deny",
+          "response_instruction": "Tending to skip details quickly, speaking vaguely of 'nothing much', or saying 'I do not want to talk about this', in a tense but ostensibly calm tone; when pressed, Displacement to more Average topics."
         }
       ]
     },
     "het": {
       "existentialism_topic": [
         {
-          "theme": "自由",
+          "theme": "Freedom",
           "manifestations": [
-            "在财务负担与学业压力中感到选择与掌控受限",
-            "每日担忧未来与债务管理，体验“没有出路”"
+            "Feeling choice and control constrained under financial burden and Academic pressure",
+            "Daily worries about the future and debt management, experiencing 'no way out'"
           ],
           "outcomes": [
-            "持续焦虑与不堪重负",
-            "日常节律被打乱"
+            "Persistent anxiety and feeling overwhelmed",
+            "Daily rhythm disrupted"
           ]
         },
         {
-          "theme": "孤独",
+          "theme": "Loneliness",
           "manifestations": [
-            "独居，远离家人",
-            "不愿与朋友讨论财务与学业困境",
-            "人际关系出现紧张"
+            "Living alone, far from family",
+            "Unwilling to discuss financial and academic struggles with friends",
+            "Tension in Interpersonal relationships"
           ],
           "outcomes": [
-            "支持感不足、压力加剧",
-            "焦虑增加"
+            "Insufficient sense of support, Increasing stress",
+            "Increased anxiety"
           ]
         }
       ],
       "contact_model": [
         {
-          "mode": "偏转",
-          "definition": "个体忽略或避开来自内部或外部环境的某个刺激，有意避免直接接触",
+          "mode": "Deflection",
+          "definition": "The individual ignores or avoids a stimulus from the internal or external environment, deliberately avoiding direct contact",
           "manifestations": [
-            "尝试忽视问题（账单、成绩等），以避免直接面对焦虑源"
+            "Trying to ignore problems (bills, grades, etc.) to avoid directly facing Anxiety triggers"
           ]
         }
       ]
@@ -119,38 +119,38 @@
     "pmt": {
       "exception_events": [
         {
-          "target_problem": "在面对课程项目或考试时，来访者通常会灾难化地认为必然失败，随之出现惊慌并难以专注",
-          "unique_outcome": "有一次在项目开始前确信自己会失败，但最终通过并拿到尚可的成绩",
-          "reason": "线索：尽管当下恐慌，仍完成项目任务；实际成绩反馈显示最坏结果并非唯一可能，由此形成可供自我纠偏的证据。"
+          "target_problem": "When facing course projects or exams, the client usually catastrophizes that they will inevitably fail, followed by panic and difficulty concentrating",
+          "unique_outcome": "Once, before a project began, was convinced they would fail, but ultimately passed and got a decent grade",
+          "reason": "Clue: although panicking at the moment, still completed the project tasks; actual grade feedback shows the worst outcome is not the only possibility, thereby forming evidence usable for self-correction."
         }
       ],
       "force_field": {
         "positive_force": [
-          "曾在部分作业与其他课程考试中表现尚可，说明具备一定学习能力",
-          "某次项目最终通过，为“担忧不等于现实”的反证资源",
-          "愿意主动寻求咨询支持，态度积极",
-          "拥有较高收入（年薪约10万），具备债务偿还潜力"
+          "Has performed acceptably in some assignments and other course exams, showing a certain learning ability",
+          "A past project that was eventually passed, serving as counter-evidence that 'worry does not equal reality'",
+          "Willing to proactively seek counseling support; positive attitude",
+          "Has a relatively high income (annual salary about 100,000), with debt repayment potential"
         ],
         "negative_force": [
-          "灾难化、心理过滤、否定正面等认知偏差显著",
-          "收到成绩或债务提醒时强烈焦虑，容易跳到最坏结果",
-          "倾向回避问题（尝试忽视账单与成绩），导致焦虑加重",
-          "不愿与朋友讨论困境，社交支持使用不足",
-          "学业压力与财务负担同时存在，形成双重压力"
+          "Marked cognitive biases: catastrophizing, mental filtering, negating the positive, etc.",
+          "Intense Anxiety when Receiving grades or debt reminders, easily jumping to the worst outcome",
+          "Tending to avoid problems (trying to ignore bills and grades), leading to worsened Anxiety",
+          "Unwilling to discuss struggles with friends, with insufficient use of social support",
+          "Academic pressure and financial burden coexisting, forming double pressure"
         ]
       }
     },
     "bt": {
       "target_behavior": [
         {
-          "behavior": "在收到成绩或债务相关信息时出现强烈焦虑与恐慌，并回避查看或处理相关事宜",
+          "behavior": "Intense Anxiety and panic when Receiving grades or debt-related information, avoiding checking or handling such matters",
           "antecedent": [
-            "收到成绩反馈或债务通知",
-            "想到学业进度与债务状况"
+            "Receiving grades feedback or debt notices",
+            "Thinking about academic progress and debt status"
           ],
-          "core_reason": "在成功压力与财务负担下形成的灾难化认知与过度负面关注（心理过滤），担心“没有出路”",
-          "function": "短期逃避不适与焦虑，试图通过回避信息获得暂时的心理缓解",
-          "consequence": "学业表现下降、人际关系紧张、日常生活被打乱，焦虑与压力持续加重"
+          "core_reason": "Catastrophic cognitions and excessive negative focus (mental filtering) formed under performance pressure and financial burden, fearing 'no way out'",
+          "function": "Short-term escape from discomfort and Anxiety, trying to gain temporary psychological relief by avoiding information",
+          "consequence": "Declining academic performance, Interpersonal tension, disrupted daily life, continuously worsening Anxiety and stress"
         }
       ]
     }

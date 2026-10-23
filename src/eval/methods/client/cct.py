@@ -1,15 +1,13 @@
-from typing import Any, Dict
-import re
 import asyncio
+import json
+from typing import Any, List
 
+from jinja2 import Template
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 from ...core.base import EvaluationMethod
 from ...utils import load_prompt
-from jinja2 import Template
-import json
 
-from typing import List
-from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 class Item(BaseModel):
     model_config = ConfigDict(extra="forbid", strict=True)
@@ -80,7 +78,7 @@ class CCT(EvaluationMethod):
         mean_score = 0.0
         if scores:
             for item in scores:
-                mean_score += float(item.score) / 2.0 * 10.0  # 0-2 -> 0-10
+                mean_score += float(item.score) / 2.0 * 10.0
             mean_score /= len(scores)
 
         return {"client": mean_score}

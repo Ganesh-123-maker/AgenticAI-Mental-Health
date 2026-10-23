@@ -55,7 +55,7 @@ def _safety_profile_two_gaps():
 def test_resolved_item_disappears_from_active_state():
     """Turn 1 resolves growth_experiences -> turn 2 state no longer contains it."""
     profile, main_problem = _safety_profile_two_gaps()
-    msg = "我最近不堪重负，整夜失眠。" + main_problem
+    msg = "I have been feeling overwhelmed lately and have insomnia all night." + main_problem
     ctx = _base_ctx(msg, profile)
     assert any("growth_experiences" in m for m in ctx.uncertainty_output["missing_information"])
 
@@ -75,7 +75,7 @@ def test_resolved_item_disappears_from_active_state():
 def test_unresolved_item_persists_to_next_turn():
     """Turn 1 leaves medical_history unanswered -> turn 2 still targets it."""
     profile, main_problem = _safety_profile_two_gaps()
-    msg = "我最近不堪重负，整夜失眠。" + main_problem
+    msg = "I have been feeling overwhelmed lately and have insomnia all night." + main_problem
     ctx = _base_ctx(msg, profile)
 
     r1 = ReassessmentAgent().run(
@@ -94,9 +94,7 @@ def test_unresolved_item_persists_to_next_turn():
 def test_new_uncertainty_discovered_is_preserved():
     """A newly discovered uncertainty type in reassessment reaches turn 2."""
     profile, main_problem = _safety_profile_two_gaps()
-    ctx = _base_ctx("我最近不堪重负。" + main_problem, profile)
-    # Simulate reassessment: safety gap resolved, but a contradiction was
-    # discovered in the answer. Turn 2 must target the contradiction.
+    ctx = _base_ctx("I have been feeling overwhelmed lately." + main_problem, profile)
     r1 = {
         "uncertainty": {
             **ctx.uncertainty_output,
@@ -123,7 +121,7 @@ def test_new_uncertainty_discovered_is_preserved():
 def test_irrelevant_answer_keeps_item_in_state():
     """An irrelevant answer must not remove the item from the active state."""
     profile, main_problem = _safety_profile_two_gaps()
-    msg = "我最近不堪重负，整夜失眠。" + main_problem
+    msg = "I have been feeling overwhelmed lately and have insomnia all night." + main_problem
     ctx = _base_ctx(msg, profile)
 
     r1 = ReassessmentAgent().run(ctx, clarification_answer="The weather is nice today.").payload
@@ -140,7 +138,6 @@ def test_risk_state_refreshed_for_prioritization():
     profile, main_problem = _safety_profile_two_gaps()
     ctx = _base_ctx("Work has been fine lately. " + main_problem, profile)
     assert ctx.risk_output["severity"] == "LOW"
-    # Reassessment re-ran risk on an answer containing distress -> MODERATE.
     r1 = {
         "uncertainty": ctx.uncertainty_output,
         "risk": {"severity": "MODERATE", "risk_status": "SUSPECTED_RISK", "evidence": ["distress in answer"]},
@@ -161,17 +158,14 @@ def test_risk_state_refreshed_for_prioritization():
 def test_multi_turn_terminates_when_resolved():
     """Two genuine answers across two turns -> CLEAR, loop terminates."""
     profile, main_problem = _safety_profile_two_gaps()
-    msg = "我最近不堪重负，整夜失眠。" + main_problem
+    msg = "I have been feeling overwhelmed lately and have insomnia all night." + main_problem
 
-    # Turn 1 via pipeline: answer addresses medical_history genuinely.
     ctx1 = _base_ctx(msg, profile, case_id="term_t1")
     r1 = run_pipeline(
         ctx1,
         clarification_answer="No, I have never had any mental health treatment before.",
         max_reassess_turns=2,
     )
-    # medical_history resolved; growth_experiences (non-safety) remains at
-    # MODERATE -> CLEAR per risk-aware rule; loop terminates.
     assert r1["route"] == "CLEAR"
     assert r1["reassess_count"] <= 2
     print("[PASS] Multi-turn loop terminates when resolved.")
@@ -180,7 +174,7 @@ def test_multi_turn_terminates_when_resolved():
 def test_no_infinite_loop_on_persistent_deflection():
     """Repeated irrelevant answers cannot loop forever (cap respected)."""
     profile, main_problem = _safety_profile_two_gaps()
-    msg = "我最近不堪重负，整夜失眠。" + main_problem
+    msg = "I have been feeling overwhelmed lately and have insomnia all night." + main_problem
     ctx = _base_ctx(msg, profile, case_id="term_t2")
     r = run_pipeline(
         ctx,
@@ -195,7 +189,7 @@ def test_no_infinite_loop_on_persistent_deflection():
 def test_existing_severity_behavior_unchanged():
     """HIGH/MODERATE/LOW pipeline behavior intact after state propagation."""
     base = dict(modality="cbt", therapy_stage="Problem Conceptualization and Goal Setting", full_profile={})
-    r_high = run_pipeline(AgentContext(case_id="sev_h", current_message="我最近一直想自杀。", **base))
+    r_high = run_pipeline(AgentContext(case_id="sev_h", current_message="I have been thinking about suicide lately.", **base))
     assert r_high["route"] == "HIGH-RISK"
     r_low = run_pipeline(
         AgentContext(case_id="sev_l", current_message="I would like to discuss recent matters at work.", **base),

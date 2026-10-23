@@ -2,131 +2,131 @@
   "basic_info": {
     "static_traits": {
       "age": "40",
-      "name": "张晨",
-      "gender": "男",
-      "occupation": "学生",
-      "educational_background": "在读本科",
-      "marital_status": "单身",
-      "family_status": "未提及",
-      "social_status": "有支持性的朋友与家人愿意倾听，但不完全理解其与驾驶相关的焦虑程度；因回避涉及驾车的社交活动，人际关系受到影响。",
-      "medical_history": "两年前经历第二次车祸，曾有身体伤害并处于恢复期；无重大躯体疾病；此前未出现类似心理问题，未接受过心理治疗。",
-      "language_features": "表达清晰、有条理，能具体描述触发情境与自动化思维；配合度高、态度积极；具备自我观察，但存在灾难化、预测未来与过度概括的倾向。"
+      "name": "Zhang Chen",
+      "gender": "Male",
+      "occupation": "Student",
+      "educational_background": "Currently pursuing a Bachelor's degree",
+      "marital_status": "Single",
+      "family_status": "Not mentioned",
+      "social_status": "Having supportive friends and family willing to Listening, but not fully understanding the degree of driving-related Anxiety; avoiding social activities involving driving has affected Interpersonal relationships.",
+      "medical_history": "Experienced a second car accident two years ago, had physical injuries and was in Recovery; No major physical illness; no similar psychological problems before, no psychotherapy received before.",
+      "language_features": "Clear and organized expression, able to describe trigger situations and automatic thoughts specifically; highly cooperative, Positive attitude; capable of self-observation, but with tendencies toward catastrophizing, predicting the future, and overgeneralization."
     },
-    "main_problem": "我不断出现“我很快会再次发生车祸”的想法，这些想法引发焦虑与恐惧，并逐渐导致我尽可能回避驾驶或乘车，影响学习、社交与日常生活。",
-    "topic": "情绪管理",
-    "core_demands": "因为与驾驶相关的恐惧和焦虑影响了学业表现与社交生活，期望通过咨询减轻这些想法与情绪的影响，恢复日常功能。",
+    "main_problem": "I keep having the thought 'I will soon get into another car accident'; these thoughts trigger Anxiety and Fear, and gradually lead me to Avoids driving or riding in cars as much as possible, affecting Learning, social life, and daily life.",
+    "topic": "Emotion management",
+    "core_demands": "Because driving-related Fear and Anxiety affect academic performance and social life, hoping to reduce the impact of these thoughts and emotions through counseling and Recover daily functioning.",
     "growth_experiences": [
-      "来访者曾发生两次车祸（最近一次在两年前），在第二次车祸后进入身体伤害的恢复期，压力显著升高；此后开始持续担忧再次发生车祸，看到汽车或想到驾驶便激发强烈恐惧，并逐渐回避驾驶或乘车，导致学业表现下降、社交活动减少、日常事务受影响。"
+      "The client has had two car accidents (the most recent two years ago); after the second accident he entered a recovery period for physical injuries, and stress rose markedly; since then he began persistently worrying about another car accident occurring; seeing cars or thinking about driving triggers strong fear, and he gradually avoids driving or riding in cars, leading to declining academic performance, reduced social activities, and daily affairs being affected."
     ]
   },
   "theory": {
     "cbt": {
       "core_beliefs": [
-        "坏事（灾难）会再次发生在我身上",
-        "我无法保证自己的行车安全"
+        "Bad things (disasters) will happen to me again",
+        "I cannot guarantee my driving safety"
       ],
       "special_situations": [
         {
-          "event": "看到道路上的汽车或想到驾驶",
-          "conditional_assumptions": "如果我开车，几乎必然会再次发生严重车祸",
-          "compensatory_strategies": "尽可能避免驾驶或乘车",
-          "automatic_thoughts": "我很快会再次出车祸，可能受重伤甚至更糟",
+          "event": "Seeing cars on the road or thinking about driving",
+          "conditional_assumptions": "If I drive, a serious car accident will almost certainly happen again",
+          "compensatory_strategies": "Avoiding driving or riding in cars as much as possible",
+          "automatic_thoughts": "I will have another car accident soon; may be seriously injured or worse",
           "cognitive_pattern": "Catastrophizing"
         },
         {
-          "event": "临近通勤或旅行时间",
-          "conditional_assumptions": "出行时间越近，危险越高；我无法确保自己在路上的安全",
-          "compensatory_strategies": "推迟或取消行程，改用其他方式或干脆不出门",
-          "automatic_thoughts": "这次出门我会出事",
+          "event": "As commute or travel time approaches",
+          "conditional_assumptions": "The closer the travel time, the higher the danger; I cannot ensure my safety on the road",
+          "compensatory_strategies": "Postponing or canceling trips, switching to other means or simply not going out",
+          "automatic_thoughts": "Something bad will happen to me going out this time",
           "cognitive_pattern": "Fortune Telling"
         },
         {
-          "event": "听到关于车祸的新闻或他人讲述事故",
-          "conditional_assumptions": "他人发生车祸意味着我也很可能遭遇同样的事故",
-          "compensatory_strategies": "回避相关话题与信息来源",
-          "automatic_thoughts": "既然别人也出事，我迟早会遇到",
+          "event": "Hears news about car accidents or others recounting accidents",
+          "conditional_assumptions": "Others having a car accident means I am also very likely to encounter the same accident",
+          "compensatory_strategies": "Avoids related topics and information sources",
+          "automatic_thoughts": "Since others also get into accidents, I will run into one sooner or later",
           "cognitive_pattern": "Overgeneralization"
         },
         {
-          "event": "回想两年前的第二次车祸及受伤恢复经历",
-          "conditional_assumptions": "有过两次车祸经历说明我注定不安全",
-          "compensatory_strategies": "保持高度警觉，避免练车或参加需要驾驶的活动",
-          "automatic_thoughts": "我这么害怕，说明开车很危险",
+          "event": "Recalls the second car accident two years ago and the injury recovery experience",
+          "conditional_assumptions": "Having had two car accidents means I am destined to be unsafe",
+          "compensatory_strategies": "Maintaining high vigilance, avoiding driving practice or activities requiring driving",
+          "automatic_thoughts": "I am so afraid, which shows driving is dangerous",
           "cognitive_pattern": "Emotional Reasoning"
         }
       ]
     },
     "pdt": {
       "core_conflict": {
-        "wish": "渴望被保护与保持安全，避免再次受伤或遭遇车祸",
-        "fear": "害怕失控、再次受伤甚至死亡",
+        "wish": "Longs to be protected and stay safe, avoiding being hurt again or having a car accident",
+        "fear": "Fearing loss of control, getting injured again, or even Death",
         "defense_goal": [
-          "通过回避驾驶与乘车来维持安全感",
-          "高度警觉与提前规避可能的风险"
+          "Maintaining a sense of safety by Avoiding driving and riding in cars",
+          "High vigilance and preemptive avoidance of possible risks"
         ]
       },
       "object_relations": [
         {
-          "self_representation": "脆弱、容易受伤的个体",
-          "object_representation": "道路与其他驾驶者被视为潜在的威胁者/危险环境",
-          "linking_affect": "恐惧、焦虑"
+          "self_representation": "A fragile, easily hurt individual",
+          "object_representation": "Roads and other drivers are seen as potential threats / a dangerous environment",
+          "linking_affect": "Fear, anxiety"
         },
         {
-          "self_representation": "被误解的焦虑者",
-          "object_representation": "亲友是善意但不完全理解的他者",
-          "linking_affect": "孤独感、无助"
+          "self_representation": "A misunderstood Anxious person",
+          "object_representation": "Family and friends are well-meaning but not fully understanding others",
+          "linking_affect": "Sense of Loneliness, helplessness"
         }
       ],
       "behavioral_response_patterns": [
         {
-          "trigger_condition": "当咨询师建议进行逐步的行为实验（短途驾驶）以检验灾难化预测时",
-          "interpretation": "将逐步暴露理解为把自己置于高风险中，担心再次出事",
-          "defense_mechanism": "预期",
-          "response_instruction": "以谨慎、克制的语气表达担忧，请求更小、更可控的步骤与安全预案。"
+          "trigger_condition": "When the counselor suggests a graded behavioral experiment (short-distance driving) to test catastrophized predictions",
+          "interpretation": "Understands gradual exposure as putting oneself at high risk, worrying something will happen again",
+          "defense_mechanism": "Anticipation",
+          "response_instruction": "Expressing worry in a cautious, restrained tone, requesting smaller, more controllable steps and safety contingency plans."
         },
         {
-          "trigger_condition": "当讨论回避驾驶对学业与社交的负面影响时",
-          "interpretation": "将回避行为视为必要且正当的安全选择",
-          "defense_mechanism": "合理化",
-          "response_instruction": "用平静但坚定的语气强调“安全最重要”，以安全为由为持续回避辩护。"
+          "trigger_condition": "When discussing the negative impact of Avoiding driving on academics and social life",
+          "interpretation": "Views avoidance behavior as a necessary and legitimate safe choice",
+          "defense_mechanism": "Rationalization",
+          "response_instruction": "Emphasizes 'safety is the most important' in a calm but firm tone, defending continued avoidance on the grounds of safety."
         }
       ]
     },
     "het": {
       "existentialism_topic": [
         {
-          "theme": "死亡",
+          "theme": "Death",
           "manifestations": [
-            "频繁担心再次发生严重车祸并受重伤或更糟",
-            "听到车祸信息时联想到自身高风险"
+            "Frequently worries about another serious car accident, serious injury, or worse",
+            "When hearing car accident information, associates it with her own high risk"
           ],
           "outcomes": [
-            "持续焦虑与恐惧",
-            "灾难化思维",
-            "回避驾驶/乘车"
+            "Persistent anxiety and Fear",
+            "Catastrophizing",
+            "Avoiding driving/riding in cars"
           ]
         },
         {
-          "theme": "自由",
+          "theme": "Freedom",
           "manifestations": [
-            "为避免驾驶或乘车而限制出行与参与社交",
-            "通勤与旅行前恐惧加剧导致行为受限"
+            "Limits travel and social participation to avoid driving or riding in cars",
+            "Fear intensifies before commuting and travel, restricting behavior"
           ],
           "outcomes": [
-            "学业受影响",
-            "社交减少",
-            "日常生活被显著束缚"
+            "Academics affected",
+            "Reduced socializing",
+            "Daily life significantly constrained"
           ]
         },
         {
-          "theme": "孤独",
+          "theme": "Loneliness",
           "manifestations": [
-            "虽有亲友支持但不完全理解其焦虑程度",
-            "在担忧与恐惧中感到被误解"
+            "Although having family and friends' support, they do not fully understand the degree of Anxiety",
+            "Feeling misunderstood amid worry and fear"
           ],
           "outcomes": [
-            "人际关系受影响",
-            "主观孤独与无助感增加"
+            "Interpersonal relationships affected",
+            "Increased subjective Loneliness and helplessness"
           ]
         }
       ],
@@ -142,32 +142,32 @@
       ],
       "force_field": {
         "positive_force": [
-          "有支持性的亲友网络",
-          "态度积极，愿意尝试新策略与行为实验",
-          "能够识别并描述触发因素与负性自动化思维",
-          "曾多次安全驾驶且未发生事故的事实为反证（来访者自述）"
+          "Having a supportive network of family and friends",
+          "Positive attitude, willing to try new strategies and behavioral experiments",
+          "Able to identify and describe trigger factors and negative automatic thoughts",
+          "The fact of having driven safely many times without accidents serves as counter-evidence (client's own account)"
         ],
         "negative_force": [
-          "灾难化、预测未来与过度概括的认知模式",
-          "对驾驶/乘车的强烈回避行为",
-          "通勤与旅行前的预期性焦虑显著升高",
-          "安全感依赖回避策略，限制功能恢复"
+          "Cognitive patterns of catastrophizing, predicting the future, and overgeneralization",
+          "Strong avoidance of driving / riding in cars",
+          "Anticipatory Anxiety rises significantly before commuting and traveling",
+          "Sense of safety depends on avoidance strategies, limiting functional recovery"
         ]
       }
     },
     "bt": {
       "target_behavior": [
         {
-          "behavior": "对驾驶或乘车的强烈恐惧与回避",
+          "behavior": "Intense fear of and avoidance of driving or riding in cars",
           "antecedent": [
-            "看到汽车",
-            "想到驾驶",
-            "需要通勤或旅行",
-            "听到车祸相关信息"
+            "Seeing a car",
+            "Thinking of driving",
+            "Needing to commute or travel",
+            "Hearing news about car accidents"
           ],
-          "core_reason": "两次车祸经历（最近一次两年前）引发对再次事故的灾难化认知与高估风险，形成自动化“必然再次出事”的信念",
-          "function": "逃避潜在危险与减轻焦虑情绪",
-          "consequence": "学业表现下降、人际关系受影响、日常活动与差事被打乱或限制"
+          "core_reason": "Two car accident experiences (the most recent one two years ago) triggered catastrophizing about another accident and overestimation of risk, forming the automatic belief that 'an accident will inevitably happen again'",
+          "function": "Avoiding potential danger and reducing anxious feelings",
+          "consequence": "Declining academic performance, Interpersonal relationships affected, daily activities and errands disrupted or restricted"
         }
       ]
     }

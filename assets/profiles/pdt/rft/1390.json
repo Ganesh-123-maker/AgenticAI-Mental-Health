@@ -2,151 +2,151 @@
   "basic_info": {
     "static_traits": {
       "age": "13",
-      "name": "周文泽",
-      "gender": "男",
-      "occupation": "工厂工人",
-      "educational_background": "高中毕业",
-      "marital_status": "未婚",
-      "family_status": "独居，与家人关系疏远",
-      "social_status": "社交互动有限，难以与他人建立联系；有一位可以倾诉的朋友",
-      "medical_history": "此前未出现类似心理问题；未接受过心理治疗；无重大躯体疾病",
-      "language_features": "表达清晰、逻辑性尚可，语气中性；自我批评倾向明显，配合度较好但对改变持谨慎怀疑态度"
+      "name": "Zhou Wenze",
+      "gender": "Male",
+      "occupation": "Factory worker",
+      "educational_background": "High school graduate",
+      "marital_status": "Unmarried",
+      "family_status": "Living alone, distant relationships with family",
+      "social_status": "Limited social interaction, difficult to connect with others; has one friend to confide in",
+      "medical_history": "No similar psychological problems before; has not received psychotherapy; no major physical illness",
+      "language_features": "Clear expression, acceptable logicality, neutral tone; obvious self-criticism tendency, fairly good cooperation but a cautiously skeptical attitude toward change"
     },
-    "main_problem": "我常觉得自己不负责任、没有生产力，尤其在工作之外的生活领域；这种感觉自一年前因生病上班迟到后开始，并逐渐发展为在日常生活中持续感到不堪重负与低效。",
-    "topic": "情绪管理",
-    "core_demands": "寻求咨询是因为这些不够胜任与低效的感觉开始影响我的心理健康和日常功能。",
+    "main_problem": "I often feel irresponsible and unproductive, especially in life areas outside work; this feeling started a year ago after being late for work due to illness, and gradually developed into persistent overwhelm and inefficiency in daily life.",
+    "topic": "Emotion management",
+    "core_demands": "Seeking counseling because these feelings of incompetence and inefficiency have begun affecting my mental health and daily functioning.",
     "growth_experiences": [
-      "大约一年前因生病导致上班迟到，这一具体事件触发了强烈的内疚与“我不负责任”的自我标签；此后开始对自己设定僵化的规则（如必须始终准时、必须按计划完美执行），在未能完成计划或意识到“浪费时间”时加重自我批评；同时频繁将自己与“生活井然有序”的他人比较，逐步在饮食、自我照料和社交方面陷入低效与不堪重负。"
+      "About a year ago being late for work due to illness triggered strong guilt and the self-label 'I am irresponsible'; since then began setting rigid rules for oneself (e.g., must always be punctual, must execute plans perfectly), intensifying self-criticism when failing to complete plans or realizing 'wasting time'; also frequently comparing oneself with 'well-organized' others, gradually falling into inefficiency and overwhelm in diet, self-care and socializing."
     ]
   },
   "theory": {
     "cbt": {
       "core_beliefs": [
-        "我是一个不负责任的人",
-        "我不够好/不够有能力"
+        "I am an irresponsible person",
+        "I am not good enough / not capable enough"
       ],
       "special_situations": [
         {
-          "event": "因生病而上班迟到",
-          "conditional_assumptions": "无论任何情况我都必须准时，否则就说明我不负责任/失败",
-          "compensatory_strategies": "为避免再次出错，给自己设定更严格、更僵化的时间规则与日程安排，并在偏差时严厉自责",
-          "automatic_thoughts": "我太不负责任了",
+          "event": "Late for work due to illness",
+          "conditional_assumptions": "No matter what I must be punctual, otherwise it means I am irresponsible/a failure",
+          "compensatory_strategies": "To avoid making mistakes again, setting stricter, more rigid time rules and schedules for oneself, and severely blaming oneself when deviating",
+          "automatic_thoughts": "I am too irresponsible",
           "cognitive_pattern": "Personalization"
         },
         {
-          "event": "未能按既定日程完成打扫与做饭的计划（因疲惫改为点外卖）",
-          "conditional_assumptions": "如果我不能完美遵守计划，就证明我是个失败者",
-          "compensatory_strategies": "制定更严格的计划与目标、强迫自己执行",
-          "automatic_thoughts": "我就是个失败者",
+          "event": "Failing to complete cleaning and cooking plans as scheduled (switching to takeout due to fatigue)",
+          "conditional_assumptions": "If I cannot perfectly follow plans, it proves I am a failure",
+          "compensatory_strategies": "Makes stricter plans and goals, forces oneself to carry them out",
+          "automatic_thoughts": "I am just a failure",
           "cognitive_pattern": "All-or-Nothing Thinking"
         },
         {
-          "event": "与他人比较时看到别人更有条理、产出更高",
-          "conditional_assumptions": "如果我不如他人高效，就说明我不够好、不配合群",
-          "compensatory_strategies": "加倍要求自己、设定更高目标；减少社交互动",
-          "automatic_thoughts": "我不如别人，我不够好",
+          "event": "When comparing oneself with others, seeing others more organized and productive",
+          "conditional_assumptions": "If I am less efficient than others, it means I am not good enough, unsociable",
+          "compensatory_strategies": "Doubling demands on oneself, setting higher goals; reducing social interaction",
+          "automatic_thoughts": "I am not as good as others,I am not good enough",
           "cognitive_pattern": "Comparing and Despairing"
         },
         {
-          "event": "意识到自己“浪费了时间”",
-          "conditional_assumptions": "时间不应被浪费；一旦有浪费就意味着我整体不负责任",
-          "compensatory_strategies": "强化时间管理与自我监督，努力纠正“失误”",
-          "automatic_thoughts": "我总是做不好，我一无是处",
+          "event": "Realizing one has 'wasted time'",
+          "conditional_assumptions": "Time should not be wasted; any waste means I am overall irresponsible",
+          "compensatory_strategies": "Reinforcing time management and self-monitoring, striving to correct 'mistakes'",
+          "automatic_thoughts": "I always do poorly, I am worthless",
           "cognitive_pattern": "Overgeneralization"
         }
       ]
     },
     "pdt": {
       "core_conflict": {
-        "wish": "渴望被视为有能力、负责任，维持被认可的自我价值",
-        "fear": "害怕被评判为懒惰或失败者、被他人否定与疏离",
+        "wish": "Longs to be seen as capable and responsible, maintaining a recognized sense of self-worth",
+        "fear": "Fearing being judged as lazy or a failure, being negated and distanced by others",
         "defense_goal": [
-          "通过严苛的自我规则与自我批评来控制失误、避免被指责与羞辱"
+          "Controls mistakes through harsh self-rules and self-criticism, avoids being blamed and humiliated"
         ]
       },
       "object_relations": [
         {
-          "self_representation": "不够好的、需要不断证明自己的个体",
-          "object_representation": "他人是挑剔的评判者/更有条理的人",
-          "linking_affect": "羞耻、内疚、焦虑"
+          "self_representation": "A not-good-enough individual needing constant self-proof",
+          "object_representation": "Others are critical judges / more organized people",
+          "linking_affect": "Shame, guilt, anxiety"
         },
         {
-          "self_representation": "孤立的独居者",
-          "object_representation": "疏远的家人与难以接近的他人",
-          "linking_affect": "孤独、无助"
+          "self_representation": "An isolated living-alone person",
+          "object_representation": "Distant family and hard-to-approach others",
+          "linking_affect": "Loneliness, helplessness"
         }
       ],
       "behavioral_response_patterns": [
         {
-          "trigger_condition": "当咨询师建议放松“必须按计划完美执行”的规则、倡导自我关怀时",
-          "interpretation": "将灵活性理解为“变得更不负责任”，担心因此被视为失败",
-          "defense_mechanism": "合理化",
-          "response_instruction": "以平静但坚持的语气提出担忧，例如“如果不严格，我会更不高效”，用理性论证而回避情绪层面的体验。"
+          "trigger_condition": "When the counselor suggests relaxing the rule of 'must execute the plan perfectly' and advocates self-care",
+          "interpretation": "Understanding flexibility as 'becoming more irresponsible', worrying about being seen as a failure",
+          "defense_mechanism": "Rationalization",
+          "response_instruction": "Raising concerns in a calm but insistent tone, e.g., 'if not strict, I will be less efficient', using rational argument while avoiding emotional experience."
         },
         {
-          "trigger_condition": "当谈到过去的失误（如迟到、未完成计划）时",
-          "interpretation": "将具体情境的偶发失误等同于对自身品格的全面否定",
-          "defense_mechanism": "转向自身",
-          "response_instruction": "自我贬低、使用负性标签（如“我就是失败者”），语气低落，强化内疚感。"
+          "trigger_condition": "When talking about past mistakes (e.g., lateness, uncompleted plans)",
+          "interpretation": "Equating occasional mistakes in specific situations with total negation of one's character",
+          "defense_mechanism": "Turning against the self",
+          "response_instruction": "Self-deprecation, using negative labels (e.g., 'I am just a failure'), low tone, reinforcing sense of guilt."
         },
         {
-          "trigger_condition": "当深入探讨其内疚与羞耻等情绪体验时",
-          "interpretation": "认为直接触及情绪是危险或无益，选择仅陈述事实以保持掌控",
-          "defense_mechanism": "情感隔离",
-          "response_instruction": "使用冷静、中性语气描述事件与计划，避免使用情绪词汇与停留在情绪层面。"
+          "trigger_condition": "When deeply exploring his emotional experiences such as guilt and shame",
+          "interpretation": "Believing directly touching emotions is dangerous or unhelpful, choosing to state only facts to stay in control",
+          "defense_mechanism": "Emotional isolation",
+          "response_instruction": "Using a calm, neutral tone to describe events and plans, avoiding emotional vocabulary and staying at the emotional level."
         }
       ]
     },
     "het": {
       "existentialism_topic": [
         {
-          "theme": "孤独",
+          "theme": "Loneliness",
           "manifestations": [
-            "独居，与家人关系疏远",
-            "社交互动有限，难以与他人连接"
+            "Living alone, distant relationships with family",
+            "Limited social interaction; hard to connect with others"
           ],
           "outcomes": [
-            "持续的压力与不堪重负",
-            "自我价值感下降",
-            "日常功能受影响（饮食与自我照料低效）"
+            "Persistent stress and overwhelm",
+            "Decreased sense of self-worth",
+            "Daily functioning affected (inefficient eating and self-care)"
           ]
         },
         {
-          "theme": "自由",
+          "theme": "Freedom",
           "manifestations": [
-            "以僵化的“必须/应该”规则约束自我",
-            "担心若更灵活会更不高效"
+            "Constrains himself with rigid 'must / should' rules",
+            "Worrying that more flexibility means less efficiency"
           ],
           "outcomes": [
-            "自我苛责与内疚加剧",
-            "焦虑与紧张",
-            "生活灵活性受限、体验容许度下降"
+            "Increased self-reproach and guilt",
+            "Anxiety and tension",
+            "Restricted life flexibility, decreased tolerance for experience"
           ]
         }
       ],
       "contact_model": [
         {
-          "mode": "内摄",
-          "definition": "个体未经消化地把外界规则、期望当作自己的标准或绝对真理，与“拒绝”对应。",
+          "mode": "Introjection",
+          "definition": "The individual takes in external rules and expectations without digesting them, treating them as their own standards or absolute truths, corresponding to 'rejection'.",
           "manifestations": [
-            "频繁使用“必须/应该”的自我要求（如必须始终准时、必须完美遵循计划）",
-            "将外界的生产力标准当作自我评价的唯一依据"
+            "Frequently using 'must/should' self-demands (e.g., must always be punctual, must perfectly follow plans)",
+            "Takes external productivity standards as the sole basis for self-evaluation"
           ]
         },
         {
-          "mode": "回摄",
-          "definition": "个体将原欲对外发出的能量转而对自己，与“冲动”对应。",
+          "mode": "Retroflection",
+          "definition": "The individual redirects energy originally intended outward toward themselves, corresponding to 'impulse'.",
           "manifestations": [
-            "计划失败后将不满与挫败转向自身的严厉自责与贬低",
-            "用“我是失败者”之类的负性标签攻击自己而非寻求支持"
+            "Turning dissatisfaction and frustration against the self with harsh self-blame and belittling after plan failures",
+            "Attacking oneself with negative labels like 'I am a failure' instead of seeking support"
           ]
         },
         {
-          "mode": "自我监控",
-          "definition": "个体存在不良的自我反思和反省的能力，包含过多的自我限制和自我苛责，对接触过于小心谨慎，与“自主性”对应。",
+          "mode": "Self-monitoring",
+          "definition": "The individual has a poor capacity for self-reflection and introspection, with excessive self-restriction and self-blame, and is overly cautious about contact, corresponding to 'autonomy'.",
           "manifestations": [
-            "频繁比较自己与他人、过度反省不足",
-            "担心放松标准会失控，因而维持高度自我限制"
+            "Frequently comparing oneself with others, excessively ruminating on insufficiency",
+            "Worries that relaxing standards will lead to losing control, thus maintaining high self-restriction"
           ]
         }
       ]
@@ -161,63 +161,63 @@
       ],
       "force_field": {
         "positive_force": [
-          "工作表现良好（能稳定完成职责）",
-          "具备一定的自律与时间管理基础（会制定计划与目标）",
-          "愿意主动寻求帮助与尝试认知重构（主动来访）",
-          "有一位可信赖的朋友可倾诉"
+          "Good work performance (able to stably fulfill duties)",
+          "Has a certain foundation of self-discipline and time management (makes plans and goals)",
+          "Willing to proactively seek help and try cognitive restructuring (proactively came for counseling)",
+          "Having a trustworthy friend to confide in"
         ],
         "negative_force": [
-          "僵化的“必须/应该”规则与完美主义倾向",
-          "过度比较他人与自我，易自我否定",
-          "自我苛责与负性自我标签",
-          "社会支持薄弱、独居带来的孤独感",
-          "对一次失误的过度概括与持续内疚"
+          "Rigid 'must / should' rules and perfectionist tendencies",
+          "Excessive comparison with others, prone to Self-denial",
+          "Self-reproach and negative self-labels",
+          "Weak social support, loneliness from living alone",
+          "Overgeneralization of a single mistake and persistent guilt"
         ]
       }
     },
     "bt": {
       "target_behavior": [
         {
-          "behavior": "自我苛责与负性自我标签（如“我不负责任”“我是失败者”）",
+          "behavior": "Self-reproach and negative self-labels (e.g., 'I am irresponsible', 'I am a failure')",
           "antecedent": [
-            "因生病迟到",
-            "未能按既定日程执行（如打扫与做饭计划）",
-            "意识到“浪费时间”"
+            "Late due to illness",
+            "Not yet able to execute as scheduled (e.g., cleaning and cooking plans)",
+            "Realizing 'wasting time'"
           ],
-          "core_reason": "内摄的僵化规范与完美主义，将一次失误泛化为整体不合格以维持控制与避免被评判",
-          "function": "逃避不完美带来的焦虑与羞耻，试图通过自我惩罚维持“负责任”的自我形象",
-          "consequence": "压力增大、效率下降，进一步影响饮食、社交与自我照料"
+          "core_reason": "Internalized rigid norms and perfectionism, generalizing one mistake into overall unqualified to maintain control and avoid being judged",
+          "function": "Escaping Anxiety and shame from imperfection, trying to maintain a 'responsible' self-image through self-punishment",
+          "consequence": "Increased stress, decreased efficiency, further affecting diet, socializing and self-care"
         },
         {
-          "behavior": "僵化的时间与任务规则（必须完美遵守计划）",
+          "behavior": "Rigid time and task rules (must follow the plan perfectly)",
           "antecedent": [
-            "制定并开始执行详细日程",
-            "出现身体疲惫或情境变化需要调整安排",
-            "任何计划的偏差或延误"
+            "Creating and starting to follow a detailed schedule",
+            "When physical fatigue appears or situations change and arrangements need adjusting",
+            "Any deviation or delay from the plan"
           ],
-          "core_reason": "将“准时/完美执行”与自我价值直接挂钩，担心灵活性会导致失控与不负责任",
-          "function": "获得控制感与安全感，避免被他人或自己评判为“不负责”",
-          "consequence": "灵活性下降、挫败感与内疚加剧，进一步妨碍实际完成度"
+          "core_reason": "Directly linking 'punctual/perfect execution' with self-worth, worrying flexibility leads to loss of control and irresponsibility",
+          "function": "Gaining control and security, avoiding being judged as 'irresponsible' by others or oneself",
+          "consequence": "Reduced flexibility, intensified frustration and guilt further hinder actual completion"
         },
         {
-          "behavior": "社交回避与互动受限",
+          "behavior": "Social avoidance and limited interaction",
           "antecedent": [
-            "与他人比较后自感不如",
-            "面对社交邀约或需要与人连接的场景"
+            "Feeling inferior after comparing with others",
+            "Facing social invitations or scenes requiring connection with people"
           ],
-          "core_reason": "自我价值感低、担心被评判为不够高效或不合群",
-          "function": "逃避被比较与负面评价的可能性，短期缓解焦虑",
-          "consequence": "孤独感增加，社会支持减少，进一步削弱情绪与功能恢复"
+          "core_reason": "Low sense of self-worth, worrying about being judged as inefficient or unsociable",
+          "function": "Escaping the possibility of being compared and negatively evaluated, briefly relieving Anxiety",
+          "consequence": "Increased loneliness, reduced social support, further weakening emotional and functional recovery"
         },
         {
-          "behavior": "饮食与自我照料低效（如计划做饭失败后改为点外卖）",
+          "behavior": "Inefficient eating and self-care (such as switching to ordering takeout after a planned meal fails)",
           "antecedent": [
-            "感到疲惫与不堪重负",
-            "计划执行受阻或偏差"
+            "Feeling exhausted and overwhelmed",
+            "Plan execution blocked or deviating"
           ],
-          "core_reason": "在僵化规则下对失败高度敏感，出现情绪化挫败并降低行动动机",
-          "function": "短期逃避复杂任务与失败感",
-          "consequence": "自我照料质量下降，维持低效循环，加重不堪重负体验"
+          "core_reason": "Under rigid rules, highly sensitive to failure, emotional frustration appears and action motivation decreases",
+          "function": "Short-term avoidance of complex tasks and feelings of failure",
+          "consequence": "Declining self-care quality, maintaining the inefficiency cycle, worsening the overwhelm experience"
         }
       ]
     }

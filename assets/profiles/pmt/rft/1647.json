@@ -2,129 +2,129 @@
   "basic_info": {
     "static_traits": {
       "age": "42",
-      "name": "刘凯",
-      "gender": "男",
-      "occupation": "本地餐馆的快餐厨师",
-      "educational_background": "高中毕业",
-      "marital_status": "单身",
-      "family_status": "独居，无兄弟姐妹",
-      "social_status": "有少数朋友可交谈，但难以向其敞开心扉",
-      "medical_history": "无显著躯体疾病；未接受过心理治疗；既往未出现同类写作相关问题",
-      "language_features": "表达清晰、配合度尚可、语气中性；倾向聚焦负面反馈，伴随自我怀疑与灾难化倾向"
+      "name": "Liu Kai",
+      "gender": "Male",
+      "occupation": "Fast-food Chef at a local restaurant",
+      "educational_background": "High school graduate",
+      "marital_status": "Single",
+      "family_status": "Living alone, no siblings",
+      "social_status": "Has a few friends to talk with, but hard to open one's heart to them",
+      "medical_history": "No significant physical illness; have not received psychotherapy before; no similar writing-related problems before",
+      "language_features": "Clear expression, fair cooperativeness, neutral tone; tending to focus on negative feedback, with Self-doubt and catastrophizing tendencies"
     },
-    "main_problem": "因出版社倒闭而感到焦虑与自卑，并认为是因为自己写的书不受欢迎所致，随之不断怀疑写作能力、感觉自己是失败者。",
-    "topic": "职业发展",
-    "core_demands": "意识到负面想法与自我怀疑正在影响心理健康并阻碍写作事业，因而寻求咨询以减轻这些影响。",
+    "main_problem": "Feeling Anxiety and inferiority because the publisher went bankrupt, believing it was because my books were unpopular, constantly doubting my writing ability, feeling like a failure.",
+    "topic": "Career development",
+    "core_demands": "Realizing negative thoughts and Self-doubt are affecting mental health and blocking my writing career, thus seeking counseling to lessen these effects.",
     "growth_experiences": []
   },
   "theory": {
     "cbt": {
       "core_beliefs": [
-        "我不够好",
-        "我不适合成为作家",
-        "我的书没有人愿意买"
+        "I am not good enough",
+        "I am not suited to be a Writer",
+        "No one wants to buy my books"
       ],
       "special_situations": [
         {
-          "event": "得知出版社即将倒闭",
-          "conditional_assumptions": "如果我的写作足够好、能卖得动，出版社就不会倒闭；出版方的经营结果与我的作品质量直接相关",
-          "compensatory_strategies": "加大自我施压，尝试提升写作技能并寻求内测读者（beta读者）反馈以证明自己",
-          "automatic_thoughts": "都是我的错；我的书不够好",
+          "event": "Learning the publisher is about to close",
+          "conditional_assumptions": "If my writing were good enough to sell, the publisher would not have gone bankrupt; the publisher's business outcome is directly related to my work's quality",
+          "compensatory_strategies": "Increasing self-pressure, trying to improve writing skill and seeking beta-reader feedback to prove myself",
+          "automatic_thoughts": "It is all my fault; my books are not good enough",
           "cognitive_pattern": "Personalization"
         },
         {
-          "event": "收到混合反馈，其中负面反馈更让他在意",
-          "conditional_assumptions": "如果有人提出负面意见，就说明我不适合写作；负面反馈比正面反馈更“真实”",
-          "compensatory_strategies": "持续聚焦并放大负面评价，忽略正向反馈，试图不断修改以迎合批评",
-          "automatic_thoughts": "他们说得对，我不够好",
+          "event": "Receives mixed feedback, of which the negative feedback concerns him more",
+          "conditional_assumptions": "If someone raises negative opinions, it means I am not suited to writing; negative feedback is more 'real' than positive feedback",
+          "compensatory_strategies": "Continuously focusing on and magnifying negative reviews, ignoring positive feedback, trying to keep revising to please critics",
+          "automatic_thoughts": "They are right, I am not good enough",
           "cognitive_pattern": "Disqualifying the Positive"
         },
         {
-          "event": "在写作遇到挫折或职业受阻时",
-          "conditional_assumptions": "如果这次失败，就意味着我永远不会成功；一次失败等同于彻底失败",
-          "compensatory_strategies": "减少或停止写作，陷入自我怀疑与回避",
-          "automatic_thoughts": "我永远也不会成为作家",
+          "event": "When writing hits setbacks or the career is blocked",
+          "conditional_assumptions": "If I fail this time, it means I will never succeed; one failure equals total failure",
+          "compensatory_strategies": "Reducing or stopping writing, sinking into Self-doubt and avoidance",
+          "automatic_thoughts": "I will never become a Writer",
           "cognitive_pattern": "Overgeneralization"
         },
         {
-          "event": "考虑向朋友分享写作困境时",
-          "conditional_assumptions": "如果我把困境告诉朋友，他们会不理解、让我“赶紧振作”或“写点别的”",
-          "compensatory_strategies": "回避与朋友谈论不安全话题，保持沉默以避免被评价",
-          "automatic_thoughts": "他们会觉得我在矫情，不会理解我",
+          "event": "When considering sharing writing struggles with friends",
+          "conditional_assumptions": "If I tell friends about my plight, they will not understand and tell me to 'snap out of it' or 'write something else'",
+          "compensatory_strategies": "Avoiding discussing unsafe topics with friends, staying Silent to avoid being judged",
+          "automatic_thoughts": "They will think I am being melodramatic and will not understand me",
           "cognitive_pattern": "Mind Reading"
         }
       ]
     },
     "pdt": {
       "core_conflict": {
-        "wish": "渴望作为作家被认可与理解，作品被读者喜爱并获得支持",
-        "fear": "害怕失败与被否定，担心无人愿意阅读作品、被视为“不够好”",
+        "wish": "Longing to be recognized and understood as a Writer, with works loved by readers and supported",
+        "fear": "Fearing failure and being negated, worrying no one will read my works, being seen as 'not good enough'",
         "defense_goal": [
-          "通过自我批评与将责任归咎自身来获得控制感、降低不确定性",
-          "保持与他人情感距离，避免分享以减少被拒绝或不被理解的风险"
+          "Gaining a sense of control and reducing uncertainty through self-criticism and blaming myself",
+          "Keeping emotional distance from others, avoiding sharing to reduce the risk of Being rejected or not being understood"
         ]
       },
       "object_relations": [
         {
-          "self_representation": "不够好的、易被否定的作者",
-          "object_representation": "他人/出版方是批判性、可能不理解自己的评判者",
-          "linking_affect": "焦虑、自卑、羞耻"
+          "self_representation": "A not-good-enough author easily negated",
+          "object_representation": "Others/publishers are critical judges who may not understand me",
+          "linking_affect": "Anxiety, inferiority, shame"
         }
       ],
       "behavioral_response_patterns": [
         {
-          "trigger_condition": "当讨论出版社倒闭或收到负面反馈的话题时",
-          "interpretation": "来访者将外部经营失败内化为自身能力不足，并将探询视为对其能力的否定",
-          "defense_mechanism": "转向自身",
-          "response_instruction": "使用自责与绝对化表述（如“都是我的错”），语气压低，少谈外部因素；强调自身不够好。"
+          "trigger_condition": "When discussing topics of a publishing house closing or receiving negative feedback",
+          "interpretation": "The client internalizes external business failure as inadequate ability, and sees inquiry as a negation of their ability",
+          "defense_mechanism": "Turning against the self",
+          "response_instruction": "Using self-blaming and absolutist expressions (like 'It is all my fault'), in a lowered tone, rarely mentioning external factors; emphasizing my own inadequacy."
         },
         {
-          "trigger_condition": "当被邀请考虑向朋友分享感受或寻求支持时",
-          "interpretation": "潜意识认为他人会像评审一样拒绝或责备自己（不被理解/被要求“赶紧振作”）",
-          "defense_mechanism": "投射",
-          "response_instruction": "以假设性语言描述他人负面意图（如“他们会让我赶紧振作”），语气犹疑，避免具体求助请求。"
+          "trigger_condition": "When invited to consider sharing feelings with friends or seeking support",
+          "interpretation": "Subconsciously believing others will reject or blame me like reviewers (not understood / Demanded to 'snap out of it')",
+          "defense_mechanism": "Projection",
+          "response_instruction": "Describes others' negative intentions in hypothetical language (such as 'they will make me get myself together quickly'), hesitant tone, avoiding concrete requests for help."
         }
       ]
     },
     "het": {
       "existentialism_topic": [
         {
-          "theme": "无意义",
+          "theme": "Meaninglessness",
           "manifestations": [
-            "坐下来写作时觉得“这很没意义”，认为没有人会想读自己的作品"
+            "Feeling 'this is meaningless' when sitting down to write, believing no one will want to read my works"
           ],
           "outcomes": [
-            "写作动力下降与生产力降低",
-            "主观无价值感增强",
-            "焦虑与自卑加剧"
+            "Decreased drive for writing and lower productivity",
+            "Heightened subjective sense of worthlessness",
+            "Worsening Anxiety and inferiority"
           ]
         },
         {
-          "theme": "孤独",
+          "theme": "Loneliness",
           "manifestations": [
-            "觉得朋友不会理解自己的写作困境，难以开口求助"
+            "Feeling friends will not understand my writing plight, struggling to ask for help"
           ],
           "outcomes": [
-            "社交退缩与孤立感增强",
-            "支持系统动员不足，负面思维循环维持"
+            "Social withdrawal and increased sense of isolation",
+            "Insufficient mobilization of the support system, negative thought cycle maintained"
           ]
         }
       ],
       "contact_model": [
         {
-          "mode": "投射",
-          "definition": "个体将自己难以接纳的感受归于他人，与“拥有”对应，语言表现为：“他在看不起我”，“他们想排挤我”等",
+          "mode": "Projection",
+          "definition": "The individual attributes feelings they find hard to accept to others, corresponding to 'possession'. Language manifestations include: 'He is looking down on me', 'They want to exclude me', and so on",
           "manifestations": [
-            "假设朋友会让自己“赶紧振作/写点别的”，因此回避分享",
-            "在未验证的情况下推断他人不会理解自己"
+            "Assuming friends will tell me to 'snap out of it / write something else', thus avoiding sharing",
+            "Inferring others will not understand me without verification"
           ]
         },
         {
-          "mode": "自我监控",
-          "definition": "个体存在不良的自我反思和反省的能力，包含过多的自我限制和自我苛责，对接触过于小心谨慎，与“自主性”对应。语言表现为：“都是我害了他”，“我不配和他说话”等",
+          "mode": "Self-monitoring",
+          "definition": "The individual has a poor capacity for self-reflection and introspection, with excessive self-restriction and self-blame, and is overly cautious about contact, corresponding to 'autonomy'. Language manifestations include: 'It is all my fault that he was hurt', 'I do not deserve to talk to him', and so on",
           "manifestations": [
-            "频繁自我否定（如“我不够好”“我不适合写作”）",
-            "过度限制自我表达，担心被评价而减少求助"
+            "Frequent Self-denial (like 'I am not good enough' 'I am not suited to writing')",
+            "Over-restricts self-expression and reduces help-seeking for fear of being evaluated"
           ]
         }
       ]
@@ -133,44 +133,44 @@
       "exception_events": [],
       "force_field": {
         "positive_force": [
-          "对写作具有热爱，偶尔写出内容时能体验到自豪感",
-          "愿意尝试提升写作并寻求beta读者反馈",
-          "工作表现稳定，生活基本功能未受影响",
-          "有意愿尝试设定较小、可实现的写作目标",
-          "拥有少数朋友，存在潜在支持资源"
+          "Has a love for writing, occasionally when writing something can experience pride",
+          "Willing to try improving writing and to seek beta-reader feedback",
+          "Work performance stable, basic life functions not yet affected",
+          "Willing to try setting smaller, achievable writing goals",
+          "Having a few friends, potential support resources present"
         ],
         "negative_force": [
-          "灾难化、过度概括、个人化、否定正向反馈等认知偏差突出",
-          "强烈的自我怀疑与自我批评",
-          "回避向朋友分享困境，支持系统动员不足",
-          "高压力与自我施压，失败即全盘否定的信念模式",
-          "写作时情绪化推理（感觉糟糕就断定事情糟糕）导致回避与停滞"
+          "Marked cognitive biases like catastrophizing, overgeneralization, personalization, negating positive feedback",
+          "Strong Self-doubt and self-criticism",
+          "Avoiding sharing plights with friends, insufficient support-system mobilization",
+          "High stress and self-pressure, a belief pattern of total negation upon failure",
+          "Emotional reasoning while writing (feeling bad and concluding things are bad) leads to avoidance and stagnation"
         ]
       }
     },
     "bt": {
       "target_behavior": [
         {
-          "behavior": "写作回避与低生产力（坐下写作时难以开始或持续）",
+          "behavior": "Writing avoidance and low productivity (hard to start or persist when sitting down to write)",
           "antecedent": [
-            "得知出版社倒闭",
-            "收到负面或混合反馈",
-            "在写作中遇到挫折",
-            "坐下来准备写作的时刻"
+            "Learning a publisher went bankrupt",
+            "Receiving negative or mixed feedback",
+            "Encountering setbacks in writing",
+            "The moment of sitting down to write"
           ],
-          "core_reason": "将外部事件个人化并灾难化，内化为“我不够好”的核心信念，产生焦虑与无意义感从而回避写作",
-          "function": "逃避潜在失败与被否定，获得短期的情绪缓解",
-          "consequence": "写作生产力下降、职业发展受阻、无意义感与自卑加重"
+          "core_reason": "Personalizing and catastrophizing external events, internalizing them as the core belief 'I am not good enough', generating Anxiety and Meaninglessness that lead to avoiding writing",
+          "function": "Escaping potential failure and being negated, gaining short-term emotional relief",
+          "consequence": "Decreased writing productivity, blocked Career development, worsening Meaninglessness and inferiority"
         },
         {
-          "behavior": "社交回避（不向朋友分享写作困境）",
+          "behavior": "Social avoidance(not sharing writing plights with friends)",
           "antecedent": [
-            "想到要向朋友谈及写作困难时",
-            "面对建议寻求支持的情境"
+            "When thinking about discussing writing difficulties with friends",
+            "Facing situations where seeking support is advised"
           ],
-          "core_reason": "读心术式假设他人不会理解并会责备自己，害怕被否定与羞耻",
-          "function": "逃避潜在的拒绝与尴尬，维持短期安全感",
-          "consequence": "错失社会支持，孤立感增强，负面思维与自我怀疑循环持续"
+          "core_reason": "Mind-reading assumptions that others will not understand and will blame me, fearing negation and shame",
+          "function": "Avoids potential rejection and embarrassment, maintaining short-term safety",
+          "consequence": "Missing Social support, Increased sense of isolation, ongoing cycle of negative thinking and Self-doubt"
         }
       ]
     }

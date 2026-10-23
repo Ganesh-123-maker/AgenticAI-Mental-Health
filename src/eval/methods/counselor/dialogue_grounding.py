@@ -1,14 +1,11 @@
-from typing import Any
+import json
+from typing import Annotated, Any, List, Literal
+
+from jinja2 import Template
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 from ...core.base import EvaluationMethod
 from ...utils import load_prompt
-from jinja2 import Template
-import json
-
-from typing import Annotated, List, Literal
-
-from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
-
 
 DialogueGroundingItemName = Literal["No Fabrication or Misremembering", "Bounded Inference with Confirmation", "Accurate Quotation and Internal Consistency"]
 EvidenceStr = Annotated[str, Field(pattern=r"^DIALOGUE: counselor:")]
@@ -80,7 +77,7 @@ class Dialogue_Grounding(EvaluationMethod):
 
         mean_score = 0.0
         for it in validated.items:
-            mean_score += float(it.score) * 10.0 / 4.0  # 0-4 -> 0-10
+            mean_score += float(it.score) * 10.0 / 4.0
         mean_score /= len(validated.items)
         return {"counselor": mean_score}
 

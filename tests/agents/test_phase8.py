@@ -11,23 +11,25 @@ Tests:
 4. Regression check: multi_agent_enabled=False skips the entire outcome/memory update block.
 """
 
-import asyncio
 import json
 import logging
 import pathlib
 import shutil
 import sys
+
 import pytest
 
-# Ensure src is on sys.path
 sys.path.insert(0, str(pathlib.Path(__file__).parent.parent.parent / "src"))
 
 from sample.agents.base import AgentContext
 from sample.agents.memory_agent import MemoryAgent
 from sample.agents.memory_update_agent import MemoryUpdateAgent
 from sample.agents.outcome_agent import OutcomeAgent
-from sample.core.schemas import BaselineConfig, ClientCase, PublicMemory, RuntimeConfig
-from sample.io.config_loader import load_baseline_config, load_dataset_config, load_runtime_config
+from sample.core.schemas import PublicMemory, RuntimeConfig
+from sample.io.config_loader import (
+    load_baseline_config,
+    load_dataset_config,
+)
 from sample.io.dataset_loader import DatasetLoader
 from sample.runner import PsychAgentRunner
 
@@ -36,14 +38,12 @@ def test_outcome_agent():
     """Verify OutcomeAgent observable engagement signals and goal progress."""
     agent = OutcomeAgent()
 
-    # 1. WITHDRAWN signal
     ctx_w = AgentContext(case_id="case_w", modality="cbt", current_message="I don't know, whatever...")
     msg_w = agent.run(ctx_w)
     assert msg_w.payload["engagement_signal"] == "WITHDRAWN"
     assert "Minimal" in msg_w.payload["goal_progress"]
     print("[PASS] OutcomeAgent: Minimal/dismissive reply -> WITHDRAWN.")
 
-    # 2. ENGAGED signal
     ctx_e = AgentContext(
         case_id="case_e",
         modality="cbt",
@@ -56,13 +56,11 @@ def test_outcome_agent():
     assert len(msg_e.payload["newly_observed_information"]) > 0
     print("[PASS] OutcomeAgent: Detailed reflective reply -> ENGAGED.")
 
-    # 3. NEUTRAL signal
     ctx_n = AgentContext(case_id="case_n", modality="cbt", current_message="Sure, sounds good, I will try.")
     msg_n = agent.run(ctx_n)
     assert msg_n.payload["engagement_signal"] == "NEUTRAL"
     print("[PASS] OutcomeAgent: Standard acknowledgement -> NEUTRAL.")
 
-    # 4. Unresolved uncertainty carriage
     ctx_u = AgentContext(case_id="case_u", modality="cbt", current_message="I tried it a bit.")
     ctx_u.uncertainty_output = {"clarification_required": True, "status": "UNCERTAIN"}
     msg_u = agent.run(ctx_u)
@@ -75,11 +73,11 @@ def test_memory_update_agent():
     agent = MemoryUpdateAgent()
 
     candidate_facts = [
-        "Goal is to improve work-life balance",          # durable: stated goal
-        "Has always had strong perfectionist tendencies", # durable: recurring theme
-        "In the past had feelings of hopelessness and wanting to die",  # durable: safety flag
-        "There was a bit of traffic on the road this morning",         # temporary: situational detail
-        "Just drank a cup of coffee downstairs",                       # temporary: momentary remark
+        "Goal is to improve work-life balance",
+        "Has always had strong perfectionist tendencies",
+        "In the past had feelings of hopelessness and wanting to die",
+        "There was a bit of traffic on the road this morning",
+        "Just drank a cup of coffee downstairs",
     ]
 
     msg = agent.run(candidate_facts=candidate_facts)
@@ -95,7 +93,6 @@ def test_memory_update_agent():
 
     print("[PASS] MemoryUpdateAgent: Correctly classified durable facts as persistent and situational facts as temporary.")
 
-    # Test applying updates to existing PublicMemory
     pub_mem = PublicMemory(
         known_static_traits={"occupation": "Engineer"},
         session_recaps=[],
@@ -109,7 +106,6 @@ def test_memory_update_agent():
         session_summary={"session_index": 1, "session_summary_abstract": "Initial assessment and problem evaluation"},
     )
 
-    # Confirm persistent facts written into existing PublicMemory
     assert "stated_goals" in updated_mem.known_static_traits
     assert "Goal is to improve work-life balance" in updated_mem.known_static_traits["stated_goals"]
     assert "recurring_themes" in updated_mem.known_static_traits
@@ -119,7 +115,6 @@ def test_memory_update_agent():
     assert updated_mem.last_homework == ["Practice diaphragmatic breathing for 10 minutes"]
     assert len(updated_mem.session_recaps) == 1
 
-    # Confirm temporary facts are NOT in PublicMemory
     assert "There was a bit of traffic on the road this morning" not in str(updated_mem.known_static_traits)
     assert "Just drank a cup of coffee downstairs" not in str(updated_mem.known_static_traits)
     print("[PASS] MemoryUpdateAgent: Persistent facts written to PublicMemory; temporary facts excluded.")
@@ -140,7 +135,6 @@ async def test_runner_longitudinal_carry_through():
     if save_dir_multi.exists():
         shutil.rmtree(save_dir_multi)
 
-    # Configure runner for 2 sessions with multi_agent_enabled=True
     cfg_true = RuntimeConfig(
         multi_agent_enabled=True,
         save_dir=str(save_dir_multi),
@@ -173,17 +167,12 @@ async def test_runner_longitudinal_carry_through():
     session_1_data = json.loads(session_1_file.read_text(encoding="utf-8"))
     session_2_data = json.loads(session_2_file.read_text(encoding="utf-8"))
 
-    # Verify session completed 2 sessions successfully
     assert session_1_data["stage"] is not None
     assert session_2_data["stage"] is not None
 
-    # Verify longitudinal carry-through into Session 2:
-    # Session 2 profile_snapshot should reflect updated traits from Session 1
     session_2_traits = session_2_data.get("profile_snapshot", {}).get("static_traits", {})
     assert isinstance(session_2_traits, dict)
 
-    # Test MemoryAgent directly on Session 2 state
-    # Session 2 memory agent context
     ctx_s2 = AgentContext(
         case_id=case.case_id,
         modality="cbt",
@@ -248,7 +237,6 @@ async def test_runner_multi_agent_false_regression():
     assert session_1_file.exists()
     session_1_data = json.loads(session_1_file.read_text(encoding="utf-8"))
 
-    # Confirm outcome_evaluation and memory_update were skipped
     assert "outcome_evaluation" not in session_1_data
     assert "memory_update" not in session_1_data
     print("[PASS] multi_agent_enabled=False regression check passed: outcome & memory_update skipped.")
@@ -256,7 +244,6 @@ async def test_runner_multi_agent_false_regression():
 
 def test_longitudinal_carry_through_with_persistent_and_temporary_facts():
     """Verify that Session 2 MemoryAgent includes persistent facts from Session 1 and drops temporary facts."""
-    # Session 1 state:
     pub_mem = PublicMemory(
         known_static_traits={"name": "Alex", "age": 28},
         session_recaps=[],
@@ -271,14 +258,12 @@ def test_longitudinal_carry_through_with_persistent_and_temporary_facts():
         public_memory=pub_mem,
     )
 
-    # 1. OutcomeAgent runs on Session 1 turn
     outcome_agent = OutcomeAgent()
     outcome_msg = outcome_agent.run(ctx_s1)
     newly_observed = outcome_msg.payload["newly_observed_information"]
     assert any("insomnia" in item.lower() for item in newly_observed)
     assert any("traffic" in item.lower() for item in newly_observed)
 
-    # 2. MemoryUpdateAgent classifies newly observed information
     mem_update_agent = MemoryUpdateAgent()
     update_msg = mem_update_agent.run(ctx_s1, outcome_output=outcome_msg.payload, public_memory=pub_mem)
 
@@ -289,7 +274,6 @@ def test_longitudinal_carry_through_with_persistent_and_temporary_facts():
     assert any("insomnia" in f.lower() for f in persistent_facts_text)
     assert any("traffic" in f.lower() for f in temporary_items)
 
-    # 3. Apply updates to PublicMemory
     updated_pub_mem = mem_update_agent.apply_update(
         public_memory=pub_mem,
         persistent_facts=persistent_items,
@@ -297,7 +281,6 @@ def test_longitudinal_carry_through_with_persistent_and_temporary_facts():
         session_summary={"session_index": 1, "session_summary_abstract": "Initial assessment and insomnia discussion"},
     )
 
-    # 4. Open Session 2: MemoryAgent runs on Session 2 AgentContext
     ctx_s2 = AgentContext(
         case_id="case_longitudinal",
         modality="cbt",
@@ -312,11 +295,9 @@ def test_longitudinal_carry_through_with_persistent_and_temporary_facts():
     s2_mem_msg = memory_agent.run(ctx_s2)
     s2_payload = s2_mem_msg.payload
 
-    # 5. Assert persistent facts ARE present in Session 2 MemoryAgent output
     stated_goals = s2_payload.get("known_static_traits", {}).get("stated_goals", [])
     assert any("insomnia" in g.lower() for g in stated_goals), f"Persistent goal missing from Session 2 memory: {stated_goals}"
 
-    # 6. Assert temporary facts are NOT present anywhere in Session 2 MemoryAgent output
     s2_payload_str = str(s2_payload)
     assert "traffic" not in s2_payload_str, "Temporary fact incorrectly carried into Session 2 memory!"
 

@@ -2,140 +2,140 @@
   "case_id": "pdt_1422_ordinary",
   "source_file": "assets/profiles/pdt/sample/1422.json",
   "modality": "pdt",
-  "therapy_stage": "问题概念化与目标设定",
+  "therapy_stage": "Problem conceptualization and goal setting",
   "stage_inferred": false,
   "track": "ordinary",
   "full_context": {
     "basic_info": {
       "static_traits": {
         "age": "37",
-        "name": "韩伟",
-        "gender": "男",
-        "occupation": "教师",
-        "educational_background": "教育学学士",
-        "marital_status": "单身",
-        "family_status": "独居，未提及其他家庭成员",
-        "social_status": "回避与学生和同事的社交互动，互动减少",
-        "medical_history": "未有类似心理问题史；未接受过心理治疗；无重大躯体疾病",
-        "language_features": "表达清晰、逻辑性较好，配合度高；能识别并描述焦虑与自我怀疑；倾向使用自贬性标签（如“老傻瓜”）；注意力偏向负面线索并倾向忽略正面反馈"
+        "name": "Han Wei",
+        "gender": "Male",
+        "occupation": "Teacher",
+        "educational_background": "Bachelor's degree in education",
+        "marital_status": "Single",
+        "family_status": "Living alone; other family members not mentioned",
+        "social_status": "Avoids social interaction with students and colleagues; interaction decreases",
+        "medical_history": "No history of similar psychological problems; has not received psychotherapy; no major physical illness",
+        "language_features": "Clear expression, relatively good logic, high cooperation; able to identify and describe anxiety and self-doubt; tends to use self-deprecating labels (such as 'old fool'); attention biased toward negative cues and tends to ignore positive feedback"
       },
-      "main_problem": "我认为学生会根据他们在课堂上看我的方式觉得我无能且年老，这让我在每节课都感到焦虑和不自信。",
-      "topic": "人际关系",
-      "core_demands": "我决定寻求咨询，是因为这些感受正在影响我在课堂上的自信与表现；我想找到办法在教学中更有自信。",
+      "main_problem": "I believe students judge me as incompetent and old based on how they look at me in class, which makes me feel anxious and insecure in every class.",
+      "topic": "Interpersonal relationships",
+      "core_demands": "I decided to seek counseling because these feelings are affecting my confidence and performance in the classroom; I want to find ways to be more confident in teaching.",
       "growth_experiences": [
-        "几个月前，一名学生对年龄的评论触发了被评判感；此后在课堂上，学生的窃窃私语与笑声让这种感受加重，逐渐发展为每次授课都感到焦虑和自我怀疑，并开始回避与学生和同事的互动，睡眠与饮食也受到影响。"
+        "A few months ago, a student's comment about age triggered a sense of being judged; afterward in class, students' whispering and laughter intensified this feeling, gradually developing into anxiety and self-doubt at every teaching session, and the client began avoiding interaction with students and colleagues; sleep and eating were also affected."
       ]
     },
     "theory": {
       "cbt": {
         "core_beliefs": [
-          "我是无能的",
-          "年纪意味着我没有价值、会被学生轻视"
+          "I am incompetent",
+          "Age means I have no value and will be looked down on by students"
         ],
         "special_situations": [
           {
-            "event": "一名学生曾在课堂上评论他的年龄",
-            "conditional_assumptions": "如果有人提及我的年龄，那就说明我因为年纪而不适合教书、不够胜任",
-            "compensatory_strategies": "加倍改变教学方式以证明能力；课后自我检讨并回避与学生的非正式交流",
-            "automatic_thoughts": "他们觉得我老了、不称职，我是个“老傻瓜”。",
+            "event": "A student once commented on his age in class",
+            "conditional_assumptions": "If someone mentions my age, it means that because of my age I am not suited to teaching and not competent enough",
+            "compensatory_strategies": "Doubles efforts to change teaching methods to prove ability; reflects on the self after class and avoids informal interaction with students",
+            "automatic_thoughts": "They think I am old and incompetent, I am an 'old fool'.",
             "cognitive_pattern": "Overgeneralization"
           },
           {
-            "event": "上课时学生窃窃私语或发笑",
-            "conditional_assumptions": "如果学生低声说话或发笑，就一定是在议论我、觉得我无能",
-            "compensatory_strategies": "过度关注学生表情与细微反应，不断当堂调整讲课节奏与内容；减少提问互动以避免被当众否定",
-            "automatic_thoughts": "他们在嘲笑我、看不起我。",
+            "event": "During class, students whisper or laugh",
+            "conditional_assumptions": "If students speak in low voices or laugh, they must be talking about me and thinking I am incompetent",
+            "compensatory_strategies": "Pays excessive attention to students' expressions and subtle reactions, constantly adjusting teaching pace and content in class; reduces question-and-answer interaction to avoid being negated in public",
+            "automatic_thoughts": "They are mocking me and looking down on me.",
             "cognitive_pattern": "Mind Reading"
           },
           {
-            "event": "学生在课堂上显得分心或不感兴趣",
-            "conditional_assumptions": "如果学生分心，就说明我讲得很差，是我能力不足导致的",
-            "compensatory_strategies": "避免与学生眼神接触、减少与同事交流以降低被评价的机会",
-            "automatic_thoughts": "是我太差劲了，没人愿意听我讲。",
+            "event": "Students appear distracted or uninterested in class",
+            "conditional_assumptions": "If students get distracted, it means I lecture very poorly, caused by my insufficient ability",
+            "compensatory_strategies": "Avoids eye contact with students and reduces communication with colleagues to lower the chances of being evaluated",
+            "automatic_thoughts": "I am just too bad; no one wants to listen to me.",
             "cognitive_pattern": "Personalization"
           },
           {
-            "event": "学生积极提问、参与或给予正面反馈",
-            "conditional_assumptions": "正面反应并不可靠，如果我接受了就会显得自欺",
-            "compensatory_strategies": "用怀疑和解释来否定正面信号（如“他们只是礼貌”）以维持一致的自我看法",
-            "automatic_thoughts": "他们只是客套，不是真的认可我。",
+            "event": "Students actively asking questions, participating, or giving positive feedback",
+            "conditional_assumptions": "Positive reactions are not reliable, if I accept them I will appear to be deceiving myself",
+            "compensatory_strategies": "Uses doubt and explanations to negate positive signals (such as 'they were just being polite') in order to maintain a consistent self-view",
+            "automatic_thoughts": "They are just being polite; they do not really recognize me.",
             "cognitive_pattern": "Disqualifying the Positive"
           }
         ]
       },
       "pdt": {
         "core_conflict": {
-          "wish": "渴望被学生认可与尊重，证明自己的专业价值与胜任感",
-          "fear": "害怕被嘲笑、被贬低与拒绝，担心显得无能与丢面子",
+          "wish": "Longing to be recognized and respected by students, proving one's professional value and competence",
+          "fear": "Fearing being laughed at, belittled and rejected, worrying about appearing incompetent and losing face",
           "defense_goal": [
-            "通过保持疏离与回避互动来降低被负面评价的风险",
-            "通过过度自我监控与不断调整教学来控制可能的羞辱",
-            "否定正面反馈以避免自我图式被挑战带来的不安"
+            "Reducing the risk of negative evaluation by maintaining detachment and avoiding interaction",
+            "Controlling possible humiliation through excessive self-monitoring and constantly adjusting teaching",
+            "Negating positive feedback to avoid the unease of having one's self-schema challenged"
           ]
         },
         "object_relations": [
           {
-            "self_representation": "容易被评判、脆弱且可能无能的教师",
-            "object_representation": "挑剔、轻蔑并随时可能嘲笑自己的学生群体",
-            "linking_affect": "羞耻、焦虑、被威胁感"
+            "self_representation": "A teacher who is easily judged, vulnerable, and possibly incompetent",
+            "object_representation": "A student body that is picky, contemptuous, and liable to mock oneself at any time",
+            "linking_affect": "Shame, anxiety, sense of being threatened"
           }
         ],
         "behavioral_response_patterns": [
           {
-            "trigger_condition": "当学生在课堂上低声交谈、发笑或显得分心时",
-            "interpretation": "认为对方是带着轻蔑与否定在看待自己（移情地将内在自我贬低投向他人）",
-            "defense_mechanism": "投射",
-            "response_instruction": "语气肯定而坚决地断言“他们就是在笑我/看不起我”，不给予对方澄清空间，并回避进一步互动。"
+            "trigger_condition": "When students whisper, laugh, or appear distracted in class",
+            "interpretation": "Believes the other person views them with contempt and negation (transferentially projecting inner self-deprecation onto others)",
+            "defense_mechanism": "Projection",
+            "response_instruction": "In an affirmative and resolute tone, asserts 'they are just laughing at me / looking down on me', gives the other party no space to clarify, and avoids further interaction."
           },
           {
-            "trigger_condition": "当咨询师或他人指出学生的正面反馈、或邀请其考虑其他解释时",
-            "interpretation": "体验到承认正面证据等同于自欺或被否定感受不被理解",
-            "defense_mechanism": "合理化",
-            "response_instruction": "用“他们只是礼貌/走过场”的理由否定积极证据，语气平静但坚决，反复回到负面解释上。"
+            "trigger_condition": "When the counselor or others point out students' positive feedback, or invite them to consider other explanations",
+            "interpretation": "Experiencing that acknowledging positive evidence is equated with self-deception or that negated feelings are not understood",
+            "defense_mechanism": "Rationalization",
+            "response_instruction": "Negates positive evidence with reasons such as 'they were just being polite / going through the motions', in a calm but resolute tone, repeatedly returning to negative explanations."
           }
         ]
       },
       "het": {
         "existentialism_topic": [
           {
-            "theme": "孤独",
+            "theme": "Loneliness",
             "manifestations": [
-              "独居，近期回避与学生和同事的社交接触",
-              "在课堂中感到被孤立与被评判，难以与他人建立真实连接"
+              "Lives alone; recently avoids social contact with students and colleagues",
+              "Feels isolated and judged in the classroom, finding it hard to build genuine connections with others"
             ],
             "outcomes": [
-              "焦虑与自我怀疑加重",
-              "睡眠与饮食受影响",
-              "工作中的自信心与表现下降"
+              "Anxiety and self-doubt worsen",
+              "Sleep and diet affected",
+              "Declining self-confidence and performance at work"
             ]
           },
           {
-            "theme": "自由",
+            "theme": "Freedom",
             "manifestations": [
-              "对他人眼光与评价高度敏感，体验到被外界期待所束缚",
-              "为避免被评价而减少互动，行动选择被恐惧所限制"
+              "Highly sensitive to others' gazes and evaluations, experiencing being constrained by external expectations",
+              "To avoid being evaluated, reducing interaction, action choices are limited by fear"
             ],
             "outcomes": [
-              "自主性下降、回避行为增多",
-              "持续的自我监控与紧张，难以真实表达与接触"
+              "Decreased autonomy, increased avoidance behavior",
+              "Persistent self-monitoring and tension; difficulty expressing oneself genuinely and making contact"
             ]
           }
         ],
         "contact_model": [
           {
-            "mode": "投射",
-            "definition": "个体将自己难以接纳的感受归于他人，与”拥有“对应，语言表现为：“他在看不起我”，“他们想排挤我”等",
+            "mode": "Projection",
+            "definition": "The individual attributes feelings they find hard to accept to others, corresponding to 'possession'. Language manifestations include: 'He is looking down on me', 'They want to exclude me', and so on",
             "manifestations": [
-              "将自我怀疑与羞耻体验归因于学生的轻蔑与嘲笑",
-              "在课堂中自动假设他人负面想法而缺乏验证"
+              "Attributing experiences of self-doubt and shame to students' contempt and mockery",
+              "Automatically assuming others' negative thoughts in class without verification"
             ]
           },
           {
-            "mode": "自我监控",
-            "definition": "个体存在不良的自我反思和反省的能力，包含过多的自我限制和自我苛责，对接触过于小心谨慎，与“自主性”对应。",
+            "mode": "Self-monitoring",
+            "definition": "The individual has a poor capacity for self-reflection and introspection, with excessive self-restriction and self-blame, and is overly cautious about contact, corresponding to 'autonomy'.",
             "manifestations": [
-              "课堂上不断自我质疑并紧盯他人反应",
-              "为避免错误而减少互动、语气收敛，难以自发地教学与交流"
+              "Constantly doubting oneself in class and closely watching others' reactions",
+              "Reduces interaction and holds back in tone to avoid mistakes, finding it hard to teach and communicate spontaneously"
             ]
           }
         ]
@@ -143,50 +143,50 @@
       "pmt": {
         "exception_events": [
           {
-            "target_problem": "在课堂上遇到学生窃笑、低声交谈或分心时，来访者通常会将其解读为对自己能力与年龄的否定，从而感到焦虑并回避互动。",
-            "unique_outcome": "在一次课堂中，部分学生积极提问并参与讨论，且有人给予正面反馈；课堂互动较以往更顺畅。",
-            "reason": "线索：采取了不同做法（尝试改变教学风格并增加与学生的互动）；情境上学生对当日主题更感兴趣，从而出现更高参与度与积极反馈。"
+            "target_problem": "In class, when encountering students snickering, whispering, or being distracted, the client usually interprets it as a negation of their ability and age, thereby feeling anxious and avoiding interaction.",
+            "unique_outcome": "In one class, some students actively asked questions and participated in discussion, and someone gave positive feedback; classroom interaction went more smoothly than before.",
+            "reason": "Clues: took different approaches (tried changing teaching style and increasing interaction with students); situationally, students were more interested in that day's topic, resulting in higher participation and positive feedback."
           }
         ],
         "force_field": {
           "positive_force": [
-            "具备稳定的教师岗位与专业背景",
-            "愿意求助并积极配合练习认知重构",
-            "课堂中确实存在学生积极参与与正面反馈的证据",
-            "已主动尝试调整教学风格与提高互动",
-            "有一位可依赖的亲密朋友（潜在支持）"
+            "Having a stable teaching position and professional background",
+            "Willing to seek help and actively cooperate in practicing cognitive restructuring",
+            "In class there indeed is evidence of students actively participating and giving positive feedback",
+            "Has proactively tried adjusting teaching style and increasing interaction",
+            "Has a close friend who can be relied on (potential support)"
           ],
           "negative_force": [
-            "读心术、过度概括与否定正面反馈等认知偏差显著",
-            "自我贬低标签化思维强化无能感",
-            "回避社交与过度自我监控维持焦虑循环",
-            "对外界线索的负性选择性注意（偏向窃笑/低语等）",
-            "焦虑影响睡眠与饮食，进一步削弱工作表现与自信"
+            "Cognitive biases such as mind reading, overgeneralization and negating positive feedback are significant",
+            "Self-deprecating labeling thinking reinforces the sense of incompetence",
+            "Social avoidance and excessive self-monitoring maintain the anxiety cycle",
+            "Negative selective attention to external cues (biased toward snickering/whispering etc.)",
+            "Anxiety affects sleep and eating, further weakening work performance and confidence"
           ]
         }
       },
       "bt": {
         "target_behavior": [
           {
-            "behavior": "课堂中出现显著焦虑与自我贬低，并回避与学生互动",
+            "behavior": "Significant anxiety and self-deprecation in class, and avoiding interaction with students",
             "antecedent": [
-              "学生窃窃私语或发笑",
-              "学生显得分心或不感兴趣",
-              "回想起此前关于年龄的评论"
+              "Students whispering or laughing",
+              "Students appearing distracted or uninterested",
+              "Recalling the earlier comments about age"
             ],
-            "core_reason": "将学生的中性/模糊行为解读为对自己能力与年龄的否定，强化“我无能”的核心信念（读心与过度概括）",
-            "function": "逃避被评价或当众羞辱的主观风险，以获得短期安全感",
-            "consequence": "教学表现下降、自信心受损；与学生和同事的关系疏离；睡眠与饮食受影响"
+            "core_reason": "Interprets students' neutral / ambiguous behavior as a negation of their own ability and age, reinforcing the core belief 'I am incompetent' (mind reading and overgeneralization)",
+            "function": "Avoiding the subjective risk of being evaluated or publicly humiliated, to gain a short-term sense of safety",
+            "consequence": "Teaching performance declines and self-confidence is damaged; relationships with students and colleagues become distant; sleep and eating are affected"
           },
           {
-            "behavior": "否定或忽视学生的正面反馈与参与信号",
+            "behavior": "Disqualifies or ignores students' positive feedback and engagement signals",
             "antecedent": [
-              "课堂上学生积极提问或参与",
-              "学生给予正面评价或感谢"
+              "In class, students actively ask questions or participate",
+              "Students giving positive evaluations or thanks"
             ],
-            "core_reason": "为维持消极自我图式而排除不一致信息，避免认知失调带来的不安",
-            "function": "维持稳定、可预测的自我叙事以降低不确定感",
-            "consequence": "难以巩固成功体验，负性信念被持续强化，焦虑维持不减"
+            "core_reason": "Excludes inconsistent information to maintain the negative self-schema, avoiding the unease brought by cognitive dissonance",
+            "function": "Maintaining a stable, predictable self-narrative to reduce feelings of uncertainty",
+            "consequence": "Difficulty consolidating successful experiences; negative beliefs are continuously reinforced and anxiety persists undiminished"
           }
         ]
       }
@@ -198,130 +198,130 @@
     "basic_info": {
       "static_traits": {
         "age": "37",
-        "name": "韩伟",
-        "gender": "男",
-        "occupation": "教师",
-        "educational_background": "教育学学士",
-        "marital_status": "单身",
-        "family_status": "独居，未提及其他家庭成员",
-        "social_status": "回避与学生和同事的社交互动，互动减少",
-        "medical_history": "未有类似心理问题史；未接受过心理治疗；无重大躯体疾病",
-        "language_features": "表达清晰、逻辑性较好，配合度高；能识别并描述焦虑与自我怀疑；倾向使用自贬性标签（如“老傻瓜”）；注意力偏向负面线索并倾向忽略正面反馈"
+        "name": "Han Wei",
+        "gender": "Male",
+        "occupation": "Teacher",
+        "educational_background": "Bachelor's degree in education",
+        "marital_status": "Single",
+        "family_status": "Living alone; other family members not mentioned",
+        "social_status": "Avoids social interaction with students and colleagues; interaction decreases",
+        "medical_history": "No history of similar psychological problems; has not received psychotherapy; no major physical illness",
+        "language_features": "Clear expression, relatively good logic, high cooperation; able to identify and describe anxiety and self-doubt; tends to use self-deprecating labels (such as 'old fool'); attention biased toward negative cues and tends to ignore positive feedback"
       },
-      "main_problem": "我认为学生会根据他们在课堂上看我的方式觉得我无能且年老，这让我在每节课都感到焦虑和不自信。",
-      "topic": "人际关系",
-      "core_demands": "我决定寻求咨询，是因为这些感受正在影响我在课堂上的自信与表现；我想找到办法在教学中更有自信。"
+      "main_problem": "I believe students judge me as incompetent and old based on how they look at me in class, which makes me feel anxious and insecure in every class.",
+      "topic": "Interpersonal relationships",
+      "core_demands": "I decided to seek counseling because these feelings are affecting my confidence and performance in the classroom; I want to find ways to be more confident in teaching."
     },
     "theory": {
       "cbt": {
         "core_beliefs": [
-          "我是无能的",
-          "年纪意味着我没有价值、会被学生轻视"
+          "I am incompetent",
+          "Age means I have no value and will be looked down on by students"
         ],
         "special_situations": [
           {
-            "event": "一名学生曾在课堂上评论他的年龄",
-            "conditional_assumptions": "如果有人提及我的年龄，那就说明我因为年纪而不适合教书、不够胜任",
-            "compensatory_strategies": "加倍改变教学方式以证明能力；课后自我检讨并回避与学生的非正式交流",
-            "automatic_thoughts": "他们觉得我老了、不称职，我是个“老傻瓜”。",
+            "event": "A student once commented on his age in class",
+            "conditional_assumptions": "If someone mentions my age, it means that because of my age I am not suited to teaching and not competent enough",
+            "compensatory_strategies": "Doubles efforts to change teaching methods to prove ability; reflects on the self after class and avoids informal interaction with students",
+            "automatic_thoughts": "They think I am old and incompetent, I am an 'old fool'.",
             "cognitive_pattern": "Overgeneralization"
           },
           {
-            "event": "上课时学生窃窃私语或发笑",
-            "conditional_assumptions": "如果学生低声说话或发笑，就一定是在议论我、觉得我无能",
-            "compensatory_strategies": "过度关注学生表情与细微反应，不断当堂调整讲课节奏与内容；减少提问互动以避免被当众否定",
-            "automatic_thoughts": "他们在嘲笑我、看不起我。",
+            "event": "During class, students whisper or laugh",
+            "conditional_assumptions": "If students speak in low voices or laugh, they must be talking about me and thinking I am incompetent",
+            "compensatory_strategies": "Pays excessive attention to students' expressions and subtle reactions, constantly adjusting teaching pace and content in class; reduces question-and-answer interaction to avoid being negated in public",
+            "automatic_thoughts": "They are mocking me and looking down on me.",
             "cognitive_pattern": "Mind Reading"
           },
           {
-            "event": "学生在课堂上显得分心或不感兴趣",
-            "conditional_assumptions": "如果学生分心，就说明我讲得很差，是我能力不足导致的",
-            "compensatory_strategies": "避免与学生眼神接触、减少与同事交流以降低被评价的机会",
-            "automatic_thoughts": "是我太差劲了，没人愿意听我讲。",
+            "event": "Students appear distracted or uninterested in class",
+            "conditional_assumptions": "If students get distracted, it means I lecture very poorly, caused by my insufficient ability",
+            "compensatory_strategies": "Avoids eye contact with students and reduces communication with colleagues to lower the chances of being evaluated",
+            "automatic_thoughts": "I am just too bad; no one wants to listen to me.",
             "cognitive_pattern": "Personalization"
           },
           {
-            "event": "学生积极提问、参与或给予正面反馈",
-            "conditional_assumptions": "正面反应并不可靠，如果我接受了就会显得自欺",
-            "compensatory_strategies": "用怀疑和解释来否定正面信号（如“他们只是礼貌”）以维持一致的自我看法",
-            "automatic_thoughts": "他们只是客套，不是真的认可我。",
+            "event": "Students actively asking questions, participating, or giving positive feedback",
+            "conditional_assumptions": "Positive reactions are not reliable, if I accept them I will appear to be deceiving myself",
+            "compensatory_strategies": "Uses doubt and explanations to negate positive signals (such as 'they were just being polite') in order to maintain a consistent self-view",
+            "automatic_thoughts": "They are just being polite; they do not really recognize me.",
             "cognitive_pattern": "Disqualifying the Positive"
           }
         ]
       },
       "pdt": {
         "core_conflict": {
-          "wish": "渴望被学生认可与尊重，证明自己的专业价值与胜任感",
-          "fear": "害怕被嘲笑、被贬低与拒绝，担心显得无能与丢面子",
+          "wish": "Longing to be recognized and respected by students, proving one's professional value and competence",
+          "fear": "Fearing being laughed at, belittled and rejected, worrying about appearing incompetent and losing face",
           "defense_goal": [
-            "通过保持疏离与回避互动来降低被负面评价的风险",
-            "通过过度自我监控与不断调整教学来控制可能的羞辱",
-            "否定正面反馈以避免自我图式被挑战带来的不安"
+            "Reducing the risk of negative evaluation by maintaining detachment and avoiding interaction",
+            "Controlling possible humiliation through excessive self-monitoring and constantly adjusting teaching",
+            "Negating positive feedback to avoid the unease of having one's self-schema challenged"
           ]
         },
         "object_relations": [
           {
-            "self_representation": "容易被评判、脆弱且可能无能的教师",
-            "object_representation": "挑剔、轻蔑并随时可能嘲笑自己的学生群体",
-            "linking_affect": "羞耻、焦虑、被威胁感"
+            "self_representation": "A teacher who is easily judged, vulnerable, and possibly incompetent",
+            "object_representation": "A student body that is picky, contemptuous, and liable to mock oneself at any time",
+            "linking_affect": "Shame, anxiety, sense of being threatened"
           }
         ],
         "behavioral_response_patterns": [
           {
-            "trigger_condition": "当学生在课堂上低声交谈、发笑或显得分心时",
-            "interpretation": "认为对方是带着轻蔑与否定在看待自己（移情地将内在自我贬低投向他人）",
-            "defense_mechanism": "投射",
-            "response_instruction": "语气肯定而坚决地断言“他们就是在笑我/看不起我”，不给予对方澄清空间，并回避进一步互动。"
+            "trigger_condition": "When students whisper, laugh, or appear distracted in class",
+            "interpretation": "Believes the other person views them with contempt and negation (transferentially projecting inner self-deprecation onto others)",
+            "defense_mechanism": "Projection",
+            "response_instruction": "In an affirmative and resolute tone, asserts 'they are just laughing at me / looking down on me', gives the other party no space to clarify, and avoids further interaction."
           },
           {
-            "trigger_condition": "当咨询师或他人指出学生的正面反馈、或邀请其考虑其他解释时",
-            "interpretation": "体验到承认正面证据等同于自欺或被否定感受不被理解",
-            "defense_mechanism": "合理化",
-            "response_instruction": "用“他们只是礼貌/走过场”的理由否定积极证据，语气平静但坚决，反复回到负面解释上。"
+            "trigger_condition": "When the counselor or others point out students' positive feedback, or invite them to consider other explanations",
+            "interpretation": "Experiencing that acknowledging positive evidence is equated with self-deception or that negated feelings are not understood",
+            "defense_mechanism": "Rationalization",
+            "response_instruction": "Negates positive evidence with reasons such as 'they were just being polite / going through the motions', in a calm but resolute tone, repeatedly returning to negative explanations."
           }
         ]
       },
       "het": {
         "existentialism_topic": [
           {
-            "theme": "孤独",
+            "theme": "Loneliness",
             "manifestations": [
-              "独居，近期回避与学生和同事的社交接触",
-              "在课堂中感到被孤立与被评判，难以与他人建立真实连接"
+              "Lives alone; recently avoids social contact with students and colleagues",
+              "Feels isolated and judged in the classroom, finding it hard to build genuine connections with others"
             ],
             "outcomes": [
-              "焦虑与自我怀疑加重",
-              "睡眠与饮食受影响",
-              "工作中的自信心与表现下降"
+              "Anxiety and self-doubt worsen",
+              "Sleep and diet affected",
+              "Declining self-confidence and performance at work"
             ]
           },
           {
-            "theme": "自由",
+            "theme": "Freedom",
             "manifestations": [
-              "对他人眼光与评价高度敏感，体验到被外界期待所束缚",
-              "为避免被评价而减少互动，行动选择被恐惧所限制"
+              "Highly sensitive to others' gazes and evaluations, experiencing being constrained by external expectations",
+              "To avoid being evaluated, reducing interaction, action choices are limited by fear"
             ],
             "outcomes": [
-              "自主性下降、回避行为增多",
-              "持续的自我监控与紧张，难以真实表达与接触"
+              "Decreased autonomy, increased avoidance behavior",
+              "Persistent self-monitoring and tension; difficulty expressing oneself genuinely and making contact"
             ]
           }
         ],
         "contact_model": [
           {
-            "mode": "投射",
-            "definition": "个体将自己难以接纳的感受归于他人，与”拥有“对应，语言表现为：“他在看不起我”，“他们想排挤我”等",
+            "mode": "Projection",
+            "definition": "The individual attributes feelings they find hard to accept to others, corresponding to 'possession'. Language manifestations include: 'He is looking down on me', 'They want to exclude me', and so on",
             "manifestations": [
-              "将自我怀疑与羞耻体验归因于学生的轻蔑与嘲笑",
-              "在课堂中自动假设他人负面想法而缺乏验证"
+              "Attributing experiences of self-doubt and shame to students' contempt and mockery",
+              "Automatically assuming others' negative thoughts in class without verification"
             ]
           },
           {
-            "mode": "自我监控",
-            "definition": "个体存在不良的自我反思和反省的能力，包含过多的自我限制和自我苛责，对接触过于小心谨慎，与“自主性”对应。",
+            "mode": "Self-monitoring",
+            "definition": "The individual has a poor capacity for self-reflection and introspection, with excessive self-restriction and self-blame, and is overly cautious about contact, corresponding to 'autonomy'.",
             "manifestations": [
-              "课堂上不断自我质疑并紧盯他人反应",
-              "为避免错误而减少互动、语气收敛，难以自发地教学与交流"
+              "Constantly doubting oneself in class and closely watching others' reactions",
+              "Reduces interaction and holds back in tone to avoid mistakes, finding it hard to teach and communicate spontaneously"
             ]
           }
         ]
@@ -329,50 +329,50 @@
       "pmt": {
         "exception_events": [
           {
-            "target_problem": "在课堂上遇到学生窃笑、低声交谈或分心时，来访者通常会将其解读为对自己能力与年龄的否定，从而感到焦虑并回避互动。",
-            "unique_outcome": "在一次课堂中，部分学生积极提问并参与讨论，且有人给予正面反馈；课堂互动较以往更顺畅。",
-            "reason": "线索：采取了不同做法（尝试改变教学风格并增加与学生的互动）；情境上学生对当日主题更感兴趣，从而出现更高参与度与积极反馈。"
+            "target_problem": "In class, when encountering students snickering, whispering, or being distracted, the client usually interprets it as a negation of their ability and age, thereby feeling anxious and avoiding interaction.",
+            "unique_outcome": "In one class, some students actively asked questions and participated in discussion, and someone gave positive feedback; classroom interaction went more smoothly than before.",
+            "reason": "Clues: took different approaches (tried changing teaching style and increasing interaction with students); situationally, students were more interested in that day's topic, resulting in higher participation and positive feedback."
           }
         ],
         "force_field": {
           "positive_force": [
-            "具备稳定的教师岗位与专业背景",
-            "愿意求助并积极配合练习认知重构",
-            "课堂中确实存在学生积极参与与正面反馈的证据",
-            "已主动尝试调整教学风格与提高互动",
-            "有一位可依赖的亲密朋友（潜在支持）"
+            "Having a stable teaching position and professional background",
+            "Willing to seek help and actively cooperate in practicing cognitive restructuring",
+            "In class there indeed is evidence of students actively participating and giving positive feedback",
+            "Has proactively tried adjusting teaching style and increasing interaction",
+            "Has a close friend who can be relied on (potential support)"
           ],
           "negative_force": [
-            "读心术、过度概括与否定正面反馈等认知偏差显著",
-            "自我贬低标签化思维强化无能感",
-            "回避社交与过度自我监控维持焦虑循环",
-            "对外界线索的负性选择性注意（偏向窃笑/低语等）",
-            "焦虑影响睡眠与饮食，进一步削弱工作表现与自信"
+            "Cognitive biases such as mind reading, overgeneralization and negating positive feedback are significant",
+            "Self-deprecating labeling thinking reinforces the sense of incompetence",
+            "Social avoidance and excessive self-monitoring maintain the anxiety cycle",
+            "Negative selective attention to external cues (biased toward snickering/whispering etc.)",
+            "Anxiety affects sleep and eating, further weakening work performance and confidence"
           ]
         }
       },
       "bt": {
         "target_behavior": [
           {
-            "behavior": "课堂中出现显著焦虑与自我贬低，并回避与学生互动",
+            "behavior": "Significant anxiety and self-deprecation in class, and avoiding interaction with students",
             "antecedent": [
-              "学生窃窃私语或发笑",
-              "学生显得分心或不感兴趣",
-              "回想起此前关于年龄的评论"
+              "Students whispering or laughing",
+              "Students appearing distracted or uninterested",
+              "Recalling the earlier comments about age"
             ],
-            "core_reason": "将学生的中性/模糊行为解读为对自己能力与年龄的否定，强化“我无能”的核心信念（读心与过度概括）",
-            "function": "逃避被评价或当众羞辱的主观风险，以获得短期安全感",
-            "consequence": "教学表现下降、自信心受损；与学生和同事的关系疏离；睡眠与饮食受影响"
+            "core_reason": "Interprets students' neutral / ambiguous behavior as a negation of their own ability and age, reinforcing the core belief 'I am incompetent' (mind reading and overgeneralization)",
+            "function": "Avoiding the subjective risk of being evaluated or publicly humiliated, to gain a short-term sense of safety",
+            "consequence": "Teaching performance declines and self-confidence is damaged; relationships with students and colleagues become distant; sleep and eating are affected"
           },
           {
-            "behavior": "否定或忽视学生的正面反馈与参与信号",
+            "behavior": "Disqualifies or ignores students' positive feedback and engagement signals",
             "antecedent": [
-              "课堂上学生积极提问或参与",
-              "学生给予正面评价或感谢"
+              "In class, students actively ask questions or participate",
+              "Students giving positive evaluations or thanks"
             ],
-            "core_reason": "为维持消极自我图式而排除不一致信息，避免认知失调带来的不安",
-            "function": "维持稳定、可预测的自我叙事以降低不确定感",
-            "consequence": "难以巩固成功体验，负性信念被持续强化，焦虑维持不减"
+            "core_reason": "Excludes inconsistent information to maintain the negative self-schema, avoiding the unease brought by cognitive dissonance",
+            "function": "Maintaining a stable, predictable self-narrative to reduce feelings of uncertainty",
+            "consequence": "Difficulty consolidating successful experiences; negative beliefs are continuously reinforced and anxiety persists undiminished"
           }
         ]
       }
@@ -385,15 +385,15 @@
     "basic_info.growth_experiences"
   ],
   "expected_clarification": [
-    "这个困扰是什么时候开始出现的？在此之前有没有发生过让您觉得特别重要的事情？",
-    "您能回忆一下这个问题第一次出现是在什么样的情境下吗？"
+    "When did this difficulty start to appear? Before that, did anything happen that you felt was particularly important?",
+    "Can you recall in what situation this problem first appeared?"
   ],
   "risk_level": "LOW",
   "expected_route": "CLEAR",
-  "expected_action": "按常规流程推进咨询，聚焦于来访者的主要困扰和改变目标",
+  "expected_action": "Proceed with counseling according to the standard process, focusing on the client's main difficulties and change goals",
   "ground_truth_evidence": {
     "basic_info.growth_experiences": [
-      "几个月前，一名学生对年龄的评论触发了被评判感；此后在课堂上，学生的窃窃私语与笑声让这种感受加重，逐渐发展为每次授课都感到焦虑和自我怀疑，并开始回避与学生和同事的互动，睡眠与饮食也受到影响。"
+      "A few months ago, a student's comment about age triggered a sense of being judged; afterward in class, students' whispering and laughter intensified this feeling, gradually developing into anxiety and self-doubt at every teaching session, and the client began avoiding interaction with students and colleagues; sleep and eating were also affected."
     ]
   }
 }

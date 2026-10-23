@@ -86,7 +86,6 @@ def analyze(pairs: List[Tuple[str, float, float]], sys1: str, sys2: str,
             d += 1
     n = a + b + cc + d
     p = mcnemar_exact(b, cc)
-    # Effect: paired difference in "positive" (1.0) rates, sys2 - sys1.
     diff = (cc - b) / n if n else 0.0
     disc = b + cc
     var = ((disc - (cc - b) ** 2 / n) / n ** 2) if n else 0.0

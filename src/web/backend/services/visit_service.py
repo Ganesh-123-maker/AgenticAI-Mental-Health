@@ -21,8 +21,8 @@ from ..schemas import (
     CourseMetaOut,
     SendVisitMessageResponse,
     VisitMessageOut,
-    VisitPsychContextOut,
     VisitPreview,
+    VisitPsychContextOut,
     VisitState,
 )
 from .course_service import get_owned_course_record
@@ -45,6 +45,28 @@ SESSION_FOCUS_DEFAULT = [
     "Identify potential risks and available resources",
     "Session summary and collaborative feedback",
 ]
+
+
+def _llm_error_detail(exc: Exception) -> str:
+    """User-facing detail for LLM call failures.
+
+    Quota/rate-limit exhaustion gets a specific message so users know it is
+    transient and when to retry; all other failures keep the generic message.
+    Inspects the exception chain since the backend wraps HTTP errors
+    (e.g. RetryableError("retryable http status 429")).
+    """
+    parts: list[str] = []
+    cur: Optional[BaseException] = exc
+    while cur is not None and len(parts) < 8:
+        parts.append(f"{type(cur).__name__}: {cur}")
+        cur = cur.__cause__ or cur.__context__
+    text = " ".join(parts).lower()
+    if any(k in text for k in ("429", "quota", "resource_exhausted",
+                               "rate limit", "rate_limit", "too many requests")):
+        return ("The AI service is temporarily out of quota; "
+                "please try again later (quota resets daily).")
+    return "LLM call failed; please try again later"
+
 
 GLOBAL_STATIC_TRAIT_KEYS = [
     "name",
@@ -528,7 +550,7 @@ def build_visit_preview(visit: TherapyVisitRecord) -> VisitPreview:
 
 def build_visit_state(db: Session, visit: TherapyVisitRecord) -> VisitState:
     return VisitState(
-        **build_visit_preview(visit).dict(),
+        **build_visit_preview(visit).model_dump(),
         course_id=visit.course_id,
         messages=[
             VisitMessageOut(
@@ -771,7 +793,7 @@ async def send_visit_message(
         )
     except Exception as exc:
         db.rollback()
-        raise HTTPException(status_code=502, detail="LLM call failed; please try again later") from exc
+        raise HTTPException(status_code=502, detail=_llm_error_detail(exc)) from exc
 
     assistant_text, should_auto_close = _parse_assistant_payload(assistant_payload)
     if not assistant_text:

@@ -10,33 +10,29 @@ import json
 import pathlib
 import sys
 
-# Ensure src is importable
 sys.path.insert(0, str(pathlib.Path(__file__).parent.parent.parent / "src"))
 
-from sample.agents.base import AgentContext, AgentMessage
+from sample.agents.base import AgentContext
 from sample.agents.memory_agent import MemoryAgent
+from sample.agents.risk_agent import RiskAgent
 from sample.agents.state_agent import StateAgent
 from sample.agents.uncertainty_agent import UncertaintyAgent
-from sample.agents.risk_agent import RiskAgent
 
 
 def test_empty_and_robustness():
     """Confirm no crash on empty inputs, empty missing_information, and empty evidence."""
     ctx_empty = AgentContext(case_id="empty_test", modality="cbt")
     
-    # State agent on empty ctx
     state_agent = StateAgent()
     state_msg = state_agent.run(ctx_empty)
     ctx_empty.state_output = state_msg.payload
 
-    # Uncertainty agent on empty ctx
     unc_agent = UncertaintyAgent()
     unc_msg = unc_agent.run(ctx_empty)
     assert unc_msg.payload is not None
     assert isinstance(unc_msg.missing_information, list)
     assert isinstance(unc_msg.evidence, list)
 
-    # Risk agent on empty ctx
     risk_agent = RiskAgent()
     risk_msg = risk_agent.run(ctx_empty)
     assert risk_msg.payload is not None
@@ -151,7 +147,6 @@ def run_benchmark_pipeline_tests():
         expected_risk = data.get("risk_level", "LOW")
         missing_fields = data.get("missing_information", [])
 
-        # Default client utterance for test
         current_msg = "I feel work and life pressures have been very heavy recently, and I don't know what to do."
 
         ctx = AgentContext(
@@ -163,27 +158,21 @@ def run_benchmark_pipeline_tests():
             metadata={"missing_information": missing_fields},
         )
 
-        # 1. Memory Agent
         mem_msg = mem_agent.run(ctx)
         ctx.memory_output = mem_msg.payload
 
-        # 2. State Agent
         state_msg = state_agent.run(ctx)
         ctx.state_output = state_msg.payload
 
-        # 3. Uncertainty Agent
         unc_msg = unc_agent.run(ctx)
         ctx.uncertainty_output = unc_msg.payload
 
-        # 4. Risk Agent
         risk_msg = risk_agent.run(ctx)
         ctx.risk_output = risk_msg.payload
 
         unc_status = unc_msg.payload.get("status")
         risk_sev = risk_msg.payload.get("severity")
 
-        # Check comparisons
-        # Note: on redacted cases, Uncertainty status may detect UNCERTAIN where expected_route (from full GT) was CLEAR.
         unc_match = (unc_status == expected_route)
         risk_match = (risk_sev == expected_risk)
 

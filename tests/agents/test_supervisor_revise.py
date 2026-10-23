@@ -34,7 +34,6 @@ def test_revise_uses_supervisor_revision():
     assert r["route"] == "HIGH-RISK"
     actions = [s.get("action") for s in r["trail"]]
     assert "supervisor_revision_applied" in actions, f"trail actions: {actions}"
-    # The stub draft ("[Counselor response generated...") must NOT be delivered.
     assert "[Counselor response generated" not in r["response"]
     assert "safety" in r["response"].lower()
     print("[PASS] REVISE uses supervisor's revised_response.")
@@ -43,14 +42,12 @@ def test_revise_uses_supervisor_revision():
 def test_revise_fallback_without_structured_revision():
     """If the supervisor gives no revised_response, fall back to counseling re-run."""
     ctx = _high_risk_ctx()
-    # Monkeypatch the supervisor to emit REVISE without a revised_response.
     orig_run = SafetySupervisor.run
 
     def _no_revision(self, ctx, draft_response=""):
         msg = orig_run(self, ctx, draft_response=draft_response)
         msg.payload["revised_response"] = None
         msg.payload["suggested_revision"] = None
-        # Force REVISE verdict to exercise the fallback path.
         if msg.payload.get("verdict") != "REVISE":
             msg.payload["verdict"] = "REVISE"
         return msg
@@ -79,3 +76,13 @@ def test_allow_unchanged():
     actions = [s.get("action") for s in r["trail"]]
     assert "supervisor_revision_applied" not in actions
     print("[PASS] ALLOW path unchanged.")
+
+
+def test_high_risk_revise_contains_hotlines():
+    """HIGH-RISK REVISE case must include both Tele-MANAS 14416 and 988 hotlines."""
+    r = run_pipeline(_high_risk_ctx())
+    assert r["route"] == "HIGH-RISK"
+    assert r["verdict"] == "REVISE"
+    assert "14416" in r["response"], f"Tele-MANAS hotline missing: {r['response']}"
+    assert "988" in r["response"], f"988 hotline missing: {r['response']}"
+

@@ -1,9 +1,9 @@
 """Multi-agent evaluation methods for PsychAgent."""
 
 from .coordination import Coordination
-from .uncertainty import Uncertainty
-from .safety import Safety
 from .longitudinal import Longitudinal
+from .safety import Safety
+from .uncertainty import Uncertainty
 
 __all__ = [
     "Coordination",

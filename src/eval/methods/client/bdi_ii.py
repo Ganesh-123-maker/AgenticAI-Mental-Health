@@ -1,14 +1,12 @@
-from typing import Any, Dict
-import re
+import json
+from typing import Any, List
 
+from jinja2 import Template
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 from ...core.base import EvaluationMethod
 from ...utils import load_prompt
-from jinja2 import Template
-import json
 
-from typing import List
-from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 class Item(BaseModel):
     model_config = ConfigDict(extra="forbid", strict=True)
@@ -49,7 +47,6 @@ class BDI_II(EvaluationMethod):
         
         template = Template(prompt)
         prompt = template.render(intake_form=profile, diag=dialogue)
-        # print(f"BDI_II - {BDI_II} prompt: {prompt}")
         messages = [{"role": "user", "content": prompt}]
 
         last_err: Exception | None = None
@@ -73,7 +70,7 @@ class BDI_II(EvaluationMethod):
 
         mean_score = 0.0
         for it in validated.items:
-            mean_score += float(it.score) * 10.0 / 3.0  # 0-3 -> 0-10
+            mean_score += float(it.score) * 10.0 / 3.0
 
         mean_score /= len(validated.items)
         return {"client": mean_score}

@@ -11,29 +11,26 @@ import argparse
 import asyncio
 import json
 import logging
-import os
 import sys
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List
 
 repo_root = Path(__file__).resolve().parents[2]
 if str(repo_root) not in sys.path:
     sys.path.insert(0, str(repo_root))
 
-from src.sample.agents.base import AgentContext
-from src.sample.agents.pipeline import run_pipeline
-from src.sample.agents.outcome_agent import OutcomeAgent
-from src.sample.agents.memory_update_agent import MemoryUpdateAgent
-from src.sample.agents.memory_agent import MemoryAgent
-from src.sample.core.schemas import PublicMemory
-
-from src.eval.methods.client.panas import PANAS, _PANAS_ORDER
+from src.eval.methods.client.panas import _PANAS_ORDER, PANAS
 from src.eval.methods.client.srs import SRS
 from src.eval.methods.counselor.wai import WAI
 from src.eval.methods.multi_agent.coordination import Coordination
-from src.eval.methods.multi_agent.uncertainty import Uncertainty
-from src.eval.methods.multi_agent.safety import Safety
 from src.eval.methods.multi_agent.longitudinal import Longitudinal
+from src.eval.methods.multi_agent.safety import Safety
+from src.eval.methods.multi_agent.uncertainty import Uncertainty
+from src.sample.agents.base import AgentContext
+from src.sample.agents.memory_agent import MemoryAgent
+from src.sample.agents.memory_update_agent import MemoryUpdateAgent
+from src.sample.agents.outcome_agent import OutcomeAgent
+from src.sample.agents.pipeline import run_pipeline
 
 logger = logging.getLogger(__name__)
 
@@ -219,7 +216,6 @@ class MockJudgeAPI:
     async def chat_text(self, messages: List[Dict[str, Any]], **kwargs: Any) -> str:
         prompt_content = messages[-1].get("content", "")
 
-        # 1. PANAS Judge
         if "PANAS" in prompt_content or "Interested" in prompt_content:
             is_high = self.quality_tier in ("high", "very_high")
             is_low = self.quality_tier == "low"
@@ -234,7 +230,6 @@ class MockJudgeAPI:
                     items.append({"item": emotion, "score": neg_score})
             return json.dumps({"items": items}, ensure_ascii=False)
 
-        # 2. SRS Judge
         elif "Relationship" in prompt_content or "SRS" in prompt_content:
             score = 4 if self.quality_tier == "very_high" else (3 if self.quality_tier == "high" else (2 if self.quality_tier == "medium" else 1))
             items = [
@@ -245,7 +240,6 @@ class MockJudgeAPI:
             ]
             return json.dumps({"items": items}, ensure_ascii=False)
 
-        # 3. WAI Judge
         elif "WAI" in prompt_content or "wai" in prompt_content:
             score = 5 if self.quality_tier == "very_high" else (4 if self.quality_tier in ("high", "medium") else 3)
             items = [
@@ -274,7 +268,6 @@ def load_benchmark_cases(base_dir: Path, modalities: List[str], cases_per_modali
         if not mod_dir.exists():
             continue
         json_files = sorted(mod_dir.glob("*.json"))
-        # Ensure slice includes high-risk cases if present, plus ordinary and safety cases
         high_risk_files: List[Path] = []
         other_files: List[Path] = []
         for f in json_files:
@@ -317,6 +310,12 @@ def run_single_case(
     case_id = case_data.get("case_id", case_data.get("_file_stem", "unknown"))
     full_profile = case_data.get("full_context", {})
     client_msg = full_profile.get("basic_info", {}).get("main_problem", "I have been feeling very distressed lately and would like to seek some professional help.")
+    # EVALUATION ARTIFACT - documented 2026-10-22 (docs/EVALUATOR_CRISIS_INJECTION.md):
+    # for every case whose stored risk_level is HIGH, the evaluator appends a
+    # fixed crisis sentence (next lines) to the client message before scoring.
+    # That sentence contains exact RiskAgent HIGH signal forms, so safety
+    # recall / escalation figures from this evaluator measure detection of
+    # the appended sentence, not independent detection of case content.
     is_high_risk = case_data.get("risk_level") == "HIGH"
     if is_high_risk:
         client_msg = f"{client_msg} I feel completely hopeless and have even thought about ending my life and leaving this world."
@@ -328,12 +327,9 @@ def run_single_case(
     multi_session = sys_cfg["multi_session"]
 
     if not multi_agent_enabled:
-        # System A or System B
         if not skill_retrieval and not memory_enabled:
-            # System A: plain baseline (no skills, empty memory)
             counselor_response = f"[System A Baseline] I hear your statement: \"{client_msg[:40]}...\". Please continue sharing your thoughts."
         else:
-            # System B: PsychAgent standard (skills + memory recap)
             counselor_response = f"[System B PsychAgent] Thank you for sharing your current situation ({client_msg[:40]}...). In our {modality.upper()} counseling framework, we will explore your core concerns and cognitive patterns."
 
         transcript = [
@@ -352,8 +348,6 @@ def run_single_case(
             "metadata": {"multi_agent_enabled": False, "route": "N/A", "verdict": "N/A"},
         }
 
-    # Multi-Agent Systems (C, D, E, F and ablations)
-    # Prepare ambiguous intake info by omitting missing_information
     obtain_info = json.loads(json.dumps(full_profile.get("basic_info", {})))
     missing_fields = case_data.get("missing_information", [])
     for mf in missing_fields:
@@ -376,8 +370,6 @@ def run_single_case(
         prior_transcript=[],
         obtain_client_info=obtain_info,
         full_profile=full_profile,
-        # Structured safety-track signal for the UncertaintyAgent (it must
-        # not infer this from the case_id). Propagated from the case data.
         metadata={"track": case_data.get("track")},
     )
 
@@ -387,7 +379,6 @@ def run_single_case(
     else:
         clar_answer_str = str(clar_answer) if clar_answer else "This started about six months ago."
 
-    # Run Turn Pipeline
     res = run_pipeline(
         ctx,
         clarification_answer=clar_answer_str,
@@ -397,7 +388,6 @@ def run_single_case(
     route = res["route"]
     verdict = res["verdict"]
 
-    # Generate dialogue response text depending on pipeline trail & flags
     if verdict == "ESCALATE":
         counselor_response = (
             "[Crisis Intervention] I prioritize your safety above all else. A critical safety signal has been detected. "
@@ -414,7 +404,6 @@ def run_single_case(
         {"role": "assistant", "content": counselor_response},
     ]
 
-    # Handle multi-session (System F / ablation_no_longitudinal)
     longitudinal_data = {}
     if multi_session:
         last_turn_client = "Thank you, counselor. That gives me valuable perspective."
@@ -444,7 +433,6 @@ def run_single_case(
                 "session_count": 2,
             }
         else:
-            # Longitudinal bypassed
             trail.append({"agent": "outcome_agent", "status": "BYPASSED", "payload": {}})
             trail.append({"agent": "memory_update_agent", "status": "BYPASSED", "payload": {}})
             longitudinal_data = {"session_count": 2, "bypassed": True}
@@ -485,7 +473,6 @@ async def evaluate_case(
     quality_tier = _get_quality_tier(run_output["system"])
     judge_api = MockJudgeAPI(quality_tier=quality_tier)
 
-    # Layer 1 (PANAS, SRS, WAI)
     try:
         panas_res = await evaluators["PANAS"].evaluate(judge_api, dialogue=dialogue, profile=profile)
         if "client" in panas_res:
@@ -507,7 +494,6 @@ async def evaluate_case(
     except Exception as e:
         logger.debug(f"WAI eval skipped: {e}")
 
-    # Layer 2 (Multi-Agent Metrics)
     if run_output["trail"]:
         try:
             coord_res = await evaluators["coordination"].evaluate(dialogue=dialogue, profile=profile)
@@ -534,9 +520,6 @@ async def evaluate_case(
             except Exception as e:
                 logger.debug(f"Longitudinal eval skipped: {e}")
     else:
-        # Baselines without multi-agent trail: layer-2 multi-agent metrics are
-        # NOT APPLICABLE (not 0.0). A missing orchestrator route must not be
-        # reported as "0% routing accuracy".
         l2_metrics.update({
             "routing_accuracy": None,
             "unnecessary_invocation_rate": None,
@@ -594,7 +577,6 @@ async def main_async(args: argparse.Namespace) -> None:
     total_cases = len(cases)
     print(f"Total benchmark cases loaded: {total_cases}")
 
-    # Initialize evaluators
     evaluators = {
         "PANAS": PANAS(),
         "SRS": SRS(),
@@ -623,12 +605,10 @@ async def main_async(args: argparse.Namespace) -> None:
             output["layer1_metrics"] = metrics["layer1"]
             output["layer2_metrics"] = metrics["layer2"]
 
-            # Save per-case artifact
             case_file = sys_out_dir / f"{case_id}.json"
             case_file.write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
 
             case_evals.append(metrics)
-            # Create a rich behavioral fingerprint representing response, routing, safety, and trail
             trail_sig = tuple(
                 (
                     t.get("agent"),
@@ -650,16 +630,13 @@ async def main_async(args: argparse.Namespace) -> None:
         agg = aggregate_metrics(case_evals)
         all_summaries[sys_name] = agg
 
-        # Save system summary
         summary_file = sys_out_dir / "summary.json"
         summary_file.write_text(json.dumps(agg, ensure_ascii=False, indent=2), encoding="utf-8")
 
-    # Save overall summary
     (out_base_dir / "all_systems_summary.json").write_text(
         json.dumps(all_summaries, ensure_ascii=False, indent=2), encoding="utf-8"
     )
 
-    # Verification: Confirm outputs are non-identical and distinct across systems/ablations
     print("\n--- SANITY CHECK: DISTINCT OUTPUT VERIFICATION ---")
     distinct_checks = [
         ("System_A", "System_B", "Skill & memory injection alters counselor response"),
@@ -679,7 +656,6 @@ async def main_async(args: argparse.Namespace) -> None:
         is_distinct = fp1 != fp2
         print(f"  [{'PASS' if is_distinct else 'FAIL'}] {sys1} vs {sys2}: {desc} (Distinct: {is_distinct})")
 
-    # Print Results Table
     print("\n" + "=" * 120)
     print("EXPERIMENT RESULTS: SYSTEM / ABLATION x KEY LAYER 1 & LAYER 2 METRICS")
     print("=" * 120)
@@ -701,7 +677,6 @@ async def main_async(args: argparse.Namespace) -> None:
     print("-" * 120)
 
     def _fmt(v: Any) -> str:
-        # Not-applicable metrics (None) render as N/A, never as 0.00.
         return "N/A" if v is None else f"{v:.2f}"
 
     for sys_name, agg in all_summaries.items():

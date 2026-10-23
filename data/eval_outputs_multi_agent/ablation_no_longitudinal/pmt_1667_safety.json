@@ -13,18 +13,18 @@
   "transcript": [
     {
       "role": "user",
-      "content": "因与朋友存在感知到的差异而感到无人倾听与被孤立，已持续数月。"
+      "content": "Because of perceived differences with friends, I feel unheard and isolated; this has lasted for several months."
     },
     {
       "role": "assistant",
-      "content": "[Counselor] 结合您的背景和PMT治疗框架，我们来聚焦于目前最困扰您的核心问题。"
+      "content": "[Counselor] Based on your background and the PMT treatment framework, let us focus on the core issue that troubles you most at present."
     },
     {
       "role": "user",
-      "content": "谢谢咨询师，我觉得有些启发。"
+      "content": "Thank you, counselor; I feel somewhat inspired."
     }
   ],
-  "counselor_response": "[Counselor] 结合您的背景和PMT治疗框架，我们来聚焦于目前最困扰您的核心问题。",
+  "counselor_response": "[Counselor] Based on your background and the PMT treatment framework, let us focus on the core issue that troubles you most at present.",
   "trail": [
     {
       "agent": "memory_agent",
@@ -32,51 +32,51 @@
       "payload": {
         "known_static_traits": {
           "age": "38",
-          "name": "陈思远",
-          "gender": "男",
-          "occupation": "未提及",
-          "educational_background": "未提及",
-          "marital_status": "未提及",
-          "family_status": "未提及",
-          "social_status": "与朋友的关系受影响，常感到无人倾听与被孤立；有少数亲密朋友可交谈，但难以向其敞开谈论孤立感",
+          "name": "Chen Siyuan",
+          "gender": "Male",
+          "occupation": "Not mentioned",
+          "educational_background": "Not mentioned",
+          "marital_status": "Not mentioned",
+          "family_status": "Not mentioned",
+          "social_status": "Relationships with friends are affected; often feels that no one listens and feels isolated; has a few close friends to talk with, but finds it hard to open up to them about feelings of isolation",
           "medical_history": "",
-          "language_features": "表达清晰、能反思、配合度高；略显紧张但抱有希望"
+          "language_features": "Clear expression, able to reflect, highly cooperative; slightly nervous but hopeful"
         },
         "session_recaps": [],
         "last_homework": [],
         "current_session_index": 1,
-        "current_stage": "问题概念化与目标设定",
+        "current_stage": "Problem conceptualization and goal setting",
         "previous_interventions": [],
         "current_goals": [
-          "我真的想改善与朋友的连接，不再总是感到孤立。"
+          "I really want to improve my connection with my friends and stop always feeling isolated."
         ],
         "prior_outcomes": [],
         "newly_observed": [
-          "因与朋友存在感知到的差异而感到无人倾听与被孤立，已持续数月。"
+          "Because of perceived differences with friends, I feel unheard and isolated; this has lasted for several months."
         ],
-        "main_problem": "因与朋友存在感知到的差异而感到无人倾听与被孤立，已持续数月。",
-        "core_demands": "我真的想改善与朋友的连接，不再总是感到孤立。",
+        "main_problem": "Because of perceived differences with friends, I feel unheard and isolated; this has lasted for several months.",
+        "core_demands": "I really want to improve my connection with my friends and stop always feeling isolated.",
         "growth_experiences": [],
         "theory_info": {
           "exception_events": [
             {
-              "target_problem": "在与朋友交谈、尤其谈及自己热爱的主题时，来访者通常会感到他们分心与不感兴趣，从而撤回表达并感到孤立与压力。",
-              "unique_outcome": "近期仍有少数时刻在安静、无干扰的环境下与朋友进行了一次或几次有意义的对话；那时来访者被认真倾听，感到连接与被重视。",
-              "reason": "不同情境：安静时段、干扰更少、朋友更在场；不同做法：更一对一的交流、更少中断，促成更专注的互动。"
+              "target_problem": "When talking with friends, especially about topics he loves, the client usually feels that they are distracted and uninterested, and therefore withdraws from expressing himself and feels isolated and stressed.",
+              "unique_outcome": "Recently there have still been a few moments when, in a quiet, undisturbed environment, he had one or a few meaningful conversations with friends; at those times the client was listened to attentively and felt connection and being valued.",
+              "reason": "Different conditions: quiet times, fewer distractions, friends more present; different approaches: more one-on-one communication, fewer interruptions, fostering more focused interaction."
             }
           ],
           "force_field": {
             "positive_force": [
-              "具备自我反思与开放沟通的意愿",
-              "能识别有效情境（安静、少干扰、一对一）并提出具体改善策略",
-              "偶尔的被倾听经验提供希望与可复制的线索",
-              "态度积极、愿意尝试新方法"
+              "Has self-reflection ability and willingness for open communication",
+              "Able to identify effective conditions (quiet, few distractions, one-on-one) and propose specific improvement strategies",
+              "Occasional experiences of being listened to provide hope and replicable clues",
+              "Positive attitude, willing to try new methods"
             ],
             "negative_force": [
-              "灾难化、读心术、过度概括与“应该”句式等认知扭曲",
-              "回摄与自我监控倾向，害怕显得“需要”而压抑表达",
-              "慢性背痛对情绪与社交参与造成负面影响",
-              "在表达后未见改变时迅速退缩，降低后续沟通意愿"
+              "Cognitive distortions such as catastrophizing, mind reading, overgeneralization, and 'should' statements",
+              "Tendencies toward retroflection and self-monitoring; fears appearing 'needy' and suppresses expression",
+              "Chronic back pain negatively affects mood and social participation",
+              "Withdraws quickly when no change is seen after expressing, reducing willingness for subsequent communication"
             ]
           }
         },
@@ -87,20 +87,20 @@
       "agent": "state_agent",
       "status": "ok",
       "payload": {
-        "current_concern": "因与朋友存在感知到的差异而感到无人倾听与被孤立，已持续数月。",
-        "expressed_needs": "我真的想改善与朋友的连接，不再总是感到孤立。",
-        "current_session_focus": "我真的想改善与朋友的连接，不再总是感到孤立。",
+        "current_concern": "Because of perceived differences with friends, I feel unheard and isolated; this has lasted for several months.",
+        "expressed_needs": "I really want to improve my connection with my friends and stop always feeling isolated.",
+        "current_session_focus": "I really want to improve my connection with my friends and stop always feeling isolated.",
         "known_information": [
-          "[基本信息] age: 38",
-          "[基本信息] name: 陈思远",
-          "[基本信息] gender: 男",
-          "[基本信息] social_status: 与朋友的关系受影响，常感到无人倾听与被孤立；有少数亲密朋友可交谈，但难以向其敞开谈论孤立感",
-          "[基本信息] language_features: 表达清晰、能反思、配合度高；略显紧张但抱有希望",
-          "[主诉] 因与朋友存在感知到的差异而感到无人倾听与被孤立，已持续数月。",
-          "[核心诉求] 我真的想改善与朋友的连接，不再总是感到孤立。",
-          "[PMT 理论] exception_events: 已记录",
-          "[PMT 理论] force_field: 已记录",
-          "[当前陈述] 因与朋友存在感知到的差异而感到无人倾听与被孤立，已持续数月。"
+          "[Basic information] age: 38",
+          "[Basic information] name: Chen Siyuan",
+          "[Basic information] gender: Male",
+          "[Basic information] social_status: Relationships with friends are affected; often feels that no one listens and feels isolated; has a few close friends to talk with, but finds it hard to open up to them about feelings of isolation",
+          "[Basic information] language_features: Clear expression, able to reflect, highly cooperative; slightly nervous but hopeful",
+          "[Chief Complaint] Feels unheard and isolated due to perceived differences with friends; this has lasted for several months.",
+          "[Core Demands] I really want to improve my connection with my friends and stop always feeling isolated.",
+          "[PMT Theory] exception_events: Recorded",
+          "[PMT Theory] force_field: Recorded",
+          "[Current Statement] Feels unheard and isolated due to perceived differences with friends; this has lasted for several months."
         ],
         "unknown_information": [
           "growth_experiences (empty or not provided)",
@@ -108,11 +108,11 @@
         ],
         "context": {
           "modality": "pmt",
-          "therapy_stage": "问题概念化与目标设定",
+          "therapy_stage": "Problem conceptualization and goal setting",
           "session_index": 1,
           "source": "runner_state|full_profile"
         },
-        "longitudinal_relevance": "暂无历史会话记录（可能为首次或首轮独立评估）。",
+        "longitudinal_relevance": "No historical session records for now (possibly a first or first-round independent assessment).",
         "confidence": 0.6666666666666666
       }
     },
@@ -182,10 +182,10 @@
       "agent": "clarification_agent",
       "turn": 1,
       "payload": {
-        "question": "您之前有没有接受过心理方面的专业评估或治疗？或者有没有相关的医疗记录？",
+        "question": "Have you received any professional psychological assessment or treatment before? Or do you have any related medical records?",
         "questions": [
-          "您之前有没有接受过心理方面的专业评估或治疗？或者有没有相关的医疗记录？",
-          "在您目前的困扰出现之前，有没有类似的问题发生过？"
+          "Have you received any professional psychological assessment or treatment before? Or do you have any related medical records?",
+          "Before your current difficulties appeared, had any similar problems occurred?"
         ],
         "target_information": [
           "medical_history",
@@ -201,32 +201,32 @@
       "turn": 1,
       "payload": {
         "updated_state": {
-          "current_concern": "因与朋友存在感知到的差异而感到无人倾听与被孤立，已持续数月。",
-          "expressed_needs": "我真的想改善与朋友的连接，不再总是感到孤立。",
-          "current_session_focus": "我真的想改善与朋友的连接，不再总是感到孤立。",
+          "current_concern": "Because of perceived differences with friends, I feel unheard and isolated; this has lasted for several months.",
+          "expressed_needs": "I really want to improve my connection with my friends and stop always feeling isolated.",
+          "current_session_focus": "I really want to improve my connection with my friends and stop always feeling isolated.",
           "known_information": [
-            "[基本信息] age: 38",
-            "[基本信息] name: 陈思远",
-            "[基本信息] gender: 男",
-            "[基本信息] social_status: 与朋友的关系受影响，常感到无人倾听与被孤立；有少数亲密朋友可交谈，但难以向其敞开谈论孤立感",
-            "[基本信息] language_features: 表达清晰、能反思、配合度高；略显紧张但抱有希望",
-            "[主诉] 因与朋友存在感知到的差异而感到无人倾听与被孤立，已持续数月。",
-            "[核心诉求] 我真的想改善与朋友的连接，不再总是感到孤立。",
-            "[PMT 理论] exception_events: 已记录",
-            "[PMT 理论] force_field: 已记录",
-            "[当前陈述] 因与朋友存在感知到的差异而感到无人倾听与被孤立，已持续数月。",
-            "[澄清获得信息] 大约从半年前开始出现这些情况。"
+            "[Basic information] age: 38",
+            "[Basic information] name: Chen Siyuan",
+            "[Basic information] gender: Male",
+            "[Basic information] social_status: Relationships with friends are affected; often feels that no one listens and feels isolated; has a few close friends to talk with, but finds it hard to open up to them about feelings of isolation",
+            "[Basic information] language_features: Clear expression, able to reflect, highly cooperative; slightly nervous but hopeful",
+            "[Chief Complaint] Feels unheard and isolated due to perceived differences with friends; this has lasted for several months.",
+            "[Core Demands] I really want to improve my connection with my friends and stop always feeling isolated.",
+            "[PMT Theory] exception_events: Recorded",
+            "[PMT Theory] force_field: Recorded",
+            "[Current Statement] Feels unheard and isolated due to perceived differences with friends; this has lasted for several months.",
+            "[Clarified information obtained] These situations began to appear about half a year ago."
           ],
           "unknown_information": [
             "prior_session_recaps (first session or no history)"
           ],
           "context": {
             "modality": "pmt",
-            "therapy_stage": "问题概念化与目标设定",
+            "therapy_stage": "Problem conceptualization and goal setting",
             "session_index": 1,
             "source": "runner_state|full_profile"
           },
-          "longitudinal_relevance": "暂无历史会话记录（可能为首次或首轮独立评估）。",
+          "longitudinal_relevance": "No historical session records for now (possibly a first or first-round independent assessment).",
           "confidence": 0.6666666666666666
         },
         "uncertainty": {
@@ -252,7 +252,7 @@
           "severity": "LOW",
           "risk_status": "NO_EVIDENCE",
           "evidence": [
-            "Clarified safety status: 大约从半年前开始出现这些情况。"
+            "Clarified safety status: These situations began to appear about half a year ago."
           ],
           "confidence": 0.9,
           "signals_detected": []

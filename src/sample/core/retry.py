@@ -61,7 +61,6 @@ async def retry_async(
                 )
             await asyncio.sleep(sleep_sec)
         except BaseException as exc:
-            # Non-retryable errors are surfaced immediately.
             raise FatalBackendError(f"non-retryable backend error: {exc!r}") from exc
 
     raise FatalBackendError(f"backend failed after {total_attempts} attempts: {last_error!r}") from last_error

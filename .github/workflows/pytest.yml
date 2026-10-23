@@ -1,0 +1,29 @@
+name: pytest
+
+on:
+  push:
+    branches: [main, "hardening/**", "feature/**", "fix/**"]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest
+          # torch (CPU) is needed by the migration/checkpoint tests
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Run test suite
+        run: python -m pytest -q

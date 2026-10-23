@@ -169,19 +169,16 @@ def run_pipeline(
     trail: List[Dict[str, Any]] = []
     answer_sequence = _normalize_answer_sequence(clarification_answer)
 
-    # 1. Memory Agent
     mem_agent = MemoryAgent()
     mem_msg, mem_ms = _timed_run(mem_agent, ctx)
     ctx.memory_output = mem_msg.payload
     trail.append({"agent": mem_agent.name, "status": mem_msg.status, "payload": mem_msg.payload, "duration_ms": mem_ms})
 
-    # 2. State Assessment Agent
     state_agent = StateAgent()
     state_msg, state_ms = _timed_run(state_agent, ctx)
     ctx.state_output = state_msg.payload
     trail.append({"agent": state_agent.name, "status": state_msg.status, "payload": state_msg.payload, "duration_ms": state_ms})
 
-    # 3. Uncertainty Agent & Risk Agent (parallel assessment)
     if active_flags["uncertainty_enabled"]:
         unc_agent = UncertaintyAgent()
         unc_msg, unc_ms = _timed_run(unc_agent, ctx)
@@ -214,11 +211,8 @@ def run_pipeline(
         ctx.risk_output = risk_payload
         trail.append({"agent": "risk_agent", "status": "BYPASSED", "payload": risk_payload, "duration_ms": 0.0})
 
-    # Longitudinal floor: a carried HIGH/MODERATE from a prior turn cannot be
-    # downgraded by a benign latest message.
     _apply_carried_risk_floor(ctx)
 
-    # Orchestrator & Safety Supervisor loop with capped re-routes
     orchestrator = Orchestrator()
     clar_agent = ClarificationAgent()
     reassess_agent = ReassessmentAgent()
@@ -234,7 +228,6 @@ def run_pipeline(
     orch_msg = None
 
     while reroute_count <= max_reroutes:
-        # 4. Orchestrator Routing
         if active_flags["multi_agent_routing_enabled"]:
             orch_msg, orch_ms = _timed_run(orchestrator, ctx)
             ctx.routing_output = orch_msg.payload
@@ -255,7 +248,6 @@ def run_pipeline(
                 "payload": {"route": "CLEAR", "next_agent": "counseling_agent", "bypassed": True}, "duration_ms": 0.0,
             })
 
-        # 5. Clarify -> Reassess Loop (if UNCERTAIN, clarification permitted, and re-evaluation permitted)
         while current_route == "UNCERTAIN" and active_flags["clarification_enabled"] and reassess_count < max_reassess_turns:
             reassess_count += 1
             clar_msg, clar_ms = _timed_run(clar_agent, ctx)
@@ -263,15 +255,12 @@ def run_pipeline(
             ctx.metadata["clarification_output"] = clar_msg.payload
             trail.append({"agent": clar_agent.name, "turn": reassess_count, "payload": clar_msg.payload, "duration_ms": clar_ms})
 
-            # This turn's client answer (None when the sequence is exhausted).
             turn_answer = answer_sequence[reassess_count - 1] if reassess_count - 1 < len(answer_sequence) else None
             if turn_answer is not None:
-                # The latest client message is this turn's answer.
                 ctx.current_message = turn_answer
                 reassess_msg, reassess_ms = _timed_run(reassess_agent, ctx, clarification_answer=turn_answer)
                 ctx.reassessment_output = reassess_msg.payload
                 ctx.metadata["reassessment_output"] = reassess_msg.payload
-                # Refresh ctx state for the next clarification turn (if any).
                 _propagate_reassessment_state(ctx, reassess_msg.payload)
                 trail.append({"agent": reassess_agent.name, "turn": reassess_count, "payload": reassess_msg.payload,
                               "clarification_answer": turn_answer, "duration_ms": reassess_ms})
@@ -286,13 +275,11 @@ def run_pipeline(
             else:
                 break
 
-        # 6. Counseling Agent Draft
         counsel_msg, counseling_ms = _timed_run(counseling_agent, ctx)
         draft_response = counsel_msg.payload.get("response_text", "")
         ctx.counseling_output = counsel_msg.payload
         trail.append({"agent": counseling_agent.name, "step": "initial_draft", "payload": counsel_msg.payload, "duration_ms": counseling_ms})
 
-        # 7. Safety Supervisor Evaluation
         if active_flags["safety_supervisor_enabled"]:
             sup_msg, sup_ms = _timed_run(supervisor, ctx, draft_response=draft_response)
             sup_payload = sup_msg.payload
@@ -313,11 +300,6 @@ def run_pipeline(
                 trail.append({"agent": supervisor.name, "action": "escalate_fallback_applied", "duration_ms": 0.0})
                 break
             elif supervisor_verdict == "REVISE":
-                # The supervisor already produced a revised_response addressing
-                # the flagged issues. Use it directly: the counseling agent
-                # does not consume revision rationales, so re-running it
-                # would return the identical flagged draft. Fall back to a
-                # counseling re-run only if no structured revision exists.
                 revised_response = sup_payload.get("revised_response") or sup_payload.get("suggested_revision")
                 if revised_response:
                     final_response = revised_response
@@ -331,25 +313,12 @@ def run_pipeline(
             elif supervisor_verdict == "RE-ROUTE":
                 reroute_count += 1
                 if reroute_count <= max_reroutes:
-                    # Keep the human-readable rationale for traceability.
                     ctx.metadata["supervisor_reroute_rationale"] = sup_payload.get("rationale")
-                    # Structured risk/route mismatch signal (not rationale text
-                    # parsing). If the supervisor flagged risk_consistency=False
-                    # and our assessed risk is HIGH, ensure the orchestrator
-                    # sees HIGH on re-route. Fail closed: missing/invalid
-                    # risk_consistency -> no escalation.
                     if sup_payload.get("risk_consistency") is False:
                         if str((ctx.risk_output or {}).get("severity", "LOW")).upper() == "HIGH":
                             ctx.risk_output["severity"] = "HIGH"
                     continue
                 else:
-                    # Retry exhausted with the mismatch unresolved: never
-                    # silently deliver the flagged draft. Prefer the
-                    # supervisor's safe fallback/revision; fail closed to
-                    # ESCALATE with a neutral safe message otherwise.
-                    # sup_payload here is from the latest supervisor run.
-                    # Guard: the supervisor's "revision" must differ from the
-                    # flagged draft (its suggester can echo the input).
                     safe_text = None
                     if isinstance(sup_payload, dict):
                         for key in ("safe_fallback", "revised_response", "suggested_revision"):
@@ -438,19 +407,16 @@ async def run_pipeline_async(
     trail: List[Dict[str, Any]] = []
     answer_sequence = _normalize_answer_sequence(clarification_answer)
 
-    # 1. Memory Agent
     mem_agent = MemoryAgent()
     mem_msg, mem_ms = _timed_run(mem_agent, ctx)
     ctx.memory_output = mem_msg.payload
     trail.append({"agent": mem_agent.name, "status": mem_msg.status, "payload": mem_msg.payload, "duration_ms": mem_ms})
 
-    # 2. State Assessment Agent
     state_agent = StateAgent()
     state_msg, state_ms = _timed_run(state_agent, ctx)
     ctx.state_output = state_msg.payload
     trail.append({"agent": state_agent.name, "status": state_msg.status, "payload": state_msg.payload, "duration_ms": state_ms})
 
-    # 3. Uncertainty Agent & Risk Agent (parallel assessment)
     if active_flags["uncertainty_enabled"]:
         unc_agent = UncertaintyAgent()
         unc_msg, unc_ms = _timed_run(unc_agent, ctx)
@@ -483,8 +449,6 @@ async def run_pipeline_async(
         ctx.risk_output = risk_payload
         trail.append({"agent": "risk_agent", "status": "BYPASSED", "payload": risk_payload, "duration_ms": 0.0})
 
-    # Longitudinal floor: a carried HIGH/MODERATE from a prior turn cannot be
-    # downgraded by a benign latest message.
     _apply_carried_risk_floor(ctx)
 
     orchestrator = Orchestrator()
@@ -503,7 +467,6 @@ async def run_pipeline_async(
     orch_msg = None
 
     while reroute_count <= max_reroutes:
-        # 4. Orchestrator Routing
         if active_flags["multi_agent_routing_enabled"]:
             orch_msg, orch_ms = _timed_run(orchestrator, ctx)
             ctx.routing_output = orch_msg.payload
@@ -524,7 +487,6 @@ async def run_pipeline_async(
                 "payload": {"route": "CLEAR", "next_agent": "counseling_agent", "bypassed": True}, "duration_ms": 0.0,
             })
 
-        # 5. Clarify -> Reassess Loop (if UNCERTAIN and answer provided)
         while current_route == "UNCERTAIN" and active_flags["clarification_enabled"] and reassess_count < max_reassess_turns:
             reassess_count += 1
             clar_msg, clar_ms = _timed_run(clar_agent, ctx)
@@ -532,15 +494,12 @@ async def run_pipeline_async(
             ctx.metadata["clarification_output"] = clar_msg.payload
             trail.append({"agent": clar_agent.name, "turn": reassess_count, "payload": clar_msg.payload, "duration_ms": clar_ms})
 
-            # This turn's client answer (None when the sequence is exhausted).
             turn_answer = answer_sequence[reassess_count - 1] if reassess_count - 1 < len(answer_sequence) else None
             if turn_answer is not None:
-                # The latest client message is this turn's answer.
                 ctx.current_message = turn_answer
                 reassess_msg, reassess_ms = _timed_run(reassess_agent, ctx, clarification_answer=turn_answer)
                 ctx.reassessment_output = reassess_msg.payload
                 ctx.metadata["reassessment_output"] = reassess_msg.payload
-                # Refresh ctx state for the next clarification turn (if any).
                 _propagate_reassessment_state(ctx, reassess_msg.payload)
                 trail.append({"agent": reassess_agent.name, "turn": reassess_count, "payload": reassess_msg.payload,
                               "clarification_answer": turn_answer, "duration_ms": reassess_ms})
@@ -555,7 +514,6 @@ async def run_pipeline_async(
             else:
                 break
 
-        # 6. Counseling Agent Draft (via existing SkillManager & PromptManager)
         _counsel_start = time.perf_counter()
         c_resp_pure, c_resp_raw = await counseling_agent.generate_response(
             ctx,
@@ -574,7 +532,6 @@ async def run_pipeline_async(
         ctx.counseling_output = {"response": c_resp_pure, "route": current_route}
         trail.append({"agent": counseling_agent.name, "step": "initial_draft", "route": current_route, "duration_ms": counseling_ms})
 
-        # 7. Safety Supervisor Evaluation
         if active_flags["safety_supervisor_enabled"]:
             sup_msg, sup_ms = _timed_run(supervisor, ctx, draft_response=c_resp_pure)
             sup_payload = sup_msg.payload
@@ -596,15 +553,11 @@ async def run_pipeline_async(
                 trail.append({"agent": supervisor.name, "action": "escalate_fallback_applied", "duration_ms": 0.0})
                 break
             elif supervisor_verdict == "REVISE":
-                # Prefer the supervisor's structured revision: the counseling
-                # agent does not consume revision rationales, so regenerating
-                # without it returns the identical flagged draft.
                 revised_response = sup_payload.get("revised_response") or sup_payload.get("suggested_revision")
                 if revised_response:
                     final_pure, final_raw = revised_response, revised_response
                     trail.append({"agent": supervisor.name, "action": "supervisor_revision_applied", "duration_ms": 0.0})
                 else:
-                    # No structured revision: re-generate with revision rationale guidance
                     ctx.metadata["supervisor_revision_rationale"] = sup_payload.get("rationale")
                     _rev_start = time.perf_counter()
                     rev_pure, rev_raw = await counseling_agent.generate_response(
@@ -627,24 +580,12 @@ async def run_pipeline_async(
             elif supervisor_verdict == "RE-ROUTE":
                 reroute_count += 1
                 if reroute_count <= max_reroutes:
-                    # Keep the human-readable rationale for traceability.
                     ctx.metadata["supervisor_reroute_rationale"] = sup_payload.get("rationale")
-                    # Structured risk/route mismatch signal (not rationale text
-                    # parsing). If the supervisor flagged risk_consistency=False
-                    # and our assessed risk is HIGH, ensure the orchestrator
-                    # sees HIGH on re-route. Fail closed: missing/invalid
-                    # risk_consistency -> no escalation.
                     if sup_payload.get("risk_consistency") is False:
                         if str((ctx.risk_output or {}).get("severity", "LOW")).upper() == "HIGH":
                             ctx.risk_output["severity"] = "HIGH"
                     continue
                 else:
-                    # Retry exhausted with the mismatch unresolved: never
-                    # silently deliver the flagged draft. Prefer the
-                    # supervisor's safe fallback/revision; fail closed to
-                    # ESCALATE with a neutral safe message otherwise.
-                    # Guard: the "revision" must differ from the flagged draft
-                    # (the supervisor's suggester can echo the input).
                     safe_text = None
                     if isinstance(sup_payload, dict):
                         for key in ("safe_fallback", "revised_response", "suggested_revision"):

@@ -21,12 +21,12 @@ Please assign a score from 0 to 4 to each item in the [Evaluation Items List] ac
 
 Scoring Rules (Mandatory - evaluate evidence first, then assign score):
 
-【0. Scale Applicability: Evidence Subject Priority (Mandatory)】
+[0. Scale Applicability: Evidence Subject Priority (Mandatory)]
 - The Session Rating Scale (SRS) measures the client's subjective experience and therapeutic fit. All 4 items prioritize the client's direct expressions and explicit feedback above all else.
 - Therefore: evidence_pos used for score >= 3 must prioritize client utterances; counselor self-reports, intentions, or plans do not alone constitute client fit or benefit.
-- If explicit client negativity/resistance/dissatisfaction appears, it must be recorded in evidence_neg, triggering cap rules (see 【E】).
+- If explicit client negativity/resistance/dissatisfaction appears, it must be recorded in evidence_neg, triggering cap rules (see [E]).
 
-【1. Evidence Extraction (Must quote original text verbatim, no paraphrasing)】
+[1. Evidence Extraction (Must quote original text verbatim, no paraphrasing)]
 For each item, extract from the dialogue:
 - evidence_pos: Verbatim snippets directly supporting the fulfillment of this item (maximum 2)
 - evidence_neg: Verbatim snippets directly contradicting/showing mismatch (maximum 2)
@@ -34,18 +34,18 @@ Requirements:
 - Paste only original dialogue sentences or continuous short snippets; do not summarize.
 - If no relevant content is found, evidence array is empty [].
 
-【2. Evidence Relevance and Strength (Preventing polite score inflation, mandatory)】
+[2. Evidence Relevance and Strength (Preventing polite score inflation, mandatory)]
 - evidence_pos must directly address the key elements of the item; unrelated sentences cannot serve as evidence_pos.
 - Polite/procedural acknowledgments do not count as valid positive evidence: e.g., 'Mm / Okay / Thanks / I will try / Maybe / I see', unless the sentence explicitly includes dimension elements (e.g., 'Thank you for listening to me so carefully' applies to Relationship).
 - A single generic positive statement cannot be reused across multiple items to inflate scores; reuse is permitted only if the sentence explicitly covers key elements of multiple dimensions.
 
-【3. Item Key Elements Checklist (Mandatory)】
+[3. Item Key Elements Checklist (Mandatory)]
 1) Relationship Key Elements: Involves feeling heard, understood, and respected / taken seriously; 4 requires all three to be covered.
 2) Goals and Topics Key Elements: Client's desired topics addressed + confirmation of goal alignment; without client confirmation, usually <= 2.
 3) Approach or Method Key Elements: Client evaluation that approach/style fits their needs (helpful, on-point, willing to adopt); counselor proposing method while client merely says 'okay' is usually <= 2.
 4) Overall Key Elements: Clear sense of benefit/correctness; higher scores require concrete gains, shifts, new perspectives, or action plans. 4 requires strong evaluation + concrete change.
 
-【4. Score Gating (Mandatory to prevent score inflation)】
+[4. Score Gating (Mandatory to prevent score inflation)]
 A) Default Score = 2
 - If unmentioned / ambiguous / cannot directly support or refute: assign 2.
 

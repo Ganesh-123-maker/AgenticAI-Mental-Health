@@ -2,119 +2,119 @@
   "basic_info": {
     "static_traits": {
       "age": "41",
-      "name": "刘娜",
-      "gender": "女",
-      "occupation": "研究生",
-      "educational_background": "硕士在读",
-      "marital_status": "未婚",
-      "family_status": "独居",
-      "social_status": "与同伴关系较疏，难以建立亲密关系；有少数朋友可倾诉，但对其困扰理解有限",
-      "medical_history": "无显著躯体疾病；无以往类似心理问题；未接受过心理治疗",
-      "language_features": "表达清晰、能具体描述体验；初始态度较为怀疑；常使用绝对化与否定性表述（如“最差”“永远不会成功”）；配合度一般，能尝试但信心不足"
+      "name": "Liu Na",
+      "gender": "Female",
+      "occupation": "Graduate student",
+      "educational_background": "Currently a master's student",
+      "marital_status": "Unmarried",
+      "family_status": "Living alone",
+      "social_status": "Distant relationships with peers, difficulty establishing intimate relationships; has a few friends to confide in, but their understanding of the distress is limited",
+      "medical_history": "no significant physical illness; no prior similar psychological problems; never received psychotherapy",
+      "language_features": "clear expression, able to describe experiences concretely; initial attitude fairly skeptical; often uses absolute and negating expressions (like 'the worst' 'never succeeding'); average cooperativeness, can try but confidence insufficient"
     },
-    "main_problem": "我几乎一直觉得自己是最糟糕的研究生，这导致持续的自我怀疑与无能感。",
-    "topic": "学业压力",
-    "core_demands": "持续的自我怀疑与负面自我认知已开始影响学业表现与心理健康，希望通过咨询加以改善。",
+    "main_problem": "I almost always feel I am the worst Graduate student, leading to Persistent self-doubt and incompetence.",
+    "topic": "Academic pressure",
+    "core_demands": "Persistent self-doubt and negative self-cognition have begun affecting academic performance and mental health, hoping to improve through counseling.",
     "growth_experiences": []
   },
   "theory": {
     "cbt": {
       "core_beliefs": [
-        "我是无能的",
-        "我不如同龄人",
-        "我注定会失败"
+        "I am incompetent",
+        "I am not like my peers",
+        "I am destined to fail"
       ],
       "special_situations": [
         {
-          "event": "拿到低于预期的成绩",
-          "conditional_assumptions": "如果成绩不达预期，就说明我不适合这个领域、不会成功",
-          "compensatory_strategies": "回避继续学习或开始作业，陷入自我贬低和退缩",
-          "automatic_thoughts": "我永远不可能在这个领域成功，我该现在就退学",
+          "event": "receiving grades below Anticipation",
+          "conditional_assumptions": "if grades do not meet Anticipation, it means I am not suited to this field and will not succeed",
+          "compensatory_strategies": "avoiding continued Learning or starting assignments, falling into Self-deprecation and Withdrawal",
+          "automatic_thoughts": "I can never succeed in this field, I should drop out now",
           "cognitive_pattern": "All-or-Nothing Thinking"
         },
         {
-          "event": "在课堂或挑战性学术时期看到同学更自信、熟练",
-          "conditional_assumptions": "如果别人看起来更自信或更懂，就证明我不行",
-          "compensatory_strategies": "频繁与他人比较，减少与同学的深入交流",
-          "automatic_thoughts": "他们都知道在做什么，而我在瞎忙，我是最差的研究生",
+          "event": "Seeing classmates more confident and skilled in class or during challenging academic periods",
+          "conditional_assumptions": "if others look more confident or knowledgeable, it proves I am not capable",
+          "compensatory_strategies": "Frequently comparing with others, reducing deep communication with classmates",
+          "automatic_thoughts": "they all know what they are doing while I am busy with nothing, I am the worst Graduate student",
           "cognitive_pattern": "Comparing and Despairing"
         },
         {
-          "event": "在开始做作业之前",
-          "conditional_assumptions": "必须一次就完美，否则就是失败",
-          "compensatory_strategies": "拖延与回避启动任务",
-          "automatic_thoughts": "我会把它搞砸，开始也没用",
+          "event": "Before starting homework",
+          "conditional_assumptions": "Must be perfect the first time, or it is failure",
+          "compensatory_strategies": "Procrastinating and avoiding starting tasks",
+          "automatic_thoughts": "I will mess it up, starting is useless too",
           "cognitive_pattern": "Fortune Telling"
         },
         {
-          "event": "收到好成绩或教授的正面反馈",
-          "conditional_assumptions": "正面结果只是偶然，不具参考价值",
-          "compensatory_strategies": "否定正面证据，维持自我怀疑与负面自我评价",
-          "automatic_thoughts": "这只是侥幸，不代表我有能力",
+          "event": "Receiving good grades or professors' positive feedback",
+          "conditional_assumptions": "positive results are just luck, of no reference value",
+          "compensatory_strategies": "negating positive evidence, maintaining Self-doubt and negative self-evaluation",
+          "automatic_thoughts": "this is just luck, not representing my ability",
           "cognitive_pattern": "Disqualifying the Positive"
         }
       ]
     },
     "pdt": {
       "core_conflict": {
-        "wish": "渴望被认可为胜任、被看见其价值与能力",
-        "fear": "害怕被证明无能、被同伴或导师否定",
+        "wish": "Longs to be recognized as competent, to have one's value and ability seen",
+        "fear": "fear of being proven incompetent, negated by peers or mentors",
         "defense_goal": [
-          "通过自我批评、否定积极反馈与回避困难任务来降低被评判与失败的风险"
+          "reducing the risk of judgment and failure through self-criticism, negating positive feedback and avoiding difficult tasks"
         ]
       },
       "object_relations": [
         {
-          "self_representation": "无能、失败的学生",
-          "object_representation": "挑剔的评判者或更优秀的同伴/导师",
-          "linking_affect": "羞耻、焦虑、绝望"
+          "self_representation": "incompetent, failing Student",
+          "object_representation": "Critical judges or more excellent peers/mentors",
+          "linking_affect": "Shame, anxiety, despair"
         }
       ],
       "behavioral_response_patterns": [
         {
-          "trigger_condition": "当咨询师邀请其关注正向证据或建议质疑负性信念时",
-          "interpretation": "认为这些是自欺或不真实，积极反馈只是偶然，咨询师不理解她的真实不足",
-          "defense_mechanism": "合理化",
-          "response_instruction": "以平静但坚决的语气强调“这只是运气/侥幸”，列举反例来削弱积极证据，同时表示“可以尝试但我不抱期待”。"
+          "trigger_condition": "When the counselor invites him to focus on positive evidence or suggests questioning negative beliefs",
+          "interpretation": "believing these are self-deception or untrue, positive feedback merely luck, the counselor not understanding her real inadequacies",
+          "defense_mechanism": "Rationalization",
+          "response_instruction": "emphasizing 'this is just luck/fluke' in a calm but firm tone, listing counterexamples to weaken positive evidence, while expressing 'can try but I have no expectations'."
         },
         {
-          "trigger_condition": "当面临开始困难的学术任务或被要求尝试新方法时",
-          "interpretation": "将任务视为只能成功或彻底失败的考验，若不完美则证明自己无能",
-          "defense_mechanism": "分裂",
-          "response_instruction": "使用绝对化表述（如“要么成功要么失败”），推迟或回避行动，拒绝分步尝试。"
+          "trigger_condition": "When facing starting a difficult academic task or being asked to try a new method",
+          "interpretation": "treating tasks as tests that can only be success or total failure, if not perfect proving oneself incompetent",
+          "defense_mechanism": "Splitting",
+          "response_instruction": "using absolute expressions (like 'either succeed or fail'), postponing or avoiding action, refusing step-by-step attempts."
         }
       ]
     },
     "het": {
       "existentialism_topic": [
         {
-          "theme": "孤独",
+          "theme": "Loneliness",
           "manifestations": [
-            "独居；难以与同伴建立亲密关系；在课前后与作业期间频繁自我怀疑并与他人比较，主观上感到与群体疏离"
+            "Living alone; struggling to build close relationships with peers; frequent Self-doubt and comparison with others before/after classes and during assignments, subjectively feeling alienated from the group"
           ],
           "outcomes": [
-            "焦虑与回避学业任务",
-            "睡眠与饮食习惯受影响",
-            "学业表现下降"
+            "Anxiety and avoiding academic tasks",
+            "Sleep and eating habits affected",
+            "Declining academic performance"
           ]
         }
       ],
       "contact_model": [
         {
-          "mode": "内摄",
-          "definition": "个体未经消化地把外界规则、期望当作自己的标准或绝对真理，与“拒绝”对应。",
+          "mode": "Introjection",
+          "definition": "The individual takes in external rules and expectations without digesting them, treating them as their own standards or absolute truths, corresponding to 'rejection'.",
           "manifestations": [
-            "以“必须优秀/不能失败”的标准评价自我",
-            "一旦不达标即自责与否定"
+            "evaluating oneself by the standard of 'must excel/cannot fail'",
+            "self-blame and negation once standards are not met"
           ]
         },
         {
-          "mode": "自我监控",
-          "definition": "个体存在不良的自我反思和反省的能力，包含过多的自我限制和自我苛责，对接触过于小心谨慎，与“自主性”对应。",
+          "mode": "Self-monitoring",
+          "definition": "The individual has a poor capacity for self-reflection and introspection, with excessive self-restriction and self-blame, and is overly cautious about contact, corresponding to 'autonomy'.",
           "manifestations": [
-            "频繁自我否定与贴标签（如“最差”）",
-            "启动任务前反复审视不足并因此回避",
-            "面对积极反馈时贬低为“侥幸”"
+            "frequent Self-denial and labeling (like 'the worst')",
+            "repeatedly reviewing inadequacies before starting tasks and thus avoiding",
+            "Dismisses positive feedback as 'luck' when receiving it"
           ]
         }
       ]
@@ -122,40 +122,40 @@
     "pmt": {
       "exception_events": [
         {
-          "target_problem": "在具有挑战性的学业任务或收到低于预期成绩时，来访者通常会灾难化思维、产生强烈焦虑并回避开始或持续完成作业，导致表现下降。",
-          "unique_outcome": "在某些课程作业或考试中，来访者取得了好成绩并收到教授的正面评论；当时能够完成任务并获得认可，呈现出与平时不同的更好结果。",
-          "reason": "线索：不同情境（任务更匹配能力）；不同做法（更为专注或按计划完成任务）；不同支持（教授的明确正向反馈增加了可见的成就证据）。"
+          "target_problem": "when facing challenging academic tasks or receiving grades below Anticipation, the client usually Catastrophizes, generating strong Anxiety and avoiding starting or continuing assignments, leading to declining performance.",
+          "unique_outcome": "in some coursework or exams, the client achieved good grades and received positive comments from professors; was able to complete tasks and Gain recognition then, showing a better outcome than usual.",
+          "reason": "clues: different context (tasks better matched ability); different approach (more focused or completing tasks as planned); different support (professor's clear positive feedback added visible achievement evidence)."
         }
       ],
       "force_field": {
         "positive_force": [
-          "曾获得好成绩与教授的正面反馈，存在胜任力的客观证据",
-          "愿意尝试咨询与现实检验，具备改变意愿",
-          "拥有少数可倾诉的朋友，具备一定社会支持",
-          "曾尝试积极自我对话与正念练习，具备自助意识"
+          "Has obtained good grades and positive feedback from professors; there is objective evidence of competence",
+          "Willing to try counseling and reality testing, with willingness to change",
+          "Has a few friends to confide in; has some social support",
+          "Has tried positive self-talk and mindfulness practice, with self-help awareness"
         ],
         "negative_force": [
-          "持续的他人比较与对外部认可的依赖",
-          "灾难化与全或无思维强化负面自我概念",
-          "启动任务的回避与拖延，短期缓解焦虑但损害表现",
-          "将积极证据归因为侥幸，否定正向体验",
-          "睡眠与饮食受影响，降低精力与专注"
+          "Persistent comparison with others and dependence on external recognition",
+          "catastrophizing and all-or-nothing thinking Reinforcing the negative self-concept",
+          "task-starting avoidance and procrastination, temporarily easing Anxiety but harming performance",
+          "attributing positive evidence to luck, negating positive experiences",
+          "Sleep and diet affected, lowering energy and focus"
         ]
       }
     },
     "bt": {
       "target_behavior": [
         {
-          "behavior": "学业任务的启动回避与拖延（伴随强烈焦虑与自我否定）",
+          "behavior": "task-starting avoidance and procrastination on academic tasks (with strong Anxiety and Self-denial)",
           "antecedent": [
-            "在开始作业前",
-            "在挑战性学术时期",
-            "收到低于预期的成绩后",
-            "在课前或课后回顾笔记时"
+            "Before starting homework",
+            "During challenging academic periods",
+            "after receiving grades below Anticipation",
+            "When reviewing notes before or after class"
           ],
-          "core_reason": "对失败的灾难化认知与全或无标准，加之与同伴比较引发的自卑与无能感",
-          "function": "逃避预期的失败与负性评价，短期降低焦虑",
-          "consequence": "学业表现下降，难以与同伴建立关系，睡眠与饮食习惯受影响，持续的自我怀疑"
+          "core_reason": "catastrophic cognitions about failure and all-or-nothing standards, plus comparison-triggered inferiority and incompetence",
+          "function": "escaping anticipated failure and negative evaluation, temporarily reducing Anxiety",
+          "consequence": "Declining academic performance, struggling to build relationships with peers,Sleep and eating habits affected,Persistent self-doubt"
         }
       ]
     }

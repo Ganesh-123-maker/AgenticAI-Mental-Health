@@ -9,14 +9,18 @@ Tests:
 6. Validation checks for payload schema.
 """
 
-import pytest
-import sys
 import pathlib
+import sys
+
+import pytest
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent.parent.parent / "src"))
 
 from sample.agents.base import AgentContext, AgentError
-from sample.agents.safety_supervisor import SafetySupervisor, validate_safety_supervisor_payload
+from sample.agents.safety_supervisor import (
+    SafetySupervisor,
+    validate_safety_supervisor_payload,
+)
 
 
 def test_clear_response_safe():
@@ -37,7 +41,6 @@ def test_clear_response_safe():
     assert payload["issues"] == []
     assert payload["revised_response"] is None
     assert isinstance(payload["reasoning_summary"], str)
-    # Original response preserved
     assert ctx.final_reviewed_response == draft
     print("[PASS] Test 1: Normal CLEAR response -> SAFE.")
 
@@ -58,7 +61,6 @@ def test_high_risk_normal_response_blocked_or_revised():
     }
     ctx.routing_output = {"route": "HIGH-RISK"}
 
-    # Unsafe / normal counseling response ignoring the crisis
     draft_unsafe = "Let's see what positive things you've had recently, don't overthink, tomorrow will be better."
     msg = sup.run(ctx, draft_response=draft_unsafe)
     payload = msg.payload
@@ -79,7 +81,6 @@ def test_uncertain_safety_with_false_reassurance_revised():
         modality="cbt",
         current_message="I have severe headaches and sleep disorders, and I cannot remember previous situations clearly.",
     )
-    # Critical medical/risk information is missing/uncertain
     ctx.risk_output = {
         "severity": "UNCERTAIN",
         "risk_status": "UNCERTAIN",
@@ -91,7 +92,6 @@ def test_uncertain_safety_with_false_reassurance_revised():
     }
     ctx.routing_output = {"route": "UNCERTAIN"}
 
-    # Counselor falsely guarantees complete safety despite missing medical history
     draft_false_reassurance = "Rest assured, you will not be harmed, you are completely safe, with no mental illness."
     msg = sup.run(ctx, draft_response=draft_false_reassurance)
     payload = msg.payload
@@ -118,7 +118,6 @@ def test_appropriate_safety_aware_response_safe():
     }
     ctx.routing_output = {"route": "HIGH-RISK"}
 
-    # Appropriate safety-aware framing
     draft_safe = "I care deeply about your physical and mental safety and current state. Facing these pressures, we put your safety and psychological support first, and I will accompany you through this."
     msg = sup.run(ctx, draft_response=draft_safe)
     payload = msg.payload
@@ -159,19 +158,15 @@ def test_payload_validation():
     }
     validate_safety_supervisor_payload(valid_payload)
 
-    # Invalid approved
     with pytest.raises(AgentError):
         validate_safety_supervisor_payload({**valid_payload, "approved": "yes"})
 
-    # Invalid status
     with pytest.raises(AgentError):
         validate_safety_supervisor_payload({**valid_payload, "safety_status": "UNKNOWN"})
 
-    # Invalid risk_consistency
     with pytest.raises(AgentError):
         validate_safety_supervisor_payload({**valid_payload, "risk_consistency": "true"})
 
-    # Invalid issues
     with pytest.raises(AgentError):
         validate_safety_supervisor_payload({**valid_payload, "issues": "none"})
 

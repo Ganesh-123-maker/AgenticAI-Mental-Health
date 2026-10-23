@@ -2,127 +2,127 @@
   "basic_info": {
     "static_traits": {
       "age": "42",
-      "name": "张宇",
-      "gender": "男",
-      "occupation": "艺术学院学生",
-      "educational_background": "在读艺术学院",
-      "marital_status": "单身",
-      "family_status": "未提及",
-      "social_status": "在校有一些朋友，但未向他们分享对未来职业的恐惧；与同伴关系因担忧而变得紧张",
-      "medical_history": "无重大躯体疾病；无既往类似心理问题或心理治疗经历",
-      "language_features": "表达清晰，有自省；语气消极、焦虑，倾向灾难化和“必须/完美”的表述；对建议持怀疑但基本配合；思维连贯，能描述触发情境与影响"
+      "name": "Zhang Yu",
+      "gender": "Male",
+      "occupation": "Art school student",
+      "educational_background": "Currently studying at an art academy",
+      "marital_status": "Single",
+      "family_status": "Not mentioned",
+      "social_status": "Has some friends at school, but has not yet shared Fear about future career with them; relationships with peers strained by worry",
+      "medical_history": "No major physical illness; no past similar psychological problems or psychotherapy experience",
+      "language_features": "Clear expression, introspective; negative, Anxious tone, tending toward catastrophic and 'must / perfect' phrasing; skeptical of suggestions but basically cooperative; coherent thinking, able to describe trigger situations and impacts"
     },
-    "main_problem": "担心无法以艺术谋生，这种持续的担忧导致对未来的无望感与恐惧，入读艺术学院后开始出现并随学习进展逐渐加重，常在绘画课后或思考职业前景时加剧。",
-    "topic": "职业发展",
-    "core_demands": "由于对无法以艺术谋生的恐惧显著影响心理健康与动力，希望通过咨询来应对这些问题、减轻焦虑。",
+    "main_problem": "Worrying about being unable to make a living through art; this persistent worry leads to hopelessness and Fear about the future, beginning after entering art school and gradually worsening with Learning progress, often intensifying after painting classes or when thinking about career prospects.",
+    "topic": "Career development",
+    "core_demands": "Since the Fear of being unable to make a living through art significantly affects mental health and motivation, hoping to address these issues through counseling and reduce Anxiety.",
     "growth_experiences": [
-      "入读艺术学院后开始频繁担忧未来职业发展与经济稳定，随着接近毕业这类不确定性加剧，焦虑逐步加重，影响学习与日常生活。",
-      "自述一直有一定的完美主义倾向，但进入艺术学院后看到许多才华横溢的同学，这种完美主义与自我怀疑显著加重，认为只有“非常优秀/完美”才可能成功。"
+      "After entering art school, began frequently worrying about future Career development and financial stability; as graduation approaches, this uncertainty intensifies, Anxiety gradually worsens, affecting Learning and daily life.",
+      "Self-reports always having some perfectionist tendencies, but after entering art school and seeing many talented classmates, this perfectionism and self-doubt markedly intensified, believing only 'very excellent / perfect' can possibly succeed."
     ]
   },
   "theory": {
     "cbt": {
       "core_beliefs": [
-        "我不够好，无法在竞争中生存",
-        "只有接近完美才算成功并值得被认可",
-        "未来注定会失败，无法靠艺术养活自己"
+        "I am not good enough, unable to survive the competition",
+        "Only near perfection counts as success and deserves recognition",
+        "The future is doomed to fail; unable to support myself through art"
       ],
       "special_situations": [
         {
-          "event": "上完绘画课后观看自己的作品",
-          "conditional_assumptions": "如果我的作品不是完美或顶尖水平，就无法在艺术圈立足，更不可能养活自己",
-          "compensatory_strategies": "加剧自我批评、不断提高标准、否定已有进步以逼迫自己完善",
-          "automatic_thoughts": "我的作品永远不够好，靠这个不可能谋生",
+          "event": "Looking at one's own work after a painting class",
+          "conditional_assumptions": "If my work is not perfect or top-tier, I cannot gain a foothold in the art world, let alone support myself",
+          "compensatory_strategies": "Intensifying self-criticism, constantly raising standards, negating existing progress to force self-improvement",
+          "automatic_thoughts": "My work will never be good enough; making a living from this is impossible",
           "cognitive_pattern": "Disqualifying the Positive"
         },
         {
-          "event": "临近毕业时想到未来职业路径与经济稳定",
-          "conditional_assumptions": "如果现在没有清晰可行的职业路径，就意味着我注定会失败并陷入困境",
-          "compensatory_strategies": "反复预演最坏结局、不断担忧以求“提前准备”",
-          "automatic_thoughts": "我可能会失败、养不活自己，甚至穷到饿死",
+          "event": "Thinking about future career path and financial stability when Approaching graduation",
+          "conditional_assumptions": "If there is no clear, viable career path now, it means I am destined to fail and fall into hardship",
+          "compensatory_strategies": "Repeatedly rehearsing the worst outcome, constantly worrying to 'prepare in advance'",
+          "automatic_thoughts": "I may fail, unable to support myself, even starving from poverty",
           "cognitive_pattern": "Catastrophizing"
         },
         {
-          "event": "在课堂上看到同学的高水平作品或才华",
-          "conditional_assumptions": "如果别人比我更优秀，我就没有机会在这个领域成功",
-          "compensatory_strategies": "减少与同伴的互动，避免比较与暴露不安",
-          "automatic_thoughts": "我不如他们，没有竞争力",
+          "event": "Sees classmates' high-level works or talent in class",
+          "conditional_assumptions": "If others are better than me, I have no chance of succeeding in this field",
+          "compensatory_strategies": "Reducing interaction with peers, avoiding comparison and exposing unease",
+          "automatic_thoughts": "I am inferior to them, with no competitiveness",
           "cognitive_pattern": "Comparing and Despairing"
         },
         {
-          "event": "夜间入睡前或独自思考职业前景时",
-          "conditional_assumptions": "如果我现在看不到明确的出路，未来就一定会失败",
-          "compensatory_strategies": "反复思考负面情境，忽视正在进行的学习成果与可能性",
-          "automatic_thoughts": "无论怎么努力，未来都不会好转",
+          "event": "Before falling asleep at night or when thinking about career prospects alone",
+          "conditional_assumptions": "If I cannot see a clear way out now, the future will surely fail",
+          "compensatory_strategies": "Repeatedly thinks about negative situations, ignoring ongoing learning outcomes and possibilities",
+          "automatic_thoughts": "No matter how hard I try, the future will not improve",
           "cognitive_pattern": "Fortune Telling"
         }
       ]
     },
     "pdt": {
       "core_conflict": {
-        "wish": "渴望通过艺术获得认可与稳定的生活，并被视为有价值的创作者",
-        "fear": "害怕失败、被否定与经济不稳定，进而丧失自我价值感",
+        "wish": "Longing to Gain recognition and a stable life through art, and to be seen as a valuable creator",
+        "fear": "Fear of failure, being negated, and financial instability, thus losing self-worth",
         "defense_goal": [
-          "以完美主义与自我批评来预防失败与羞耻",
-          "通过减少谈论与同伴接触来避免被评判或暴露脆弱",
-          "以持续担忧来获得一种对不确定性的控制感"
+          "Uses perfectionism and self-criticism to prevent failure and shame",
+          "Avoids being judged or exposing vulnerability by reducing talking and contact with peers",
+          "Gaining a sense of control over uncertainty through persistent worrying"
         ]
       },
       "object_relations": [
         {
-          "self_representation": "不够好、随时可能失败的学生",
-          "object_representation": "才华横溢且可能评判自己的竞争者（同伴/艺术圈）",
-          "linking_affect": "自卑、焦虑、无助"
+          "self_representation": "A not-good-enough Student who may fail at any time",
+          "object_representation": "Talented competitors who may judge her (peers / art circles)",
+          "linking_affect": "Low self-esteem, Anxiety, helplessness"
         }
       ],
       "behavioral_response_patterns": [
         {
-          "trigger_condition": "当咨询师提出制定具体行动计划或正向想象练习时",
-          "interpretation": "这些方法对现实没有实际帮助，无法改变失败的结局",
-          "defense_mechanism": "合理化",
-          "response_instruction": "以无力、怀疑的语气回应，如“我看不出有用”“这一切太压倒性了”，表面同意尝试但语气保留、动力不足。"
+          "trigger_condition": "When the counselor proposes making a concrete action plan or positive imagery exercises",
+          "interpretation": "These methods have no real help for reality and cannot change the failing outcome",
+          "defense_mechanism": "Rationalization",
+          "response_instruction": "Respond in a helpless, skeptical tone, e.g. 'I cannot see the use', 'this is all too overwhelming', superficially agreeing to try but holding back in tone, Insufficient motivation."
         },
         {
-          "trigger_condition": "当咨询师邀请其寻找反证、指出成功不只依赖完美时",
-          "interpretation": "将正面例子归为“少数例外”，以维持自身信念和心理平衡",
-          "defense_mechanism": "理智化",
-          "response_instruction": "使用抽象概括（如“那只是例外而不是规律”），降低情感表达，采用分析性语句回避触及脆弱情绪。"
+          "trigger_condition": "When the counselor invites finding counterevidence, pointing out that success does not depend only on perfection",
+          "interpretation": "Classifies positive examples as 'rare exceptions' to maintain her own beliefs and psychological balance",
+          "defense_mechanism": "Intellectualization",
+          "response_instruction": "Use abstract generalizations (e.g. 'that is just an exception, not the rule'), lowering emotional expression, using analytical statements to avoid touching vulnerable emotions."
         }
       ]
     },
     "het": {
       "existentialism_topic": [
         {
-          "theme": "自由",
+          "theme": "Freedom",
           "manifestations": [
-            "面对开放的职业选择与不确定的路径时感到不安，害怕为选择承担后果",
-            "临近毕业对未来自主规划与责任感到压力与困惑"
+            "Feeling uneasy when facing open career choices and uncertain paths, fearing bearing consequences for choices",
+            "Approaching graduation, feeling pressure and confusion about future self-planning and responsibilities"
           ],
           "outcomes": [
-            "广泛性焦虑与反复担忧",
-            "注意力下降、学业受影响",
-            "人际关系紧张与回避求助",
-            "睡眠受损、日常自我照料下降"
+            "Generalized Anxiety and repeated worry",
+            "Decreased attention,Academics affected",
+            "Interpersonal tension and avoiding help-seeking",
+            "Sleep impaired, declining daily Self-care"
           ]
         },
         {
-          "theme": "死亡",
+          "theme": "Death",
           "manifestations": [
-            "以“饿死”作为灾难化的极端预测来想象失败的后果"
+            "Uses 'starving to death' as an extreme catastrophized prediction to imagine the consequences of failure"
           ],
           "outcomes": [
-            "灾难化思维与无助感加重",
-            "增强回避与消极预期，维持焦虑循环"
+            "Worsening Catastrophizing and helplessness",
+            "Increased avoidance and negative Anticipation, maintaining the Anxiety cycle"
           ]
         }
       ],
       "contact_model": [
         {
-          "mode": "自我监控",
-          "definition": "个体存在不良的自我反思和反省的能力，包含过多的自我限制和自我苛责，对接触过于小心谨慎。",
+          "mode": "Self-monitoring",
+          "definition": "The individual has a poor capacity for self-reflection and introspection, with excessive self-restriction and self-blame, and is overly cautious about contact.",
           "manifestations": [
-            "在咨询中反复强调“必须很优秀/完美才会成功”，对建议持怀疑态度（如“我看不出有什么用”）",
-            "谨慎接纳行动步骤，担心做得不够好而影响结果，语气保留"
+            "Repeatedly emphasizing in counseling 'must be excellent / perfect to succeed', skeptical of suggestions (e.g. 'I cannot see any use')",
+            "Cautiously accepting action steps, worrying about not doing well enough to affect outcomes, holding back in tone"
           ]
         }
       ]
@@ -131,44 +131,44 @@
       "exception_events": [],
       "force_field": {
         "positive_force": [
-          "对绘画有强烈兴趣与投入，能从学习中获得动力",
-          "能识别成功不仅依赖技术完美，还包括风格独特性与表达",
-          "愿意尝试探索多元收入路径（如稿件、教学），对实际行动持开放态度",
-          "具备一定的支持网络（同学朋友），虽未充分使用但潜在可动员",
-          "身体健康，无严重躯体疾病，具备执行计划的生理基础"
+          "Has a strong interest in and commitment to painting, can gain motivation from learning",
+          "Able to identify that success depends not only on technical perfection but also on stylistic uniqueness and expression",
+          "Willing to try exploring diversified income paths (such as manuscripts, teaching), holding an open attitude toward practical action",
+          "Having some support network (classmates, friends), not yet fully used but potentially mobilizable",
+          "Physically healthy, no serious physical illness, with the physical basis to execute plans"
         ],
         "negative_force": [
-          "灾难化、预测未来、过度概括等认知偏差显著，维持焦虑",
-          "完美主义与非黑即白的评价标准，否定已取得的积极进展",
-          "对不确定性高度不耐受，强烈的经济失败恐惧",
-          "回避与同伴沟通与求助，社交撤退导致支持减少",
-          "长期焦虑引发睡眠受损与专注下降，进一步恶化学业与自我效能感"
+          "Marked cognitive biases like catastrophizing, predicting the future, and overgeneralization, maintaining Anxiety",
+          "Perfectionism and black-and-white evaluation standards, negating positive progress already made",
+          "High intolerance of uncertainty, strong Fear of financial failure",
+          "Avoids communicating with and seeking help from peers; social retreat reduces support",
+          "Long-term Anxiety causing Sleep impaired and declining focus, further worsening academics and Self-efficacy"
         ]
       }
     },
     "bt": {
       "target_behavior": [
         {
-          "behavior": "对未来职业的灾难化担忧与反复反刍",
+          "behavior": "Catastrophic worrying and repeated rumination about future career",
           "antecedent": [
-            "上完绘画课后观看自己的作品",
-            "临近毕业时想到职业前景与经济稳定",
-            "夜间准备入睡时",
-            "看到同学的高水平作品或才华时"
+            "Looking at one's own work after a painting class",
+            "Approaching graduation, thinking of career prospects and financial stability",
+            "When preparing to sleep at night",
+            "When seeing classmates' high-level work or talent"
           ],
-          "core_reason": "对艺术职业不确定性的灾难化预测与对完美的僵化要求，伴随对失败和贫困的强烈恐惧",
-          "function": "暂时获得控制感、提高自我警觉并回避直面不确定性",
-          "consequence": "持续焦虑、睡眠受损、注意力下降与学业表现下滑，进一步强化无助感"
+          "core_reason": "Catastrophic prediction about the uncertainty of an art career and rigid Demands for perfection, accompanied by strong Fear of failure and poverty",
+          "function": "Temporarily gaining control, raising self-vigilance, and avoiding facing uncertainty directly",
+          "consequence": "Persistent anxiety, Sleep impaired, Decreased attention and declining academic performance, further reinforcing helplessness"
         },
         {
-          "behavior": "回避与同学讨论或寻求支持，减少社交接触",
+          "behavior": "Avoiding discussing with or seeking support from classmates, Reduced socializing contact",
           "antecedent": [
-            "在课堂或课后与同伴互动时产生比较与被评判的担忧",
-            "被问及未来打算或职业路径时"
+            "When interacting with peers in class or after class, worries about comparison and being judged arise",
+            "When asked about future plans or career path"
           ],
-          "core_reason": "害怕暴露脆弱与被否定，认为不够优秀会遭受负面评价",
-          "function": "逃避潜在的羞耻/评判，短期降低焦虑",
-          "consequence": "同伴关系紧张、支持减少、问题被维持甚至恶化"
+          "core_reason": "Fearing exposing vulnerability and being negated, believing not being excellent enough will bring negative evaluation",
+          "function": "Avoiding potential shame / judgment, lowering Anxiety in the short term",
+          "consequence": "Tense peer Relationships, Decreased support, the problem maintained or even worsened"
         }
       ]
     }

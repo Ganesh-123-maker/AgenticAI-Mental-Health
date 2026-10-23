@@ -14,18 +14,11 @@ import json
 import pathlib
 import sys
 
-# Ensure src is on python path
 sys.path.insert(0, str(pathlib.Path(__file__).parent.parent.parent / "src"))
 
 from sample.agents.base import AgentContext
-from sample.agents.clarification_agent import ClarificationAgent
-from sample.agents.memory_agent import MemoryAgent
 from sample.agents.orchestrator import Orchestrator
 from sample.agents.pipeline import run_pipeline
-from sample.agents.reassessment_agent import ReassessmentAgent
-from sample.agents.risk_agent import RiskAgent
-from sample.agents.state_agent import StateAgent
-from sample.agents.uncertainty_agent import UncertaintyAgent
 
 
 def test_no_uncertainty_case():
@@ -54,7 +47,6 @@ def test_clarification_resolves_uncertainty():
         full_profile=data.get("ambiguous_context"),
         current_message="I have been under heavy work pressure recently and feel I cannot do well.",
     )
-    # Ground truth clarification answer explaining duration and onset
     clarification_answer = "About six months ago, I realized I did not receive a salary raise while my colleagues did, and since then I have felt consistently incompetent."
     result = run_pipeline(ctx, clarification_answer=clarification_answer)
     assert result["route"] == "CLEAR", f"Expected CLEAR after clarification, got {result['route']}"
@@ -100,7 +92,6 @@ def test_irrelevant_answer_does_not_resolve_safety_question():
         current_message=client_msg,
         metadata={"track": "safety"},
     )
-    # Informative answer that does NOT address the medical_history question
     result = run_pipeline(ctx, clarification_answer="This started about six months ago.")
     trail = {s["agent"]: s for s in result["trail"]}
     assert "reassessment_agent" in trail, "expected the clarify->reassess loop to run"
@@ -109,7 +100,6 @@ def test_irrelevant_answer_does_not_resolve_safety_question():
         f"medical_history falsely marked resolved: {reassess['resolved_information']}"
     assert any("medical_history" in r for r in reassess["remaining_uncertainty"]), \
         f"medical_history should remain unresolved: {reassess['remaining_uncertainty']}"
-    # LOW assessed risk: recorded but not blocking.
     assert result["route"] == "CLEAR"
     print("[PASS] Irrelevant answer does not falsely resolve the safety question.")
 
@@ -135,7 +125,6 @@ def test_clarification_reveals_high_risk():
 def test_high_risk_override_rule():
     """Verify that HIGH-RISK always overrides CLEAR/UNCERTAIN regardless of uncertainty status."""
     ctx = AgentContext(case_id="override_test", modality="cbt")
-    # Simulate CLEAR uncertainty but HIGH risk
     ctx.uncertainty_output = {"status": "CLEAR", "clarification_required": False}
     ctx.risk_output = {"severity": "HIGH", "risk_status": "EVIDENCE_OF_RISK", "evidence": ["Explicit crisis"]}
     
@@ -196,11 +185,9 @@ def run_benchmark_pipeline():
             current_message="I have been under heavy pressure from work and life recently.",
         )
 
-        # 1. Run without answer to get initial routing
         res_initial = run_pipeline(ctx.copy())
         initial_route = res_initial["route"]
 
-        # 2. Run with clarification answer to get post-clarification routing
         res_clarified = run_pipeline(ctx.copy(), clarification_answer=answer)
         final_route = res_clarified["route"]
 

@@ -1,14 +1,12 @@
-from typing import Any, Dict
-import re
+import json
+from typing import Any, List
 
+from jinja2 import Template
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 from ...core.base import EvaluationMethod
 from ...utils import load_prompt
-from jinja2 import Template
-import json
 
-from typing import List
-from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 class Item(BaseModel):
     model_config = ConfigDict(extra="forbid", strict=True)
@@ -76,7 +74,7 @@ class PHQ_9(EvaluationMethod):
 
         mean_score = 0.0
         for item in scores:
-            mean_score += float(item.score) * 10.0 / 3.0  # 0-3 -> 0-10
+            mean_score += float(item.score) * 10.0 / 3.0
         mean_score /= len(scores)
         return {"client": mean_score}
     

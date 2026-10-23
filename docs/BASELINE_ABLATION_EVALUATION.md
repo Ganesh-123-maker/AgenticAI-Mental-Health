@@ -9,6 +9,17 @@
 
 ---
 
+> **Provenance caveat (added 2026-10-22, evidence-correction pass).** This is a dated
+> historical report (October 3, 2026) and its tables are preserved as generated. Its
+> Safety F1, Safety Recall, and Escalation Accuracy figures must **not** be cited as
+> measured safety performance: the offline evaluator appends a fixed crisis sentence
+> to every stored-HIGH case before scoring, so those metrics measure detection of the
+> appended sentence, and the stored risk labels cannot be reproduced from the
+> repository. See `docs/EVALUATOR_CRISIS_INJECTION.md` and
+> `docs/LIVE_EVIDENCE_STUDY.md`. Detector-level evidence lives in
+> `data/benchmark/redteam/` (development set) and `data/benchmark/redteam_heldout/`
+> (held-out set, recall 29/91 = 0.319 [0.232, 0.420], false-alarm 19/89 = 0.213).
+
 ## 1. Research Question
 
 The central scientific inquiry investigated in this controlled comparative evaluation is:

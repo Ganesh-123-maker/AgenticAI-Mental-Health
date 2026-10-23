@@ -21,22 +21,18 @@ from .base import Agent, AgentContext, AgentMessage
 
 logger = logging.getLogger(__name__)
 
-# Patterns indicating durable stated goals
 _GOAL_PATTERNS = [
     r"(goal|aim to|plan to|want to improve|hope to improve|hope to|wants to improve|plans to|wants to achieve|striving to|hope to learn|hope to solve|committed to)",
 ]
 
-# Patterns indicating recurring themes, enduring traits, or chronic issues
 _THEME_PATTERNS = [
     r"(insomnia|chronic|perfectionism|perfectionist|recurring|long-standing|habitual|family|profession|always had|childhood|relationship)",
 ]
 
-# Patterns indicating safety-relevant flags
 _SAFETY_PATTERNS = [
     r"(suicide|self-harm|kill myself|end it all|crisis|hopelessness|wanting to die|harm myself|overdose)",
 ]
 
-# Patterns indicating strictly temporary/momentary states
 _TEMPORARY_PATTERNS = [
     r"(today|traffic|lunch|coffee|weather|a bit tired right now|busy today|noisy|this morning|just drank|on the road)",
 ]
@@ -65,7 +61,6 @@ class MemoryUpdateAgent(Agent):
         Returns:
             AgentMessage with persistent vs temporary facts and structured updates.
         """
-        # 1. Resolve outcome output & candidate facts
         resolved_outcome = outcome_output
         if resolved_outcome is None and ctx is not None:
             resolved_outcome = ctx.outcome_output or {}
@@ -82,7 +77,6 @@ class MemoryUpdateAgent(Agent):
                 if str(item).strip() and str(item).strip() not in facts_to_evaluate:
                     facts_to_evaluate.append(str(item).strip())
 
-        # 2. Classify each fact into persistent vs temporary
         persistent_facts: List[Dict[str, Any]] = []
         temporary_facts: List[str] = []
 
@@ -91,12 +85,11 @@ class MemoryUpdateAgent(Agent):
             if is_durable:
                 persistent_facts.append({
                     "fact": fact,
-                    "category": category,  # "goal" | "recurring_theme" | "safety_flag" | "static_trait"
+                    "category": category,
                 })
             else:
                 temporary_facts.append(fact)
 
-        # 3. Build target field breakdown
         traits_to_add: Dict[str, Any] = {}
         safety_flags_to_add: List[str] = []
         goals_to_add: List[str] = []
@@ -159,27 +152,22 @@ class MemoryUpdateAgent(Agent):
         if not fact_clean or len(fact_clean) < 4:
             return "filler", False
 
-        # Check safety flag first (highest durability)
         for pattern in _SAFETY_PATTERNS:
             if re.search(pattern, fact_clean, re.IGNORECASE):
                 return "safety_flag", True
 
-        # Check stated goals
         for pattern in _GOAL_PATTERNS:
             if re.search(pattern, fact_clean, re.IGNORECASE):
                 return "goal", True
 
-        # Check recurring theme or chronic issue
         for pattern in _THEME_PATTERNS:
             if re.search(pattern, fact_clean, re.IGNORECASE):
                 return "recurring_theme", True
 
-        # Explicitly check temporary patterns
         for pattern in _TEMPORARY_PATTERNS:
             if re.search(pattern, fact_clean, re.IGNORECASE):
                 return "transitory_state", False
 
-        # Default rule: do NOT persist unless clearly durable
         return "conversational_detail", False
 
     def apply_update(
@@ -205,7 +193,6 @@ class MemoryUpdateAgent(Agent):
         if not isinstance(public_memory.known_static_traits, dict):
             public_memory.known_static_traits = {}
 
-        # Merge durable goals, themes, and safety flags into known_static_traits
         for item in persistent_facts:
             fact_text = item.get("fact") if isinstance(item, dict) else str(item)
             cat = item.get("category", "trait") if isinstance(item, dict) else "trait"
@@ -225,13 +212,10 @@ class MemoryUpdateAgent(Agent):
             else:
                 public_memory.known_static_traits[fact_text] = "persisted"
 
-        # Update last_homework if provided
         if homework is not None and isinstance(homework, list):
             public_memory.last_homework = list(homework)
 
-        # Update session_recaps with summary if provided
         if session_summary is not None and isinstance(session_summary, dict):
-            # If session_summary not already in session_recaps, append it
             s_idx = session_summary.get("session_index", len(public_memory.session_recaps) + 1)
             recap_entry = {
                 "session_index": s_idx,
@@ -239,7 +223,6 @@ class MemoryUpdateAgent(Agent):
                 "homework": session_summary.get("homework", public_memory.last_homework),
                 "static_traits": dict(public_memory.known_static_traits),
             }
-            # Check if this session index already exists in recaps
             existing_idx = [r.get("session_index") for r in public_memory.session_recaps if isinstance(r, dict)]
             if s_idx not in existing_idx:
                 public_memory.session_recaps.append(recap_entry)

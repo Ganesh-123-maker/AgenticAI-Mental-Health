@@ -106,7 +106,6 @@ SUMMARY_STAGE_TO_STAGE_KEY: Dict[str, str] = {
     "Problem conceptualization and goal setting": "assessment",
     "Core cognitive and behavioral intervention": "intervention",
     "Consolidation and relapse prevention": "consolidation",
-    # Backward-compatible aliases from older UI copy.
     "assessment_meeting": "assessment",
     "intervention_meeting": "intervention",
     "consolidation_meeting": "consolidation",

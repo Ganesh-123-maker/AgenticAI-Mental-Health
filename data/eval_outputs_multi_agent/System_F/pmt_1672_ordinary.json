@@ -13,18 +13,18 @@
   "transcript": [
     {
       "role": "user",
-      "content": "在会计工作中感到不称职，尤其是在平衡账目出错之后，出现持续的自我怀疑与焦虑。"
+      "content": "I feel incompetent in my accounting work, especially after making an error balancing the books, with persistent self-doubt and anxiety."
     },
     {
       "role": "assistant",
-      "content": "[Counselor] 结合您的背景和PMT治疗框架，我们来聚焦于目前最困扰您的核心问题。"
+      "content": "[Counselor] Based on your background and the PMT treatment framework, let us focus on the core issue that troubles you most at present."
     },
     {
       "role": "user",
-      "content": "谢谢咨询师，我觉得有些启发。"
+      "content": "Thank you, counselor; I feel somewhat inspired."
     }
   ],
-  "counselor_response": "[Counselor] 结合您的背景和PMT治疗框架，我们来聚焦于目前最困扰您的核心问题。",
+  "counselor_response": "[Counselor] Based on your background and the PMT treatment framework, let us focus on the core issue that troubles you most at present.",
   "trail": [
     {
       "agent": "memory_agent",
@@ -32,47 +32,47 @@
       "payload": {
         "known_static_traits": {
           "age": "26",
-          "name": "陈杰",
-          "gender": "男",
-          "occupation": "会计",
-          "educational_background": "会计学学士",
-          "marital_status": "未婚",
-          "family_status": "与两只狗同住，无其他家人",
-          "social_status": "有一些朋友可提供情感支持，但尚未与其讨论工作困扰；因频繁向同事寻求保证而使同事关系受影响",
-          "medical_history": "无重大躯体疾病；既往无类似心理问题经历，未接受过心理治疗",
-          "language_features": "表达清晰，逻辑性较好，态度配合但语气消极；反复自我怀疑，常使用灾难化与非黑即白的表述；倾向寻求外部保证"
+          "name": "Chen Jie",
+          "gender": "Male",
+          "occupation": "Accountant",
+          "educational_background": "Bachelor's degree in accounting",
+          "marital_status": "Unmarried",
+          "family_status": "Lives with two dogs, no other family members",
+          "social_status": "Has some friends who can provide emotional support, but has not yet discussed work difficulties with them; relationships with colleagues are affected by frequently seeking reassurance from them",
+          "medical_history": "No major physical illness; no prior experience of similar psychological problems, has not received psychotherapy",
+          "language_features": "Clear expression, fairly good logic, cooperative attitude but negative tone; repeated self-doubt, often uses catastrophic and black-and-white expressions; tends to seek external reassurance"
         },
         "session_recaps": [],
         "last_homework": [],
         "current_session_index": 1,
-        "current_stage": "问题概念化与目标设定",
+        "current_stage": "Problem conceptualization and goal setting",
         "previous_interventions": [],
         "current_goals": [
-          "自我怀疑和焦虑正在影响工作表现与整体身心健康，希望通过咨询减轻焦虑和自我怀疑，恢复工作功能。"
+          "Self-doubt and anxiety are affecting work performance and overall physical and mental health; hopes to reduce anxiety and self-doubt through counseling and restore work functioning."
         ],
         "prior_outcomes": [],
         "newly_observed": [
-          "在会计工作中感到不称职，尤其是在平衡账目出错之后，出现持续的自我怀疑与焦虑。"
+          "I feel incompetent in my accounting work, especially after making an error balancing the books, with persistent self-doubt and anxiety."
         ],
-        "main_problem": "在会计工作中感到不称职，尤其是在平衡账目出错之后，出现持续的自我怀疑与焦虑。",
-        "core_demands": "自我怀疑和焦虑正在影响工作表现与整体身心健康，希望通过咨询减轻焦虑和自我怀疑，恢复工作功能。",
+        "main_problem": "I feel incompetent in my accounting work, especially after making an error balancing the books, with persistent self-doubt and anxiety.",
+        "core_demands": "Self-doubt and anxiety are affecting work performance and overall physical and mental health; hopes to reduce anxiety and self-doubt through counseling and restore work functioning.",
         "growth_experiences": [
-          "几周前在工作中平衡账目出现重大错误，此后开始在工作时间、面对会计任务时持续怀疑自身能力并感到焦虑；认为高工作量与绩效压力可能是诱因。为缓解情绪尝试反复检查、向同事寻求保证和短暂休息，但效果有限，导致睡眠与饮食受影响，与同事关系因频繁求证而紧张。",
-          "在出错之前，工作表现总体良好，曾获得上司的称赞；但在焦虑时很难回忆和认可这些正面证据，觉得“那是很久以前，与现在无关”。"
+          "A few weeks ago, he made a major error balancing accounts at work; since then he persistently doubts his own abilities and feels anxious during work hours and when facing accounting tasks; he believes high workload and performance pressure may be triggers. To relieve his emotions he tried repeated checking, seeking reassurance from colleagues, and short breaks, but with limited effect, resulting in affected sleep and diet, and tense relationships with colleagues due to frequent verification-seeking.",
+          "Before the mistake, his work performance was generally good and he had received praise from his supervisor; but when anxious, he finds it hard to recall and acknowledge this positive evidence, feeling 'that was long ago and has nothing to do with now'."
         ],
         "theory_info": {
           "exception_events": [],
           "force_field": {
             "positive_force": [
-              "过去有胜任体验并获得上司的正向反馈",
-              "愿意尝试结构化的行为实验，具有一定配合意愿",
-              "具备一定的社会支持资源（有可以倾诉的朋友）"
+              "Has had past experiences of competence and received positive feedback from his supervisor",
+              "Willing to try structured behavioral experiments, with a certain willingness to cooperate",
+              "Has some social support resources (has friends to confide in)"
             ],
             "negative_force": [
-              "显著的认知歪曲：灾难化、非黑即白、过度概括、否定积极、预测未来、贴标签",
-              "高工作负荷与绩效压力加剧了对错误的恐惧",
-              "依赖外部确认（频繁求证）与反复检查维持焦虑循环",
-              "睡眠与饮食受干扰，恢复力与耐压性下降"
+              "Significant cognitive distortions: catastrophizing, black-and-white thinking, overgeneralization, disqualifying the positive, fortune telling, labeling",
+              "High workload and performance pressure intensify the fear of making mistakes",
+              "Relies on external confirmation (frequent verification-seeking) and repeated checking to maintain the anxiety cycle",
+              "Sleep and diet disturbed; recovery ability and stress tolerance decreased"
             ]
           }
         },
@@ -83,37 +83,37 @@
       "agent": "state_agent",
       "status": "ok",
       "payload": {
-        "current_concern": "在会计工作中感到不称职，尤其是在平衡账目出错之后，出现持续的自我怀疑与焦虑。",
-        "expressed_needs": "自我怀疑和焦虑正在影响工作表现与整体身心健康，希望通过咨询减轻焦虑和自我怀疑，恢复工作功能。",
-        "current_session_focus": "自我怀疑和焦虑正在影响工作表现与整体身心健康，希望通过咨询减轻焦虑和自我怀疑，恢复工作功能。",
+        "current_concern": "I feel incompetent in my accounting work, especially after making an error balancing the books, with persistent self-doubt and anxiety.",
+        "expressed_needs": "Self-doubt and anxiety are affecting work performance and overall physical and mental health; hopes to reduce anxiety and self-doubt through counseling and restore work functioning.",
+        "current_session_focus": "Self-doubt and anxiety are affecting work performance and overall physical and mental health; hopes to reduce anxiety and self-doubt through counseling and restore work functioning.",
         "known_information": [
-          "[基本信息] age: 26",
-          "[基本信息] name: 陈杰",
-          "[基本信息] gender: 男",
-          "[基本信息] occupation: 会计",
-          "[基本信息] educational_background: 会计学学士",
-          "[基本信息] marital_status: 未婚",
-          "[基本信息] family_status: 与两只狗同住，无其他家人",
-          "[基本信息] social_status: 有一些朋友可提供情感支持，但尚未与其讨论工作困扰；因频繁向同事寻求保证而使同事关系受影响",
-          "[基本信息] medical_history: 无重大躯体疾病；既往无类似心理问题经历，未接受过心理治疗",
-          "[基本信息] language_features: 表达清晰，逻辑性较好，态度配合但语气消极；反复自我怀疑，常使用灾难化与非黑即白的表述；倾向寻求外部保证",
-          "[主诉] 在会计工作中感到不称职，尤其是在平衡账目出错之后，出现持续的自我怀疑与焦虑。",
-          "[核心诉求] 自我怀疑和焦虑正在影响工作表现与整体身心健康，希望通过咨询减轻焦虑和自我怀疑，恢复工作功能。",
-          "[成长经历] 几周前在工作中平衡账目出现重大错误，此后开始在工作时间、面对会计任务时持续怀疑自身能力并感到焦虑；认为高工作量与绩效压力可能是诱因。为缓解情绪尝试反复检查、向同事寻求保证和短暂休息，但效果有限，导致睡眠与饮食受影响，与同事关系因频繁求证而紧张。",
-          "[成长经历] 在出错之前，工作表现总体良好，曾获得上司的称赞；但在焦虑时很难回忆和认可这些正面证据，觉得“那是很久以前，与现在无关”。",
-          "[PMT 理论] force_field: 已记录",
-          "[当前陈述] 在会计工作中感到不称职，尤其是在平衡账目出错之后，出现持续的自我怀疑与焦虑。"
+          "[Basic information] age: 26",
+          "[Basic information] name: Chen Jie",
+          "[Basic information] gender: Male",
+          "[Basic information] occupation: Accountant",
+          "[Basic information] educational_background: Bachelor's degree in accounting",
+          "[Basic information] marital_status: Unmarried",
+          "[Basic information] family_status: Lives with two dogs, no other family members",
+          "[Basic information] social_status: Has some friends who can provide emotional support, but has not yet discussed work difficulties with them; relationships with colleagues are affected by frequently seeking reassurance from them",
+          "[Basic information] medical_history: No major physical illness; no prior experience of similar psychological problems, has not received psychotherapy",
+          "[Basic information] language_features: Clear expression, fairly good logic, cooperative attitude but negative tone; repeated self-doubt, often uses catastrophic and black-and-white expressions; tends to seek external reassurance",
+          "[Chief Complaint] Feels incompetent in accounting work, especially after making errors balancing accounts, with persistent self-doubt and anxiety.",
+          "[Core Demands] Self-doubt and anxiety are affecting work performance and overall physical and mental health; hopes to reduce anxiety and self-doubt through counseling and restore work functioning.",
+          "[Growth Experiences] A few weeks ago, he made a major error balancing accounts at work; since then he persistently doubts his own abilities and feels anxious during work hours and when facing accounting tasks; he believes high workload and performance pressure may be triggers. To relieve his emotions he tried repeated checking, seeking reassurance from colleagues, and short breaks, but with limited effect, resulting in affected sleep and diet, and tense relationships with colleagues due to frequent verification-seeking.",
+          "[Growth Experiences] Before the mistake, his work performance was generally good and he had received praise from his supervisor; but when anxious, he finds it hard to recall and acknowledge this positive evidence, feeling 'that was long ago and has nothing to do with now'.",
+          "[PMT Theory] force_field: Recorded",
+          "[Current Statement] Feels incompetent in accounting work, especially after making errors balancing accounts, with persistent self-doubt and anxiety."
         ],
         "unknown_information": [
           "prior_session_recaps (first session or no history)"
         ],
         "context": {
           "modality": "pmt",
-          "therapy_stage": "问题概念化与目标设定",
+          "therapy_stage": "Problem conceptualization and goal setting",
           "session_index": 1,
           "source": "runner_state|full_profile"
         },
-        "longitudinal_relevance": "暂无历史会话记录（可能为首次或首轮独立评估）。",
+        "longitudinal_relevance": "No historical session records for now (possibly a first or first-round independent assessment).",
         "confidence": 0.7777777777777778
       }
     },
@@ -217,8 +217,8 @@
         "goal_progress": "Client actively engaged in dialogue discussing contextual experiences and responses.",
         "unresolved_uncertainty": false,
         "newly_observed_information": [
-          "谢谢咨询师，我觉得有些启发",
-          "在会计工作中感到不称职，尤其是在平衡账目出错之后，出现持续的自我怀疑与焦虑"
+          "Thank you, counselor; I feel somewhat inspired",
+          "Feels incompetent in accounting work, especially after making errors balancing accounts, with persistent self-doubt and anxiety"
         ]
       }
     },
@@ -228,8 +228,8 @@
       "payload": {
         "persistent": [],
         "temporary": [
-          "谢谢咨询师，我觉得有些启发",
-          "在会计工作中感到不称职，尤其是在平衡账目出错之后，出现持续的自我怀疑与焦虑"
+          "Thank you, counselor; I feel somewhat inspired",
+          "Feels incompetent in accounting work, especially after making errors balancing accounts, with persistent self-doubt and anxiety"
         ],
         "target_fields": {
           "known_static_traits": {},
@@ -250,15 +250,15 @@
         "goal_progress": "Client actively engaged in dialogue discussing contextual experiences and responses.",
         "unresolved_uncertainty": false,
         "newly_observed_information": [
-          "谢谢咨询师，我觉得有些启发",
-          "在会计工作中感到不称职，尤其是在平衡账目出错之后，出现持续的自我怀疑与焦虑"
+          "Thank you, counselor; I feel somewhat inspired",
+          "Feels incompetent in accounting work, especially after making errors balancing accounts, with persistent self-doubt and anxiety"
         ]
       },
       "memory_update": {
         "persistent": [],
         "temporary": [
-          "谢谢咨询师，我觉得有些启发",
-          "在会计工作中感到不称职，尤其是在平衡账目出错之后，出现持续的自我怀疑与焦虑"
+          "Thank you, counselor; I feel somewhat inspired",
+          "Feels incompetent in accounting work, especially after making errors balancing accounts, with persistent self-doubt and anxiety"
         ],
         "target_fields": {
           "known_static_traits": {},

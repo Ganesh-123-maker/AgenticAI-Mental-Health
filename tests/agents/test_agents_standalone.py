@@ -20,10 +20,9 @@ import json
 import pathlib
 import sys
 
-# Make src importable when run from project root
 sys.path.insert(0, str(pathlib.Path(__file__).parent.parent.parent / "src"))
 
-from sample.agents.base import Agent, AgentContext, AgentError, AgentMessage
+from sample.agents.base import AgentContext, AgentError, AgentMessage
 from sample.agents.memory_agent import MemoryAgent
 from sample.agents.state_agent import StateAgent
 from sample.core.schemas import PublicMemory
@@ -46,9 +45,6 @@ def _load_json(path: pathlib.Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-# ---------------------------------------------------------------------------
-# Test 1: Base schema construction
-# ---------------------------------------------------------------------------
 print("\n--- Test 1: Base schema construction ---")
 
 ctx = AgentContext(case_id="test_1", modality="cbt")
@@ -67,9 +63,6 @@ except AgentError as e:
     _check("AgentError carries agent_name", e.agent_name == "test")
 
 
-# ---------------------------------------------------------------------------
-# Test 2: Memory Agent — full CBT sample profile, no pre-built PublicMemory
-# ---------------------------------------------------------------------------
 print("\n--- Test 2: Memory Agent on full CBT profile ---")
 
 cbt_dir = pathlib.Path("assets/profiles/cbt/sample")
@@ -113,9 +106,6 @@ print(f"     known_traits_count: {len(mem_msg.payload.get('known_static_traits',
 print(f"     missing: {mem_msg.missing_information}")
 
 
-# ---------------------------------------------------------------------------
-# Test 3: State Agent — full CBT profile
-# ---------------------------------------------------------------------------
 print("\n--- Test 3: State Agent on full CBT profile ---")
 
 ctx2.memory_output = mem_msg.payload
@@ -138,7 +128,6 @@ _check("State Agent confidence is 0.0–1.0",
 _check("State Agent known_information is non-empty (evidenced content)",
        bool(state_msg.payload.get("known_information")))
 
-# Verify NO clinical/diagnostic labels
 clinical_labels = [
     "diagnosis", "DSM", "ICD", "depression", "anxiety", "disorder", "psychosis", "mania",
     "CLEAR", "UNCERTAIN", "HIGH-RISK", "crisis intervention"
@@ -156,9 +145,6 @@ print(f"     confidence: {state_msg.confidence:.2f}")
 print(f"     longitudinal: {state_msg.payload.get('longitudinal_relevance', '')[:80]}")
 
 
-# ---------------------------------------------------------------------------
-# Test 4: Memory Agent + State Agent — ambiguous benchmark case (missing fields)
-# ---------------------------------------------------------------------------
 print("\n--- Test 4: Memory + State Agent on ambiguous benchmark case ---")
 
 bench_dir = pathlib.Path("data/benchmark/ambiguous_cases/cbt")
@@ -166,7 +152,6 @@ bench_files = sorted(bench_dir.glob("*_ordinary.json"))[:1]
 if bench_files:
     bench_path = bench_files[0]
     bench_data = _load_json(bench_path)
-    # Use ambiguous_context (the redacted version)
     ambig_profile = bench_data.get("ambiguous_context", {})
     missing_fields = bench_data.get("missing_information", [])
     uncertainty_type = bench_data.get("uncertainty_type", "")
@@ -186,7 +171,6 @@ if bench_files:
     _check("Ambiguous case: Memory Agent does not crash", True)
     _check("Ambiguous case: State Agent does not crash", True)
 
-    # Verify that missing fields (from the benchmark) appear in unknown_information
     unknown_str = json.dumps(state_msg4.payload.get("unknown_information", []), ensure_ascii=False)
     missing_str = json.dumps(mem_msg4.missing_information, ensure_ascii=False)
     _check("Ambiguous case: missing_information is populated",
@@ -202,9 +186,6 @@ else:
     print("  [SKIP] No ambiguous benchmark cases found — Phase 2 not run?")
 
 
-# ---------------------------------------------------------------------------
-# Test 5: Memory Agent with explicit PublicMemory (first-session, empty)
-# ---------------------------------------------------------------------------
 print("\n--- Test 5: Memory Agent with empty PublicMemory (first session) ---")
 
 empty_mem = PublicMemory()
@@ -232,9 +213,6 @@ _check("Empty PublicMemory: unknown_information non-empty (expected for first se
        bool(state_msg5.payload.get("unknown_information")))
 
 
-# ---------------------------------------------------------------------------
-# Test 6: Verify Memory Agent does NOT mutate PublicMemory
-# ---------------------------------------------------------------------------
 print("\n--- Test 6: Memory Agent does not mutate PublicMemory ---")
 
 test_mem = PublicMemory(
@@ -260,13 +238,10 @@ _check("Memory Agent: payload session_recaps is a copy (not same object)",
        mem_msg6.payload.get("session_recaps") is not test_mem.session_recaps)
 
 
-# ---------------------------------------------------------------------------
-# Test 7: Second CBT profile for variety
-# ---------------------------------------------------------------------------
 print("\n--- Test 7: Memory + State Agent on second CBT profile ---")
 
 if len(cbt_files_all := sorted(cbt_dir.glob("*.json"))) >= 2:
-    cbt_profile_path2 = cbt_files_all[5]  # pick a different one
+    cbt_profile_path2 = cbt_files_all[5]
     cbt_profile2 = _load_json(cbt_profile_path2)
 
     ctx7 = AgentContext(
@@ -299,9 +274,6 @@ else:
     print("  [SKIP] fewer than 2 CBT profiles found")
 
 
-# ---------------------------------------------------------------------------
-# Print sample output for one case
-# ---------------------------------------------------------------------------
 print("\n--- Sample output: Memory Agent (CBT case", cbt_profile_path.stem, ") ---")
 print(json.dumps({
     "agent": mem_msg.agent,
@@ -327,9 +299,6 @@ print(json.dumps({
 }, indent=2, ensure_ascii=False))
 
 
-# ---------------------------------------------------------------------------
-# Summary
-# ---------------------------------------------------------------------------
 print("\n=== Test Summary ===")
 total = len(_results)
 passed = sum(1 for _, ok in _results if ok)

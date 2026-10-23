@@ -2,140 +2,140 @@
   "basic_info": {
     "static_traits": {
       "age": "15",
-      "name": "陈曼迪",
-      "gender": "女",
-      "occupation": "学生",
-      "educational_background": "大学在读（计算机科学专业）",
-      "marital_status": "单身",
-      "family_status": "由继父抚养，关于生父的信息缺失、从未见面",
-      "social_status": "因害怕被评判，难以与同学建立亲密关系；有一位要好的朋友但尚未分享自卑感",
-      "medical_history": "无重要躯体疾病；既往无心理治疗或精神科就诊史",
-      "language_features": "态度积极，愿意配合；其余未提及"
+      "name": "Chen Mandi",
+      "gender": "Female",
+      "occupation": "Student",
+      "educational_background": "A college student (computer science major)",
+      "marital_status": "Single",
+      "family_status": "Raised by stepfather, information about biological father missing, never met",
+      "social_status": "Difficulty building close relationships with classmates due to fear of judgment; has one good friend but has not yet shared feelings of inferiority",
+      "medical_history": "No major physical illness; no previous psychotherapy or psychiatric visits",
+      "language_features": "Positive attitude, willing to cooperate; the rest Not mentioned"
     },
-    "main_problem": "我一直坚信自己从未谋面的生父那里遗传了“缺乏智力”，这使我产生强烈的自卑感并害怕在大学失败。",
-    "topic": "学业压力",
-    "core_demands": "我之所以来咨询，是因为这些自卑感已经开始影响我的学业表现和整体身心健康。",
+    "main_problem": "I have always firmly believed I inherited 'lack of intelligence' from my biological father whom I never met, which gives me strong feelings of inferiority and fear of failing in college.",
+    "topic": "Academic pressure",
+    "core_demands": "I came to counseling because these feelings of inferiority have begun to affect my academic performance and my overall physical and mental health.",
     "growth_experiences": [
-      "原生与家庭经历：从小由继父抚养，与生父没有任何接触或信息来源。对“遗传自生父的智力不足”的想法逐渐形成，成为自我评价的重要依据。",
-      "青少年期至今：自青春期开始出现对自身能力不足的担忧，进入大学后在考试与高难度编程任务面前显著加重；同时感受到社会对学业优秀的期待与压力，强化了对失败的恐惧与自卑。"
+      "Original and family experience: raised by stepfather from childhood, with no contact or information source regarding biological father. The idea of 'inadequate intelligence inherited from biological father' gradually formed, becoming an important basis for self-evaluation.",
+      "From adolescence to now: worries about one's own inadequate ability began in puberty, significantly worsening in college when facing exams and difficult programming tasks; simultaneously feeling society's expectations and pressure for academic excellence, reinforcing Fear of failure and inferiority."
     ]
   },
   "theory": {
     "cbt": {
       "core_beliefs": [
-        "我不够聪明（这是先天决定的）",
-        "我注定会在大学失败"
+        "I am not smart enough (this is innately determined)",
+        "I am destined to fail at university"
       ],
       "special_situations": [
         {
-          "event": "重要考试前",
-          "conditional_assumptions": "如果我考不好，就证明我天生不聪明，将来一定会失败",
-          "compensatory_strategies": "过度准备、不断自我怀疑并寻求他人肯定，即使以牺牲睡眠为代价",
-          "automatic_thoughts": "这次肯定会考砸，我不适合这个专业",
+          "event": "Before an important exam",
+          "conditional_assumptions": "If I do not test well, it proves I am innately not smart, and will surely fail in the future",
+          "compensatory_strategies": "Over-preparation, constantly Self-doubting and seeking others' affirmation, even at the cost of sleep",
+          "automatic_thoughts": "This time will surely be failed, I am not suited for this major",
           "cognitive_pattern": "Fortune Telling"
         },
         {
-          "event": "面对高难度的编程作业或项目卡住时",
-          "conditional_assumptions": "如果我一时解决不了问题，就说明我真的很笨、永远不行",
-          "compensatory_strategies": "加倍学习试图证明自己、长时间死磕任务",
-          "automatic_thoughts": "我搞不定这题，说明我不够聪明",
+          "event": "When stuck facing difficult programming assignments or projects",
+          "conditional_assumptions": "If I cannot solve a problem for the moment, it shows I am really stupid, never capable",
+          "compensatory_strategies": "Doubling study efforts to try to prove oneself, grinding at tasks for long periods",
+          "automatic_thoughts": "I cannot handle this problem, showing I am not smart enough",
           "cognitive_pattern": "All-or-Nothing Thinking"
         },
         {
-          "event": "获得教授的正面反馈或课程通过后",
-          "conditional_assumptions": "只有轻松取得完美结果才算能力，其他成功都不算数",
-          "compensatory_strategies": "把成就归因于运气，继续否定自身能力",
-          "automatic_thoughts": "这次只是侥幸，不代表我真的行",
+          "event": "After receiving positive feedback from the professor or passing a course",
+          "conditional_assumptions": "Only effortlessly achieving perfect results counts as ability; other successes do not count",
+          "compensatory_strategies": "Attributing achievements to luck, continuing to negate one's own ability",
+          "automatic_thoughts": "This time was just luck, not representing that I am truly capable",
           "cognitive_pattern": "Disqualifying the Positive"
         },
         {
-          "event": "与同学接触、需要合作或建立更亲近关系时",
-          "conditional_assumptions": "如果他们发现我不够聪明，就会看不起我、远离我",
-          "compensatory_strategies": "避免建立亲密关系，减少暴露自己能力不足的机会",
-          "automatic_thoughts": "他们会觉得我很笨、会评判我",
+          "event": "When in contact with classmates and needing to cooperate or build closer relationships",
+          "conditional_assumptions": "If they discover I am not smart enough, they will look down on me and stay away",
+          "compensatory_strategies": "Avoiding building intimate relationships, reducing opportunities to expose one's inadequate ability",
+          "automatic_thoughts": "They will think I am dumb and will judge me",
           "cognitive_pattern": "Mind Reading"
         }
       ]
     },
     "pdt": {
       "core_conflict": {
-        "wish": "渴望被如父亲般的权威与重要他人看见、认可并支持，确认自己是有能力且值得被爱的",
-        "fear": "害怕暴露不足被评判或被拒绝，害怕让重要他人失望并证实“自己先天不行”",
+        "wish": "Longs to be seen, recognized, and supported by father-like authority and significant others, confirming that she is capable and worthy of being loved",
+        "fear": "Fearing exposure of inadequacy leading to judgment or being rejected, fearing disappointing important others and confirming 'oneself innately incapable'",
         "defense_goal": [
-          "保持谨慎的关系距离以避免被评判",
-          "将成功归因于运气、能力不足归因为遗传，以减轻内疚与焦虑",
-          "通过过度准备与寻求外部认可来控制不确定性"
+          "Maintains a cautious relational distance to avoid being judged",
+          "Attributing success to luck, inadequate ability to genetics, to reduce guilt and Anxiety",
+          "Controlling uncertainty through Over-preparation and seeking external recognition"
         ]
       },
       "object_relations": [
         {
-          "self_representation": "不够聪明、随时可能失败的学生",
-          "object_representation": "他人（同学、老师、权威）是苛刻的评判者",
-          "linking_affect": "羞耻、焦虑"
+          "self_representation": "A Student not smart enough, possibly failing at any time",
+          "object_representation": "Others (classmates, teachers, authorities) are harsh judgers",
+          "linking_affect": "Shame, anxiety"
         },
         {
-          "self_representation": "被缺席的父亲遗弃、携带“问题基因”的孩子",
-          "object_representation": "生父是遥远且负面的来源（能力不足的根源）",
-          "linking_affect": "怨恨、无力感"
+          "self_representation": "A child abandoned by an absent father, carrying 'problem genes'",
+          "object_representation": "Biological father as a distant and negative source (the root of inadequate ability)",
+          "linking_affect": "Resentment, sense of powerlessness"
         }
       ],
       "behavioral_response_patterns": [
         {
-          "trigger_condition": "当咨询师强调其通过课程、教授正向反馈等成功证据时",
-          "interpretation": "认为对方可能在忽视现实困难或只是安慰自己",
-          "defense_mechanism": "合理化",
-          "response_instruction": "语气温和而保留，把成功解释为运气或侥幸，弱化自身能力的作用。"
+          "trigger_condition": "When the counselor emphasizes success evidence such as passing courses and professors' positive feedback",
+          "interpretation": "Believes the other party may be ignoring real difficulties or just comforting her",
+          "defense_mechanism": "Rationalization",
+          "response_instruction": "Gentle and reserved tone, explaining success as luck or chance, downplaying the role of one's own ability."
         },
         {
-          "trigger_condition": "当谈到生父与“遗传智力不足”的话题时",
-          "interpretation": "将当前自卑与焦虑抽象化为基因与先天因素，避免触及被遗弃与悲伤感受",
-          "defense_mechanism": "理智化",
-          "response_instruction": "使用客观、科学的术语讨论遗传与智力，保持情绪平淡，较少表达个人感受。"
+          "trigger_condition": "When talking about biological father and the topic of 'genetically inadequate intelligence'",
+          "interpretation": "Abstracting current inferiority and Anxiety into genetic and innate factors, avoiding touching feelings of being abandoned and sadness",
+          "defense_mechanism": "Intellectualization",
+          "response_instruction": "Use objective, scientific terms to discuss genetics and intelligence, keep emotions flat, express personal feelings less."
         }
       ]
     },
     "het": {
       "existentialism_topic": [
         {
-          "theme": "自由",
+          "theme": "Freedom",
           "manifestations": [
-            "将能力与前途视为被基因预先决定，体验到对人生缺乏掌控",
-            "在考试与挑战情境中自我设限，认为努力难以改变结果"
+            "Views ability and future as predetermined by genes, experiencing a lack of control over life",
+            "In exam and challenge situations, self-limits, believing effort can hardly change the result"
           ],
           "outcomes": [
-            "无助与焦虑增加",
-            "回避挑战、非黑即白的自我评价",
-            "对外在评价与认可的依赖加重"
+            "Helplessness and Increased anxiety",
+            "Avoids challenges; black-and-white self-evaluation",
+            "Growing reliance on external evaluation and recognition"
           ]
         },
         {
-          "theme": "孤独",
+          "theme": "Loneliness",
           "manifestations": [
-            "从未与生父建立关系，体验被缺席的亲子连接",
-            "因害怕被评判而难以与同学建立亲密关系"
+            "Never establishing a relationship with biological father, experiencing an absent parent-child connection",
+            "Due to fear of being judged, hard to build close relationships with classmates"
           ],
           "outcomes": [
-            "社交回避与孤立感",
-            "自尊下降与自我怀疑",
-            "获得支持资源受限"
+            "Social avoidance and Sense of isolation",
+            "Decreased self-esteem and self-doubt",
+            "Limited access to support resources"
           ]
         }
       ],
       "contact_model": [
         {
-          "mode": "自我监控",
-          "definition": "个体存在不良的自我反思和反省的能力，包含过多的自我限制和自我苛责，对接触过于小心谨慎。",
+          "mode": "Self-monitoring",
+          "definition": "The individual has a poor capacity for self-reflection and introspection, with excessive self-restriction and self-blame, and is overly cautious about contact.",
           "manifestations": [
-            "频繁自我怀疑与自我苛责，担心让重要他人（如继父、老师）失望",
-            "在咨询中更关注自身不足，谨慎表达积极面"
+            "Frequent Self-doubt and self-reproach, worrying about disappointing important others (such as stepfather, teachers)",
+            "Focusing more on one's own inadequacies in counseling, cautiously expressing positive aspects"
           ]
         },
         {
-          "mode": "投射",
-          "definition": "个体将自己难以接纳的感受归于他人。",
+          "mode": "Projection",
+          "definition": "The individual attributes feelings they find hard to accept to others.",
           "manifestations": [
-            "预设同学会看不起自己、对自己能力作负面评价",
-            "在人际接触前即假定他人持否定态度"
+            "Presupposing classmates will look down on oneself, making negative evaluations of one's ability",
+            "Assuming others hold negating attitudes even before interpersonal contact"
           ]
         }
       ]
@@ -144,42 +144,42 @@
       "exception_events": [],
       "force_field": {
         "positive_force": [
-          "过往课程均已通过并获得教授的正面反馈，显示具备学习能力与投入度",
-          "愿意尝试新策略（任务分解、记录观察），并保持积极求助态度",
-          "拥有一位可倾诉的朋友（潜在支持资源）",
-          "有稳定的照料者（由继父抚养）",
-          "能识别并描述自身负性自动思维，具备一定自我觉察"
+          "All previous courses have been passed and positive feedback obtained from professors, showing learning ability and a level of engagement",
+          "Willing to try new strategies (task breakdown, recording observations), and maintaining an Active help-seeking attitude",
+          "Has a friend to confide in (potential support resource)",
+          "Has a stable caregiver (raised by stepfather)",
+          "Able to identify and describe one's own negative Automatic thoughts, possessing some self-awareness"
         ],
         "negative_force": [
-          "强烈的遗传决定论信念，倾向将能力归结为先天不可改变",
-          "灾难化与非黑即白等认知歪曲显著",
-          "过度依赖外部认可、倾向否定积极证据",
-          "考前与高压任务下焦虑明显，影响睡眠与专注",
-          "因害怕被评判而回避建立亲密关系，减少社会支持"
+          "Strong genetic-determinism beliefs, tending to attribute ability to innate unchangeable factors",
+          "Cognitive distortions such as catastrophizing and black-and-white thinking are prominent",
+          "Overly relying on external recognition, tending to negate positive evidence",
+          "Marked Anxiety before exams and under high-pressure tasks, affecting sleep and focus",
+          "Avoids building intimate relationships out of fear of being judged, reducing social support"
         ]
       }
     },
     "bt": {
       "target_behavior": [
         {
-          "behavior": "在考试前与面对高难度编程作业时出现强烈焦虑与灾难化自我贬低",
+          "behavior": "Strong Anxiety and catastrophic Self-deprecation before exams and when facing difficult programming assignments",
           "antecedent": [
-            "临近重要考试",
-            "面对复杂或卡住的编程任务"
+            "Approaching an important exam",
+            "Facing complex or stuck programming tasks"
           ],
-          "core_reason": "坚持“自己先天不聪明、注定失败”的核心信念与社会成绩压力共同作用，导致对失败的灾难化预期",
-          "function": "通过过度准备与寻求安慰来暂时降低不确定性与焦虑，避免面对被证实失败的恐惧",
-          "consequence": "注意力下降、睡眠紊乱、学业效率受损，进一步强化自我怀疑"
+          "core_reason": "The core belief of 'oneself innately not smart, destined to fail' combined with social achievement pressure, leading to catastrophic Anticipation of failure",
+          "function": "Temporarily reducing uncertainty and Anxiety through Over-preparation and seeking comfort, avoiding facing the Fear of being proven a failure",
+          "consequence": "Decreased attention, Sleep disturbance, impaired academic efficiency, further Reinforcing Self-doubt"
         },
         {
-          "behavior": "回避与同学建立亲密关系，减少合作与深入交流",
+          "behavior": "Avoids forming close relationships with classmates, reducing cooperation and deep communication",
           "antecedent": [
-            "需要与同学合作或进行更亲近的互动",
-            "预想会被他人评判其能力不足"
+            "Needs to cooperate with classmates or have closer interactions",
+            "Anticipating being judged by others as having inadequate ability"
           ],
-          "core_reason": "害怕被否定与羞耻的情绪；通过读心式预设“他人看不起我”强化回避",
-          "function": "逃避潜在的负面评价与羞耻体验，短期降低焦虑",
-          "consequence": "社交孤立、支持系统薄弱，进一步加重自卑与学业压力"
+          "core_reason": "Fearing the emotions of being negated and shame; reinforcing avoidance through mind-reading-style presupposition that 'others look down on me'",
+          "function": "Escaping potential negative evaluations and shame experiences, reducing Anxiety in the short term",
+          "consequence": "Social isolation, Weak support system, further worsening inferiority and Academic pressure"
         }
       ]
     }

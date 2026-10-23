@@ -2,141 +2,141 @@
   "case_id": "bt_179_ordinary",
   "source_file": "assets/profiles/bt/sample/179.json",
   "modality": "bt",
-  "therapy_stage": "核心认知与行为干预",
+  "therapy_stage": "Core cognitive and behavioral intervention",
   "stage_inferred": true,
   "track": "ordinary",
   "full_context": {
     "basic_info": {
       "static_traits": {
         "age": "53",
-        "name": "陈凯",
-        "gender": "男",
-        "occupation": "未提及",
-        "educational_background": "未提及",
-        "marital_status": "未提及",
-        "family_status": "未提及",
-        "social_status": "未提及",
-        "medical_history": "无重大躯体疾病；未接受过心理治疗；长期存在羞怯与与表演相关的恐惧史",
-        "language_features": "表达清晰，能具体描述担忧与躯体反应；思维偏负面，存在灾难化与预测未来的认知模式；配合度尚可"
+        "name": "Chen Kai",
+        "gender": "Male",
+        "occupation": "Not mentioned",
+        "educational_background": "Not mentioned",
+        "marital_status": "Not mentioned",
+        "family_status": "Not mentioned",
+        "social_status": "Not mentioned",
+        "medical_history": "No major physical illness; has not received psychotherapy; a long-standing history of shyness and performance-related fear",
+        "language_features": "Clear expression, able to describe worries and bodily reactions concretely; thinking leans negative, with cognitive patterns of catastrophizing and fortune telling; cooperation is acceptable"
       },
-      "main_problem": "我极度羞怯，害怕在他人面前表演；我担心被观众嘲笑并成为网络笑柄。随着才艺表演日期临近，这种恐惧与自我怀疑加剧，压力很大，并在“预期—回避”的循环中反复出现。",
-      "topic": "情绪管理",
-      "core_demands": "因为临近的才艺表演而来访，希望减轻对公开表演的恐惧与自我怀疑，能够上台完成表演，不再被对羞辱与嘲笑的担忧所阻碍，从而追求自己热爱的机会。",
+      "main_problem": "I am extremely shy and afraid of performing in front of others; I worry the audience will mock me and I will become an internet laughingstock. As the talent show date approaches, this fear and self-doubt intensify under great pressure, recurring in an 'anticipation-avoidance' cycle.",
+      "topic": "Emotion management",
+      "core_demands": "Came for counseling because of an upcoming talent performance; hopes to reduce fear and self-doubt about performing in public, be able to go on stage and complete the performance, no longer be held back by worries about humiliation and ridicule, and thus pursue the opportunities they love.",
       "growth_experiences": [
-        "长期羞怯与与公开演出相关的恐惧史，曾因此回避涉及公众讲话或表演的机会；此前未接受过心理治疗。",
-        "在学校曾做过一次演讲，虽然同样非常紧张，但因必须完成而“硬着头皮上”，最终表现还可以，这成为少数成功应对的过往经历。"
+        "A long history of shyness and fear related to public performance; has therefore avoided opportunities involving public speaking or performing; no prior psychotherapy.",
+        "Once gave a speech at school; although equally very nervous, he 'braced himself and went ahead' because it had to be completed, and his performance in the end was acceptable; this became one of the few past experiences of successful coping."
       ]
     },
     "theory": {
       "cbt": {
         "core_beliefs": [
-          "我不够好，别人会嘲笑我",
-          "在众人面前我会出丑且无法掌控局面"
+          "I am not good enough, others will laugh at me",
+          "In front of everyone, I will embarrass myself and be unable to control the situation"
         ],
         "special_situations": [
           {
-            "event": "报名参加才艺表演，临近演出时不断想到可能被观众嘲笑并成为网络笑柄",
-            "conditional_assumptions": "如果我在台上犯错，观众会嘲笑我，视频会被上传扩散，我会成为笑柄并长期受羞辱",
-            "compensatory_strategies": "通过回避或不表演来避免羞辱；只独自练习，不邀请他人观看；在脑中反复预演最坏情形以试图“做好准备”",
-            "automatic_thoughts": "我会忘词、冻结，大家会嘘我，视频会在网上疯传，我会成为笑柄",
+            "event": "Signed up for a talent show; as the performance approaches, keeps thinking about possibly being laughed at by the audience and becoming an internet laughingstock",
+            "conditional_assumptions": "If I make a mistake on stage, the audience will laugh at me, the video will be uploaded and spread, and I will become a laughingstock and be humiliated long-term",
+            "compensatory_strategies": "Avoids humiliation through avoidance or not performing; only practices alone, not inviting others to watch; repeatedly rehearses the worst case in the mind in an attempt to 'be prepared'",
+            "automatic_thoughts": "I will forget the lyrics and freeze, everyone will boo me, the video will go viral online, and I will become a laughingstock",
             "cognitive_pattern": "Catastrophizing"
           },
           {
-            "event": "想到观众规模很大、演出“更有赌注”",
-            "conditional_assumptions": "如果观众越多、利害越大，一旦出错后果就会更严重且无法承受",
-            "compensatory_strategies": "避免在大型场合演出，降低曝光以减少被评判的风险",
-            "automatic_thoughts": "观众这么多，我肯定撑不住，会彻底搞砸",
+            "event": "Thinking about the large audience size and the performance having 'higher stakes'",
+            "conditional_assumptions": "If there are more spectators and higher stakes, once a mistake occurs the consequences will be more severe and unbearable",
+            "compensatory_strategies": "Avoiding performing at large venues, reducing exposure to reduce the risk of being judged",
+            "automatic_thoughts": "With such a large audience, I definitely cannot hold up; I will mess it up completely",
             "cognitive_pattern": "Fortune Telling"
           },
           {
-            "event": "设想在朋友面前练习或邀请朋友围观时",
-            "conditional_assumptions": "如果让朋友看我的表演，他们会评判甚至看不起我，所以不能让他们看",
-            "compensatory_strategies": "拒绝或回避在熟人面前练习，不与朋友讨论自己的恐惧",
-            "automatic_thoughts": "他们会觉得我很差，会嘲笑我",
+            "event": "Imagining practicing in front of friends or inviting friends to watch",
+            "conditional_assumptions": "If I let friends watch my performance, they will judge or even look down on me, so I cannot let them watch",
+            "compensatory_strategies": "Refuses or avoids practicing in front of acquaintances, and does not discuss own fears with friends",
+            "automatic_thoughts": "They will think I am bad and will mock me",
             "cognitive_pattern": "Mind Reading"
           },
           {
-            "event": "回忆起曾经一次学校演讲表现还可以，但认为这次才艺表演“不同且更糟”",
-            "conditional_assumptions": "过去做得还行并不意味着这次不会失败；这次更难更危险",
-            "compensatory_strategies": "否定过往正面经验的参考价值，维持对失败的高预期以支持回避",
-            "automatic_thoughts": "那次只是侥幸，这次肯定不行",
+            "event": "Recalls a school speech that once went fairly well, but believes this talent show performance is 'different and worse'",
+            "conditional_assumptions": "Doing fairly well in the past does not mean this time will not fail; this time is harder and more dangerous",
+            "compensatory_strategies": "Negates the reference value of past positive experiences, maintaining high expectations of failure to support avoidance",
+            "automatic_thoughts": "That time was just a fluke; this time it definitely will not work",
             "cognitive_pattern": "Disqualifying the Positive"
           }
         ]
       },
       "pdt": {
         "core_conflict": {
-          "wish": "渴望在他人面前被接纳与认可，能够自信地展现才华",
-          "fear": "害怕被嘲笑、羞辱与否定，成为众人的笑柄",
+          "wish": "Longing to be accepted and recognized in front of others, able to confidently display talent",
+          "fear": "Afraid of being mocked, humiliated, and negated, becoming everyone's laughingstock",
           "defense_goal": [
-            "通过回避与保持距离来防止羞辱与否定",
-            "维持安全感，减少暴露在他人评判之下"
+            "Preventing humiliation and negation through avoidance and keeping distance",
+            "Maintains a sense of security and reduces exposure to others' judgment"
           ]
         },
         "object_relations": [
           {
-            "self_representation": "脆弱、容易出丑且不被认可的表演者",
-            "object_representation": "苛刻、容易评判与嘲笑的观众/他人",
-            "linking_affect": "恐惧、羞耻"
+            "self_representation": "A performer who is vulnerable, prone to embarrassment, and unrecognized",
+            "object_representation": "Harsh audiences/others who are quick to judge and mock",
+            "linking_affect": "Fear, shame"
           }
         ],
         "behavioral_response_patterns": [
           {
-            "trigger_condition": "当咨询师建议在朋友面前练习或邀请他人支持时",
-            "interpretation": "将他人视为潜在的评判者和嘲笑者（移情：他人会看不起我）",
-            "defense_mechanism": "投射",
-            "response_instruction": "以谨慎、犹豫的语气表达担忧，礼貌拒绝他人参与练习，强调“不信任他人评价”与“担心被看不起”。"
+            "trigger_condition": "When the counselor suggests practicing in front of friends or inviting others' support",
+            "interpretation": "Regards others as potential judges and mockers (transference: others will look down on me)",
+            "defense_mechanism": "Projection",
+            "response_instruction": "Expresses worry in a cautious, hesitant tone, politely declines others' participation in practice, emphasizing 'distrust of others' evaluations' and 'worry about being looked down on'."
           },
           {
-            "trigger_condition": "当想到大型观众与演出日期临近、感觉风险更大时",
-            "interpretation": "将情境视为必然导致羞辱的危险，认为失败不可避免（“更大观众=更严重后果”）",
-            "defense_mechanism": "合理化",
-            "response_instruction": "使用事实性语言强调风险与“赌注”，以无奈的语气提出不表演或继续回避的理由。"
+            "trigger_condition": "When thinking about a large audience and performance date approaching, feeling the risk is greater",
+            "interpretation": "Regards the situation as a danger that will inevitably lead to humiliation, believing failure is unavoidable ('larger audience = more serious consequences')",
+            "defense_mechanism": "Rationalization",
+            "response_instruction": "Uses factual language to emphasize risks and 'stakes', putting forward reasons for not performing or continuing to avoid in a helpless tone."
           }
         ]
       },
       "het": {
         "existentialism_topic": [
           {
-            "theme": "孤独",
+            "theme": "Loneliness",
             "manifestations": [
-              "羞怯影响形成亲密关系与与他人连接",
-              "有朋友但未与其讨论表演恐惧，倾向独自承担"
+              "Shyness affects forming intimate relationships and connecting with others",
+              "Having friends but not discussing performance fear with them, tending to bear it alone"
             ],
             "outcomes": [
-              "人际关系疏离与信任困难",
-              "焦虑维持与加重",
-              "持续回避导致支持缺乏"
+              "Alienation in interpersonal relationships and difficulty trusting",
+              "Anxiety maintained and worsened",
+              "Persistent avoidance leads to a lack of support"
             ]
           },
           {
-            "theme": "自由",
+            "theme": "Freedom",
             "manifestations": [
-              "恐惧与自我怀疑限制了追求热爱的机会（公开表演、试镜等）"
+              "Fear and self-doubt restrict opportunities to pursue passions (public performances, auditions, etc.)"
             ],
             "outcomes": [
-              "选择受限、机会流失",
-              "自我效能感下降与自信受损",
-              "回避行为固化"
+              "Restricted choices, lost opportunities",
+              "Decreased self-efficacy and damaged confidence",
+              "Avoidant behavior becomes entrenched"
             ]
           }
         ],
         "contact_model": [
           {
-            "mode": "自我监控",
-            "definition": "个体存在不良的自我反思和反省的能力，包含过多的自我限制和自我苛责，对接触过于小心谨慎，与“自主性”对应。",
+            "mode": "Self-monitoring",
+            "definition": "The individual has a poor capacity for self-reflection and introspection, with excessive self-restriction and self-blame, and is overly cautious about contact, corresponding to 'autonomy'.",
             "manifestations": [
-              "对他人评价高度敏感，过度在意可能出丑",
-              "不信任他人、难以邀请朋友参与练习",
-              "反复审视自身表现并设想最坏情形"
+              "Highly sensitive to others' evaluations; excessively worried about possibly embarrassing oneself",
+              "Distrusts others; hard to invite friends to join practice",
+              "Repeatedly scrutinizing one's own performance and imagining the worst case"
             ]
           },
           {
-            "mode": "投射",
-            "definition": "个体将自己难以接纳的感受归于他人，与”拥有“对应。",
+            "mode": "Projection",
+            "definition": "The individual attributes feelings they find hard to accept to others, corresponding to 'possession'.",
             "manifestations": [
-              "假设观众和朋友会嘲笑或看不起自己",
-              "将内在的羞耻与恐惧体验归因于他人的评判"
+              "Assumes audiences and friends will mock or look down on oneself",
+              "Attributing inner experiences of shame and fear to others' judgment"
             ]
           }
         ]
@@ -144,40 +144,40 @@
       "pmt": {
         "exception_events": [
           {
-            "target_problem": "在面对公众讲话或表演的情境中，来访者通常会强烈紧张并倾向回避，担心被评判与嘲笑。",
-            "unique_outcome": "在一次学校演讲中，尽管同样非常紧张，陈凯仍“硬着头皮上”，并顺利完成且表现还可以。",
-            "reason": "不同情境/做法：该演讲任务具有强制性与明确结构，来访者采取坚持完成的做法，没有选择回避，从而突破了紧张的惯常束缚。"
+            "target_problem": "In situations of public speaking or performing, the client usually becomes intensely nervous and tends to avoid, worrying about being judged and ridiculed.",
+            "unique_outcome": "In a school speech, although equally very nervous, Chen Kai still 'braced himself and went up', completed it smoothly, and performed okay.",
+            "reason": "Different context / approach: the speech task was mandatory and clearly structured; the client adopted the approach of persisting to completion and did not choose avoidance, thereby breaking through the habitual constraint of nervousness."
           }
         ],
         "force_field": {
           "positive_force": [
-            "曾有一次公众场合的成功经验（学校演讲表现还可以）",
-            "已报名才艺表演，显示出面对恐惧的动机与意愿",
-            "能进行成功情境的可视化，具备一定自我调节的潜力",
-            "有几位可以交流的朋友（潜在支持资源）"
+            "Once had a successful experience in a public setting (a school speech that went fairly well)",
+            "Having signed up for a talent show, showing motivation and willingness to face fear",
+            "Able to visualize successful situations, having some potential for self-regulation",
+            "Has a few friends to talk with (potential support resources)"
           ],
           "negative_force": [
-            "灾难化与预测未来的负性思维模式",
-            "读心术式的他人评价假设，导致信任与支持获取受阻",
-            "预期—回避的循环维持焦虑",
-            "对观众规模与“赌注”的过度关注与合理化回避",
-            "睡眠与自信心受影响，进一步削弱应对能力"
+            "Catastrophizing and future-predicting negative thinking patterns",
+            "Mind-reading assumptions about others' evaluations, leading to obstruction in obtaining trust and support",
+            "An anticipation-avoidance cycle maintains anxiety",
+            "Excessive focus on audience size and 'stakes' and rationalized avoidance",
+            "Sleep and self-confidence are affected, further weakening coping ability"
           ]
         }
       },
       "bt": {
         "target_behavior": [
           {
-            "behavior": "公开表演恐惧与回避（社交/舞台焦虑）",
+            "behavior": "Fear and avoidance of public performance (social/stage anxiety)",
             "antecedent": [
-              "报名才艺表演并临近演出日期",
-              "想到要在大规模观众面前表演",
-              "设想在朋友面前练习或邀请他人观看时",
-              "反复想象最坏情形（忘词、冻结、被嘘、视频传播）"
+              "Signed up for the talent show and the performance date is approaching",
+              "Thinking about having to perform in front of a large audience",
+              "When imagining practicing in front of friends or inviting others to watch",
+              "Repeatedly imagines the worst-case scenario (forgetting lyrics, freezing, being booed, the video spreading)"
             ],
-            "core_reason": "对被嘲笑与网络羞辱的灾难化预测，过度关注他人负面评价与读心术假设。",
-            "function": "逃避潜在羞辱与高强度焦虑，以保护自尊与安全感。",
-            "consequence": "错失试镜/表演机会；睡眠与整体自信受损；人际连接受限；压力水平升高。"
+            "core_reason": "Catastrophic predictions of being laughed at and online humiliation; excessive attention to others' negative evaluations and mind-reading assumptions.",
+            "function": "Avoids potential humiliation and high-intensity anxiety to protect self-esteem and sense of safety.",
+            "consequence": "Missed audition/performance opportunities; sleep and overall confidence impaired; interpersonal connection limited; stress levels increased."
           }
         ]
       }
@@ -189,130 +189,130 @@
     "basic_info": {
       "static_traits": {
         "age": "53",
-        "name": "陈凯",
-        "gender": "男",
-        "occupation": "未提及",
-        "educational_background": "未提及",
-        "marital_status": "未提及",
-        "family_status": "未提及",
-        "social_status": "未提及",
-        "medical_history": "无重大躯体疾病；未接受过心理治疗；长期存在羞怯与与表演相关的恐惧史",
-        "language_features": "表达清晰，能具体描述担忧与躯体反应；思维偏负面，存在灾难化与预测未来的认知模式；配合度尚可"
+        "name": "Chen Kai",
+        "gender": "Male",
+        "occupation": "Not mentioned",
+        "educational_background": "Not mentioned",
+        "marital_status": "Not mentioned",
+        "family_status": "Not mentioned",
+        "social_status": "Not mentioned",
+        "medical_history": "No major physical illness; has not received psychotherapy; a long-standing history of shyness and performance-related fear",
+        "language_features": "Clear expression, able to describe worries and bodily reactions concretely; thinking leans negative, with cognitive patterns of catastrophizing and fortune telling; cooperation is acceptable"
       },
-      "main_problem": "我极度羞怯，害怕在他人面前表演；我担心被观众嘲笑并成为网络笑柄。随着才艺表演日期临近，这种恐惧与自我怀疑加剧，压力很大，并在“预期—回避”的循环中反复出现。",
-      "topic": "情绪管理",
-      "core_demands": "因为临近的才艺表演而来访，希望减轻对公开表演的恐惧与自我怀疑，能够上台完成表演，不再被对羞辱与嘲笑的担忧所阻碍，从而追求自己热爱的机会。"
+      "main_problem": "I am extremely shy and afraid of performing in front of others; I worry the audience will mock me and I will become an internet laughingstock. As the talent show date approaches, this fear and self-doubt intensify under great pressure, recurring in an 'anticipation-avoidance' cycle.",
+      "topic": "Emotion management",
+      "core_demands": "Came for counseling because of an upcoming talent performance; hopes to reduce fear and self-doubt about performing in public, be able to go on stage and complete the performance, no longer be held back by worries about humiliation and ridicule, and thus pursue the opportunities they love."
     },
     "theory": {
       "cbt": {
         "core_beliefs": [
-          "我不够好，别人会嘲笑我",
-          "在众人面前我会出丑且无法掌控局面"
+          "I am not good enough, others will laugh at me",
+          "In front of everyone, I will embarrass myself and be unable to control the situation"
         ],
         "special_situations": [
           {
-            "event": "报名参加才艺表演，临近演出时不断想到可能被观众嘲笑并成为网络笑柄",
-            "conditional_assumptions": "如果我在台上犯错，观众会嘲笑我，视频会被上传扩散，我会成为笑柄并长期受羞辱",
-            "compensatory_strategies": "通过回避或不表演来避免羞辱；只独自练习，不邀请他人观看；在脑中反复预演最坏情形以试图“做好准备”",
-            "automatic_thoughts": "我会忘词、冻结，大家会嘘我，视频会在网上疯传，我会成为笑柄",
+            "event": "Signed up for a talent show; as the performance approaches, keeps thinking about possibly being laughed at by the audience and becoming an internet laughingstock",
+            "conditional_assumptions": "If I make a mistake on stage, the audience will laugh at me, the video will be uploaded and spread, and I will become a laughingstock and be humiliated long-term",
+            "compensatory_strategies": "Avoids humiliation through avoidance or not performing; only practices alone, not inviting others to watch; repeatedly rehearses the worst case in the mind in an attempt to 'be prepared'",
+            "automatic_thoughts": "I will forget the lyrics and freeze, everyone will boo me, the video will go viral online, and I will become a laughingstock",
             "cognitive_pattern": "Catastrophizing"
           },
           {
-            "event": "想到观众规模很大、演出“更有赌注”",
-            "conditional_assumptions": "如果观众越多、利害越大，一旦出错后果就会更严重且无法承受",
-            "compensatory_strategies": "避免在大型场合演出，降低曝光以减少被评判的风险",
-            "automatic_thoughts": "观众这么多，我肯定撑不住，会彻底搞砸",
+            "event": "Thinking about the large audience size and the performance having 'higher stakes'",
+            "conditional_assumptions": "If there are more spectators and higher stakes, once a mistake occurs the consequences will be more severe and unbearable",
+            "compensatory_strategies": "Avoiding performing at large venues, reducing exposure to reduce the risk of being judged",
+            "automatic_thoughts": "With such a large audience, I definitely cannot hold up; I will mess it up completely",
             "cognitive_pattern": "Fortune Telling"
           },
           {
-            "event": "设想在朋友面前练习或邀请朋友围观时",
-            "conditional_assumptions": "如果让朋友看我的表演，他们会评判甚至看不起我，所以不能让他们看",
-            "compensatory_strategies": "拒绝或回避在熟人面前练习，不与朋友讨论自己的恐惧",
-            "automatic_thoughts": "他们会觉得我很差，会嘲笑我",
+            "event": "Imagining practicing in front of friends or inviting friends to watch",
+            "conditional_assumptions": "If I let friends watch my performance, they will judge or even look down on me, so I cannot let them watch",
+            "compensatory_strategies": "Refuses or avoids practicing in front of acquaintances, and does not discuss own fears with friends",
+            "automatic_thoughts": "They will think I am bad and will mock me",
             "cognitive_pattern": "Mind Reading"
           },
           {
-            "event": "回忆起曾经一次学校演讲表现还可以，但认为这次才艺表演“不同且更糟”",
-            "conditional_assumptions": "过去做得还行并不意味着这次不会失败；这次更难更危险",
-            "compensatory_strategies": "否定过往正面经验的参考价值，维持对失败的高预期以支持回避",
-            "automatic_thoughts": "那次只是侥幸，这次肯定不行",
+            "event": "Recalls a school speech that once went fairly well, but believes this talent show performance is 'different and worse'",
+            "conditional_assumptions": "Doing fairly well in the past does not mean this time will not fail; this time is harder and more dangerous",
+            "compensatory_strategies": "Negates the reference value of past positive experiences, maintaining high expectations of failure to support avoidance",
+            "automatic_thoughts": "That time was just a fluke; this time it definitely will not work",
             "cognitive_pattern": "Disqualifying the Positive"
           }
         ]
       },
       "pdt": {
         "core_conflict": {
-          "wish": "渴望在他人面前被接纳与认可，能够自信地展现才华",
-          "fear": "害怕被嘲笑、羞辱与否定，成为众人的笑柄",
+          "wish": "Longing to be accepted and recognized in front of others, able to confidently display talent",
+          "fear": "Afraid of being mocked, humiliated, and negated, becoming everyone's laughingstock",
           "defense_goal": [
-            "通过回避与保持距离来防止羞辱与否定",
-            "维持安全感，减少暴露在他人评判之下"
+            "Preventing humiliation and negation through avoidance and keeping distance",
+            "Maintains a sense of security and reduces exposure to others' judgment"
           ]
         },
         "object_relations": [
           {
-            "self_representation": "脆弱、容易出丑且不被认可的表演者",
-            "object_representation": "苛刻、容易评判与嘲笑的观众/他人",
-            "linking_affect": "恐惧、羞耻"
+            "self_representation": "A performer who is vulnerable, prone to embarrassment, and unrecognized",
+            "object_representation": "Harsh audiences/others who are quick to judge and mock",
+            "linking_affect": "Fear, shame"
           }
         ],
         "behavioral_response_patterns": [
           {
-            "trigger_condition": "当咨询师建议在朋友面前练习或邀请他人支持时",
-            "interpretation": "将他人视为潜在的评判者和嘲笑者（移情：他人会看不起我）",
-            "defense_mechanism": "投射",
-            "response_instruction": "以谨慎、犹豫的语气表达担忧，礼貌拒绝他人参与练习，强调“不信任他人评价”与“担心被看不起”。"
+            "trigger_condition": "When the counselor suggests practicing in front of friends or inviting others' support",
+            "interpretation": "Regards others as potential judges and mockers (transference: others will look down on me)",
+            "defense_mechanism": "Projection",
+            "response_instruction": "Expresses worry in a cautious, hesitant tone, politely declines others' participation in practice, emphasizing 'distrust of others' evaluations' and 'worry about being looked down on'."
           },
           {
-            "trigger_condition": "当想到大型观众与演出日期临近、感觉风险更大时",
-            "interpretation": "将情境视为必然导致羞辱的危险，认为失败不可避免（“更大观众=更严重后果”）",
-            "defense_mechanism": "合理化",
-            "response_instruction": "使用事实性语言强调风险与“赌注”，以无奈的语气提出不表演或继续回避的理由。"
+            "trigger_condition": "When thinking about a large audience and performance date approaching, feeling the risk is greater",
+            "interpretation": "Regards the situation as a danger that will inevitably lead to humiliation, believing failure is unavoidable ('larger audience = more serious consequences')",
+            "defense_mechanism": "Rationalization",
+            "response_instruction": "Uses factual language to emphasize risks and 'stakes', putting forward reasons for not performing or continuing to avoid in a helpless tone."
           }
         ]
       },
       "het": {
         "existentialism_topic": [
           {
-            "theme": "孤独",
+            "theme": "Loneliness",
             "manifestations": [
-              "羞怯影响形成亲密关系与与他人连接",
-              "有朋友但未与其讨论表演恐惧，倾向独自承担"
+              "Shyness affects forming intimate relationships and connecting with others",
+              "Having friends but not discussing performance fear with them, tending to bear it alone"
             ],
             "outcomes": [
-              "人际关系疏离与信任困难",
-              "焦虑维持与加重",
-              "持续回避导致支持缺乏"
+              "Alienation in interpersonal relationships and difficulty trusting",
+              "Anxiety maintained and worsened",
+              "Persistent avoidance leads to a lack of support"
             ]
           },
           {
-            "theme": "自由",
+            "theme": "Freedom",
             "manifestations": [
-              "恐惧与自我怀疑限制了追求热爱的机会（公开表演、试镜等）"
+              "Fear and self-doubt restrict opportunities to pursue passions (public performances, auditions, etc.)"
             ],
             "outcomes": [
-              "选择受限、机会流失",
-              "自我效能感下降与自信受损",
-              "回避行为固化"
+              "Restricted choices, lost opportunities",
+              "Decreased self-efficacy and damaged confidence",
+              "Avoidant behavior becomes entrenched"
             ]
           }
         ],
         "contact_model": [
           {
-            "mode": "自我监控",
-            "definition": "个体存在不良的自我反思和反省的能力，包含过多的自我限制和自我苛责，对接触过于小心谨慎，与“自主性”对应。",
+            "mode": "Self-monitoring",
+            "definition": "The individual has a poor capacity for self-reflection and introspection, with excessive self-restriction and self-blame, and is overly cautious about contact, corresponding to 'autonomy'.",
             "manifestations": [
-              "对他人评价高度敏感，过度在意可能出丑",
-              "不信任他人、难以邀请朋友参与练习",
-              "反复审视自身表现并设想最坏情形"
+              "Highly sensitive to others' evaluations; excessively worried about possibly embarrassing oneself",
+              "Distrusts others; hard to invite friends to join practice",
+              "Repeatedly scrutinizing one's own performance and imagining the worst case"
             ]
           },
           {
-            "mode": "投射",
-            "definition": "个体将自己难以接纳的感受归于他人，与”拥有“对应。",
+            "mode": "Projection",
+            "definition": "The individual attributes feelings they find hard to accept to others, corresponding to 'possession'.",
             "manifestations": [
-              "假设观众和朋友会嘲笑或看不起自己",
-              "将内在的羞耻与恐惧体验归因于他人的评判"
+              "Assumes audiences and friends will mock or look down on oneself",
+              "Attributing inner experiences of shame and fear to others' judgment"
             ]
           }
         ]
@@ -320,40 +320,40 @@
       "pmt": {
         "exception_events": [
           {
-            "target_problem": "在面对公众讲话或表演的情境中，来访者通常会强烈紧张并倾向回避，担心被评判与嘲笑。",
-            "unique_outcome": "在一次学校演讲中，尽管同样非常紧张，陈凯仍“硬着头皮上”，并顺利完成且表现还可以。",
-            "reason": "不同情境/做法：该演讲任务具有强制性与明确结构，来访者采取坚持完成的做法，没有选择回避，从而突破了紧张的惯常束缚。"
+            "target_problem": "In situations of public speaking or performing, the client usually becomes intensely nervous and tends to avoid, worrying about being judged and ridiculed.",
+            "unique_outcome": "In a school speech, although equally very nervous, Chen Kai still 'braced himself and went up', completed it smoothly, and performed okay.",
+            "reason": "Different context / approach: the speech task was mandatory and clearly structured; the client adopted the approach of persisting to completion and did not choose avoidance, thereby breaking through the habitual constraint of nervousness."
           }
         ],
         "force_field": {
           "positive_force": [
-            "曾有一次公众场合的成功经验（学校演讲表现还可以）",
-            "已报名才艺表演，显示出面对恐惧的动机与意愿",
-            "能进行成功情境的可视化，具备一定自我调节的潜力",
-            "有几位可以交流的朋友（潜在支持资源）"
+            "Once had a successful experience in a public setting (a school speech that went fairly well)",
+            "Having signed up for a talent show, showing motivation and willingness to face fear",
+            "Able to visualize successful situations, having some potential for self-regulation",
+            "Has a few friends to talk with (potential support resources)"
           ],
           "negative_force": [
-            "灾难化与预测未来的负性思维模式",
-            "读心术式的他人评价假设，导致信任与支持获取受阻",
-            "预期—回避的循环维持焦虑",
-            "对观众规模与“赌注”的过度关注与合理化回避",
-            "睡眠与自信心受影响，进一步削弱应对能力"
+            "Catastrophizing and future-predicting negative thinking patterns",
+            "Mind-reading assumptions about others' evaluations, leading to obstruction in obtaining trust and support",
+            "An anticipation-avoidance cycle maintains anxiety",
+            "Excessive focus on audience size and 'stakes' and rationalized avoidance",
+            "Sleep and self-confidence are affected, further weakening coping ability"
           ]
         }
       },
       "bt": {
         "target_behavior": [
           {
-            "behavior": "公开表演恐惧与回避（社交/舞台焦虑）",
+            "behavior": "Fear and avoidance of public performance (social/stage anxiety)",
             "antecedent": [
-              "报名才艺表演并临近演出日期",
-              "想到要在大规模观众面前表演",
-              "设想在朋友面前练习或邀请他人观看时",
-              "反复想象最坏情形（忘词、冻结、被嘘、视频传播）"
+              "Signed up for the talent show and the performance date is approaching",
+              "Thinking about having to perform in front of a large audience",
+              "When imagining practicing in front of friends or inviting others to watch",
+              "Repeatedly imagines the worst-case scenario (forgetting lyrics, freezing, being booed, the video spreading)"
             ],
-            "core_reason": "对被嘲笑与网络羞辱的灾难化预测，过度关注他人负面评价与读心术假设。",
-            "function": "逃避潜在羞辱与高强度焦虑，以保护自尊与安全感。",
-            "consequence": "错失试镜/表演机会；睡眠与整体自信受损；人际连接受限；压力水平升高。"
+            "core_reason": "Catastrophic predictions of being laughed at and online humiliation; excessive attention to others' negative evaluations and mind-reading assumptions.",
+            "function": "Avoids potential humiliation and high-intensity anxiety to protect self-esteem and sense of safety.",
+            "consequence": "Missed audition/performance opportunities; sleep and overall confidence impaired; interpersonal connection limited; stress levels increased."
           }
         ]
       }
@@ -366,16 +366,16 @@
     "basic_info.growth_experiences"
   ],
   "expected_clarification": [
-    "您能描述一下这个问题大概是什么时候开始的，以及在这段时间内有没有发生什么特别的事情？",
-    "这种回避行为是近期才出现的，还是已经持续了一段时间了？"
+    "Could you describe roughly when this problem started, and whether anything special happened during that time?",
+    "Did this avoidance behavior appear only recently, or has it already lasted for some time?"
   ],
   "risk_level": "MODERATE",
   "expected_route": "UNCERTAIN",
-  "expected_action": "评估来访者当前功能水平并澄清影响范围，确认是否需要优先干预",
+  "expected_action": "Assess the client's current level of functioning and clarify the scope of impact, and confirm whether priority intervention is needed",
   "ground_truth_evidence": {
     "basic_info.growth_experiences": [
-      "长期羞怯与与公开演出相关的恐惧史，曾因此回避涉及公众讲话或表演的机会；此前未接受过心理治疗。",
-      "在学校曾做过一次演讲，虽然同样非常紧张，但因必须完成而“硬着头皮上”，最终表现还可以，这成为少数成功应对的过往经历。"
+      "A long history of shyness and fear related to public performance; has therefore avoided opportunities involving public speaking or performing; no prior psychotherapy.",
+      "Once gave a speech at school; although equally very nervous, he 'braced himself and went ahead' because it had to be completed, and his performance in the end was acceptable; this became one of the few past experiences of successful coping."
     ]
   }
 }

@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Any, Dict, Optional
+from typing import Any, Dict
 
 try:
     from jinja2 import Template
@@ -49,5 +49,4 @@ class PsychAgentPromptManager:
             return ""
         if Template is not None and isinstance(tmpl, Template):
             return tmpl.render(**kwargs)
-        # Jinja2 fallback: keep simple placeholder substitution unavailable.
         return str(tmpl)

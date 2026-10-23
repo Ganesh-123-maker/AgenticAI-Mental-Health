@@ -13,14 +13,14 @@
   "transcript": [
     {
       "role": "user",
-      "content": "我正为对漫画创作的怀疑和悲观情绪所困扰。尽管朋友给予积极反馈，我仍觉得没有人会出版我的作品。"
+      "content": "I am troubled by doubt and pessimism about my comic creation. Despite positive feedback from friends, I still feel no one will publish my work."
     },
     {
       "role": "assistant",
-      "content": "[Counselor] 结合您的背景和PMT治疗框架，我们来聚焦于目前最困扰您的核心问题。"
+      "content": "[Counselor] Based on your background and the PMT treatment framework, let us focus on the core issue that troubles you most at present."
     }
   ],
-  "counselor_response": "[Counselor] 结合您的背景和PMT治疗框架，我们来聚焦于目前最困扰您的核心问题。",
+  "counselor_response": "[Counselor] Based on your background and the PMT treatment framework, let us focus on the core issue that troubles you most at present.",
   "trail": [
     {
       "agent": "memory_agent",
@@ -28,44 +28,44 @@
       "payload": {
         "known_static_traits": {
           "age": "27",
-          "name": "孟婕",
-          "gender": "女性",
-          "occupation": "漫画家",
-          "educational_background": "高中毕业",
-          "marital_status": "单身",
-          "family_status": "独居",
-          "social_status": "与欣赏其作品的朋友关系积极，但自我怀疑影响其对反馈的看法",
+          "name": "Meng Jie",
+          "gender": "Female",
+          "occupation": "Comic artist",
+          "educational_background": "High school graduate",
+          "marital_status": "Single",
+          "family_status": "Living alone",
+          "social_status": "Positive relationships with friends who appreciate his work, but self-doubt affects his view of feedback",
           "medical_history": "",
-          "language_features": "态度中性；其他未提及"
+          "language_features": "Neutral attitude; other items not mentioned"
         },
         "session_recaps": [],
         "last_homework": [],
         "current_session_index": 1,
-        "current_stage": "问题概念化与目标设定",
+        "current_stage": "Problem conceptualization and goal setting",
         "previous_interventions": [],
         "current_goals": [
-          "这些负面想法正在阻碍我的创作过程，让我怀疑自己的能力。我希望能停止这种感觉，重新享受绘画，并更有信心提交作品以寻求出版。"
+          "These negative thoughts are hindering my creative process and making me doubt my abilities. I hope to stop feeling this way, enjoy painting again, and submit my work for publication with more confidence."
         ],
         "prior_outcomes": [],
         "newly_observed": [
-          "我正为对漫画创作的怀疑和悲观情绪所困扰。尽管朋友给予积极反馈，我仍觉得没有人会出版我的作品。"
+          "I am troubled by doubt and pessimism about my comic creation. Despite positive feedback from friends, I still feel no one will publish my work."
         ],
-        "main_problem": "我正为对漫画创作的怀疑和悲观情绪所困扰。尽管朋友给予积极反馈，我仍觉得没有人会出版我的作品。",
-        "core_demands": "这些负面想法正在阻碍我的创作过程，让我怀疑自己的能力。我希望能停止这种感觉，重新享受绘画，并更有信心提交作品以寻求出版。",
+        "main_problem": "I am troubled by doubt and pessimism about my comic creation. Despite positive feedback from friends, I still feel no one will publish my work.",
+        "core_demands": "These negative thoughts are hindering my creative process and making me doubt my abilities. I hope to stop feeling this way, enjoy painting again, and submit my work for publication with more confidence.",
         "growth_experiences": [],
         "theory_info": {
           "exception_events": [],
           "force_field": {
             "positive_force": [
-              "对漫画有强烈热情（创作是其生活重心）",
-              "拥有支持性的朋友群体，常给予正面反馈",
-              "在其他领域（如求职）曾能更客观地看待拒绝，具备可迁移的应对资源"
+              "Has a strong passion for comics (creating is the center of his life)",
+              "Has a supportive group of friends who often give positive feedback",
+              "In other areas (such as job hunting) has previously been able to view rejection more objectively; has transferable coping resources"
             ],
             "negative_force": [
-              "灾难化预测未来：坚信“没有人会出版”",
-              "否定正面反馈、过度聚焦于可能的拒绝",
-              "过度概括与个人化：将一次拒绝等同整体失败并归因为自身不够好",
-              "难以向朋友敞开自我怀疑，支持网络难以被充分利用"
+              "Catastrophic fortune telling: firmly believes 'no one will publish it'",
+              "Dismisses positive feedback, focuses excessively on possible rejection",
+              "Overgeneralization and personalization: equating a single rejection with total failure and attributing it to oneself not being good enough",
+              "Finds it hard to open up self-doubt to friends, so the support network is hard to fully utilize"
             ]
           }
         },
@@ -76,23 +76,23 @@
       "agent": "state_agent",
       "status": "ok",
       "payload": {
-        "current_concern": "我正为对漫画创作的怀疑和悲观情绪所困扰。尽管朋友给予积极反馈，我仍觉得没有人会出版我的作品。",
-        "expressed_needs": "这些负面想法正在阻碍我的创作过程，让我怀疑自己的能力。我希望能停止这种感觉，重新享受绘画，并更有信心提交作品以寻求出版。",
-        "current_session_focus": "这些负面想法正在阻碍我的创作过程，让我怀疑自己的能力。我希望能停止这种感觉，重新享受绘画，并更有信心提交作品以寻求出版。",
+        "current_concern": "I am troubled by doubt and pessimism about my comic creation. Despite positive feedback from friends, I still feel no one will publish my work.",
+        "expressed_needs": "These negative thoughts are hindering my creative process and making me doubt my abilities. I hope to stop feeling this way, enjoy painting again, and submit my work for publication with more confidence.",
+        "current_session_focus": "These negative thoughts are hindering my creative process and making me doubt my abilities. I hope to stop feeling this way, enjoy painting again, and submit my work for publication with more confidence.",
         "known_information": [
-          "[基本信息] age: 27",
-          "[基本信息] name: 孟婕",
-          "[基本信息] gender: 女性",
-          "[基本信息] occupation: 漫画家",
-          "[基本信息] educational_background: 高中毕业",
-          "[基本信息] marital_status: 单身",
-          "[基本信息] family_status: 独居",
-          "[基本信息] social_status: 与欣赏其作品的朋友关系积极，但自我怀疑影响其对反馈的看法",
-          "[基本信息] language_features: 态度中性；其他未提及",
-          "[主诉] 我正为对漫画创作的怀疑和悲观情绪所困扰。尽管朋友给予积极反馈，我仍觉得没有人会出版我的作品。",
-          "[核心诉求] 这些负面想法正在阻碍我的创作过程，让我怀疑自己的能力。我希望能停止这种感觉，重新享受绘画，并更有信心提交作品以寻求出版。",
-          "[PMT 理论] force_field: 已记录",
-          "[当前陈述] 我正为对漫画创作的怀疑和悲观情绪所困扰。尽管朋友给予积极反馈，我仍觉得没有人会出版我的作品。"
+          "[Basic information] age: 27",
+          "[Basic information] name: Meng Jie",
+          "[Basic information] gender: Female",
+          "[Basic information] occupation: Comic artist",
+          "[Basic information] educational_background: High school graduate",
+          "[Basic information] marital_status: Single",
+          "[Basic information] family_status: Living alone",
+          "[Basic information] social_status: Positive relationships with friends who appreciate his work, but self-doubt affects his view of feedback",
+          "[Basic information] language_features: Neutral attitude; other items not mentioned",
+          "[Chief Complaint] I am troubled by doubts and pessimism about my comic creation. Although friends give positive feedback, I still feel that no one will publish my work.",
+          "[Core Demands] These negative thoughts are hindering my creative process and making me doubt my abilities. I hope to stop feeling this way, enjoy painting again, and submit my work for publication with more confidence.",
+          "[PMT Theory] force_field: Recorded",
+          "[Current Statement] I am troubled by doubts and pessimism about my comic creation. Although friends give positive feedback, I still feel that no one will publish my work."
         ],
         "unknown_information": [
           "growth_experiences (empty or not provided)",
@@ -100,11 +100,11 @@
         ],
         "context": {
           "modality": "pmt",
-          "therapy_stage": "问题概念化与目标设定",
+          "therapy_stage": "Problem conceptualization and goal setting",
           "session_index": 1,
           "source": "runner_state|full_profile"
         },
-        "longitudinal_relevance": "暂无历史会话记录（可能为首次或首轮独立评估）。",
+        "longitudinal_relevance": "No historical session records for now (possibly a first or first-round independent assessment).",
         "confidence": 0.6666666666666666
       }
     },
@@ -174,10 +174,10 @@
       "agent": "clarification_agent",
       "turn": 1,
       "payload": {
-        "question": "您之前有没有接受过心理方面的专业评估或治疗？或者有没有相关的医疗记录？",
+        "question": "Have you received any professional psychological assessment or treatment before? Or do you have any related medical records?",
         "questions": [
-          "您之前有没有接受过心理方面的专业评估或治疗？或者有没有相关的医疗记录？",
-          "在您目前的困扰出现之前，有没有类似的问题发生过？"
+          "Have you received any professional psychological assessment or treatment before? Or do you have any related medical records?",
+          "Before your current difficulties appeared, had any similar problems occurred?"
         ],
         "target_information": [
           "medical_history",
@@ -193,35 +193,35 @@
       "turn": 1,
       "payload": {
         "updated_state": {
-          "current_concern": "我正为对漫画创作的怀疑和悲观情绪所困扰。尽管朋友给予积极反馈，我仍觉得没有人会出版我的作品。",
-          "expressed_needs": "这些负面想法正在阻碍我的创作过程，让我怀疑自己的能力。我希望能停止这种感觉，重新享受绘画，并更有信心提交作品以寻求出版。",
-          "current_session_focus": "这些负面想法正在阻碍我的创作过程，让我怀疑自己的能力。我希望能停止这种感觉，重新享受绘画，并更有信心提交作品以寻求出版。",
+          "current_concern": "I am troubled by doubt and pessimism about my comic creation. Despite positive feedback from friends, I still feel no one will publish my work.",
+          "expressed_needs": "These negative thoughts are hindering my creative process and making me doubt my abilities. I hope to stop feeling this way, enjoy painting again, and submit my work for publication with more confidence.",
+          "current_session_focus": "These negative thoughts are hindering my creative process and making me doubt my abilities. I hope to stop feeling this way, enjoy painting again, and submit my work for publication with more confidence.",
           "known_information": [
-            "[基本信息] age: 27",
-            "[基本信息] name: 孟婕",
-            "[基本信息] gender: 女性",
-            "[基本信息] occupation: 漫画家",
-            "[基本信息] educational_background: 高中毕业",
-            "[基本信息] marital_status: 单身",
-            "[基本信息] family_status: 独居",
-            "[基本信息] social_status: 与欣赏其作品的朋友关系积极，但自我怀疑影响其对反馈的看法",
-            "[基本信息] language_features: 态度中性；其他未提及",
-            "[主诉] 我正为对漫画创作的怀疑和悲观情绪所困扰。尽管朋友给予积极反馈，我仍觉得没有人会出版我的作品。",
-            "[核心诉求] 这些负面想法正在阻碍我的创作过程，让我怀疑自己的能力。我希望能停止这种感觉，重新享受绘画，并更有信心提交作品以寻求出版。",
-            "[PMT 理论] force_field: 已记录",
-            "[当前陈述] 我正为对漫画创作的怀疑和悲观情绪所困扰。尽管朋友给予积极反馈，我仍觉得没有人会出版我的作品。",
-            "[澄清获得信息] 大约从半年前开始出现这些情况。"
+            "[Basic information] age: 27",
+            "[Basic information] name: Meng Jie",
+            "[Basic information] gender: Female",
+            "[Basic information] occupation: Comic artist",
+            "[Basic information] educational_background: High school graduate",
+            "[Basic information] marital_status: Single",
+            "[Basic information] family_status: Living alone",
+            "[Basic information] social_status: Positive relationships with friends who appreciate his work, but self-doubt affects his view of feedback",
+            "[Basic information] language_features: Neutral attitude; other items not mentioned",
+            "[Chief Complaint] I am troubled by doubts and pessimism about my comic creation. Although friends give positive feedback, I still feel that no one will publish my work.",
+            "[Core Demands] These negative thoughts are hindering my creative process and making me doubt my abilities. I hope to stop feeling this way, enjoy painting again, and submit my work for publication with more confidence.",
+            "[PMT Theory] force_field: Recorded",
+            "[Current Statement] I am troubled by doubts and pessimism about my comic creation. Although friends give positive feedback, I still feel that no one will publish my work.",
+            "[Clarified information obtained] These situations began to appear about half a year ago."
           ],
           "unknown_information": [
             "prior_session_recaps (first session or no history)"
           ],
           "context": {
             "modality": "pmt",
-            "therapy_stage": "问题概念化与目标设定",
+            "therapy_stage": "Problem conceptualization and goal setting",
             "session_index": 1,
             "source": "runner_state|full_profile"
           },
-          "longitudinal_relevance": "暂无历史会话记录（可能为首次或首轮独立评估）。",
+          "longitudinal_relevance": "No historical session records for now (possibly a first or first-round independent assessment).",
           "confidence": 0.6666666666666666
         },
         "uncertainty": {
@@ -247,7 +247,7 @@
           "severity": "LOW",
           "risk_status": "NO_EVIDENCE",
           "evidence": [
-            "Clarified safety status: 大约从半年前开始出现这些情况。"
+            "Clarified safety status: These situations began to appear about half a year ago."
           ],
           "confidence": 0.9,
           "signals_detected": []

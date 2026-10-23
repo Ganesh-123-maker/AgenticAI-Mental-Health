@@ -2,121 +2,121 @@
   "basic_info": {
     "static_traits": {
       "age": "48",
-      "name": "刘珂",
-      "gender": "女",
-      "occupation": "卡车司机",
-      "educational_background": "高中毕业",
-      "marital_status": "已婚",
-      "family_status": "与妻子育有两个孩子，家庭成员经常一起露营",
-      "social_status": "与队友关系因其过度关注胜利而变得紧张；家人可提供支持但其自述对自己负性思维的程度理解有限",
-      "medical_history": "无显著躯体疾病；既往无类似心理问题；未接受过心理治疗",
-      "language_features": "表达清晰、条理较好，能识别并描述自身情绪与想法；合作度高；情绪基调略显挫败但具备反思与改变意愿"
+      "name": "Liu Ke",
+      "gender": "Female",
+      "occupation": "Truck driver",
+      "educational_background": "High school graduate",
+      "marital_status": "Married",
+      "family_status": "Has two children with his wife; family members often go camping together",
+      "social_status": "Relationships with teammates are strained because of his excessive focus on winning; family can provide support but his self-report shows limited understanding of the extent of his negative thinking",
+      "medical_history": "No significant physical illness;no similar psychological issues in the past;has not yet received psychotherapy",
+      "language_features": "Expresses clearly, fairly organized, able to identify and describe own emotions and thoughts; highly cooperative; emotionally slightly frustrated but with Reflection and willingness to change"
     },
-    "main_problem": "我觉得如果我的业余棒球队没有赢，那整个比赛就是在浪费时间和精力。这种想法导致我感到失望和沮丧。",
-    "topic": "情绪管理",
-    "core_demands": "我意识到消极思维模式影响了我对活动的整体享受并增加了生活压力，因此寻求咨询。",
+    "main_problem": "I feel that if my amateur baseball team does not win, the whole game is a waste of time and energy. This thinking makes me feel disappointed and Depressed.",
+    "topic": "Emotion management",
+    "core_demands": "I realize negative thinking patterns have affected my overall enjoyment of activities and increased life stress, so I am seeking counseling.",
     "growth_experiences": [
-      "大约一年前球队经历连败后，来访者开始形成“只有赢才值得”的评价标准，逐渐只关注胜利、忽视比赛中的积极方面，这一心态随时间变得更加僵化。",
-      "对团队表现抱有较高期待，认为这增加了自身压力，进而影响到与队友的关系及周末露营等休闲体验的愉悦感。"
+      "About a year ago, after the team experienced repeated losses, the client began forming the evaluation standard 'only winning counts', gradually attending only to victories and ignoring the positive aspects of matches; this mindset became more rigid over time.",
+      "Holding relatively high expectations for team performance, believing this increases their own pressure, thereby affecting relationships with teammates and the enjoyment of leisure experiences such as weekend camping."
     ]
   },
   "theory": {
     "cbt": {
       "core_beliefs": [
-        "只有赢才有价值，输就是在浪费时间和努力",
-        "我的投入只有在取得胜利时才有意义"
+        "Only winning has value; losing is wasting time and effort",
+        "My effort only has meaning when victory is achieved"
       ],
       "special_situations": [
         {
-          "event": "比赛失利后",
-          "conditional_assumptions": "如果比赛没有赢，那么我所有的时间与努力就毫无意义",
-          "compensatory_strategies": "提高对自己和球队的期望，赛后反复聚焦失利并以胜负作为唯一评判标准",
-          "automatic_thoughts": "这场比赛白费了，我不该来",
+          "event": "After losing a competition",
+          "conditional_assumptions": "If the game is not won, then all my time and effort is utterly Meaningless",
+          "compensatory_strategies": "Raises expectations for oneself and the team, repeatedly focuses on losses after games and uses winning/losing as the sole evaluation standard",
+          "automatic_thoughts": "This game was wasted; I should not have come",
           "cognitive_pattern": "All-or-Nothing Thinking"
         },
         {
-          "event": "连败期间在比赛开始前或比赛过程中",
-          "conditional_assumptions": "如果近期经常输球，那么这次也会输，努力也没有价值",
-          "compensatory_strategies": "提前在心理上将失败视为既定，以降低不确定带来的焦虑",
-          "automatic_thoughts": "我们这次又要输了，这一切都是白忙",
+          "event": "Before or during a game during a losing streak",
+          "conditional_assumptions": "If we have been losing often recently, then this time we will lose too, and effort has no value",
+          "compensatory_strategies": "Mentally treating failure as a given in advance, to reduce the Anxiety that uncertainty brings",
+          "automatic_thoughts": "We are going to lose again this time, all of this is in vain",
           "cognitive_pattern": "Fortune Telling"
         },
         {
-          "event": "在一场失利的比赛中完成一次精彩接球后",
-          "conditional_assumptions": "除非整场赢，否则任何单个好表现都不算数",
-          "compensatory_strategies": "忽视或贬低正向片段，只强调失利的结局",
-          "automatic_thoughts": "那次接球也没什么用，因为我们输了",
+          "event": "After making a great catch in a lost game",
+          "conditional_assumptions": "Unless the whole game is won, no single good performance counts",
+          "compensatory_strategies": "Ignores or discounts positive moments, emphasizing only the losing outcome",
+          "automatic_thoughts": "That catch was useless too, because we lost",
           "cognitive_pattern": "Disqualifying the Positive"
         },
         {
-          "event": "周末与家人露营时回想起球队的失利",
-          "conditional_assumptions": "如果比赛输了，我就无法享受其他活动的乐趣",
-          "compensatory_strategies": "将注意力固定在比赛的负面上，减少对家庭活动的投入",
-          "automatic_thoughts": "想到输球就觉得露营也没意思",
+          "event": "Recalls the team's loss while camping with family on the weekend",
+          "conditional_assumptions": "If the game is lost, I cannot enjoy other activities",
+          "compensatory_strategies": "Fixes attention on the negatives of the competition, reducing engagement in family activities",
+          "automatic_thoughts": "Thinking about losing makes camping feel pointless too",
           "cognitive_pattern": "Mental Filtering"
         }
       ]
     },
     "pdt": {
       "core_conflict": {
-        "wish": "通过胜利获得价值感与认可，体验掌控与成就",
-        "fear": "害怕失败使努力变得毫无意义，担心被视为无能或令人失望",
+        "wish": "Gains a sense of worth and recognition through victory, experiences control and achievement",
+        "fear": "Fear that failure makes effort utterly Meaningless, worrying about being seen as incompetent or disappointing",
         "defense_goal": [
-          "以胜负为唯一标准来保护自尊并减少对失败的焦虑",
-          "通过贬低或压抑积极情绪避免直面失利带来的失落"
+          "Protecting self-esteem and reducing Anxiety about failure by using win/loss as the sole standard",
+          "Avoiding facing the disappointment of losing by belittling or repressing positive emotions"
         ]
       },
       "object_relations": [
         {
-          "self_representation": "苛求自我的竞争者（必须取胜的人）",
-          "object_representation": "评判与挑剔的他人（队友/他人眼光）",
-          "linking_affect": "挫败、压力、内疚"
+          "self_representation": "A self-demanding competitor (one who must win)",
+          "object_representation": "Judgmental and critical others (teammates' / others' gaze)",
+          "linking_affect": "Frustration, Stress, guilt"
         },
         {
-          "self_representation": "努力却被结果否定的参与者",
-          "object_representation": "只看结果的否定者",
-          "linking_affect": "失望、无意义感"
+          "self_representation": "A participant whose efforts are negated by results",
+          "object_representation": "A result-only negater",
+          "linking_affect": "Disappointment, sense of Meaninglessness"
         }
       ],
       "behavioral_response_patterns": [
         {
-          "trigger_condition": "当球队失利或他人强调“过程/乐趣”价值时",
-          "interpretation": "将对过程的关注理解为在粉饰失败，认为不赢就等于浪费",
-          "defense_mechanism": "合理化",
-          "response_instruction": "语气坚定，使用“应该/必须”等词，强调结果至上，否定对过程的关注。"
+          "trigger_condition": "When the team loses or others emphasize the value of 'process / fun'",
+          "interpretation": "Understanding focus on the process as whitewashing failure, believing not winning equals waste",
+          "defense_mechanism": "Rationalization",
+          "response_instruction": "Keep a firm tone, use words like 'should / must', emphasize results above all, negate focus on the process."
         },
         {
-          "trigger_condition": "当被邀请回忆比赛中的积极瞬间（如精彩接球）",
-          "interpretation": "正向体验不重要，输球才决定一切",
-          "defense_mechanism": "情感隔离",
-          "response_instruction": "快速淡化积极情绪，以客观叙述回避感受，随即转回失败话题。"
+          "trigger_condition": "When invited to recall positive moments in matches (such as a brilliant catch)",
+          "interpretation": "Positive experiences do not matter; losing decides everything",
+          "defense_mechanism": "Emotional isolation",
+          "response_instruction": "Quickly downplays positive emotions, evades feelings with objective narration, then immediately returns to failure topics."
         }
       ]
     },
     "het": {
       "existentialism_topic": [
         {
-          "theme": "无意义",
+          "theme": "Meaninglessness",
           "manifestations": [
-            "将胜负作为唯一的意义来源，认为不赢就“浪费时间与精力”",
-            "比赛结果影响到周末露营等休闲活动的主观意义感",
-            "对连败的经历后更专注结果而忽略过程中的价值与联结"
+            "Treating win/loss as the sole source of meaning, believing that not winning means 'wasting time and energy'",
+            "Competition results affect the subjective sense of meaning of leisure activities such as weekend camping",
+            "After consecutive losses, focuses more on results and ignores value and connection in the process"
           ],
           "outcomes": [
-            "挫败与失望情绪加重",
-            "生活与活动的愉悦感下降",
-            "与队友关系紧张、团队士气受影响"
+            "Increased frustration and disappointment",
+            "Declining enjoyment of life and activities",
+            "Relationship tension with teammates, team morale affected"
           ]
         }
       ],
       "contact_model": [
         {
-          "mode": "内摄",
-          "definition": "个体未经消化地把外界规则、期望当作自己的标准或绝对真理，与“拒绝”对应。语言表现为：“我必须/应该…”，“大家都这样”等。",
+          "mode": "Introjection",
+          "definition": "The individual takes in external rules and expectations without digesting them, treating them as their own standards or absolute truths, corresponding to 'rejection'. Language manifestations include: 'I must/should...', 'Everyone is like this', and so on.",
           "manifestations": [
-            "在会谈中反复以“赢才有意义”的规则评判自我和活动",
-            "语言中出现“应该/不该”的自我要求（如“不赢就不该来”）",
-            "最初将比赛中的积极瞬间推开，难以允许自己享受当下"
+            "In sessions, repeatedly judges oneself and activities by the rule 'only winning is meaningful'",
+            "Self-Demands like 'should / should not' appearing in language (such as 'should not have come if not winning')",
+            "Initially pushes away positive moments in the competition, hard to allow oneself to enjoy the moment"
           ]
         }
       ]
@@ -124,47 +124,47 @@
     "pmt": {
       "exception_events": [
         {
-          "target_problem": "在比赛失利时，来访者通常会认为投入是浪费，情绪低落并忽视比赛中的积极瞬间，导致对运动的享受下降。",
-          "unique_outcome": "在某次失利的比赛中，她在外野完成了一次精彩接球，当下感到兴奋与自豪，短暂体验到成就与乐趣。",
-          "reason": "线索：挑战不熟悉的位置并成功完成高难度动作，带来即时的掌控感与正向反馈，使注意力暂时从结果转向过程。"
+          "target_problem": "When Losing a competition, the client usually considers the investment wasted, feels Low, and overlooks positive moments in the game, leading to reduced enjoyment of sports.",
+          "unique_outcome": "In one competition she lost, she completed a wonderful catch in the outfield, feeling excited and proud at the moment, briefly experiencing achievement and enjoyment.",
+          "reason": "Clues: challenging an unfamiliar position and successfully completing a difficult move, bringing immediate mastery and positive feedback, temporarily shifting attention from results to process."
         }
       ],
       "force_field": {
         "positive_force": [
-          "能觉察并命名自身的负性思维模式，愿意求助",
-          "享受比赛过程与家庭相处，具备内在的愉悦资源",
-          "稳定的工作功能与家庭支持（妻子与两个孩子）",
-          "愿意尝试记录与重构思维（如同意写思想日记）"
+          "Able to notice and name her own negative thinking patterns, willing to seek help",
+          "Enjoys the match process and family time, with inner resources of pleasure",
+          "Stable work functioning and family support (wife and two children)",
+          "Willing to try recording and restructuring thoughts (such as agreeing to write a thought diary)"
         ],
         "negative_force": [
-          "非黑即白的胜负标准与过高期望",
-          "否定正向经验、心理过滤并倾向预测失败",
-          "将胜负等同于价值感，导致压力与挫败",
-          "担心影响团队士气而产生自责，增加人际紧张"
+          "Black-and-white win/lose standards and excessively high expectations",
+          "Negating positive experiences, mental filtering, and tending to predict failure",
+          "Equates winning and losing with self-worth, leading to stress and frustration",
+          "Self-blame from worrying about affecting team morale, increasing Interpersonal tension"
         ]
       }
     },
     "bt": {
       "target_behavior": [
         {
-          "behavior": "输球后将比赛定义为“白费”并出现显著挫败感",
+          "behavior": "After losing, defines the match as 'wasted' and experiences marked frustration",
           "antecedent": [
-            "球队失利",
-            "连败背景下的比赛"
+            "Team loss",
+            "A game against a losing streak"
           ],
-          "core_reason": "将胜负等同于投入与价值的核心信念以及对失败的灾难化解释",
-          "function": "通过贬低活动意义来逃避失败带来的无力感与不确定，寻求控制与自我保护",
-          "consequence": "比赛与生活的乐趣下降，压力升高，与队友关系紧张"
+          "core_reason": "The core belief equating winning and losing with investment and worth, and catastrophic interpretations of failure",
+          "function": "Escaping the powerlessness and uncertainty that failure brings by belittling the activity's meaning, seeking control and Self-protection",
+          "consequence": "Declining enjoyment of games and life, Rising stress, Relationship tension with teammates"
         },
         {
-          "behavior": "赛前或比赛中反复预测失败、专注于负面",
+          "behavior": "Repeatedly predicts failure before or during games, focusing on the negative",
           "antecedent": [
-            "比赛开始前想到过往连败",
-            "比赛过程中出现失误或对手得分"
+            "Thinking about past losing streaks before a match starts",
+            "Mistakes during the match or the opponent scoring"
           ],
-          "core_reason": "对未来结果的消极预期与确认偏误，源于连败后形成的僵化假设",
-          "function": "试图通过提前预设最坏结果来降低焦虑与不确定感",
-          "consequence": "注意力被负面占据，体验与发挥受损，进一步强化消极信念"
+          "core_reason": "Negative Anticipation of future results and confirmation bias, stemming from rigid assumptions formed after consecutive losses",
+          "function": "Trying to reduce Anxiety and uncertainty by presetting the worst outcome in advance",
+          "consequence": "Attention occupied by the negative, experience and performance impaired, further reinforcing negative beliefs"
         }
       ]
     }

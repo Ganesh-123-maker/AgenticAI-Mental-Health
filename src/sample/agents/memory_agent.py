@@ -21,7 +21,7 @@ from __future__ import annotations
 
 import copy
 import logging
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List
 
 from ..core.schemas import PublicMemory
 from .base import Agent, AgentContext, AgentError, AgentMessage
@@ -75,10 +75,6 @@ class MemoryAgent(Agent):
             )
 
     def _run(self, ctx: AgentContext) -> AgentMessage:
-        # -------------------------------------------------------------------
-        # Step 1: resolve PublicMemory — prefer already-built instance,
-        #         fall back to building one from runner-state fields.
-        # -------------------------------------------------------------------
         source_flags: List[str] = []
 
         if isinstance(ctx.public_memory, PublicMemory):
@@ -88,12 +84,9 @@ class MemoryAgent(Agent):
             mem = self._build_from_runner_state(ctx)
             source_flags.append("runner_state")
         else:
-            mem = PublicMemory()  # empty but structurally valid
+            mem = PublicMemory()
             source_flags.append("none")
 
-        # -------------------------------------------------------------------
-        # Step 2: extract static profile info from full_profile if available
-        # -------------------------------------------------------------------
         raw_basic_info: Dict[str, Any] = {}
         raw_theory_info: Dict[str, Any] = {}
         if isinstance(ctx.full_profile, dict):
@@ -108,7 +101,6 @@ class MemoryAgent(Agent):
         elif isinstance(ctx.obtain_client_info, dict) and ctx.obtain_client_info:
             raw_basic_info = _basic_info_from_client_info(ctx.obtain_client_info)
 
-        # Merge known_static_traits: public_memory wins over raw profile
         known_static_traits: Dict[str, Any] = {}
         if isinstance(raw_basic_info.get("static_traits"), dict):
             known_static_traits.update(raw_basic_info["static_traits"])
@@ -117,9 +109,6 @@ class MemoryAgent(Agent):
                 {k: v for k, v in mem.known_static_traits.items() if not _is_placeholder(v)}
             )
 
-        # -------------------------------------------------------------------
-        # Step 3: extract previous interventions and outcomes from summaries
-        # -------------------------------------------------------------------
         previous_interventions: List[str] = []
         prior_outcomes: List[str] = []
         current_goals: List[str] = []
@@ -139,12 +128,10 @@ class MemoryAgent(Agent):
                     if s:
                         prior_outcomes.append(s)
 
-        # Current goals from full_profile or latest session plan
         core_demands = str(raw_basic_info.get("core_demands", "") or "").strip()
         if core_demands:
             current_goals.append(core_demands)
 
-        # Extract goals from history_list's latest next_session_plan
         if ctx.history_list:
             last_summary = ctx.history_list[-1]
             if isinstance(last_summary, dict):
@@ -154,16 +141,10 @@ class MemoryAgent(Agent):
                     if isinstance(focus, list):
                         current_goals.extend(str(f) for f in focus if str(f).strip())
 
-        # -------------------------------------------------------------------
-        # Step 4: newly observed content from current message
-        # -------------------------------------------------------------------
         newly_observed: List[str] = []
         if ctx.current_message and ctx.current_message.strip():
             newly_observed.append(ctx.current_message.strip())
 
-        # -------------------------------------------------------------------
-        # Step 5: evidence summary
-        # -------------------------------------------------------------------
         evidence: List[str] = []
         if mem.session_recaps:
             evidence.append(f"{len(mem.session_recaps)} historical session recap(s) loaded")
@@ -188,9 +169,6 @@ class MemoryAgent(Agent):
         if not ctx.current_message:
             missing.append("current_message (no client utterance provided)")
 
-        # -------------------------------------------------------------------
-        # Step 6: assemble payload
-        # -------------------------------------------------------------------
         payload: Dict[str, Any] = {
             "known_static_traits": copy.deepcopy(known_static_traits),
             "session_recaps": copy.deepcopy(mem.session_recaps),
@@ -216,16 +194,13 @@ class MemoryAgent(Agent):
             agent=self.name,
             status=status,
             evidence=evidence,
-            confidence=None,  # Memory is factual, not probabilistic
+            confidence=None,
             missing_information=missing,
             recommended_action="state_agent" if status == "ok" else None,
             next_agent="state_agent",
             payload=payload,
         )
 
-    # ------------------------------------------------------------------
-    # Helpers
-    # ------------------------------------------------------------------
 
     def _build_from_runner_state(self, ctx: AgentContext) -> PublicMemory:
         """Reconstruct PublicMemory from runner-state fields in AgentContext.
@@ -262,7 +237,6 @@ class MemoryAgent(Agent):
         )
 
 
-# Values the web/runner layers use as "not yet known" placeholders.
 _PLACEHOLDER_VALUES = {
     "", "unknown", "unmentioned", "not_mentioned", "not mentioned", "n/a", "none",
     "to be clarified", "current concern", "client", "(unavailable)",

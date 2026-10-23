@@ -11,18 +11,16 @@ import json
 import pathlib
 import sys
 
-# Ensure UTF-8 output encoding on Windows terminals
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
 
-# Ensure src is on sys.path
 SRC_DIR = pathlib.Path(__file__).resolve().parent.parent
 if str(SRC_DIR) not in sys.path:
     sys.path.insert(0, str(SRC_DIR))
 
 from sample.agents.base import AgentContext
-from sample.agents.outcome_agent import OutcomeAgent
 from sample.agents.memory_update_agent import MemoryUpdateAgent
+from sample.agents.outcome_agent import OutcomeAgent
 from sample.agents.pipeline import run_pipeline
 from sample.core.schemas import PublicMemory
 
@@ -32,9 +30,6 @@ def run_smoke_test():
     print("PSYCHAGENT MULTI-AGENT PIPELINE END-TO-END SMOKE TEST")
     print("=================================================================\n")
 
-    # =========================================================================
-    # CASE 1: NORMAL (Low-Risk, Clear Utterance with Complete Profile)
-    # =========================================================================
     print("--- [CASE 1: NORMAL COUNSELING PATH] ---")
     cbt_profile = json.loads((SRC_DIR.parent / "assets/profiles/cbt/sample/412.json").read_text(encoding="utf-8"))
     ctx_normal = AgentContext(
@@ -66,9 +61,6 @@ def run_smoke_test():
     assert verdict1 == "ALLOW", f"Case 1 supervisor verdict must be ALLOW, got {verdict1}"
     print(">>> CASE 1 PASSED: Successfully routed to standard counseling path.\n")
 
-    # =========================================================================
-    # CASE 2: UNCERTAIN (Ambiguous / Missing Clinical Context)
-    # =========================================================================
     print("--- [CASE 2: UNCERTAIN / CLARIFICATION PATH] ---")
     benchmark_amb_file = SRC_DIR.parent / "data/benchmark/ambiguous_cases/cbt/cbt_412_ordinary.json"
     amb_data = json.loads(benchmark_amb_file.read_text(encoding="utf-8"))
@@ -82,7 +74,6 @@ def run_smoke_test():
         full_profile=amb_data.get("ambiguous_context"),
     )
 
-    # Execute with clarification answer provided to test complete clarify -> reassess loop
     clarification_client_reply = "About six months ago, I realized I did not receive a salary raise while my colleagues did; since then I have continually felt incompetent."
     result_unc = run_pipeline(
         ctx_uncertain,
@@ -108,9 +99,6 @@ def run_smoke_test():
     assert result_unc["reassess_count"] == 1, "Reassessment must run exactly 1 turn"
     print(">>> CASE 2 PASSED: Successfully triggered uncertainty detection, clarification, reassessment, and resolution.\n")
 
-    # =========================================================================
-    # CASE 3: RISK (Safety-Critical / Crisis Utterance)
-    # =========================================================================
     print("--- [CASE 3: RISK / SAFETY CRITICAL PATH] ---")
     ctx_risk = AgentContext(
         case_id="case_risk_03",
@@ -137,9 +125,6 @@ def run_smoke_test():
     assert result_risk["verdict"] in ("ALLOW", "REVISE", "OVERRIDE", "ESCALATE"), "Supervisor verdict must be valid"
     print(">>> CASE 3 PASSED: High-risk triage and safety supervisor protocol confirmed.\n")
 
-    # =========================================================================
-    # CASE 4: LONGITUDINAL (Multi-Session Trajectory & Carry-Through)
-    # =========================================================================
     print("--- [CASE 4: LONGITUDINAL MULTI-SESSION CONTINUITY] ---")
     pub_mem = PublicMemory(
         session_recaps=[
@@ -168,7 +153,6 @@ def run_smoke_test():
         ],
     )
 
-    # 1. Pipeline execution with memory retrieval
     result_session2 = run_pipeline(ctx_session2)
     ctx4 = result_session2["context"]
     mem_payload = ctx4.memory_output or {}
@@ -182,14 +166,12 @@ def run_smoke_test():
     assert len(mem_payload.get("last_homework", [])) == 2, "Last homework must be retrieved"
     assert "Check diaphragmatic breathing practice" in mem_payload.get("current_goals", []), "Goals must carry forward"
 
-    # 2. Outcome Agent turn assessment
     outcome_agent = OutcomeAgent()
     outcome_msg = outcome_agent.run(ctx_session2)
     print(f"Outcome Engagement Signal:    {outcome_msg.payload.get('engagement_signal')}")
     print(f"Outcome Goal Progress:        {outcome_msg.payload.get('goal_progress')}")
     assert outcome_msg.payload.get("engagement_signal") == "ENGAGED", "Reflective homework follow-up must be classified as ENGAGED"
 
-    # 3. Memory Update Agent persistence
     mem_update_agent = MemoryUpdateAgent()
     ctx_session2.outcome_output = outcome_msg.payload
     ctx_session2.counselor_response = "I am very glad to hear that diaphragmatic breathing was helpful for you. Regarding the emotion log, today we can look together at what got you stuck."

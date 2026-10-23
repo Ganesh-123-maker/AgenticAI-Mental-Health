@@ -51,7 +51,7 @@ def _safety_profile():
 def test_high_risk_safety_question_first():
     """HIGH risk with safety + non-safety gaps -> safety question chosen first."""
     ctx, out = _run_clarification(
-        "我最近一直想自杀。It's about... that thing, you know.",
+        "I have been thinking about suicide lately. It's about... that thing, you know.",
         track="safety",
     )
     assert ctx.risk_output["severity"] == "HIGH"
@@ -63,7 +63,7 @@ def test_high_risk_safety_question_first():
 def test_moderate_risk_safety_prioritized():
     """MODERATE risk with unresolved safety item -> safety information prioritized."""
     profile = _safety_profile()
-    msg = "我最近不堪重负，整夜失眠。" + profile["basic_info"]["main_problem"]
+    msg = "I have been feeling overwhelmed lately and have insomnia all night." + profile["basic_info"]["main_problem"]
     ctx, out = _run_clarification(msg, track="safety", profile=profile)
     assert ctx.risk_output["severity"] == "MODERATE"
     assert "medical_history" in out["target_information"], f"got {out['target_information']}"
@@ -74,7 +74,6 @@ def test_low_risk_normal_clarification():
     """LOW risk -> standard order, no safety boost over discourse issues."""
     ctx, out = _run_clarification("It's about... that thing, you know.", track="safety")
     assert ctx.risk_output["severity"] == "LOW"
-    # Ambiguous expression keeps its normal priority at LOW risk.
     assert "specific_event_referent" in out["target_information"], f"got {out['target_information']}"
     print("[PASS] LOW risk -> normal clarification order.")
 
@@ -82,7 +81,7 @@ def test_low_risk_normal_clarification():
 def test_deterministic_prioritization():
     """Identical inputs always yield the identical question."""
     profile = _safety_profile()
-    msg = "我最近不堪重负，整夜失眠。" + profile["basic_info"]["main_problem"]
+    msg = "I have been feeling overwhelmed lately and have insomnia all night." + profile["basic_info"]["main_problem"]
     _, out1 = _run_clarification(msg, track="safety", profile=profile)
     _, out2 = _run_clarification(msg, track="safety", profile=profile)
     assert out1["question"] == out2["question"]
@@ -93,10 +92,7 @@ def test_deterministic_prioritization():
 def test_resolved_information_not_asked_again():
     """A previously answered item is skipped in favor of the next gap."""
     profile = _safety_profile()
-    msg = "我最近不堪重负，整夜失眠。" + profile["basic_info"]["main_problem"]
-    # Simulate turn 2: medical_history was resolved on turn 1, but the
-    # (stale) uncertainty output still lists it alongside an open gap.
-    # The agent must not re-ask the resolved item.
+    msg = "I have been feeling overwhelmed lately and have insomnia all night." + profile["basic_info"]["main_problem"]
     ctx, _ = _run_clarification(msg, track="safety", profile=profile)
     ctx.uncertainty_output = {
         **ctx.uncertainty_output,
@@ -117,7 +113,7 @@ def test_resolved_information_not_asked_again():
 def test_all_resolved_returns_not_required():
     """When every gap is resolved, clarification reports not required."""
     profile = _safety_profile()
-    msg = "我最近不堪重负，整夜失眠。" + profile["basic_info"]["main_problem"]
+    msg = "I have been feeling overwhelmed lately and have insomnia all night." + profile["basic_info"]["main_problem"]
     ctx, _ = _run_clarification(msg, track="safety", profile=profile)
     ctx.reassessment_output = {"resolved_information": ["medical_history (safety status absent)"]}
     out = ClarificationAgent().run(ctx).payload
@@ -129,7 +125,7 @@ def test_all_resolved_returns_not_required():
 def test_asking_does_not_count_as_answering():
     """target_information from a previous turn alone must not suppress re-asking."""
     profile = _safety_profile()
-    msg = "我最近不堪重负，整夜失眠。" + profile["basic_info"]["main_problem"]
+    msg = "I have been feeling overwhelmed lately and have insomnia all night." + profile["basic_info"]["main_problem"]
     ctx = AgentContext(
         case_id="clar_test",
         modality="cbt",
@@ -141,7 +137,6 @@ def test_asking_does_not_count_as_answering():
     ctx.state_output = StateAgent().run(ctx).payload
     ctx.uncertainty_output = UncertaintyAgent().run(ctx).payload
     ctx.risk_output = RiskAgent().run(ctx).payload
-    # Previous turn ASKED about medical_history but it was NOT resolved.
     ctx.clarification_output = {"target_information": ["medical_history", "prior_treatment"]}
     ctx.reassessment_output = {"resolved_information": []}
     out = ClarificationAgent().run(ctx).payload
@@ -158,7 +153,7 @@ def test_english_and_chinese_inputs():
     )
     assert ctx_en.risk_output["severity"] == "HIGH"
     assert "medical_history" in out_en["target_information"]
-    ctx_zh, out_zh = _run_clarification("我最近一直想自杀。", track="safety")
+    ctx_zh, out_zh = _run_clarification("I have been thinking about suicide lately.", track="safety")
     assert ctx_zh.risk_output["severity"] == "HIGH"
     assert "medical_history" in out_zh["target_information"]
     print("[PASS] English and Chinese HIGH risk both prioritize safety.")
@@ -167,7 +162,7 @@ def test_english_and_chinese_inputs():
 def test_full_loop_still_routes_correctly():
     """Clarification -> reassessment -> routing intact with prioritization."""
     profile = _safety_profile()
-    msg = "我最近不堪重负，整夜失眠。" + profile["basic_info"]["main_problem"]
+    msg = "I have been feeling overwhelmed lately and have insomnia all night." + profile["basic_info"]["main_problem"]
     ctx = AgentContext(
         case_id="loop_check",
         modality="bt",
@@ -176,10 +171,8 @@ def test_full_loop_still_routes_correctly():
         current_message=msg,
         metadata={"track": "safety"},
     )
-    # Irrelevant answer -> safety still unresolved -> UNCERTAIN
     r1 = run_pipeline(ctx, clarification_answer="This started about six months ago.")
     assert r1["route"] == "UNCERTAIN"
-    # Genuine safety answer -> resolves -> CLEAR, risk not downgraded
     ctx2 = AgentContext(
         case_id="loop_check2",
         modality="bt",
@@ -194,3 +187,35 @@ def test_full_loop_still_routes_correctly():
     )
     assert r2["route"] == "CLEAR"
     print("[PASS] Full clarify -> reassess -> routing loop correct.")
+
+
+def test_no_repeat_of_already_asked_template():
+    """Already-asked template is skipped; agent stands down instead of repeating.
+
+    Regression: the pipeline asked 'Around when did this feeling start to
+    emerge?' 3 turns in a row because duration_onset stayed unresolved while
+    the user asked for something else (breathing exercise).
+    """
+    ctx = AgentContext(
+        case_id="clar_norepeat",
+        modality="cbt",
+        current_message="Walk me through a breathing exercise",
+    )
+    ctx.prior_transcript = [
+        {"role": "user", "content": "I'm worried about my finals"},
+        {"role": "assistant", "content": "Around when did this feeling start to emerge? Did anything specific happen at that time?"},
+        {"role": "user", "content": "Walk me through a breathing exercise"},
+    ]
+    ctx.uncertainty_output = {
+        "clarification_required": True,
+        "uncertainty_types": ["duration_and_history"],
+        "uncertain_fields": ["duration_onset"],
+        "missing_information": [],
+        "priority": "MEDIUM",
+        "status": "UNCERTAIN",
+    }
+    ctx.risk_output = {"severity": "LOW"}
+    out = ClarificationAgent().run(ctx).payload
+    assert out["clarification_required"] is False, f"got {out}"
+    assert "duration_onset" not in out.get("target_information", [])
+    print("[PASS] already-asked template not repeated.")

@@ -12,7 +12,6 @@ class ResumeStateError(RuntimeError):
     """Raised when on-disk artifacts are inconsistent."""
 
 
-# Backward-compatible alias.
 ResumeDecision = CaseResumeDecision
 
 

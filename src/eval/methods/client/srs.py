@@ -1,16 +1,11 @@
-from typing import Any, Dict
-import re
+import json
+from typing import Any, List, Literal
 
+from jinja2 import Template
+from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from ...core.base import EvaluationMethod
 from ...utils import load_prompt
-from jinja2 import Template
-import json
-
-from typing import List
-from typing import Literal
-
-from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 SRSItemName = Literal[
     "Relationship",
@@ -21,8 +16,6 @@ SRSItemName = Literal[
 
 
 class Item(BaseModel):
-    # extra="ignore" tolerates unexpected LLM fields;
-    # strict=False allows float JSON scores (e.g. 2.0) to be coerced to int.
     model_config = ConfigDict(extra="ignore", strict=False)
 
     item: SRSItemName
@@ -61,7 +54,6 @@ class SRS(EvaluationMethod):
         
         template = Template(prompt)
         prompt = template.render(intake_form=profile, diag=dialogue)
-        # print(f"SRS - {SRS} prompt: {prompt}")
         messages=[{"role": "user", "content": prompt}]
 
         last_err: Exception | None = None
@@ -85,17 +77,14 @@ class SRS(EvaluationMethod):
             raise RuntimeError(f"Failed to get valid SRS output: {last_err}")
         
 
-        # outputs = dict(zip(criteria_list, scores))
         
         mean_score = 0
         
         for item in scores:
-            mean_score += float(item.score) * 10.0 / 4.0  # 0-4 -> 0-10
+            mean_score += float(item.score) * 10.0 / 4.0
 
         mean_score /= len(scores)
-        # mean_score = sum(scores) / len(scores) if scores else 0
         
-        # outputs["sum"] = sum(scores)
         return {"client": mean_score}
     
     def get_name(self) -> str:

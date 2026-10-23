@@ -6,8 +6,8 @@ import asyncio
 import json
 import re
 import traceback
-from datetime import datetime
 from dataclasses import dataclass
+from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set
 
@@ -24,7 +24,11 @@ from ..io.input_adapter import adapt_eval_case_file
 from ..methods import METHOD_REGISTRY
 
 try:
-    from src.shared.file_utils import load_json_if_exists, safe_filename, write_json_atomic
+    from src.shared.file_utils import (
+        load_json_if_exists,
+        safe_filename,
+        write_json_atomic,
+    )
 except ModuleNotFoundError:  # pragma: no cover - supports PYTHONPATH=src execution style
     from shared.file_utils import load_json_if_exists, safe_filename, write_json_atomic
 
@@ -529,8 +533,6 @@ class EvaluationOrchestrator:
         for path in sorted(root.rglob("*.json")):
             if not path.is_file():
                 continue
-            # Avoid recursively treating eval outputs as new input cases when output_root
-            # is configured under data_root.
             try:
                 path.relative_to(self.output_root)
                 continue
@@ -544,7 +546,6 @@ class EvaluationOrchestrator:
                     continue
             elif self.config.input_format in {"auto", "sample"}:
                 if path.stem.startswith("session_") and path.parent in sample_course_dirs:
-                    # course.json is the canonical sample case descriptor for this case dir.
                     continue
                 if self.config.input_format == "sample" and not (
                     path.name == "course.json" or path.stem.startswith("session_")
@@ -682,6 +683,5 @@ def _build_method_by_effective_name() -> Dict[str, Any]:
             effective_name = cls().get_name()
             by_name.setdefault(effective_name, cls)
         except Exception:
-            # fallback to class name only
             continue
     return by_name

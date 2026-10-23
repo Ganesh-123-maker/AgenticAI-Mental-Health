@@ -23,8 +23,8 @@ except ImportError:  # pragma: no cover - optional dependency guard
     APIStatusError = _OpenAINotInstalledError  # type: ignore[assignment]
     APITimeoutError = _OpenAINotInstalledError  # type: ignore[assignment]
 
+from ..core.retry import FatalBackendError, RetryableError, RetryPolicy, retry_async
 from .base import BackendHTTPError, BackendSettings, Message
-from ..core.retry import FatalBackendError, RetryPolicy, RetryableError, retry_async
 
 INSECURE_CLIENT_BASE_URL = "https://10.140.158.153:1020/dsv3/all/v1"
 
@@ -49,7 +49,6 @@ class OpenAIStyleBackend:
             "max_retries": 0,
         }
 
-        # For this internal endpoint we must disable TLS verification.
         if self._is_insecure_tls_endpoint(base_url):
             if httpx is None:
                 raise FatalBackendError("httpx is required to set verify=False for the configured endpoint")
@@ -87,6 +86,15 @@ class OpenAIStyleBackend:
             )
             response_json = self._to_response_dict(response)
             text = self._extract_text(response_json).strip()
+            try:
+                _choices = response_json.get("choices") or []
+                _finish = _choices[0].get("finish_reason") if _choices else None
+            except Exception:
+                _finish = None
+            self._logger.info(
+                "llm raw output model=%s finish_reason=%s chars=%d text=%.2000s",
+                model, _finish, len(text), text,
+            )
             if not text:
                 raise RetryableError("empty model output")
             return text
@@ -164,7 +172,6 @@ class OpenAIStyleBackend:
                         chunks.append(item)
                 return "".join(chunks)
 
-        # Some OpenAI-compatible servers may return a direct output text field.
         output_text = response_json.get("output_text")
         if isinstance(output_text, str):
             return output_text

@@ -51,7 +51,6 @@ def test_uncertain_without_question_not_pending():
     """
     not_required = {"question": "", "questions": [], "clarification_required": False}
     assert PsychAgentWebBackend._clarification_pending(_ctx("UNCERTAIN", not_required)) is False
-    # No clarification turn in the trace at all.
     assert PsychAgentWebBackend._clarification_pending(_ctx("UNCERTAIN", None)) is False
     print("[PASS] UNCERTAIN without a question -> not pending.")
 
@@ -76,9 +75,7 @@ def test_pending_clears_after_route_changes():
     The state is derived from the latest persisted route+trace, so it
     self-clears without a separate flag to get out of sync.
     """
-    # Turn N: UNCERTAIN with question -> pending.
     assert PsychAgentWebBackend._clarification_pending(_ctx("UNCERTAIN", _required_question())) is True
-    # Turn N+1: answer consumed, route now CLEAR -> not pending.
     assert PsychAgentWebBackend._clarification_pending(_ctx("CLEAR", _required_question())) is False
     print("[PASS] Pending state clears after route changes.")
 
@@ -86,7 +83,6 @@ def test_pending_clears_after_route_changes():
 def test_pending_persists_across_uncertain_turns():
     """If clarification is still required after an answer, pending remains."""
     assert PsychAgentWebBackend._clarification_pending(_ctx("UNCERTAIN", _required_question())) is True
-    # Second UNCERTAIN turn with a fresh question -> still pending.
     assert PsychAgentWebBackend._clarification_pending(_ctx("UNCERTAIN", _required_question())) is True
     print("[PASS] Pending persists across UNCERTAIN turns.")
 

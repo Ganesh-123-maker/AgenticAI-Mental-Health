@@ -10,7 +10,6 @@ from .core import GPT5ChatClient
 from .core.base import EvaluationMethod
 from .methods import METHOD_REGISTRY
 
-
 DEFAULT_REWARD_METHOD_BY_MODALITY: Dict[str, List[str]] = {
     "bt": ["PANAS", "RRO", "SRS", "Custom_Dim", "HTAIS", "WAI", "MITI", "STAI"],
     "cbt": ["PANAS", "RRO", "SRS", "Custom_Dim", "HTAIS", "WAI", "CTRS", "BDI_II"],

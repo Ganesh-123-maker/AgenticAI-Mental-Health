@@ -40,13 +40,12 @@ confidence              Fraction of expected fields that could be populated
 from __future__ import annotations
 
 import logging
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List
 
 from .base import Agent, AgentContext, AgentError, AgentMessage
 
 logger = logging.getLogger(__name__)
 
-# Fields we expect to know in a well-populated case; used for confidence
 _EXPECTED_KNOWN_FIELDS = (
     "main_problem",
     "core_demands",
@@ -84,14 +83,10 @@ class StateAgent(Agent):
             )
 
     def _run(self, ctx: AgentContext) -> AgentMessage:
-        # -------------------------------------------------------------------
-        # Step 1: pull Memory Agent payload from ctx or memory_output
-        # -------------------------------------------------------------------
         mem_payload: Dict[str, Any] = {}
         if isinstance(ctx.memory_output, dict):
             mem_payload = ctx.memory_output
 
-        # Convenience extractors with safe defaults
         def _str(key: str, default: str = "(unavailable)") -> str:
             val = mem_payload.get(key) or default
             return str(val).strip() or default
@@ -108,10 +103,6 @@ class StateAgent(Agent):
             val = mem_payload.get(key)
             return dict(val) if isinstance(val, dict) else {}
 
-        # -------------------------------------------------------------------
-        # Step 2: determine current concern
-        # -------------------------------------------------------------------
-        # Use the latest client utterance first; fall back to main_problem
         current_concern: str
         if ctx.current_message and ctx.current_message.strip():
             current_concern = ctx.current_message.strip()
@@ -119,20 +110,11 @@ class StateAgent(Agent):
             mp = _str("main_problem")
             current_concern = mp
 
-        # -------------------------------------------------------------------
-        # Step 3: expressed needs — from core_demands in the profile
-        # -------------------------------------------------------------------
         expressed_needs: str = _str("core_demands")
 
-        # -------------------------------------------------------------------
-        # Step 4: current session focus
-        # -------------------------------------------------------------------
         goals = _list("current_goals")
         current_session_focus: str = goals[0] if goals else "(unavailable)"
 
-        # -------------------------------------------------------------------
-        # Step 5: build known_information list
-        # -------------------------------------------------------------------
         known_information: List[str] = []
 
         static_traits = _dict("known_static_traits")
@@ -183,19 +165,13 @@ class StateAgent(Agent):
         if ctx.current_message and ctx.current_message.strip():
             known_information.append(f"[Current Statement] {ctx.current_message.strip()}")
 
-        # -------------------------------------------------------------------
-        # Step 6: build unknown_information list
-        # -------------------------------------------------------------------
         unknown_information: List[str] = list(mem_payload.get("missing_information", []))
-        # Also propagate missing_information from the memory agent message
-        # (if stored on ctx.memory_output as a separate key)
         extra_missing = mem_payload.get("_missing_from_memory_agent", [])
         if isinstance(extra_missing, list):
             for item in extra_missing:
                 if item not in unknown_information:
                     unknown_information.append(str(item))
 
-        # Structural checks: add items missing from known_information
         if not static_traits or all(
             str(v).strip() in ("not_mentioned", "unknown", "") for v in static_traits.values()
         ):
@@ -219,9 +195,6 @@ class StateAgent(Agent):
         if not ctx.current_message or not ctx.current_message.strip():
             _add_if_absent(unknown_information, "current_message (no client utterance)")
 
-        # -------------------------------------------------------------------
-        # Step 7: context dict
-        # -------------------------------------------------------------------
         context_dict: Dict[str, Any] = {
             "modality": ctx.modality,
             "therapy_stage": ctx.therapy_stage or _str("current_stage"),
@@ -229,9 +202,6 @@ class StateAgent(Agent):
             "source": mem_payload.get("source", "none"),
         }
 
-        # -------------------------------------------------------------------
-        # Step 8: longitudinal relevance (descriptive, not evaluative)
-        # -------------------------------------------------------------------
         longitudinal_relevance: str
         if recaps:
             last_recap = recaps[-1]
@@ -245,9 +215,6 @@ class StateAgent(Agent):
         else:
             longitudinal_relevance = "No historical session records found (initial session or standalone evaluation)."
 
-        # -------------------------------------------------------------------
-        # Step 9: confidence — fraction of expected fields populated
-        # -------------------------------------------------------------------
         populated = 0
         if static_traits:
             populated += 1
@@ -270,9 +237,6 @@ class StateAgent(Agent):
 
         confidence = populated / len(_EXPECTED_KNOWN_FIELDS)
 
-        # -------------------------------------------------------------------
-        # Step 10: evidence and missing lists for AgentMessage wrapper
-        # -------------------------------------------------------------------
         evidence: List[str] = [
             f"{len(known_information)} known information items",
             f"{len(unknown_information)} items requiring clarification",
@@ -280,9 +244,6 @@ class StateAgent(Agent):
         if recaps:
             evidence.append(f"Based on {len(recaps)} historical sessions")
 
-        # -------------------------------------------------------------------
-        # Step 11: assemble payload
-        # -------------------------------------------------------------------
         payload: Dict[str, Any] = {
             "current_concern": current_concern,
             "expressed_needs": expressed_needs,
@@ -302,15 +263,12 @@ class StateAgent(Agent):
             evidence=evidence,
             confidence=confidence,
             missing_information=unknown_information,
-            recommended_action=None,  # routing is a later agent's responsibility
+            recommended_action=None,
             next_agent=None,
             payload=payload,
         )
 
 
-# ---------------------------------------------------------------------------
-# Helpers
-# ---------------------------------------------------------------------------
 
 def _add_if_absent(lst: List[str], item: str) -> None:
     if item not in lst:

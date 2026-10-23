@@ -20,10 +20,6 @@ from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional
 
 
-# ---------------------------------------------------------------------------
-# AgentContext — shared state passed between agents in the pipeline
-# ---------------------------------------------------------------------------
-
 @dataclass
 class AgentContext:
     """Shared state passed through the agent pipeline.
@@ -58,34 +54,26 @@ class AgentContext:
     metadata            Free-form key/value bag for diagnostics.
     """
 
-    # Required
     case_id: str
     modality: str
 
-    # Session / stage context
     therapy_stage: Optional[str] = None
     session_index: Optional[int] = None
 
-    # Conversation context
     current_message: Optional[str] = None
     prior_transcript: List[Dict[str, Any]] = field(default_factory=list)
 
-    # Runner memory structures (populated from runner or benchmark loader)
     history_list: List[Dict[str, Any]] = field(default_factory=list)
     obtain_client_info: Dict[str, Any] = field(default_factory=dict)
     homework_assigned: List[str] = field(default_factory=list)
 
-    # PublicMemory instance from core.schemas (None until Memory Agent runs)
-    public_memory: Optional[Any] = None  # PublicMemory — kept as Any to avoid circular import
+    public_memory: Optional[Any] = None
 
-    # Full raw profile dict (assets/profiles/<mod>/sample/<id>.json or benchmark)
     full_profile: Optional[Dict[str, Any]] = None
 
-    # Agent outputs (populated as each agent completes)
     memory_output: Optional[Dict[str, Any]] = None
     state_output: Optional[Dict[str, Any]] = None
 
-    # Future agent output placeholders (data fields only — no agent logic)
     uncertainty_output: Optional[Dict[str, Any]] = None
     risk_output: Optional[Dict[str, Any]] = None
     routing_output: Optional[Dict[str, Any]] = None
@@ -96,7 +84,6 @@ class AgentContext:
     outcome_output: Optional[Dict[str, Any]] = None
     memory_update_output: Optional[Dict[str, Any]] = None
 
-    # Diagnostics / free-form metadata
     metadata: Dict[str, Any] = field(default_factory=dict)
 
     def copy(self) -> "AgentContext":
@@ -104,9 +91,6 @@ class AgentContext:
         return copy.deepcopy(self)
 
 
-# ---------------------------------------------------------------------------
-# AgentMessage — structured result from one agent invocation
-# ---------------------------------------------------------------------------
 
 @dataclass
 class AgentMessage:
@@ -129,7 +113,7 @@ class AgentMessage:
     """
 
     agent: str
-    status: str = "ok"  # "ok" | "partial" | "error" | "unavailable"
+    status: str = "ok"
     evidence: List[str] = field(default_factory=list)
     confidence: Optional[float] = None
     missing_information: List[str] = field(default_factory=list)
@@ -152,9 +136,6 @@ class AgentMessage:
         }
 
 
-# ---------------------------------------------------------------------------
-# Agent — abstract base class
-# ---------------------------------------------------------------------------
 
 class Agent(abc.ABC):
     """Abstract base for all PsychAgent pipeline agents.
@@ -170,7 +151,6 @@ class Agent(abc.ABC):
     * Recoverable/partial failures should return status="partial" or "unavailable".
     """
 
-    #: Each subclass must set a unique name used in AgentMessage.agent.
     name: str = "base"
 
     @abc.abstractmethod
@@ -188,9 +168,6 @@ class Agent(abc.ABC):
         return f"{self.__class__.__name__}(name={self.name!r})"
 
 
-# ---------------------------------------------------------------------------
-# AgentError — standard exception type
-# ---------------------------------------------------------------------------
 
 class AgentError(RuntimeError):
     """Raised for irrecoverable agent failures.

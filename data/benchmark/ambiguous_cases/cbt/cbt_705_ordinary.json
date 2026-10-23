@@ -2,146 +2,146 @@
   "case_id": "cbt_705_ordinary",
   "source_file": "assets/profiles/cbt/sample/705.json",
   "modality": "cbt",
-  "therapy_stage": "问题概念化与目标设定",
+  "therapy_stage": "Problem conceptualization and goal setting",
   "stage_inferred": false,
   "track": "ordinary",
   "full_context": {
     "basic_info": {
       "static_traits": {
         "age": "48",
-        "name": "陈洁",
-        "gender": "女",
-        "occupation": "军人（军事人员）",
-        "educational_background": "大学辍学",
-        "marital_status": "单身",
-        "family_status": "未提及",
-        "social_status": "在军队中有朋友的支持，但在与老朋友的社交中因担心被评判而紧张、受影响",
-        "medical_history": "无显著躯体疾病；既往未接受心理治疗；此前未出现类似心理问题的病史",
-        "language_features": "表达清晰、逻辑性较强；自我觉察良好；语气谨慎、伴随焦虑；在谈及脆弱议题时有回避倾向；配合度积极"
+        "name": "Chen Jie",
+        "gender": "Female",
+        "occupation": "Soldier (military personnel)",
+        "educational_background": "Dropped out of university",
+        "marital_status": "Single",
+        "family_status": "Not mentioned",
+        "social_status": "Has friends' support in the military, but in socializing with old friends feels nervous and affected due to worrying about being judged",
+        "medical_history": "No notable physical illness; has not previously received psychotherapy; no prior history of similar psychological problems",
+        "language_features": "Clear expression, relatively strong logic; good self-awareness; cautious tone accompanied by anxiety; tends to avoid when discussing vulnerable topics; positive cooperation"
       },
-      "main_problem": "我有自卑感，并且一直害怕朋友因为我为追求飞行梦想而大学辍学、参军，而把我贴上“没脑子的失败者”的标签。这些感受在社交聚会或与朋友讨论教育背景时尤为明显，影响了我的自尊和与朋友的互动。",
-      "topic": "人际关系",
-      "core_demands": "我决定寻求咨询，因为这些自卑感与对他人评判的恐惧正在影响我的心理健康和社交关系。",
+      "main_problem": "I have low self-esteem and constantly fear that friends will label me a 'mindless failure' because I dropped out of university and joined the military to pursue my dream of flying. These feelings are especially pronounced at social gatherings or when discussing educational backgrounds with friends, affecting my self-esteem and interactions with friends.",
+      "topic": "Interpersonal relationships",
+      "core_demands": "I decided to seek counseling because these feelings of inferiority and fear of others' judgments are affecting my mental health and social relationships.",
       "growth_experiences": [
-        "在大学期间选择辍学，加入军队以追求飞行梦想。此后在与朋友讨论教育背景时逐渐产生自卑与被评判的担忧；近几个月在一次社交聚会上，一位朋友随口提到“高等教育很重要”，这句话触发了她更强烈的自我怀疑与焦虑，导致社交受限。"
+        "During university, she chose to drop out and join the military to pursue her dream of flying. Afterward, when discussing educational backgrounds with friends, she gradually developed inferiority and worry about being judged; a few months ago at a social gathering, a friend casually mentioned that 'higher education is important', and this remark triggered stronger self-doubt and anxiety in her, leading to restricted socializing."
       ]
     },
     "theory": {
       "cbt": {
         "core_beliefs": [
-          "我是个不够好的人",
-          "我是一个“失败者/蠢货”"
+          "I am not a good enough person",
+          "I am a 'failure/idiot'"
         ],
         "special_situations": [
           {
-            "event": "在社交聚会上，朋友提到“高等教育很重要”",
-            "conditional_assumptions": "如果没有大学学位，就会被视为不聪明、价值低、不被接纳",
-            "compensatory_strategies": "避免在朋友面前谈及学历；内心不断理性化自己的选择以对冲焦虑",
-            "automatic_thoughts": "他们一定觉得我只是个没脑子的失败者",
+            "event": "At a social gathering, a friend mentions 'higher education is very important'",
+            "conditional_assumptions": "Without a university degree, one will be seen as unintelligent, of low value, and not accepted",
+            "compensatory_strategies": "Avoids mentioning educational background in front of friends; inwardly keeps rationalizing own choices to counteract anxiety",
+            "automatic_thoughts": "They must think I am just a brainless failure",
             "cognitive_pattern": "Mind Reading"
           },
           {
-            "event": "与朋友谈论各自的教育背景时",
-            "conditional_assumptions": "一次重要的选择（辍学）就决定了我的整体价值与身份",
-            "compensatory_strategies": "用“要么成功要么失败”的标准衡量自我，强化自我批评来“鞭策”自己",
-            "automatic_thoughts": "辍学这件事说明我整体就是失败的",
+            "event": "When discussing each other's educational backgrounds with friends",
+            "conditional_assumptions": "One important choice (dropping out of school) determines my overall worth and identity",
+            "compensatory_strategies": "Measures the self by the standard of 'either success or failure', intensifying self-criticism to 'spur' the self on",
+            "automatic_thoughts": "Dropping out of school shows that I am a failure overall",
             "cognitive_pattern": "Overgeneralization"
           },
           {
-            "event": "与拥有更高学历的朋友相处、比较时",
-            "conditional_assumptions": "如果我在学历上不如别人，就不配被尊重和喜欢",
-            "compensatory_strategies": "与他人持续比较、回避深入交流以降低被评判的风险",
-            "automatic_thoughts": "我不如他们/我不配和他们在一起",
+            "event": "When spending time with and comparing against friends with higher education",
+            "conditional_assumptions": "If I am not as good as others in education, I do not deserve to be respected and liked",
+            "compensatory_strategies": "Continuously comparing with others, avoiding deep interaction to reduce the risk of being judged",
+            "automatic_thoughts": "I am not as good as them / I do not deserve to be with them",
             "cognitive_pattern": "Comparing and Despairing"
           },
           {
-            "event": "朋友称赞她的飞行技能与军旅投入时",
-            "conditional_assumptions": "没有学历的赞美不算数，正面证据不足以证明我有价值",
-            "compensatory_strategies": "否定或弱化他人的正面反馈，保留自我怀疑以维持一致的自我图式",
-            "automatic_thoughts": "这些赞美不算数，他们只是客气",
+            "event": "When friends praise her flying skills and military commitment",
+            "conditional_assumptions": "Praise without a degree does not count; positive evidence is not enough to prove I have worth",
+            "compensatory_strategies": "Negates or weakens others' positive feedback, retaining self-doubt to maintain a consistent self-schema",
+            "automatic_thoughts": "These compliments do not count; they are just being polite",
             "cognitive_pattern": "Disqualifying the Positive"
           }
         ]
       },
       "pdt": {
         "core_conflict": {
-          "wish": "渴望被朋友认可、接纳，并被视为有价值的人",
-          "fear": "害怕被评判、被羞辱、被看不起，从而被排斥",
+          "wish": "Longing to be recognized and accepted by friends, and seen as a valuable person",
+          "fear": "Fearing being judged, humiliated, looked down on, thus being excluded",
           "defense_goal": [
-            "通过保持谨慎与疏离、避免暴露脆弱来降低被拒绝的风险"
+            "Reduces the risk of rejection by staying cautious and distant and avoiding exposing vulnerability"
           ]
         },
         "object_relations": [
           {
-            "self_representation": "不够好的、可能被贬低的失败者",
-            "object_representation": "苛刻的评判者/轻视者",
-            "linking_affect": "羞耻、焦虑"
+            "self_representation": "A failure who is not good enough and may be belittled",
+            "object_representation": "Harsh judge / belittler",
+            "linking_affect": "Shame, anxiety"
           }
         ],
         "behavioral_response_patterns": [
           {
-            "trigger_condition": "当朋友谈及学历或强调高等教育重要性时",
-            "interpretation": "将普通讨论解读为对自己的贬低与拒绝（把他人当作苛刻评判者）",
+            "trigger_condition": "When friends talk about educational credentials or emphasize the importance of higher education",
+            "interpretation": "Interprets ordinary discussion as belittling and rejection of the self (treating others as harsh judges)",
             "defense_mechanism": "sring",
-            "response_instruction": "语气温和而谨慎，先陈述不确定性（如“我可能在过度猜测”），再提出澄清性问题（如“你提到学历重要时，你如何看待我的选择？”），避免绝对化用语与贴标签。"
+            "response_instruction": "Use a gentle and cautious tone, first stating uncertainty (such as 'I may be over-guessing'), then raising clarifying questions (such as 'when you mentioned that education is important, how do you view my choice?'), avoiding absolute expressions and labeling."
           },
           {
-            "trigger_condition": "当内心涌现强烈自我怀疑时，试图以理由说服自己",
-            "interpretation": "以理性解释来与情绪隔离，将感受压在次要位置",
+            "trigger_condition": "When strong self-doubt surges internally, trying to persuade oneself with reasons",
+            "interpretation": "Isolating oneself from emotions with rational explanation, putting feelings in a secondary position",
             "defense_mechanism": "sring",
-            "response_instruction": "在给出理由前先标注感受（如“我此刻也感到不安与羞耻”），用具体体验词替代抽象评判，放慢语速、减少辩解口吻，允许短句呈现当下体验。"
+            "response_instruction": "Before giving reasons, first label the feeling (such as 'I also feel uneasy and ashamed right now'), use concrete experience words instead of abstract judgments, slow the speech rate, reduce the defensive tone, and allow short sentences to present the current experience."
           },
           {
-            "trigger_condition": "当想到要向朋友敞开谈论自卑与恐惧时",
-            "interpretation": "将可能的拒绝视为确定的结果，转而压抑表达的冲动",
+            "trigger_condition": "When thinking about opening up to friends about inferiority and fears",
+            "interpretation": "Viewing possible rejection as a certain outcome, thus suppressing the impulse to express",
             "defense_mechanism": "sring",
-            "response_instruction": "鼓励用第一人称情绪词直接陈述（如“我害怕被评判”），语速放慢、留出停顿以承载情绪，避免绕开主题，用简短直接的句子描述当下体验。"
+            "response_instruction": "Encourage direct statements using first-person emotion words (such as 'I am afraid of being judged'), slow the speech rate and leave pauses to hold the emotion, avoid circumventing the topic, and describe the present experience in brief, direct sentences."
           }
         ]
       },
       "het": {
         "existentialism_topic": [
           {
-            "theme": "孤独",
+            "theme": "Loneliness",
             "manifestations": [
-              "难以向朋友敞开谈论自卑与恐惧",
-              "担心被评判而与群体保持心理距离",
-              "将普通话题解读为针对自己而进一步退缩"
+              "Difficulty opening up to friends about inferiority and fears",
+              "Keeping psychological distance from the group out of worry about being judged",
+              "Interprets ordinary topics as directed at oneself and withdraws further"
             ],
             "outcomes": [
-              "社交焦虑与回避",
-              "自尊受损",
-              "与朋友关系紧张"
+              "Social anxiety and avoidance",
+              "Impaired self-esteem",
+              "Tense relationships with friends"
             ]
           },
           {
-            "theme": "自由",
+            "theme": "Freedom",
             "manifestations": [
-              "以自由选择追求飞行与军旅生涯",
-              "在社会对学历的主流价值期待与个人选择之间体验冲突与不确定"
+              "Pursuing a flying and military career by free choice",
+              "Experiences conflict and uncertainty between society's mainstream value expectations about education and personal choices"
             ],
             "outcomes": [
-              "选择后的责任焦虑",
-              "对自我价值的摇摆与怀疑"
+              "Responsibility anxiety after choices",
+              "Wavering and doubt about one's self-worth"
             ]
           }
         ],
         "contact_model": [
           {
-            "mode": "自我监控",
-            "definition": "个体存在不良的自我反思和反省的能力，包含过多的自我限制和自我苛责，对接触过于小心谨慎，与“自主性”对应。",
+            "mode": "Self-monitoring",
+            "definition": "The individual has a poor capacity for self-reflection and introspection, with excessive self-restriction and self-blame, and is overly cautious about contact, corresponding to 'autonomy'.",
             "manifestations": [
-              "不敢直接表达脆弱感受，反复自我审查",
-              "在社交中刻意回避涉及学历的话题",
-              "自我苛责与自我否定（如“我不配”）"
+              "Does not dare to express vulnerable feelings directly; repeatedly self-censors",
+              "Deliberately avoiding topics involving educational background in social settings",
+              "Self-blame and self-negation (such as 'I am not worthy')"
             ]
           },
           {
-            "mode": "投射",
-            "definition": "个体将自己难以接纳的感受归于他人，与”拥有“对应。",
+            "mode": "Projection",
+            "definition": "The individual attributes feelings they find hard to accept to others, corresponding to 'possession'.",
             "manifestations": [
-              "把他人普通言论解读为对自己轻视",
-              "认为朋友在“看不起我”“给我贴标签”"
+              "Interpreting others' ordinary remarks as contempt toward oneself",
+              "Believes friends are 'looking down on me' and 'labeling me'"
             ]
           }
         ]
@@ -149,47 +149,47 @@
       "pmt": {
         "exception_events": [
           {
-            "target_problem": "在与朋友的社交场合、尤其讨论教育背景时，来访者通常会出现强烈自我怀疑与焦虑，并倾向于退缩、回避深入交流。",
-            "unique_outcome": "在一些与朋友的交流中，朋友曾明确称赞她的飞行技能与对军旅的投入；当时她能短暂地承认这些肯定并意识到自己具备价值感，社交互动较为顺畅。",
-            "reason": "不同支持：朋友注意到她的专业能力并给予具体肯定；不同情境：谈话主题聚焦于她的飞行与贡献而非学历；做法不同：她当时尝试回忆成就与他人赞赏，从而短暂减弱自我否定。"
+            "target_problem": "In social settings with friends, especially when discussing educational backgrounds, the client usually experiences strong self-doubt and anxiety, and tends to withdraw and avoid deeper exchange.",
+            "unique_outcome": "In some exchanges with friends, friends explicitly praised her flying skills and commitment to military service; at the time she could briefly acknowledge these affirmations and realize her own sense of value, and the social interaction went relatively smoothly.",
+            "reason": "Different support: friends noticed her professional competence and gave concrete affirmation; different context: the conversation focused on her flying and contributions rather than her education; different approach: she tried recalling her achievements and others' appreciation at the time, thereby briefly weakening her self-negation."
           }
         ],
         "force_field": {
           "positive_force": [
-            "对航空与飞行的强烈热情",
-            "军旅经历带来的纪律、领导力与韧性",
-            "来自朋友的正向反馈与认可（飞行技能、投入度）",
-            "军中同侪的基本社会支持"
+            "A strong passion for aviation and flying",
+            "The discipline, leadership, and resilience brought by military experience",
+            "Positive feedback and recognition from friends (flying skills, level of investment)",
+            "Basic social support from peers in the military"
           ],
           "negative_force": [
-            "强烈的自我怀疑与自我贴标签",
-            "读心术与过度概括、比较导致的认知偏差",
-            "对被评判的恐惧导致回避与不敢敞开",
-            "否定正面证据，难以内化他人赞赏",
-            "将学历作为自我价值的严格条件（价值条件化）"
+            "Strong self-doubt and self-labeling",
+            "Cognitive biases caused by mind reading, overgeneralization, and comparison",
+            "Fear of being judged leads to avoidance and not daring to open up",
+            "Discounting positive evidence, difficulty internalizing others' appreciation",
+            "Taking education as a strict condition of self-worth (conditional worth)"
           ]
         }
       },
       "bt": {
         "target_behavior": [
           {
-            "behavior": "在社交场合中因担心被评判而出现显著焦虑与回避（减少发言、避免深入交流）",
+            "behavior": "In social settings, marked anxiety and avoidance appear due to worrying about being judged (speaking less, avoiding deeper exchange)",
             "antecedent": [
-              "社交聚会",
-              "与朋友讨论教育背景或学历话题"
+              "Social gatherings",
+              "Discussing educational background or qualifications with friends"
             ],
-            "core_reason": "对他人评价的读心与自我否定的核心信念（“我是失败者”），伴随灾难化的拒绝担忧",
-            "function": "逃避潜在的负面评价以降低即时焦虑",
-            "consequence": "与朋友关系紧张、社交参与减少、主观自尊下降"
+            "core_reason": "Mind reading of others' evaluations and the self-negating core belief ('I am a failure'), accompanied by catastrophized worries about rejection",
+            "function": "Escapes potential negative evaluation to reduce immediate anxiety",
+            "consequence": "Strained relationships with friends, reduced social participation, decreased subjective self-esteem"
           },
           {
-            "behavior": "否定正面反馈并强化自我标签（“赞美不算数”）",
+            "behavior": "Negating positive feedback and reinforcing self-labels ('praise does not count')",
             "antecedent": [
-              "收到朋友对其飞行技能或军旅投入的称赞"
+              "Receives praise from friends for flying skills or military commitment"
             ],
-            "core_reason": "维持“失败者/不够好”的核心信念与心理过滤，避免与自我概念产生认知失调",
-            "function": "维持一致的自我图式、短期降低内在冲突",
-            "consequence": "阻碍自尊提升与情绪改善，强化负性自我评价的循环"
+            "core_reason": "Maintains the core belief of 'failure / not good enough' and mental filtering, avoiding cognitive dissonance with the self-concept",
+            "function": "Maintains a consistent self-schema, reducing inner conflict in the short term",
+            "consequence": "Obstructing improvement in self-esteem and mood, reinforcing the cycle of negative self-evaluation"
           }
         ]
       }
@@ -201,136 +201,136 @@
     "basic_info": {
       "static_traits": {
         "age": "48",
-        "name": "陈洁",
-        "gender": "女",
-        "occupation": "军人（军事人员）",
-        "educational_background": "大学辍学",
-        "marital_status": "单身",
-        "family_status": "未提及",
-        "social_status": "在军队中有朋友的支持，但在与老朋友的社交中因担心被评判而紧张、受影响",
-        "medical_history": "无显著躯体疾病；既往未接受心理治疗；此前未出现类似心理问题的病史",
-        "language_features": "表达清晰、逻辑性较强；自我觉察良好；语气谨慎、伴随焦虑；在谈及脆弱议题时有回避倾向；配合度积极"
+        "name": "Chen Jie",
+        "gender": "Female",
+        "occupation": "Soldier (military personnel)",
+        "educational_background": "Dropped out of university",
+        "marital_status": "Single",
+        "family_status": "Not mentioned",
+        "social_status": "Has friends' support in the military, but in socializing with old friends feels nervous and affected due to worrying about being judged",
+        "medical_history": "No notable physical illness; has not previously received psychotherapy; no prior history of similar psychological problems",
+        "language_features": "Clear expression, relatively strong logic; good self-awareness; cautious tone accompanied by anxiety; tends to avoid when discussing vulnerable topics; positive cooperation"
       },
-      "main_problem": "我有自卑感，并且一直害怕朋友因为我为追求飞行梦想而大学辍学、参军，而把我贴上“没脑子的失败者”的标签。这些感受在社交聚会或与朋友讨论教育背景时尤为明显，影响了我的自尊和与朋友的互动。",
-      "topic": "人际关系",
-      "core_demands": "我决定寻求咨询，因为这些自卑感与对他人评判的恐惧正在影响我的心理健康和社交关系。"
+      "main_problem": "I have low self-esteem and constantly fear that friends will label me a 'mindless failure' because I dropped out of university and joined the military to pursue my dream of flying. These feelings are especially pronounced at social gatherings or when discussing educational backgrounds with friends, affecting my self-esteem and interactions with friends.",
+      "topic": "Interpersonal relationships",
+      "core_demands": "I decided to seek counseling because these feelings of inferiority and fear of others' judgments are affecting my mental health and social relationships."
     },
     "theory": {
       "cbt": {
         "core_beliefs": [
-          "我是个不够好的人",
-          "我是一个“失败者/蠢货”"
+          "I am not a good enough person",
+          "I am a 'failure/idiot'"
         ],
         "special_situations": [
           {
-            "event": "在社交聚会上，朋友提到“高等教育很重要”",
-            "conditional_assumptions": "如果没有大学学位，就会被视为不聪明、价值低、不被接纳",
-            "compensatory_strategies": "避免在朋友面前谈及学历；内心不断理性化自己的选择以对冲焦虑",
-            "automatic_thoughts": "他们一定觉得我只是个没脑子的失败者",
+            "event": "At a social gathering, a friend mentions 'higher education is very important'",
+            "conditional_assumptions": "Without a university degree, one will be seen as unintelligent, of low value, and not accepted",
+            "compensatory_strategies": "Avoids mentioning educational background in front of friends; inwardly keeps rationalizing own choices to counteract anxiety",
+            "automatic_thoughts": "They must think I am just a brainless failure",
             "cognitive_pattern": "Mind Reading"
           },
           {
-            "event": "与朋友谈论各自的教育背景时",
-            "conditional_assumptions": "一次重要的选择（辍学）就决定了我的整体价值与身份",
-            "compensatory_strategies": "用“要么成功要么失败”的标准衡量自我，强化自我批评来“鞭策”自己",
-            "automatic_thoughts": "辍学这件事说明我整体就是失败的",
+            "event": "When discussing each other's educational backgrounds with friends",
+            "conditional_assumptions": "One important choice (dropping out of school) determines my overall worth and identity",
+            "compensatory_strategies": "Measures the self by the standard of 'either success or failure', intensifying self-criticism to 'spur' the self on",
+            "automatic_thoughts": "Dropping out of school shows that I am a failure overall",
             "cognitive_pattern": "Overgeneralization"
           },
           {
-            "event": "与拥有更高学历的朋友相处、比较时",
-            "conditional_assumptions": "如果我在学历上不如别人，就不配被尊重和喜欢",
-            "compensatory_strategies": "与他人持续比较、回避深入交流以降低被评判的风险",
-            "automatic_thoughts": "我不如他们/我不配和他们在一起",
+            "event": "When spending time with and comparing against friends with higher education",
+            "conditional_assumptions": "If I am not as good as others in education, I do not deserve to be respected and liked",
+            "compensatory_strategies": "Continuously comparing with others, avoiding deep interaction to reduce the risk of being judged",
+            "automatic_thoughts": "I am not as good as them / I do not deserve to be with them",
             "cognitive_pattern": "Comparing and Despairing"
           },
           {
-            "event": "朋友称赞她的飞行技能与军旅投入时",
-            "conditional_assumptions": "没有学历的赞美不算数，正面证据不足以证明我有价值",
-            "compensatory_strategies": "否定或弱化他人的正面反馈，保留自我怀疑以维持一致的自我图式",
-            "automatic_thoughts": "这些赞美不算数，他们只是客气",
+            "event": "When friends praise her flying skills and military commitment",
+            "conditional_assumptions": "Praise without a degree does not count; positive evidence is not enough to prove I have worth",
+            "compensatory_strategies": "Negates or weakens others' positive feedback, retaining self-doubt to maintain a consistent self-schema",
+            "automatic_thoughts": "These compliments do not count; they are just being polite",
             "cognitive_pattern": "Disqualifying the Positive"
           }
         ]
       },
       "pdt": {
         "core_conflict": {
-          "wish": "渴望被朋友认可、接纳，并被视为有价值的人",
-          "fear": "害怕被评判、被羞辱、被看不起，从而被排斥",
+          "wish": "Longing to be recognized and accepted by friends, and seen as a valuable person",
+          "fear": "Fearing being judged, humiliated, looked down on, thus being excluded",
           "defense_goal": [
-            "通过保持谨慎与疏离、避免暴露脆弱来降低被拒绝的风险"
+            "Reduces the risk of rejection by staying cautious and distant and avoiding exposing vulnerability"
           ]
         },
         "object_relations": [
           {
-            "self_representation": "不够好的、可能被贬低的失败者",
-            "object_representation": "苛刻的评判者/轻视者",
-            "linking_affect": "羞耻、焦虑"
+            "self_representation": "A failure who is not good enough and may be belittled",
+            "object_representation": "Harsh judge / belittler",
+            "linking_affect": "Shame, anxiety"
           }
         ],
         "behavioral_response_patterns": [
           {
-            "trigger_condition": "当朋友谈及学历或强调高等教育重要性时",
-            "interpretation": "将普通讨论解读为对自己的贬低与拒绝（把他人当作苛刻评判者）",
+            "trigger_condition": "When friends talk about educational credentials or emphasize the importance of higher education",
+            "interpretation": "Interprets ordinary discussion as belittling and rejection of the self (treating others as harsh judges)",
             "defense_mechanism": "sring",
-            "response_instruction": "语气温和而谨慎，先陈述不确定性（如“我可能在过度猜测”），再提出澄清性问题（如“你提到学历重要时，你如何看待我的选择？”），避免绝对化用语与贴标签。"
+            "response_instruction": "Use a gentle and cautious tone, first stating uncertainty (such as 'I may be over-guessing'), then raising clarifying questions (such as 'when you mentioned that education is important, how do you view my choice?'), avoiding absolute expressions and labeling."
           },
           {
-            "trigger_condition": "当内心涌现强烈自我怀疑时，试图以理由说服自己",
-            "interpretation": "以理性解释来与情绪隔离，将感受压在次要位置",
+            "trigger_condition": "When strong self-doubt surges internally, trying to persuade oneself with reasons",
+            "interpretation": "Isolating oneself from emotions with rational explanation, putting feelings in a secondary position",
             "defense_mechanism": "sring",
-            "response_instruction": "在给出理由前先标注感受（如“我此刻也感到不安与羞耻”），用具体体验词替代抽象评判，放慢语速、减少辩解口吻，允许短句呈现当下体验。"
+            "response_instruction": "Before giving reasons, first label the feeling (such as 'I also feel uneasy and ashamed right now'), use concrete experience words instead of abstract judgments, slow the speech rate, reduce the defensive tone, and allow short sentences to present the current experience."
           },
           {
-            "trigger_condition": "当想到要向朋友敞开谈论自卑与恐惧时",
-            "interpretation": "将可能的拒绝视为确定的结果，转而压抑表达的冲动",
+            "trigger_condition": "When thinking about opening up to friends about inferiority and fears",
+            "interpretation": "Viewing possible rejection as a certain outcome, thus suppressing the impulse to express",
             "defense_mechanism": "sring",
-            "response_instruction": "鼓励用第一人称情绪词直接陈述（如“我害怕被评判”），语速放慢、留出停顿以承载情绪，避免绕开主题，用简短直接的句子描述当下体验。"
+            "response_instruction": "Encourage direct statements using first-person emotion words (such as 'I am afraid of being judged'), slow the speech rate and leave pauses to hold the emotion, avoid circumventing the topic, and describe the present experience in brief, direct sentences."
           }
         ]
       },
       "het": {
         "existentialism_topic": [
           {
-            "theme": "孤独",
+            "theme": "Loneliness",
             "manifestations": [
-              "难以向朋友敞开谈论自卑与恐惧",
-              "担心被评判而与群体保持心理距离",
-              "将普通话题解读为针对自己而进一步退缩"
+              "Difficulty opening up to friends about inferiority and fears",
+              "Keeping psychological distance from the group out of worry about being judged",
+              "Interprets ordinary topics as directed at oneself and withdraws further"
             ],
             "outcomes": [
-              "社交焦虑与回避",
-              "自尊受损",
-              "与朋友关系紧张"
+              "Social anxiety and avoidance",
+              "Impaired self-esteem",
+              "Tense relationships with friends"
             ]
           },
           {
-            "theme": "自由",
+            "theme": "Freedom",
             "manifestations": [
-              "以自由选择追求飞行与军旅生涯",
-              "在社会对学历的主流价值期待与个人选择之间体验冲突与不确定"
+              "Pursuing a flying and military career by free choice",
+              "Experiences conflict and uncertainty between society's mainstream value expectations about education and personal choices"
             ],
             "outcomes": [
-              "选择后的责任焦虑",
-              "对自我价值的摇摆与怀疑"
+              "Responsibility anxiety after choices",
+              "Wavering and doubt about one's self-worth"
             ]
           }
         ],
         "contact_model": [
           {
-            "mode": "自我监控",
-            "definition": "个体存在不良的自我反思和反省的能力，包含过多的自我限制和自我苛责，对接触过于小心谨慎，与“自主性”对应。",
+            "mode": "Self-monitoring",
+            "definition": "The individual has a poor capacity for self-reflection and introspection, with excessive self-restriction and self-blame, and is overly cautious about contact, corresponding to 'autonomy'.",
             "manifestations": [
-              "不敢直接表达脆弱感受，反复自我审查",
-              "在社交中刻意回避涉及学历的话题",
-              "自我苛责与自我否定（如“我不配”）"
+              "Does not dare to express vulnerable feelings directly; repeatedly self-censors",
+              "Deliberately avoiding topics involving educational background in social settings",
+              "Self-blame and self-negation (such as 'I am not worthy')"
             ]
           },
           {
-            "mode": "投射",
-            "definition": "个体将自己难以接纳的感受归于他人，与”拥有“对应。",
+            "mode": "Projection",
+            "definition": "The individual attributes feelings they find hard to accept to others, corresponding to 'possession'.",
             "manifestations": [
-              "把他人普通言论解读为对自己轻视",
-              "认为朋友在“看不起我”“给我贴标签”"
+              "Interpreting others' ordinary remarks as contempt toward oneself",
+              "Believes friends are 'looking down on me' and 'labeling me'"
             ]
           }
         ]
@@ -338,47 +338,47 @@
       "pmt": {
         "exception_events": [
           {
-            "target_problem": "在与朋友的社交场合、尤其讨论教育背景时，来访者通常会出现强烈自我怀疑与焦虑，并倾向于退缩、回避深入交流。",
-            "unique_outcome": "在一些与朋友的交流中，朋友曾明确称赞她的飞行技能与对军旅的投入；当时她能短暂地承认这些肯定并意识到自己具备价值感，社交互动较为顺畅。",
-            "reason": "不同支持：朋友注意到她的专业能力并给予具体肯定；不同情境：谈话主题聚焦于她的飞行与贡献而非学历；做法不同：她当时尝试回忆成就与他人赞赏，从而短暂减弱自我否定。"
+            "target_problem": "In social settings with friends, especially when discussing educational backgrounds, the client usually experiences strong self-doubt and anxiety, and tends to withdraw and avoid deeper exchange.",
+            "unique_outcome": "In some exchanges with friends, friends explicitly praised her flying skills and commitment to military service; at the time she could briefly acknowledge these affirmations and realize her own sense of value, and the social interaction went relatively smoothly.",
+            "reason": "Different support: friends noticed her professional competence and gave concrete affirmation; different context: the conversation focused on her flying and contributions rather than her education; different approach: she tried recalling her achievements and others' appreciation at the time, thereby briefly weakening her self-negation."
           }
         ],
         "force_field": {
           "positive_force": [
-            "对航空与飞行的强烈热情",
-            "军旅经历带来的纪律、领导力与韧性",
-            "来自朋友的正向反馈与认可（飞行技能、投入度）",
-            "军中同侪的基本社会支持"
+            "A strong passion for aviation and flying",
+            "The discipline, leadership, and resilience brought by military experience",
+            "Positive feedback and recognition from friends (flying skills, level of investment)",
+            "Basic social support from peers in the military"
           ],
           "negative_force": [
-            "强烈的自我怀疑与自我贴标签",
-            "读心术与过度概括、比较导致的认知偏差",
-            "对被评判的恐惧导致回避与不敢敞开",
-            "否定正面证据，难以内化他人赞赏",
-            "将学历作为自我价值的严格条件（价值条件化）"
+            "Strong self-doubt and self-labeling",
+            "Cognitive biases caused by mind reading, overgeneralization, and comparison",
+            "Fear of being judged leads to avoidance and not daring to open up",
+            "Discounting positive evidence, difficulty internalizing others' appreciation",
+            "Taking education as a strict condition of self-worth (conditional worth)"
           ]
         }
       },
       "bt": {
         "target_behavior": [
           {
-            "behavior": "在社交场合中因担心被评判而出现显著焦虑与回避（减少发言、避免深入交流）",
+            "behavior": "In social settings, marked anxiety and avoidance appear due to worrying about being judged (speaking less, avoiding deeper exchange)",
             "antecedent": [
-              "社交聚会",
-              "与朋友讨论教育背景或学历话题"
+              "Social gatherings",
+              "Discussing educational background or qualifications with friends"
             ],
-            "core_reason": "对他人评价的读心与自我否定的核心信念（“我是失败者”），伴随灾难化的拒绝担忧",
-            "function": "逃避潜在的负面评价以降低即时焦虑",
-            "consequence": "与朋友关系紧张、社交参与减少、主观自尊下降"
+            "core_reason": "Mind reading of others' evaluations and the self-negating core belief ('I am a failure'), accompanied by catastrophized worries about rejection",
+            "function": "Escapes potential negative evaluation to reduce immediate anxiety",
+            "consequence": "Strained relationships with friends, reduced social participation, decreased subjective self-esteem"
           },
           {
-            "behavior": "否定正面反馈并强化自我标签（“赞美不算数”）",
+            "behavior": "Negating positive feedback and reinforcing self-labels ('praise does not count')",
             "antecedent": [
-              "收到朋友对其飞行技能或军旅投入的称赞"
+              "Receives praise from friends for flying skills or military commitment"
             ],
-            "core_reason": "维持“失败者/不够好”的核心信念与心理过滤，避免与自我概念产生认知失调",
-            "function": "维持一致的自我图式、短期降低内在冲突",
-            "consequence": "阻碍自尊提升与情绪改善，强化负性自我评价的循环"
+            "core_reason": "Maintains the core belief of 'failure / not good enough' and mental filtering, avoiding cognitive dissonance with the self-concept",
+            "function": "Maintains a consistent self-schema, reducing inner conflict in the short term",
+            "consequence": "Obstructing improvement in self-esteem and mood, reinforcing the cycle of negative self-evaluation"
           }
         ]
       }
@@ -391,15 +391,15 @@
     "basic_info.growth_experiences"
   ],
   "expected_clarification": [
-    "这种感受大概是从什么时候开始的？当时有没有发生什么让您印象深刻的事情？",
-    "在这个问题出现之前，您的生活是什么样的？"
+    "Roughly when did this feeling start? Did anything memorable happen at that time?",
+    "What was your life like before this problem appeared?"
   ],
   "risk_level": "LOW",
   "expected_route": "CLEAR",
-  "expected_action": "按常规流程推进咨询，聚焦于来访者的主要困扰和改变目标",
+  "expected_action": "Proceed with counseling according to the standard process, focusing on the client's main difficulties and change goals",
   "ground_truth_evidence": {
     "basic_info.growth_experiences": [
-      "在大学期间选择辍学，加入军队以追求飞行梦想。此后在与朋友讨论教育背景时逐渐产生自卑与被评判的担忧；近几个月在一次社交聚会上，一位朋友随口提到“高等教育很重要”，这句话触发了她更强烈的自我怀疑与焦虑，导致社交受限。"
+      "During university, she chose to drop out and join the military to pursue her dream of flying. Afterward, when discussing educational backgrounds with friends, she gradually developed inferiority and worry about being judged; a few months ago at a social gathering, a friend casually mentioned that 'higher education is important', and this remark triggered stronger self-doubt and anxiety in her, leading to restricted socializing."
     ]
   }
 }

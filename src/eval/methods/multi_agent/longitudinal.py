@@ -33,7 +33,6 @@ class Longitudinal(EvaluationMethod):
     ) -> Dict[str, float]:
         """Synchronously compute longitudinal metrics across multi-session data."""
         if not sessions_data or len(sessions_data) < 2:
-            # Single session or no session data available
             return {
                 "memory_consistency": 1.0,
                 "cross_session_coherence": 1.0,
@@ -43,12 +42,9 @@ class Longitudinal(EvaluationMethod):
         session_1 = sessions_data[0]
         session_2 = sessions_data[1]
 
-        # 1. Memory Consistency
-        # Check if persistent facts written by memory_update_agent in session 1 appear in session 2 memory
         mem_update_s1 = session_1.get("memory_update", {}) or {}
         persistent_facts = mem_update_s1.get("persistent", [])
         if not persistent_facts:
-            # Check if target_fields or traits had persistent items
             target_fields = mem_update_s1.get("target_fields", {})
             for val in target_fields.values():
                 if isinstance(val, list):
@@ -68,28 +64,21 @@ class Longitudinal(EvaluationMethod):
                     matched_facts += 1
             memory_consistency = matched_facts / len(persistent_facts)
         else:
-            # If no new persistent facts to write, consistency is 1.0
             memory_consistency = 1.0
 
-        # 2. Cross-Session Coherence
-        # Check if outcome evaluation goal_progress in session 1 and session 2 are coherent
         outcome_s1 = session_1.get("outcome_evaluation", {}) or {}
         outcome_s2 = session_2.get("outcome_evaluation", {}) or {}
 
         signal_1 = outcome_s1.get("engagement_signal", "NEUTRAL")
         signal_2 = outcome_s2.get("engagement_signal", "NEUTRAL")
 
-        # Coherence: engagement doesn't oscillate wildly without explanation
         if signal_1 == "WITHDRAWN" and signal_2 == "WITHDRAWN":
             cross_session_coherence = 1.0
         elif signal_1 != "WITHDRAWN" and signal_2 != "WITHDRAWN":
             cross_session_coherence = 1.0
         else:
-            # A shift from engaged to withdrawn or vice-versa
             cross_session_coherence = 0.8
 
-        # 3. Goal Consistency
-        # Goals from session 1 focus or next session plan preserved in session 2
         next_plan_s1 = session_1.get("summary", {}).get("next_session_plan", {})
         planned_focus_s1 = next_plan_s1.get("next_session_focus", [])
         actual_focus_s2 = session_2.get("focus", [])
