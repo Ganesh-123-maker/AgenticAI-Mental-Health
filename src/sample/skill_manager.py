@@ -263,7 +263,8 @@ class SkillManager:
                     session_goals=session_goals,
                     skills_library=skill_to_filter,
                 )
-                response = await self.llm_response(select_system_prompt, select_user_prompt, model_kwgs=model_kwgs)
+                response = await self.llm_response(select_system_prompt, select_user_prompt, model_kwgs=model_kwgs,
+                                                   purpose="skill_coarse_filter")
                 parsed = self._extract_json_object(response)
                 raw_ids = parsed.get("skill_id", []) if isinstance(parsed, dict) else []
                 ids = [(sect, str(sid)) for sid in raw_ids]
@@ -379,7 +380,8 @@ class SkillManager:
             stage=stage,
             Treatment_Structure="General",
         )
-        response = await self.llm_response(rewrite_system_prompt, rendered_user, model_kwgs=model_kwgs)
+        response = await self.llm_response(rewrite_system_prompt, rendered_user, model_kwgs=model_kwgs,
+                                           purpose="skill_rewrite")
         res = {
             "messages": [
                 {"role": "system", "content": rewrite_system_prompt},
@@ -394,13 +396,14 @@ class SkillManager:
         template: str,
         input_text: str,
         model_kwgs: Optional[Dict[str, Any]] = None,
+        purpose: str = "skill_llm",
     ) -> str:
         del model_kwgs
         messages = [
             {"role": "system", "content": template},
             {"role": "user", "content": input_text},
         ]
-        return await self._backend.chat_text(messages=messages)
+        return await self._backend.chat_text(messages=messages, ledger_purpose=purpose)
 
     def find_skill_by_id(self, stage: int, skill_ids: Sequence[Tuple[str, str]]) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
         result: List[Dict[str, Any]] = []

@@ -130,7 +130,12 @@ class PsychAgentWebBackend:
                 "objective": session_focus,
             }
 
-            candidate_skills = await self._build_candidate_skills(sect, session_goals, stage_idx)
+            # Candidate skills are built lazily, only on the counseling
+            # path below. Building them costs one chat call (the skill
+            # coarse filter), and every template reply above (HIGH-RISK,
+            # clarification question) returns before any skill is used —
+            # so building them up front burned quota on intake turns.
+            candidate_skills = None
             transcript = self._build_transcript(visit_state.messages)
             user_query = self._last_user_query(transcript)
             diag_hist = self._build_diag_history(transcript[:-1])
@@ -294,6 +299,8 @@ class PsychAgentWebBackend:
                     })
                     current_route = "CLEAR"
 
+                if candidate_skills is None:
+                    candidate_skills = await self._build_candidate_skills(sect, session_goals, stage_idx)
                 suggested_skills: List[Dict[str, Any]] = []
                 if user_query:
                     suggested_skills, _ = await self._skill_manager.retrive(
@@ -317,7 +324,7 @@ class PsychAgentWebBackend:
                 messages = [{"role": "system", "content": system_prompt}]
                 messages.extend(self._build_chat_history(visit_state.messages))
 
-                raw = await self._chat_once(messages)
+                raw = await self._chat_once(messages, purpose="counseling")
                 text, should_end = self._normalize_output_with_end(raw)
                 if not text:
                     text = "Thank you for sharing that with me. Let's focus on taking a concrete step forward together."
@@ -346,6 +353,8 @@ class PsychAgentWebBackend:
                         "clarification_state": clar_state,
                         "reply_source": reply_source, "reply_model": reply_model}
 
+            if candidate_skills is None:
+                candidate_skills = await self._build_candidate_skills(sect, session_goals, stage_idx)
             suggested_skills: List[Dict[str, Any]] = []
             if user_query:
                 suggested_skills, _ = await self._skill_manager.retrive(
@@ -369,7 +378,7 @@ class PsychAgentWebBackend:
             messages = [{"role": "system", "content": system_prompt}]
             messages.extend(self._build_chat_history(visit_state.messages))
 
-            raw = await self._chat_once(messages)
+            raw = await self._chat_once(messages, purpose="counseling")
             text, should_end = self._normalize_output_with_end(raw)
             if text:
                 reply_source, reply_model = self._reply_source()
@@ -378,7 +387,7 @@ class PsychAgentWebBackend:
             raise RuntimeError("empty response from PsychAgent prompt chain")
         except Exception as exc:
             self._logger.warning("PsychAgent prompt chain failed, falling back to baseline prompt: %s", exc)
-            raw = await self._chat_once(fallback_messages)
+            raw = await self._chat_once(fallback_messages, purpose="counseling_fallback")
             text, should_end = self._normalize_output_with_end(raw)
             if not text:
                 raise RuntimeError("empty response from fallback prompt")
@@ -386,7 +395,7 @@ class PsychAgentWebBackend:
             return {"text": text, "end": should_end,
                     "reply_source": reply_source, "reply_model": reply_model}
 
-    async def _chat_once(self, messages: List[Dict[str, str]]) -> str:
+    async def _chat_once(self, messages: List[Dict[str, str]], purpose: str = "chat") -> str:
         return await self._backend.chat_text(
             messages=messages,
             model=self._baseline_config.model,
@@ -397,6 +406,7 @@ class PsychAgentWebBackend:
             retry_sleep_sec=self._baseline_config.retry_sleep_sec,
             end_token=self._baseline_config.end_token,
             output_language=self._runtime_config.output_language,
+            ledger_purpose=purpose,
         )
 
     async def build_session_close_artifacts(
@@ -513,7 +523,8 @@ class PsychAgentWebBackend:
                     [
                         {"role": "system", "content": system_prompt},
                         {"role": "user", "content": user_prompt},
-                    ]
+                    ],
+                    purpose=task_label,
                 )
                 payload = safe_json_loads(raw)
                 if "static_traits" in payload and isinstance(payload["static_traits"], dict):

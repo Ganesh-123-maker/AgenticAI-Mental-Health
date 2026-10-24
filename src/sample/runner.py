@@ -439,6 +439,7 @@ class PsychAgentRunner:
             self._counselor_backend,
             counselor_messages,
             f"[case={case.case_id}] opening",
+            purpose="opening",
         )
         c_open_clean, _ = strip_end_token(c_open_pure, self.baseline_config.end_token)
         raw_open_clean, opening_end = strip_end_token(c_open_raw, self.baseline_config.end_token)
@@ -513,6 +514,7 @@ class PsychAgentRunner:
                         self._counselor_backend,
                         counselor_messages,
                         f"[case={case.case_id}] counselor turn={c_turns}",
+                        purpose="counseling",
                     )
                 c_resp_clean, is_end = strip_end_token(c_resp_pure, self.baseline_config.end_token)
                 raw_resp_clean, _ = strip_end_token(c_resp_raw, self.baseline_config.end_token)
@@ -547,6 +549,7 @@ class PsychAgentRunner:
                         {"role": "system", "content": system_prompt},
                         {"role": "user", "content": user_prompt},
                     ],
+                    purpose="session_summary",
                 )
                 temp = safe_json_loads(raw)
                 summary_model.model_validate(temp)
@@ -583,6 +586,7 @@ class PsychAgentRunner:
                         {"role": "system", "content": system_prompt},
                         {"role": "user", "content": user_prompt},
                     ],
+                    purpose="session_profile",
                 )
                 temp = safe_json_loads(raw)
                 if "static_traits" in temp and isinstance(temp["static_traits"], dict):
@@ -686,12 +690,13 @@ class PsychAgentRunner:
         backend: ModelBackend,
         messages: List[Dict[str, str]],
         log_prefix: str,
+        purpose: Optional[str] = None,
     ) -> tuple[str, str]:
         last_exc: Exception | None = None
         saw_empty_response = False
         for _ in range(self.runtime_config.psychagent_max_retries):
             try:
-                raw = await self._chat_once(backend, messages)
+                raw = await self._chat_once(backend, messages, purpose=purpose)
                 pure = extract_tag_content(raw, tag="response") or raw
                 pure = pure.strip()
                 if pure:
@@ -714,7 +719,7 @@ class PsychAgentRunner:
             f"{log_prefix} failed after {self.runtime_config.psychagent_max_retries} retries"
         )
 
-    async def _chat_once(self, backend: ModelBackend, messages: List[Dict[str, str]]) -> str:
+    async def _chat_once(self, backend: ModelBackend, messages: List[Dict[str, str]], purpose: Optional[str] = None) -> str:
         return await backend.chat_text(
             messages=messages,
             model=self.baseline_config.model,
@@ -725,6 +730,7 @@ class PsychAgentRunner:
             retry_sleep_sec=self.baseline_config.retry_sleep_sec,
             end_token=self.baseline_config.end_token,
             output_language=self.runtime_config.output_language,
+            ledger_purpose=purpose or "chat",
         )
 
     def _inspect_case_resume(self, case: ClientCase) -> _CaseResumeDecision:
