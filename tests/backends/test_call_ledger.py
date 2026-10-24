@@ -26,6 +26,7 @@ from sample.backends.call_ledger import (
     reset_ledger,
 )
 from sample.backends.openai_api import OpenAIStyleBackend
+from sample.core.retry import QuotaExhaustedError
 
 
 @pytest.fixture(autouse=True)
@@ -132,7 +133,10 @@ def test_429_recorded_once_with_status_and_no_retry_when_max_retries_zero(monkey
         raise _FakeStatus(429)
 
     be = _backend(_FakeClient(_raise))
-    with pytest.raises(Exception, match="retryable http status 429"):
+    # Item 3 changed 429 semantics: quota exhaustion is now a hard stop
+    # (QuotaExhaustedError), not a retryable error — the ledger
+    # expectation (exactly one 429 record, no retry) is unchanged.
+    with pytest.raises(QuotaExhaustedError, match="quota exhausted"):
         asyncio.run(be.chat_text(messages=[{"role": "user", "content": "hi"}],
                                  ledger_purpose="counseling"))
     records = DEFAULT_LEDGER.records()
