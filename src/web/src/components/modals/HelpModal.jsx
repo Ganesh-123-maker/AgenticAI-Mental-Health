@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { CircleHelp, ShieldAlert, X } from "lucide-react";
 
 const STEPS = [
@@ -12,6 +13,16 @@ const STEPS = [
  * Safety wording kept verbatim from the existing UI.
  */
 export function HelpModal({ open, onClose }) {
+  // Escape closes the dialog, replicating the auth modal's pattern.
+  useEffect(() => {
+    if (!open) return undefined;
+    function handleKey(event) {
+      if (event.key === "Escape") onClose();
+    }
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [open, onClose]);
+
   if (!open) return null;
 
   return (
