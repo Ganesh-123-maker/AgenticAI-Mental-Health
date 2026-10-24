@@ -23,8 +23,16 @@ except ImportError:  # pragma: no cover - optional dependency guard
     APIStatusError = _OpenAINotInstalledError  # type: ignore[assignment]
     APITimeoutError = _OpenAINotInstalledError  # type: ignore[assignment]
 
-from ..core.retry import FatalBackendError, RetryableError, RetryPolicy, retry_async
+from ..core.retry import (
+    FatalBackendError,
+    QuotaExhaustedError,
+    RetryableError,
+    RetryableHTTPError,
+    RetryPolicy,
+    retry_async,
+)
 from .base import BackendHTTPError, BackendSettings, Message
+from .call_ledger import record_call
 
 INSECURE_CLIENT_BASE_URL = "https://10.140.158.153:1020/dsv3/all/v1"
 
@@ -67,23 +75,45 @@ class OpenAIStyleBackend:
         temperature = float(kwargs.get("temperature", self._settings.temperature))
         max_tokens = int(kwargs.get("max_tokens", self._settings.max_tokens))
         timeout_sec = int(kwargs.get("timeout_sec", self._settings.timeout_sec))
+        # Purpose tag for the call ledger (e.g. "counseling",
+        # "skill_coarse_filter"); metadata only, never prompt content.
+        ledger_purpose = str(kwargs.get("ledger_purpose", "chat"))
 
         retry_policy = RetryPolicy(
             max_retries=int(kwargs.get("max_retries", self._settings.max_retries)),
             base_sleep_sec=float(kwargs.get("retry_sleep_sec", self._settings.retry_sleep_sec)),
         )
 
+        # Per-call budget for transient 503s only: initial attempt + at
+        # most 2 retries. Other retryable statuses keep the policy-bound
+        # retries; 429 never reaches here (QuotaExhaustedError).
+        attempt_state = {"http_503_retries": 0}
+
         async def _call_once() -> str:
-            response = await asyncio.wait_for(
-                self._async_post_chat(
-                    model=model,
-                    messages=messages,
-                    temperature=temperature,
-                    max_tokens=max_tokens,
-                    timeout_sec=timeout_sec,
-                ),
-                timeout=timeout_sec,
-            )
+            try:
+                response = await asyncio.wait_for(
+                    self._async_post_chat(
+                        model=model,
+                        messages=messages,
+                        temperature=temperature,
+                        max_tokens=max_tokens,
+                        timeout_sec=timeout_sec,
+                        ledger_purpose=ledger_purpose,
+                    ),
+                    timeout=timeout_sec,
+                )
+            except RetryableHTTPError as exc:
+                if exc.status == 503:
+                    attempt_state["http_503_retries"] += 1
+                    if attempt_state["http_503_retries"] > 2:
+                        raise FatalBackendError("503 persisted after 2 retries") from exc
+                raise
+            except (asyncio.TimeoutError, TimeoutError):
+                # The client-level timeout path in _async_post_chat did not
+                # fire (wait_for won the race); record the attempt, then
+                # re-raise unchanged so retry behavior is identical.
+                record_call(purpose=ledger_purpose, model=model, status="timeout")
+                raise
             response_json = self._to_response_dict(response)
             text = self._extract_text(response_json).strip()
             try:
@@ -96,7 +126,11 @@ class OpenAIStyleBackend:
                 model, _finish, len(text), text,
             )
             if not text:
+                record_call(purpose=ledger_purpose, model=model, status="empty",
+                            finish_reason=_finish, response_chars=0)
                 raise RetryableError("empty model output")
+            record_call(purpose=ledger_purpose, model=model, status="ok",
+                        finish_reason=_finish, response_chars=len(text))
             return text
 
         return await retry_async(_call_once, retry_policy, logger=self._logger)
@@ -109,6 +143,7 @@ class OpenAIStyleBackend:
         temperature: float,
         max_tokens: int,
         timeout_sec: int,
+        ledger_purpose: str = "chat",
     ) -> Any:
         try:
             return await self.client.chat.completions.create(
@@ -120,9 +155,11 @@ class OpenAIStyleBackend:
             )
         except APITimeoutError as exc:
             self._logger.error("backend timeout error: %r", exc)
+            record_call(purpose=ledger_purpose, model=model, status="timeout")
             raise RetryableError(f"timeout: {exc!r}") from exc
         except APIConnectionError as exc:
             self._logger.error("backend connection error: %r", exc)
+            record_call(purpose=ledger_purpose, model=model, status="connection")
             raise RetryableError(f"connection error: {exc!r}") from exc
         except APIStatusError as exc:
             status = int(getattr(exc, "status_code", 0) or 0)
@@ -134,7 +171,15 @@ class OpenAIStyleBackend:
             except Exception:
                 body = ""
             self._logger.error("backend http error status=%s body=%s", status, body)
-            if status in {408, 409, 425, 429, 500, 502, 503, 504}:
+            record_call(purpose=ledger_purpose, model=model, status=str(status))
+            if status == 429:
+                # Quota exhaustion is a hard stop: no retry, no key
+                # switch, no model switch. The provider body is not
+                # included in the message (it is untrusted text).
+                raise QuotaExhaustedError("quota exhausted: http status 429") from exc
+            if status == 503:
+                raise RetryableHTTPError(503, "retryable http status 503") from exc
+            if status in {408, 409, 425, 500, 502, 504}:
                 raise RetryableError(f"retryable http status {status}") from exc
             raise FatalBackendError(f"fatal http status {status}: {body}") from exc
 

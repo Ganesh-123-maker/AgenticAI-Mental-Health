@@ -13,8 +13,30 @@ class RetryableError(RuntimeError):
     """Base class for transient failures."""
 
 
+class RetryableHTTPError(RetryableError):
+    """A retryable HTTP failure carrying its status code.
+
+    Lets callers bound retries per status (e.g. at most 2 retries for
+    transient 503s) instead of retrying every retryable status alike.
+    """
+
+    def __init__(self, status: int, message: str = "") -> None:
+        super().__init__(message or f"retryable http status {status}")
+        self.status = status
+
+
 class FatalBackendError(RuntimeError):
     """Raised when a backend fails after retries or in non-retryable ways."""
+
+
+class QuotaExhaustedError(FatalBackendError):
+    """Provider quota exhausted (HTTP 429).
+
+    Non-retryable by construction: retrying a spent daily quota, switching
+    keys, or switching models are all forbidden by the live-run stop rule,
+    so this error must propagate immediately at every layer instead of
+    being retried or wrapped into a generic failure.
+    """
 
 
 @dataclass
@@ -60,6 +82,11 @@ async def retry_async(
                     repr(exc),
                 )
             await asyncio.sleep(sleep_sec)
+        except FatalBackendError:
+            # Already non-retryable (e.g. QuotaExhaustedError): propagate
+            # unchanged so callers can recognize it instead of seeing a
+            # generic wrapper.
+            raise
         except BaseException as exc:
             raise FatalBackendError(f"non-retryable backend error: {exc!r}") from exc
 

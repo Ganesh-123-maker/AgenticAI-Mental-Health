@@ -12,6 +12,7 @@ from sample.agents.safety_supervisor import SafetySupervisor
 from sample.backends.base import BackendSettings, ModelBackend
 from sample.backends.dummy_backend import DummyBackend
 from sample.backends.openai_api import OpenAIAPIBackend
+from sample.core.retry import QuotaExhaustedError
 from sample.core.schemas import BaselineConfig, RuntimeConfig
 from sample.io.config_loader import load_baseline_config, load_runtime_config
 from sample.models import MODALITY_MODELS
@@ -42,6 +43,46 @@ SESSION_FOCUS_DEFAULT: List[str] = [
     "Identify potential risks and available resources",
     "Session summary and collaborative feedback",
 ]
+
+
+def _is_quota_exhausted(exc: BaseException) -> bool:
+    """True if exc is, or wraps, a QuotaExhaustedError (bounded walk)."""
+    seen = set()
+    current: Optional[BaseException] = exc
+    for _ in range(10):
+        if current is None or id(current) in seen:
+            return False
+        seen.add(id(current))
+        if isinstance(current, QuotaExhaustedError):
+            return True
+        current = current.__cause__ or current.__context__
+    return False
+
+
+def _quota_exhausted_reply(trail: list, route: str, longitudinal_risk: Any, clar_state: dict) -> Dict[str, Any]:
+    """Visible quota-exhausted state for a failed counseling attempt.
+
+    Returned instead of raising (which the service layer turns into a
+    raw 502) and instead of falling back to another doomed LLM call.
+    Routing state is preserved; the trace records the failed attempt.
+    No routing decision is changed by this reply.
+    """
+    trail.append({
+        "agent": "web_engine",
+        "step": "counseling_attempted_upstream_failed",
+        "error": "quota_exhausted",
+    })
+    return {
+        "text": "The counseling service is temporarily unavailable because its daily quota is exhausted. Please try again later.",
+        "end": False,
+        "agent_trace": trail,
+        "route": route,
+        "longitudinal_risk": longitudinal_risk,
+        "clarification_state": clar_state,
+        "reply_source": "error",
+        "reply_model": None,
+        "error": "quota_exhausted",
+    }
 
 
 class PsychAgentWebBackend:
@@ -130,7 +171,12 @@ class PsychAgentWebBackend:
                 "objective": session_focus,
             }
 
-            candidate_skills = await self._build_candidate_skills(sect, session_goals, stage_idx)
+            # Candidate skills are built lazily, only on the counseling
+            # path below. Building them costs one chat call (the skill
+            # coarse filter), and every template reply above (HIGH-RISK,
+            # clarification question) returns before any skill is used —
+            # so building them up front burned quota on intake turns.
+            candidate_skills = None
             transcript = self._build_transcript(visit_state.messages)
             user_query = self._last_user_query(transcript)
             diag_hist = self._build_diag_history(transcript[:-1])
@@ -294,6 +340,8 @@ class PsychAgentWebBackend:
                     })
                     current_route = "CLEAR"
 
+                if candidate_skills is None:
+                    candidate_skills = await self._build_candidate_skills(sect, session_goals, stage_idx)
                 suggested_skills: List[Dict[str, Any]] = []
                 if user_query:
                     suggested_skills, _ = await self._skill_manager.retrive(
@@ -317,7 +365,7 @@ class PsychAgentWebBackend:
                 messages = [{"role": "system", "content": system_prompt}]
                 messages.extend(self._build_chat_history(visit_state.messages))
 
-                raw = await self._chat_once(messages)
+                raw = await self._chat_once(messages, purpose="counseling")
                 text, should_end = self._normalize_output_with_end(raw)
                 if not text:
                     text = "Thank you for sharing that with me. Let's focus on taking a concrete step forward together."
@@ -346,6 +394,8 @@ class PsychAgentWebBackend:
                         "clarification_state": clar_state,
                         "reply_source": reply_source, "reply_model": reply_model}
 
+            if candidate_skills is None:
+                candidate_skills = await self._build_candidate_skills(sect, session_goals, stage_idx)
             suggested_skills: List[Dict[str, Any]] = []
             if user_query:
                 suggested_skills, _ = await self._skill_manager.retrive(
@@ -369,7 +419,7 @@ class PsychAgentWebBackend:
             messages = [{"role": "system", "content": system_prompt}]
             messages.extend(self._build_chat_history(visit_state.messages))
 
-            raw = await self._chat_once(messages)
+            raw = await self._chat_once(messages, purpose="counseling")
             text, should_end = self._normalize_output_with_end(raw)
             if text:
                 reply_source, reply_model = self._reply_source()
@@ -377,16 +427,35 @@ class PsychAgentWebBackend:
                         "reply_source": reply_source, "reply_model": reply_model}
             raise RuntimeError("empty response from PsychAgent prompt chain")
         except Exception as exc:
+            if _is_quota_exhausted(exc):
+                # Quota exhaustion surfaces as a visible state, not a
+                # fallback to another doomed LLM call and not a raw 502.
+                return _quota_exhausted_reply(
+                    locals().get("trail") or [],
+                    locals().get("current_route") or "",
+                    locals().get("longitudinal_risk"),
+                    locals().get("clar_state") or self._clarification_state(psych_context),
+                )
             self._logger.warning("PsychAgent prompt chain failed, falling back to baseline prompt: %s", exc)
-            raw = await self._chat_once(fallback_messages)
-            text, should_end = self._normalize_output_with_end(raw)
+            try:
+                raw = await self._chat_once(fallback_messages, purpose="counseling_fallback")
+                text, should_end = self._normalize_output_with_end(raw)
+            except Exception as fallback_exc:
+                if _is_quota_exhausted(fallback_exc):
+                    return _quota_exhausted_reply(
+                        locals().get("trail") or [],
+                        locals().get("current_route") or "",
+                        locals().get("longitudinal_risk"),
+                        locals().get("clar_state") or self._clarification_state(psych_context),
+                    )
+                raise
             if not text:
                 raise RuntimeError("empty response from fallback prompt")
             reply_source, reply_model = self._reply_source()
             return {"text": text, "end": should_end,
                     "reply_source": reply_source, "reply_model": reply_model}
 
-    async def _chat_once(self, messages: List[Dict[str, str]]) -> str:
+    async def _chat_once(self, messages: List[Dict[str, str]], purpose: str = "chat") -> str:
         return await self._backend.chat_text(
             messages=messages,
             model=self._baseline_config.model,
@@ -397,6 +466,7 @@ class PsychAgentWebBackend:
             retry_sleep_sec=self._baseline_config.retry_sleep_sec,
             end_token=self._baseline_config.end_token,
             output_language=self._runtime_config.output_language,
+            ledger_purpose=purpose,
         )
 
     async def build_session_close_artifacts(
@@ -513,7 +583,8 @@ class PsychAgentWebBackend:
                     [
                         {"role": "system", "content": system_prompt},
                         {"role": "user", "content": user_prompt},
-                    ]
+                    ],
+                    purpose=task_label,
                 )
                 payload = safe_json_loads(raw)
                 if "static_traits" in payload and isinstance(payload["static_traits"], dict):
