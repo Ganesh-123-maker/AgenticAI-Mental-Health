@@ -23,6 +23,7 @@ from backend.domain import SCHOOLS, STAGES, SchoolInfo, StageInfo, stage_from_ke
 from backend.models import AuthTokenRecord, UserRecord
 from backend.psychagent_engine import PsychAgentWebBackend
 from backend.routes.courses import create_courses_router
+from backend.sqlite_pragmas import apply_sqlite_pragmas
 from backend.routes.visits import create_visits_router
 from fastapi import Depends, FastAPI, Header, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -43,8 +44,12 @@ RUNTIME_CONFIG_PATH = Path(
     )
 )
 DB_URL = os.environ.get("DB_URL", f"sqlite:///{(APP_DIR / 'data.db').resolve()}")
-CONNECT_ARGS = {"check_same_thread": False} if DB_URL.startswith("sqlite") else {}
+CONNECT_ARGS = {"check_same_thread": False, "timeout": 30} if DB_URL.startswith("sqlite") else {}
 engine = create_engine(DB_URL, echo=False, connect_args=CONNECT_ARGS)
+if DB_URL.startswith("sqlite"):
+    # WAL + 30s busy timeout: concurrent auth-token inserts previously
+    # surfaced as transient "database is locked" 500s under default settings.
+    apply_sqlite_pragmas(engine)
 _psychagent_backend: PsychAgentWebBackend | None = None
 
 

@@ -14,6 +14,7 @@ from .backends.dummy_backend import DummyBackend
 from .backends.openai_api import OpenAIAPIBackend
 from .client.simulator import ClientSimulator
 from .core.contracts import CaseResumeDecision, CaseRunResult
+from .core.retry import QuotaExhaustedError
 from .core.prompt_manager import PromptManager
 from .core.schemas import (
     BaselineConfig,
@@ -702,6 +703,10 @@ class PsychAgentRunner:
                 if pure:
                     return pure, raw
                 saw_empty_response = True
+            except QuotaExhaustedError:
+                # Spent daily quota must not be retried at this layer
+                # either: propagate immediately, no sleep, no retry.
+                raise
             except Exception as exc:
                 last_exc = exc
                 self._logger.warning("%s api error: %s", log_prefix, exc)

@@ -23,7 +23,14 @@ except ImportError:  # pragma: no cover - optional dependency guard
     APIStatusError = _OpenAINotInstalledError  # type: ignore[assignment]
     APITimeoutError = _OpenAINotInstalledError  # type: ignore[assignment]
 
-from ..core.retry import FatalBackendError, RetryableError, RetryPolicy, retry_async
+from ..core.retry import (
+    FatalBackendError,
+    QuotaExhaustedError,
+    RetryableError,
+    RetryableHTTPError,
+    RetryPolicy,
+    retry_async,
+)
 from .base import BackendHTTPError, BackendSettings, Message
 from .call_ledger import record_call
 
@@ -77,6 +84,11 @@ class OpenAIStyleBackend:
             base_sleep_sec=float(kwargs.get("retry_sleep_sec", self._settings.retry_sleep_sec)),
         )
 
+        # Per-call budget for transient 503s only: initial attempt + at
+        # most 2 retries. Other retryable statuses keep the policy-bound
+        # retries; 429 never reaches here (QuotaExhaustedError).
+        attempt_state = {"http_503_retries": 0}
+
         async def _call_once() -> str:
             try:
                 response = await asyncio.wait_for(
@@ -90,6 +102,12 @@ class OpenAIStyleBackend:
                     ),
                     timeout=timeout_sec,
                 )
+            except RetryableHTTPError as exc:
+                if exc.status == 503:
+                    attempt_state["http_503_retries"] += 1
+                    if attempt_state["http_503_retries"] > 2:
+                        raise FatalBackendError("503 persisted after 2 retries") from exc
+                raise
             except (asyncio.TimeoutError, TimeoutError):
                 # The client-level timeout path in _async_post_chat did not
                 # fire (wait_for won the race); record the attempt, then
@@ -154,7 +172,14 @@ class OpenAIStyleBackend:
                 body = ""
             self._logger.error("backend http error status=%s body=%s", status, body)
             record_call(purpose=ledger_purpose, model=model, status=str(status))
-            if status in {408, 409, 425, 429, 500, 502, 503, 504}:
+            if status == 429:
+                # Quota exhaustion is a hard stop: no retry, no key
+                # switch, no model switch. The provider body is not
+                # included in the message (it is untrusted text).
+                raise QuotaExhaustedError("quota exhausted: http status 429") from exc
+            if status == 503:
+                raise RetryableHTTPError(503, "retryable http status 503") from exc
+            if status in {408, 409, 425, 500, 502, 504}:
                 raise RetryableError(f"retryable http status {status}") from exc
             raise FatalBackendError(f"fatal http status {status}: {body}") from exc
 

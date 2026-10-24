@@ -12,6 +12,7 @@ from sample.agents.safety_supervisor import SafetySupervisor
 from sample.backends.base import BackendSettings, ModelBackend
 from sample.backends.dummy_backend import DummyBackend
 from sample.backends.openai_api import OpenAIAPIBackend
+from sample.core.retry import QuotaExhaustedError
 from sample.core.schemas import BaselineConfig, RuntimeConfig
 from sample.io.config_loader import load_baseline_config, load_runtime_config
 from sample.models import MODALITY_MODELS
@@ -42,6 +43,46 @@ SESSION_FOCUS_DEFAULT: List[str] = [
     "Identify potential risks and available resources",
     "Session summary and collaborative feedback",
 ]
+
+
+def _is_quota_exhausted(exc: BaseException) -> bool:
+    """True if exc is, or wraps, a QuotaExhaustedError (bounded walk)."""
+    seen = set()
+    current: Optional[BaseException] = exc
+    for _ in range(10):
+        if current is None or id(current) in seen:
+            return False
+        seen.add(id(current))
+        if isinstance(current, QuotaExhaustedError):
+            return True
+        current = current.__cause__ or current.__context__
+    return False
+
+
+def _quota_exhausted_reply(trail: list, route: str, longitudinal_risk: Any, clar_state: dict) -> Dict[str, Any]:
+    """Visible quota-exhausted state for a failed counseling attempt.
+
+    Returned instead of raising (which the service layer turns into a
+    raw 502) and instead of falling back to another doomed LLM call.
+    Routing state is preserved; the trace records the failed attempt.
+    No routing decision is changed by this reply.
+    """
+    trail.append({
+        "agent": "web_engine",
+        "step": "counseling_attempted_upstream_failed",
+        "error": "quota_exhausted",
+    })
+    return {
+        "text": "The counseling service is temporarily unavailable because its daily quota is exhausted. Please try again later.",
+        "end": False,
+        "agent_trace": trail,
+        "route": route,
+        "longitudinal_risk": longitudinal_risk,
+        "clarification_state": clar_state,
+        "reply_source": "error",
+        "reply_model": None,
+        "error": "quota_exhausted",
+    }
 
 
 class PsychAgentWebBackend:
@@ -386,9 +427,28 @@ class PsychAgentWebBackend:
                         "reply_source": reply_source, "reply_model": reply_model}
             raise RuntimeError("empty response from PsychAgent prompt chain")
         except Exception as exc:
+            if _is_quota_exhausted(exc):
+                # Quota exhaustion surfaces as a visible state, not a
+                # fallback to another doomed LLM call and not a raw 502.
+                return _quota_exhausted_reply(
+                    locals().get("trail") or [],
+                    locals().get("current_route") or "",
+                    locals().get("longitudinal_risk"),
+                    locals().get("clar_state") or self._clarification_state(psych_context),
+                )
             self._logger.warning("PsychAgent prompt chain failed, falling back to baseline prompt: %s", exc)
-            raw = await self._chat_once(fallback_messages, purpose="counseling_fallback")
-            text, should_end = self._normalize_output_with_end(raw)
+            try:
+                raw = await self._chat_once(fallback_messages, purpose="counseling_fallback")
+                text, should_end = self._normalize_output_with_end(raw)
+            except Exception as fallback_exc:
+                if _is_quota_exhausted(fallback_exc):
+                    return _quota_exhausted_reply(
+                        locals().get("trail") or [],
+                        locals().get("current_route") or "",
+                        locals().get("longitudinal_risk"),
+                        locals().get("clar_state") or self._clarification_state(psych_context),
+                    )
+                raise
             if not text:
                 raise RuntimeError("empty response from fallback prompt")
             reply_source, reply_model = self._reply_source()

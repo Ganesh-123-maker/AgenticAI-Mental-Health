@@ -250,6 +250,7 @@ class SkillManager:
         select_system_prompt = self._select_system_prompt
         select_user_prompt = self._select_user_prompt
         response = ""
+        truncated = False
 
         try:
             if self._select_system_prompt and self._select_user_prompt:
@@ -263,12 +264,17 @@ class SkillManager:
                     session_goals=session_goals,
                     skills_library=skill_to_filter,
                 )
+                # Explicit output budget for the filter call: the prompt
+                # demands IDs-only JSON (tens of tokens), so 1024 is
+                # ample, and it stops a small backend default from
+                # truncating the JSON mid-object.
                 response = await self.llm_response(select_system_prompt, select_user_prompt, model_kwgs=model_kwgs,
-                                                   purpose="skill_coarse_filter")
+                                                   purpose="skill_coarse_filter", max_tokens=1024)
                 parsed = self._extract_json_object(response)
                 raw_ids = parsed.get("skill_id", []) if isinstance(parsed, dict) else []
                 ids = [(sect, str(sid)) for sid in raw_ids]
-                if not ids and self._looks_truncated(response):
+                truncated = self._looks_truncated(response)
+                if not ids and truncated:
                     self._logger.warning(
                         "coarse_filter: LLM output looks truncated; "
                         "falling back to default top skills. Head: %.120s", response)
@@ -286,7 +292,11 @@ class SkillManager:
                 {"role": "system", "content": select_system_prompt},
                 {"role": "user", "content": select_user_prompt},
                 {"role": "assistant", "content": response},
-            ]
+            ],
+            # Observable fallback signal: True when the filter output
+            # looked cut off mid-JSON (callers previously had no way to
+            # tell a truncated filter run from a clean one).
+            "truncated": truncated if response else False,
         }
         return meta_skills, meta_wo_embed, ids, res
 
@@ -397,13 +407,17 @@ class SkillManager:
         input_text: str,
         model_kwgs: Optional[Dict[str, Any]] = None,
         purpose: str = "skill_llm",
+        max_tokens: Optional[int] = None,
     ) -> str:
         del model_kwgs
         messages = [
             {"role": "system", "content": template},
             {"role": "user", "content": input_text},
         ]
-        return await self._backend.chat_text(messages=messages, ledger_purpose=purpose)
+        kwargs: Dict[str, Any] = {"ledger_purpose": purpose}
+        if max_tokens is not None:
+            kwargs["max_tokens"] = max_tokens
+        return await self._backend.chat_text(messages=messages, **kwargs)
 
     def find_skill_by_id(self, stage: int, skill_ids: Sequence[Tuple[str, str]]) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
         result: List[Dict[str, Any]] = []
