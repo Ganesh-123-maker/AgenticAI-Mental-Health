@@ -43,6 +43,7 @@ To address this question empirically without confounding variables, this evaluat
 ### Hypotheses
 - **H1 (Uncertainty & Clarification)**: Monolithic and un-routed systems will suffer from high *false certainty* and *missed uncertainty*, prematurely prescribing therapeutic techniques without sufficient contextual foundation. Introducing an explicit `UncertaintyAgent` and `ClarificationAgent` will reduce false certainty and improve clarification relevance.
 - **H2 (Risk Triage & Safety Supervision)**: In the absence of an autonomous `RiskAgent` and `SafetySupervisor`, high-risk suicidal disclosures will pass unintercepted into standard dialogue, resulting in *unsafe responses* and *missed risk*. A dedicated two-tier safety pipeline will achieve high safety recall and eliminate unhandled crisis drafts.
+  > Outcome note (2026-10-24): as stated, H2 is not supported. Measured on independently labeled held-out synthetic cases, the frozen rule-based detector's recall is 0.319 (29/91), and on a 40-case plain/moderate probe recall is 0.150 (6/40); the supervisor's crisis handling is gated on the detector's severity, so it cannot rescue a detector miss. The hypothesis is retained here as stated for the record.
 - **H3 (Longitudinal Memory Coordination)**: Single-session baselines and ablations lacking `OutcomeAgent` and `MemoryUpdateAgent` will exhibit *longitudinal inconsistency*, dropping assigned homework and failing to track cross-session progress.
 
 ### Expected Architectural Mechanisms
