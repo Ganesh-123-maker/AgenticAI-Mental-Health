@@ -1,5 +1,20 @@
 # Held-Out Red-Team Set
 
+## Status (2026-10-24 addendum — read first)
+
+This set is a **validation set used once for diagnosis**: Part B scored it
+exactly once against the detector frozen at `630386f`. It is **not** a clean
+held-out set for later detectors. Category-level Part B results (notably weak
+hypotheticals and mixed-language recall) were known before PRs #12 and #16,
+so effort after Part B was steered by those results, even though no case text
+was edited and no case was used to write a detector form. Later
+re-evaluations against newer detectors (e.g. `17fa077a`) are post-hoc
+comparisons, not fresh validation; any improvement claimed on this set after
+Part B would be suspect, and a fresh v2 set is needed to claim
+generalization. **Labels are agent-authored; human verification pending**
+(30-case review sheet, unreturned). Cases and the Part B record
+(`results_risk_agent.json`) are unchanged; only this note was added.
+
 **Created:** 2026-10-22, on branch `research/evidence-correction`, as Part B of
 the evidence-correction task. **180 cases, 9 categories × 20** (91 risk /
 89 no-risk). Synthetic only; no method content; no real patient data.
