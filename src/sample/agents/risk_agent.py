@@ -63,10 +63,11 @@ RISK_SIGNALS: Tuple[RiskSignal, ...] = (
             # Passive / indirect ideation: hedged or negated wishes to not
             # continue living, existence-negation, and worthlessness forms.
             # (Development-set class fix, 2026-10-23; forms containing a
-            # negation cue are affirmed by the signal-contains-negation rule.)
+            # negation cue are affirmed unless a denial-of-thought cue in
+            # the preceding window negates them, see _find_signal.)
             "not sure I want to keep going", "not sure I want to go on",
             "tired of existing",
-            "wish I didn't exist", "just not exist",
+            "wish I didn't exist", "wish I just didn't exist", "just not exist",
             "wouldn't matter to anyone", "would not matter to anyone",
             "nobody would miss me", "no one would miss me", "wouldn't be missed"),
         zh=("suicide", "want to die", "do not want to live", "end my life", "end one's own life"),
@@ -93,6 +94,12 @@ RISK_SIGNALS: Tuple[RiskSignal, ...] = (
             "what's the point of living", "no point in living",
             "no point in going on", "no reason to live",
             "no reason to go on", "no reason to keep going",
+            "don't see any reason to go on", "don't see a reason to go on",
+            "see no reason to go on",
+            # Sleep-as-escape, hope-anchored: the hope/wish framing is what
+            # separates these from benign alarm-clock talk ("won't wake up
+            # on time"), which these forms deliberately do not match.
+            "hoping I won't wake up", "hope I won't wake up",
             "fall asleep and not", "fall asleep and never wake up"),
         zh=("cannot go on living", "better off dead", "end it all once and for all", "do not want to wake up"),
     ),
@@ -148,21 +155,44 @@ _NEGATION_CUES = (
     "no", "not", "never", "without", "denies", "denied", "deny", "don't", "do not", "didn't",
     "haven't", "have not", "hasn't", "wouldn't", "won't", "none", "nor",
 )
-_CLAUSE_BREAK = re.compile(r"[.,;!?]|\bbut\b|\bhowever\b|\balthough\b", re.IGNORECASE)
+# Conjunctions join independent clauses, so a negation in one conjunct
+# must not leak into the next: "I am not suicidal and I don't want to
+# die." is two denials, and "I don't care and want to die" is an
+# affirmation. Without "and"/"or" as clause breaks, the 6-word window
+# counted cues across the conjunction and misread both cases.
+_CLAUSE_BREAK = re.compile(r"[.,;!?]|\bbut\b|\bhowever\b|\balthough\b|\band\b|\bor\b", re.IGNORECASE)
 _NEGATION_RE = re.compile(r"\b(" + "|".join(re.escape(c) for c in _NEGATION_CUES) + r")\b", re.IGNORECASE)
+
+# Denial-of-thought constructions: the only preceding-window cues that can
+# negate a risk form which itself carries a negation cue (e.g. "not waking
+# up"). A cue from any other statement in the same clause ("not happy, I
+# don't want to live") is incidental and must NOT negate the form.
+_DENIAL_OF_THOUGHT_PATTERNS = (
+    "never thought", "never think", "never imagined", "never considered",
+    "didn't think", "did not think", "don't think", "do not think",
+    "not thought", "no thought", "no thoughts", "deny", "denied", "denies",
+)
 
 
 def _find_signal(text: str, signal: str) -> Optional[str]:
     """Return "affirmed", "negated" or None for a signal in text (case-insensitive).
 
-    A mention counts as negated only if a negation cue appears earlier in the
-    same clause (up to 6 words before the signal) and the signal itself does
-    not already contain a negation (e.g. "don't want to live"). Ambiguous
-    cases are resolved towards "affirmed" (i.e. towards flagging risk).
+    A mention counts as negated only if exactly one negation cue appears
+    earlier in the same clause (up to 6 words before the signal).
+    Ambiguous cases are resolved towards "affirmed" (i.e. towards flagging
+    risk).
 
     Two or more negation cues in the window form a double negation and count
     as affirmed, not negated: "It's not like I haven't thought about ending
     it all" discloses the thought rather than denying it.
+
+    Forms that themselves contain a negation cue (e.g. "don't want to
+    live", "not waking up") are affirmed by default, because the cue inside
+    the form is part of the wish. The single exception is a denial of the
+    thought itself in the preceding window ("never thought about not
+    waking up"): exactly one cue there, and that cue must belong to a
+    denial-of-thought construction. Zero cues, two or more cues, or an
+    incidental cue all stay affirmed.
     """
     lowered = text.lower()
     sig = signal.lower()
@@ -173,9 +203,16 @@ def _find_signal(text: str, signal: str) -> Optional[str]:
         breaks = list(_CLAUSE_BREAK.finditer(prefix))
         clause = prefix[breaks[-1].end():] if breaks else prefix
         window = " ".join(clause.split()[-6:])
-        if _NEGATION_RE.search(sig) or len(_NEGATION_RE.findall(window)) != 1:
+        cue_count = len(_NEGATION_RE.findall(window))
+        if _NEGATION_RE.search(sig):
+            if cue_count == 1 and any(p in window for p in _DENIAL_OF_THOUGHT_PATTERNS):
+                found_negated = True
+            else:
+                return "affirmed"
+        elif cue_count != 1:
             return "affirmed"
-        found_negated = True
+        else:
+            found_negated = True
         start = lowered.find(sig, start + len(sig))
     return "negated" if found_negated else None
 
