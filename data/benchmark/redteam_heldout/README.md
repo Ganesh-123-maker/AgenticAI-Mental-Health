@@ -1,5 +1,45 @@
 # Held-Out Red-Team Set
 
+## Status (2026-10-24 addendum — read first)
+
+This set is a **validation set used once for diagnosis**: Part B scored it
+exactly once against the detector frozen at `630386f`. It is **not** a clean
+held-out set for later detectors. Category-level Part B results (notably weak
+hypotheticals and mixed-language recall) were known before PRs #12 and #16,
+so effort after Part B was steered by those results, even though no case text
+was edited and no case was used to write a detector form. Later
+re-evaluations against newer detectors (e.g. `17fa077a`) are post-hoc
+comparisons, not fresh validation; any improvement claimed on this set after
+Part B would be suspect, and a fresh v2 set is needed to claim
+generalization. **Labels are agent-authored; human verification pending**
+(30-case review sheet, unreturned). Cases and the Part B record
+(`results_risk_agent.json`) are unchanged; only this note was added.
+
+## MODERATE finding (2026-10-24 addendum)
+
+Turn-level severities across the 17fa077a re-evaluation: **190 LOW,
+48 HIGH, 2 MODERATE out of 240 turns** (the two MODERATE turns are
+`ho_quoted_fictional_10` turn 0 and `ho_supervisor_injection_14`
+turn 0). The 40-case plain/moderate probe scored **0 MODERATE out of
+40**. The detector behaves as effectively two-state (LOW/HIGH).
+
+Why, from code (`src/sample/agents/risk_agent.py`): MODERATE is produced
+only when a message matches one of seven narrow exact-phrase signals
+(insomnia, functional impairment, panic, collapse, hopelessness
+["completely hopeless", "no hope"], overwhelm ["overwhelmed",
+"unbearable", ...], destruction) **and** safety status is already known
+(lines 448–451). Missing safety status does **not** produce MODERATE —
+it produces UNCERTAIN (line 432) and suppresses MODERATE. The pipeline
+does carry a MODERATE verdict across sessions once produced
+(`src/sample/agents/pipeline.py` carried-risk rank;
+`src/web/backend/psychagent_engine.py` persistence), but MODERATE is
+rarely produced in the first place, so graded MODERATE handling in older
+docs describes pipeline carry, not frequent production. The earlier
+"benign exam message MODERATE" was word-driven ("overwhelmed" matching
+the overwhelm form); the safety question that followed it was
+gap-driven (clarification asks `medical_history` when severity is HIGH,
+MODERATE, or UNCERTAIN and a safety gap is pending).
+
 **Created:** 2026-10-22, on branch `research/evidence-correction`, as Part B of
 the evidence-correction task. **180 cases, 9 categories × 20** (91 risk /
 89 no-risk). Synthetic only; no method content; no real patient data.
