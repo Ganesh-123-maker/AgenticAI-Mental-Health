@@ -9,6 +9,16 @@ export function CompleteCourseModal({ open, currentCourse, onClose, onConfirm })
     setSubmitting(false);
   }, [open, currentCourse?.course_id]);
 
+  // Escape closes the dialog, replicating the auth modal's pattern.
+  useEffect(() => {
+    if (!open) return undefined;
+    function handleKey(event) {
+      if (event.key === "Escape") onClose?.();
+    }
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [open, onClose]);
+
   if (!open) return null;
 
   async function handleConfirm() {
