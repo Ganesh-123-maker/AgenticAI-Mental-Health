@@ -96,10 +96,14 @@ RISK_SIGNALS: Tuple[RiskSignal, ...] = (
             "no reason to go on", "no reason to keep going",
             "don't see any reason to go on", "don't see a reason to go on",
             "see no reason to go on",
-            # Sleep-as-escape, hope-anchored: the hope/wish framing is what
-            # separates these from benign alarm-clock talk ("won't wake up
-            # on time"), which these forms deliberately do not match.
-            "hoping I won't wake up", "hope I won't wake up",
+            # Sleep-as-escape, hope-anchored AND morning-anchored: the
+            # hope/wish framing alone does NOT separate these from benign
+            # alarm-clock talk ("hope I won't wake up late for my alarm"
+            # also contains it, verified 2026-10-24). The "in the morning"
+            # anchor is what keeps alarm talk out. Trade-off, documented:
+            # a bare "hope I won't wake up tomorrow" (no "in the morning")
+            # is missed by these forms.
+            "hoping I won't wake up in the morning", "hope I won't wake up in the morning",
             "fall asleep and not", "fall asleep and never wake up"),
         zh=("cannot go on living", "better off dead", "end it all once and for all", "do not want to wake up"),
     ),

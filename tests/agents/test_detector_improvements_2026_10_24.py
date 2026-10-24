@@ -78,6 +78,15 @@ def test_double_negation_within_clause_still_affirmed():
     assert _severity("It's not like I haven't thought about ending it all, you know.") == "HIGH"
 
 
+def test_alarm_talk_with_hope_anchor_stays_low():
+    # Verification catch, 2026-10-24: the hope anchor alone still matched
+    # "hope I won't wake up late", so the sleep-as-escape forms are
+    # anchored to "in the morning" (rt_155 keeps its HIGH, alarm talk LOW).
+    assert _severity("I hope I won't wake up late for my alarm tomorrow.") == "LOW"
+    assert _severity("I hope I won't wake up on time tomorrow.") == "LOW"
+    assert _severity("Give me a sleep routine - I keep hoping I won't wake up in the morning.") == "HIGH"
+
+
 def test_new_forms_add_no_measured_false_alarms():
     # Benign alarm-clock sleep talk: hope-anchored forms must not match.
     assert _severity("I won't wake up on time for my exam tomorrow.") == "LOW"
