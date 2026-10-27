@@ -1,16 +1,27 @@
-"""Evaluate the frozen RiskAgent against the held-out red-team set, ONCE.
+"""Evaluate a RiskAgent against the held-out red-team set.
 
 Offline and deterministic. Protocol identical to the development-set
 evaluator (scripts/eval_redteam.py): turns are scored in sequence with the
 accumulating transcript as context; a case is flagged if any turn reaches
 severity HIGH or MODERATE.
 
-The detector is frozen at commit 630386f (see
-data/benchmark/redteam_heldout/README.md). Do not modify detector code in
-response to these results; suggested fixes belong to a future third set.
+History and rules. The Part B one-shot evaluation (2026-10-22) scored the
+detector frozen at commit 630386f; its record is
+data/benchmark/redteam_heldout/results_risk_agent.json and must never be
+overwritten. This script exists so later detectors can be re-evaluated
+with honest labels instead of the old hardcoded "630386f" stamp:
+  - --detector-commit labels the output (default: current HEAD short hash).
+  - --out defaults to one file per commit,
+    data/benchmark/redteam_heldout/results_risk_agent_<commit>.json.
+  - An existing output file is NEVER overwritten: the run exits non-zero
+    and leaves the file untouched. There is no --force.
+Do not modify detector code in response to held-out results; suggested
+fixes belong to a future third set (see
+data/benchmark/redteam_heldout/README.md).
 
 Usage:
-    python scripts/eval_redteam_heldout.py
+    python scripts/eval_redteam_heldout.py --detector-commit 17fa077a
+    python scripts/eval_redteam_heldout.py --out /tmp/heldout_17fa077a.json
 """
 
 from __future__ import annotations
@@ -18,6 +29,7 @@ from __future__ import annotations
 import argparse
 import json
 import math
+import subprocess
 import sys
 from collections import defaultdict
 from pathlib import Path
@@ -70,11 +82,55 @@ def run_case(agent: RiskAgent, case: dict) -> dict:
     }
 
 
+def resolve_commit(explicit: str | None) -> str:
+    """Return the detector commit label: explicit value, else HEAD short hash.
+
+    Fails closed: if git cannot determine HEAD and no explicit value was
+    given, raise instead of stamping an output with a guessed label.
+    """
+    if explicit:
+        return explicit
+    try:
+        out = subprocess.run(
+            ["git", "rev-parse", "--short", "HEAD"],
+            cwd=str(REPO),
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+    except (subprocess.CalledProcessError, OSError) as exc:
+        raise RuntimeError("cannot determine HEAD commit; pass --detector-commit explicitly") from exc
+    commit = out.stdout.strip()
+    if not commit:
+        raise RuntimeError("cannot determine HEAD commit; pass --detector-commit explicitly")
+    return commit
+
+
+def default_out_path(commit: str) -> Path:
+    """One output file per commit, inside the held-out directory."""
+    return REPO / "data/benchmark/redteam_heldout" / f"results_risk_agent_{commit}.json"
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--cases", default=str(REPO / "data/benchmark/redteam_heldout/cases.json"))
-    ap.add_argument("--out", default=str(REPO / "data/benchmark/redteam_heldout/results_risk_agent.json"))
+    ap.add_argument("--detector-commit", default=None,
+                    help="Commit label stamped on the output (default: current HEAD short hash).")
+    ap.add_argument("--out", default=None,
+                    help="Output path (default: results_risk_agent_<commit>.json in the held-out directory).")
     args = ap.parse_args()
+
+    try:
+        commit = resolve_commit(args.detector_commit)
+    except RuntimeError as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        return 2
+    out_path = Path(args.out) if args.out else default_out_path(commit)
+    if out_path.exists():
+        # Never overwrite, including the Part B record: the caller must
+        # pick a new path (or a new commit label).
+        print(f"error: refusing to overwrite existing output file: {out_path}", file=sys.stderr)
+        return 2
 
     cases = json.loads(Path(args.cases).read_text(encoding="utf-8"))
     agent = RiskAgent()
@@ -111,11 +167,11 @@ def main() -> int:
         "false_alarm": {"k": tot_ben[0], "n": tot_ben[1], "rate": round(p2, 3), "wilson95": [round(lo2, 3), round(hi2, 3)]},
     }
 
-    Path(args.out).write_text(
-        json.dumps({"detector_frozen_at": "630386f", "summary": summary, "results": results}, indent=2),
+    out_path.write_text(
+        json.dumps({"detector_commit": commit, "summary": summary, "results": results}, indent=2),
         encoding="utf-8",
     )
-    print("wrote", args.out)
+    print("wrote", out_path)
     return 0
 
 
