@@ -651,7 +651,6 @@ async def create_visit(
         legacy_session_id=None,
     )
     db.add(visit)
-    db.flush()
 
     opening_messages = build_opening_messages(course, stage, next_visit_no, opening_note)
     system_opening_message = opening_messages[0]
@@ -668,7 +667,15 @@ async def create_visit(
 
     snapshot = build_derived_psych_context_snapshot(db, course, visit)
     save_visit_psych_context_snapshot(db, visit.visit_id, snapshot)
-    db.flush()
+    # Split transaction: commit the new visit, its opening system message,
+    # and the course updates BEFORE awaiting the opening LLM call, so no
+    # write transaction (and SQLite's single-writer lock) spans the await.
+    # A concurrent open-visit conflict now surfaces here as 409, as before.
+    try:
+        db.commit()
+    except IntegrityError:
+        db.rollback()
+        raise HTTPException(status_code=409, detail="The current course already has an ongoing session") from None
 
     assistant_text = fallback_assistant_text
     if call_llm is not None:
@@ -702,7 +709,9 @@ async def create_visit(
 
     assistant_text = str(assistant_text or "").strip()
     if not assistant_text:
-        db.rollback()
+        # The visit is already committed (see above) and persists; the
+        # opening fallback text is non-empty in practice, so this branch
+        # is near-unreachable.
         raise HTTPException(status_code=502, detail="Failed to generate session opening; please try again later")
 
     now = utcnow()
@@ -769,7 +778,14 @@ async def send_visit_message(
     course.updated_at = now
     course.last_message_at = now
     db.add_all([user_message, visit, course])
-    db.flush()
+    # Split transaction: commit the user message BEFORE awaiting the LLM.
+    # A flush alone leaves the write transaction (and SQLite's
+    # single-writer lock) open across the whole LLM retry sequence, so any
+    # concurrent writer (e.g. /auth/register) waits out the 30s
+    # busy_timeout and fails with "database is locked". Committing here
+    # releases the lock; the await below runs with no open write
+    # transaction.
+    db.commit()
 
     visit_state_after_user = build_visit_state(db, visit)
     stage = stage_from_key(visit.stage_key_snapshot)
@@ -792,12 +808,15 @@ async def send_visit_message(
             visit_state_after_user.psych_context,
         )
     except Exception as exc:
-        db.rollback()
+        # The user message is already committed (see above) and
+        # intentionally persists when the LLM fails: the user sees their
+        # message plus the error instead of the message vanishing. No
+        # rollback here -- there is nothing uncommitted to discard.
         raise HTTPException(status_code=502, detail=_llm_error_detail(exc)) from exc
 
     assistant_text, should_auto_close = _parse_assistant_payload(assistant_payload)
     if not assistant_text:
-        db.rollback()
+        # Same as above: the committed user message persists.
         raise HTTPException(status_code=502, detail="LLM returned an empty response; please try again later")
 
     now = utcnow()
@@ -831,7 +850,11 @@ async def send_visit_message(
     save_visit_psych_context_snapshot(db, visit.visit_id, snapshot)
 
     if should_auto_close:
-        db.flush()
+        # Commit the assistant message before awaiting close
+        # postprocessing, for the same reason as above: no write
+        # transaction may span an await. close_visit then runs its own
+        # transaction.
+        db.commit()
         await close_visit(
             db,
             user_id,
