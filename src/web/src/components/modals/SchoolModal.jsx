@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { X } from "lucide-react";
 import { getSchoolDisplayName } from "../common/schoolText";
 
@@ -10,6 +11,16 @@ export function SchoolModal({
   onClose,
   onSelectSchool,
 }) {
+  // Escape closes the dialog, replicating the auth modal's pattern.
+  useEffect(() => {
+    if (!open) return undefined;
+    function handleKey(event) {
+      if (event.key === "Escape") onClose();
+    }
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [open, onClose]);
+
   if (!open) return null;
 
   return (
