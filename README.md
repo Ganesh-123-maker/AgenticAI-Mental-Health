@@ -178,7 +178,6 @@ All figures in this section come from the **offline, deterministic** benchmark (
 │   └── research_evaluation/  # Audited experimental results, failure taxonomy, metrics
 ├── docs/                     # Comprehensive research, presentation, and defense documentation
 ├── prompts/                  # Jinja2 prompt suites (agents, psychagent modalities, eval judges)
-├── sample_outputs/           # Test fixtures: multi-agent eval inputs (regenerated test outputs are git-ignored)
 ├── scripts/                  # Benchmark, red-team, migration, and live-probe utilities
 ├── src/
 │   ├── benchmark/            # Benchmark case builder and schemas
