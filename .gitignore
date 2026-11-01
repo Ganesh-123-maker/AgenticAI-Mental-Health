@@ -81,3 +81,9 @@ Thumbs.db
 
 # Generated skill embedding stores, migration partials, and locks
 assets/skills/**/micro_skills.*.pt*
+
+# Regenerated test/eval outputs (removed from the repo; recreated by running tests/eval)
+sample_outputs/test_phase6_false/
+sample_outputs/test_phase6_true/
+sample_outputs/test_phase8_false/
+data/eval_outputs/

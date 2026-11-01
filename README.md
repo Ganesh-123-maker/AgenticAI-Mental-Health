@@ -174,18 +174,24 @@ All figures in this section come from the **offline, deterministic** benchmark (
 ├── configs/                  # Baseline, prompt, and runtime configurations
 ├── data/
 │   ├── benchmark/            # 200 ambiguous-case files (5 modalities × 40; tracks: ordinary 100, safety 100); published evaluation slice N=25
+│   ├── eval_outputs_multi_agent/  # Multi-agent benchmark outputs (Systems A–F + ablations)
 │   └── research_evaluation/  # Audited experimental results, failure taxonomy, metrics
 ├── docs/                     # Comprehensive research, presentation, and defense documentation
-├── prompts/psychagent/       # Jinja2 prompt suites across all 5 therapy modalities
+├── prompts/                  # Jinja2 prompt suites (agents, psychagent modalities, eval judges)
+├── sample_outputs/           # Test fixtures: multi-agent eval inputs (regenerated test outputs are git-ignored)
+├── scripts/                  # Benchmark, red-team, migration, and live-probe utilities
 ├── src/
+│   ├── benchmark/            # Benchmark case builder and schemas
 │   ├── eval/                 # Two-tier evaluation framework (WAI, SRS, Coordination, Safety)
 │   ├── experiments/          # Benchmark runner and failure analysis classifier
+│   ├── rft/                  # RFT rollout and reward evaluation
 │   ├── sample/
 │   │   ├── agents/           # 11 core multi-agent implementations & pipeline coordinator
 │   │   ├── core/             # Data schemas (AgentMessage, PublicMemory, SessionContext)
 │   │   └── skill_manager.py  # Embedding-based clinical micro-skill retriever
+│   ├── shared/               # Shared config and file utilities
 │   └── web/                  # Full-stack application (FastAPI backend + Vite React frontend)
-└── tests/                    # Automated unit and integration tests (24 files, 200 tests)
+└── tests/                    # Automated unit and integration tests (39 files, 252 tests)
 ```
 
 ---
@@ -236,7 +242,7 @@ FRONTEND_PORT=5173
 ### Running Automated Unit & Integration Tests
 ```bash
 python -m pytest -q
-# Verified 2026-10-21: 200 passed (two consecutive full runs)
+# Verified 2026-11-01: 252 passed
 ```
 
 ### Skill Embeddings Migration & Regeneration
