@@ -42,10 +42,11 @@ In our ablation study (`ablation_no_routing`), disabling dynamic orchestration c
 
 ### Q4: Why separate Risk Agent and Safety Supervisor?
 **Answer**:  
-They represent two distinct tiers in a defense-in-depth safety architecture:
+They are two checks at different points in the pipeline — but they are not independent layers:
 - **`RiskAgent` (Upstream Input Triage)**: Evaluates incoming user utterances *before* any counseling agent is invoked. It determines whether standard therapeutic dialogue should be aborted entirely.
 - **`SafetySupervisor` (Downstream Output Review)**: Evaluates the counselor's *generated draft* before it reaches the user. Even if the user's input was low risk, the counselor might draft an invalidating response ("Don't worry, it's not a big deal") or false reassurance ("Everything will be completely fine"). The supervisor catches these generative flaws.  
 Furthermore, if an unexpected exception occurs anywhere in the pipeline, `SafetySupervisor` acts as a **fail-closed** gatekeeper, enforcing emergency escalation.
+**Limitation**: the supervisor's crisis handling is gated on the detector's severity — if `RiskAgent` scores LOW, crisis handling is skipped, so a detector miss is not rescued downstream. The only detector-independent safety layers are the static crisis line and, on the live path, SOP-1 (an LLM prompt scanning dialogue history for crisis clues).
 
 ---
 
