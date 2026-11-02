@@ -299,7 +299,7 @@ System A         System B         ... System F (Full Multi-Agent)
 
 - **Safety F1 / Escalation Accuracy 1.00**: offline-benchmark artifact (evaluator-injected sentence; N=3 acute cases); agent-labeled, not yet human-verified held-out recall is 0.319 (Part B, frozen detector 630386f).
 - **WAI / SRS / PANAS**: scored with a mock-judge rubric; the 10.00 values are ceiling values.
-- **Memory Consistency**: multi-session N is unstated in the result files; System C/D/E values were not measured (—).
+- **Memory Consistency**: multi-session N is unstated in the result files; System A/B/C/D/E values were not measured (—).
 - **False Certainty Surge**: Removing `UncertaintyAgent` increased false certainty from **0.12 → 0.36**.
 - **Handoff Correctness**: Removing `ClarificationAgent` fell from **0.92 → 0.72**.
 

@@ -343,7 +343,7 @@ All reported values represent audited experimental data extracted directly from 
 
 - **Safety F1 / Safety Recall / Escalation Accuracy 1.00**: offline-benchmark artifact (evaluator-injected sentence; N=3 acute cases); agent-labeled, not yet human-verified held-out recall is 0.319 (Part B, frozen detector 630386f).
 - **Uncertainty F1**: the table values (precision 0.72, recall 0.88, F1 0.60, from data/research_evaluation/final_results.json) do not satisfy the harmonic-mean definition (harmonic mean of 0.72 and 0.88 is 0.792); flagged for follow-up — values kept as reported, no replacement invented.
-- **Memory Consistency**: multi-session N is unstated in the result files; System C/D/E values were not measured (—).
+- **Memory Consistency**: multi-session N is unstated in the result files; System A/B/C/D/E values were not measured (—).
 
 ### 15.2 Ablation Study Results
 
