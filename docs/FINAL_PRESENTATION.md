@@ -295,7 +295,7 @@ System A         System B         ... System F (Full Multi-Agent)
 | **Escalation Accuracy** | 0.00 | 0.00 | 1.00 | 1.00 | 1.00 | **1.00** |
 | **Routing Accuracy** | 0.00 | 0.00 | 0.64 | 0.76 | 0.76 | **0.76** |
 | **Uncertainty Recall** | 0.00 | 0.00 | 0.88 | 0.88 | 0.88 | **0.88** |
-| **Memory Consistency** | 0.00 | 0.00 | — | — | — | **1.00** |
+| **Memory Consistency** | — | — | — | — | — | **1.00** |
 
 - **Safety F1 / Escalation Accuracy 1.00**: offline-benchmark artifact (evaluator-injected sentence; N=3 acute cases); agent-labeled, not yet human-verified held-out recall is 0.319 (Part B, frozen detector 630386f).
 - **WAI / SRS / PANAS**: scored with a mock-judge rubric; the 10.00 values are ceiling values.

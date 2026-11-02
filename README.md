@@ -155,7 +155,7 @@ All figures in this section come from the **offline, deterministic** benchmark (
 | **Escalation Accuracy** | 0.00 | 0.00 | 1.00 | 1.00 | 1.00 | **1.00** | $N=3$ acute crisis cases (**LOW CONFIDENCE**)* |
 | **Routing Accuracy** | 0.00 | 0.00 | 0.64 | 0.76 | 0.76 | **0.76** | $N=25$ (19/25 cases correctly routed) |
 | **Uncertainty Recall** | 0.00 | 0.00 | 0.88 | 0.88 | 0.88 | **0.88** | $N=9$ uncertain/ambiguous cases (denominator unverified: no result file states this N) |
-| **Memory Consistency** | 0.00 | 0.00 | — | — | — | **1.00** | Evaluated on multi-session cases (multi-session N unstated in result files; System C/D/E values not measured) |
+| **Memory Consistency** | — | — | — | — | — | **1.00** | Evaluated on multi-session cases (multi-session N unstated in result files; System C/D/E values not measured) |
 
 \*> *Statistical & Methodological Footnotes:*
 - **False Certainty Surge**: Removing `UncertaintyAgent` increased the False Certainty Rate from **0.12 (3/25 cases) to 0.36 (9/25 cases)** (denominator: 25 cases).
