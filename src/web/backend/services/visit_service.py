@@ -253,7 +253,10 @@ def _merge_static_traits(base: Any, override: Any) -> Dict[str, str]:
     override_traits = _normalize_static_traits(override)
     merged: Dict[str, str] = dict(base_traits)
     for key, value in override_traits.items():
-        if value and value not in UNKNOWN_TEXT_VALUES:
+        # Case-insensitive: stored profiles use "Unknown" (capitalised)
+        # as well as "unknown", and a placeholder must never clobber
+        # a real value merged in from an earlier session.
+        if value and value.lower() not in UNKNOWN_TEXT_VALUES:
             merged[key] = value
     return merged
 
@@ -306,7 +309,7 @@ def _extract_global_base_profile(client_info: Any) -> Dict[str, Any]:
     extracted: Dict[str, Any] = {}
 
     static_traits = _normalize_static_traits(profile.get("static_traits"))
-    filtered_static_traits = {k: v for k, v in static_traits.items() if v not in UNKNOWN_TEXT_VALUES}
+    filtered_static_traits = {k: v for k, v in static_traits.items() if v.lower() not in UNKNOWN_TEXT_VALUES}
     if filtered_static_traits:
         extracted["static_traits"] = filtered_static_traits
 
