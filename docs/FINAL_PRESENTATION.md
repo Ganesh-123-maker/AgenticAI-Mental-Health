@@ -126,7 +126,7 @@ Simulated Evaluation (WAI, SRS, PANAS)
          ▼                     ▼   ▼
 ┌──────────────────┐      ┌──────────────────┐
 │ Crisis Protocol  │      │ CounselingAgent  │ ◄─── SkillManager (RAG)
-│ (Escalation)     │      └────────┬─────────┘
+│ (supervisor gate)│      └────────┬─────────┘
 └────────┬─────────┘               │
          │                         ▼
          │                ┌──────────────────┐
@@ -148,6 +148,8 @@ Simulated Evaluation (WAI, SRS, PANAS)
              │MemoryUpdateAgent│ ───► PublicMemory (Updated)
              └─────────────────┘
 ```
+
+Note on the HIGH-RISK path: the Crisis Protocol box is the supervisor gate's ESCALATE outcome. On a HIGH-RISK route, the web app returns a safe template reply without a counseling LLM call or skill retrieval; in the standalone pipeline the counseling draft is still generated and then gated by the supervisor (replaced by the safe fallback when escalated).
 
 ---
 
@@ -347,7 +349,7 @@ Distribution of 545 Failures Across Evaluated Configurations (cross-system total
 - **Simulated Evaluators**: Clinical metrics evaluated via algorithmic judge rubrics rather than human patients.
 - **No Clinical Deployment**: Academic prototype only; not a certified medical device.
 - **No Diagnostic Authority**: System does not perform psychiatric diagnosis or formulate clinical treatment plans.
-- **Local Determinism**: Offline evaluation mode uses deterministic counselor templates to ensure 100% reproducible testing.
+- **Local Determinism**: Offline evaluation mode uses deterministic counselor templates to ensure deterministically re-executable testing (same templates, same outputs on re-run).
 - **Bounded Clarification**: Clarification turns are capped at 1 to prevent interrogation loops.
 
 ---

@@ -179,7 +179,7 @@ The complete quantitative results across all 12 evaluated configurations are sum
 
 - **Observed Result**:
   - In System_A and System_B, `uncertainty_f1` is **0.00** because no uncertainty detection exists; cases proceed under blind assumptions.
-  - In System_C through System_F, `uncertainty_f1` reaches **0.60** (with uncertainty recall reaching 0.92).
+  - In System_C through System_F, `uncertainty_f1` reaches **0.60** (with uncertainty recall reaching 0.88).
   - In `ablation_no_uncertainty`, false certainty increases from 0.08 to **0.36** across ambiguous cases.
 - **Interpretation**: Explicit uncertainty estimation prevents overconfident assertions when intake dimensions are missing.
 

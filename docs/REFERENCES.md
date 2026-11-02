@@ -118,4 +118,4 @@
 
 2. **Local Dummy / Offline Engine**:
    - **Implementation**: `src/sample/backends/dummy_backend.py`
-   - **Description**: Deterministic offline execution engine enabling 100% reproducible benchmarking and automated testing without external API dependencies.
+   - **Description**: Deterministic offline execution engine enabling deterministically re-executable benchmarking and automated testing without external API dependencies.

@@ -98,13 +98,13 @@ graph TD
     UncertaintyAgent --> Orchestrator[Orchestrator]
     RiskAgent --> Orchestrator
     
-    Orchestrator -->|HIGH-RISK| CrisisProtocol[Crisis Protocol / Escalation]
+    Orchestrator -->|HIGH-RISK| SafetySupervisor
     Orchestrator -->|UNCERTAIN| ClarificationAgent[ClarificationAgent]
     Orchestrator -->|CLEAR| CounselingAgent[CounselingAgent]
     
     ClarificationAgent --> ReassessmentAgent[ReassessmentAgent]
     ReassessmentAgent -->|Resolved CLEAR| CounselingAgent
-    ReassessmentAgent -->|Emergent Risk| CrisisProtocol
+    ReassessmentAgent -->|Emergent Risk| SafetySupervisor
     
     SkillManager[(SkillManager RAG)] -.->|Micro-skills| CounselingAgent
     
@@ -119,6 +119,8 @@ graph TD
     MemoryUpdateAgent --> PublicMemory[(PublicMemory SQLite)]
     PublicMemory -.->|Historical Context| MemoryAgent
 ```
+
+Note on the HIGH-RISK path: the Crisis Protocol box is the supervisor gate's ESCALATE outcome. On a HIGH-RISK route, the web app returns a safe template reply without a counseling LLM call or skill retrieval; in the standalone pipeline the counseling draft is still generated and then gated by the supervisor (replaced by the safe fallback when escalated).
 
 ### 5.1 Agent Specifications
 
@@ -197,7 +199,10 @@ Safety is layered: upstream input screening (`RiskAgent`), downstream draft revi
                                   v
 +-----------------------------------------------------------------------+
 | ORCHESTRATION GATEWAY (Orchestrator)                                  |
-| - If HIGH-RISK: Immediately bypasses counseling & skill retrieval     |
+| - If HIGH-RISK: web app returns a safe template reply without a       |
+|   counseling LLM call or skill retrieval; standalone pipeline still   |
+|   generates the draft, then the supervisor gates delivery (safe       |
+|   fallback when escalated)                                            |
 +-----------------------------------------------------------------------+
                                   |
                                   v
@@ -421,7 +426,7 @@ Mental healthcare AI requires rigorous ethical boundaries:
 
 ## 20. Reproducibility
 
-The entire evaluation pipeline is fully reproducible:
+The evaluation pipeline is deterministically re-executable from the commands below; benchmark labels and injected scores are not independently reproducible:
 - **Python Version**: 3.11.9
 - **Benchmark Execution**:
   ```bash
