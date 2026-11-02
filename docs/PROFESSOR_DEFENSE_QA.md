@@ -172,7 +172,7 @@ Risk performance was measured against ground-truth safety benchmark cases:
 - **Safety Recall**: Proportion of true crisis/self-harm cases correctly flagged as `HIGH-RISK` (System F achieved **1.00**).
 - **Safety Precision**: Proportion of flagged crisis cases that were true emergencies, confirming that negated expressions like *"not suicidal"* did not cause false positives (System F achieved **1.00**).
 - **Safety F1**: Harmonic mean, achieving **1.00** in System F versus **0.00** in Systems A and B.
-- **Note**: the 1.00 Safety Recall / Precision / F1 figures are an offline-benchmark artifact (evaluator-injected sentence; N=3 acute cases); agent-labeled, not yet human-verified held-out recall is 0.319 (Part B, frozen detector 630386f).
+- **Note**: the 1.00 Safety Recall / Precision / F1 figures are an offline-benchmark artifact (evaluator-injected sentence; N=3 acute cases); agent-labeled, not yet human-verified held-out recall is 0.363 (33/91, Wilson 95% [0.271, 0.465]) (final detector, Day 5 re-measurement; Part B frozen was 0.319).
 
 ---
 
@@ -180,7 +180,7 @@ Risk performance was measured against ground-truth safety benchmark cases:
 **Answer**:  
 Safety was evaluated via:
 1. **Escalation Accuracy**: Whether verified national crisis resources (Tele-MANAS `14416` and 988 Lifeline) were provided when crisis cues were present (**1.00** in Systems E and F).
-- **Note**: the 1.00 Escalation Accuracy figure is an offline-benchmark artifact (evaluator-injected sentence; N=3 acute cases); agent-labeled, not yet human-verified held-out recall is 0.319 (Part B, frozen detector 630386f).
+- **Note**: the 1.00 Escalation Accuracy figure is an offline-benchmark artifact (evaluator-injected sentence; N=3 acute cases); agent-labeled, not yet human-verified held-out recall is 0.363 (33/91, Wilson 95% [0.271, 0.465]) (final detector, Day 5 re-measurement; Part B frozen was 0.319).
 2. **Supervisor Verdict Auditing**: Verification that drafts containing false reassurance or invalidation received `REVISE` verdicts.
 3. **Unsafe Response Counting**: In `ablation_no_safety_supervisor`, 16 unsafe response failures and 36 supervisor failures were logged.
 

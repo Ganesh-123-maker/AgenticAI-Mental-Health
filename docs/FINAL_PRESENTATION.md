@@ -74,7 +74,7 @@ Simulated Evaluation (WAI, SRS, PANAS)
 ### Research Hypothesis
 - Decomposing conversational reasoning into specialized agents with distinct epistemic, safety, and therapeutic responsibilities:
   1. Reduces false assumptions (False Certainty Rate).
-  2. Aims to improve crisis intervention sensitivity (offline-benchmark Safety F1 = 1.00 is an artefact of the evaluator's construction; agent-labeled, not yet human-verified held-out recall is 0.319 (Part B, frozen detector 630386f, agent-authored labels, human verification pending)).
+  2. Aims to improve crisis intervention sensitivity (offline-benchmark Safety F1 = 1.00 is an artefact of the evaluator's construction; agent-labeled, not yet human-verified held-out recall is 0.363 (33/91, Wilson 95% [0.271, 0.465]) (final detector, Day 5 re-measurement; Part B frozen was 0.319)).
   3. Improves therapeutic alliance (Working Alliance Inventory).
 
 ---
@@ -297,7 +297,7 @@ System A         System B         ... System F (Full Multi-Agent)
 | **Uncertainty Recall** | 0.00 | 0.00 | 0.88 | 0.88 | 0.88 | **0.88** |
 | **Memory Consistency** | — | — | — | — | — | **1.00** |
 
-- **Safety F1 / Escalation Accuracy 1.00**: offline-benchmark artifact (evaluator-injected sentence; N=3 acute cases); agent-labeled, not yet human-verified held-out recall is 0.319 (Part B, frozen detector 630386f).
+- **Safety F1 / Escalation Accuracy 1.00**: offline-benchmark artifact (evaluator-injected sentence; N=3 acute cases); agent-labeled, not yet human-verified held-out recall is 0.363 (33/91, Wilson 95% [0.271, 0.465]) (final detector, Day 5 re-measurement; Part B frozen was 0.319).
 - **WAI / SRS / PANAS**: scored with a mock-judge rubric; the 10.00 values are ceiling values.
 - **Memory Consistency**: multi-session N is unstated in the result files; System A/B/C/D/E values were not measured (—).
 - **False Certainty Surge**: Removing `UncertaintyAgent` increased false certainty from **0.12 → 0.36**.
@@ -361,7 +361,7 @@ Distribution of 545 Failures Across Evaluated Configurations (cross-system total
 ## Summary of Research Contributions
 
 1. **Explicit Epistemic Layer**: First implementation of an explicit uncertainty assessment agent for mental health dialogue, reducing false certainty from 0.36 to 0.12.
-2. **Layered Safety Checks**: Upstream risk triage combined with downstream draft review and an always-visible crisis line. The supervisor's crisis handling is gated on the detector's severity, so it cannot rescue a detector miss; agent-labeled, not yet human-verified held-out recall is 0.319 (Part B, frozen detector 630386f, agent-authored labels, human verification pending) (the offline benchmark's 1.00 is an artefact of the evaluator's construction).
+2. **Layered Safety Checks**: Upstream risk triage combined with downstream draft review and an always-visible crisis line. The supervisor's crisis handling is gated on the detector's severity, so it cannot rescue a detector miss; agent-labeled, not yet human-verified held-out recall is 0.363 (33/91, Wilson 95% [0.271, 0.465]) (final detector, Day 5 re-measurement; Part B frozen was 0.319) (the offline benchmark's 1.00 is an artefact of the evaluator's construction).
 3. **Closed-Loop Clarification**: Dedicated clarification and reassessment agents resolving conversational gaps before intervention.
 4. **Longitudinal Memory Framework**: Cross-session fact extraction and conflict resolution maintaining 1.00 Memory Consistency.
 5. **Inspectable Agent Telemetry**: Real-time agent execution trace visualizing every cognitive and routing decision for clinical auditing.
