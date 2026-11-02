@@ -43,7 +43,7 @@ In our ablation study (`ablation_no_routing`), disabling dynamic orchestration c
 ### Q4: Why separate Risk Agent and Safety Supervisor?
 **Answer**:  
 They are two checks at different points in the pipeline — but they are not independent layers:
-- **`RiskAgent` (Upstream Input Triage)**: Evaluates incoming user utterances *before* any counseling agent is invoked. It determines whether standard therapeutic dialogue should be aborted entirely.
+- **`RiskAgent` (Upstream Input Triage)**: Evaluates incoming user utterances before any real counseling LLM call on the web path (where a HIGH-RISK route returns a safe template reply without a counseling LLM call or skill retrieval). In the standalone pipeline the counseling draft is still generated and then gated by the supervisor (replaced by the safe fallback when escalated).
 - **`SafetySupervisor` (Downstream Output Review)**: Evaluates the counselor's *generated draft* before it reaches the user. Even if the user's input was low risk, the counselor might draft an invalidating response ("Don't worry, it's not a big deal") or false reassurance ("Everything will be completely fine"). The supervisor catches these generative flaws.  
 Furthermore, if an unexpected exception occurs anywhere in the pipeline, `SafetySupervisor` acts as a **fail-closed** gatekeeper, enforcing emergency escalation.
 **Limitation**: the supervisor's crisis handling is gated on the detector's severity — if `RiskAgent` scores LOW, crisis handling is skipped, so a detector miss is not rescued downstream. The only detector-independent safety layers are the static crisis line and, on the live path, SOP-1 (an LLM prompt scanning dialogue history for crisis clues).
@@ -74,7 +74,7 @@ Asking a question is useless unless the system evaluates whether the answer actu
 **Answer**:  
 Memory is structured into two distinct temporal tiers:
 1. **Short-Term Session Context (`VisitPsychContextRecord`)**: Maintained dynamically during an active visit in SQLModel/SQLite. It tracks current session goals, active modality stage, and turn-by-turn agent execution traces.
-2. **Longitudinal Public Memory (`PublicMemory`)**: Persists across visits. It stores confirmed static client traits (`known_static_traits`), structured session recaps (`session_recaps`), and pending therapeutic homework (`last_homework`). At session close, `OutcomeAgent` and `MemoryUpdateAgent` parse the transcript to commit durable facts into `PublicMemory`.
+2. **Longitudinal Public Memory (`PublicMemory`)**: Persists across visits. It stores confirmed static client traits (`known_static_traits`), structured session recaps (`session_recaps`), and pending therapeutic homework (`last_homework`). At session close, `OutcomeAgent` and `MemoryUpdateAgent` parse the transcript to commit durable facts into `PublicMemory` (experiment-runner path; the web backend's session close uses `build_session_close_artifacts` instead).
 
 ---
 
@@ -96,7 +96,7 @@ Two distinct categories of information are retrieved on each turn:
 
 ### Q10: How do you handle outdated memory?
 **Answer**:  
-At session close, `MemoryUpdateAgent` compares newly disclosed facts against existing entries in `PublicMemory`. When an updated value for an existing key is detected (e.g., client previously reported sleeping 7 hours, but now reports sleeping 4 hours), the agent replaces the obsolete attribute with the new confirmed value and logs an update timestamp. This ensures subsequent sessions retrieve the current factual baseline.
+At session close (experiment-runner path; the web backend's session close uses `build_session_close_artifacts`), `MemoryUpdateAgent` compares newly disclosed facts against existing entries in `PublicMemory`. When an updated value for an existing key is detected (e.g., client previously reported sleeping 7 hours, but now reports sleeping 4 hours), the agent replaces the obsolete attribute with the new confirmed value and logs an update timestamp. This ensures subsequent sessions retrieve the current factual baseline.
 
 ---
 
@@ -104,7 +104,7 @@ At session close, `MemoryUpdateAgent` compares newly disclosed facts against exi
 **Answer**:  
 Contradictions are handled at two levels:
 1. **Intra-Session Contradiction**: `UncertaintyAgent` scans for conflicting statements between adjacent turns (e.g., "I'm doing fine" followed by "I haven't eaten or slept in days"). It flags a `contradictory_information` uncertainty signal, prompting `ClarificationAgent` to gently seek clarification.
-2. **Cross-Session Factual Contradiction**: `MemoryUpdateAgent` uses recency priority—direct client corrections in Session $N$ explicitly supersede intake notes from Session $N-1$, maintaining consistency without corrupting historical session recaps.
+2. **Cross-Session Factual Contradiction** (experiment-runner path; the web backend's session close uses `build_session_close_artifacts`): `MemoryUpdateAgent` uses recency priority—direct client corrections in Session $N$ explicitly supersede intake notes from Session $N-1$, maintaining consistency without corrupting historical session recaps.
 
 ---
 
@@ -160,8 +160,8 @@ Each ablation isolates exactly one architectural hypothesis:
 ### Q17: How did you measure uncertainty?
 **Answer**:  
 Uncertainty was evaluated across three metrics:
-- **Uncertainty Recall**: Proportion of ground-truth ambiguous or incomplete cases correctly identified as `UNCERTAIN` (System F achieved **0.88** in benchmark audit, 0.92 in extended evaluations).
-- **Uncertainty F1**: Harmonic mean of uncertainty precision (0.72) and recall (0.88), achieving **0.60**.
+- **Uncertainty Recall**: Proportion of ground-truth ambiguous or incomplete cases correctly identified as `UNCERTAIN` (System F achieved **0.88** in benchmark audit).
+- **Uncertainty F1**: Harmonic mean of uncertainty precision (0.72) and recall (0.88), achieving **0.60**. Note: these file values (precision 0.72, recall 0.88, F1 0.60) do not satisfy the harmonic-mean definition (harmonic mean of 0.72 and 0.88 is 0.792); flagged for follow-up — values kept as reported, no replacement invented.
 - **False Certainty Rate**: Proportion of ambiguous cases where the system falsely concluded context was `CLEAR` without clarifying. In System F, this was **0.12**; when UncertaintyAgent was ablated, it surged to **0.36**.
 
 ---
@@ -172,6 +172,7 @@ Risk performance was measured against ground-truth safety benchmark cases:
 - **Safety Recall**: Proportion of true crisis/self-harm cases correctly flagged as `HIGH-RISK` (System F achieved **1.00**).
 - **Safety Precision**: Proportion of flagged crisis cases that were true emergencies, confirming that negated expressions like *"not suicidal"* did not cause false positives (System F achieved **1.00**).
 - **Safety F1**: Harmonic mean, achieving **1.00** in System F versus **0.00** in Systems A and B.
+- **Note**: the 1.00 Safety Recall / Precision / F1 figures are an offline-benchmark artifact (evaluator-injected sentence; N=3 acute cases); agent-labeled, not yet human-verified held-out recall is 0.319 (Part B, frozen detector 630386f).
 
 ---
 
@@ -179,6 +180,7 @@ Risk performance was measured against ground-truth safety benchmark cases:
 **Answer**:  
 Safety was evaluated via:
 1. **Escalation Accuracy**: Whether verified national crisis resources (Tele-MANAS `14416` and 988 Lifeline) were provided when crisis cues were present (**1.00** in Systems E and F).
+- **Note**: the 1.00 Escalation Accuracy figure is an offline-benchmark artifact (evaluator-injected sentence; N=3 acute cases); agent-labeled, not yet human-verified held-out recall is 0.319 (Part B, frozen detector 630386f).
 2. **Supervisor Verdict Auditing**: Verification that drafts containing false reassurance or invalidation received `REVISE` verdicts.
 3. **Unsafe Response Counting**: In `ablation_no_safety_supervisor`, 16 unsafe response failures and 36 supervisor failures were logged.
 
@@ -193,6 +195,7 @@ Across 300 runs, **545 failure records** were identified in our failure analysis
 - *Missed Uncertainty* (75 cases): Subtle linguistic ambiguity not caught by rule patterns.
 - *Supervisor Failure* (36 cases): Downstream safety guard disabled.
 - *Memory & Longitudinal Inconsistency* (50 cases total): Longitudinal memory ablated.
+- *Inappropriate Therapy Skill* (25 cases): Therapy skill inappropriate for the case.
 - *Agent Disagreement* (24 cases): Conflict between state and uncertainty modules.
 - *Unsafe Response* (16 cases): Crisis responses allowed through without supervisor review.
 - *Missed Risk* (12 cases): RiskAgent disabled.
@@ -231,7 +234,7 @@ When `UncertaintyAgent` flags missing data or ambiguity:
 ### Q24: What happens during a high-risk input?
 **Answer**:  
 1. `RiskAgent` detects crisis indicators (suicide, self-harm, medical emergency) while filtering negated terms.
-2. `Orchestrator` immediately selects the `HIGH-RISK` route, bypassing `CounselingAgent` and skill retrieval entirely.
+2. `Orchestrator` immediately selects the `HIGH-RISK` route. On the web path this returns a safe template reply without a counseling LLM call or skill retrieval; in the standalone pipeline the counseling draft is still generated and then gated by the supervisor (replaced by the safe fallback when escalated).
 3. The system generates a compassionate crisis containment response.
 4. `SafetySupervisor` verifies the response, enforces `verdict="ESCALATE"`, and injects Tele-MANAS (`14416` / `1800-891-4416`) and 988 Lifeline contact information.
 
@@ -250,7 +253,7 @@ The counselor's draft response is passed to `SafetySupervisor.run(ctx, draft_res
 
 ### Q26: How does longitudinal state update?
 **Answer**:  
-At session close:
+At session close (experiment-runner path; the web backend's session close uses `build_session_close_artifacts`):
 1. `OutcomeAgent` analyzes the full session transcript for client engagement markers (reflective causal words vs. withdrawal tokens).
 2. `MemoryUpdateAgent` extracts confirmed facts, updates homework status, and identifies contradictions with prior session records.
 3. Updated data is written to `PublicMemory` in SQLite (`data.db`).
@@ -302,10 +305,10 @@ To mitigate this, our evaluation relied heavily on deterministic rule-based matr
 
 ### Q33: How reproducible are your results?
 **Answer**:  
-Our results are **100% reproducible**:
+Our results are **deterministically re-executable; labels and injected scores are not independently reproducible**:
 - The repository contains the exact runner script: `python -X utf8 src/experiments/run_systems.py --out-dir data/research_evaluation/system_outputs`.
 - The failure analysis script is fully automated: `python -X utf8 src/experiments/failure_analysis.py --eval-dir data/research_evaluation/system_outputs`.
-- The test harness consists of 31 automated tests passing via `pytest -q`.
+- The test harness consists of 252 automated tests passing via `pytest -q` (verified 2026-11-01).
 - In offline mode, the system runs completely deterministically without requiring external API keys.
 
 ---

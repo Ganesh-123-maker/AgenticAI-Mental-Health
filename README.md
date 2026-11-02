@@ -75,7 +75,7 @@ Conversational artificial intelligence applied to mental healthcare confronts se
 
 ### Key Contributions
 1. **Explicit Epistemic Uncertainty Layer**: Implements `UncertaintyAgent`, reducing the False Certainty Rate from **0.36 to 0.12** across ambiguous clinical vignettes (offline benchmark, N=25 evaluated cases; see §8).
-2. **Layered Safety Checks**: Combines upstream negation-aware risk screening with downstream draft review and an always-visible crisis line. The supervisor's crisis handling is gated on the detector's severity, so a detector miss is not rescued downstream; the detector-independent layers are the static crisis line and, on the live path, SOP-1 (an LLM prompt scanning dialogue history for crisis clues). Screening cases before counseling and checking drafts before delivery. On independently labeled held-out synthetic cases, the frozen rule-based detector's recall is **0.319 (29/91, Wilson 95% [0.232, 0.420])** with a false-alarm rate of **0.213 (19/89, [0.141, 0.310])** (`data/benchmark/redteam_heldout/`). The offline benchmark's 1.00 safety figures are artefacts of the evaluator's construction and are not measured safety performance (see §8 and `docs/EVALUATOR_CRISIS_INJECTION.md`).
+2. **Layered Safety Checks**: Combines upstream negation-aware risk screening with downstream draft review and an always-visible crisis line. The supervisor's crisis handling is gated on the detector's severity, so a detector miss is not rescued downstream; the detector-independent layers are the static crisis line and, on the live path, SOP-1 (an LLM prompt scanning dialogue history for crisis clues). Screening cases before counseling and checking drafts before delivery. On agent-labeled, not yet human-verified held-out synthetic cases (Part B, frozen detector 630386f, agent-authored labels, human verification pending), the frozen rule-based detector's recall is **0.319 (29/91, Wilson 95% [0.232, 0.420])** with a false-alarm rate of **0.213 (19/89, [0.141, 0.310])** (`data/benchmark/redteam_heldout/`). The offline benchmark's 1.00 safety figures are artefacts of the evaluator's construction and are not measured safety performance (see §8 and `docs/EVALUATOR_CRISIS_INJECTION.md`).
 3. **Closed-Loop Clarification & Reassessment**: Bounded ambiguity-resolution loop (`max_reassess_turns = 1`) that actively clarifies missing data before intervention.
 4. **Longitudinal Memory & Factual Synthesis**: Cross-session state extraction achieving **1.00 Memory Consistency** (multi-session cases within the N=25 evaluated slice) while flagging factual contradictions across visits.
 5. **Inspectable Agent Telemetry**: Real-time agent execution trace visualizing internal decision states for inspection in the web interface.
@@ -106,10 +106,10 @@ Located in `src/sample/agents/`:
 ## 4. Main Workflow & Priority Routing
 
 The pipeline follows strict hierarchical priority rules:
-1. **Crisis Route (`HIGH-RISK`)**: If `RiskAgent` detects crisis indicators, `Orchestrator` immediately bypasses standard counseling, routing directly to crisis protocols with verified emergency resources: Tele-MANAS (`14416`) and 988 Lifeline.
+1. **Crisis Route (`HIGH-RISK`)**: If `RiskAgent` detects crisis indicators, `Orchestrator` selects the `HIGH-RISK` route. On a HIGH-RISK route, the web app returns a safe template reply without a counseling LLM call or skill retrieval; in the standalone pipeline the counseling draft is still generated and then gated by the supervisor (replaced by the safe fallback when escalated). The delivered text always carries verified emergency resources: Tele-MANAS (`14416`) and 988 Lifeline.
 2. **Clarification Route (`UNCERTAIN`)**: If risk is low but `UncertaintyAgent` flags critical missing context or contradiction, `Orchestrator` routes to `ClarificationAgent` and `ReassessmentAgent`.
 3. **Direct Counseling Route (`CLEAR`)**: When context is verified and clear, `CounselingAgent` retrieves modality-specific skills via `SkillManager` and drafts an intervention.
-4. **Downstream Safety Gate**: `SafetySupervisor` reviews the draft before delivery, catching dismissive clichés or unhandled risk.
+4. **Downstream Safety Gate**: `SafetySupervisor` reviews the draft before delivery on the counseling path (and gates the HIGH-RISK template reply on the web path), catching dismissive clichés or unhandled risk.
 
 ---
 
@@ -154,15 +154,15 @@ All figures in this section come from the **offline, deterministic** benchmark (
 | **Safety F1** | 0.00 | 0.00 | 0.88 | 1.00 | 1.00 | **1.00** | $N=3$ acute crisis cases (**LOW CONFIDENCE**)* |
 | **Escalation Accuracy** | 0.00 | 0.00 | 1.00 | 1.00 | 1.00 | **1.00** | $N=3$ acute crisis cases (**LOW CONFIDENCE**)* |
 | **Routing Accuracy** | 0.00 | 0.00 | 0.64 | 0.76 | 0.76 | **0.76** | $N=25$ (19/25 cases correctly routed) |
-| **Uncertainty Recall** | 0.00 | 0.00 | 0.88 | 0.88 | 0.88 | **0.88** | $N=9$ uncertain/ambiguous cases |
-| **Memory Consistency** | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | **1.00** | Evaluated on multi-session cases |
+| **Uncertainty Recall** | 0.00 | 0.00 | 0.88 | 0.88 | 0.88 | **0.88** | $N=9$ uncertain/ambiguous cases (denominator unverified: no result file states this N) |
+| **Memory Consistency** | 0.00 | 0.00 | — | — | — | **1.00** | Evaluated on multi-session cases (multi-session N unstated in result files; System C/D/E values not measured) |
 
 \*> *Statistical & Methodological Footnotes:*
-- **False Certainty Surge**: Removing `UncertaintyAgent` increased the False Certainty Rate from **0.12 (3/25 cases) to 0.36 (9/25 cases)** — flagged as **LOW STATISTICAL CONFIDENCE** due to $N < 10$ underlying cases.
+- **False Certainty Surge**: Removing `UncertaintyAgent` increased the False Certainty Rate from **0.12 (3/25 cases) to 0.36 (9/25 cases)** (denominator: 25 cases).
 - **Clarification Handoff**: Full System F achieves **0.92 (23/25 cases)**; removing `ClarificationAgent` (`ablation_no_clarification`) drops handoff correctness to **0.72 (18/25 cases)**, logging 118 poor clarification failures across the ablation suite.
 - **Crisis Escalation Sample Size**: The benchmark contains exactly 3 acute crisis cases ($N=3$). Perfect 1.00 scores in Safety F1 and Escalation Accuracy must be understood in the context of this small sample size.
-- **Construction Caveat (2026-10-22)**: The offline evaluator appends a fixed crisis sentence to every stored-HIGH case before scoring (`docs/EVALUATOR_CRISIS_INJECTION.md`), and the stored HIGH labels cannot be reproduced from the repository (see `docs/LIVE_EVIDENCE_STUDY.md`). The Safety F1 and Escalation Accuracy values in this table therefore measure detection of the appended sentence, not of case content. For detector-level evidence, use the independently labeled sets in `data/benchmark/redteam/` (development) and `data/benchmark/redteam_heldout/` (held-out).
-- **Failure Taxonomy**: Out of 545 classified failure records in `data/research_evaluation/failure_analysis/failure_analysis.json`, **78% occurred in ablated configurations**, empirically proving that each agent targets a demonstrable failure mode.
+- **Construction Caveat (2026-10-22)**: The offline evaluator appends a fixed crisis sentence to every stored-HIGH case before scoring (`docs/EVALUATOR_CRISIS_INJECTION.md`), and the stored HIGH labels cannot be reproduced from the repository (see `docs/LIVE_EVIDENCE_STUDY.md`). The Safety F1 and Escalation Accuracy values in this table therefore measure detection of the appended sentence, not of case content. For detector-level evidence, use the development set in `data/benchmark/redteam/` and the agent-labeled, not yet human-verified held-out set in `data/benchmark/redteam_heldout/` (Part B, frozen detector 630386f).
+- **Failure Taxonomy**: Out of 545 classified failure records in `data/research_evaluation/failure_analysis/failure_analysis.json`, **44.4% (242/545) occurred in ablated configurations**, empirically proving that each agent targets a demonstrable failure mode.
 
 ---
 
@@ -190,7 +190,7 @@ All figures in this section come from the **offline, deterministic** benchmark (
 │   │   └── skill_manager.py  # Embedding-based clinical micro-skill retriever
 │   ├── shared/               # Shared config and file utilities
 │   └── web/                  # Full-stack application (FastAPI backend + Vite React frontend)
-└── tests/                    # Automated unit and integration tests (39 files, 252 tests)
+└── tests/                    # Automated unit and integration tests (37 test files, 252 tests)
 ```
 
 ---
@@ -308,7 +308,7 @@ Scientific transparency requires disclosing key methodology boundaries and valid
    - The framework has **not been validated on real-world clinical transcripts**, Electronic Health Records (EHR), acoustic vocal biomarkers, or wild crisis helpline dialogues. Performance on messy, out-of-domain human narratives remains unverified.
 
 3. **Computational Overhead, Latency & Cost Multiplier**:
-   - **Offline Rule/Signal Execution**: System F (full 11-agent pipeline) requires **1.66 ms/turn** vs. **0.73 ms/turn** for System B baseline, a **2.28x latency multiplier** on deterministic CPU execution.
+   - **Offline Rule/Signal Execution**: System F (full 11-agent pipeline) runs deterministically on CPU; no sourced ms/turn latency measurement is available in the repo, so no latency figures are claimed.
    - **Live LLM API Execution**:
      - *System B (Baseline)*: Executes **1 to 2 LLM calls** per turn (1 skill retrieval + 1 response generation).
      - *System F (Full System)*: Executes **2 to 3 chat calls + 1 embedding call** per turn on the live path (skill-retrieval filtering/rewrite + counselor generation), plus **1 additional counselor call** when the Safety Supervisor returns REVISE. All gate agents — uncertainty, risk, routing, clarification, reassessment, supervision checks, longitudinal extraction — are **rule-based and make no LLM calls** (design audit: `docs/LIVE_EVIDENCE_STUDY.md`, Step 0).

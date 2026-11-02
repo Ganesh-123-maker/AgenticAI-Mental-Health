@@ -14,7 +14,7 @@ Conversational artificial intelligence systems applied to mental healthcare conf
 
 To address these limitations, this paper presents **Agentic AI for Mental Health**, a coordinated 11-agent architecture that decouples conversational reasoning into explicit, inspectable decision stages. The framework introduces: (1) an upstream `UncertaintyAgent` quantifying missing intake dimensions and semantic vagueness; (2) a `RiskAgent` performing clause-level negation-aware crisis screening; (3) an `Orchestrator` enforcing strict priority routing (`HIGH-RISK` > `UNCERTAIN` > `CLEAR`); (4) an autonomous `ClarificationAgent` and `ReassessmentAgent` forming a bounded ambiguity-resolution loop; (5) an independent downstream `SafetySupervisor` executing fail-closed verification against clinical invalidation; and (6) an `OutcomeAgent` and `MemoryUpdateAgent` coordinating cross-session longitudinal memory and factual contradiction resolution.
 
-We evaluated the framework against a controlled benchmark of 25 standardized clinical cases spanning five psychotherapy modalities (Cognitive Behavioral Therapy, Behavior Therapy, Humanistic-Existential Therapy, Psychodynamic Therapy, and Postmodern Therapy). Across 12 system configurations (6 progressive baselines and 6 ablation conditions comprising 300 experimental runs and 545 classified failure records), the full multi-agent system achieved a Working Alliance Inventory (WAI) score of **10.00** (vs. **5.00** in the monolithic baseline), a Session Rating Scale (SRS) of **10.00** (vs. **2.50**), **1.00 Safety F1**, and **1.00 Escalation Accuracy** (offline-benchmark figures since shown to be artefacts of the evaluator's construction — see `docs/EVALUATOR_CRISIS_INJECTION.md`; independently labeled held-out recall is 0.319). Ablation studies demonstrated that omitting the `UncertaintyAgent` surged the False Certainty Rate from **0.12 to 0.36**, while omitting the `ClarificationAgent` collapsed clarification handoff correctness from **0.92 to 0.72**. Furthermore, 44.4% of all 545 recorded failures occurred in ablated configurations, empirically demonstrating the causal necessity of each specialized agent module.
+We evaluated the framework against a controlled benchmark of 25 standardized clinical cases spanning five psychotherapy modalities (Cognitive Behavioral Therapy, Behavior Therapy, Humanistic-Existential Therapy, Psychodynamic Therapy, and Postmodern Therapy). Across 12 system configurations (6 progressive baselines and 6 ablation conditions comprising 300 experimental runs and 545 classified failure records), the full multi-agent system achieved a Working Alliance Inventory (WAI) score of **10.00** (vs. **5.00** in the monolithic baseline), a Session Rating Scale (SRS) of **10.00** (vs. **2.50**), **1.00 Safety F1**, and **1.00 Escalation Accuracy** (offline-benchmark figures since shown to be artefacts of the evaluator's construction — see `docs/EVALUATOR_CRISIS_INJECTION.md`; agent-labeled, not yet human-verified held-out recall is 0.319 (Part B, frozen detector 630386f, agent-authored labels, human verification pending)). Ablation studies demonstrated that omitting the `UncertaintyAgent` surged the False Certainty Rate from **0.12 to 0.36**, while omitting the `ClarificationAgent` collapsed clarification handoff correctness from **0.92 to 0.72**. Furthermore, 44.4% of all 545 recorded failures occurred in ablated configurations, empirically demonstrating the causal necessity of each specialized agent module.
 
 ---
 
@@ -67,19 +67,19 @@ Rather than mapping $\mathcal{I}_t \rightarrow a_t$ via a single auto-regressive
 ### Research Hypothesis
 Decomposing conversational reasoning into specialized, modular agents:
 1. Empirically decreases the **False Certainty Rate** by halting intervention when intake dimensions are missing.
-2. Improves safety handling through layered checks: upstream risk screening, downstream draft review, and an always-visible crisis line. (The original draft claimed guaranteed **1.00 Safety Recall** and **1.00 Escalation Accuracy**; those figures are artefacts of the evaluator's construction — see `docs/EVALUATOR_CRISIS_INJECTION.md` — and independently labeled held-out recall is 0.319.)
+2. Improves safety handling through layered checks: upstream risk screening, downstream draft review, and an always-visible crisis line. (The original draft claimed guaranteed **1.00 Safety Recall** and **1.00 Escalation Accuracy**; those figures are artefacts of the evaluator's construction — see `docs/EVALUATOR_CRISIS_INJECTION.md` — and agent-labeled, not yet human-verified held-out recall is 0.319 (Part B, frozen detector 630386f, agent-authored labels, human verification pending).)
 3. Significantly enhances **Therapeutic Alliance** (Working Alliance Inventory) and session satisfaction compared to monolithic and un-routed baselines.
 
 ---
 
 ## 4. Existing System (The Foundation)
 
-This project builds upon the foundational **PsychAgent** framework (Zheng et al., 2024). The original PsychAgent established a single-turn counseling simulation framework structured around:
+This project builds upon the foundational **PsychAgent** framework (Yang et al., arXiv:2604.00931). The original PsychAgent established a longitudinal multi-session counseling framework structured around:
 - **Jinja2 Prompt Compilation**: Compiling dynamic client context, session stage, and history into structured system prompts.
 - **Hierarchical Skill Retrieval (RAG)**: A two-stage skill selection mechanism where high-level meta-skills (`meta_skills.json`) are coarsely filtered by modality and stage, followed by fine-grained cosine similarity retrieval of micro-skills (`micro_skills.pt`) against client query embeddings.
 - **Psychometric Evaluation Rubrics**: Implementation of validated clinical scales including PANAS, Working Alliance Inventory (WAI), and Session Rating Scale (SRS).
 
-We deliberately preserved and reused PsychAgent's validated psychotherapy taxonomies across five established clinical modalities. What was redesigned is the execution architecture: transforming a single-turn, monolithic simulation into a coordinated, multi-session, safety-supervised 11-agent pipeline.
+We deliberately preserved and reused PsychAgent's validated psychotherapy taxonomies across five established clinical modalities. What was redesigned is the execution architecture: adding explicit triage, uncertainty, and supervisory safety layers around the upstream longitudinal multi-session system, forming a coordinated, safety-supervised 11-agent pipeline.
 
 ---
 
@@ -98,13 +98,13 @@ graph TD
     UncertaintyAgent --> Orchestrator[Orchestrator]
     RiskAgent --> Orchestrator
     
-    Orchestrator -->|HIGH-RISK| CrisisProtocol[Crisis Protocol / Escalation]
+    Orchestrator -->|HIGH-RISK| SafetySupervisor
     Orchestrator -->|UNCERTAIN| ClarificationAgent[ClarificationAgent]
     Orchestrator -->|CLEAR| CounselingAgent[CounselingAgent]
     
     ClarificationAgent --> ReassessmentAgent[ReassessmentAgent]
     ReassessmentAgent -->|Resolved CLEAR| CounselingAgent
-    ReassessmentAgent -->|Emergent Risk| CrisisProtocol
+    ReassessmentAgent -->|Emergent Risk| SafetySupervisor
     
     SkillManager[(SkillManager RAG)] -.->|Micro-skills| CounselingAgent
     
@@ -119,6 +119,8 @@ graph TD
     MemoryUpdateAgent --> PublicMemory[(PublicMemory SQLite)]
     PublicMemory -.->|Historical Context| MemoryAgent
 ```
+
+Note (HIGH-RISK path, path-specific): on a HIGH-RISK route, the web app returns a safe template reply without a counseling LLM call or skill retrieval; in the standalone pipeline the counseling draft is still generated and then gated by the supervisor (replaced by the safe fallback when escalated). The HIGH-RISK edges above therefore pass through the SafetySupervisor gate. Note (session close): the session-close edges above describe the experiment-runner path only (src/experiments/run_systems.py, src/sample/agents/runner.py); the web backend close uses build_session_close_artifacts (src/web/backend/psychagent_engine.py:472).
 
 ### 5.1 Agent Specifications
 
@@ -136,6 +138,8 @@ graph TD
 | **`OutcomeAgent`** | `src/sample/agents/outcome_agent.py` | Evaluates engagement post-session | Full session transcript | Engagement signals, goal continuation metrics |
 | **`MemoryUpdateAgent`**| `src/sample/agents/memory_update_agent.py`| Synthesizes durable longitudinal facts| Session transcript, outcome | Updated `PublicMemory` records, resolved contradictions |
 
+Note: OutcomeAgent and MemoryUpdateAgent run on the experiment-runner path (src/experiments/run_systems.py, src/sample/agents/runner.py); the web backend's session close uses build_session_close_artifacts (src/web/backend/psychagent_engine.py:472), not these agents.
+
 ---
 
 ## 6. Agent Communication & Protocol
@@ -147,12 +151,15 @@ Every agent execution produces a standardized envelope:
 ```python
 @dataclass
 class AgentMessage:
-    sender: str
-    recipient: str
-    content: str
-    metadata: Dict[str, Any]
-    status: str  # "ok" | "error" | "skipped"
-    timestamp: float
+    agent: str
+    status: str = "ok"  # "ok" | "partial" | "error" | "unavailable"
+    evidence: List[str] = field(default_factory=list)
+    confidence: Optional[float] = None
+    missing_information: List[str] = field(default_factory=list)
+    recommended_action: Optional[str] = None
+    next_agent: Optional[str] = None
+    payload: Dict[str, Any] = field(default_factory=dict)
+    error: Optional[str] = None
 ```
 
 ### 6.2 Context Bus & Telemetry Tracing
@@ -197,7 +204,9 @@ Safety is layered: upstream input screening (`RiskAgent`), downstream draft revi
                                   v
 +-----------------------------------------------------------------------+
 | ORCHESTRATION GATEWAY (Orchestrator)                                  |
-| - If HIGH-RISK: Immediately bypasses counseling & skill retrieval     |
+| - If HIGH-RISK (web): template reply, no counseling LLM call or       |
+|   skill retrieval; (standalone): draft still generated, then          |
+|   gated by the supervisor (safe fallback when escalated).             |
 +-----------------------------------------------------------------------+
                                   |
                                   v
@@ -228,7 +237,7 @@ A foundational contribution is the clean epistemological separation between proc
 ### 9.2 Longitudinal Memory (`PublicMemory`)
 - **Domain Scope**: *Who the client is*.
 - **Mechanism**: SQLite-backed structured entity tracking confirmed client traits (`known_static_traits`), chronological session summaries (`session_recaps`), and homework compliance (`last_homework`).
-- **Factual Contradiction Handling**: When a client explicitly corrects an earlier disclosure (e.g., correcting reported sleep from 7 hours to 4 hours in Session 2), `MemoryUpdateAgent` recognizes the conflict, updates the trait record with a recency timestamp, and loads the corrected baseline into Session 3.
+- **Factual Contradiction Handling**: When a client explicitly corrects an earlier disclosure (e.g., correcting reported sleep from 7 hours to 4 hours in Session 2), `MemoryUpdateAgent` recognizes the conflict, updates the trait record with a recency timestamp, and loads the corrected baseline into Session 3. (This describes the experiment-runner path; the web backend's session close uses `build_session_close_artifacts` instead of `MemoryUpdateAgent`.)
 
 ---
 
@@ -248,8 +257,8 @@ Modality selection dynamically loads dedicated Jinja2 prompt suites in `prompts/
 
 ## 11. Full-Stack Web Application
 
-The platform includes a production-grade web application validating live real-time interaction:
-- **FastAPI Backend (`src/web/backend/`)**: Provides asynchronous RESTful APIs on port 8000, enforcing strict JWT authentication, user-level relational data isolation via SQLModel/SQLite (`data.db`), and session lifecycle management.
+The platform includes a prototype web application (demo path; live-LLM comparison not yet run):
+- **FastAPI Backend (`src/web/backend/`)**: Provides asynchronous RESTful APIs on port 8000, with user-scoped data access (authenticated-user dependency on each route), user-level relational data isolation via SQLModel/SQLite (`data.db`), and session lifecycle management.
 - **Vite React Frontend (`src/web/src/`)**: A responsive React 18 interface on port 5173 featuring course creation, therapy school selection, interactive multi-turn dialogue, and real-time visual telemetry.
 - **Agent Execution Trace Panel (`RightPanel.jsx`)**: Displays the live internal reasoning trace of all 11 agents for every dialogue turn, rendering epistemic uncertainty scores, risk flags, orchestrator routing choices, and safety supervisor verdicts for clinical auditing.
 
@@ -330,7 +339,11 @@ All reported values represent audited experimental data extracted directly from 
 | **Uncertainty Recall** | 0.00 | 0.00 | 0.88 | 0.88 | 0.88 | **0.88** |
 | **Uncertainty F1** | 0.00 | 0.00 | 0.60 | 0.60 | 0.60 | **0.60** |
 | **Handoff Correctness** | 0.00 | 0.00 | 1.00 | 0.94 | 0.94 | **0.92** |
-| **Memory Consistency** | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | **1.00** |
+| **Memory Consistency** | 0.00 | 0.00 | — | — | — | **1.00** |
+
+- **Safety F1 / Safety Recall / Escalation Accuracy 1.00**: offline-benchmark artifact (evaluator-injected sentence; N=3 acute cases); agent-labeled, not yet human-verified held-out recall is 0.319 (Part B, frozen detector 630386f).
+- **Uncertainty F1**: the table values (precision 0.72, recall 0.88, F1 0.60, from data/research_evaluation/final_results.json) do not satisfy the harmonic-mean definition (harmonic mean of 0.72 and 0.88 is 0.792); flagged for follow-up — values kept as reported, no replacement invented.
+- **Memory Consistency**: multi-session N is unstated in the result files; System C/D/E values were not measured (—).
 
 ### 15.2 Ablation Study Results
 
@@ -375,7 +388,7 @@ We strictly separate empirical observation from scientific interpretation:
 - **Observation**: Disabling the `UncertaintyAgent` produced a 3-fold surge in the False Certainty Rate (from 0.12 to 0.36).  
   *Interpretation*: This indicates that monolithic systems do not possess innate epistemic humility; without an explicit epistemic agent, models routinely generate interventions under the false assumption of complete context.
 - **Observation**: Disabling the `RiskAgent` dropped Safety Recall from 1.00 to 0.88, while the failure log records 3 'supervisor failure' and 3 'unsafe response' entries for `ablation_no_safety_supervisor` (36 and 16 are cross-system totals across all 12 configurations, not per-ablation counts).  
-  *Interpretation*: Neither upstream screening nor downstream supervision is sufficient on its own. Upstream triage intercepts overt crises, while downstream supervision catches some generative invalidations — but supervision's crisis handling is gated on the detector's severity, so it cannot rescue a detector miss. Measured held-out recall is 0.319, and the detector outputs LOW or HIGH almost exclusively (2 MODERATE of 240 held-out turn-level scores).
+  *Interpretation*: Neither upstream screening nor downstream supervision is sufficient on its own. Upstream triage intercepts overt crises, while downstream supervision catches some generative invalidations — but supervision's crisis handling is gated on the detector's severity, so it cannot rescue a detector miss. Measured held-out recall is 0.319 (Part B, frozen detector 630386f, agent-authored labels, human verification pending), and the detector outputs LOW or HIGH almost exclusively (2 MODERATE of 240 held-out turn-level scores).
 - **Observation**: Dynamic routing achieved 0.76 accuracy vs. 0.00 in static baselines.  
   *Interpretation*: Dynamic orchestration is essential to prevent monolithic single-agent bottlenecks, ensuring specialized modules execute only when clinically warranted.
 
@@ -396,9 +409,9 @@ Scientific transparency requires rigorous disclosure of the methodological bound
 
 3. **Computational Latency, LLM Call Volume, and Cost Multipliers**:
    - Multi-agent coordination introduces substantial computational and financial overhead compared to single-agent baselines:
-     - *Deterministic Offline Execution*: Full System F requires **1.66 ms/turn** vs. **0.73 ms/turn** for single-agent System B (a **2.28x latency multiplier** on local CPU).
-     - *Live LLM API Execution*: System B executes **1 to 2 LLM calls** per turn (1 skill retrieval + 1 generation). System F executes **3 to 5 LLM calls** per standard turn (counseling generation, safety supervision, longitudinal extraction) and up to **6 to 7 calls** when clarification or supervisor revision loops are triggered.
-     - *Economic & Latency Overhead*: This constitutes a **3.0x to 4.5x multiplier** in LLM call volume, token consumption, and financial API cost.
+     - *Deterministic Offline Execution*: Full System F runs deterministically on local CPU; no sourced ms/turn latency measurement is available in the repo, so no latency figures are claimed.
+     - *Live LLM API Execution*: System B executes **1 to 2 LLM calls** per turn (1 skill retrieval + 1 generation). System F executes **2 to 3 chat calls + 1 embedding call** per turn on the live path (skill-retrieval filtering/rewrite + counselor generation), plus **1 additional counselor call** when the Safety Supervisor returns REVISE. Safety supervision and longitudinal extraction are rule-based and make no LLM calls.
+     - *Economic & Latency Overhead*: This constitutes a **~2–3x multiplier** in LLM call volume against a true single-prompt baseline (1 chat call); the pre-registered head-to-head that would price this precisely has not yet been run.
 
 4. **Statistical Sample Size Constraints on Acute Risk ($N=3$)**:
    - The controlled benchmark comprises 25 cases (15 ordinary track, 10 safety track). Among the safety track cases, **exactly 3 represent acute crisis / imminent self-harm presentations ($N=3$)**.
@@ -433,7 +446,7 @@ The entire evaluation pipeline is fully reproducible:
   ```
 - **Automated Test Suite**:
   ```bash
-  python -m pytest -q  # Verified: 31 passed in ~28s
+  python -m pytest -q  # Verified: 252 passed (verified 2026-11-01)
   ```
 
 ---
@@ -451,4 +464,4 @@ Key avenues for future research include:
 
 ## 22. Conclusion
 
-This research demonstrated that decomposing monolithic mental health conversational agents into an explicit, coordinated 11-agent architecture resolves key vulnerabilities in epistemic overconfidence, safety, and longitudinal continuity. By decoupling uncertainty quantification, risk triage, clarification, safety supervision, and memory management, the framework achieved a two-fold increase in therapeutic working alliance, guaranteed crisis escalation on evaluated benchmarks, and reduced false certainty threefold compared to ablated baselines. This work establishes an inspectable, principled architectural foundation for future research in reliable, human-centered artificial intelligence for mental healthcare.
+This research demonstrated that decomposing monolithic mental health conversational agents into an explicit, coordinated 11-agent architecture resolves key vulnerabilities in epistemic overconfidence, safety, and longitudinal continuity. By decoupling uncertainty quantification, risk triage, clarification, safety supervision, and memory management, the framework achieved a two-fold increase in therapeutic working alliance, crisis escalation on evaluated benchmarks, and reduced false certainty threefold compared to ablated baselines. This work establishes an inspectable, principled architectural foundation for future research in reliable, human-centered artificial intelligence for mental healthcare.

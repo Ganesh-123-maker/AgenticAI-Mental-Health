@@ -29,7 +29,7 @@
 ### SLIDE 3 — EXISTING SYSTEM / STARTING POINT
 ## The PsychAgent Foundation
 
-The project builds upon the foundational **PsychAgent** architecture (Zheng et al., 2024):
+The project builds upon the foundational **PsychAgent** architecture (Yang et al., arXiv:2604.00931):
 
 ```
 User Input
@@ -48,7 +48,7 @@ Simulated Evaluation (WAI, SRS, PANAS)
 ```
 
 - **Reused Assets**: Validated hierarchical skill taxonomies (`meta_skills.json`, `micro_skills.pt`), clinical prompt templates, and evaluation rubrics.
-- **The Starting Point**: PsychAgent was a single-turn, monolithic counselor simulation lacking dynamic triage, uncertainty detection, or supervisory safety layers.
+- **The Starting Point**: PsychAgent was a monolithic counselor simulation lacking dynamic triage, uncertainty detection, or supervisory safety layers.
 
 ---
 
@@ -74,7 +74,7 @@ Simulated Evaluation (WAI, SRS, PANAS)
 ### Research Hypothesis
 - Decomposing conversational reasoning into specialized agents with distinct epistemic, safety, and therapeutic responsibilities:
   1. Reduces false assumptions (False Certainty Rate).
-  2. Aims to improve crisis intervention sensitivity (offline-benchmark Safety F1 = 1.00 is an artefact of the evaluator's construction; independently labeled held-out recall is 0.319).
+  2. Aims to improve crisis intervention sensitivity (offline-benchmark Safety F1 = 1.00 is an artefact of the evaluator's construction; agent-labeled, not yet human-verified held-out recall is 0.319 (Part B, frozen detector 630386f, agent-authored labels, human verification pending)).
   3. Improves therapeutic alliance (Working Alliance Inventory).
 
 ---
@@ -126,7 +126,7 @@ Simulated Evaluation (WAI, SRS, PANAS)
          ▼                     ▼   ▼
 ┌──────────────────┐      ┌──────────────────┐
 │ Crisis Protocol  │      │ CounselingAgent  │ ◄─── SkillManager (RAG)
-│ (Escalation)     │      └────────┬─────────┘
+│ (supervisor gate)│      └────────┬─────────┘
 └────────┬─────────┘               │
          │                         ▼
          │                ┌──────────────────┐
@@ -148,6 +148,8 @@ Simulated Evaluation (WAI, SRS, PANAS)
              │MemoryUpdateAgent│ ───► PublicMemory (Updated)
              └─────────────────┘
 ```
+
+Note (HIGH-RISK path, path-specific): on a HIGH-RISK route, the web app returns a safe template reply without a counseling LLM call or skill retrieval; in the standalone pipeline the counseling draft is still generated and then gated by the supervisor (replaced by the safe fallback when escalated). The HIGH-RISK branch above passes through the SafetySupervisor gate. Note (session close): the OutcomeAgent/MemoryUpdateAgent boxes describe the experiment-runner path only (src/experiments/run_systems.py, src/sample/agents/runner.py); the web backend close uses build_session_close_artifacts (src/web/backend/psychagent_engine.py:472).
 
 ---
 
@@ -207,7 +209,7 @@ Tier 1: Upstream Risk Assessment (RiskAgent)
 - Severity: LOW vs HIGH
 
 Orchestrator Priority Gate
-- If Risk == HIGH -> bypasses counseling immediately
+- If Risk == HIGH -> HIGH-RISK route: web app returns a safe template reply without a counseling LLM call or skill retrieval; standalone pipeline still generates the counseling draft, then the SafetySupervisor gates it (replaced by the safe fallback when escalated)
 
 Tier 2: Downstream Safety Supervision (SafetySupervisor)
 - Independent review of drafted counselor response
@@ -231,7 +233,7 @@ Tier 2: Downstream Safety Supervision (SafetySupervisor)
 - **Longitudinal Fact Update Example (Validated in Audit)**:
   - *Session 1 Intake*: Client noted sleeping 7 hours.
   - *Session 2 Disclosure*: Client clarifies: *"I actually only sleep 4 hours."*
-  - *MemoryUpdateAgent*: Overrides obsolete record; Session 3 loads corrected 4-hour baseline.
+  - *MemoryUpdateAgent* (experiment-runner path only; the web backend close uses build_session_close_artifacts): Overrides obsolete record; Session 3 loads corrected 4-hour baseline.
 
 ---
 
@@ -293,8 +295,11 @@ System A         System B         ... System F (Full Multi-Agent)
 | **Escalation Accuracy** | 0.00 | 0.00 | 1.00 | 1.00 | 1.00 | **1.00** |
 | **Routing Accuracy** | 0.00 | 0.00 | 0.64 | 0.76 | 0.76 | **0.76** |
 | **Uncertainty Recall** | 0.00 | 0.00 | 0.88 | 0.88 | 0.88 | **0.88** |
-| **Memory Consistency** | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 | **1.00** |
+| **Memory Consistency** | 0.00 | 0.00 | — | — | — | **1.00** |
 
+- **Safety F1 / Escalation Accuracy 1.00**: offline-benchmark artifact (evaluator-injected sentence; N=3 acute cases); agent-labeled, not yet human-verified held-out recall is 0.319 (Part B, frozen detector 630386f).
+- **WAI / SRS / PANAS**: scored with a mock-judge rubric; the 10.00 values are ceiling values.
+- **Memory Consistency**: multi-session N is unstated in the result files; System C/D/E values were not measured (—).
 - **False Certainty Surge**: Removing `UncertaintyAgent` increased false certainty from **0.12 → 0.36**.
 - **Handoff Correctness**: Removing `ClarificationAgent` fell from **0.92 → 0.72**.
 
@@ -323,7 +328,7 @@ Distribution of 545 Failures Across Evaluated Configurations (cross-system total
 ---
 
 ### SLIDE 15 — LIVE DEMONSTRATION
-## Validated End-to-End Demonstration Sequence
+## Demonstration Sequence (dummy path)
 
 1. **System Initialization**: FastAPI backend (`8000`) + Vite React frontend (`5173`).
 2. **Course Creation**: Create client profile selecting Cognitive Behavioral Therapy (CBT).
@@ -333,7 +338,7 @@ Distribution of 545 Failures Across Evaluated Configurations (cross-system total
 6. **Uncertainty & Clarification**: `UncertaintyAgent` flags gap; `ClarificationAgent` asks targeted inquiry.
 7. **Answer Clarification**: Client answers; `ReassessmentAgent` verifies `CLEAR`.
 8. **Longitudinal Fact Injection**: Client updates sleep duration from 7 to 4 hours.
-9. **Close Session 1**: `OutcomeAgent` and `MemoryUpdateAgent` commit durable facts.
+9. **Close Session 1**: session-close artifacts commit durable facts (`OutcomeAgent`/`MemoryUpdateAgent` on the experiment-runner path; the web backend close uses `build_session_close_artifacts`).
 10. **Start Session 2**: Verify historical recap and corrected 4-hour sleep baseline loaded.
 11. **Crisis Safety Demonstration**: Input acute crisis statement.
 12. **Supervisor Interception**: Verify `RiskAgent` + `SafetySupervisor` enforce immediate escalation with Tele-MANAS (`14416`) and 988 Lifeline.
@@ -356,7 +361,7 @@ Distribution of 545 Failures Across Evaluated Configurations (cross-system total
 ## Summary of Research Contributions
 
 1. **Explicit Epistemic Layer**: First implementation of an explicit uncertainty assessment agent for mental health dialogue, reducing false certainty from 0.36 to 0.12.
-2. **Layered Safety Checks**: Upstream risk triage combined with downstream draft review and an always-visible crisis line. The supervisor's crisis handling is gated on the detector's severity, so it cannot rescue a detector miss; independently labeled held-out recall is 0.319 (the offline benchmark's 1.00 is an artefact of the evaluator's construction).
+2. **Layered Safety Checks**: Upstream risk triage combined with downstream draft review and an always-visible crisis line. The supervisor's crisis handling is gated on the detector's severity, so it cannot rescue a detector miss; agent-labeled, not yet human-verified held-out recall is 0.319 (Part B, frozen detector 630386f, agent-authored labels, human verification pending) (the offline benchmark's 1.00 is an artefact of the evaluator's construction).
 3. **Closed-Loop Clarification**: Dedicated clarification and reassessment agents resolving conversational gaps before intervention.
 4. **Longitudinal Memory Framework**: Cross-session fact extraction and conflict resolution maintaining 1.00 Memory Consistency.
 5. **Inspectable Agent Telemetry**: Real-time agent execution trace visualizing every cognitive and routing decision for clinical auditing.
