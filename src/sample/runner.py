@@ -407,7 +407,18 @@ class PsychAgentRunner:
         counselor_messages: List[Dict[str, str]] = []
         each_turn_system: List[str] = []
 
-        def render_counselor_system(skills: Optional[List[Dict[str, Any]]] = None) -> str:
+        def render_counselor_system(
+            skills: Optional[List[Dict[str, Any]]] = None,
+            weights: Optional[Dict[str, Any]] = None,
+        ) -> str:
+            # Suitability weights are computed from the retrieved skills
+            # and injected into the counselor prompt as fixed data, so
+            # the model presents the given shares instead of inventing
+            # numbers. A caller may pass an explicit weights payload
+            # (the counseling agent suppresses weights on HIGH-RISK
+            # turns); otherwise they are computed here.
+            if weights is None:
+                weights = self._skill_manager.suitability_weights(skills or [])
             return prompt_mgr.render(
                 "counselor_system",
                 client_info=obtain_client_info,
@@ -416,6 +427,7 @@ class PsychAgentRunner:
                 session_focus=session_focus,
                 homework_assigned_from_last_session=homework_assigned,
                 suggested_skills=skills or [],
+                recommendation_weights=weights,
             )
 
         counselor_messages.append({"role": "system", "content": render_counselor_system()})

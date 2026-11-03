@@ -317,3 +317,9 @@ With additional time and funding, our priorities would be:
 2. **Bayesian Uncertainty Calibration**: Train a specialized uncertainty regression head predicting token-level entropy and epistemic confidence.
 3. **Multimodal Speech Processing**: Integrate real-time audio biomarkers (vocal pitch jitter, speech pauses) into `StateAgent`.
 4. **Multilingual Localization**: Translate and culturally adapt crisis keywords and clarification prompts into Indian regional languages (Hindi, Telugu, Tamil) to support Tele-MANAS integration.
+
+---
+
+### Q35: What do the percentages next to recommendations mean?
+**Answer**:  
+They are **relative suitability weights**, not success probabilities. When the counselor suggests an exercise or feedback, it shows a main recommendation plus up to two alternatives, with shares computed in code as a softmax (temperature 0.1) over the retrieval step's cosine similarities, rounded to whole percentages that sum to exactly 100 (largest-remainder method, top share never 100%). A share of "about 80%" means that option matched the client's current message, session goals and stage best *compared with the other retrieved options* — it does not mean an 80% chance of working, and it is never phrased that way. The model does not invent the numbers: they are computed in code, injected into the counselor prompt as fixed data, and a deterministic post-check repairs the reply if the model changes them or states them as outcome probabilities. Three guardrails apply: a single retrieved option is shown with no percentage; in offline or dummy embedding mode there are no semantic weights, so options are listed by rank with no percentages; and on the HIGH-RISK route or an ESCALATE verdict no exercise percentages are shown at all. **Limitation**: the weights are uncalibrated and have not been validated against real outcomes or expert ratings, so calibrating them is future work.

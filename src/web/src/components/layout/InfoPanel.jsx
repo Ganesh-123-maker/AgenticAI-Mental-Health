@@ -51,6 +51,7 @@ export function InfoPanel({ currentCourse, currentVisit }) {
   const stage = currentVisit?.stage || currentCourse?.current_stage;
   const sessionFocus = buildSessionFocus(currentVisit);
   const trace = currentVisit?.psych_context?.profile_payload?.latest_agent_trace;
+  const weights = currentVisit?.psych_context?.profile_payload?.latest_recommendation_weights;
   const route = currentVisit?.psych_context?.profile_payload?.latest_route;
   const replySource = currentVisit?.psych_context?.profile_payload?.latest_reply_source;
   const replyModel = currentVisit?.psych_context?.profile_payload?.latest_reply_model;
@@ -208,6 +209,45 @@ export function InfoPanel({ currentCourse, currentVisit }) {
               })}
             </div>
           </div>
+        </Card>
+      ) : null}
+
+      {weights && weights.options && weights.options.length > 0 ? (
+        <Card>
+          <CardTitle icon={Sparkles}>Recommendation Weights</CardTitle>
+          <p className="text-xs leading-5 text-[#6B7C7C]">
+            Relative match weights, not predictions of outcome.
+          </p>
+          <ul className="mt-3 space-y-2">
+            {weights.options.map((option, index) => (
+              <li
+                key={`${index}-${option.title}`}
+                className="flex items-center justify-between rounded-xl bg-[#FDF6EC] px-3 py-2 text-xs"
+              >
+                <span className="font-medium text-[#5B6B6B]">{option.title}</span>
+                {typeof option.share === "number" ? (
+                  <span className="rounded-md bg-white px-2 py-0.5 font-mono font-semibold text-[#33484D]">
+                    about {option.share}%
+                  </span>
+                ) : (
+                  <span className="rounded-md bg-white px-2 py-0.5 font-mono font-semibold text-[#33484D]">
+                    rank {option.rank}
+                  </span>
+                )}
+              </li>
+            ))}
+          </ul>
+          {weights.mode === "unavailable" ? (
+            <p className="mt-2 text-[11px] leading-4 text-[#8A7B66]">
+              Offline mode: no semantic match weights are available, so options are listed by
+              retrieval rank only.
+            </p>
+          ) : null}
+          {weights.mode === "single" ? (
+            <p className="mt-2 text-[11px] leading-4 text-[#8A7B66]">
+              Only one matching option was found for this turn, so no percentage is shown.
+            </p>
+          ) : null}
         </Card>
       ) : null}
 

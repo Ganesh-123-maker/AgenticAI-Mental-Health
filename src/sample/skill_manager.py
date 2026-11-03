@@ -45,6 +45,11 @@ except ModuleNotFoundError:  # pragma: no cover - supports PYTHONPATH=src execut
 
 from .backends.base import ModelBackend
 from .core.schemas import RuntimeConfig
+from .recommendation_weights import (
+    DEFAULT_MAX_OPTIONS,
+    DEFAULT_TEMPERATURE,
+    build_weights_payload,
+)
 from .utils import extract_tag_content
 
 
@@ -365,6 +370,40 @@ class SkillManager:
             retrieved.append(skill)
 
         return retrieved, res_rewrite
+
+    def suitability_weights(self, skills: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """Relative suitability weights for retrieved skills.
+
+        Semantic weights come only from live embeddings. In offline
+        embedding mode the backend returns zero vectors, cosine falls
+        back to -1.0 for every candidate, and no semantic ranking
+        exists, so this returns mode "unavailable" and no percentages
+        are shown. See sample/recommendation_weights.py.
+        """
+        runtime = self._runtime
+        enabled = bool(getattr(runtime, "recommendation_weights_enabled", True))
+        try:
+            temperature = float(
+                getattr(runtime, "recommendation_weights_temperature", DEFAULT_TEMPERATURE)
+            )
+        except (TypeError, ValueError):
+            temperature = DEFAULT_TEMPERATURE
+        if not math.isfinite(temperature) or temperature <= 0:
+            temperature = DEFAULT_TEMPERATURE
+        try:
+            max_options = int(
+                getattr(runtime, "recommendation_weights_max_options", DEFAULT_MAX_OPTIONS)
+            )
+        except (TypeError, ValueError):
+            max_options = DEFAULT_MAX_OPTIONS
+        semantic_available = not self._is_offline_embedding_mode()
+        return build_weights_payload(
+            skills,
+            temperature=temperature,
+            max_options=max_options,
+            semantic_available=semantic_available,
+            enabled=enabled,
+        )
 
     async def rewrite(
         self,

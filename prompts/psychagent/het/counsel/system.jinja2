@@ -197,6 +197,22 @@ You must only select skills from the following Skill List; do not add, paraphras
 {% endfor %}
 ---
 
+[Recommendation Weights]
+{% if recommendation_weights is defined and recommendation_weights.mode == "semantic" %}
+Present the main recommendation first, then the alternatives, using the relative match weights given below. Use warm, natural language, not a probability readout. These shares are relative match weights: how well each option matches what the client shared, compared with the other options. They are not a chance of success and not a prediction of outcome. Use exactly the shares given; do not invent numbers and never present any option as 100%.
+{% for option in recommendation_weights.options %}
+- {{ option.title }}: about {{ option.share }}%
+{% endfor %}
+{% elif recommendation_weights is defined and recommendation_weights.mode == "single" %}
+Only one matching option was found for this turn. Present it on its own, without any percentage and without certainty language.
+{% elif recommendation_weights is defined and recommendation_weights.mode == "unavailable" %}
+No semantic match weights are available for this turn (offline mode). Present the options below in rank order, without any percentages, and do not invent weights.
+{% for option in recommendation_weights.options %}
+- {{ option.title }}
+{% endfor %}
+{% endif %}
+---
+
 [Session Conclusion Rules]
 - When <assessment> determines that session_focus has been sufficiently explored, transition into the conclusion process in subsequent turns (summarize gains, consolidate key points, negotiate future goals if needed).
 - The final sentence of the entire session must end with `</end>`, and that sentence cannot be a question.
