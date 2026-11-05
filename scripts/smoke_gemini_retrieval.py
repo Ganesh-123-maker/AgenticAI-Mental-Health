@@ -25,6 +25,7 @@ import argparse
 import os
 import sys
 from pathlib import Path
+from typing import NoReturn
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT / "src"))
@@ -38,7 +39,7 @@ TEST_QUERY = "I feel anxious about my exams and cannot sleep at night"
 TOP_K = 5
 
 
-def fail(msg: str) -> "NoReturn":  # type: ignore[name-defined]
+def fail(msg: str) -> NoReturn:
     print(f"SMOKE FAIL: {msg}")
     raise SystemExit(1)
 

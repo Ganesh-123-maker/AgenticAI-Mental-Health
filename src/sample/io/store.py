@@ -3,6 +3,9 @@
 from __future__ import annotations
 
 import json
+import logging
+
+logger = logging.getLogger(__name__)
 import shutil
 import warnings
 from pathlib import Path
@@ -82,7 +85,10 @@ class ResultStore:
             stem = path.stem
             try:
                 int(stem.split("_")[-1])
-            except Exception:
+            except Exception as exc:
+                # Round 2 fix (Stream A D7): a non-numeric session file
+                # was silently skipped; log it.
+                logger.debug("skipping non-numeric session file %s: %s", path.name, type(exc).__name__)
                 continue
             paths.append(path)
         return sorted(paths, key=lambda p: int(p.stem.split("_")[-1]))

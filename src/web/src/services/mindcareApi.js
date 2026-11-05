@@ -45,25 +45,10 @@ export const coursesApi = {
   async getById(courseId, { token, onUnauthorized } = {}) {
     return requestJson(`/courses/${courseId}`, { token, onUnauthorized });
   },
-  async update(courseId, payload, { token, onUnauthorized } = {}) {
-    return requestJson(`/courses/${courseId}`, {
-      method: "PATCH",
-      body: payload,
-      token,
-      onUnauthorized,
-    });
-  },
   async complete(courseId, payload = {}, { token, onUnauthorized } = {}) {
     return requestJson(`/courses/${courseId}/complete`, {
       method: "POST",
       body: payload,
-      token,
-      onUnauthorized,
-    });
-  },
-  async archive(courseId, { token, onUnauthorized } = {}) {
-    return requestJson(`/courses/${courseId}/archive`, {
-      method: "POST",
       token,
       onUnauthorized,
     });

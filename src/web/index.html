@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="PsychAgent — a calm AI counseling companion (research prototype)." />
     <title>PsychAgent</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Round 2 fix (Stream C D4): the Google Fonts CDN link failed on
+         every page load offline (ERR_TUNNEL_CONNECTION_FAILED console
+         error). Removed; the font stack in tailwind.config.js already
+         falls back to system fonts, so rendering is unchanged offline. -->
     <!-- Tailwind is bundled locally (see tailwind.config.js); the theme
          config that used to be inlined here for the CDN Play script is
          ported there unchanged. -->

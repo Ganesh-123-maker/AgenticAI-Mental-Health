@@ -7,8 +7,9 @@ SkillManager and PsychAgentPromptManager to generate the counselor's response.
 IMPORTANT design constraints
 -----------------------------
 * Does NOT reimplement skill retrieval or prompt construction.
-* When route is HIGH-RISK, still calls the same skill retrieval — SOP-1 safety-first
-  logic in select_skill/system.txt already handles crisis skill prioritization.
+* `generate_response` is only reached for non-HIGH-RISK turns: the async
+  pipeline skips it entirely on HIGH-RISK turns (no retrieval, no LLM
+  call) and lets the supervisor deliver safe text instead.
 * Generates counselor response text in the exact format runner.py expects.
 """
 
@@ -38,12 +39,26 @@ class CounselingAgent(Agent):
         self.prompt_manager = prompt_manager
 
     def run(self, ctx: AgentContext) -> AgentMessage:
-        """Synchronous Agent interface for offline/unit testing."""
+        """Synchronous Agent interface for offline/unit testing.
+
+        PLACEHOLDER — this is NOT a counseling reply. It returns a routing
+        marker ("[Counselor response generated via route=...]") so the
+        sync pipeline can exercise routing, clarification, and supervision
+        without an LLM call. Real counselor text comes only from
+        `generate_response()` (async batch runner path) or from the web
+        engine's own generation. Consumers MUST check
+        `payload["response_source"] == "stub"` / `run_pipeline`'s
+        `"response_is_placeholder"` and never deliver this text to a user.
+        """
         route = (ctx.routing_output or {}).get("route", "CLEAR")
         response_text = f"[Counselor response generated via route={route}]"
         payload = {
             "route": route,
             "response_text": response_text,
+            # Round 2 fix (Stream B D5): mark the stub explicitly so no
+            # future consumer mistakes it for a counseling reply.
+            "response_source": "stub",
+            "is_counseling_reply": False,
             "next_agent": "safety_supervisor",
             "trail_summary": {
                 "memory_loaded": bool(ctx.memory_output),

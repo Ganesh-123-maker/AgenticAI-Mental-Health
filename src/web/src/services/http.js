@@ -1,14 +1,5 @@
 import { API_BASE } from "../config/api";
 
-export class ApiError extends Error {
-  constructor(message, status, data) {
-    super(message);
-    this.name = "ApiError";
-    this.status = status;
-    this.data = data;
-  }
-}
-
 export async function requestJson(
   path,
   { method = "GET", body, token, onUnauthorized, headers = {} } = {}
@@ -47,7 +38,7 @@ export async function requestJson(
 
   if (!response.ok) {
     const message = data?.detail || `Request failed with status ${response.status}`;
-    throw new ApiError(message, response.status, data);
+    throw new Error(message);
   }
 
   return data;

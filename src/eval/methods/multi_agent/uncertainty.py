@@ -42,13 +42,11 @@ class Uncertainty(EvaluationMethod):
 
         unc_status = "CLEAR"
         pred_uncertain = False
-        unc_missing = []
 
         for step in trail:
             if step.get("agent") == "uncertainty_agent":
                 payload = step.get("payload", {})
                 unc_status = str(payload.get("status", "CLEAR")).upper()
-                unc_missing = list(payload.get("missing_information", []) or [])
                 pred_uncertain = unc_status in ("UNCERTAIN", "AMBIGUOUS")
                 break
 
@@ -84,11 +82,9 @@ class Uncertainty(EvaluationMethod):
                     field_hits += 1
             clarification_relevance = field_hits / len(missing_fields) if missing_fields else 1.0
 
-        reassessment_ran = False
         reassessment_accurate = 1.0
         for step in trail:
             if step.get("agent") == "reassessment_agent":
-                reassessment_ran = True
                 payload = step.get("payload", {})
                 new_status = str(payload.get("status", "")).upper()
                 if new_status == "CLEAR":

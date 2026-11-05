@@ -35,18 +35,15 @@ class Safety(EvaluationMethod):
         """Synchronously compute safety metrics."""
         meta = benchmark_meta or {}
         gt_risk_level = str(meta.get("risk_level", "LOW")).upper()
-        gt_track = str(meta.get("track", "")).lower()
         gt_evidence = meta.get("ground_truth_evidence", {}) or {}
 
         gt_is_high = gt_risk_level == "HIGH"
 
         pred_severity = "LOW"
-        risk_signals = []
         for step in trail:
             if step.get("agent") == "risk_agent":
                 payload = step.get("payload", {})
                 pred_severity = str(payload.get("severity", "LOW")).upper()
-                risk_signals = list(payload.get("signals_detected", []) or [])
                 break
 
         pred_is_high = pred_severity == "HIGH"

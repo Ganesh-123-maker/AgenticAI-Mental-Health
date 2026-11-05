@@ -9,6 +9,33 @@ from typing import List
 from .base import Message
 
 
+def _prior_user_turns(messages, keywords=None):
+    """User turns before the current (last) user message.
+
+    Recall branches must only repeat what the user actually said earlier
+    in this conversation. The last user turn is the current question or
+    request itself, never recalled content.
+    """
+    turns = [
+        str(m.get("content", "")).strip()
+        for m in messages
+        if m.get("role") == "user"
+    ]
+    prior = [t for t in turns[:-1] if t]
+    if keywords:
+        prior = [t for t in prior if any(k in t.lower() for k in keywords)]
+    return prior
+
+
+def _clip_words(text, limit=200):
+    """Clip to a word boundary (no mid-word cut); append ellipsis if cut."""
+    flat = " ".join(str(text or "").split())
+    if len(flat) <= limit:
+        return flat
+    clipped = flat[:limit].rsplit(" ", 1)[0]
+    return clipped + "…"
+
+
 class DummyBackend:
     """Deterministic text backend that can emit an end token."""
 
@@ -151,30 +178,68 @@ class DummyBackend:
             return f"I hear your progress. Let's pause here for today. {end_token}"
 
         user_lower = last_user.lower()
-        all_user_str = " ".join(str(m.get("content", "")) for m in messages if m.get("role") == "user").lower()
 
+        # Round 2 fix (Stream C D1): the old canned reply FABRICATED
+        # clinical specifics the user never stated (falling asleep around
+        # 11 PM, three weeks, six hours, four hours) and presented them as
+        # recalled fact. Root cause is in this dummy template, not in
+        # memory retrieval: the text was hardcoded for a scripted demo
+        # client. Recall now only repeats the user's own earlier words
+        # from this conversation, and says plainly when no specifics
+        # were recorded.
         if ("remind me" in user_lower or "what have i told you" in user_lower or "told you about" in user_lower) and "sleep" in user_lower:
+            sleep_turns = _prior_user_turns(messages, ("sleep",))
+            if sleep_turns:
+                return (
+                    f"You mentioned sleep earlier: '{_clip_words(sleep_turns[-1])}'. "
+                    "That is all I have recorded about your sleep from our conversation — "
+                    "no bedtimes, durations, or nightly hours were mentioned."
+                )
             return (
-                "Earlier, you shared that you've been having trouble falling asleep around 11 PM for about three weeks. "
-                "You initially mentioned usually getting around six hours of sleep, but clarified that on your "
-                "worst nights it can drop closer to four hours."
+                "You haven't mentioned specific sleep details in this conversation yet. "
+                "Could you tell me a bit about how you've been sleeping?"
             )
 
         if "summarize" in user_lower or "what has been bothering me" in user_lower or "summary" in user_lower:
+            prior = _prior_user_turns(messages)
+            if not prior:
+                return (
+                    "We haven't covered anything yet in this conversation — "
+                    "what would you like to start with?"
+                )
+            quoted = " ".join(f"'{_clip_words(t, 120)}'" for t in prior[-3:])
             return (
-                "To summarize what you've shared: For the past three weeks, you've experienced sleep difficulties, usually going to bed around 11 PM but staying awake for a long time. You typically get around six hours of sleep on most nights, dropping closer to four hours on your worst nights, leading to daytime fatigue and difficulty concentrating in class. This is compounded by stress from several upcoming academic assignments and a perfectionistic belief that 'if I don't finish everything perfectly, I feel like I've failed.' You clearly clarified that while you feel overwhelmed by schoolwork, you do not want to hurt yourself. Your primary goals are improving your sleep and managing your workload, and you've found that making a small plan for the next day serves as a helpful coping resource."
+                "Here is what you've shared so far in this conversation: "
+                f"{quoted} "
+                "I don't have any additional details recorded beyond what you said."
             )
 
         if "what was helping me" in user_lower or "what helped me" in user_lower or "remember about what was helping" in user_lower:
+            coping = _prior_user_turns(
+                messages,
+                ("plan", "breathing", "walk", "exercise", "helped", "helps",
+                 "journal", "meditat", "routine"),
+            )
+            if coping:
+                return (
+                    f"You mentioned something that helped: '{_clip_words(coping[-1])}'. "
+                    "Would you like to build on that?"
+                )
             return (
-                "From our earlier sessions, you noted that making a small plan for the next day was a helpful coping strategy "
-                "that helped you manage your workload, along with taking steady steps to improve your sleep routine."
+                "You haven't mentioned a specific coping strategy in this conversation yet. "
+                "Is there anything that has helped, even a little?"
             )
 
         if "recall about my presentation" in user_lower or ("what" in user_lower and "presentation" in user_lower and ("recall" in user_lower or "remember" in user_lower)):
+            pres_turns = _prior_user_turns(messages, ("presentation",))
+            if pres_turns:
+                return (
+                    f"You mentioned presentations earlier: '{_clip_words(pres_turns[-1])}'. "
+                    "That is all I have recorded about presentations from our conversation."
+                )
             return (
-                "You shared that you experience significant performance anxiety and a racing heart before team presentations at work, "
-                "which disrupts your sleep the night before, and your goal is to build confidence when speaking in front of colleagues."
+                "You haven't mentioned presentations in this conversation yet. "
+                "Could you tell me about them?"
             )
 
         if "presentation" in user_lower and "heart" in user_lower:
@@ -279,5 +344,8 @@ class DummyBackend:
                 "How is that extra rest affecting your daytime focus and stress levels?"
             )
 
-        clipped = last_user.replace("\n", " ")[:140]
+        # Round 2 fix (Stream C D5): the old echo cut at exactly 140
+        # characters, mid-word ("What do you", "I have been thinki").
+        # Clip at a word boundary instead.
+        clipped = _clip_words(last_user, 140)
         return f"Thanks for sharing. I heard: '{clipped}'. Let's explore one concrete coping step for this week."

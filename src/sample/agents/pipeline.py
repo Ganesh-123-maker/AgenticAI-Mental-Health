@@ -28,6 +28,7 @@ from .risk_agent import RiskAgent
 from .safety_supervisor import SafetySupervisor
 from .state_agent import StateAgent
 from .uncertainty_agent import UncertaintyAgent
+from ..utils import PRESCRIPTION_BOUNDARY_RESPONSE, is_explicit_prescription_request
 
 logger = logging.getLogger(__name__)
 
@@ -168,6 +169,30 @@ def run_pipeline(
     active_flags = _resolve_flags(flags, ctx=ctx, **kwargs)
     trail: List[Dict[str, Any]] = []
     answer_sequence = _normalize_answer_sequence(clarification_answer)
+
+    # Round 2 fix (Stream D D-05): explicit prescription requests get a
+    # fixed boundary response with no agent run and no counseling
+    # generation. (The web engine enforces this before calling the
+    # pipeline; this covers direct/batch callers.)
+    if is_explicit_prescription_request(ctx.current_message):
+        trail.append({
+            "agent": "pipeline",
+            "step": "scope_boundary",
+            "reason": "explicit_prescription_request",
+        })
+        return {
+            "response": PRESCRIPTION_BOUNDARY_RESPONSE,
+            "response_is_placeholder": False,
+            "response_source": "scope_boundary",
+            "route": "CLEAR",
+            "next_agent": "counseling_agent",
+            "verdict": "ALLOW",
+            "reason": "scope_boundary_prescription",
+            "reassess_count": 0,
+            "reroute_count": 0,
+            "trail": trail,
+            "context": ctx,
+        }
 
     mem_agent = MemoryAgent()
     mem_msg, mem_ms = _timed_run(mem_agent, ctx)
@@ -364,6 +389,19 @@ def run_pipeline(
 
     return {
         "response": final_response,
+        # Round 2 fix (Stream B D5): the sync pipeline's counseling step
+        # is a placeholder stub, so a CLEAR/UNCERTAIN "response" is not a
+        # counseling reply. Flag it so consumers (and tests) can tell a
+        # stub from supervisor-produced safe text (ESCALATE/REVISE), which
+        # IS deliverable.
+        "response_is_placeholder": bool(
+            final_response.startswith("[Counselor response generated via route=")
+        ),
+        "response_source": (
+            "stub"
+            if final_response.startswith("[Counselor response generated via route=")
+            else "supervisor"
+        ),
         "route": current_route,
         "next_agent": orch_msg.payload.get("next_agent") if orch_msg else "counseling_agent",
         "verdict": supervisor_verdict,
@@ -406,6 +444,26 @@ async def run_pipeline_async(
     active_flags = _resolve_flags(flags, ctx=ctx, runner_instance=runner_instance, **kwargs)
     trail: List[Dict[str, Any]] = []
     answer_sequence = _normalize_answer_sequence(clarification_answer)
+
+    # Round 2 fix (Stream D D-05): as in run_pipeline — no retrieval, no
+    # LLM call for an explicit prescription request.
+    if is_explicit_prescription_request(ctx.current_message):
+        trail.append({
+            "agent": "pipeline",
+            "step": "scope_boundary",
+            "reason": "explicit_prescription_request",
+        })
+        return {
+            "response": (PRESCRIPTION_BOUNDARY_RESPONSE, PRESCRIPTION_BOUNDARY_RESPONSE),
+            "route": "CLEAR",
+            "next_agent": "counseling_agent",
+            "verdict": "ALLOW",
+            "reason": "scope_boundary_prescription",
+            "reassess_count": 0,
+            "reroute_count": 0,
+            "trail": trail,
+            "context": ctx,
+        }
 
     mem_agent = MemoryAgent()
     mem_msg, mem_ms = _timed_run(mem_agent, ctx)
@@ -514,23 +572,39 @@ async def run_pipeline_async(
             else:
                 break
 
-        _counsel_start = time.perf_counter()
-        c_resp_pure, c_resp_raw = await counseling_agent.generate_response(
-            ctx,
-            runner_instance=runner_instance,
-            transcript=transcript,
-            counselor_messages=counselor_messages,
-            session_goals=session_goals,
-            stage=stage,
-            candidate_skills=candidate_skills,
-            case_id=case_id,
-            turn_tag=turn_tag,
-            render_counselor_system=render_counselor_system,
-            each_turn_system=each_turn_system,
-        )
-        counseling_ms = round((time.perf_counter() - _counsel_start) * 1000, 3)
-        ctx.counseling_output = {"response": c_resp_pure, "route": current_route}
-        trail.append({"agent": counseling_agent.name, "step": "initial_draft", "route": current_route, "duration_ms": counseling_ms})
+        # Round 2 fix (Stream B D4): on a HIGH-RISK turn, do NOT spend a
+        # skill-retrieval call and a counseling LLM call on a draft the
+        # supervisor is about to discard. The supervisor gates an empty
+        # draft on a HIGH-RISK turn to BLOCK (safe fallback) or REVISE
+        # (safety-framing text with helplines), so the delivered reply is
+        # always safe text. This mirrors the web engine, which returns
+        # before retrieval/chat on HIGH-RISK. Only applies when the
+        # supervisor is enabled; with it disabled the old path is kept.
+        if current_route == "HIGH-RISK" and active_flags["safety_supervisor_enabled"]:
+            c_resp_pure, c_resp_raw = "", ""
+            counseling_ms = 0.0
+            ctx.counseling_output = {"response": "", "route": current_route}
+            trail.append({"agent": counseling_agent.name, "step": "initial_draft",
+                          "route": current_route, "duration_ms": counseling_ms,
+                          "skipped": "high_risk_no_retrieval_or_llm_call"})
+        else:
+            _counsel_start = time.perf_counter()
+            c_resp_pure, c_resp_raw = await counseling_agent.generate_response(
+                ctx,
+                runner_instance=runner_instance,
+                transcript=transcript,
+                counselor_messages=counselor_messages,
+                session_goals=session_goals,
+                stage=stage,
+                candidate_skills=candidate_skills,
+                case_id=case_id,
+                turn_tag=turn_tag,
+                render_counselor_system=render_counselor_system,
+                each_turn_system=each_turn_system,
+            )
+            counseling_ms = round((time.perf_counter() - _counsel_start) * 1000, 3)
+            ctx.counseling_output = {"response": c_resp_pure, "route": current_route}
+            trail.append({"agent": counseling_agent.name, "step": "initial_draft", "route": current_route, "duration_ms": counseling_ms})
 
         if active_flags["safety_supervisor_enabled"]:
             sup_msg, sup_ms = _timed_run(supervisor, ctx, draft_response=c_resp_pure)
@@ -557,6 +631,20 @@ async def run_pipeline_async(
                 if revised_response:
                     final_pure, final_raw = revised_response, revised_response
                     trail.append({"agent": supervisor.name, "action": "supervisor_revision_applied", "duration_ms": 0.0})
+                elif current_route == "HIGH-RISK":
+                    # Round 2 fix (Stream B D4, same reason as the
+                    # initial-draft skip): never spend a second retrieval
+                    # + LLM call re-generating on a crisis turn. The
+                    # supervisor always supplies a revision on HIGH-RISK,
+                    # so this is defensive only.
+                    final_pure = final_raw = sup_payload.get("safe_fallback") or (
+                        "I care deeply about your safety and current well-being. "
+                        "Please contact your family, friends, a trusted person, your "
+                        "local emergency number, or a crisis helpline right now "
+                        "(for example, Tele-MANAS 14416 in India or 988 in the "
+                        "United States)."
+                    )
+                    trail.append({"agent": supervisor.name, "action": "high_risk_revision_skipped_safe_fallback_applied", "duration_ms": 0.0})
                 else:
                     ctx.metadata["supervisor_revision_rationale"] = sup_payload.get("rationale")
                     _rev_start = time.perf_counter()

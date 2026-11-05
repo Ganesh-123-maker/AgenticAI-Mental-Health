@@ -58,7 +58,6 @@ import asyncio
 import json
 import logging
 import math
-import os
 import sys
 import time
 import uuid
@@ -723,7 +722,6 @@ def build_engine(cfg: Dict[str, Any], dry_run: bool):
     configured MODEL against the baseline config's model and fails on
     mismatch. Dry-run mode uses the dummy backend and skips the check
     (the configured model is the intended live model, recorded as such)."""
-    from pathlib import Path as P
     from web.backend.psychagent_engine import PsychAgentWebBackend
     from sample.io.config_loader import load_baseline_config
 
@@ -857,8 +855,10 @@ async def amain(args: argparse.Namespace) -> int:
         save_state(state_path, state)
         try:
             await engine.shutdown()
-        except Exception:
-            pass
+        except Exception as exc:
+            # Round 2 fix (Stream A D7): was a silent swallow; shutdown
+            # failures must not hide (state was already saved above).
+            LOGGER.debug("engine shutdown failed: %s", type(exc).__name__)
     print_summary(state)
     if stopped_reason:
         print(f"STOPPED: {stopped_reason} (state saved; resume with the same command)")

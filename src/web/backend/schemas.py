@@ -78,6 +78,16 @@ class VisitPsychContextOut(BaseModel):
 class VisitState(VisitPreview):
     course_id: str
     messages: List[VisitMessageOut] = Field(default_factory=list)
+    # REG-1 fix: user-role messages from earlier visits of the SAME
+    # course, oldest first. The engine prepends these to the counseling
+    # chat history so cross-session recall can quote the user's own
+    # earlier words. Same-course only (see
+    # visit_service.get_prior_visit_user_messages); the field is
+    # serialized in API responses but holds only the requesting user's
+    # own words. Assistant turns are excluded on purpose (see the engine
+    # helper): the dummy backend keys its opening branch off the
+    # assistant-turn count, and recall branches only scan user turns.
+    prior_visit_user_messages: List[VisitMessageOut] = Field(default_factory=list)
     psych_context: Optional[VisitPsychContextOut] = None
 
 

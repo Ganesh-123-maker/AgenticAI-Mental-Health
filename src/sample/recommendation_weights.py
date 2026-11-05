@@ -255,8 +255,19 @@ def _sentence_is_forbidden(sentence: str) -> bool:
 
 
 def strip_percentage_tokens(text: str) -> str:
-    """Remove percentage tokens (e.g. 'about 80%') from model text."""
-    cleaned = re.sub(r"\s*(?:about|around|approximately)\s*\d{1,3}\s*%", "", text or "")
+    """Remove percentage tokens (e.g. 'about 80%') from model text.
+
+    Round 2 fix (Stream B D7): removing only the "90%" from "This works
+    90% of the time." left the ungrammatical "This works of the time."
+    The whole "N% of the time" construction is removed first, so the
+    sentence keeps a grammatical remainder ("This works.").
+    """
+    cleaned = re.sub(
+        r"\s*(?:about|around|approximately)?\s*\d{1,3}\s*(?:%|percent)\s+of the time\b",
+        "",
+        text or "",
+    )
+    cleaned = re.sub(r"\s*(?:about|around|approximately)\s*\d{1,3}\s*%", "", cleaned)
     cleaned = re.sub(r"\s*\d{1,3}\s*%", "", cleaned)
     return re.sub(r"[ \t]{2,}", " ", cleaned).strip()
 

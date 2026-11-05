@@ -488,8 +488,10 @@ async def _migrate_one(manager: SkillManager, pt_path: Path, dry_run: bool,
                     len(skill_ids), int(manager._runtime.psychagent_embedding_dimensions))
                 if problem is None:
                     return {**stats, "status": "skipped (valid store present)"}
-        except Exception:
-            pass
+        except Exception as exc:
+            # Round 2 fix (Stream A D7): was a silent swallow; a failed
+            # store validation now logs before regenerating.
+            logging.getLogger(__name__).debug("existing skill store validation failed, regenerating: %s", type(exc).__name__)
 
     checkpoint = ShardCheckpoint(keyed_path, source_hash, provenance,
                                  skill_ids, total_batches)
@@ -570,7 +572,10 @@ def _compute_demand(base_files: list[Path], batch_size: int,
         for pt in base_files:
             try:
                 skills = _load_base_skills(pt)
-            except Exception:
+            except Exception as exc:
+                # Round 2 fix (Stream A D7): an unloadable base-skill file
+                # was silently skipped from the batch count; log it.
+                logging.getLogger(__name__).debug("skipping unloadable base skills file %s: %s", pt, type(exc).__name__)
                 continue
             total_batches += _file_batch_count(len(skills), batch_size)
             for skill in skills.values():

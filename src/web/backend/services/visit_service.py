@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import logging
 from datetime import datetime, timezone
 from typing import Any, Awaitable, Callable, Dict, List, Optional, Tuple
 
@@ -26,6 +27,8 @@ from ..schemas import (
     VisitState,
 )
 from .course_service import get_owned_course_record
+
+logger = logging.getLogger(__name__)
 
 CounselorReplyFn = Callable[
     [List[Dict[str, str]], TherapyCourseRecord, TherapyVisitRecord, VisitState, Optional[VisitPsychContextOut]],
@@ -141,7 +144,19 @@ def build_opening_messages(
 
 
 def build_opening_seed_user_text(visit_no: int, opening_note: str = "") -> str:
-    base = f"This is session {visit_no}"
+    # Round 2 fix (Stream C D9): the old seed impersonated a user turn
+    # ("This is session 2"), which the dummy backend then echoed back as
+    # if the user had said it. The seed is now an explicit opening
+    # instruction to the counselor instead. (It contains "opening", so
+    # the dummy backend's existing opening branch answers it with a
+    # welcome rather than an echo.)
+    # Wording matters: it must NOT start with a direct-request prefix
+    # ("please", "give me", "can you", ...) or the engine's
+    # direct-request bypass skips the clarification question and spends
+    # a chat call on the opening turn (broke the quota test's
+    # zero-call opening invariant). "A brief opening ..." starts with
+    # no such prefix.
+    base = f"A brief opening for session {visit_no}"
     note = opening_note.strip()
     if not note:
         return base
@@ -206,8 +221,11 @@ def _parse_json_dict(raw: str) -> Dict[str, Any]:
         parsed = json.loads(raw)
         if isinstance(parsed, dict):
             return parsed
-    except Exception:
-        pass
+    except Exception as exc:
+        # Round 2 fix (Stream A D7): was a silent swallow on the live web
+        # path. Log only the failure type, never the raw content (it can
+        # hold user text); behaviour unchanged (returns {}).
+        logger.debug("visit psych-context JSON dict parse failed: %s", type(exc).__name__)
     return {}
 
 
@@ -218,8 +236,9 @@ def _parse_json_list(raw: str) -> List[Any]:
         parsed = json.loads(raw)
         if isinstance(parsed, list):
             return parsed
-    except Exception:
-        pass
+    except Exception as exc:
+        # Round 2 fix (Stream A D7): as above, for JSON lists.
+        logger.debug("visit psych-context JSON list parse failed: %s", type(exc).__name__)
     return []
 
 
@@ -551,6 +570,41 @@ def build_visit_preview(visit: TherapyVisitRecord) -> VisitPreview:
     )
 
 
+def get_prior_visit_user_messages(db: Session, visit: TherapyVisitRecord) -> List[VisitMessageOut]:
+    """User-role messages from earlier visits of the SAME course, oldest first.
+
+    REG-1 fix: powers cross-session recall in the web engine. Scoped to
+    this visit's own course only -- every caller already holds a visit
+    fetched under user authorization (get_owned_visit_and_course /
+    get_visit_state_for_user), so no other user's words and no other
+    course's words can ever appear here. Assistant turns are excluded:
+    the dummy backend counts assistant turns for its end-of-session turn
+    and recall branches only scan user turns.
+    """
+    prior_visits = db.exec(
+        select(TherapyVisitRecord)
+        .where(
+            TherapyVisitRecord.course_id == visit.course_id,
+            TherapyVisitRecord.visit_no < visit.visit_no,
+        )
+        .order_by(TherapyVisitRecord.visit_no)
+    ).all()
+    prior: List[VisitMessageOut] = []
+    for prior_visit in prior_visits:
+        for message in get_visit_messages(db, prior_visit.visit_id):
+            if message.role != "user":
+                continue
+            prior.append(
+                VisitMessageOut(
+                    id=message.id,
+                    role=message.role,
+                    text=message.text,
+                    created_at=message.created_at,
+                )
+            )
+    return prior
+
+
 def build_visit_state(db: Session, visit: TherapyVisitRecord) -> VisitState:
     return VisitState(
         **build_visit_preview(visit).model_dump(),
@@ -564,6 +618,7 @@ def build_visit_state(db: Session, visit: TherapyVisitRecord) -> VisitState:
             )
             for message in get_visit_messages(db, visit.visit_id)
         ],
+        prior_visit_user_messages=get_prior_visit_user_messages(db, visit),
         psych_context=get_visit_psych_context_snapshot(db, visit.visit_id),
     )
 
@@ -600,8 +655,10 @@ def resolve_stage_for_new_visit(db: Session, course: TherapyCourseRecord, next_v
         if preferred_stage_key:
             try:
                 return stage_from_key(preferred_stage_key)
-            except Exception:
-                pass
+            except Exception as exc:
+                # Round 2 fix (Stream A D7): invalid stage key from the
+                # prior visit falls through to the next mapping; log it.
+                logger.debug("invalid next_session_stage_key %r: %s", preferred_stage_key, type(exc).__name__)
 
         preferred_stage = str(client_info.get("next_session_stage") or "").strip()
         mapped_stage_key = summary_stage_to_stage_key(preferred_stage)
@@ -611,8 +668,10 @@ def resolve_stage_for_new_visit(db: Session, course: TherapyCourseRecord, next_v
     if previous_visit.stage_key_snapshot:
         try:
             return stage_from_key(previous_visit.stage_key_snapshot)
-        except Exception:
-            pass
+        except Exception as exc:
+            # Round 2 fix (Stream A D7): invalid snapshot stage key falls
+            # through to the assessment default; log it.
+            logger.debug("invalid stage_key_snapshot %r: %s", previous_visit.stage_key_snapshot, type(exc).__name__)
 
     return stage_from_key("assessment")
 
@@ -949,8 +1008,10 @@ async def close_visit(
     elif next_stage_key:
         try:
             merged_client_info["next_session_stage"] = stage_from_key(next_stage_key).label
-        except Exception:
-            pass
+        except Exception as exc:
+            # Round 2 fix (Stream A D7): invalid stage key for the label
+            # lookup leaves the label unset; log it.
+            logger.debug("invalid next_session_stage_key %r for label lookup: %s", next_stage_key, type(exc).__name__)
 
     snapshot["client_info"] = merged_client_info
 

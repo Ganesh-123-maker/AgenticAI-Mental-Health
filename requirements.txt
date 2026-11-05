@@ -17,3 +17,8 @@ openai>=1.0.0
 # Testing & Quality Assurance
 pytest>=8.0.0
 pytest-asyncio==0.23.7  # pinned to the locally verified version; required by the @pytest.mark.asyncio tests (test_phase8, test_multi_agent_eval); without it CI fails with "async def functions are not natively supported"
+
+# Evaluation & Optional Integrations (guarded imports; absence is handled in code)
+google-genai  # Gemini embeddings in skill_manager.py - without it, Gemini embeddings are silently disabled
+aiolimiter  # eval GPT5ChatClient rate limiting (raises a clear error if absent)
+tenacity  # eval GPT5ChatClient retries (raises a clear error if absent)

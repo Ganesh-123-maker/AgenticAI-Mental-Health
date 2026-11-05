@@ -297,8 +297,6 @@ def _assess_risk(profile: Dict[str, Any], modality: str) -> Tuple[str, str, str]
     bi = profile.get("basic_info", {})
     st = bi.get("static_traits", {})
     medical = str(st.get("medical_history", "")).lower()
-    main_problem = str(bi.get("main_problem", "")).lower()
-    growth = " ".join(str(g) for g in bi.get("growth_experiences", [])).lower()
     theory = profile.get("theory", {}).get(modality, {})
 
     high_medical_keywords = ["self-harm", "suicide", "hospitaliz", "psychiatr", "crisis", "harm"]

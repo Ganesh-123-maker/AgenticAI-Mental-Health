@@ -64,6 +64,16 @@ _FALSE_REASSURANCE_PATTERNS = [
     r"(no need to worry about your safety|you have no mental illness|you are perfectly normal)",
     r"(I'm taking responsibility|guarantee you won't be harmed|nothing bad will happen)",
     r"(you are completely safe|there is definitely no risk|guaranteed to be fine)",
+    # Round 2 fix (D-09 follow-up): the bare guarantees "will not be
+    # harmed" and "will be completely fine" were only caught when
+    # attached to another flagged phrase, so a partial strip could leave
+    # them behind in a revision. They are safety guarantees on their own.
+    # Same for "have no mental illness": after "You are completely safe"
+    # is stripped, "and have no mental illness" survives without its
+    # pronoun, so the bare fragment must match too.
+    r"(will not be harmed|won't be harmed)",
+    r"will be completely fine",
+    r"have no mental illness",
 ]
 
 _UNSUPPORTED_DIAGNOSIS_PATTERNS = [
@@ -86,6 +96,31 @@ _INTERNAL_LEAKAGE_PATTERNS = [
     r"RiskAgent",
     r"AgentContext",
     r"system_prompt",
+]
+
+# Neutral revision used when a flagged draft cannot be cleaned by
+# substitution: a safe, non-diagnostic acknowledgement with no internal
+# tokens and no fabricated facts.
+_NEUTRAL_REVISION = (
+    "I hear what you're sharing. Let's focus on what you're "
+    "experiencing right now and one small, safe step that could help."
+)
+# violence (Round 2 fix, D-07). These match *instructional* phrasing
+# ("here is how you can hurt yourself", "cut deeply"), not mere mentions
+# of self-harm ("if you have thoughts of hurting yourself, please call…"
+# does not match). A draft matching any of these is BLOCKed, never
+# delivered, regardless of route or risk severity.
+_HARMFUL_INSTRUCTIONS_PATTERNS = [
+    r"how (to|can you|do you|i can) (hurt|harm|kill) (yourself|myself|oneself)",
+    r"here'?s how (you can|to) (hurt|harm|kill|end)",
+    r"cut (yourself|deeply|deep)",
+    r"cut deeply",
+    r"(easiest|best|quickest|simplest) way to (end|kill|hurt|harm)",
+    r"steps? to (end|kill) (your|my) life",
+    r"steps? to (kill|hurt|harm) (yourself|myself|oneself)",
+    r"take (an )?overdose",
+    r"\b(hang|shoot|stab) yourself\b",
+    r"how to (end|take) (your|my) (life|own life)",
 ]
 
 
@@ -193,13 +228,21 @@ class SafetySupervisor(Agent):
                     risk_consistency = False
                     approved = False
 
-        if risk_severity == "HIGH" and route != "HIGH-RISK":
+        # Round 2 fix (Stream A D1): risk_status and
+        # immediate_safety_concern are now actually used below — the
+        # route-mismatch branch fires on EVIDENCE_OF_RISK as well as HIGH
+        # severity, and the HIGH-RISK branch runs when either flag says
+        # there is an immediate concern, so a future detector that emits
+        # EVIDENCE_OF_RISK without the HIGH severity wording is still
+        # gated. (The live RiskAgent sets all three consistently, so this
+        # changes no current live-input outcome.)
+        if (risk_severity == "HIGH" or risk_status == "EVIDENCE_OF_RISK" or immediate_safety_concern) and route != "HIGH-RISK":
             issues.append("High risk severity detected by Risk Agent, but Orchestrator route was not HIGH-RISK. Re-routing required.")
             risk_consistency = False
             approved = False
             safety_status = "REVISE"
             verdict = "RE-ROUTE"
-        elif route == "HIGH-RISK" or risk_severity == "HIGH":
+        elif route == "HIGH-RISK" or risk_severity == "HIGH" or risk_status == "EVIDENCE_OF_RISK" or immediate_safety_concern:
             response_lower = response_text.lower()
             utterance_lower = client_utterance.lower()
             signals_lower = " ".join(str(s) for s in risk_signals).lower()
@@ -218,10 +261,17 @@ class SafetySupervisor(Agent):
                 ]
             )
 
+            # Round 2 fix (D-07): the acute list was narrower than the risk
+            # agent's HIGH forms — "hurt/harm myself" is detected as HIGH
+            # by the risk agent but did not count as acute here, so a
+            # no-safety-awareness draft on such a turn only got REVISE.
             is_acute_crisis = any(
                 kw in utterance_lower or kw in signals_lower
                 for kw in [
                     "suicide", "self-harm", "despair", "want to die", "don't want to live", "end life", "cutting wrists", "jump off building", "kill myself", "killing myself", "end my life", "take my own life",
+                    "hurt myself", "hurting myself", "harm myself", "harming myself",
+                    "hurt yourself", "hurting yourself", "harm yourself", "harming yourself",
+                    "hurt oneself", "harm oneself",
                     *ZH_HIGH_CRISIS_FORMS,
                     *ROMAN_HIGH_CRISIS_FORMS,
                 ]
@@ -250,6 +300,21 @@ class SafetySupervisor(Agent):
                     )
             else:
                 risk_consistency = True
+
+        # Round 2 fix (D-07): the supervisor never inspected the draft
+        # itself for instructions facilitating self-harm, so a draft
+        # containing explicit instructions only got a generic REVISE.
+        # This check runs regardless of route/severity and BLOCKs.
+        if any(re.search(pat, response_text, re.IGNORECASE) for pat in _HARMFUL_INSTRUCTIONS_PATTERNS):
+            issues.append("Response contains instructions facilitating self-harm or violence.")
+            risk_consistency = False
+            approved = False
+            safety_status = "BLOCK"
+            revised_response = _STANDARD_SAFE_FALLBACK
+
+        # Round 2 fix (D-10): the same issue was appended once per
+        # matching pattern, so it appeared 2-3x in the payload.
+        issues = list(dict.fromkeys(issues))
 
         if approved and not issues:
             safety_status = "SAFE"
@@ -313,6 +378,28 @@ class SafetySupervisor(Agent):
 
         cleaned = re.sub(r"rest assured, you will not be harmed[.!?;]?", "", cleaned, flags=re.IGNORECASE)
         cleaned = re.sub(r"you are completely safe[.!?;]?", "", cleaned, flags=re.IGNORECASE)
+
+        # Round 2 fix (D-09): the old builder returned the original text
+        # unchanged for flagged classes it did not know how to strip —
+        # a diagnosis draft came back with the diagnosis intact, and a
+        # leakage draft kept "Orchestrator says route CLEAR". If any
+        # flagged pattern survives the substitutions, fall back to a
+        # neutral revision instead of returning the offending text.
+        for pat in (*_UNSUPPORTED_DIAGNOSIS_PATTERNS, *_INTERNAL_LEAKAGE_PATTERNS):
+            if re.search(pat, cleaned, re.IGNORECASE):
+                return _NEUTRAL_REVISION
+
+        # Round 2 follow-up: a partial strip can leave another flagged
+        # phrase behind — "You are completely safe and will not be
+        # harmed." lost its first half but kept "will not be harmed".
+        # If any false-reassurance or premature-certainty pattern
+        # survives, the cleaned text is not safe to deliver: drop it so
+        # the issue-specific safe sentences below are used instead.
+        if any(
+            re.search(pat, cleaned, re.IGNORECASE)
+            for pat in (*_FALSE_REASSURANCE_PATTERNS, *_PREMATURE_CERTAINTY_PATTERNS)
+        ):
+            cleaned = ""
 
         if cleaned != original_text and len(cleaned.strip()) > 5:
             return cleaned.strip()

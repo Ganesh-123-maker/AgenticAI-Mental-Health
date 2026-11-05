@@ -191,7 +191,7 @@ All figures in this section come from the **offline, deterministic** benchmark (
 │   │   └── skill_manager.py  # Embedding-based clinical micro-skill retriever
 │   ├── shared/               # Shared config and file utilities
 │   └── web/                  # Full-stack application (FastAPI backend + Vite React frontend)
-└── tests/                    # Automated unit and integration tests (37 test files, 252 tests)
+└── tests/                    # Automated unit and integration tests (41 test files, 307 tests)
 ```
 
 ---
@@ -242,7 +242,7 @@ FRONTEND_PORT=5173
 ### Running Automated Unit & Integration Tests
 ```bash
 python -m pytest -q
-# Verified 2026-11-01: 252 passed
+# Verified 2026-11-05: 307 passed
 ```
 
 ### Skill Embeddings Migration & Regeneration

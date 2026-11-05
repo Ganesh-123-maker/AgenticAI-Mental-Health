@@ -218,6 +218,19 @@ async def on_shutdown() -> None:
         await backend.shutdown()
     except Exception as exc:  # noqa: BLE001 - shutdown must not fail
         LOGGER.warning("backend shutdown: %s", type(exc).__name__)
+    if DB_URL.startswith("sqlite"):
+        # Round 2 fix (Stream C D8): in WAL mode the main data.db file
+        # holds almost nothing until a checkpoint — all committed data
+        # lives in the -wal file. A plain SIGTERM left the -wal behind
+        # (data survived via WAL recovery), but a lost or deleted -wal
+        # would lose everything. Checkpoint on clean shutdown so the
+        # on-disk data.db is self-contained afterwards. Best-effort:
+        # shutdown must not fail on this.
+        try:
+            with engine.connect() as conn:
+                conn.exec_driver_sql("PRAGMA wal_checkpoint(TRUNCATE)")
+        except Exception as exc:  # noqa: BLE001 - shutdown must not fail
+            LOGGER.warning("sqlite wal checkpoint on shutdown: %s", type(exc).__name__)
     LOGGER.info("PsychAgent web shutdown complete")
 
 

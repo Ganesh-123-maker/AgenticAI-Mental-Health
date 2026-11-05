@@ -3,6 +3,9 @@
 from __future__ import annotations
 
 import asyncio
+import logging
+
+logger = logging.getLogger(__name__)
 import json
 import re
 import traceback
@@ -665,8 +668,9 @@ def _safe_session_number(raw_value: Any, default_index: int) -> int:
         idx = int(raw_value)
         if idx > 0:
             return idx
-    except Exception:
-        pass
+    except Exception as exc:
+        # Round 2 fix (Stream A D7): was a silent swallow; log it.
+        logger.debug("unparsable session number %r: %s", raw_value, type(exc).__name__)
     return default_index
 
 
@@ -682,6 +686,9 @@ def _build_method_by_effective_name() -> Dict[str, Any]:
         try:
             effective_name = cls().get_name()
             by_name.setdefault(effective_name, cls)
-        except Exception:
+        except Exception as exc:
+            # Round 2 fix (Stream A D7): a method whose get_name() fails
+            # was silently skipped from the registry; log it.
+            logger.debug("method %s get_name() failed, skipped: %s", cls.__name__, type(exc).__name__)
             continue
     return by_name

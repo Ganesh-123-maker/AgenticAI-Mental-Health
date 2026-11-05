@@ -120,7 +120,7 @@ async def _async_runner_execution_comparison():
     root = pathlib.Path(__file__).parent.parent.parent
 
     baseline_cfg = load_baseline_config(str(root / "configs/baselines/psychagent_dummy_local.yaml"))
-    runtime_raw = load_runtime_config(str(root / "configs/runtime/psychagent_dummy_local.yaml"))
+    _ = load_runtime_config(str(root / "configs/runtime/psychagent_dummy_local.yaml"))
 
     from sample.io.config_loader import load_dataset_config
     from sample.io.dataset_loader import DatasetLoader

@@ -65,7 +65,27 @@ _CONTRADICTORY_PATTERNS = [
     r"(feel great|good).*(but feel terrible|awful)",
     r"(doing (fine|well|okay|ok|good)|i'?m (fine|okay|ok|good)|feeling (fine|better|good)).*"
     r"\b(actually|but|though)\b.*\b(barely|not|overwhelmed|struggling|can't|cannot|terrible|awful|anxious|stressed|exhausted)\b",
+    # Round 2 fix (D-03): domain-claim contradiction — a prior "sleep
+    # fine / no trouble sleeping" claim corrected by a negated sleep claim
+    # ("actually, I haven't slept properly", "I barely sleep at all").
+    # The old patterns only matched "I'm/doing/feeling fine" priors, so
+    # sleep corrections were never flagged. Scoped to sleep claims with an
+    # explicit correction marker, so ordinary sleep talk ("I can't sleep
+    # when it rains") without a prior contrary claim does not match.
+    # Note: a single turn can match when it states both sides ("I usually
+    # sleep fine but lately I can't sleep") — that is also a genuine
+    # ambiguity worth one clarification question.
+    r"(sleep (fine|well|perfectly)|sleeping (fine|well)|no trouble sleeping|no problems? (with )?(my )?sleep).*?"
+    r"\b(actually|but|though|correction|wrong)\b.*?"
+    r"\b(barely|hardly|haven't|have not|not|can't|cannot|never)\b.*?\b(sleep|slept|sleeping)\b",
 ]
+
+# Round 2 fix (D-04): bare vague affect with no object ("I feel bad.").
+# Narrow by design: the whole current message must be just the affect
+# phrase. "I feel bad about my exam" has an object and stays CLEAR.
+_BARE_VAGUE_AFFECT_RE = re.compile(
+    r"^(i feel|i am feeling|i'm feeling|feeling)\s+(bad|awful|terrible|horrible)\.?$"
+)
 
 _NON_CLIENT_FIELDS = ("theory_info",)
 
@@ -170,6 +190,12 @@ class UncertaintyAgent(Agent):
                     uncertainty_types.append("ambiguous_expression")
                 evidence.append(f"Ambiguous expression detected: '{kw}' in client expression")
 
+        if _BARE_VAGUE_AFFECT_RE.match((ctx.current_message or "").strip().lower()):
+            is_ambiguous = True
+            if "ambiguous_expression" not in uncertainty_types:
+                uncertainty_types.append("ambiguous_expression")
+            evidence.append("Bare vague affect with no object (e.g. 'I feel bad.') needs specification")
+
         previous_client_turn = ""
         for turn in reversed(ctx.prior_transcript or []):
             if isinstance(turn, dict) and turn.get("role") == "user":
@@ -238,6 +264,12 @@ class UncertaintyAgent(Agent):
             confidence = max(0.75, state_conf)
             evidence.append(f"Sufficient information available with {len(known_info)} verified facts")
             reasoning_summary = "Current state information is clear and sufficient to proceed with counseling."
+            # Round 2 fix (Stream B D6): uncertain_fields populated from
+            # unknown_information must not survive into a CLEAR verdict —
+            # a CLEAR payload with non-empty uncertain_fields is
+            # self-contradictory for eval/logging consumers.
+            uncertain_fields = []
+            uncertainty_types = ["none"]
 
         if not uncertainty_types:
             uncertainty_types = ["none"] if status == "CLEAR" else ["unspecified_uncertainty"]

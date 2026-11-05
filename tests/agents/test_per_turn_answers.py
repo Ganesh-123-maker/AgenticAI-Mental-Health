@@ -109,7 +109,7 @@ def test_risk_recalculated_from_latest_message():
         ],
         max_reassess_turns=3,
     )
-    reassesses = [s for s in r["trail"] if s["agent"] == "reassessment_agent"]
+    _ = [s for s in r["trail"] if s["agent"] == "reassessment_agent"]
     assert r["route"] == "HIGH-RISK", f"got {r['route']}"
     print("[PASS] Risk recalculated from latest client message.")
 

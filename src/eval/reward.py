@@ -3,6 +3,9 @@
 from __future__ import annotations
 
 import asyncio
+import logging
+
+logger = logging.getLogger(__name__)
 from dataclasses import dataclass
 from typing import Any, Dict, Iterable, List, Optional, Sequence
 
@@ -176,7 +179,9 @@ def _build_method_by_effective_name() -> Dict[str, Any]:
             by_name.setdefault(effective_name, cls)
             by_name.setdefault(str(effective_name).lower(), cls)
             by_name.setdefault(str(effective_name).upper(), cls)
-        except Exception:
+        except Exception as exc:
+            # Round 2 fix (Stream A D7): as in the orchestrator registry.
+            logger.debug("method %s get_name() failed, skipped: %s", cls.__name__, type(exc).__name__)
             continue
     return by_name
 

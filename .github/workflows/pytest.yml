@@ -2,7 +2,7 @@ name: pytest
 
 on:
   push:
-    branches: [main, "hardening/**", "feature/**", "fix/**"]
+    branches: [main, "final/**", "hardening/**", "feature/**", "fix/**"]
   pull_request:
     branches: [main]
 
@@ -27,3 +27,11 @@ jobs:
 
       - name: Run test suite
         run: python -m pytest -q
+
+      # Minimal lint gate (ruff.toml: E9 + F only; see the config for what
+      # is deliberately not enforced). Runs after the tests so a lint
+      # failure never masks a test failure.
+      - name: Lint (ruff E9 + F)
+        run: |
+          pip install ruff
+          ruff check src tests scripts

@@ -200,7 +200,7 @@ def test_gemini_routing_model_dim_and_batching():
 
 
 def test_gemini_retry_then_success():
-    mgr = _mgr()
+    _ = _mgr()
     client_holder = {}
 
     orig = _fake_genai.Client
@@ -222,7 +222,7 @@ def test_gemini_retry_then_success():
 
 
 def test_gemini_retry_exhaustion_raises_without_key_leak():
-    mgr = _mgr()
+    _ = _mgr()
 
     orig = _fake_genai.Client
 

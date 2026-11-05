@@ -1,0 +1,13 @@
+# Minimal lint gate (Round 2 fix, Stream A D11). Only correctness rules
+# are enforced: E9 (runtime errors) and F (pyflakes: undefined names,
+# unused imports/locals). Deliberately NOT selected:
+# - E402 (module import not at top): scripts intentionally import after a
+#   sys.path bootstrap.
+# - E70x/E401 (compound statements on one line): style only; pre-existing
+#   sites across the tree.
+# - B008: FastAPI Depends() in endpoint signatures is the documented idiom,
+#   not a defect.
+# - UP* (pyupgrade modernization): ~1,449 style findings; not adopted.
+# Run locally: ruff check src tests scripts
+[lint]
+select = ["E9", "F"]

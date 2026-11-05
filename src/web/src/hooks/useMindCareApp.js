@@ -14,6 +14,14 @@ function loadCachedUser() {
   }
 }
 
+function loadCachedSchoolId() {
+  try {
+    return localStorage.getItem(STORAGE_KEYS.selectedSchool) || "";
+  } catch {
+    return "";
+  }
+}
+
 function buildOptimisticMessage(text) {
   return {
     id: `local-${Date.now()}`,
@@ -42,7 +50,19 @@ export function useMindCareApp() {
   const [showCreateCourseModal, setShowCreateCourseModal] = useState(false);
 
   const [schools, setSchools] = useState([]);
-  const [selectedSchoolId, setSelectedSchoolId] = useState("");
+  const [selectedSchoolId, setSelectedSchoolId] = useState(loadCachedSchoolId);
+
+  // Round 2 fix (Stream C D3): persist the modality selection so a
+  // logout/login or refresh does not reset it to the first school
+  // (Behavior Therapy) and hide courses created under another modality.
+  useEffect(() => {
+    if (!selectedSchoolId) return;
+    try {
+      localStorage.setItem(STORAGE_KEYS.selectedSchool, selectedSchoolId);
+    } catch {
+      // Persistence is best-effort; selection still works in-memory.
+    }
+  }, [selectedSchoolId]);
 
   const [courses, setCourses] = useState([]);
   const [currentCourse, setCurrentCourse] = useState(null);
@@ -54,7 +74,6 @@ export function useMindCareApp() {
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [feedback, setFeedback] = useState(null);
 
   const chatEndRef = useRef(null);
@@ -168,8 +187,14 @@ export function useMindCareApp() {
   }, [token, selectedSchoolId]);
 
   useEffect(() => {
-    if (!selectedSchoolId && schools.length > 0) {
-      setSelectedSchoolId(schools[0].id);
+    if (schools.length > 0) {
+      if (!selectedSchoolId) {
+        setSelectedSchoolId(schools[0].id);
+      } else if (!schools.some((school) => school.id === selectedSchoolId)) {
+        // Stored modality no longer exists (e.g. catalog changed);
+        // fall back to the first school instead of showing nothing.
+        setSelectedSchoolId(schools[0].id);
+      }
     }
   }, [schools, selectedSchoolId]);
 
@@ -517,13 +542,10 @@ export function useMindCareApp() {
     return schools[0] || null;
   }, [currentCourse, schools, selectedSchoolId]);
 
-  const currentStage = useMemo(() => currentVisit?.stage || currentCourse?.current_stage, [currentVisit, currentCourse]);
 
   const canStartNextVisit = Boolean(
     currentCourse?.status === "active" && currentCourse?.active_visit_id == null
   );
-  const canCloseCurrentVisit = Boolean(currentVisit && currentVisit.status === "open");
-  const canContinueVisit = Boolean(currentCourse?.active_visit_id);
   const canCompleteCourse = Boolean(currentCourse?.status === "active" && currentCourse?.active_visit_id == null);
   const canCreateCourse = Boolean(token && selectedSchoolId);
 
@@ -543,11 +565,8 @@ export function useMindCareApp() {
     currentCourse,
     currentVisit,
     currentSchool,
-    currentStage,
     input,
     isTyping,
-    sidebarOpen,
-    sidebarCollapsed,
     feedback,
     chatEndRef,
 
@@ -559,8 +578,6 @@ export function useMindCareApp() {
     setShowCreateCourseModal,
     setSelectedSchoolId,
     setInput,
-    setSidebarOpen,
-    setSidebarCollapsed,
     clearFeedback,
 
     createCourse,
@@ -572,12 +589,9 @@ export function useMindCareApp() {
     sendTextMessage,
     selectCourse,
     selectVisit,
-    loadCourses,
     handleAuth,
     logout,
     canStartNextVisit,
-    canCloseCurrentVisit,
-    canContinueVisit,
     canCompleteCourse,
     canCreateCourse,
   };

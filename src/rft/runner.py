@@ -6,7 +6,7 @@ import asyncio
 import copy
 import os
 from dataclasses import dataclass, field
-from typing import TYPE_CHECKING, Any, Dict, List
+from typing import Any, Dict, List
 
 try:
     from src.sample.core.contracts import CaseResumeDecision, CaseRunResult
@@ -26,11 +26,6 @@ except ModuleNotFoundError:  # pragma: no cover - supports PYTHONPATH=src execut
 from .core.schemas import RFTRuntimeConfig
 from .reward import canonical_metric_name, compute_rollout_reward
 
-if TYPE_CHECKING:
-    try:
-        from src.eval.reward import RewardEvaluator
-    except ModuleNotFoundError:  # pragma: no cover - supports PYTHONPATH=src execution style
-        pass
 
 
 @dataclass

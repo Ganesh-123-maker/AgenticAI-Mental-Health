@@ -8,7 +8,12 @@ from typing import Any, Dict, List, Optional
 from sample.agents.base import AgentContext
 from sample.agents.clarification_agent import is_safety_relevant_item
 from sample.agents.pipeline import run_pipeline
-from sample.agents.safety_supervisor import SafetySupervisor
+from sample.agents.risk_agent import RiskAgent
+from sample.agents.safety_supervisor import (
+    SafetySupervisor,
+    _NEUTRAL_REVISION,
+    _STANDARD_SAFE_FALLBACK,
+)
 from sample.backends.base import BackendSettings, ModelBackend
 from sample.backends.dummy_backend import DummyBackend
 from sample.backends.openai_api import OpenAIAPIBackend
@@ -20,8 +25,10 @@ from sample.prompt_manager import PsychAgentPromptManager
 from sample.recommendation_weights import apply_weights_to_reply, should_attach_weights
 from sample.skill_manager import SkillManager
 from sample.utils import (
+    PRESCRIPTION_BOUNDARY_RESPONSE,
     extract_tag_content,
     format_transcript,
+    is_explicit_prescription_request,
     safe_json_loads,
     strip_end_token,
 )
@@ -181,6 +188,38 @@ class PsychAgentWebBackend:
             transcript = self._build_transcript(visit_state.messages)
             user_query = self._last_user_query(transcript)
             diag_hist = self._build_diag_history(transcript[:-1])
+
+            # Round 2 fix (Stream D D-05): explicit prescription requests
+            # get a fixed boundary response before any agent or LLM call —
+            # no retrieval, no counseling generation, no clarification
+            # question. Previously the refusal rested entirely on the live
+            # LLM, so dummy mode echoed the request back.
+            if is_explicit_prescription_request(user_query):
+                prev_longitudinal = (
+                    psych_context.profile_payload.get("longitudinal_risk")
+                    if psych_context and isinstance(psych_context.profile_payload, dict)
+                    else None
+                )
+                carried = self._carried_risk_severity(psych_context)
+                return {
+                    "text": PRESCRIPTION_BOUNDARY_RESPONSE,
+                    "end": False,
+                    "agent_trace": [{
+                        "agent": "web_engine",
+                        "step": "scope_boundary",
+                        "reason": "explicit_prescription_request",
+                    }],
+                    "route": "CLEAR",
+                    "longitudinal_risk": (
+                        prev_longitudinal
+                        if isinstance(prev_longitudinal, dict)
+                        and prev_longitudinal.get("severity") == carried
+                        else None
+                    ),
+                    "clarification_state": self._clarification_state(psych_context),
+                    "reply_source": "template",
+                    "reply_model": None,
+                }
 
             multi_agent_enabled = getattr(self._runtime_config, "multi_agent_enabled", True)
             if multi_agent_enabled:
@@ -372,7 +411,7 @@ class PsychAgentWebBackend:
                     recommendation_weights=weights_payload,
                 )
                 messages = [{"role": "system", "content": system_prompt}]
-                messages.extend(self._build_chat_history(visit_state.messages))
+                messages.extend(self._build_chat_history_with_prior(visit_state))
 
                 raw = await self._chat_once(messages, purpose="counseling")
                 text, should_end = self._normalize_output_with_end(raw)
@@ -380,24 +419,9 @@ class PsychAgentWebBackend:
                     text = "Thank you for sharing that with me. Let's focus on taking a concrete step forward together."
 
                 if getattr(self._runtime_config, "safety_supervisor_enabled", True):
-                    sup = SafetySupervisor()
-                    sup_msg = sup.run(ctx, draft_response=text)
-                    sup_payload = sup_msg.payload
-                    verdict = sup_payload.get("verdict", "ALLOW")
-                    trail.append({
-                        "agent": sup.name,
-                        "step": "final_web_supervision",
-                        "verdict": verdict,
-                        "rationale": sup_payload.get("rationale"),
-                    })
-                    supervisor_verdict = verdict
-                    if verdict == "ESCALATE":
-                        text = sup_payload.get("safe_fallback") or text
-                        weights_for_response = None
-                    elif verdict == "REVISE":
-                        rationale = sup_payload.get("rationale", "")
-                        if "false reassurance" in rationale.lower():
-                            text = text.replace("Everything will be completely fine.", "We will take this one step at a time.")
+                    text, supervisor_verdict, weights_for_response = self._apply_final_supervision(
+                        ctx, text, trail, weights_for_response
+                    )
                 if weights_for_response is not None and should_attach_weights(
                     current_route, supervisor_verdict, text
                 ):
@@ -416,6 +440,44 @@ class PsychAgentWebBackend:
                         "clarification_state": clar_state,
                         "reply_source": reply_source, "reply_model": reply_model,
                         "recommendation_weights": weights_for_response}
+
+            # Round 2 fix (Stream B D3): the multi_agent_enabled=False
+            # fallback ran no SafetySupervisor at all. It now gets the same
+            # gating as the multi-agent path: a rule-based risk check first
+            # (HIGH risk returns the safe fallback with no retrieval and no
+            # LLM call, mirroring the multi-agent HIGH-RISK return), then
+            # the supervisor applied to the generated draft below.
+            fallback_ctx = AgentContext(
+                case_id=f"{course.course_id}_{visit.visit_no}",
+                modality=sect,
+                therapy_stage=stage.label,
+                session_index=visit.visit_no,
+                current_message=user_query,
+                prior_transcript=transcript[:-1],
+                history_list=history,
+                obtain_client_info=client_info,
+                homework_assigned=homework,
+                full_profile=client_info,
+            )
+            fallback_trail: List[Dict[str, Any]] = []
+            fallback_risk = RiskAgent().run(fallback_ctx)
+            fallback_ctx.risk_output = fallback_risk.payload
+            fallback_ctx.uncertainty_output = {"status": "CLEAR", "uncertain_fields": []}
+            fallback_severity = str(fallback_risk.payload.get("severity", "LOW")).upper()
+            fallback_ctx.routing_output = {
+                "route": "HIGH-RISK" if fallback_severity == "HIGH" else "CLEAR"
+            }
+            fallback_trail.append({
+                "agent": "risk_agent",
+                "step": "fallback_risk_check",
+                "severity": fallback_severity,
+            })
+            if fallback_severity == "HIGH":
+                return {"text": _STANDARD_SAFE_FALLBACK, "end": False,
+                        "agent_trace": fallback_trail, "route": "HIGH-RISK",
+                        "longitudinal_risk": None,
+                        "clarification_state": self._clarification_state(psych_context),
+                        "reply_source": "template", "reply_model": None}
 
             if candidate_skills is None:
                 candidate_skills = await self._build_candidate_skills(sect, session_goals, stage_idx)
@@ -447,15 +509,19 @@ class PsychAgentWebBackend:
                 recommendation_weights=weights_payload,
             )
             messages = [{"role": "system", "content": system_prompt}]
-            messages.extend(self._build_chat_history(visit_state.messages))
+            messages.extend(self._build_chat_history_with_prior(visit_state))
 
             raw = await self._chat_once(messages, purpose="counseling")
             text, should_end = self._normalize_output_with_end(raw)
             if text:
-                if weights_for_response is not None and should_attach_weights(None, None, text):
+                text, fallback_verdict, weights_for_response = self._apply_final_supervision(
+                    fallback_ctx, text, fallback_trail, weights_for_response
+                )
+                if weights_for_response is not None and should_attach_weights(None, fallback_verdict, text):
                     text, _weights_info = apply_weights_to_reply(text, weights_for_response)
                 reply_source, reply_model = self._reply_source()
                 return {"text": text, "end": should_end,
+                        "agent_trace": fallback_trail,
                         "reply_source": reply_source, "reply_model": reply_model,
                         "recommendation_weights": weights_for_response}
             raise RuntimeError("empty response from PsychAgent prompt chain")
@@ -672,6 +738,66 @@ class PsychAgentWebBackend:
                 counselor_system_filename=self._runtime_config.psychagent_counselor_system_filename,
             )
         return self._prompt_managers[sect]
+
+    def _apply_final_supervision(
+        self,
+        ctx: AgentContext,
+        text: str,
+        trail: List[Dict[str, Any]],
+        weights_for_response: Optional[Dict[str, Any]],
+    ) -> tuple:
+        """Apply the SafetySupervisor's verdict to a generated draft.
+
+        Round 2 fix (Stream B D2 / Stream D D-09): the old code only acted
+        on ESCALATE and, for REVISE, patched one exact string — a RE-ROUTE
+        verdict (false reassurance under uncertain safety, HIGH-risk /
+        route mismatch) was silently ignored and the flagged draft was
+        delivered verbatim, with weights still attached.
+
+        - ALLOW: draft unchanged.
+        - ESCALATE: safe fallback; weights suppressed.
+        - REVISE: the supervisor's revised_response when it is a real
+          revision; a revision identical to the draft (or absent) means the
+          flagged content could not be cleaned, so the draft is NOT
+          delivered verbatim — a neutral revision is used instead.
+        - RE-ROUTE: the supervisor's revised_response when it is a real
+          revision; otherwise the safe fallback (a route/safety mismatch
+          with no usable revision is never delivered as a normal reply).
+          Weights are suppressed: a re-routed reply carries no shares.
+
+        Returns (text, verdict, weights_for_response).
+        """
+        if not getattr(self._runtime_config, "safety_supervisor_enabled", True):
+            return text, "ALLOW", weights_for_response
+        sup = SafetySupervisor()
+        sup_msg = sup.run(ctx, draft_response=text)
+        sup_payload = sup_msg.payload
+        verdict = sup_payload.get("verdict", "ALLOW")
+        trail.append({
+            "agent": sup.name,
+            "step": "final_web_supervision",
+            "verdict": verdict,
+            "rationale": sup_payload.get("rationale"),
+        })
+        if verdict == "ESCALATE":
+            return (
+                sup_payload.get("safe_fallback")
+                or sup_payload.get("revised_response")
+                or text
+            ), verdict, None
+        if verdict == "REVISE":
+            revised = sup_payload.get("revised_response") or sup_payload.get("suggested_revision")
+            if revised and revised.strip() and revised.strip() != text.strip():
+                return revised, verdict, weights_for_response
+            return _NEUTRAL_REVISION, verdict, weights_for_response
+        if verdict == "RE-ROUTE":
+            revised = sup_payload.get("revised_response") or sup_payload.get("suggested_revision")
+            if revised and revised.strip() and revised.strip() != text.strip():
+                return revised, verdict, None
+            return (
+                sup_payload.get("safe_fallback") or _STANDARD_SAFE_FALLBACK
+            ), verdict, None
+        return text, verdict, weights_for_response
 
     def _weights_for(self, suggested_skills: List[Dict[str, Any]]) -> Dict[str, Any]:
         """Suitability-weights payload for retrieved skills (never raises).
@@ -992,6 +1118,27 @@ class PsychAgentWebBackend:
             "updated_at": datetime.now(timezone.utc).isoformat(),
             "source": "pipeline_risk_assessment",
         }
+
+    def _build_chat_history_with_prior(self, visit_state: VisitState) -> List[Dict[str, str]]:
+        """Chat history for the counseling LLM: prior visits' user turns
+        first, then the current visit's turns.
+
+        REG-1 fix: cross-session recall ("remind me what I said about my
+        sleep") must be able to quote the user's own words from earlier
+        sessions of the SAME course. Prior-visit USER turns only: the
+        dummy backend keys its opening branch off the assistant-turn
+        count, so prior assistant turns would change which branch answers
+        a later session's opening, and the recall branches only scan user
+        turns in any case. The pipeline transcript and skill diag history
+        stay current-visit only -- prior-session context already reaches
+        the agents via the psych-context history (summaries). NOTE: this
+        changes the live reply path too -- the live model now also sees
+        the same course's verbatim prior user turns alongside the
+        summary-based history in the system prompt.
+        """
+        history = self._build_chat_history(visit_state.prior_visit_user_messages)
+        history.extend(self._build_chat_history(visit_state.messages))
+        return history
 
     @staticmethod
     def _build_chat_history(messages: List[VisitMessageOut]) -> List[Dict[str, str]]:

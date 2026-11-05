@@ -277,8 +277,10 @@ def load_benchmark_cases(base_dir: Path, modalities: List[str], cases_per_modali
                     high_risk_files.append(f)
                 else:
                     other_files.append(f)
-            except Exception:
-                pass
+            except Exception as exc:
+                # Round 2 fix (Stream A D7): was a silent swallow; an
+                # unreadable eval file was silently dropped from selection.
+                logger.debug("skipping unreadable eval file %s: %s", f, type(exc).__name__)
         
         selected: List[Path] = []
         if high_risk_files:

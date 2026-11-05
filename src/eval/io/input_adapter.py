@@ -3,6 +3,9 @@
 from __future__ import annotations
 
 import json
+import logging
+
+logger = logging.getLogger(__name__)
 import re
 from dataclasses import dataclass
 from pathlib import Path
@@ -171,6 +174,7 @@ def _safe_session_number_from_stem(stem: str, default_value: int) -> int:
             idx = int(match.group(1))
             if idx > 0:
                 return idx
-        except Exception:
-            pass
+        except Exception as exc:
+            # Round 2 fix (Stream A D7): was a silent swallow; log it.
+            logger.debug("unparsable session index in %r: %s", stem, type(exc).__name__)
     return default_value

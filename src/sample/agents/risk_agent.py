@@ -94,7 +94,22 @@ RISK_SIGNALS: Tuple[RiskSignal, ...] = (
             "don't know if i want to keep going", "don't know if i'd want to keep going",
             "giving up on everything", "give up on everything",
             "thought about ending it", "thinking about ending it",
-            "offing myself"),
+            "offing myself",
+            # Hedged passive existence-negation (Round 2 fix, D-02):
+            # "it would be easier if I just wasn't here" has no "anymore"
+            # and no "want", so no earlier form matches it. These forms
+            # are deliberately wish-framed ("easier/better if", "wish i")
+            # rather than bare "wasn't here", which also occurs in benign
+            # absence talk ("I wasn't here yesterday"). The "just" variants
+            # matter because the hedged phrasing inserts it.
+            "easier if i wasn't here", "easier if i just wasn't here",
+            "easier if i wasn't around", "easier if i just wasn't around",
+            "better if i wasn't here", "better if i just wasn't here",
+            "better if i wasn't around",
+            "wish i wasn't here", "wish i just wasn't here",
+            "wish i wasnt here", "wish i weren't here",
+            "if i just wasn't here",
+            "wasn't here anymore", "weren't here anymore"),
         zh=("suicide", "want to die", "do not want to live", "end my life", "end one's own life"),
         # Roman-script Hindi: "don't want to live" (both attested shapes).
         hi=("jeena nahi chahiye", "jeena hi nahi chahiye"),
@@ -162,7 +177,12 @@ RISK_SIGNALS: Tuple[RiskSignal, ...] = (
     RiskSignal(
         id="insomnia", severity="MODERATE",
         en=("insomnia all night", "severe insomnia", "cannot sleep", "can't sleep",
-            "unable to fall asleep"),
+            "unable to fall asleep",
+            # Round 2 fix (D-03 note): "barely/hardly sleep" describes
+            # severe sleeplessness but matched no insomnia form.
+            "barely sleep", "hardly sleep", "barely slept", "hardly slept",
+            "barely sleeping", "hardly sleeping",
+            "barely been sleeping", "hardly been sleeping"),
         zh=("awake all night with insomnia", "severe insomnia", "insomnia", "unable to fall asleep", "cannot sleep"),
     ),
     RiskSignal(
@@ -182,7 +202,14 @@ RISK_SIGNALS: Tuple[RiskSignal, ...] = (
     ),
     RiskSignal(
         id="hopelessness", severity="MODERATE",
-        en=("completely hopeless", "no hope"),
+        # Round 2 fix (D-01): the bare present-tense forms "feel/feeling
+        # hopeless", "am/i'm hopeless" were absent — only "completely
+        # hopeless" / "no hope" existed, so "I feel hopeless" scored LOW.
+        # "felt hopeless" is deliberately NOT added: past-tense hopelessness
+        # ("there was a period where I felt hopeless... a decade ago") is
+        # a labelled-benign pattern in the dev set.
+        en=("completely hopeless", "no hope", "feel hopeless", "feeling hopeless",
+            "am hopeless", "i'm hopeless", "im hopeless", "no hope left"),
         zh=("completely hopeless", "despair", "utterly hopeless", "no hope"),
     ),
     RiskSignal(
@@ -485,6 +512,7 @@ class RiskAgent(Agent):
                 payload={
                     "severity": "UNCERTAIN",
                     "risk_status": "UNCERTAIN",
+                    "immediate_safety_concern": False,
                     "evidence": [f"Error during risk assessment: {exc}"],
                     "confidence": 0.0,
                     "signals_detected": [],
@@ -531,6 +559,10 @@ class RiskAgent(Agent):
             payload = {
                 "severity": "HIGH",
                 "risk_status": "EVIDENCE_OF_RISK",
+                # Round 2 fix (Stream A D1): the supervisor reads this flag
+                # but no producer ever set it. An affirmed HIGH-severity
+                # signal IS an immediate safety concern.
+                "immediate_safety_concern": True,
                 "evidence": evidence,
                 "confidence": 0.95,
                 "signals_detected": high_signals,
@@ -574,6 +606,7 @@ class RiskAgent(Agent):
             payload = {
                 "severity": "UNCERTAIN",
                 "risk_status": "UNCERTAIN",
+                "immediate_safety_concern": False,
                 "evidence": evidence,
                 "confidence": 0.60,
                 "signals_detected": moderate_signals + ["missing_safety_status"],
@@ -593,6 +626,7 @@ class RiskAgent(Agent):
             payload = {
                 "severity": "MODERATE",
                 "risk_status": "UNCERTAIN",
+                "immediate_safety_concern": False,
                 "evidence": evidence,
                 "confidence": 0.75,
                 "signals_detected": moderate_signals,
@@ -616,6 +650,7 @@ class RiskAgent(Agent):
         payload = {
             "severity": "LOW",
             "risk_status": "NO_EVIDENCE",
+            "immediate_safety_concern": False,
             "evidence": evidence,
             "confidence": 0.90,
             "signals_detected": sorted(set(negated_signals)),

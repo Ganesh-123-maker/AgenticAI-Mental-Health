@@ -42,14 +42,14 @@ def load_paired(base: str, sys1: str, sys2: str, metric: str) -> List[Tuple[str,
     """Load per-case metric values paired by case_id. Skips cases where the
     metric is None (not applicable) in either system."""
     vals: Dict[str, Dict[str, Optional[float]]] = {}
-    for sys in (sys1, sys2):
-        for fp in glob.glob(os.path.join(base, sys, "*.json")):
+    for system in (sys1, sys2):
+        for fp in glob.glob(os.path.join(base, system, "*.json")):
             if os.path.basename(fp) == "summary.json":
                 continue
             with open(fp, encoding="utf-8") as fh:
                 c = json.load(fh)
             v = c.get("layer2_metrics", {}).get(metric)
-            vals.setdefault(c["case_id"], {})[sys] = v
+            vals.setdefault(c["case_id"], {})[system] = v
     pairs = []
     for cid in sorted(vals):
         x, y = vals[cid].get(sys1), vals[cid].get(sys2)

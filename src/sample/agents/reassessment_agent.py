@@ -284,6 +284,17 @@ class ReassessmentAgent(Agent):
             status = "UNCERTAIN"
             route_decision = "UNCERTAIN"
             reasoning = "Clarification answer was uninformative or absent; uncertainty remains unresolved."
+        elif reassessed_unc.get("status") == "AMBIGUOUS":
+            # Round 2 fix (Stream D D-03): a clarification answer that
+            # contradicts earlier statements must not be resolved to
+            # CLEAR. The contradiction was detected by the reassessed
+            # uncertainty run (status AMBIGUOUS, type
+            # contradictory_information); forcing CLEAR here let the
+            # counseling reply ignore the correction entirely. Keep the
+            # turn UNCERTAIN so the clarification question is asked.
+            status = "UNCERTAIN"
+            route_decision = "UNCERTAIN"
+            reasoning = "The answer contradicts earlier statements; clarification is needed before proceeding."
         elif eff_severity in ("MODERATE", "UNCERTAIN", "HIGH") and blocking_safety_items:
             status = "UNCERTAIN"
             route_decision = "UNCERTAIN"

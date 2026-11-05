@@ -219,10 +219,17 @@ class SkillManager:
                     if torch is not None:
                         loop = asyncio.get_running_loop()
 
-                        def _atomic_save() -> None:
-                            tmp = save_path.with_suffix(".pt.tmp")
-                            torch.save(payload, str(tmp))
-                            os.replace(str(tmp), str(save_path))
+                        # Round 2 fix (Stream A D4): bind the loop variables
+                        # as defaults. Today the call runs in the same
+                        # iteration, so the closure is benign — but any
+                        # refactor that deferred it would silently save the
+                        # wrong stage's payload to the wrong path.
+                        def _atomic_save(
+                            _save_path=save_path, _payload=payload
+                        ) -> None:
+                            tmp = _save_path.with_suffix(".pt.tmp")
+                            torch.save(_payload, str(tmp))
+                            os.replace(str(tmp), str(_save_path))
 
                         await loop.run_in_executor(None, _atomic_save)
                         self._logger.info(f"Saved updated skills to {save_path}")
@@ -501,7 +508,6 @@ class SkillManager:
 
     def get_leaf_nodes(self, skills):
         """CPU Bound logic, fast enough to keep sync."""
-        all_skill_ids = set(skills.keys())
         non_leaf_skill_ids = set()
         for skill_id, skill_data in skills.items():
             for other_skill_id, other_skill_data in skills.items():
@@ -839,8 +845,14 @@ class SkillManager:
                         if self._is_rate_limit_error(exc) and on_rate_limit is not None:
                             try:
                                 on_rate_limit()
-                            except Exception:
-                                pass
+                            except Exception as cb_exc:
+                                # Round 2 fix (Stream A D6): was a silent
+                                # swallow; a failing callback must not hide
+                                # rate-limit bookkeeping failures.
+                                self._logger.debug(
+                                    "on_rate_limit callback failed: %s",
+                                    type(cb_exc).__name__,
+                                )
                         if attempt >= max_attempts:
                             raise RuntimeError(
                                 self._exhaustion_message("Gemini", max_attempts, exc, api_key)
@@ -1088,8 +1100,12 @@ class SkillManager:
             parsed = json.loads(inner)
             if isinstance(parsed, dict):
                 return parsed
-        except Exception:
-            pass
+        except Exception as exc:
+            # Round 2 fix (Stream A D5): was a silent swallow; a
+            # malformed-but-nearly-parseable skill response degraded to {}
+            # with no trace. Log the failure, keep the regex fallback.
+            # (Module logger: this is a staticmethod, there is no self.)
+            logging.getLogger(__name__).debug("skill JSON parse failed, trying regex fallback: %s", type(exc).__name__)
 
         match = re.search(r"\{.*\}", inner, re.S)
         if match:
@@ -1097,8 +1113,11 @@ class SkillManager:
                 parsed = json.loads(match.group(0))
                 if isinstance(parsed, dict):
                     return parsed
-            except Exception:
-                pass
+            except Exception as exc:
+                # Round 2 fix (Stream A D5): second silent swallow in the
+                # same fallback chain; log it, keep returning {}.
+                # (Module logger: this is a staticmethod, there is no self.)
+                logging.getLogger(__name__).debug("skill JSON regex-extract parse failed: %s", type(exc).__name__)
 
         return {}
 
