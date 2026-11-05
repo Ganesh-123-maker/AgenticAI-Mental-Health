@@ -1,0 +1,14 @@
+# Pre-registered live-test harness configuration (frozen 2026-11-02).
+# MODEL and DAILY_LIMIT are read from here; the runner has no hardcoded
+# model or limit. Change them only with a dated amendment in
+# docs/LIVE_TEST_HARNESS.md. Flat `key: value` lines only (no YAML nesting).
+model: gemini-3.8-flash
+daily_limit: 20
+attempt_ceiling_per_run: 15
+pacing_start_to_start_sec: 16.0
+pacing_end_to_start_sec: 16.0
+baseline_config: configs/baselines/psychagent_gemini_live.yaml
+runtime_config: configs/runtime/multi_agent_gemini.yaml
+dry_run_baseline_config: configs/baselines/psychagent_dummy_local.yaml
+dry_run_runtime_config: configs/runtime/psychagent_web_offline.yaml
+results_dir: live_test_results
