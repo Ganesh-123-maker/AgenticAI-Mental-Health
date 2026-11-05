@@ -29,31 +29,6 @@ def get_owned_course_record(db: Session, course_id: str, user_id: str) -> Therap
     return course
 
 
-def get_user_active_course(
-    db: Session,
-    user_id: str,
-    exclude_course_id: Optional[str] = None,
-) -> Optional[TherapyCourseRecord]:
-    query = select(TherapyCourseRecord).where(
-        TherapyCourseRecord.user_id == user_id,
-        TherapyCourseRecord.status == "active",
-    )
-    if exclude_course_id:
-        query = query.where(TherapyCourseRecord.course_id != exclude_course_id)
-    return db.exec(
-        query.order_by(TherapyCourseRecord.updated_at.desc(), TherapyCourseRecord.created_at.desc())
-    ).first()
-
-
-def format_course_identity(course: TherapyCourseRecord) -> str:
-    try:
-        school_name = pick_school(course.school_id).name
-    except Exception:
-        school_name = course.school_id or "Unknown Modality"
-    title = str(course.title or "").strip() or "Untitled Therapy Course"
-    return f"{school_name} / {title}"
-
-
 def get_course_goals(db: Session, course_id: str) -> List[CourseGoalRecord]:
     return db.exec(
         select(CourseGoalRecord)

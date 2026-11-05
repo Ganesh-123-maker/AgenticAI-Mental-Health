@@ -88,15 +88,6 @@ class CourseGoalRecord(SQLModel, table=True):
     updated_at: datetime = SQLField(default_factory=utcnow, nullable=False)
 
 
-class MigrationStateRecord(SQLModel, table=True):
-    __tablename__ = "migrationstate"
-
-    migration_key: str = SQLField(primary_key=True, index=True)
-    status: str = SQLField(default="completed", nullable=False)
-    details_json: str = SQLField(default="{}", nullable=False)
-    applied_at: datetime = SQLField(default_factory=utcnow, nullable=False)
-
-
 class UserRecord(SQLModel, table=True):
     __tablename__ = "userrecord"
 

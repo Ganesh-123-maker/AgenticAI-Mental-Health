@@ -43,11 +43,23 @@ class RiskSignal(NamedTuple):
     keyword lists) keeps severity in one place: adding a language means adding
     forms to existing concepts, not maintaining a parallel list. Each concept
     carries a stable id used in evidence strings.
+
+    Language fields: en (English), zh (Chinese, matched only when the text
+    contains CJK characters), hi (Roman-script Hindi), es (Spanish),
+    fr (French), de (German). The Roman-script forms are matched with the
+    same English negation-window logic as en forms; non-English negation
+    constructions are therefore generally NOT detected, and matching is
+    biased towards affirmation for those languages. The non-English forms
+    are attested risk expressions, not native-speaker-validated translations.
     """
     id: str
     severity: str
     en: Tuple[str, ...]
     zh: Tuple[str, ...]
+    hi: Tuple[str, ...] = ()
+    es: Tuple[str, ...] = ()
+    fr: Tuple[str, ...] = ()
+    de: Tuple[str, ...] = ()
 
 
 RISK_SIGNALS: Tuple[RiskSignal, ...] = (
@@ -69,8 +81,28 @@ RISK_SIGNALS: Tuple[RiskSignal, ...] = (
             "tired of existing",
             "wish I didn't exist", "wish I just didn't exist", "just not exist",
             "wouldn't matter to anyone", "would not matter to anyone",
-            "nobody would miss me", "no one would miss me", "wouldn't be missed"),
+            "nobody would miss me", "no one would miss me", "wouldn't be missed",
+            # Existence-negation and continuation-wish variants of the same
+            # concepts (development-set class fix, Day 2): "not be here
+            # anymore" parallels "not being here anymore"; the "don't know
+            # if" forms are uncertainty-framed variants of "not sure I want
+            # to keep going"; "giving up on everything" parallels "give up
+            # on life"; "thought about ending it" is the elided-object form
+            # of ending one's life; "offing myself" is slang in the same
+            # class as "unalive myself".
+            "not be here anymore", "don't want to be here anymore",
+            "don't know if i want to keep going", "don't know if i'd want to keep going",
+            "giving up on everything", "give up on everything",
+            "thought about ending it", "thinking about ending it",
+            "offing myself"),
         zh=("suicide", "want to die", "do not want to live", "end my life", "end one's own life"),
+        # Roman-script Hindi: "don't want to live" (both attested shapes).
+        hi=("jeena nahi chahiye", "jeena hi nahi chahiye"),
+        # Spanish: no desire to keep living; tired of existing; wish to disappear.
+        es=("no tengo ganas de seguir viviendo", "cansado de existir",
+            "ojala pudiera desaparecer"),
+        # French (unaccented, as attested): no longer be here.
+        fr=("ne plus etre la",),
     ),
     RiskSignal(
         id="self_harm", severity="HIGH",
@@ -104,8 +136,22 @@ RISK_SIGNALS: Tuple[RiskSignal, ...] = (
             # a bare "hope I won't wake up tomorrow" (no "in the morning")
             # is missed by these forms.
             "hoping I won't wake up in the morning", "hope I won't wake up in the morning",
-            "fall asleep and not", "fall asleep and never wake up"),
+            "fall asleep and not", "fall asleep and never wake up",
+            # Modal and pointlessness variants of the same concepts
+            # (development-set class fix, Day 2): "couldn't/could not go on"
+            # are modal variants of "can't go on"; "the point of me" is the
+            # unadorned form of "what's the point of me"; the "wish it would
+            # all stop" forms are cessation wishes; the "without me" forms
+            # are perceived-burdensomeness variants of "better off without me".
+            "couldn't go on", "could not go on", "the point of me",
+            "wish it would all stop", "wish it would all just stop",
+            "would be fine without me",
+            "happier if i was gone", "happier if i were gone"),
         zh=("cannot go on living", "better off dead", "end it all once and for all", "do not want to wake up"),
+        # Roman-script Hindi: others happier without me.
+        hi=("mere bina zyada khush",),
+        # German: no longer wake up (parallel to "not wake up" / "never wake up").
+        de=("nicht mehr aufwache",),
     ),
     RiskSignal(
         id="acute_psychiatric_crisis", severity="HIGH",
@@ -155,6 +201,13 @@ ZH_HIGH_CRISIS_FORMS: Tuple[str, ...] = tuple(
     form for _s in RISK_SIGNALS if _s.severity == "HIGH" for form in _s.zh
 )
 
+ROMAN_HIGH_CRISIS_FORMS: Tuple[str, ...] = tuple(
+    form
+    for _s in RISK_SIGNALS
+    if _s.severity == "HIGH"
+    for form in (*_s.hi, *_s.es, *_s.fr, *_s.de)
+)
+
 _NEGATION_CUES = (
     "no", "not", "never", "without", "denies", "denied", "deny", "don't", "do not", "didn't",
     "haven't", "have not", "hasn't", "wouldn't", "won't", "none", "nor",
@@ -197,6 +250,14 @@ def _find_signal(text: str, signal: str) -> Optional[str]:
     waking up"): exactly one cue there, and that cue must belong to a
     denial-of-thought construction. Zero cues, two or more cues, or an
     incidental cue all stay affirmed.
+
+    Post-signal reversal: a single-cue negation of a cue-free form is
+    reversed when "never" plus a cognition/occurrence verb follows the
+    signal in the same clause ("the thought of hurting myself never
+    crosses my mind" affirms the thought). Only "never" + verb counts:
+    "never mind" and "never again" reinforce a denial and do NOT reverse,
+    and a "never" in a later clause cannot flip an earlier denial because
+    the scan stops at the first clause break.
     """
     lowered = text.lower()
     sig = signal.lower()
@@ -215,10 +276,40 @@ def _find_signal(text: str, signal: str) -> Optional[str]:
                 return "affirmed"
         elif cue_count != 1:
             return "affirmed"
+        elif _post_signal_reversal(lowered, start + len(sig)):
+            return "affirmed"
         else:
             found_negated = True
         start = lowered.find(sig, start + len(sig))
     return "negated" if found_negated else None
+
+
+# Verbs of cognition/occurrence that, following "never" in the same clause
+# after a negated signal, reverse the negation (see _find_signal). "mind"
+# and "again" are deliberately absent: "never mind" and "never again"
+# reinforce a denial rather than reversing it.
+_POST_SIGNAL_REVERSAL_VERBS = frozenset({
+    "cross", "crosses", "crossed", "come", "comes", "came",
+    "think", "thinks", "thought", "leave", "leaves", "left",
+    "go", "goes", "gone", "stop", "stops", "end", "ends",
+})
+
+
+def _post_signal_reversal(lowered: str, end: int) -> bool:
+    """True when "never" + a reversal verb follows the signal in its clause.
+
+    Scans at most 5 words after the signal end, stopping at the first
+    clause break, so a "never" from a later clause cannot flip an earlier
+    denial.
+    """
+    tail = lowered[end:]
+    m = _CLAUSE_BREAK.search(tail)
+    clause = tail[:m.start()] if m else tail
+    words = clause.split()[:5]
+    for i, w in enumerate(words[:-1]):
+        if w == "never" and words[i + 1].strip(".,!?;:'\"") in _POST_SIGNAL_REVERSAL_VERBS:
+            return True
+    return False
 
 
 _ZH_NEGATION_CUES = ("have not", "deny", "negate", "never", "never have", "not", "not yet", "do not", "without", "not")
@@ -283,6 +374,41 @@ def _normalize_for_matching(text: str) -> str:
 _CJK_RE = re.compile(r"[\u4e00-\u9fff]")
 
 
+# Short slang abbreviations that must match as standalone tokens, not
+# substrings: substring matching would misfire on "10kms" (kilometres).
+# "kms" is youth slang for "kill myself".
+_TOKEN_ABBREVIATIONS: Tuple[str, ...] = ("kms",)
+
+
+def _find_token_signal(text: str, token: str) -> Optional[str]:
+    """Return "affirmed", "negated" or None for a standalone token abbreviation.
+
+    The token must stand alone (word boundaries) and must not follow a
+    numeric token ("ran 5 kms" is distance talk, not a disclosure). The
+    same 6-word single-cue negation window as _find_signal applies, so
+    "I would never kms" stays negated, and the same post-signal reversal
+    applies.
+    """
+    lowered = text.lower()
+    found_negated = False
+    for m in re.finditer(r"\b" + re.escape(token) + r"\b", lowered):
+        before = lowered[:m.start()].rstrip()
+        prev = before.split()[-1].strip(".,!?;:'\"()") if before else ""
+        if prev and prev.replace(".", "", 1).isdigit():
+            continue
+        prefix = lowered[:m.start()]
+        breaks = list(_CLAUSE_BREAK.finditer(prefix))
+        clause = prefix[breaks[-1].end():] if breaks else prefix
+        window = " ".join(clause.split()[-6:])
+        cue_count = len(_NEGATION_RE.findall(window))
+        if cue_count != 1:
+            return "affirmed"
+        if _post_signal_reversal(lowered, m.end()):
+            return "affirmed"
+        found_negated = True
+    return "negated" if found_negated else None
+
+
 def _match_signal(text: str, signal: RiskSignal) -> Tuple[Optional[str], Optional[str]]:
     """Match a language-independent risk concept against text.
 
@@ -313,6 +439,23 @@ def _match_signal(text: str, signal: RiskSignal) -> Tuple[Optional[str], Optiona
                 return form, "affirmed"
             if hit == "negated" and negated_form is None:
                 negated_form = form
+    # Roman-script languages share the English negation-window matcher.
+    # Their forms are distinctive strings; non-English negation is not
+    # detected, so matching here is biased towards affirmation.
+    for forms in (signal.hi, signal.es, signal.fr, signal.de):
+        for form in forms:
+            hit = _find_signal(text, form)
+            if hit == "affirmed":
+                return form, "affirmed"
+            if hit == "negated" and negated_form is None:
+                negated_form = form
+    # Standalone slang abbreviations (concept-independent).
+    for token in _TOKEN_ABBREVIATIONS:
+        hit = _find_token_signal(text, token)
+        if hit == "affirmed":
+            return token, "affirmed"
+        if hit == "negated" and negated_form is None:
+            negated_form = token
     if negated_form is not None:
         return negated_form, "negated"
     return None, None

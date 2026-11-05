@@ -123,15 +123,6 @@ def stage_from_key(key: str) -> StageInfo:
     )
 
 
-def get_stage_by_visit_no(visit_no: int) -> StageInfo:
-    for key, value in STAGES.items():
-        start, end = value["range"]
-        if start <= visit_no <= end:
-            return stage_from_key(key)
-    last_key = list(STAGES.keys())[-1]
-    return stage_from_key(last_key)
-
-
 def pick_school(school_id: str) -> SchoolInfo:
     for school in SCHOOLS:
         if school.id == school_id:

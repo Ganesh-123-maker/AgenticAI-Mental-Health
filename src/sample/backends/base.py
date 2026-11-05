@@ -28,9 +28,5 @@ class BackendSettings:
     verify_ssl: bool = True
 
 
-class EmptyResponseError(RuntimeError):
-    """Raised when model output is empty and should be retried."""
-
-
 class BackendHTTPError(RuntimeError):
     """Raised for backend HTTP/API failures."""

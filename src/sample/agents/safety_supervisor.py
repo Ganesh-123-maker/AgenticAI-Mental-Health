@@ -28,7 +28,7 @@ import re
 from typing import Any, Dict, List, Optional
 
 from .base import Agent, AgentContext, AgentError, AgentMessage
-from .risk_agent import ZH_HIGH_CRISIS_FORMS
+from .risk_agent import ROMAN_HIGH_CRISIS_FORMS, ZH_HIGH_CRISIS_FORMS
 
 logger = logging.getLogger(__name__)
 
@@ -206,10 +206,15 @@ class SafetySupervisor(Agent):
 
             has_dismissal = any(p in response_lower for p in _UNSAFE_DISMISSAL_PHRASES)
 
+            # NOTE: "life" was deliberately removed from this list (Day 2):
+            # any draft mentioning "life" ("Life has many chapters...")
+            # previously counted as safety-aware on HIGH-RISK turns, which
+            # let generic counseling drafts pass the safety gate. The
+            # remaining keywords all name safety, support, or help-seeking.
             has_safety_awareness = any(
                 kw in response_lower
                 for kw in [
-                    "safety", "support", "concern", "accompany you", "life", "crisis", "seek help", "professional help", "hospital", "hotline", "helpline", "friends", "protect"
+                    "safety", "support", "concern", "accompany you", "crisis", "seek help", "professional help", "hospital", "hotline", "helpline", "friends", "protect"
                 ]
             )
 
@@ -218,6 +223,7 @@ class SafetySupervisor(Agent):
                 for kw in [
                     "suicide", "self-harm", "despair", "want to die", "don't want to live", "end life", "cutting wrists", "jump off building", "kill myself", "killing myself", "end my life", "take my own life",
                     *ZH_HIGH_CRISIS_FORMS,
+                    *ROMAN_HIGH_CRISIS_FORMS,
                 ]
             )
 
