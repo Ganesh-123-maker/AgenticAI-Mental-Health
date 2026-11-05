@@ -277,6 +277,40 @@ npm run dev
 ```
 Web Interface: `http://localhost:5173`
 
+#### Offline demo (dummy backend, no live model)
+
+This demo proves routing, gating, and trace rendering end to end without spending any live-model quota. Replies are dummy templates, not live LLM text: the trace panel shows Reply Source "Template" throughout. Check the backend first:
+
+```bash
+curl http://127.0.0.1:8000/health
+# expect: {"status":"ok","baseline":"dummy_local","model":"dummy-counselor","runtime_output_language":"English"}
+```
+
+Terminal 1 — backend (from `src/web`, port 8000; the frontend defaults to `http://localhost:8000`):
+
+```bash
+cd src/web
+PSYCHAGENT_WEB_BASELINE_CONFIG=configs/baselines/psychagent_dummy_local.yaml \
+PSYCHAGENT_WEB_RUNTIME_CONFIG=configs/runtime/psychagent_web_offline.yaml \
+  python -m uvicorn main:app --host 127.0.0.1 --port 8000
+```
+
+Terminal 2 — frontend:
+
+```bash
+cd src/web
+npm install
+npm run dev
+```
+
+Open `http://localhost:5173`, register a user, and run these three scripted cases in order:
+
+1. **UNCERTAIN case — clarification first.** Create a CBT course (any title, 10 planned visits). The opening assistant message is already the clarification question: "Around when did this feeling start to emerge? Did anything specific happen at that time?" The right-hand Agent Execution Trace panel shows Pipeline Route UNCERTAIN, Uncertainty UNCERTAIN, Risk LOW, and Safety Supervisor ALLOW. (The Reply Source row appears only after a message turn; the opening turn persists route and trace but no reply source.)
+2. **CLEAR case — counseling reply.** In the same session, answer: "It started about two weeks ago after a stressful deadline at work. I feel safe, I have no thoughts of harming myself, and I sleep okay." Expect a counseling template reply ("Thanks for sharing. I heard: ... Let's explore one concrete coping step for this week.") with trace UNCERTAIN, reassessment, then CLEAR, Safety Supervisor ALLOW, and Reply Source Template.
+3. **HIGH-RISK case — helpline fallback.** Create a second CBT course and send exactly: "I want to kill myself." Expect a safe fallback reply naming Tele-MANAS 14416 and 988 Suicide & Crisis Lifeline, with trace Risk HIGH, Orchestrator HIGH-RISK, Safety Supervisor ESCALATE, and Reply Source Template. No counseling content is delivered on this route.
+
+Notes for the presenter: the dummy counselor ends a session after 2 counseling turns (end token), so keep to the scripted cases instead of free-chatting past them. A static crisis line (112 / Tele-MANAS 14416) is always visible in the footer and the composer. This demo does not prove live-model quality; live behavior is covered separately by the pre-registered live-test harness (see `docs/LIVE_TEST_HARNESS.md`).
+
 ---
 
 ## 12. Key Research Documentation
