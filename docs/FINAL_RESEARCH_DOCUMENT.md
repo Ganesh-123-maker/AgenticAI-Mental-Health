@@ -120,7 +120,7 @@ graph TD
     PublicMemory -.->|Historical Context| MemoryAgent
 ```
 
-Note (HIGH-RISK path, path-specific): on a HIGH-RISK route, the web app returns a safe template reply without a counseling LLM call or skill retrieval; in the standalone pipeline the counseling draft is still generated and then gated by the supervisor (replaced by the safe fallback when escalated). The HIGH-RISK edges above therefore pass through the SafetySupervisor gate. Note (session close): the session-close edges above describe the experiment-runner path only (src/experiments/run_systems.py, src/sample/agents/runner.py); the web backend close uses build_session_close_artifacts (src/web/backend/psychagent_engine.py:472).
+Note on the HIGH-RISK path: the Crisis Protocol box is the supervisor gate's ESCALATE outcome. On a HIGH-RISK route, the web app returns a safe template reply without a counseling LLM call or skill retrieval; in the standalone pipeline the counseling draft is still generated and then gated by the supervisor (replaced by the safe fallback when escalated). The HIGH-RISK edges above therefore pass through the SafetySupervisor gate. Note (session close): the session-close edges above describe the experiment-runner path only (src/experiments/run_systems.py, src/sample/agents/runner.py); the web backend close uses build_session_close_artifacts (src/web/backend/psychagent_engine.py:472).
 
 ### 5.1 Agent Specifications
 
@@ -204,9 +204,10 @@ Safety is layered: upstream input screening (`RiskAgent`), downstream draft revi
                                   v
 +-----------------------------------------------------------------------+
 | ORCHESTRATION GATEWAY (Orchestrator)                                  |
-| - If HIGH-RISK (web): template reply, no counseling LLM call or       |
-|   skill retrieval; (standalone): draft still generated, then          |
-|   gated by the supervisor (safe fallback when escalated).             |
+| - If HIGH-RISK: web app returns a safe template reply without a       |
+|   counseling LLM call or skill retrieval; standalone pipeline still   |
+|   generates the draft, then the supervisor gates delivery (safe       |
+|   fallback when escalated)                                            |
 +-----------------------------------------------------------------------+
                                   |
                                   v
@@ -434,7 +435,7 @@ Mental healthcare AI requires rigorous ethical boundaries:
 
 ## 20. Reproducibility
 
-The entire evaluation pipeline is fully reproducible:
+The evaluation pipeline is deterministically re-executable from the commands below; benchmark labels and injected scores are not independently reproducible:
 - **Python Version**: 3.11.9
 - **Benchmark Execution**:
   ```bash

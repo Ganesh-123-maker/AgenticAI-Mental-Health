@@ -149,7 +149,7 @@ Simulated Evaluation (WAI, SRS, PANAS)
              └─────────────────┘
 ```
 
-Note (HIGH-RISK path, path-specific): on a HIGH-RISK route, the web app returns a safe template reply without a counseling LLM call or skill retrieval; in the standalone pipeline the counseling draft is still generated and then gated by the supervisor (replaced by the safe fallback when escalated). The HIGH-RISK branch above passes through the SafetySupervisor gate. Note (session close): the OutcomeAgent/MemoryUpdateAgent boxes describe the experiment-runner path only (src/experiments/run_systems.py, src/sample/agents/runner.py); the web backend close uses build_session_close_artifacts (src/web/backend/psychagent_engine.py:472).
+Note on the HIGH-RISK path: the Crisis Protocol box is the supervisor gate's ESCALATE outcome. On a HIGH-RISK route, the web app returns a safe template reply without a counseling LLM call or skill retrieval; in the standalone pipeline the counseling draft is still generated and then gated by the supervisor (replaced by the safe fallback when escalated). The HIGH-RISK branch above passes through the SafetySupervisor gate. Note (session close): the OutcomeAgent/MemoryUpdateAgent boxes describe the experiment-runner path only (src/experiments/run_systems.py, src/sample/agents/runner.py); the web backend close uses build_session_close_artifacts (src/web/backend/psychagent_engine.py:472).
 
 ---
 
@@ -352,7 +352,7 @@ Distribution of 545 Failures Across Evaluated Configurations (cross-system total
 - **Simulated Evaluators**: Clinical metrics evaluated via algorithmic judge rubrics rather than human patients.
 - **No Clinical Deployment**: Academic prototype only; not a certified medical device.
 - **No Diagnostic Authority**: System does not perform psychiatric diagnosis or formulate clinical treatment plans.
-- **Local Determinism**: Offline evaluation mode uses deterministic counselor templates to ensure 100% reproducible testing.
+- **Local Determinism**: Offline evaluation mode uses deterministic counselor templates to ensure deterministically re-executable testing (same templates, same outputs on re-run).
 - **Bounded Clarification**: Clarification turns are capped at 1 to prevent interrogation loops.
 
 ---

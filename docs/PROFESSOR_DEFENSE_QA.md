@@ -153,7 +153,7 @@ Each ablation isolates exactly one architectural hypothesis:
 - **Identical Benchmark Cases**: All 12 systems were evaluated against the exact same 25 standardized benchmark cases across 5 psychotherapy modalities (300 total evaluation runs).
 - **Controlled Injections**: Benchmark cases contained standardized injections of missing fields, referential ambiguity, and crisis signals.
 - **Identical Evaluator Matrices**: All runs were scored using the exact same automated evaluation scripts and psychometric rubrics (`src/eval/`).
-- **Offline Determinism**: Offline evaluation mode used deterministic backend engines to ensure 100% reproducible scoring without stochastic API drift.
+- **Offline Determinism**: Offline evaluation mode used deterministic backend engines to ensure deterministically re-executable scoring (same engines, same scores on re-run) without stochastic API drift.
 
 ---
 
