@@ -153,6 +153,13 @@ class RuntimeConfig:
     longitudinal_enabled: bool = True
     multi_agent_routing_enabled: bool = True
 
+    # Suitability weights for exercise / feedback recommendations
+    # (relative match shares across retrieved options, never outcome
+    # probabilities; see sample/recommendation_weights.py). Default ON.
+    recommendation_weights_enabled: bool = True
+    recommendation_weights_temperature: float = 0.1
+    recommendation_weights_max_options: int = 3
+
     @classmethod
     def from_dict(cls, data: Dict[str, Any]) -> "RuntimeConfig":
         raw = dict(data)
@@ -171,6 +178,9 @@ class RuntimeConfig:
             safety_supervisor_enabled=bool(raw.get("safety_supervisor_enabled", True)),
             longitudinal_enabled=bool(raw.get("longitudinal_enabled", True)),
             multi_agent_routing_enabled=bool(raw.get("multi_agent_routing_enabled", True)),
+            recommendation_weights_enabled=bool(raw.get("recommendation_weights_enabled", True)),
+            recommendation_weights_temperature=float(raw.get("recommendation_weights_temperature", 0.1)),
+            recommendation_weights_max_options=int(raw.get("recommendation_weights_max_options", 3)),
             concurrency=int(raw.get("concurrency", 1)),
             save_dir=str(raw.get("save_dir", "sample_outputs")),
             resume=bool(raw.get("resume", True)),

@@ -17,6 +17,7 @@ from sample.core.schemas import BaselineConfig, RuntimeConfig
 from sample.io.config_loader import load_baseline_config, load_runtime_config
 from sample.models import MODALITY_MODELS
 from sample.prompt_manager import PsychAgentPromptManager
+from sample.recommendation_weights import apply_weights_to_reply, should_attach_weights
 from sample.skill_manager import SkillManager
 from sample.utils import (
     extract_tag_content,
@@ -353,6 +354,13 @@ class PsychAgentWebBackend:
                         candidate_skills=candidate_skills,
                     )
 
+                weights_payload = self._weights_for(suggested_skills)
+                weights_for_response = (
+                    weights_payload
+                    if weights_payload.get("mode") in ("semantic", "single", "unavailable")
+                    else None
+                )
+                supervisor_verdict = "ALLOW"
                 system_prompt = prompt_manager.render(
                     "counselor_system",
                     client_info=client_info,
@@ -361,6 +369,7 @@ class PsychAgentWebBackend:
                     session_focus=session_focus,
                     homework_assigned_from_last_session=homework,
                     suggested_skills=suggested_skills,
+                    recommendation_weights=weights_payload,
                 )
                 messages = [{"role": "system", "content": system_prompt}]
                 messages.extend(self._build_chat_history(visit_state.messages))
@@ -381,18 +390,32 @@ class PsychAgentWebBackend:
                         "verdict": verdict,
                         "rationale": sup_payload.get("rationale"),
                     })
+                    supervisor_verdict = verdict
                     if verdict == "ESCALATE":
                         text = sup_payload.get("safe_fallback") or text
+                        weights_for_response = None
                     elif verdict == "REVISE":
                         rationale = sup_payload.get("rationale", "")
                         if "false reassurance" in rationale.lower():
                             text = text.replace("Everything will be completely fine.", "We will take this one step at a time.")
+                if weights_for_response is not None and should_attach_weights(
+                    current_route, supervisor_verdict, text
+                ):
+                    text, weights_info = apply_weights_to_reply(text, weights_for_response)
+                    trail.append({
+                        "agent": "recommendation_weights",
+                        "step": "suitability_weights",
+                        "mode": weights_for_response.get("mode"),
+                        "options": weights_for_response.get("options"),
+                        "applied": weights_info.get("applied"),
+                    })
 
                 reply_source, reply_model = self._reply_source()
                 return {"text": text, "end": should_end, "agent_trace": trail, "route": current_route,
                         "longitudinal_risk": longitudinal_risk,
                         "clarification_state": clar_state,
-                        "reply_source": reply_source, "reply_model": reply_model}
+                        "reply_source": reply_source, "reply_model": reply_model,
+                        "recommendation_weights": weights_for_response}
 
             if candidate_skills is None:
                 candidate_skills = await self._build_candidate_skills(sect, session_goals, stage_idx)
@@ -407,6 +430,12 @@ class PsychAgentWebBackend:
                     candidate_skills=candidate_skills,
                 )
 
+            weights_payload = self._weights_for(suggested_skills)
+            weights_for_response = (
+                weights_payload
+                if weights_payload.get("mode") in ("semantic", "single", "unavailable")
+                else None
+            )
             system_prompt = prompt_manager.render(
                 "counselor_system",
                 client_info=client_info,
@@ -415,6 +444,7 @@ class PsychAgentWebBackend:
                 session_focus=session_focus,
                 homework_assigned_from_last_session=homework,
                 suggested_skills=suggested_skills,
+                recommendation_weights=weights_payload,
             )
             messages = [{"role": "system", "content": system_prompt}]
             messages.extend(self._build_chat_history(visit_state.messages))
@@ -422,9 +452,12 @@ class PsychAgentWebBackend:
             raw = await self._chat_once(messages, purpose="counseling")
             text, should_end = self._normalize_output_with_end(raw)
             if text:
+                if weights_for_response is not None and should_attach_weights(None, None, text):
+                    text, _weights_info = apply_weights_to_reply(text, weights_for_response)
                 reply_source, reply_model = self._reply_source()
                 return {"text": text, "end": should_end,
-                        "reply_source": reply_source, "reply_model": reply_model}
+                        "reply_source": reply_source, "reply_model": reply_model,
+                        "recommendation_weights": weights_for_response}
             raise RuntimeError("empty response from PsychAgent prompt chain")
         except Exception as exc:
             if _is_quota_exhausted(exc):
@@ -639,6 +672,23 @@ class PsychAgentWebBackend:
                 counselor_system_filename=self._runtime_config.psychagent_counselor_system_filename,
             )
         return self._prompt_managers[sect]
+
+    def _weights_for(self, suggested_skills: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """Suitability-weights payload for retrieved skills (never raises).
+
+        A weights failure must never break counseling: on any error the
+        payload is mode "none" and the reply carries no shares.
+        """
+        weights_fn = getattr(self._skill_manager, "suitability_weights", None)
+        if weights_fn is None:
+            return {"mode": "none", "options": []}
+        try:
+            return weights_fn(suggested_skills)
+        except Exception:
+            self._logger.warning(
+                "recommendation weights unavailable; continuing without shares"
+            )
+            return {"mode": "none", "options": []}
 
     def _make_backend(self, baseline: BaselineConfig) -> ModelBackend:
         if baseline.backend == "dummy":

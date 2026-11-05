@@ -98,7 +98,21 @@ class CounselingAgent(Agent):
             case_id=case_id,
         )
 
-        counselor_messages[0]["content"] = render_counselor_system(skill_suggestion)
+        # Suitability weights travel with the prompt as fixed data. On a
+        # HIGH-RISK turn no weights are presented at all: the supervisor
+        # gates whatever is delivered, and crisis responses never carry
+        # exercise percentages.
+        if route == "HIGH-RISK":
+            weights: Any = {"mode": "none", "options": []}
+        else:
+            weights_fn = getattr(
+                getattr(runner_instance, "_skill_manager", None),
+                "suitability_weights",
+                None,
+            )
+            weights = weights_fn(skill_suggestion) if weights_fn is not None else None
+
+        counselor_messages[0]["content"] = render_counselor_system(skill_suggestion, weights)
         if each_turn_system is not None:
             each_turn_system.append(counselor_messages[0]["content"])
 

@@ -354,6 +354,7 @@ Distribution of 545 Failures Across Evaluated Configurations (cross-system total
 - **No Diagnostic Authority**: System does not perform psychiatric diagnosis or formulate clinical treatment plans.
 - **Local Determinism**: Offline evaluation mode uses deterministic counselor templates to ensure deterministically re-executable testing (same templates, same outputs on re-run).
 - **Bounded Clarification**: Clarification turns are capped at 1 to prevent interrogation loops.
+- **Recommendation Weights Are Relative, Not Predictive**: Exercise and feedback options carry relative suitability weights (softmax over retrieval similarities, temperature 0.1, shares summing to 100, top never 100%). They describe match to the client's message compared with the other retrieved options — not a chance of success and not a prediction of outcome — and they are uncalibrated and unvalidated against outcomes. A single option shows no percentage; offline mode shows rank order only; HIGH-RISK / ESCALATE turns show no percentages.
 
 ---
 
@@ -377,6 +378,7 @@ Distribution of 545 Failures Across Evaluated Configurations (cross-system total
 - **Acoustic & Prosodic Multimodal Sensing**: Integrate client speech biomarkers (pitch variance, pause duration) into state assessment.
 - **Hierarchical Episodic Vector Stores**: Scale longitudinal memory to support multi-year clinical engagements.
 - **Multilingual Support**: Extend crisis and clarification dictionaries to major Indian regional languages for Tele-MANAS field integration.
+- **Calibrate Recommendation Weights**: Validate the relative suitability weights against real outcomes or expert ratings before treating them as anything more than a ranking aid.
 
 ---
 # Thank You

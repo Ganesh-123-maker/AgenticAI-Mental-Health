@@ -137,6 +137,7 @@ The counseling module supports five evidence-based psychotherapeutic orientation
 The platform includes a complete web application:
 - **FastAPI Backend (`src/web/backend/`)**: RESTful endpoints on port 8000 with SQLModel/SQLite database persistence, user-level data isolation, and session lifecycle management.
 - **Vite React Frontend (`src/web/src/`)**: Modern UI on port 5173 with therapy course creation, multi-session chat, and real-time **Agent Execution Trace** visualization (`RightPanel.jsx`).
+- **Recommendation Suitability Weights**: When the counselor gives an exercise or feedback, it presents a main recommendation plus up to two alternatives with relative suitability weights (see §13), shown in the chat reply and in the Agent Execution Trace panel.
 
 ---
 
@@ -327,6 +328,10 @@ Notes for the presenter: the dummy counselor ends a session after 2 counseling t
 ## 13. Limitations & Ethical Considerations
 
 **Standing limitations (summary).** The benchmark is synthetic; all quality scoring is automated (mock LLM judge rubrics) with no clinician validation; the safety-case sample size is small (N=3 acute crisis cases in the evaluated slice); agent confidence values are uncalibrated; and results obtained with the dummy/offline backend are not comparable to live-model results. The live-LLM comparison of Systems A–F has not yet been run.
+
+### Recommendation suitability weights
+
+When the counselor gives an exercise or feedback in a session, it no longer presents a single recommendation as certain. It presents a main recommendation plus up to two alternatives with relative suitability weights (for example, best match about 80%, also a good fit about 15%, another option about 5%). The weights are a softmax over the retrieval step's cosine similarities (temperature 0.1 by default, configurable; whole percentages that sum to exactly 100 by largest-remainder rounding; the top share is never 100%). They are RELATIVE match weights: how well each option matches the client's current message, session goals and stage compared with the other retrieved options. They are NOT clinical probabilities, NOT success rates and NOT predictions of outcome: the system is uncalibrated and the weights have not been validated against real outcomes or expert ratings. A single retrieved option is shown with no percentage at all; in offline or dummy embedding mode no semantic weights exist, so options are listed by rank with no percentages; and on the HIGH-RISK route or an ESCALATE verdict no exercise percentages are shown at all (crisis responses and helplines are unchanged). A deterministic post-check rejects or repairs any reply that states a single option as 100% or phrases weights as outcome probabilities. Calibrating these weights against real outcomes or expert ratings is future work.
 
 ### Academic Limitations & Scientific Validity Gaps
 

@@ -47,3 +47,11 @@ clarification_enabled: true
 safety_supervisor_enabled: true
 longitudinal_enabled: true
 multi_agent_routing_enabled: true
+
+# Suitability weights for exercise / feedback recommendations: relative
+# match shares across retrieved options, never outcome probabilities.
+# temperature: softmax temperature over cosine similarities (default 0.1).
+# max_options: main recommendation plus up to this many shown in total.
+recommendation_weights_enabled: true
+recommendation_weights_temperature: 0.1
+recommendation_weights_max_options: 3

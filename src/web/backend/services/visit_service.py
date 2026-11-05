@@ -737,6 +737,8 @@ async def create_visit(
             snapshot["profile_payload"]["latest_agent_trace"] = assistant_payload["agent_trace"]
         if "route" in assistant_payload:
             snapshot["profile_payload"]["latest_route"] = assistant_payload.get("route", "CLEAR")
+        if isinstance(assistant_payload.get("recommendation_weights"), dict):
+            snapshot["profile_payload"]["latest_recommendation_weights"] = assistant_payload["recommendation_weights"]
     save_visit_psych_context_snapshot(db, visit.visit_id, snapshot)
 
     try:
@@ -842,6 +844,8 @@ async def send_visit_message(
             snapshot["profile_payload"]["latest_agent_trace"] = assistant_payload["agent_trace"]
         if "route" in assistant_payload:
             snapshot["profile_payload"]["latest_route"] = assistant_payload["route"]
+        if isinstance(assistant_payload.get("recommendation_weights"), dict):
+            snapshot["profile_payload"]["latest_recommendation_weights"] = assistant_payload["recommendation_weights"]
         if "longitudinal_risk" in assistant_payload:
             snapshot["profile_payload"]["longitudinal_risk"] = assistant_payload["longitudinal_risk"]
         if "clarification_state" in assistant_payload:
