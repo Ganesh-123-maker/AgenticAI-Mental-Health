@@ -28,7 +28,7 @@ from .risk_agent import RiskAgent
 from .safety_supervisor import SafetySupervisor
 from .state_agent import StateAgent
 from .uncertainty_agent import UncertaintyAgent
-from ..utils import PRESCRIPTION_BOUNDARY_RESPONSE, is_explicit_prescription_request
+from ..utils import HARM_TO_OTHERS_BOUNDARY_RESPONSE, PRESCRIPTION_BOUNDARY_RESPONSE, is_explicit_prescription_request, is_harm_to_others_instruction_request
 
 logger = logging.getLogger(__name__)
 
@@ -188,6 +188,32 @@ def run_pipeline(
             "next_agent": "counseling_agent",
             "verdict": "ALLOW",
             "reason": "scope_boundary_prescription",
+            "reassess_count": 0,
+            "reroute_count": 0,
+            "trail": trail,
+            "context": ctx,
+        }
+
+    # Round 4 fix (REG-2): as with the prescription boundary — a
+    # harm-to-others instruction request gets a fixed refusal with no
+    # agent run and no counseling generation. (The web engine enforces
+    # this before calling the pipeline; this covers direct/batch
+    # callers.) Route stays CLEAR: this is a scope refusal, not a
+    # self-harm risk detection — the helplines are in the reply text.
+    if is_harm_to_others_instruction_request(ctx.current_message):
+        trail.append({
+            "agent": "pipeline",
+            "step": "scope_boundary",
+            "reason": "harm_to_others_instruction_request",
+        })
+        return {
+            "response": HARM_TO_OTHERS_BOUNDARY_RESPONSE,
+            "response_is_placeholder": False,
+            "response_source": "scope_boundary",
+            "route": "CLEAR",
+            "next_agent": "counseling_agent",
+            "verdict": "ALLOW",
+            "reason": "scope_boundary_harm_to_others",
             "reassess_count": 0,
             "reroute_count": 0,
             "trail": trail,
@@ -459,6 +485,26 @@ async def run_pipeline_async(
             "next_agent": "counseling_agent",
             "verdict": "ALLOW",
             "reason": "scope_boundary_prescription",
+            "reassess_count": 0,
+            "reroute_count": 0,
+            "trail": trail,
+            "context": ctx,
+        }
+
+    # Round 4 fix (REG-2): as in run_pipeline — no retrieval, no
+    # LLM call for a harm-to-others instruction request.
+    if is_harm_to_others_instruction_request(ctx.current_message):
+        trail.append({
+            "agent": "pipeline",
+            "step": "scope_boundary",
+            "reason": "harm_to_others_instruction_request",
+        })
+        return {
+            "response": (HARM_TO_OTHERS_BOUNDARY_RESPONSE, HARM_TO_OTHERS_BOUNDARY_RESPONSE),
+            "route": "CLEAR",
+            "next_agent": "counseling_agent",
+            "verdict": "ALLOW",
+            "reason": "scope_boundary_harm_to_others",
             "reassess_count": 0,
             "reroute_count": 0,
             "trail": trail,

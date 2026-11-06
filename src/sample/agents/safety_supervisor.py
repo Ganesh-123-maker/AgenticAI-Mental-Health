@@ -184,6 +184,22 @@ class SafetySupervisor(Agent):
         unc_payload = ctx.uncertainty_output or {}
         unc_status = str(unc_payload.get("status", "CLEAR")).upper()
         uncertain_fields = list(unc_payload.get("uncertain_fields", []) or [])
+        # Round 3 fix (C-NEW2): missing_information can carry the
+        # safety gap ("medical_history (safety status absent)") on a
+        # turn whose status is CLEAR with empty uncertain_fields — the
+        # UncertaintyAgent adds the medical item to missing_information
+        # whenever no medical history is recorded, but only promotes it
+        # to uncertain_fields when the current message has active
+        # medical words. The supervisor must treat that item as
+        # uncertain safety, or an absolute-safety draft is ALLOWed on a
+        # turn where safety was never established. This only gates
+        # drafts matching the false-reassurance patterns below; benign
+        # drafts on CLEAR turns are unaffected.
+        missing_information = list(unc_payload.get("missing_information", []) or [])
+        has_missing_safety_item = any(
+            "medical" in str(item).lower() or "safety" in str(item).lower()
+            for item in missing_information
+        )
 
         orch_payload = getattr(ctx, "routing_output", None) or {}
         route = str(orch_payload.get("route", "CLEAR")).upper()
@@ -219,6 +235,7 @@ class SafetySupervisor(Agent):
         is_uncertain_safety = (
             risk_severity == "UNCERTAIN"
             or (unc_status in ("UNCERTAIN", "AMBIGUOUS") and any("medical" in f or "risk" in f for f in uncertain_fields))
+            or has_missing_safety_item
         )
         if is_uncertain_safety:
             for pat in _FALSE_REASSURANCE_PATTERNS:

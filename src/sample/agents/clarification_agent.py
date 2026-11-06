@@ -30,6 +30,7 @@ import logging
 from typing import Any, Dict, List, Optional
 
 from .base import Agent, AgentContext, AgentError, AgentMessage
+from .uncertainty_agent import _BARE_VAGUE_AFFECT_RE
 
 logger = logging.getLogger(__name__)
 
@@ -113,6 +114,18 @@ _CLARIFICATION_TEMPLATES: Dict[str, Dict[str, Any]] = {
             "Could you elaborate on what specific situation you were referring to when you mentioned that matter?",
         ],
         "target": ["specific_event_referent"],
+        "priority": "MEDIUM",
+    },
+    # Round 3 fix (S2-D4): bare vague affect ("I feel bad.") names no
+    # situation and no referent, so the ambiguous_expression template
+    # ("...when you mentioned that matter?") presupposes something the
+    # user never gave. This question asks what the feeling itself is
+    # like, without assuming a referent.
+    "vague_affect": {
+        "questions": [
+            "Could you say a bit more about what that feeling is like for you right now — is it more your mood, your body, or something that happened?",
+        ],
+        "target": ["vague_affect_feeling"],
         "priority": "MEDIUM",
     },
     "contradictory_information": {
@@ -372,11 +385,29 @@ class ClarificationAgent(Agent):
         missing_safety_gap = any(is_safety_relevant_item(str(m)) for m in missing_info)
 
         candidates: List[str] = []
+        # Round 3 fix (S2-D5): at MODERATE risk a detected contradiction
+        # was never acknowledged — the safety question outranked the
+        # HIGH-priority contradiction template outright, so a correction
+        # ("Actually I was wrong about that — I barely sleep") was
+        # answered with only the medical-history question. Ask the
+        # contradiction question first; the safety question follows on
+        # the next clarification turn (the safety-pending budget
+        # override guarantees it is still asked while the gap
+        # persists). At HIGH/UNCERTAIN risk the safety question stays
+        # first — the correction is not more urgent than safety there.
+        if risk_severity == "MODERATE" and "contradictory_information" in uncertainty_types:
+            candidates.append("contradictory_information")
         if risk_severity in ("HIGH", "MODERATE", "UNCERTAIN") and (has_safety_gap or missing_safety_gap):
             candidates.append("safety_status")
-        if "contradictory_information" in uncertainty_types:
+        if "contradictory_information" in uncertainty_types and "contradictory_information" not in candidates:
             candidates.append("contradictory_information")
         if "ambiguous_expression" in uncertainty_types:
+            # Round 3 fix (S2-D4): bare vague affect ("I feel bad.")
+            # names no referent, so the deictic ambiguous_expression
+            # question must not be asked for it — use the vague-affect
+            # question, which does not presuppose a "matter".
+            if _BARE_VAGUE_AFFECT_RE.match((ctx.current_message or "").strip().lower()):
+                candidates.append("vague_affect")
             candidates.append("ambiguous_expression")
         if has_safety_gap and "safety_status" not in candidates:
             candidates.append("safety_status")

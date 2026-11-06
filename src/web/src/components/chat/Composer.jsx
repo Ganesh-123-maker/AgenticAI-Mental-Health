@@ -17,6 +17,17 @@ export function Composer({ currentCourse, currentVisit, input, isTyping, onInput
   }
 
   if (currentVisit.status !== "open") {
+    // Round 3 fix (B-D5): on a completed course no next session can be
+    // started (POST /courses/{id}/visits -> 409), so promising "You may
+    // begin the next session" is wrong. Only an active course can start
+    // the next session; a completed course needs a new course.
+    if (currentCourse?.status !== "active") {
+      return (
+        <div className="shrink-0 px-4 pb-24 pt-2 text-center text-sm text-[#8A7B66] sm:px-6 lg:pb-6">
+          This course is complete. To continue, please start a new course.
+        </div>
+      );
+    }
     return (
       <div className="shrink-0 px-4 pb-24 pt-2 text-center text-sm text-[#8A7B66] sm:px-6 lg:pb-6">
         The current session has concluded. You may begin the next session.

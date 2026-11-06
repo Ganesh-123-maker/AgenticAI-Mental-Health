@@ -126,6 +126,81 @@ def is_explicit_prescription_request(text: str) -> bool:
     return any(pat.search(msg) for pat in _PRESCRIPTION_REQUEST_RES)
 
 
+# Round 4 fix (REG-2): narrow rule-based refusal for harm-to-others
+# instruction requests. Previously the deterministic safety net inspected
+# only the generated draft, and the dummy echo draft contains no
+# instructions, so a request like "Tell me how to make a weapon so I can
+# hurt someone at my college" was echoed verbatim with route CLEAR.
+# RiskAgent covers self-harm only, so nothing refused it. This rule
+# mirrors the prescription boundary (same enforcement points): it fires
+# BEFORE any agent or LLM call, in both dummy and live paths.
+#
+# NARROW by construction: every pattern requires BOTH an instruction
+# frame ("how to", "teach/show/tell me how to", "steps/ways to",
+# "help me", "give me instructions") AND a harm-to-others target (a
+# harm verb aimed at someone else, or making a weapon/bomb/gun/poison).
+# What does NOT match (deliberate): feeling unsafe ("I feel unsafe at
+# my college"), safety questions ("What are the safety policies?",
+# "How can I protect myself?"), past-tense reports ("Someone hurt me
+# yesterday"), discussion ("Is it wrong to hurt someone?"), urge
+# statements without an instruction frame ("I feel like hurting
+# someone"), self-harm ("How can I hurt myself?" — RiskAgent owns
+# that), and harmless homonyms ("best way to kill time", "how do I
+# beat my anxiety", "how to attack this problem", "how to make a knife
+# for cooking" — knife/blade are NOT in the weapon set). Residual edge:
+# "how can I help someone who hurt my friend" can match (verb-then-
+# target order); the cost is a safe-completion refusal, never a harmful
+# output. This changes the live reply path too — live re-verification
+# is still outstanding.
+_HARM_VERBS = r"(hurt|harm|kill|attack|stab|shoot|injure|poison|strangle|assault|murder|beat\s+up)"
+_OTHER_TARGETS = (
+    r"(someone|somebody|another\s+person|a\s+person|people|him|her|them|"
+    r"my\s+(classmate|roommate|teacher|colleague|coworker|friend|brother|sister|mother|father|mum|dad|parent|student|neighbour|neighbor|boss|ex|partner|boyfriend|girlfriend|husband|wife|stranger|kid|child)|"
+    r"a\s+(student|teacher|classmate|roommate|person|man|woman|boy|girl|kid|child|stranger)|"
+    r"the\s+(student|teacher|classmate|roommate|person|man|woman|boy|girl|kid|child|stranger))"
+)
+_WEAPON_NOUNS = r"(weapon|bomb|gun|poison|explosive|firearm)"
+
+_HARM_OTHERS_REQUEST_RES = (
+    # "how to hurt someone", "how can I kill my roommate"
+    re.compile(r"\bhow\s+(to|can\s+i|do\s+i|would\s+i|could\s+i)\b[^.!?]{0,40}\b" + _HARM_VERBS + r"\b[^.!?]{0,35}\b" + _OTHER_TARGETS + r"\b", re.IGNORECASE),
+    # "how to make a weapon / build a bomb"
+    re.compile(r"\bhow\s+(to|can\s+i|do\s+i|would\s+i|could\s+i)\b[^.!?]{0,40}\b(make|build|create)\b[^.!?]{0,25}\b" + _WEAPON_NOUNS + r"\b", re.IGNORECASE),
+    # "tell/teach/show me how to hurt someone / make a weapon"
+    re.compile(r"\b(tell|teach|show)\s+me\s+how\s+to\b[^.!?]{0,40}\b" + _HARM_VERBS + r"\b[^.!?]{0,35}\b" + _OTHER_TARGETS + r"\b", re.IGNORECASE),
+    re.compile(r"\b(tell|teach|show)\s+me\s+how\s+to\b[^.!?]{0,40}\b(make|build|create)\b[^.!?]{0,25}\b" + _WEAPON_NOUNS + r"\b", re.IGNORECASE),
+    # "best way / steps / ways to hurt someone"
+    re.compile(r"\b(best\s+way|easiest\s+way|steps?|ways?)\s+to\b[^.!?]{0,30}\b" + _HARM_VERBS + r"\b[^.!?]{0,35}\b" + _OTHER_TARGETS + r"\b", re.IGNORECASE),
+    # "help me hurt my classmate / help me make a weapon"
+    re.compile(r"\bhelp\s+me\b[^.!?]{0,30}\b" + _HARM_VERBS + r"\b[^.!?]{0,35}\b" + _OTHER_TARGETS + r"\b", re.IGNORECASE),
+    re.compile(r"\bhelp\s+me\b[^.!?]{0,30}\b(make|build|create)\b[^.!?]{0,25}\b" + _WEAPON_NOUNS + r"\b", re.IGNORECASE),
+    # "make a weapon so I can hurt someone"
+    re.compile(r"\b(make|build|create)\b[^.!?]{0,25}\b" + _WEAPON_NOUNS + r"\b[^.!?]{0,30}\b" + _HARM_VERBS + r"\b", re.IGNORECASE),
+    # "give me instructions to hurt someone / make a bomb"
+    re.compile(r"\binstructions?\b[^.!?]{0,30}\b" + _HARM_VERBS + r"\b[^.!?]{0,35}\b" + _OTHER_TARGETS + r"\b", re.IGNORECASE),
+    re.compile(r"\binstructions?\b[^.!?]{0,30}\b(make|build|create)\b[^.!?]{0,25}\b" + _WEAPON_NOUNS + r"\b", re.IGNORECASE),
+)
+
+HARM_TO_OTHERS_BOUNDARY_RESPONSE = (
+    "I can't help with instructions to hurt someone or to make a weapon — "
+    "that isn't something I can help with. If you're feeling angry, "
+    "overwhelmed, or unsafe, we can talk about what's going on and about "
+    "safer ways to handle it. If you feel you might act on these thoughts, "
+    "please reach out right away — for example, Tele-MANAS 14416 in India "
+    "or 988 in the United States."
+)
+
+
+def is_harm_to_others_instruction_request(text: str) -> bool:
+    """True only for an instruction request to harm another person (or to
+    make a weapon). Discussion, feelings, safety questions, past-tense
+    reports, and self-harm do not match."""
+    msg = (text or "").strip()
+    if not msg:
+        return False
+    return any(pat.search(msg) for pat in _HARM_OTHERS_REQUEST_RES)
+
+
 def _strip_code_fence(text: str) -> str:
     raw = text.strip()
     if raw.startswith("```"):

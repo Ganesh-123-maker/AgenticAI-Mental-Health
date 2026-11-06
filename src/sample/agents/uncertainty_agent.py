@@ -78,6 +78,17 @@ _CONTRADICTORY_PATTERNS = [
     r"(sleep (fine|well|perfectly)|sleeping (fine|well)|no trouble sleeping|no problems? (with )?(my )?sleep).*?"
     r"\b(actually|but|though|correction|wrong)\b.*?"
     r"\b(barely|hardly|haven't|have not|not|can't|cannot|never)\b.*?\b(sleep|slept|sleeping)\b",
+    # Round 3 fix (B-D1): distress -> retraction — a prior distress
+    # claim retracted in-session ("Actually, I never had exam stress
+    # at all", "Actually, I'm not anxious at all") after the user
+    # established exam anxiety / poor sleep. The existing patterns only
+    # match fine->distress corrections, so retractions got the generic
+    # echo. A correction marker plus a distress/symptom object is
+    # required, so an unrelated denial ("Actually, I never had coffee")
+    # does not match.
+    r"\b(actually|but|though|correction|wrong)\b.*\bnever had\b.*\b(stress|anxiety|anxious|depress\w*|sleep\w*|problem|worry|worried|panic|fear)\b",
+    r"\b(actually|but|though|correction|wrong)\b.*\b(not|no|never)\b[^.!?]{0,40}\b(anxious|anxiety|stress\w*|depress\w*|worried|worry|panic)\b.*\bat all\b",
+    r"(not sleeping (well|properly)|haven't slept (properly|well)|have not slept (properly|well)|trouble (falling )?asleep|can'?t sleep|cannot sleep).*\b(actually|but|though)\b.*\bsleep(ing)? (perfectly|fine|well)\b",
 ]
 
 # Round 2 fix (D-04): bare vague affect with no object ("I feel bad.").
@@ -182,7 +193,16 @@ class UncertaintyAgent(Agent):
                     if "safety_status" not in uncertainty_types:
                         uncertainty_types.append("safety_status")
 
+        # Round 3 fix (B-D1 adjacent): StateAgent often sets
+        # current_concern to the current message verbatim, so the old
+        # f"{current_concern} {current_message}" duplicated the message
+        # and contradiction patterns could match ACROSS the join ("sleep
+        # well. I'm stressed ... but I never sleep" — one sentence's
+        # tail + the next copy's head). Scan the message once when the
+        # concern already is the message.
         text_to_check = f"{current_concern} {ctx.current_message or ''}".strip().lower()
+        if current_concern and (ctx.current_message or "").strip() == current_concern:
+            text_to_check = current_concern.lower()
         for kw in _AMBIGUOUS_KEYWORDS:
             if kw in text_to_check:
                 is_ambiguous = True

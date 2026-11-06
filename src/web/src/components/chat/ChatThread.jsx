@@ -2,7 +2,7 @@ import { FolderOpen, LogIn, MessagesSquare } from "lucide-react";
 import { EmptyState } from "../common/EmptyState";
 import { formatMessageTime } from "../common/formatTime";
 import { LotusLogo } from "../common/LotusLogo";
-import { ExerciseCard, mentionsBreathingExercise } from "./ExerciseCard";
+import { ExerciseCard, shouldShowExerciseCard } from "./ExerciseCard";
 import { WelcomeHeader } from "./WelcomeHeader";
 
 function extractResponseText(rawText) {
@@ -44,11 +44,13 @@ function ChatEmptyState({ hasToken, currentCourse }) {
   );
 }
 
-function MessageBubble({ message }) {
+function MessageBubble({ message, messages, index }) {
   const isUser = message.role === "user";
   const text = isUser ? message.text : extractResponseText(message.text);
   const timestamp = formatMessageTime(message.created_at);
-  const showExercise = !isUser && mentionsBreathingExercise(text);
+  // Round 3 fix (B-D4): the card is history-gated, not keyword-gated —
+  // a recall echo quoting the user's own question must not trigger it.
+  const showExercise = !isUser && shouldShowExerciseCard(messages, index);
 
   if (message.role === "system") {
     return (
@@ -92,6 +94,15 @@ function MessageBubble({ message }) {
 
 export function ChatThread({ currentCourse, currentVisit, canSend, isTyping, chatEndRef, hasToken, onQuickPrompt }) {
   const messages = currentVisit?.messages || [];
+  // Round 3 fix (B-D4): the card check must see cross-visit history.
+  // The thread renders only the current visit's messages, but the visit
+  // state ships prior visits' USER turns (prior_visit_user_messages,
+  // REG-1). A teaching request from an earlier session is evidence the
+  // exercise was taught, even though that session's assistant reply is
+  // not in this thread. The combined list is used ONLY for the card
+  // decision; rendering still shows the current visit alone.
+  const priorUserMessages = currentVisit?.prior_visit_user_messages || [];
+  const historyMessages = [...priorUserMessages, ...messages];
 
   return (
     <div className="flex-1 overflow-y-auto px-4 pb-6 sm:px-6" aria-live="polite" aria-label="Conversation">
@@ -101,7 +112,14 @@ export function ChatThread({ currentCourse, currentVisit, canSend, isTyping, cha
         {messages.length === 0 ? (
           <ChatEmptyState hasToken={hasToken} currentCourse={currentCourse} />
         ) : (
-          messages.map((message) => <MessageBubble key={message.id} message={message} />)
+          messages.map((message, index) => (
+            <MessageBubble
+              key={message.id}
+              message={message}
+              messages={historyMessages}
+              index={priorUserMessages.length + index}
+            />
+          ))
         )}
 
         {isTyping ? (

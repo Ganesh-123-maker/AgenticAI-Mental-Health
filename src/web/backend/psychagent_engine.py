@@ -6,8 +6,12 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 from sample.agents.base import AgentContext
-from sample.agents.clarification_agent import is_safety_relevant_item
+from sample.agents.clarification_agent import (
+    ClarificationAgent,
+    is_safety_relevant_item,
+)
 from sample.agents.pipeline import run_pipeline
+from sample.agents.reassessment_agent import _answer_addresses_item
 from sample.agents.risk_agent import RiskAgent
 from sample.agents.safety_supervisor import (
     SafetySupervisor,
@@ -25,10 +29,12 @@ from sample.prompt_manager import PsychAgentPromptManager
 from sample.recommendation_weights import apply_weights_to_reply, should_attach_weights
 from sample.skill_manager import SkillManager
 from sample.utils import (
+    HARM_TO_OTHERS_BOUNDARY_RESPONSE,
     PRESCRIPTION_BOUNDARY_RESPONSE,
     extract_tag_content,
     format_transcript,
     is_explicit_prescription_request,
+    is_harm_to_others_instruction_request,
     safe_json_loads,
     strip_end_token,
 )
@@ -221,6 +227,43 @@ class PsychAgentWebBackend:
                     "reply_model": None,
                 }
 
+            # Round 4 fix (REG-2): harm-to-others instruction requests
+            # get the same treatment as explicit prescription requests —
+            # a fixed refusal before any agent or LLM call. Previously
+            # the dummy echo quoted the request back verbatim (route
+            # CLEAR) because the safety net inspects the draft, and the
+            # echo draft contains no instructions. Route stays CLEAR:
+            # this is a scope refusal, not a self-harm risk detection
+            # (RiskAgent covers self-harm only); the helplines are in
+            # the reply text. NOTE: this changes the live reply path
+            # too — live re-verification is still outstanding.
+            if is_harm_to_others_instruction_request(user_query):
+                prev_longitudinal = (
+                    psych_context.profile_payload.get("longitudinal_risk")
+                    if psych_context and isinstance(psych_context.profile_payload, dict)
+                    else None
+                )
+                carried = self._carried_risk_severity(psych_context)
+                return {
+                    "text": HARM_TO_OTHERS_BOUNDARY_RESPONSE,
+                    "end": False,
+                    "agent_trace": [{
+                        "agent": "web_engine",
+                        "step": "scope_boundary",
+                        "reason": "harm_to_others_instruction_request",
+                    }],
+                    "route": "CLEAR",
+                    "longitudinal_risk": (
+                        prev_longitudinal
+                        if isinstance(prev_longitudinal, dict)
+                        and prev_longitudinal.get("severity") == carried
+                        else None
+                    ),
+                    "clarification_state": self._clarification_state(psych_context),
+                    "reply_source": "template",
+                    "reply_model": None,
+                }
+
             multi_agent_enabled = getattr(self._runtime_config, "multi_agent_enabled", True)
             if multi_agent_enabled:
                 ctx = AgentContext(
@@ -293,6 +336,53 @@ class PsychAgentWebBackend:
                             "longitudinal_risk": longitudinal_risk,
                             "clarification_state": clar_state,
                             "reply_source": "template", "reply_model": None}
+
+                # Round 3 fix (S2-D5): a safety question owed from an
+                # earlier turn must not be silently dropped when the
+                # fresh turn routes CLEAR. The pipeline only runs its
+                # clarification loop on UNCERTAIN turns, so when a
+                # contradiction question was asked first (at MODERATE
+                # risk) and the user's answer routes CLEAR, the safety
+                # question would never be asked — the reorder would
+                # trade the contradiction gap for a safety gap. If a
+                # safety question is still owed (never asked this
+                # visit, gap still in missing_information, carried risk
+                # MODERATE+), ask it now as a template reply instead of
+                # proceeding to counseling.
+                if current_route == "CLEAR" and clarification_answer is not None:
+                    owed = self._owed_safety_question(ctx, clar_state, carried_severity)
+                    if owed is not None:
+                        safety_q, safety_targets = owed
+                        new_state = {
+                            "turns": clar_state["turns"],
+                            "asked_targets": clar_state["asked_targets"] + [
+                                t for t in safety_targets if t not in clar_state["asked_targets"]
+                            ],
+                            "safety_asked_targets": clar_state["safety_asked_targets"] + [
+                                t for t in safety_targets
+                                if t not in clar_state["safety_asked_targets"]
+                            ],
+                            "proceeded_with_unknowns": clar_state["proceeded_with_unknowns"],
+                        }
+                        trail.append({
+                            "agent": "clarification_agent",
+                            "step": "owed_safety_question",
+                            "payload": {
+                                "question": safety_q,
+                                "questions": [safety_q],
+                                "target_information": safety_targets,
+                                "priority": "HIGH",
+                                "clarification_required": True,
+                                "reasoning_summary": (
+                                    "Safety question owed from an earlier turn; "
+                                    "fresh turn routed CLEAR before it was asked."
+                                ),
+                            },
+                        })
+                        return {"text": safety_q, "end": False, "agent_trace": trail, "route": "UNCERTAIN",
+                                "longitudinal_risk": longitudinal_risk,
+                                "clarification_state": new_state,
+                                "reply_source": "template", "reply_model": None}
 
                 if current_route == "UNCERTAIN":
                     clar_payload = ctx.clarification_output or {}
@@ -462,7 +552,24 @@ class PsychAgentWebBackend:
             fallback_trail: List[Dict[str, Any]] = []
             fallback_risk = RiskAgent().run(fallback_ctx)
             fallback_ctx.risk_output = fallback_risk.payload
-            fallback_ctx.uncertainty_output = {"status": "CLEAR", "uncertain_fields": []}
+            # Round 3 fix (C-NEW2): the fallback path runs no
+            # UncertaintyAgent, so the supervisor never saw the medical
+            # gap here. Carry the same item the UncertaintyAgent emits
+            # when no medical history is recorded, so the
+            # false-reassurance guard can fire on this path too.
+            _fallback_med_hist = str(
+                (client_info.get("static_traits") or {}).get("medical_history") or ""
+            ).strip().lower()
+            _fallback_missing = (
+                ["medical_history (safety status absent)"]
+                if _fallback_med_hist in ("", "unknown", "(unavailable)", "not mentioned", "not_mentioned")
+                else []
+            )
+            fallback_ctx.uncertainty_output = {
+                "status": "CLEAR",
+                "uncertain_fields": [],
+                "missing_information": _fallback_missing,
+            }
             fallback_severity = str(fallback_risk.payload.get("severity", "LOW")).upper()
             fallback_ctx.routing_output = {
                 "route": "HIGH-RISK" if fallback_severity == "HIGH" else "CLEAR"
@@ -1045,6 +1152,57 @@ class PsychAgentWebBackend:
         if getattr(self._baseline_config, "backend", "") == "dummy":
             return "template", None
         return "llm", getattr(self._baseline_config, "model", None)
+
+    @staticmethod
+    def _owed_safety_question(
+        ctx: AgentContext, clar_state: Dict[str, Any], carried_severity: Optional[str]
+    ) -> Optional[tuple]:
+        """Safety question still owed after a CLEAR turn, if any.
+
+        Returns (question, targets) or None. All gates must hold:
+        carried risk MODERATE+; the safety question never asked in this
+        visit; the fresh uncertainty still lists a medical/safety item
+        in missing_information; and the user's message did not already
+        address that item (volunteered history is not re-asked).
+
+        The clarification agent only runs on UNCERTAIN turns, so the
+        owed gap is presented to it on a copy of the context whose
+        uncertainty status is marked UNCERTAIN — the gap itself is real
+        (checked above); only the routing flag is overridden, so the
+        agent selects the safety question from its own templates
+        (single source of truth for the wording).
+        """
+        if str(carried_severity or "").upper() not in ("MODERATE", "HIGH"):
+            return None
+        if clar_state.get("safety_asked_targets"):
+            return None
+        unc = ctx.uncertainty_output or {}
+        if not isinstance(unc, dict):
+            return None
+        missing = unc.get("missing_information", []) or []
+        safety_items = [str(m) for m in missing if is_safety_relevant_item(m)]
+        if not safety_items:
+            return None
+        answer = str(ctx.current_message or "")
+        if any(_answer_addresses_item(answer, item) for item in safety_items):
+            return None
+        synth_ctx = ctx.copy()
+        synth_unc = dict(unc)
+        synth_unc["status"] = "UNCERTAIN"
+        synth_unc["clarification_required"] = True
+        synth_unc["clarification_needed"] = True
+        synth_ctx.uncertainty_output = synth_unc
+        clar_msg = ClarificationAgent().run(synth_ctx)
+        payload = clar_msg.payload or {}
+        if not payload.get("clarification_required"):
+            return None
+        targets = [str(t) for t in (payload.get("target_information") or []) if str(t)]
+        if not targets or not any(is_safety_relevant_item(t) for t in targets):
+            return None
+        question = payload.get("question") or (payload.get("questions") or [None])[0]
+        if not question:
+            return None
+        return question, targets
 
     @staticmethod
     def _clarification_pending(psych_context: Optional[VisitPsychContextOut]) -> bool:

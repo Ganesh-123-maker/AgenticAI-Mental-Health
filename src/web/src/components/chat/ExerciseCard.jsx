@@ -191,3 +191,97 @@ export function ExerciseCard() {
 export function mentionsBreathingExercise(text) {
   return /(box[\s-]?breathing|breathing exercise)/i.test(String(text ?? ""));
 }
+
+/**
+ * True when a user message asks to RECALL a previously taught breathing
+ * exercise ("Can you remind me what breathing exercise you taught me?")
+ * rather than asking to be taught one now. A recall question is not
+ * itself evidence that an exercise was taught.
+ */
+export function isBreathingRecallQuestion(text) {
+  const lower = String(text ?? "").toLowerCase();
+  if (!/(breath|exercise)/i.test(lower)) return false;
+  return /remind me|recall|remember|did you teach|have you taught|what .* (taught|teach|showed|gave|recommended)|which .* (taught|teach)/i.test(lower);
+}
+
+/**
+ * True when a user message asks to be TAUGHT a breathing exercise (as
+ * opposed to recalling one already taught). A teaching request is evidence
+ * the exercise was introduced in that turn: the assistant's reply to it
+ * is the teaching turn. A user saying the exercise helped is the same
+ * evidence — they can only say that about an exercise already taught.
+ */
+export function requestsBreathingExerciseTeaching(text) {
+  const lower = String(text ?? "").toLowerCase();
+  if (!mentionsBreathingExercise(lower)) return false;
+  if (isBreathingRecallQuestion(lower)) return false;
+  if (/\b(helped|helps)\b/.test(lower)) return true;
+  return /\b(teach|show|guide|try|practice|learn)\b|walk me through|let'?s (do|try)|do a|start a|give me/.test(lower);
+}
+
+/**
+ * True when an exercise was actually taught earlier in this conversation.
+ *
+ * An earlier assistant message counts as a teaching turn when it mentions
+ * a breathing exercise and the user message immediately before it was NOT
+ * a recall question (a recall echo quotes the question's own wording, so
+ * it must not bootstrap itself into "taught"). An assistant message with
+ * no preceding user message (e.g. an opening that introduces the exercise
+ * unprompted) also counts — the assistant introduced it.
+ *
+ * A user teaching request in an earlier turn counts too. This is what
+ * makes the check work across visits: the thread only renders the current
+ * visit's messages, but the visit state ships prior visits' USER turns
+ * (`prior_visit_user_messages`, REG-1), so a teaching request from an
+ * earlier session is visible even though its assistant reply is not.
+ */
+export function wasBreathingExerciseTaught(messages, upToIndex) {
+  const list = Array.isArray(messages) ? messages : [];
+  for (let j = 0; j < upToIndex && j < list.length; j += 1) {
+    const msg = list[j];
+    if (!msg) continue;
+    if (msg.role === "user" && requestsBreathingExerciseTeaching(msg.text)) return true;
+    if (msg.role !== "assistant") continue;
+    if (!mentionsBreathingExercise(msg.text)) continue;
+    let prevUser = null;
+    for (let k = j - 1; k >= 0; k -= 1) {
+      if (list[k] && list[k].role === "user") {
+        prevUser = list[k];
+        break;
+      }
+      if (list[k] && list[k].role === "assistant") break;
+    }
+    if (!prevUser || !isBreathingRecallQuestion(prevUser.text)) return true;
+  }
+  return false;
+}
+
+/**
+ * Whether the exercise card should render under the assistant message at
+ * `index` in `messages`.
+ *
+ * Round 3 fix (B-D4): the card used to fire on keyword match of the
+ * current message alone, so a fresh user asking "remind me what breathing
+ * exercise you taught me?" saw the box-breathing card even though nothing
+ * was ever taught — the dummy echo quotes the question, which itself
+ * contains "breathing exercise". Now the card shows only when this turn
+ * teaches the exercise (the preceding user message is not a recall
+ * question) or an earlier turn taught it.
+ */
+export function shouldShowExerciseCard(messages, index) {
+  const list = Array.isArray(messages) ? messages : [];
+  const msg = list[index];
+  if (!msg || msg.role !== "assistant" || !mentionsBreathingExercise(msg.text)) return false;
+  let prevUser = null;
+  for (let k = index - 1; k >= 0; k -= 1) {
+    if (list[k] && list[k].role === "user") {
+      prevUser = list[k];
+      break;
+    }
+    if (list[k] && list[k].role === "assistant") break;
+  }
+  if (prevUser && isBreathingRecallQuestion(prevUser.text)) {
+    return wasBreathingExerciseTaught(list, index);
+  }
+  return true;
+}

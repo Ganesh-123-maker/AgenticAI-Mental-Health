@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import asyncio
 import json
+import re
 from typing import List
 
 from .base import Message
@@ -34,6 +35,20 @@ def _clip_words(text, limit=200):
         return flat
     clipped = flat[:limit].rsplit(" ", 1)[0]
     return clipped + "…"
+
+
+# Duration / bedtime tokens in a quoted turn. Used by the sleep-recall
+# branch (S2-D2): the old code denied any duration had been mentioned
+# even when the quote itself stated one ("five hours of sleep").
+# Word-numbers count too — "five hours" states a duration just as
+# "5 hours" does.
+_DURATION_OR_BEDTIME_RE = re.compile(
+    r"\b(?:\d+|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve)"
+    r"\s*(hours?|hrs?|minutes?|mins?)\b"
+    r"|\b\d{1,2}\s*(am|pm)\b"
+    r"|bedtime|nightly hours?|half an hour",
+    re.IGNORECASE,
+)
 
 
 class DummyBackend:
@@ -187,14 +202,40 @@ class DummyBackend:
         # client. Recall now only repeats the user's own earlier words
         # from this conversation, and says plainly when no specifics
         # were recorded.
-        if ("remind me" in user_lower or "what have i told you" in user_lower or "told you about" in user_lower) and "sleep" in user_lower:
+        # Round 3 fix (B-D2): the trigger also matches the present-tense
+        # phrasing "what did I tell you about my sleep" ("tell you
+        # about"), not only the past-tense "told you about" forms.
+        if ("remind me" in user_lower or "what have i told you" in user_lower or "told you about" in user_lower or "tell you about" in user_lower) and "sleep" in user_lower:
             sleep_turns = _prior_user_turns(messages, ("sleep",))
             if sleep_turns:
-                return (
-                    f"You mentioned sleep earlier: '{_clip_words(sleep_turns[-1])}'. "
-                    "That is all I have recorded about your sleep from our conversation — "
-                    "no bedtimes, durations, or nightly hours were mentioned."
-                )
+                # Round 3 fix (B-D3): quote the EARLIEST sleep turn (the
+                # original fact), not the most recent one — a later
+                # correction ("I sleep perfectly every night") must not
+                # displace the S1 detail. When a later sleep statement
+                # exists, quote it too instead of claiming the single
+                # quote is all that was recorded.
+                first = _clip_words(sleep_turns[0])
+                if len(sleep_turns) > 1:
+                    reply = (
+                        f"You mentioned sleep earlier: '{first}'. "
+                        f"You also mentioned sleep again later: '{_clip_words(sleep_turns[-1])}'."
+                    )
+                    quoted_turns = [sleep_turns[0], sleep_turns[-1]]
+                else:
+                    reply = f"You mentioned sleep earlier: '{first}'."
+                    quoted_turns = [sleep_turns[0]]
+                # Round 3 fix (S2-D2): the blanket denial ("no bedtimes,
+                # durations, or nightly hours were mentioned") is only
+                # appended when none of the quoted turns mentions any
+                # duration or bedtime — quoting "five hours of sleep"
+                # and then denying a duration was mentioned contradicts
+                # the quote itself.
+                if not any(_DURATION_OR_BEDTIME_RE.search(t) for t in quoted_turns):
+                    reply += (
+                        " That is all I have recorded about your sleep from our conversation — "
+                        "no bedtimes, durations, or nightly hours were mentioned."
+                    )
+                return reply
             return (
                 "You haven't mentioned specific sleep details in this conversation yet. "
                 "Could you tell me a bit about how you've been sleeping?"

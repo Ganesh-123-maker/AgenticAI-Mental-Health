@@ -284,7 +284,9 @@ class ReassessmentAgent(Agent):
             status = "UNCERTAIN"
             route_decision = "UNCERTAIN"
             reasoning = "Clarification answer was uninformative or absent; uncertainty remains unresolved."
-        elif reassessed_unc.get("status") == "AMBIGUOUS":
+        elif reassessed_unc.get("status") == "AMBIGUOUS" and (
+            "contradictory_information" in (reassessed_unc.get("uncertainty_types") or [])
+        ):
             # Round 2 fix (Stream D D-03): a clarification answer that
             # contradicts earlier statements must not be resolved to
             # CLEAR. The contradiction was detected by the reassessed
@@ -292,6 +294,14 @@ class ReassessmentAgent(Agent):
             # contradictory_information); forcing CLEAR here let the
             # counseling reply ignore the correction entirely. Keep the
             # turn UNCERTAIN so the clarification question is asked.
+            # Round 3 fix (C-NEW1): the branch must key on the
+            # contradictory_information TYPE, not on AMBIGUOUS status
+            # alone. The reassessed uncertainty run re-scans the
+            # original vague message (via state current_concern), so an
+            # informative answer to a vague opening re-fires
+            # ambiguous_expression with no contradiction present — the
+            # old status-only check forced those turns UNCERTAIN and
+            # the clarification loop could never resolve.
             status = "UNCERTAIN"
             route_decision = "UNCERTAIN"
             reasoning = "The answer contradicts earlier statements; clarification is needed before proceeding."
@@ -306,6 +316,13 @@ class ReassessmentAgent(Agent):
             reassessed_unc["status"] = "CLEAR"
             reassessed_unc["clarification_required"] = False
             reassessed_unc["clarification_needed"] = False
+            # Round 3 fix (Stream C O3): a CLEAR verdict must not carry
+            # populated uncertain_fields / non-"none" uncertainty_types
+            # (the same self-contradictory payload shape the D6 fix
+            # removed in UncertaintyAgent). The reassessed run may have
+            # left the original message's ambiguity in these fields.
+            reassessed_unc["uncertain_fields"] = []
+            reassessed_unc["uncertainty_types"] = ["none"]
             if resolved_information:
                 reasoning = f"Clarification successfully resolved priority informational uncertainty ({', '.join(resolved_information)})."
             elif remaining_client_items:
