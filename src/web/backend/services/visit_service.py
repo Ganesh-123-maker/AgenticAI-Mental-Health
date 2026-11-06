@@ -163,6 +163,30 @@ def build_opening_seed_user_text(visit_no: int, opening_note: str = "") -> str:
     return f"{base}\nSession Focus: {note}"
 
 
+def _sync_stored_recommendation_weights(
+    profile_payload: Dict[str, Any], assistant_payload: Any
+) -> None:
+    """Store or clear the visit's latest recommendation weights (LB-D2W).
+
+    The engine returns ``recommendation_weights=None`` when a turn carries
+    no weights (RE-ROUTE / ESCALATE supervision, or a weights mode of
+    "none") and omits the key entirely on template replies (clarification
+    question, HIGH-RISK fallback, scope boundary, quota-exhausted). The
+    old writer only stored dict values, so a previous turn's weights
+    stayed stored and the InfoPanel rendered them under the new turn's
+    trace. A turn with no weights must therefore clear the stored value;
+    a turn with a weights dict stores it. This touches weights
+    persistence on the live reply path.
+    """
+    if not isinstance(profile_payload, dict) or not isinstance(assistant_payload, dict):
+        return
+    weights = assistant_payload.get("recommendation_weights")
+    if isinstance(weights, dict):
+        profile_payload["latest_recommendation_weights"] = weights
+    else:
+        profile_payload.pop("latest_recommendation_weights", None)
+
+
 def _parse_assistant_payload(assistant_payload: Any) -> Tuple[str, bool]:
     should_auto_close = False
     if isinstance(assistant_payload, dict):
@@ -796,8 +820,7 @@ async def create_visit(
             snapshot["profile_payload"]["latest_agent_trace"] = assistant_payload["agent_trace"]
         if "route" in assistant_payload:
             snapshot["profile_payload"]["latest_route"] = assistant_payload.get("route", "CLEAR")
-        if isinstance(assistant_payload.get("recommendation_weights"), dict):
-            snapshot["profile_payload"]["latest_recommendation_weights"] = assistant_payload["recommendation_weights"]
+        _sync_stored_recommendation_weights(snapshot["profile_payload"], assistant_payload)
     save_visit_psych_context_snapshot(db, visit.visit_id, snapshot)
 
     try:
@@ -903,8 +926,7 @@ async def send_visit_message(
             snapshot["profile_payload"]["latest_agent_trace"] = assistant_payload["agent_trace"]
         if "route" in assistant_payload:
             snapshot["profile_payload"]["latest_route"] = assistant_payload["route"]
-        if isinstance(assistant_payload.get("recommendation_weights"), dict):
-            snapshot["profile_payload"]["latest_recommendation_weights"] = assistant_payload["recommendation_weights"]
+        _sync_stored_recommendation_weights(snapshot["profile_payload"], assistant_payload)
         if "longitudinal_risk" in assistant_payload:
             snapshot["profile_payload"]["longitudinal_risk"] = assistant_payload["longitudinal_risk"]
         if "clarification_state" in assistant_payload:

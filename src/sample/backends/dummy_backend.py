@@ -37,6 +37,135 @@ def _clip_words(text, limit=200):
     return clipped + "…"
 
 
+def _split_prior_current(messages):
+    """Split prior user turns (excluding the current/last question) into
+    prior-visit vs current-visit turns.
+
+    Prior visits contribute user turns only (see
+    PsychAgentWebBackend._build_chat_history_with_prior); the first
+    assistant turn marks the start of the current visit. Turns before it
+    are prior-visit, turns from it on are current-visit. With no
+    assistant turn at all (direct backend calls in unit tests) the
+    boundary is unknowable, so every prior turn is treated as prior-visit
+    — the recall branches still quote the user's own words and invent
+    nothing.
+    """
+    prior_visit: List[str] = []
+    current_visit: List[str] = []
+    seen_assistant = False
+    user_turns = [
+        str(m.get("content", "")).strip()
+        for m in messages
+        if m.get("role") == "user"
+    ]
+    prior_turns = [t for t in user_turns[:-1] if t]
+    # Walk the full message list (not just user turns) so the first
+    # assistant message locates the visit boundary.
+    idx = 0
+    for m in messages:
+        role = m.get("role")
+        if role == "assistant":
+            seen_assistant = True
+        elif role == "user":
+            text = str(m.get("content", "")).strip()
+            if not text or idx >= len(prior_turns):
+                continue
+            # prior_turns is user_turns[:-1] in order; idx counts user
+            # turns seen so far, so idx < len(prior_turns) is exactly the
+            # prior-turn set, in order.
+            if seen_assistant:
+                current_visit.append(prior_turns[idx])
+            else:
+                prior_visit.append(prior_turns[idx])
+            idx += 1
+    if not seen_assistant:
+        # No boundary visible: everything is prior-visit.
+        prior_visit = list(prior_turns)
+        current_visit = []
+    return prior_visit, current_visit
+
+
+def _statement_turns(turns):
+    """Recall quotes what the user stated, not questions they asked:
+    drop turns that are themselves questions (e.g. an earlier recall
+    probe in a prior session), falling back to the unfiltered list when
+    every turn is a question."""
+    stated = [t for t in turns if "?" not in t]
+    return stated if stated else list(turns)
+
+
+# Recall cues: a recall question (not a fresh statement) asks about
+# something the user said before.
+_RECALL_CUES = (
+    "remember", "recall", "what did i", "what have i", "what do you understand",
+    "what did you", "do you remember", "mentioned", "previously", "earlier",
+    "told you", "tell you", "what kind of", "which of those", "what were the",
+    "did i say", "did i mention", "mention about", "what do you know",
+)
+
+# Topic -> (question keywords, turn keywords, display label). Checked in
+# this order so a specific topic (concentration / routine / progress)
+# wins over the generic challenges bucket.
+_RECALL_TOPICS = (
+    ("concentration", ("concentrat", "focus", "attention"),
+     ("concentrat", "focus", "attention"), "your concentration"),
+    ("routine", ("routine", "schedule"),
+     ("routine", "schedule", "structured", "flexible"), "your routine"),
+    ("progress", ("progress",),
+     ("progress", "improv"), "your progress"),
+    ("challenges", ("challenge", "concern"),
+     ("challenge", "concern", "struggl", "difficult", "stress", "worry",
+      "future", "exam", "progress", "workload", "overwhelm", "anxious",
+      "anxiety"), "the challenges you discussed"),
+)
+
+
+def _general_recall_reply(user_lower, messages):
+    """Generalised dummy recall (LB-M1): questions about prior-session
+    challenges / concentration / routine / progress quote the relevant
+    prior user turns verbatim (earliest first, as the sleep branch
+    does), scoped by the question: "current" quotes this session's
+    turns, "previously"/"earlier"/"before" quotes prior-visit turns,
+    and an unscoped question quotes all prior turns. Returns None when
+    the question is not a recall question for a covered topic."""
+    if "?" not in user_lower and not user_lower.rstrip().endswith("?"):
+        return None
+    if not any(cue in user_lower for cue in _RECALL_CUES):
+        return None
+    for _name, q_keywords, turn_keywords, label in _RECALL_TOPICS:
+        if not any(k in user_lower for k in q_keywords):
+            continue
+        prior_visit, current_visit = _split_prior_current(messages)
+        if any(w in user_lower for w in ("current", "currently", "right now")):
+            scope_turns, scope_word = current_visit, "in this session"
+        elif any(w in user_lower for w in ("previously", "previous", "earlier", "before", "last session", "first session")):
+            scope_turns, scope_word = prior_visit, "in a previous session"
+        else:
+            scope_turns, scope_word = prior_visit + current_visit, "earlier"
+        matching = _statement_turns([
+            t for t in scope_turns
+            if any(k in t.lower() for k in turn_keywords)
+        ])
+        if not matching:
+            return (
+                f"You haven't mentioned anything about {label} {scope_word} yet. "
+                "Could you tell me a bit about it?"
+            )
+        first = _clip_words(matching[0])
+        if len(matching) > 1:
+            if _name == "challenges":
+                # A "three concerns" question must surface every concern,
+                # not just the earliest and latest — quote them all.
+                quoted = "; ".join(f"'{_clip_words(t)}'" for t in matching[:4])
+                return f"You mentioned these challenges {scope_word}: {quoted}."
+            return (
+                f"You mentioned about {label} {scope_word}: '{first}'. "
+                f"You also mentioned it again later: '{_clip_words(matching[-1])}'."
+            )
+        return f"You mentioned about {label} {scope_word}: '{first}'."
+    return None
+
+
 # Duration / bedtime tokens in a quoted turn. Used by the sleep-recall
 # branch (S2-D2): the old code denied any duration had been mentioned
 # even when the quote itself stated one ("five hours of sleep").
@@ -205,7 +334,9 @@ class DummyBackend:
         # Round 3 fix (B-D2): the trigger also matches the present-tense
         # phrasing "what did I tell you about my sleep" ("tell you
         # about"), not only the past-tense "told you about" forms.
-        if ("remind me" in user_lower or "what have i told you" in user_lower or "told you about" in user_lower or "tell you about" in user_lower) and "sleep" in user_lower:
+        # LB-M2 fix: also match "how much sleep did I tell you I was
+        # getting" ("did I tell you" / "how much sleep") — E-03.
+        if ("remind me" in user_lower or "what have i told you" in user_lower or "told you about" in user_lower or "tell you about" in user_lower or "did i tell you" in user_lower or "how much sleep" in user_lower) and "sleep" in user_lower:
             sleep_turns = _prior_user_turns(messages, ("sleep",))
             if sleep_turns:
                 # Round 3 fix (B-D3): quote the EARLIEST sleep turn (the
@@ -240,6 +371,26 @@ class DummyBackend:
                 "You haven't mentioned specific sleep details in this conversation yet. "
                 "Could you tell me a bit about how you've been sleeping?"
             )
+
+        # LB-M2 fix: "What is the latest information you have?" (E-04)
+        # quotes the most recent prior user turn verbatim; with no prior
+        # turn it says nothing was recorded instead of inventing any.
+        if "latest information" in user_lower or "latest thing you" in user_lower or "latest update" in user_lower:
+            prior = _statement_turns(_prior_user_turns(messages))
+            if prior:
+                return f"The latest thing you told me was: '{_clip_words(prior[-1])}'."
+            return (
+                "I don't have any information recorded from you yet. "
+                "Could you tell me a bit about how you've been feeling?"
+            )
+
+        # LB-M1 fix: generalised recall for challenges / concentration /
+        # routine / progress (see _general_recall_reply). Sleep keeps its
+        # own branch above; this branch only fires on recall questions
+        # for the covered topics.
+        general_recall = _general_recall_reply(user_lower, messages)
+        if general_recall is not None:
+            return general_recall
 
         if "summarize" in user_lower or "what has been bothering me" in user_lower or "summary" in user_lower:
             prior = _prior_user_turns(messages)

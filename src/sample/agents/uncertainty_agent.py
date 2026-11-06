@@ -89,6 +89,18 @@ _CONTRADICTORY_PATTERNS = [
     r"\b(actually|but|though|correction|wrong)\b.*\bnever had\b.*\b(stress|anxiety|anxious|depress\w*|sleep\w*|problem|worry|worried|panic|fear)\b",
     r"\b(actually|but|though|correction|wrong)\b.*\b(not|no|never)\b[^.!?]{0,40}\b(anxious|anxiety|stress\w*|depress\w*|worried|worry|panic)\b.*\bat all\b",
     r"(not sleeping (well|properly)|haven't slept (properly|well)|have not slept (properly|well)|trouble (falling )?asleep|can'?t sleep|cannot sleep).*\b(actually|but|though)\b.*\bsleep(ing)? (perfectly|fine|well)\b",
+    # LB-C1: routine/schedule correction — a previously established
+    # routine/schedule is retracted or changed ("I am no longer
+    # following a structured daily routine", "stopped following my
+    # routine", "changed my routine/schedule", "no longer doing my
+    # routine"). Narrow by design: a cessation/change marker AND a
+    # routine/schedule object are both required, so a fresh fact
+    # ("I started a new routine") or a denial about something else
+    # ("Actually, I never had coffee") does not match.
+    r"\b(no longer|not (anymore|any longer)|stopped|have stopped|quit)\b[^.!?]{0,60}\b(following|doing|using|keeping (up |to )|sticking to)\b[^.!?]{0,40}\b(routine|schedule|plan)\b",
+    r"\bno longer\b[^.!?]{0,40}\b(routine|schedule)\b",
+    r"\b(changed|change(d)?|switched)\b[^.!?]{0,30}\b(my )?(routine|schedule)\b",
+    r"\b(correct(ion|ing)?|actually|wrong)\b[^.!?]{0,80}\b(no longer|not (following|doing)|stopped)\b[^.!?]{0,40}\b(routine|schedule)\b",
 ]
 
 # Round 2 fix (D-04): bare vague affect with no object ("I feel bad.").

@@ -195,9 +195,16 @@ def _fallback_asked_targets(transcript: List[Dict[str, Any]]) -> List[str]:
             continue
         content = str(turn.get("content", "")).lower()
         idx = content.find(_FALLBACK_FRAME)
-        if idx < 0:
-            continue
-        tail = content[idx + len(_FALLBACK_FRAME):].strip()
+        if idx >= 0:
+            tail = content[idx + len(_FALLBACK_FRAME):].strip()
+        else:
+            # Grammatical fallback wording (LB-T1): no frame to strip;
+            # the target follows "could you tell me more about ".
+            marker = "could you tell me more about "
+            idx2 = content.find(marker)
+            if idx2 < 0:
+                continue
+            tail = content[idx2 + len(marker):].strip()
         target_text = tail.split("?")[0].strip().strip(".")
         if not target_text:
             continue
@@ -476,7 +483,16 @@ class ClarificationAgent(Agent):
                 )
             target_str = candidate_fields[0]
             display_target = _FIELD_DISPLAY_PHRASES.get(_base_field_name(target_str), "what you described")
-            questions = [f"Regarding what you mentioned, could you tell me more about the background concerning {display_target}?"]
+            # LB-T1: when the display target itself mentions background
+            # ("your background"), the "background concerning" frame
+            # produces the garbled "background concerning your
+            # background". Drop the frame for those targets; the
+            # question stays grammatical ("...tell me more about your
+            # background?"). Other targets keep the existing wording.
+            if "background" in display_target.lower():
+                questions = [f"Regarding what you mentioned, could you tell me more about {display_target}?"]
+            else:
+                questions = [f"Regarding what you mentioned, could you tell me more about the background concerning {display_target}?"]
             target_info = [str(target_str)]
             priority = unc_priority
         else:

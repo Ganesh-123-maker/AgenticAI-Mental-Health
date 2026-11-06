@@ -395,8 +395,22 @@ class PsychAgentWebBackend:
                     is_safety_q = bool(targets) and any(
                         is_safety_relevant_item(t) for t in targets
                     )
+                    # LB-C1: a detected contradiction must not be waved
+                    # through by the direct-request shortcut. "I want to
+                    # correct something..." starts with "I want to", so
+                    # the shortcut treated the correction as a direct
+                    # request and delivered the dummy echo instead of the
+                    # contradiction question the pipeline had already
+                    # produced. A contradiction question is asked first;
+                    # the safety-question and budget rules are unchanged.
+                    _unc_types = (ctx.uncertainty_output or {}).get("uncertainty_types", []) or []
+                    has_contradiction = (
+                        "contradictory_information" in _unc_types
+                        or "conflicting_feelings_clarification" in targets
+                    )
                     direct_request = (
                         not is_safety_q
+                        and not has_contradiction
                         and risk_severity == "LOW"
                         and self._looks_like_direct_request(user_query)
                     )
