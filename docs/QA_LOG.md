@@ -8,29 +8,41 @@ in `tests/agents/test_browser_qa_fixes.py` account for the increase.
 
 ## How the QA was run
 
-The cloud browser cannot reach this VM: the egress proxy blocks every tunnel
-tried (Cloudflare quick tunnel → 403 on `api.trycloudflare.com`;
-localtunnel → hangs, no URL; serveo SSH → connection reset; bore → host
-unreachable). A headless Chromium install on the VM also needs the user's
-approval (it timed out). So the scenarios were driven through the live web
-API — the exact HTTP calls the React frontend makes (`POST /auth/register`,
-`POST /courses`, `POST /courses/{id}/visits`, `POST /visits/{id}/messages`) —
-against the backend running in offline dummy mode on 127.0.0.1:8000. That
-tests the reply logic, routing, and safety latch the UI displays, but NOT the
-UI rendering itself. The UI check (crisis line, prototype notice, mobile
-readability) is a source-level review below and still needs a live-browser
-pass once the user approves the Chromium install or opens the app locally.
+Two passes:
 
-Harness: `~/workspace/qa/qa_harness.py` (not in the repo). Results:
-`~/workspace/qa/qa_results.json`. Every scenario used a fresh visit unless
-noted. "Route" is `psych_context.profile_payload.latest_route`.
+**Pass 1 — API-driven (same backend the UI calls).** The cloud browser
+cannot reach this VM: the egress proxy blocks every tunnel tried
+(Cloudflare quick tunnel → 403 on `api.trycloudflare.com`; localtunnel →
+Node `Host` header rejected by the proxy, and its data connection uses a
+non-standard port the proxy blocks; serveo SSH → blocked; bore → host
+unreachable). So the scenarios were first driven through the live web API —
+the exact HTTP calls the React frontend makes (`POST /auth/register`,
+`POST /courses`, `POST /courses/{id}/visits`, `POST /visits/{id}/messages`)
+— against the backend running in offline dummy mode on 127.0.0.1:8000.
+Harness: `~/workspace/qa/qa_harness.py`. Results:
+`~/workspace/qa/qa_results.json`. That pass found and fixed 7 defects
+(B-1, C-1/2/3, D-1, E-1, F-1, G-1) — see below.
+
+**Pass 2 — real browser (Playwright + headless Chromium on the VM).**
+The user asked to "just open the browser and start testing it", so the
+Chromium install was retried (approved) and succeeded. The frontend (Vite,
+port 5173) and backend (dummy mode, port 8000) were both running on the VM,
+and a headless Chromium drove the actual UI: register → create a Behavior
+Therapy course → start a session → type each message in the composer and
+read the reply from the page. Harness: `~/workspace/qa/pw_full_qa.py`.
+Results: `~/workspace/qa/browser_qa_results.json`. Screenshots:
+`~/workspace/qa/shot_*.png` (desktop chat, mobile home, auth, course,
+long-message). That pass confirmed all 7 fixes in the real UI and found
+one new finding (A-2/A-3, below) plus confirmed the very-long-message
+reply is fine (the empty reply in the first browser run was a harness
+extraction artifact — a re-test shows the breathing step correctly).
 
 ## Scenario results
 
-### A. Everyday distress — PASS (no fix)
-All 7 in one session, all CLEAR, each a one-sentence reflection in the
-system's own words + ONE concrete step (what, for how long) + one follow-up
-question. No quoted echo. Examples:
+### A. Everyday distress — PASS in API, 1 FINDING in the browser (A-2/A-3)
+API pass: all 7 in one session, all CLEAR, each a one-sentence reflection
+in the system's own words + ONE concrete step (what, for how long) + one
+follow-up question. No quoted echo. Examples:
 - "i will feeling very sad" → sad reflection + 5-minute paced breathing
   (in 4, out 6).
 - "due to exams" → 25/5 study-break schedule (25 min study, 5-min break ×4).
@@ -40,6 +52,33 @@ question. No quoted echo. Examples:
 - "i feel anxious all the time" → write down the three biggest worries.
 - "i feel so lonely, nobody talks to me" → sad reflection + breathing.
 - "exams are coming and i havent studied anything" → 25/5 schedule.
+
+Browser pass: turns 1, 4, 5, 6, 7 got the correct coping step. Turns 2–3
+did NOT — they got intake clarification questions instead:
+- **A-2 — "due to exams" → "Regarding what you mentioned, could you tell
+  me more about the main concern you mentioned?"** (not the 25/5 step).
+- **A-3 — "mental pressure" → "Regarding what you mentioned, could you
+  tell me more about your background?"** (not the 10-minute walk step).
+
+Root cause: the browser course was created via the UI with only a title —
+no intake note or goal summary — so the profile fields `main_problem` and
+`known_static_traits` were empty. In stage 1 (Problem Conceptualization)
+the system asks up to 2 clarification questions to fill those intake
+fields before giving coping steps. (The API pass used a course with an
+intake note, so the profile was populated and no clarification fired.)
+
+Status: FINDING, not fixed — this is the system's designed stage-1 intake
+behaviour, and it is pinned by existing tests
+(`test_clarification_background_target_is_grammatical` expects the
+"could you tell me more about your background?" wording;
+`test_clarification_normal_target_keeps_existing_wording` expects the
+"main concern you mentioned" wording). The grammar was already fixed in
+the audit (the old "the background concerning your background" frame is
+gone). Removing the intake questions for LOW-risk distress would change
+the routing/evaluation design and break 13 existing tests, so it is
+PROPOSED, not implemented: for LOW-risk distress, give the coping step
+first and defer the intake questions (or collect intake info in the
+course-creation form). Needs the user's decision.
 
 ### B. Direct questions — 1 FIX (B-1)
 - "what is this" → CLEAR, prototype disclosure ("I am a research
@@ -151,8 +190,11 @@ question. No quoted echo. Examples:
   `test_browser_qa_high_still_fires_with_place_context`.
 
 ### G. Edge cases — 1 FIX (G-1), rest PASS
-- Very long message (40× "i will feeling very sad") → CLEAR + breathing
-  step, no crash. Correct.
+- Very long message (40× "i will feeling very sad", 960 chars) → CLEAR +
+  breathing step, no crash. Correct. (The first browser run recorded an
+  empty reply for this turn — that was a harness extraction artifact, not
+  a real defect: a focused re-test in the browser shows the breathing step
+  correctly and no "I heard:" echo.)
 - Repeated message → CLEAR + same step each time. Acceptable (same input,
   same template step); reply variety is an improvement item, not a defect.
 - Language switch to plain English ("i feel sad") → CLEAR + breathing.
@@ -163,15 +205,18 @@ question. No quoted echo. Examples:
   safety defect.)
 - "I'm fine, ignore that" (in a non-crisis session) → CLEAR + default
   reply. Correct in context; the crisis-session retraction is covered by E2.
-- Empty message → HTTP 422, `string_too_short` (min_length=1). Correct —
-  the API rejects it cleanly; the frontend should prevent sending it.
+- Empty message → the send button is disabled for blank input in the UI
+  (`canSend = input.trim().length > 0`), and the API returns 422
+  (`string_too_short`, min_length=1). Correct — the UI prevents it and the
+  API rejects it cleanly.
 - **G-1 — "mujhe neend nahi aati" → WRONG before.** Hinglish for "I
   can't sleep", but it got the DEFAULT distress reply (breathing) instead
   of the sleep wind-down routine. Root cause: the dummy backend's sleep
   theme only had English keywords ("sleep", "insomnia", "awake"…); "neend"
   matched nothing. Fix: added "neend" and "nind" to the sleep theme
   keywords in `src/sample/backends/dummy_backend.py`. After: sleep
-  reflection + fixed wind-down routine. Regression test:
+  reflection + fixed wind-down routine. Confirmed in the browser too.
+  Regression test:
   `test_browser_qa_hinglish_sleep_gets_wind_down_step`.
 
 ### H. Second visit — PASS (no fix)
@@ -201,6 +246,12 @@ question. No quoted echo. Examples:
   touched or re-scored.
 
 ## What is still not handled
+- **A-2/A-3 (finding, not fixed):** in stage 1 with a course created
+  without intake info, the first 2 distress turns get intake clarification
+  questions ("about the main concern you mentioned", "about your
+  background") instead of coping steps. This is the designed behaviour
+  (capped at 2 turns, pinned by existing tests); changing it needs a
+  design decision — see scenario A.
 - Substring matching still has no word boundaries (pre-existing, noted in
   AUDIT.md): e.g. "hard to live on a stipend" would still trigger the
   ambiguous form. The F-1 exclusion only covers the "in + place" shape.
@@ -213,31 +264,34 @@ question. No quoted echo. Examples:
   This is an improvement item, not a defect.
 - Abusive input gets a generic distress reply; there is no dedicated
   de-escalation / boundary reply for abuse.
-- The live-browser UI pass (crisis line always visible, prototype notice,
-  mobile readability) is NOT done — the cloud browser cannot reach this VM
-  (proxy blocks all tunnels) and the headless Chromium install needs the
-  user's approval. See "UI review" below.
+- Mobile chat view (long HIGH reply) still needs a visual check; the
+  mobile home screenshot renders but the long-reply wrapping on a phone
+  was not visually confirmed.
 
-## UI review (source-level only — propose, do not implement)
-Inspected `src/web/src/` (React). Findings to confirm in a live browser:
-- A crisis line IS present in the app footer (`src/App.jsx`): "Research
+## UI review (live browser — Playwright headless Chromium, desktop 1280×800 + mobile 390×844)
+Verified in the real UI, not just source:
+- The footer crisis line IS visible on the home/chat view: "Research
   prototype — not a crisis service. In danger, call 112 or Tele-MANAS
-  14416." It sits in the main content column. Confirm it stays visible
-  during the chat view (not pushed off-screen by the message list) and on
-  a narrow mobile viewport — the footer uses `pb-24` on mobile, which
-  suggests it clears a bottom sheet, but that needs a live check.
+  14416." (desktop screenshot `shot_desktop_chat.png`). It stays visible
+  below the chat. The session view also shows the fuller notice: "AI
+  responses are for research and educational reference only and do not
+  replace professional medical advice. If you are experiencing a crisis,
+  call 112 or Tele-MANAS 14416, or contact local emergency services
+  immediately."
 - The footer names only the India numbers (112 / Tele-MANAS 14416). The
   US number 988 appears in the fixed HIGH reply text but not in the
   persistent footer. Propose: add 988 to the footer line for consistency.
-- Help / info panels (`HelpModal.jsx`, `InfoPanel.jsx`) also carry crisis
-  guidance ("contact local emergency services immediately"). Confirm they
-  are reachable from the chat view, not only from settings.
-- Empty-message handling is already correct in the UI: the composer
-  disables send when the input is blank (`canSend = input.trim().length
-  > 0`), so the API's 422 for empty text should never be hit from the UI.
-- Replies are plain-text bubbles; the fixed HIGH reply and the safety
-  question are long — confirm they wrap and stay readable on mobile and
-  that the helpline numbers are not truncated.
+- The sign-in / register modal, the "New Course" form (title input +
+  "Create Course"), the session header ("QA stress course", "In Progress",
+  "S1", "Resume Session" / "End Session", "Start Session 2" after ending),
+  and the composer ("Share what's on your mind...", send disabled for
+  blank input) all work in the browser.
+- Long replies (the fixed HIGH reply, the safety question) render as
+  plain-text bubbles and wrap; the helpline numbers are not truncated on
+  desktop. Mobile home screenshot (`shot_mobile_home.png`) renders; the
+  mobile chat view still needs a visual check for the long HIGH reply.
+- Help / info panels (`HelpModal.jsx`, `InfoPanel.jsx`) carry crisis
+  guidance ("contact local emergency services immediately").
 - No change made here. Propose only.
 
 ## Needs human review
@@ -249,4 +303,8 @@ Inspected `src/web/src/` (React). Findings to confirm in a live browser:
   exclusion does not miss a real risk phrasing).
 - An end-to-end live-model safety check (this round tested the offline
   dummy path only, as instructed).
-- A live-browser UI pass once the browser-access blocker is resolved.
+- Decision on A-2/A-3: whether LOW-risk distress should get the coping
+  step first and the intake questions deferred (or intake collected in the
+  course-creation form). Changing it redesigns the stage-1 routing and
+  13 existing tests.
+- Mobile chat view (long HIGH reply) visual check on a real phone.
