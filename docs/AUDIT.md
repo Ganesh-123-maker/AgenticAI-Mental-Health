@@ -134,3 +134,44 @@ Gaps:
   `test_passive_ideation_additions_no_new_false_alarms` (mundane "keep
   going" / "point of this homework" / denied disappearance wish must stay
   LOW). No existing test asserts that the §A phrases are LOW.
+
+## Fixes applied (2026-11-25, branch safety-conversation-review)
+
+- §A: HIGH forms and a new MODERATE `ambiguous_passive_distress` concept
+  added to `RiskAgent` (en/hi/es/fr/de/zh). `signal_concepts` added to risk
+  payloads. Verified: "its hard to live" / "i'm tired of everything" ->
+  MODERATE; "i want it all to end" / "this is my last message" -> HIGH;
+  "marna chahta hoon" -> HIGH; "jeena mushkil hai" -> MODERATE.
+- §B: the "I heard:" echo is gone from the dummy backend. Distress replies
+  are a reflection in the reply's own words + one concrete skill-library
+  step (verb + time/quantity) + one follow-up question. Symptom themes
+  (sleep, worry, sadness, pressure) are matched before the exam context,
+  so "not sleeping well because of my exams" gets the wind-down routine,
+  not the study-break schedule. The clarification fallback no longer says
+  "background concerning".
+- §C: HIGH risk is latched for the rest of the session via the carried
+  risk floor; a later neutral message stays HIGH-RISK with the helplines.
+- §D: HIGH replies are the fixed 5-part safety reply (warm acknowledgement,
+  trusted person / counsellor / emergency number now, Tele-MANAS 14416 and
+  112 for India, 988 for the US, "Are you safe right now? Is there someone
+  who can be with you?", "Please stay with someone you trust right now",
+  "I will keep talking with you"). The RE-ROUTE-exhausted "Let's pause
+  here for now" is gone.
+- §E: MODERATE/UNCERTAIN ambiguous phrasing routes UNCERTAIN and asks the
+  one-time direct safety question; an affirmative answer routes HIGH-RISK
+  via `ReassessmentAgent`. Meta-questions get a direct answer stating this
+  is a research prototype and not a crisis service.
+- New tests: `tests/agents/test_audit_safety_fixes.py` (19 tests) and
+  `tests/web/test_audit_safety_conversation.py` (the reported transcript
+  replayed, then a neutral message). Full suite: 479 passed; 9
+  pre-existing failures in `tests/test_migrate_skill_embeddings.py`
+  (missing `torch` module, also failing on clean main).
+- Existing tests UPDATED (not weakened): the pinned behaviour in each was
+  the defect itself, and each test's purpose is unchanged.
+  `tests/agents/test_lb_fixes_agents.py::test_clarification_normal_target_keeps_existing_wording`
+  (now asserts the "background concerning" frame is gone);
+  `tests/agents/test_round2_fixes.py::test_dummy_echo_truncates_at_word_boundary`
+  (now asserts no "I heard:", no quoted echo, and a real step);
+  `tests/web/test_reg1_cross_session_recall.py::test_session2_recall_quotes_session1_sleep_detail`
+  (session-1 setup assertion now checks the wind-down step instead of the
+  echo; the session-2 verbatim-recall assertions are unchanged).
