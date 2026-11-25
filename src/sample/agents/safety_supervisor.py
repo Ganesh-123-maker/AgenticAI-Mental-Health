@@ -124,6 +124,54 @@ _HARMFUL_INSTRUCTIONS_PATTERNS = [
 ]
 
 
+_GENTLE_SAFE_FALLBACK = (
+    "I can sense the distress and pressure you are experiencing. Please remember that your safety "
+    "is paramount. We can work together to ensure you have the necessary safety and support in place. "
+    f"{_CRISIS_RESOURCE_GUIDANCE}"
+)
+
+
+def _safe_utterance_echo(utterance: str, max_len: int = 120) -> str:
+    """A short, safe excerpt of what the client just shared, for the crisis reply to acknowledge.
+
+    Returns "" when there is nothing safe to echo (empty message, or the
+    message matches a harmful-instruction pattern), so callers fall back
+    to the plain standard message. The excerpt is a single line, truncated,
+    and never carries instructions.
+    """
+    text = " ".join(str(utterance or "").split())
+    if not text:
+        return ""
+    if len(text) > max_len:
+        text = text[:max_len].rstrip() + "…"
+    if any(re.search(pat, text, re.IGNORECASE) for pat in _HARMFUL_INSTRUCTIONS_PATTERNS):
+        return ""
+    return text
+
+
+def build_safe_fallback(utterance: str, is_acute: bool) -> str:
+    """Crisis fallback that acknowledges what the client actually said.
+
+    The helpline guidance is always present and the framing never
+    counsels on a HIGH-RISK turn; only the opening acknowledgment varies,
+    so two different crisis messages no longer get an identical reply.
+    """
+    echo = _safe_utterance_echo(utterance)
+    if is_acute:
+        if echo:
+            return (
+                f'Thank you for telling me this. What you shared — "{echo}" — matters, '
+                f"and I am taking it seriously. {_STANDARD_SAFE_FALLBACK}"
+            )
+        return _STANDARD_SAFE_FALLBACK
+    if echo:
+        return (
+            f'Thank you for sharing that — "{echo}". I hear how much pressure you are under. '
+            f"{_GENTLE_SAFE_FALLBACK}"
+        )
+    return _GENTLE_SAFE_FALLBACK
+
+
 class SafetySupervisor(Agent):
     """Supervises counselor responses for safety, uncertainty congruence, and route adherence."""
 
@@ -286,6 +334,8 @@ class SafetySupervisor(Agent):
                 kw in utterance_lower or kw in signals_lower
                 for kw in [
                     "suicide", "self-harm", "despair", "want to die", "don't want to live", "end life", "cutting wrists", "jump off building", "kill myself", "killing myself", "end my life", "take my own life",
+                    "want it all to end", "end it all", "want it to end", "better off dead", "no reason to live", "don't want to be here", "want to disappear", "tired of living",
+                    "last message", "last goodbye", "final message", "goodbye forever",
                     "hurt myself", "hurting myself", "harm myself", "harming myself",
                     "hurt yourself", "hurting yourself", "harm yourself", "harming yourself",
                     "hurt oneself", "harm oneself",
@@ -299,22 +349,18 @@ class SafetySupervisor(Agent):
                 risk_consistency = False
                 approved = False
                 safety_status = "BLOCK"
-                revised_response = _STANDARD_SAFE_FALLBACK
+                revised_response = build_safe_fallback(client_utterance, is_acute_crisis)
             elif not has_safety_awareness:
                 risk_consistency = False
                 approved = False
                 if is_acute_crisis:
                     issues.append("Response ignores acute safety risk and lacks mandatory safety-controlled crisis protocol.")
                     safety_status = "BLOCK"
-                    revised_response = _STANDARD_SAFE_FALLBACK
+                    revised_response = build_safe_fallback(client_utterance, is_acute=True)
                 else:
                     issues.append("Route is HIGH-RISK but response lacks supportive safety framing.")
                     safety_status = "REVISE"
-                    revised_response = (
-                        "I can sense the distress and pressure you are experiencing. Please remember that your safety "
-                        "is paramount. We can work together to ensure you have the necessary safety and support in place. "
-                        f"{_CRISIS_RESOURCE_GUIDANCE}"
-                    )
+                    revised_response = build_safe_fallback(client_utterance, is_acute=False)
             else:
                 risk_consistency = True
 
@@ -327,7 +373,7 @@ class SafetySupervisor(Agent):
             risk_consistency = False
             approved = False
             safety_status = "BLOCK"
-            revised_response = _STANDARD_SAFE_FALLBACK
+            revised_response = build_safe_fallback(client_utterance, is_acute=True)
 
         # Round 2 fix (D-10): the same issue was appended once per
         # matching pattern, so it appeared 2-3x in the payload.

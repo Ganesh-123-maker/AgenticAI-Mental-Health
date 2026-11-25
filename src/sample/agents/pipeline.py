@@ -25,7 +25,7 @@ from .memory_agent import MemoryAgent
 from .orchestrator import Orchestrator
 from .reassessment_agent import ReassessmentAgent
 from .risk_agent import RiskAgent
-from .safety_supervisor import SafetySupervisor
+from .safety_supervisor import SafetySupervisor, build_safe_fallback
 from .state_agent import StateAgent
 from .uncertainty_agent import UncertaintyAgent
 from ..utils import HARM_TO_OTHERS_BOUNDARY_RESPONSE, PRESCRIPTION_BOUNDARY_RESPONSE, is_explicit_prescription_request, is_harm_to_others_instruction_request
@@ -683,12 +683,8 @@ async def run_pipeline_async(
                     # + LLM call re-generating on a crisis turn. The
                     # supervisor always supplies a revision on HIGH-RISK,
                     # so this is defensive only.
-                    final_pure = final_raw = sup_payload.get("safe_fallback") or (
-                        "I care deeply about your safety and current well-being. "
-                        "Please contact your family, friends, a trusted person, your "
-                        "local emergency number, or a crisis helpline right now "
-                        "(for example, Tele-MANAS 14416 in India or 988 in the "
-                        "United States)."
+                    final_pure = final_raw = sup_payload.get("safe_fallback") or build_safe_fallback(
+                        str(ctx.current_message or ""), is_acute=True
                     )
                     trail.append({"agent": supervisor.name, "action": "high_risk_revision_skipped_safe_fallback_applied", "duration_ms": 0.0})
                 else:
