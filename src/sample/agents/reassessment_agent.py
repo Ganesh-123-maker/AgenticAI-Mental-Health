@@ -151,6 +151,53 @@ def _answer_addresses_item(answer: str, item: str) -> bool:
     return any(kw in w for w in answer_words for kw in keywords if len(kw) > 2)
 
 
+_DIRECT_SAFETY_TARGET = "suicide_thoughts_direct"
+
+# Affirmative / denial readings of an answer to the direct safety
+# question ("Are you having thoughts of ending your life?"). A plain
+# "yes" matches no HIGH risk signal, so without this the reassessment
+# would route a "yes" to CLEAR. "sometimes" admits the thoughts occur
+# and counts as affirmative; "maybe" / "not sure" / "i don't know" are
+# ambiguous and fall through to the normal reassessment logic.
+_DIRECT_SAFETY_AFFIRMATIVE = (
+    "yes", "yeah", "yep", "yup", "i am", "i have", "i do", "sometimes",
+    "i think so", "all the time", "often", "i have those thoughts",
+)
+_DIRECT_SAFETY_DENIAL = (
+    "no", "nope", "not at all", "never", "i'm not", "im not",
+    "i don't", "i dont", "no, i'm fine", "no, im fine", "i am not",
+)
+
+
+def _direct_safety_answer(answer: str) -> str:
+    """Classify an answer to the direct safety question.
+
+    Returns "affirmative", "denial", or "ambiguous". Word-boundary
+    matching on the lowercased answer; a denial that also contains an
+    affirmative token ("no, but sometimes I do") resolves to
+    affirmative, because the admission is the safety-relevant part.
+    """
+    text = str(answer or "").strip().lower()
+    if not text:
+        return "ambiguous"
+    words = re.findall(r"[a-z']+", text)
+
+    def _has(phrase: str) -> bool:
+        parts = phrase.split()
+        if len(parts) == 1:
+            return parts[0] in words
+        joined = " " + " ".join(words) + " "
+        return f" {phrase} " in joined
+
+    affirmative = any(_has(p) for p in _DIRECT_SAFETY_AFFIRMATIVE)
+    denial = any(_has(p) for p in _DIRECT_SAFETY_DENIAL)
+    if affirmative:
+        return "affirmative"
+    if denial:
+        return "denial"
+    return "ambiguous"
+
+
 class ReassessmentAgent(Agent):
     """Reassesses client state, uncertainty, and risk after receiving clarification."""
 
@@ -227,6 +274,46 @@ class ReassessmentAgent(Agent):
                 confidence=0.95,
                 payload=payload,
             )
+
+        # Audit 2026-11-25 (§E): an affirmative answer to the direct
+        # safety question ("Are you having thoughts of ending your life?")
+        # must route HIGH-RISK. A plain "yes" matches no HIGH risk
+        # signal, so the RiskAgent run above scores it LOW; without this
+        # check a "yes" would be routed CLEAR. A denial falls through to
+        # the normal logic below (which routes CLEAR once the uncertainty
+        # resolves); an ambiguous answer also falls through.
+        clar_output = getattr(ctx, "clarification_output", None) or {}
+        if isinstance(clar_output, dict):
+            clar_targets = [str(t) for t in (clar_output.get("target_information") or [])]
+            if _DIRECT_SAFETY_TARGET in clar_targets:
+                reading = _direct_safety_answer(answer)
+                if reading == "affirmative":
+                    high_risk = dict(reassessed_risk) if isinstance(reassessed_risk, dict) else {}
+                    high_risk["severity"] = "HIGH"
+                    high_risk["risk_status"] = "EVIDENCE_OF_RISK"
+                    high_risk["immediate_safety_concern"] = True
+                    high_risk["evidence"] = [
+                        "Client affirmed thoughts of ending their life in answer to the direct safety question."
+                    ]
+                    payload = {
+                        "updated_state": prior_state,
+                        "uncertainty": prior_unc,
+                        "risk": high_risk,
+                        "resolved_information": [],
+                        "remaining_uncertainty": missing_info,
+                        "status": "HIGH-RISK",
+                        "route_decision": "HIGH-RISK",
+                        "confidence": 0.95,
+                        "reasoning_summary": "Client affirmed thoughts of ending their life.",
+                    }
+                    _validate_reassessment_payload(payload)
+                    return AgentMessage(
+                        agent=self.name,
+                        status="HIGH",
+                        evidence=high_risk.get("evidence", []),
+                        confidence=0.95,
+                        payload=payload,
+                    )
 
         is_uninformative = _is_uninformative_answer(answer)
 

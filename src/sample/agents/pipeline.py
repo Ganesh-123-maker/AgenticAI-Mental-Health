@@ -28,7 +28,7 @@ from .risk_agent import RiskAgent
 from .safety_supervisor import SafetySupervisor, build_safe_fallback
 from .state_agent import StateAgent
 from .uncertainty_agent import UncertaintyAgent
-from ..utils import HARM_TO_OTHERS_BOUNDARY_RESPONSE, PRESCRIPTION_BOUNDARY_RESPONSE, is_explicit_prescription_request, is_harm_to_others_instruction_request
+from ..utils import HARM_TO_OTHERS_BOUNDARY_RESPONSE, META_QUESTION_RESPONSE, PRESCRIPTION_BOUNDARY_RESPONSE, is_explicit_prescription_request, is_harm_to_others_instruction_request, is_meta_question
 
 logger = logging.getLogger(__name__)
 
@@ -220,6 +220,31 @@ def run_pipeline(
             "context": ctx,
         }
 
+    # Audit 2026-11-25 (§E): a question about the system itself ("what is
+    # this?", "are you a real therapist?") gets a direct, plain answer
+    # with the prototype disclosure — not the counselling echo. No agent
+    # run and no counselling generation. (The web engine enforces this
+    # before calling the pipeline; this covers direct/batch callers.)
+    if is_meta_question(ctx.current_message):
+        trail.append({
+            "agent": "pipeline",
+            "step": "scope_boundary",
+            "reason": "meta_question",
+        })
+        return {
+            "response": META_QUESTION_RESPONSE,
+            "response_is_placeholder": False,
+            "response_source": "scope_boundary",
+            "route": "CLEAR",
+            "next_agent": "counseling_agent",
+            "verdict": "ALLOW",
+            "reason": "scope_boundary_meta_question",
+            "reassess_count": 0,
+            "reroute_count": 0,
+            "trail": trail,
+            "context": ctx,
+        }
+
     mem_agent = MemoryAgent()
     mem_msg, mem_ms = _timed_run(mem_agent, ctx)
     ctx.memory_output = mem_msg.payload
@@ -387,12 +412,12 @@ def run_pipeline(
                             "duration_ms": 0.0,
                         })
                     else:
-                        final_response = (
-                            "I want to make sure I support you safely and accurately. "
-                            "Let's pause here for now — if you need immediate support, "
-                            "please reach out to a trusted person, a mental health "
-                            "professional, or a crisis helpline (Tele-MANAS 14416 in "
-                            "India, 988 in the US)."
+                        # Reroute budget exhausted and no usable revision:
+                        # never end a HIGH-risk turn with a bare "pause".
+                        # Deliver the fixed safety reply (with helplines and
+                        # the offer to keep talking) instead.
+                        final_response = build_safe_fallback(
+                            str(ctx.current_message or ""), is_acute=True
                         )
                         supervisor_verdict = "ESCALATE"
                         trail.append({
@@ -505,6 +530,26 @@ async def run_pipeline_async(
             "next_agent": "counseling_agent",
             "verdict": "ALLOW",
             "reason": "scope_boundary_harm_to_others",
+            "reassess_count": 0,
+            "reroute_count": 0,
+            "trail": trail,
+            "context": ctx,
+        }
+
+    # Audit 2026-11-25 (§E): as in run_pipeline — a question about the
+    # system itself gets the direct prototype-disclosure answer.
+    if is_meta_question(ctx.current_message):
+        trail.append({
+            "agent": "pipeline",
+            "step": "scope_boundary",
+            "reason": "meta_question",
+        })
+        return {
+            "response": (META_QUESTION_RESPONSE, META_QUESTION_RESPONSE),
+            "route": "CLEAR",
+            "next_agent": "counseling_agent",
+            "verdict": "ALLOW",
+            "reason": "scope_boundary_meta_question",
             "reassess_count": 0,
             "reroute_count": 0,
             "trail": trail,
@@ -733,12 +778,11 @@ async def run_pipeline_async(
                             "duration_ms": 0.0,
                         })
                     else:
-                        final_pure = final_raw = (
-                            "I want to make sure I support you safely and accurately. "
-                            "Let's pause here for now — if you need immediate support, "
-                            "please reach out to a trusted person, a mental health "
-                            "professional, or a crisis helpline (Tele-MANAS 14416 in "
-                            "India, 988 in the US)."
+                        # Reroute budget exhausted and no usable revision:
+                        # never end a HIGH-risk turn with a bare "pause".
+                        # Deliver the fixed safety reply instead.
+                        final_pure = final_raw = build_safe_fallback(
+                            str(ctx.current_message or ""), is_acute=True
                         )
                         supervisor_verdict = "ESCALATE"
                         trail.append({

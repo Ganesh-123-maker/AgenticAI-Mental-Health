@@ -91,7 +91,14 @@ def test_session2_recall_quotes_session1_sleep_detail(db, backend):
     opening1 = _last_assistant_text(visit1)
     assert "Welcome. Before we start" in opening1
     resp1 = _send(db, backend, "reg1_a", visit1.visit_id, SLEEP_DETAIL)
-    assert "not sleeping well" in _last_assistant_text(resp1.visit)
+    # 2026-11-25 safety audit: the reply no longer echoes the user's words
+    # ("not sleeping well" was the old echo). It answers the presenting
+    # symptom — sleep — with a concrete wind-down step. The verbatim recall
+    # is asserted below, in session 2, where the recall mechanism quotes
+    # the stored session-1 summary.
+    reply1 = _last_assistant_text(resp1.visit)
+    assert "wind-down routine" in reply1, reply1
+    assert "I heard:" not in reply1, reply1
     asyncio.run(vs.close_visit(db, "reg1_a", visit1.visit_id))
 
     visit2 = asyncio.run(vs.create_visit(db, "reg1_a", course.course_id, call_llm=call_llm))

@@ -176,6 +176,56 @@ def is_safety_relevant_item(text: Any) -> bool:
 _FALLBACK_FRAME = "background concerning"
 
 
+# The one-time direct safety question for ambiguous possible-ideation
+# phrasing (audit 2026-11-25, §A/§E). Asked when the risk agent scores
+# MODERATE via the "ambiguous_passive_distress" concept ("hard to live",
+# "tired of everything"). The question is plain, direct, and carries the
+# helplines, so the helpline is visible on the MODERATE turn itself. It is
+# asked at most once per visit; the answer is interpreted by the
+# reassessment agent (affirmative -> HIGH-RISK, denial -> CLEAR).
+DIRECT_SAFETY_QUESTION = (
+    "Are you having thoughts of ending your life? "
+    "If you feel unsafe, please reach out now — in India call Tele-MANAS on 14416 or 112, "
+    "in the US call or text 988."
+)
+DIRECT_SAFETY_TARGET = "suicide_thoughts_direct"
+
+
+def _direct_safety_question_pending(ctx: AgentContext, risk_payload: Dict[str, Any]) -> bool:
+    """True when the direct safety question still needs to be asked.
+
+    Fires only on the ambiguous MODERATE concept (not on every MODERATE
+    severity — insomnia/overwhelm keep the existing medical-history
+    safety question). Asked at most once: returns False once the question
+    appears in the transcript, in the caller-reported asked targets, or
+    in the reassessment's resolved items.
+    """
+    risk_severity = str(risk_payload.get("severity", "LOW")).upper()
+    if risk_severity not in ("MODERATE", "UNCERTAIN"):
+        return False
+    signal_concepts = risk_payload.get("signal_concepts") or []
+    if "ambiguous_passive_distress" not in signal_concepts:
+        return False
+    transcript = ctx.prior_transcript or []
+    direct_tmpl = {
+        "questions": [DIRECT_SAFETY_QUESTION],
+        "target": [DIRECT_SAFETY_TARGET],
+    }
+    if _template_already_asked(direct_tmpl, transcript):
+        return False
+    metadata_asked = [
+        str(t) for t in ((ctx.metadata or {}).get("clarification_asked_targets") or [])
+    ]
+    if DIRECT_SAFETY_TARGET in metadata_asked:
+        return False
+    reassess_payload = getattr(ctx, "reassessment_output", None) or {}
+    if isinstance(reassess_payload, dict):
+        resolved = reassess_payload.get("resolved_information", []) or []
+        if any(DIRECT_SAFETY_TARGET.lower() in str(r).lower() for r in resolved):
+            return False
+    return True
+
+
 def _fallback_asked_targets(transcript: List[Dict[str, Any]]) -> List[str]:
     """Targets already asked about via the generic fallback question.
 
@@ -308,6 +358,31 @@ class ClarificationAgent(Agent):
         missing_info = unc_payload.get("missing_information", []) or []
         unc_priority = unc_payload.get("priority", "LOW")
         risk_severity = str(risk_payload.get("severity", "LOW")).upper()
+
+        # Audit 2026-11-25 (§E): the direct safety question is about
+        # safety, not information, so it must be asked even when the
+        # uncertainty agent reports CLEAR (no informational gap). It
+        # outranks every other template and is asked at most once.
+        if _direct_safety_question_pending(ctx, risk_payload):
+            payload = {
+                "question": DIRECT_SAFETY_QUESTION,
+                "questions": [DIRECT_SAFETY_QUESTION],
+                "target_information": [DIRECT_SAFETY_TARGET],
+                "priority": "HIGH",
+                "clarification_required": True,
+                "reasoning_summary": (
+                    "Ambiguous possible-ideation phrasing at MODERATE risk; "
+                    "direct safety question required before counseling."
+                ),
+            }
+            _validate_clarification_payload(payload)
+            return AgentMessage(
+                agent=self.name,
+                status="ok",
+                evidence=["Direct safety question required (ambiguous MODERATE risk)"],
+                confidence=0.85,
+                payload=payload,
+            )
 
         if not clarification_required or unc_payload.get("status") == "CLEAR":
             payload = {
@@ -483,16 +558,17 @@ class ClarificationAgent(Agent):
                 )
             target_str = candidate_fields[0]
             display_target = _FIELD_DISPLAY_PHRASES.get(_base_field_name(target_str), "what you described")
-            # LB-T1: when the display target itself mentions background
-            # ("your background"), the "background concerning" frame
-            # produces the garbled "background concerning your
-            # background". Drop the frame for those targets; the
-            # question stays grammatical ("...tell me more about your
-            # background?"). Other targets keep the existing wording.
-            if "background" in display_target.lower():
-                questions = [f"Regarding what you mentioned, could you tell me more about {display_target}?"]
-            else:
-                questions = [f"Regarding what you mentioned, could you tell me more about the background concerning {display_target}?"]
+            # Audit 2026-11-25 (§B): the old "the background concerning
+            # {target}" frame produced nonsense for every target ("the
+            # background concerning the main concern you mentioned",
+            # "the background concerning your background"). The frame is
+            # dropped; the question is now a plain request about the
+            # display target. The anti-repeat guard in
+            # _fallback_asked_targets still recognises it via the "could
+            # you tell me more about " marker, and the old "background
+            # concerning" wording is still recognised for transcripts
+            # that contain it.
+            questions = [f"Regarding what you mentioned, could you tell me more about {display_target}?"]
             target_info = [str(target_str)]
             priority = unc_priority
         else:

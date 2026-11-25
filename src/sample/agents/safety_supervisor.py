@@ -34,14 +34,29 @@ logger = logging.getLogger(__name__)
 
 _CRISIS_RESOURCE_GUIDANCE = (
     "Please contact your family, friends, a trusted person, your local emergency number, or a crisis helpline right now "
-    "(for example, Tele-MANAS 14416 in India or 988 in the United States)."
+    "(for example, Tele-MANAS 14416 or 112 in India, or 988 in the United States)."
 )
 
+# The fixed, reviewed HIGH-risk reply (audit 2026-11-25, §D / §E).
+# It (i) acknowledges the person in one warm sentence, (ii) asks them to
+# contact a trusted family member or friend, a counsellor, or their local
+# emergency number now, (iii) names Tele-MANAS 14416 and 112 for India and
+# 988 for the US, (iv) asks whether they are safe right now and whether
+# someone can be with them, and (v) offers to keep talking. No therapy
+# advice, no minimising, no diagnosis. It is the same text on every
+# HIGH-risk turn, including a later neutral turn after HIGH was raised
+# (the safety latch): consistency is the point on a crisis turn. The
+# grounding line ("please stay with someone you trust right now") is the
+# one non-safety sentence a HIGH reply may carry.
 _STANDARD_SAFE_FALLBACK = (
-    "I care deeply about your safety and current well-being. Facing such intense distress and crisis, "
-    "please do not face it alone. We prioritize your life and safety above all else. "
-    f"{_CRISIS_RESOURCE_GUIDANCE} "
-    "We can pause other discussions and focus first and foremost on ensuring your safety right now."
+    "Thank you for trusting me with this. I hear how much pain you are in right now, "
+    "and I am taking what you shared very seriously — your safety is what matters most right now. "
+    "Please reach out right now to someone you trust — a family member or a friend — "
+    "or a counsellor, or your local emergency number. "
+    "In India, you can call Tele-MANAS on 14416 or 112. In the US, you can call or text 988. "
+    "Are you safe right now? Is there someone who can be with you? "
+    "Please stay with someone you trust right now. "
+    "I am here, and I will keep talking with you. You do not have to go through this alone."
 )
 
 _UNSAFE_DISMISSAL_PHRASES = [
@@ -124,52 +139,16 @@ _HARMFUL_INSTRUCTIONS_PATTERNS = [
 ]
 
 
-_GENTLE_SAFE_FALLBACK = (
-    "I can sense the distress and pressure you are experiencing. Please remember that your safety "
-    "is paramount. We can work together to ensure you have the necessary safety and support in place. "
-    f"{_CRISIS_RESOURCE_GUIDANCE}"
-)
-
-
-def _safe_utterance_echo(utterance: str, max_len: int = 120) -> str:
-    """A short, safe excerpt of what the client just shared, for the crisis reply to acknowledge.
-
-    Returns "" when there is nothing safe to echo (empty message, or the
-    message matches a harmful-instruction pattern), so callers fall back
-    to the plain standard message. The excerpt is a single line, truncated,
-    and never carries instructions.
-    """
-    text = " ".join(str(utterance or "").split())
-    if not text:
-        return ""
-    if len(text) > max_len:
-        text = text[:max_len].rstrip() + "…"
-    if any(re.search(pat, text, re.IGNORECASE) for pat in _HARMFUL_INSTRUCTIONS_PATTERNS):
-        return ""
-    return text
-
-
 def build_safe_fallback(utterance: str, is_acute: bool) -> str:
-    """Crisis fallback that acknowledges what the client actually said.
+    """The fixed HIGH-risk reply.
 
-    The helpline guidance is always present and the framing never
-    counsels on a HIGH-RISK turn; only the opening acknowledgment varies,
-    so two different crisis messages no longer get an identical reply.
+    The reply is the same reviewed text on every HIGH-risk turn; the
+    utterance and acuteness are accepted for call-site compatibility but
+    do not change the text. Crisis replies are never personalised by
+    quoting the client (no raw echo), and they never counsel. See
+    _STANDARD_SAFE_FALLBACK for the five parts.
     """
-    echo = _safe_utterance_echo(utterance)
-    if is_acute:
-        if echo:
-            return (
-                f'Thank you for telling me this. What you shared — "{echo}" — matters, '
-                f"and I am taking it seriously. {_STANDARD_SAFE_FALLBACK}"
-            )
-        return _STANDARD_SAFE_FALLBACK
-    if echo:
-        return (
-            f'Thank you for sharing that — "{echo}". I hear how much pressure you are under. '
-            f"{_GENTLE_SAFE_FALLBACK}"
-        )
-    return _GENTLE_SAFE_FALLBACK
+    return _STANDARD_SAFE_FALLBACK
 
 
 class SafetySupervisor(Agent):

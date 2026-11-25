@@ -135,16 +135,23 @@ def test_clarification_background_target_is_grammatical():
 
 
 def test_clarification_normal_target_keeps_existing_wording():
-    """Control: a normal target keeps the established 'background
-    concerning' frame verbatim."""
+    """Control: a normal target gets a plain grammatical question.
+
+    Audit 2026-11-25 (§B): the old expectation pinned the defective
+    "the background concerning the main concern you mentioned" frame.
+    The frame is removed for every target; the question is now a plain
+    request about the display target. The test's intent — the fallback
+    question must be grammatical and must name the target — is unchanged.
+    """
     ctx = _clar_ctx(
         ["main_problem"], ["main_problem (not in profile or context)"],
     )
     out = ClarificationAgent().run(ctx).payload
     assert out["question"] == (
         "Regarding what you mentioned, could you tell me more about the "
-        "background concerning the main concern you mentioned?"
+        "main concern you mentioned?"
     ), out
+    assert "background concerning" not in out["question"], out
 
 
 def test_fallback_asked_targets_recognises_grammatical_wording():

@@ -30,11 +30,13 @@ from sample.recommendation_weights import apply_weights_to_reply, should_attach_
 from sample.skill_manager import SkillManager
 from sample.utils import (
     HARM_TO_OTHERS_BOUNDARY_RESPONSE,
+    META_QUESTION_RESPONSE,
     PRESCRIPTION_BOUNDARY_RESPONSE,
     extract_tag_content,
     format_transcript,
     is_explicit_prescription_request,
     is_harm_to_others_instruction_request,
+    is_meta_question,
     safe_json_loads,
     strip_end_token,
 )
@@ -264,6 +266,37 @@ class PsychAgentWebBackend:
                     "reply_model": None,
                 }
 
+            # Audit 2026-11-25 (§E): a question about the system itself
+            # gets a direct, plain answer with the prototype disclosure
+            # before any agent or LLM call — same treatment as the
+            # prescription / harm-to-others boundaries. Route stays CLEAR.
+            if is_meta_question(user_query):
+                prev_longitudinal = (
+                    psych_context.profile_payload.get("longitudinal_risk")
+                    if psych_context and isinstance(psych_context.profile_payload, dict)
+                    else None
+                )
+                carried = self._carried_risk_severity(psych_context)
+                return {
+                    "text": META_QUESTION_RESPONSE,
+                    "end": False,
+                    "agent_trace": [{
+                        "agent": "web_engine",
+                        "step": "scope_boundary",
+                        "reason": "meta_question",
+                    }],
+                    "route": "CLEAR",
+                    "longitudinal_risk": (
+                        prev_longitudinal
+                        if isinstance(prev_longitudinal, dict)
+                        and prev_longitudinal.get("severity") == carried
+                        else None
+                    ),
+                    "clarification_state": self._clarification_state(psych_context),
+                    "reply_source": "template",
+                    "reply_model": None,
+                }
+
             multi_agent_enabled = getattr(self._runtime_config, "multi_agent_enabled", True)
             if multi_agent_enabled:
                 ctx = AgentContext(
@@ -326,12 +359,13 @@ class PsychAgentWebBackend:
                         longitudinal_risk = prev_longitudinal
 
                 if current_route == "HIGH-RISK" or pipeline_res.get("verdict") == "ESCALATE":
-                    safe_text = pipeline_res.get("response") or (
-                        "I want to make sure you stay safe right now. If you are in immediate danger "
-                        "or having thoughts of self-harm, please connect with a crisis resource immediately: "
-                        "Tele-MANAS (14416) or 988 Suicide & Crisis Lifeline (call/text 988). "
-                        "I am here to support you safely."
-                    )
+                    # The pipeline's supervisor reply is the fixed, reviewed
+                    # HIGH-risk text. The inline fallback below is only
+                    # reached if the pipeline produced no response at all;
+                    # it is the same fixed text, so a HIGH-risk turn never
+                    # ends with a bare sign-off and always names 14416,
+                    # 112 and 988.
+                    safe_text = pipeline_res.get("response") or _STANDARD_SAFE_FALLBACK
                     return {"text": safe_text, "end": False, "agent_trace": trail, "route": current_route,
                             "longitudinal_risk": longitudinal_risk,
                             "clarification_state": clar_state,

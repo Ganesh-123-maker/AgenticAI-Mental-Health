@@ -72,6 +72,13 @@ RISK_SIGNALS: Tuple[RiskSignal, ...] = (
             "don't want to exist", "stop existing", "goodbye note",
             "end everything", "give up on life", "not being here anymore",
             "tired of living", "unalive myself",
+            # Indirect / farewell forms (audit 2026-11-25, §A): these scored
+            # LOW because the word order or the farewell framing matched no
+            # earlier form. "want it all to end" is not "end it all"; "this
+            # is my last message" is a farewell, not a "goodbye note".
+            "want it all to end", "want it to end", "want everything to end",
+            "last message", "last goodbye", "final message", "goodbye forever",
+            "don't want to be here",
             # Passive / indirect ideation: hedged or negated wishes to not
             # continue living, existence-negation, and worthlessness forms.
             # (Development-set class fix, 2026-10-23; forms containing a
@@ -110,14 +117,31 @@ RISK_SIGNALS: Tuple[RiskSignal, ...] = (
             "wish i wasnt here", "wish i weren't here",
             "if i just wasn't here",
             "wasn't here anymore", "weren't here anymore"),
-        zh=("suicide", "want to die", "do not want to live", "end my life", "end one's own life"),
-        # Roman-script Hindi: "don't want to live" (both attested shapes).
-        hi=("jeena nahi chahiye", "jeena hi nahi chahiye"),
+        zh=("suicide", "want to die", "do not want to live", "end my life", "end one's own life",
+            # Indirect / farewell forms (audit 2026-11-25, §A). Standard
+            # expressions, not native-speaker-validated (see the class
+            # docstring caveat).
+            "我想死", "不想活了", "我想结束一切", "这是我最后的信息"),
+        # Roman-script Hindi: "don't want to live" (both attested shapes),
+        # plus indirect / farewell forms (audit 2026-11-25, §A).
+        hi=("jeena nahi chahiye", "jeena hi nahi chahiye",
+            "marna chahta hoon", "marna chahti hoon", "mar jaana chahta hoon",
+            "sab khatam karna chahta hoon", "sab khatam karna chahti hoon",
+            "aakhri message", "aakhri sandesh"),
         # Spanish: no desire to keep living; tired of existing; wish to disappear.
+        # Plus indirect / farewell forms (audit 2026-11-25, §A).
         es=("no tengo ganas de seguir viviendo", "cansado de existir",
-            "ojala pudiera desaparecer"),
+            "ojala pudiera desaparecer",
+            "quiero que todo termine", "este es mi ultimo mensaje",
+            "mi ultimo mensaje"),
         # French (unaccented, as attested): no longer be here.
-        fr=("ne plus etre la",),
+        # Plus indirect / farewell forms (audit 2026-11-25, §A).
+        fr=("ne plus etre la",
+            "je veux en finir", "ceci est mon dernier message",
+            "mon dernier message"),
+        # German: indirect / farewell forms (audit 2026-11-25, §A).
+        de=("ich will nicht mehr leben", "das ist meine letzte nachricht",
+            "meine letzte nachricht"),
     ),
     RiskSignal(
         id="self_harm", severity="HIGH",
@@ -221,6 +245,24 @@ RISK_SIGNALS: Tuple[RiskSignal, ...] = (
         id="destruction", severity="MODERATE",
         en=("perishing", "destruction"),
         zh=("destruction",),
+    ),
+    RiskSignal(
+        id="ambiguous_passive_distress", severity="MODERATE",
+        # Indirect / passive phrasing that is ambiguous on its own: it can
+        # be exhaustion or burnout, or it can be passive ideation. It must
+        # NOT score LOW (audit 2026-11-25, §A), but it is not specific
+        # enough for HIGH, so it routes to the direct safety question
+        # ("Are you having thoughts of ending your life?") and the answer
+        # decides. See orchestrator / clarification / reassessment.
+        en=("hard to live", "hard to keep living", "difficult to live",
+            "tired of everything", "tired of everythinng", "so tired of everything"),
+        zh=("活着太难了", "我受够了"),
+        hi=("jeena mushkil hai", "jeena mushkil he",
+            "sab se thak gaya", "sab se thak gayi"),
+        es=("es dificil vivir", "estoy cansado de todo", "estoy cansada de todo"),
+        fr=("c'est dur de vivre", "je suis fatigue de tout",
+            "je suis fatiguee de tout"),
+        de=("es ist schwer zu leben", "ich bin von allem mude"),
     ),
 )
 
@@ -537,6 +579,7 @@ class RiskAgent(Agent):
         unknown_info = state_payload.get("unknown_information", []) or []
 
         high_signals: List[str] = []
+        high_concepts: List[str] = []
         negated_signals: List[str] = []
         for signal in RISK_SIGNALS:
             if signal.severity != "HIGH":
@@ -547,12 +590,16 @@ class RiskAgent(Agent):
                 form, hit = _match_signal(text, signal)
                 if hit == "affirmed":
                     high_signals.append(f"{label}:'{form}'")
+                    if signal.id not in high_concepts:
+                        high_concepts.append(signal.id)
                 elif hit == "negated":
                     negated_signals.append(f"negated:{label}:'{form}'")
             if medical_history:
                 form, hit = _match_signal(medical_history, signal)
                 if hit == "affirmed":
                     high_signals.append(f"medical_history:'{form}'")
+                    if signal.id not in high_concepts:
+                        high_concepts.append(signal.id)
 
         if high_signals:
             evidence = [f"Direct crisis signal detected: {s}" for s in high_signals]
@@ -566,6 +613,11 @@ class RiskAgent(Agent):
                 "evidence": evidence,
                 "confidence": 0.95,
                 "signals_detected": high_signals,
+                # Concept ids behind the affirmed forms, so the orchestrator
+                # and clarification agent can tell *which* kind of signal
+                # fired (e.g. ambiguous passive distress needs the direct
+                # safety question). Additive; no existing field changes.
+                "signal_concepts": high_concepts,
             }
             _validate_risk_payload(payload)
             return AgentMessage(
@@ -589,6 +641,7 @@ class RiskAgent(Agent):
                 safety_status_missing = True
 
         moderate_signals: List[str] = []
+        moderate_concepts: List[str] = []
         for signal in RISK_SIGNALS:
             if signal.severity != "MODERATE":
                 continue
@@ -598,6 +651,8 @@ class RiskAgent(Agent):
                 form, hit = _match_signal(text, signal)
                 if hit == "affirmed":
                     moderate_signals.append(f"{label}:'{form}'")
+                    if signal.id not in moderate_concepts:
+                        moderate_concepts.append(signal.id)
 
         if safety_status_missing:
             evidence = ["Safety status unverified: medical/psychiatric history missing from intake evidence"]
@@ -610,6 +665,7 @@ class RiskAgent(Agent):
                 "evidence": evidence,
                 "confidence": 0.60,
                 "signals_detected": moderate_signals + ["missing_safety_status"],
+                "signal_concepts": moderate_concepts,
             }
             _validate_risk_payload(payload)
             return AgentMessage(
@@ -630,6 +686,7 @@ class RiskAgent(Agent):
                 "evidence": evidence,
                 "confidence": 0.75,
                 "signals_detected": moderate_signals,
+                "signal_concepts": moderate_concepts,
             }
             _validate_risk_payload(payload)
             return AgentMessage(
@@ -654,6 +711,7 @@ class RiskAgent(Agent):
             "evidence": evidence,
             "confidence": 0.90,
             "signals_detected": sorted(set(negated_signals)),
+            "signal_concepts": [],
         }
         _validate_risk_payload(payload)
         return AgentMessage(

@@ -8,6 +8,109 @@ import re
 from typing import List
 
 from .base import Message
+from sample.utils import META_QUESTION_RESPONSE, is_meta_question
+
+
+# Coping steps rendered from the micro-skill library
+# (assets/skills/sect/*/stage*/micro_skills.json). The library holds
+# counsellor-facing technique descriptions; this table turns a technique
+# into one client-facing step with a verb and a time or quantity. Each
+# entry names the source micro-skill (school, stage, id, name) the step
+# is a concrete rendering of. No diagnosis, no medication advice, no
+# promised outcomes. Order matters: the first theme whose keywords match
+# the message wins.
+_COPING_STEPS = (
+    # The presenting symptom is matched before the context or cause: a
+    # message naming both a symptom and its cause (e.g. "not sleeping well
+    # because of my exams") must be answered for the symptom, not the cause.
+    # "exam" is last, so it only fires when no symptom is named.
+    (
+        ("sleep", "insomnia", "awake", "lying awake", "can't fall asleep", "cannot fall asleep", "waking up"),
+        "It sounds like sleep has been hard to come by lately.",
+        "Keep a fixed wind-down routine tonight: same bedtime, no screens for 30 minutes before bed, and 5 minutes of slow breathing once you are in bed.",
+        "CBT stage1 id 520 (Assess treatment efficacy with a sleep diary) / BT stage2 id 1005 (Assign and schedule daily relaxation-training practice)",
+    ),
+    (
+        ("worry", "worried", "worries", "anxious", "anxiety", "nervous", "scared"),
+        "It sounds like the worries keep circling and will not let you settle.",
+        "Write down the three biggest worries on paper, one line each, and put the list aside for tonight.",
+        "BT stage2 id 652 (Behavior-diary Self-monitoring with causal cue analysis)",
+    ),
+    (
+        ("sad", "low", "down", "unhappy", "cry", "lonely", "empty"),
+        "It sounds like you are feeling really low right now.",
+        "Try a 5-minute paced-breathing exercise: breathe in slowly for 4 counts, out for 6 counts, for 5 minutes.",
+        "BT stage2 id 965 (Teach and train the standard deep-breathing relaxation method) / id 697 (Guiding abdominal deep breathing)",
+    ),
+    (
+        ("pressure", "stress", "overwhelm", "too much", "mental pressure",
+         "hard to live", "tired of everything", "tired of everythinng"),
+        "It sounds like there is a lot of pressure on you at the moment.",
+        "Take a short 10-minute walk outside, without your phone, and notice three things you can see on the way.",
+        "BT stage2 id 1005 (Assign and schedule daily relaxation-training practice) — a scheduled daily activity",
+    ),
+    (
+        ("exam", "study", "test", "assignment", "deadline", "revision"),
+        "It sounds like the exams are weighing on you right now.",
+        "Try a 25/5 study-break schedule: study for 25 minutes, then take a 5-minute break away from your desk, and repeat it 4 times.",
+        "CBT stage1 id 172 (Schedule counseling priorities and tasks by phase) / BT stage2 id 1005 (Assign and schedule daily relaxation-training practice)",
+    ),
+)
+
+_DEFAULT_DISTRESS = (
+    "It sounds like today has been a hard day.",
+    "Try a 5-minute paced-breathing exercise: breathe in slowly for 4 counts, out for 6 counts, for 5 minutes.",
+)
+
+# A problem bigger than self-help (persistent low mood, panic, sleep loss
+# for weeks) also needs a person to talk to, not only a step.
+_PERSISTENT_CUES = ("weeks", "months", "every day", "always", "for a while", "panic")
+
+_PERSISTENT_ESCALATION = (
+    "If this has been going on for weeks, it is worth speaking to a college counsellor, "
+    "a doctor, or a family member about it. In India you can also call Tele-MANAS on 14416."
+)
+
+# After the direct safety question has been asked in this session, the
+# helpline stays visible on later distress replies (the gentle step plus
+# the helplines).
+_POST_SAFETY_QUESTION_HELPLINE = (
+    "And if you ever feel unsafe, please reach out now — in India call Tele-MANAS on 14416 "
+    "or 112, in the US call or text 988."
+)
+
+
+def _distress_reply(last_user: str, messages: List[Message]) -> str:
+    """Offline distress reply: reflection + one concrete step + one question.
+
+    The reflection paraphrases what the person said in the reply's own
+    words and never quotes the raw message (no "I heard: '...'"). The
+    step is one concrete, small, doable action from _COPING_STEPS and
+    always states a verb plus a time or quantity. The reply ends with one
+    follow-up question about how it went or what got in the way.
+    """
+    user_lower = str(last_user or "").lower()
+    if is_meta_question(last_user):
+        return META_QUESTION_RESPONSE
+    reflection, step = _DEFAULT_DISTRESS
+    for keywords, refl, stp, _src in _COPING_STEPS:
+        if any(k in user_lower for k in keywords):
+            reflection, step = refl, stp
+            break
+    reply = (
+        f"{reflection} One small thing you could try this week: {step} "
+        "If you try it, would you tell me how it went — or what got in the way?"
+    )
+    if any(cue in user_lower for cue in _PERSISTENT_CUES):
+        reply += f" {_PERSISTENT_ESCALATION}"
+    safety_asked = any(
+        "are you having thoughts of ending your life" in str(m.get("content", "")).lower()
+        for m in messages
+        if m.get("role") == "assistant"
+    )
+    if safety_asked:
+        reply += f" {_POST_SAFETY_QUESTION_HELPLINE}"
+    return reply
 
 
 def _prior_user_turns(messages, keywords=None):
@@ -536,8 +639,10 @@ class DummyBackend:
                 "How is that extra rest affecting your daytime focus and stress levels?"
             )
 
-        # Round 2 fix (Stream C D5): the old echo cut at exactly 140
-        # characters, mid-word ("What do you", "I have been thinki").
-        # Clip at a word boundary instead.
-        clipped = _clip_words(last_user, 140)
-        return f"Thanks for sharing. I heard: '{clipped}'. Let's explore one concrete coping step for this week."
+        # Audit 2026-11-25 (§B/2b): the old fallback quoted the person's
+        # raw words back ("Thanks for sharing. I heard: '...'.") and
+        # promised "one concrete coping step" without ever stating one.
+        # The reply is now a reflection in the reply's own words (never a
+        # quoted echo), one concrete step rendered from a micro-skill in
+        # the library, and one follow-up question.
+        return _distress_reply(last_user, messages)

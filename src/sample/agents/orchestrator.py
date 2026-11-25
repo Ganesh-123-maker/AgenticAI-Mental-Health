@@ -67,11 +67,27 @@ class Orchestrator(Agent):
 
         risk_severity = risk_payload.get("severity", "LOW")
         clarification_required = bool(unc_payload.get("clarification_required", False))
+        # Audit 2026-11-25 (§A/§E): ambiguous passive-distress phrasing
+        # ("hard to live", "tired of everything") scores MODERATE — or
+        # UNCERTAIN when the safety status is also unverified (missing
+        # medical history). It is not specific enough for HIGH, but it
+        # must not go straight to counselling. Route it UNCERTAIN so the
+        # clarification agent asks the one-time direct safety question
+        # and the answer decides. Other MODERATE severities (insomnia,
+        # overwhelm, panic, ...) keep the existing behaviour: UNCERTAIN
+        # only when the uncertainty agent says so, otherwise CLEAR.
+        signal_concepts = risk_payload.get("signal_concepts") or []
+        ambiguous_distress = "ambiguous_passive_distress" in signal_concepts
 
         if risk_severity == "HIGH" or (has_reassessment and reassess_payload.get("route_decision") == "HIGH-RISK"):
             route = "HIGH-RISK"
             next_agent = "safety_supervisor"
             reason = "High-risk safety signals detected; emergency safety path prioritized over counseling."
+
+        elif ambiguous_distress and risk_severity in ("MODERATE", "UNCERTAIN"):
+            route = "UNCERTAIN"
+            next_agent = "clarification_agent"
+            reason = "Ambiguous possible-ideation phrasing; direct safety question required before counseling."
 
         elif has_reassessment:
             if reassess_payload.get("route_decision") == "CLEAR":

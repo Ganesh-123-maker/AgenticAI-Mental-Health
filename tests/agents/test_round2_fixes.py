@@ -494,18 +494,20 @@ def test_dummy_presentation_recall_no_prior_mention():
 
 
 def test_dummy_echo_truncates_at_word_boundary():
+    """Audit 2026-11-25 (§B/2b): the echo template is replaced. A long
+    distress message must no longer be quoted back ("I heard: '...'"),
+    and the reply must instead contain a reflection in the reply's own
+    words plus one concrete coping step (a verb plus a time or quantity).
+    The old word-boundary clip is gone with the echo; the new invariant
+    is that no raw user text is quoted back.
+    """
     long_msg = ("I have been thinking about my exams and work and everything "
                 "all the time lately and it is really hard to focus on anything "
                 "at all, even the small things I used to enjoy doing.")
     assert len(long_msg) > 140
     reply = _dummy_reply([{"role": "user", "content": long_msg}])
-    quoted = reply.split("I heard: '", 1)[1].split("'.", 1)[0]
-    if quoted.endswith("…"):
-        clipped = quoted[:-1]
-    elif quoted.endswith("..."):
-        clipped = quoted[:-3]
-    else:
-        clipped = quoted
-    assert long_msg.startswith(clipped)
-    # the clip must end at a word boundary in the original
-    assert clipped == long_msg or long_msg[len(clipped)] == " "
+    assert "I heard:" not in reply, reply
+    assert long_msg not in reply, reply
+    # a concrete step: a verb plus a time or quantity (the 25/5 schedule)
+    assert "25 minutes" in reply and "5-minute break" in reply, reply
+    assert reply.rstrip().endswith("?"), reply

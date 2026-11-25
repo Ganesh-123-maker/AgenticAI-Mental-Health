@@ -200,6 +200,38 @@ def is_harm_to_others_instruction_request(text: str) -> bool:
         return False
     return any(pat.search(msg) for pat in _HARM_OTHERS_REQUEST_RES)
 
+# Meta-questions about the system itself (audit 2026-11-25, §E). These
+# must be answered directly and plainly, with the prototype disclosure,
+# instead of falling through to the counselling echo. Narrow by
+# construction: the question must be about the system ("this", "you",
+# "your") or about what the system is/does. "What should I do about my
+# exam?" is a counselling question, not a meta-question, and does not
+# match: it has an object ("about ...") after "what should i do".
+_META_QUESTION_RES = (
+    re.compile(r"\bwhat is this\b", re.IGNORECASE),
+    re.compile(r"\bwhat are you\b", re.IGNORECASE),
+    re.compile(r"\bwho are you\b", re.IGNORECASE),
+    re.compile(r"\bare you (a )?(real )?(therapist|counsellor|counselor|human|person|doctor|ai|robot|bot)\b", re.IGNORECASE),
+    re.compile(r"\bwhat can you do\b", re.IGNORECASE),
+    re.compile(r"\bhow do you work\b", re.IGNORECASE),
+)
+
+META_QUESTION_RESPONSE = (
+    "I am a research prototype — a counselling practice system built for a student project. "
+    "I am not a therapist, and I am not a crisis service. I can listen, help you think through "
+    "what is on your mind, and suggest small coping steps. If you feel unsafe or are thinking "
+    "of harming yourself, please contact someone you trust now, or call Tele-MANAS on 14416 "
+    "or 112 in India, or 988 in the US."
+)
+
+
+def is_meta_question(text: str) -> bool:
+    """True for a question about the system itself (what/ who it is)."""
+    msg = (text or "").strip()
+    if not msg:
+        return False
+    return any(pat.search(msg) for pat in _META_QUESTION_RES)
+
 
 def _strip_code_fence(text: str) -> str:
     raw = text.strip()
