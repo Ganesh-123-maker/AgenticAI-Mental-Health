@@ -1,10 +1,12 @@
 # Browser QA Log — PsychAgent prototype
 
 Branch: `fix/browser-qa-2026-11-25` (from main `5829e981`). Committed locally only;
-nothing pushed. Full suite after fixes: **493 passed, 9 failed (pre-existing
+nothing pushed. Full suite after fixes: **500 passed, 9 failed (pre-existing
 torch-missing in `tests/test_migrate_skill_embeddings.py`), 2 skipped**.
-Baseline before fixes was 479 passed / 9 failed / 2 skipped; the 14 new tests
-in `tests/agents/test_browser_qa_fixes.py` account for the increase.
+Baseline before fixes was 479 passed / 9 failed / 2 skipped; 14 new tests
+from the API pass plus 7 more from the A-2/A-3 fix (4 in
+`tests/agents/test_browser_qa_fixes.py`, 3 in
+`tests/web/test_browser_qa_ui_path.py`) account for the increase.
 
 ## How the QA was run
 
@@ -37,9 +39,20 @@ one new finding (A-2/A-3, below) plus confirmed the very-long-message
 reply is fine (the empty reply in the first browser run was a harness
 extraction artifact — a re-test shows the breathing step correctly).
 
+**Pass 2 follow-up — A-2/A-3 fixed, full pass re-run green.** The finding
+was fixed (see scenario A), the backend restarted so it loads the fixed
+code, and the full browser pass was re-run with the newer driver
+(`~/workspace/qa/browser/run_all.py`, results
+`~/workspace/qa/browser/browser_results.json`, screenshots
+`~/workspace/qa/browser/shots/`): **42 checks, 0 fail** — all scenarios
+A–H pass in the real browser, including the two A turns that failed
+before. UI checks all pass (footer visible, composer disclaimer, Help
+modal, mobile 390×844 no horizontal overflow, mobile crisis reply names
+14416 and 988), zero console errors.
+
 ## Scenario results
 
-### A. Everyday distress — PASS in API, 1 FINDING in the browser (A-2/A-3)
+### A. Everyday distress — PASS in API, 2 FIXES in the browser (A-2/A-3)
 API pass: all 7 in one session, all CLEAR, each a one-sentence reflection
 in the system's own words + ONE concrete step (what, for how long) + one
 follow-up question. No quoted echo. Examples:
@@ -53,32 +66,79 @@ follow-up question. No quoted echo. Examples:
 - "i feel so lonely, nobody talks to me" → sad reflection + breathing.
 - "exams are coming and i havent studied anything" → 25/5 schedule.
 
-Browser pass: turns 1, 4, 5, 6, 7 got the correct coping step. Turns 2–3
-did NOT — they got intake clarification questions instead:
+Browser pass (first run): turns 1, 4, 5, 6, 7 got the correct coping step.
+Turns 2–3 did NOT — they got intake clarification questions instead:
 - **A-2 — "due to exams" → "Regarding what you mentioned, could you tell
   me more about the main concern you mentioned?"** (not the 25/5 step).
 - **A-3 — "mental pressure" → "Regarding what you mentioned, could you
   tell me more about your background?"** (not the 10-minute walk step).
 
 Root cause: the browser course was created via the UI with only a title —
-no intake note or goal summary — so the profile fields `main_problem` and
-`known_static_traits` were empty. In stage 1 (Problem Conceptualization)
-the system asks up to 2 clarification questions to fill those intake
-fields before giving coping steps. (The API pass used a course with an
-intake note, so the profile was populated and no clarification fired.)
+no intake note or goal summary — so the profile fields `main_problem`,
+`core_demands`, `known_static_traits` and `growth_experiences` were empty.
+The state agent adds those empty fields to `unknown_information`; the
+uncertainty agent treated empty `growth_experiences` as a blocking
+concern-relevant gap, so the turn routed UNCERTAIN; the clarification
+agent then fell back to asking about `main_problem` ("the main concern you
+mentioned") and then `known_static_traits` ("your background"). The
+clarification budget is 2 turns per visit, which is why turns 4–7 went
+CLEAR. The API pass missed it because its harness always passed an intake
+note / goal summary ("Work stress" / "Manage stress"), which populates
+`growth_experiences` from the note and masked the bug. The opening was
+also affected: a title-only course opened with the clarification question
+"About when did this feeling start to emerge? …" instead of the
+"Welcome. Before we start…" greeting.
 
-Status: FINDING, not fixed — this is the system's designed stage-1 intake
-behaviour, and it is pinned by existing tests
-(`test_clarification_background_target_is_grammatical` expects the
-"could you tell me more about your background?" wording;
-`test_clarification_normal_target_keeps_existing_wording` expects the
-"main concern you mentioned" wording). The grammar was already fixed in
-the audit (the old "the background concerning your background" frame is
-gone). Removing the intake questions for LOW-risk distress would change
-the routing/evaluation design and break 13 existing tests, so it is
-PROPOSED, not implemented: for LOW-risk distress, give the coping step
-first and defer the intake questions (or collect intake info in the
-course-creation form). Needs the user's decision.
+Status: FIXED in this round. The fix keeps LOW-risk distress routing
+CLEAR while preserving the safety invariant (MODERATE/UNCERTAIN risk +
+unanswered SAFETY-relevant question → UNCERTAIN):
+- `src/sample/agents/uncertainty_agent.py` — empty `growth_experiences`
+  no longer counts as a blocking concern-relevant gap (the other
+  CBT fields — `medical_history`, `automatic_thoughts`,
+  `conditional_assumptions`, `consequence` — still block).
+- `src/sample/agents/orchestrator.py` — new branch, after the
+  reassessment branch: MODERATE/UNCERTAIN risk + an unanswered safety
+  slot + no intake history → UNCERTAIN, so the safety question is still
+  asked in a no-intake visit. At LOW risk, or once intake exists,
+  counselling proceeds.
+- `src/sample/agents/clarification_agent.py` — the early stand-down on
+  CLEAR is skipped when risk is MODERATE+ and a safety gap is unanswered
+  in a no-intake visit, so the safety template can be selected.
+- `src/sample/agents/pipeline.py` (sync + async) — the clarification
+  loop now also runs when a `clarification_answer` was supplied for a
+  pending question, even if the current message alone routes CLEAR.
+  Without this, an informative answer (phase-5) or a high-risk answer
+  (e.g. a suicidal clarification answer) would be silently dropped.
+- `src/web/backend/psychagent_engine.py` — the owed-safety-question
+  check now also runs on the UNCERTAIN fall-through (when the
+  clarification agent produced no askable question), and the synthetic
+  run inside `_owed_safety_question` presents the safety question under
+  the carried risk (the reassessment may have lowered the turn risk to
+  LOW). The owed reply is factored into `_owed_safety_reply`, shared by
+  the CLEAR path and the fall-through (S2-D5).
+- `tests/web/test_quota_exhausted_reply.py` — setup assertion updated,
+  core invariant unchanged (see below).
+- New regression tests: `test_browser_qa_empty_history_does_not_block_distress_reply`,
+  `test_browser_qa_cbt_field_still_blocks_when_missing` (control),
+  `test_browser_qa_moderate_safety_gap_still_asks_safety_question`,
+  `test_browser_qa_low_risk_stands_down_despite_safety_gap`,
+  `test_ui_course_opening_is_welcome`,
+  `test_ui_course_everyday_distress_gets_coping_steps`,
+  `test_ui_course_safety_question_still_asked`.
+- Tried and abandoned: excluding the intake-only profile fields from the
+  clarification agent's fallback targets. It broke pinned tests for the
+  fallback wording (`test_clarification_background_target_is_grammatical`,
+  `test_fallback_question_uses_display_phrase_not_field_name`, and the
+  clarification-cap / phase-5 / risk-aware suites), so it was reverted;
+  the fallback "your background" question can still appear as a second
+  clarification turn after the safety question (see "still not handled").
+
+After the fix (browser re-run, 42 checks, 0 fail): all 7 A turns are
+CLEAR with their coping step in a title-only course, the opening is the
+"Welcome." greeting, and the safety question is still asked for ambiguous
+passive distress ("its hard to live" → UNCERTAIN + safety question +
+14416/112/988). Full suite: 500 passed, 9 pre-existing torch failures,
+2 skipped.
 
 ### B. Direct questions — 1 FIX (B-1)
 - "what is this" → CLEAR, prototype disclosure ("I am a research
@@ -240,18 +300,46 @@ course-creation form). Needs the user's decision.
   `direct_question_response`) and E-1 (gate on carried HIGH risk).
 - `src/sample/backends/dummy_backend.py` — B-1 (use
   `direct_question_response`), G-1 (Hinglish sleep keywords "neend"/"nind").
-- `tests/agents/test_browser_qa_fixes.py` — NEW, 14 regression tests (one
-  per fix, plus the E-1 latch-gate tests and the F-1 no-regression tests).
-  No existing test was deleted or weakened. The held-out set was not
-  touched or re-scored.
+- `src/sample/agents/uncertainty_agent.py` — A-2/A-3 (empty
+  `growth_experiences` no longer a blocking gap).
+- `src/sample/agents/orchestrator.py` — A-2/A-3 (MODERATE/UNCERTAIN risk
+  + unanswered safety slot + no intake history → UNCERTAIN).
+- `src/sample/agents/clarification_agent.py` — A-2/A-3 (no stand-down on
+  CLEAR when MODERATE+ risk and a safety gap is unanswered).
+- `src/sample/agents/pipeline.py` — A-2/A-3 (clarification loop also runs
+  on a supplied clarification answer), B-1, E-1.
+- `src/web/backend/psychagent_engine.py` — A-2/A-3 (owed-safety check on
+  the UNCERTAIN fall-through; synthetic run uses the carried risk;
+  `_owed_safety_reply` helper), B-1, E-1.
+- `tests/agents/test_browser_qa_fixes.py` — NEW, 18 regression tests (one
+  per fix, plus the E-1 latch-gate tests, the F-1 no-regression tests, and
+  the 4 A-2/A-3 tests). No existing test was deleted or weakened, except
+  the one setup assertion in `tests/web/test_quota_exhausted_reply.py`
+  noted below. The held-out set was not touched or re-scored.
+- `tests/web/test_browser_qa_ui_path.py` — NEW, 3 web-level tests mirroring
+  the UI-created (title-only) course: welcome opening, all 7 A turns CLEAR
+  with steps, safety question still asked.
+- `tests/web/test_quota_exhausted_reply.py` — setup assertion updated
+  (not the invariant): the A-2/A-3 fix makes the opening route CLEAR, so
+  the welcome greeting is generated by one counselling chat call, which
+  raises under the stub. The test now baselines that one call after
+  `_start_visit` (asserting exactly one), asserts the two template
+  clarification turns still make no further calls, and asserts the quota
+  turn makes exactly one more attempt with no fallback. The core
+  invariant — quota failure surfaces visibly, exactly one counselling
+  attempt, no fallback call — is unchanged.
 
 ## What is still not handled
-- **A-2/A-3 (finding, not fixed):** in stage 1 with a course created
-  without intake info, the first 2 distress turns get intake clarification
-  questions ("about the main concern you mentioned", "about your
-  background") instead of coping steps. This is the designed behaviour
-  (capped at 2 turns, pinned by existing tests); changing it needs a
-  design decision — see scenario A.
+- **A-2/A-3 is fixed, with two known side effects.** (1) The opening now
+  routes CLEAR and spends one counselling chat call per visit creation
+  (the welcome greeting is generated, not a template); at baseline it was
+  a template clarification question (0 calls). Minor quota cost in live
+  mode; the quota test baselines the one call. (2) The fallback "tell me
+  more about your background" question can still appear as a second
+  clarification turn after the safety question, when the user changes
+  topic instead of answering it (the fallback-target exclusion was tried
+  and abandoned — it broke pinned tests). Flagged for human review, not
+  fixed in this round.
 - Substring matching still has no word boundaries (pre-existing, noted in
   AUDIT.md): e.g. "hard to live on a stipend" would still trigger the
   ambiguous form. The F-1 exclusion only covers the "in + place" shape.
@@ -288,8 +376,11 @@ Verified in the real UI, not just source:
   blank input) all work in the browser.
 - Long replies (the fixed HIGH reply, the safety question) render as
   plain-text bubbles and wrap; the helpline numbers are not truncated on
-  desktop. Mobile home screenshot (`shot_mobile_home.png`) renders; the
-  mobile chat view still needs a visual check for the long HIGH reply.
+  desktop. Mobile home screenshot (`shot_mobile_home.png`) renders. The
+  re-run's automated mobile checks (390×844) pass: no horizontal overflow
+  (scrollWidth 390 before and after the reply), the mobile crisis reply
+  names 14416 and 988, and the footer is present. A visual check of the
+  long HIGH reply on a real phone is still a human-review item.
 - Help / info panels (`HelpModal.jsx`, `InfoPanel.jsx`) carry crisis
   guidance ("contact local emergency services immediately").
 - No change made here. Propose only.
@@ -303,8 +394,10 @@ Verified in the real UI, not just source:
   exclusion does not miss a real risk phrasing).
 - An end-to-end live-model safety check (this round tested the offline
   dummy path only, as instructed).
-- Decision on A-2/A-3: whether LOW-risk distress should get the coping
-  step first and the intake questions deferred (or intake collected in the
-  course-creation form). Changing it redesigns the stage-1 routing and
-  13 existing tests.
+- The A-2/A-3 fix's trade-offs: (1) the opening now spends one counselling
+  chat call per visit creation (the quota test baselines it) — confirm that
+  cost is acceptable versus restoring a zero-call template opening; (2) the
+  fallback "your background" question can still appear as a second
+  clarification turn after the safety question when the user changes topic
+  instead of answering it.
 - Mobile chat view (long HIGH reply) visual check on a real phone.

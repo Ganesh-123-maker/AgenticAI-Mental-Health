@@ -331,7 +331,17 @@ def run_pipeline(
                 "payload": {"route": "CLEAR", "next_agent": "counseling_agent", "bypassed": True}, "duration_ms": 0.0,
             })
 
-        while current_route == "UNCERTAIN" and active_flags["clarification_enabled"] and reassess_count < max_reassess_turns:
+        # Browser-QA fix (2026-11-25, A-1, part 3): a supplied
+        # clarification_answer means the caller is answering a pending
+        # question (e.g. the safety question, or the opening question),
+        # so the answer must be evaluated by reassessment even when the
+        # current message alone routes CLEAR. Previously the old
+        # uncertainty gate made the initial route UNCERTAIN in
+        # no-intake visits, which entered this loop incidentally; with
+        # the gate removed, a high-risk answer (or an informative answer
+        # that resolves uncertainty) would otherwise be silently
+        # dropped and the turn would go straight to counselling.
+        while (current_route == "UNCERTAIN" or (answer_sequence and reassess_count == 0)) and active_flags["clarification_enabled"] and reassess_count < max_reassess_turns:
             reassess_count += 1
             clar_msg, clar_ms = _timed_run(clar_agent, ctx)
             ctx.clarification_output = clar_msg.payload
@@ -650,7 +660,12 @@ async def run_pipeline_async(
                 "payload": {"route": "CLEAR", "next_agent": "counseling_agent", "bypassed": True}, "duration_ms": 0.0,
             })
 
-        while current_route == "UNCERTAIN" and active_flags["clarification_enabled"] and reassess_count < max_reassess_turns:
+        # Browser-QA fix (2026-11-25, A-1, part 3): a supplied
+        # clarification_answer means the caller is answering a pending
+        # question, so the answer must be evaluated by reassessment
+        # even when the current message alone routes CLEAR (see the
+        # sync run_pipeline loop above).
+        while (current_route == "UNCERTAIN" or (answer_sequence and reassess_count == 0)) and active_flags["clarification_enabled"] and reassess_count < max_reassess_turns:
             reassess_count += 1
             clar_msg, clar_ms = _timed_run(clar_agent, ctx)
             ctx.clarification_output = clar_msg.payload

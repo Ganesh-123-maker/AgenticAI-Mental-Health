@@ -393,39 +393,11 @@ class PsychAgentWebBackend:
                 # MODERATE+), ask it now as a template reply instead of
                 # proceeding to counseling.
                 if current_route == "CLEAR" and clarification_answer is not None:
-                    owed = self._owed_safety_question(ctx, clar_state, carried_severity)
-                    if owed is not None:
-                        safety_q, safety_targets = owed
-                        new_state = {
-                            "turns": clar_state["turns"],
-                            "asked_targets": clar_state["asked_targets"] + [
-                                t for t in safety_targets if t not in clar_state["asked_targets"]
-                            ],
-                            "safety_asked_targets": clar_state["safety_asked_targets"] + [
-                                t for t in safety_targets
-                                if t not in clar_state["safety_asked_targets"]
-                            ],
-                            "proceeded_with_unknowns": clar_state["proceeded_with_unknowns"],
-                        }
-                        trail.append({
-                            "agent": "clarification_agent",
-                            "step": "owed_safety_question",
-                            "payload": {
-                                "question": safety_q,
-                                "questions": [safety_q],
-                                "target_information": safety_targets,
-                                "priority": "HIGH",
-                                "clarification_required": True,
-                                "reasoning_summary": (
-                                    "Safety question owed from an earlier turn; "
-                                    "fresh turn routed CLEAR before it was asked."
-                                ),
-                            },
-                        })
-                        return {"text": safety_q, "end": False, "agent_trace": trail, "route": "UNCERTAIN",
-                                "longitudinal_risk": longitudinal_risk,
-                                "clarification_state": new_state,
-                                "reply_source": "template", "reply_model": None}
+                    owed_reply = self._owed_safety_reply(
+                        ctx, clar_state, carried_severity, trail, longitudinal_risk
+                    )
+                    if owed_reply is not None:
+                        return owed_reply
 
                 if current_route == "UNCERTAIN":
                     clar_payload = ctx.clarification_output or {}
@@ -507,6 +479,20 @@ class PsychAgentWebBackend:
                     # user made a direct low-risk request that should be
                     # answered rather than held behind intake. Remaining
                     # unknowns are noted in the persisted state and trail.
+                    # Browser-QA fix (2026-11-25, A-1): before falling
+                    # through, check whether a safety question is still
+                    # owed from an earlier turn. The clarification agent
+                    # may have produced no askable question here (e.g. it
+                    # stood down after the reassessment loop ran on a
+                    # CLEAR-routed turn), and without this check the owed
+                    # safety question would be silently dropped and the
+                    # turn would proceed to counselling (S2-D5).
+                    if clarification_answer is not None:
+                        owed_reply = self._owed_safety_reply(
+                            ctx, clar_state, carried_severity, trail, longitudinal_risk
+                        )
+                        if owed_reply is not None:
+                            return owed_reply
                     unknowns = sorted(set(clar_state["proceeded_with_unknowns"]) | set(targets))
                     clar_state = {
                         "turns": clar_state["turns"],
@@ -1210,6 +1196,51 @@ class PsychAgentWebBackend:
             return "template", None
         return "llm", getattr(self._baseline_config, "model", None)
 
+    def _owed_safety_reply(
+        self, ctx, clar_state, carried_severity, trail, longitudinal_risk
+    ):
+        """Return the owed-safety-question template reply, or None.
+
+        Shared by the CLEAR-path check and the UNCERTAIN fall-through
+        in reply_from_visit. The reply carries route UNCERTAIN, the
+        safety question text, and the "owed_safety_question" trail
+        step, with the safety targets recorded as asked.
+        """
+        owed = self._owed_safety_question(ctx, clar_state, carried_severity)
+        if owed is None:
+            return None
+        safety_q, safety_targets = owed
+        new_state = {
+            "turns": clar_state["turns"],
+            "asked_targets": clar_state["asked_targets"] + [
+                t for t in safety_targets if t not in clar_state["asked_targets"]
+            ],
+            "safety_asked_targets": clar_state["safety_asked_targets"] + [
+                t for t in safety_targets
+                if t not in clar_state["safety_asked_targets"]
+            ],
+            "proceeded_with_unknowns": clar_state["proceeded_with_unknowns"],
+        }
+        trail.append({
+            "agent": "clarification_agent",
+            "step": "owed_safety_question",
+            "payload": {
+                "question": safety_q,
+                "questions": [safety_q],
+                "target_information": safety_targets,
+                "priority": "HIGH",
+                "clarification_required": True,
+                "reasoning_summary": (
+                    "Safety question owed from an earlier turn; "
+                    "asking it now instead of proceeding to counseling."
+                ),
+            },
+        })
+        return {"text": safety_q, "end": False, "agent_trace": trail, "route": "UNCERTAIN",
+                "longitudinal_risk": longitudinal_risk,
+                "clarification_state": new_state,
+                "reply_source": "template", "reply_model": None}
+
     @staticmethod
     def _owed_safety_question(
         ctx: AgentContext, clar_state: Dict[str, Any], carried_severity: Optional[str]
@@ -1249,6 +1280,15 @@ class PsychAgentWebBackend:
         synth_unc["clarification_required"] = True
         synth_unc["clarification_needed"] = True
         synth_ctx.uncertainty_output = synth_unc
+        # Browser-QA fix (2026-11-25, A-1): present the safety question
+        # under the carried risk that makes it owed. The pipeline's
+        # reassessment may have lowered ctx.risk_output (e.g. an
+        # informative answer scores LOW), but the question is owed
+        # because the carried risk is MODERATE+ — the clarification
+        # agent must select the safety template under that risk.
+        synth_risk = dict(ctx.risk_output or {})
+        synth_risk["severity"] = str(carried_severity or "").upper()
+        synth_ctx.risk_output = synth_risk
         clar_msg = ClarificationAgent().run(synth_ctx)
         payload = clar_msg.payload or {}
         if not payload.get("clarification_required"):

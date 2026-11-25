@@ -22,8 +22,45 @@ import logging
 from typing import Any, Dict
 
 from .base import Agent, AgentContext, AgentError, AgentMessage
+from .clarification_agent import is_safety_relevant_item
 
 logger = logging.getLogger(__name__)
+
+# Browser-QA fix (2026-11-25, A-1): the uncertainty agent no longer
+# treats an empty growth_experiences list as blocking (see
+# uncertainty_agent.py), so a MODERATE-risk turn in a no-intake visit
+# would otherwise go straight to counselling and the safety question
+# would never be asked — breaking the documented invariant
+# "MODERATE/UNCERTAIN risk + unanswered SAFETY-relevant question ->
+# UNCERTAIN" (see test_risk_aware_reassessment.py). The orchestrator
+# restores it here, where risk severity is visible (the uncertainty
+# agent runs before the risk agent): at MODERATE/UNCERTAIN risk, an
+# unanswered safety slot in a visit that still has no intake history
+# routes UNCERTAIN so the safety question is asked. At LOW risk, or
+# once intake exists, counselling proceeds.
+_INTAKE_GAP_FIELDS = ("main_problem", "core_demands", "growth_experiences")
+
+
+def _has_unanswered_safety_gap(unc_payload: Dict[str, Any]) -> bool:
+    """True when a safety-relevant slot is still unanswered."""
+    items = list(unc_payload.get("missing_information") or []) + list(
+        unc_payload.get("uncertain_fields") or []
+    )
+    return any(is_safety_relevant_item(str(item)) for item in items)
+
+
+def _has_intake_gap(unc_payload: Dict[str, Any]) -> bool:
+    """True when the visit still has no intake history (main problem /
+    demands / past experiences unfilled) — i.e. a course created
+    through the UI with title only, as opposed to a course with intake
+    info, where these slots are populated from the intake note."""
+    items = list(unc_payload.get("missing_information") or []) + list(
+        unc_payload.get("uncertain_fields") or []
+    )
+    lowered = [str(item).lower() for item in items]
+    return any(
+        field in text for field in _INTAKE_GAP_FIELDS for text in lowered
+    )
 
 
 class Orchestrator(Agent):
@@ -98,6 +135,18 @@ class Orchestrator(Agent):
                 route = "UNCERTAIN"
                 next_agent = "clarification_agent"
                 reason = "Informational gaps remain unresolved after clarification; further clarification needed."
+
+        elif (
+            risk_severity in ("MODERATE", "UNCERTAIN")
+            and _has_unanswered_safety_gap(unc_payload)
+            and _has_intake_gap(unc_payload)
+        ):
+            route = "UNCERTAIN"
+            next_agent = "clarification_agent"
+            reason = (
+                "Elevated risk with an unanswered safety slot in a visit "
+                "with no intake history; safety question required before counseling."
+            )
 
         elif unc_status in ("UNCERTAIN", "AMBIGUOUS") or clarification_required:
             route = "UNCERTAIN"

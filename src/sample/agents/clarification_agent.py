@@ -384,7 +384,26 @@ class ClarificationAgent(Agent):
                 payload=payload,
             )
 
-        if not clarification_required or unc_payload.get("status") == "CLEAR":
+        # Browser-QA fix (2026-11-25, A-1, part 2): the orchestrator now
+        # routes MODERATE/UNCERTAIN-risk turns in a no-intake visit to
+        # UNCERTAIN so the safety question is asked (see
+        # orchestrator.py), even though the uncertainty agent reports
+        # CLEAR for them. Do not stand down on CLEAR in that case, or
+        # the safety question would be dropped and the turn would go
+        # straight to counselling. The safety template is still asked at
+        # most once per visit (the already-asked guards below and the
+        # engine's fresh-target check), and at LOW risk, or once intake
+        # exists, the normal stand-down applies.
+        _safety_owed = (
+            risk_severity in ("MODERATE", "HIGH", "UNCERTAIN")
+            and any(is_safety_relevant_item(str(m)) for m in missing_info)
+            and any(
+                field in str(item).lower()
+                for field in ("main_problem", "core_demands", "growth_experiences")
+                for item in list(missing_info) + list(uncertain_fields)
+            )
+        )
+        if (not clarification_required or unc_payload.get("status") == "CLEAR") and not _safety_owed:
             payload = {
                 "question": "",
                 "questions": [],

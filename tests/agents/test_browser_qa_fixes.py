@@ -10,8 +10,15 @@ untouched and is never re-scored with them.
      nahi hai" and "sab khatam kar dena chahta hu" scored LOW.
   D. "i have pills and i want to take them all" (method + intent) scored LOW.
   F. "hard to live in this city" triggered the safety question (false alarm).
-  G. "mujhe neend nahi aati" (Hinglish: I can't sleep) got the default
-     reply instead of the sleep wind-down step.
+  A. (live-browser pass) In a course created through the UI — title
+     only, no intake note or goal summary — the profile has no history,
+     so "growth_experiences (empty or not provided)" used to route the
+     first two ordinary distress turns ("due to exams", "mental
+     pressure") to UNCERTAIN, and the fallback clarification question
+     ("could you tell me more about the main concern you mentioned" /
+     "your background") replaced the coping step. The API round missed
+     it because its harness always supplied intake info, which fills
+     the history slot from the intake note.
 """
 
 import asyncio
@@ -21,7 +28,9 @@ import sys
 sys.path.insert(0, str(pathlib.Path(__file__).parent.parent.parent / "src"))
 
 from sample.agents.base import AgentContext
+from sample.agents.clarification_agent import ClarificationAgent
 from sample.agents.risk_agent import RiskAgent
+from sample.agents.uncertainty_agent import UncertaintyAgent
 from sample.backends.dummy_backend import DummyBackend
 from sample.utils import (
     ADVICE_QUESTION_RESPONSE,
@@ -161,3 +170,94 @@ def test_browser_qa_hinglish_sleep_gets_wind_down_step():
     reply = _dummy_reply([{"role": "user", "content": "mujhe neend nahi aati"}])
     assert "wind-down" in reply or "same bedtime" in reply, reply
     assert "I heard:" not in reply
+
+
+# ---- A. empty history must not block an everyday distress reply ----
+
+def _uncertainty_for(message, unknown_information):
+    ctx = AgentContext(case_id="browser-qa", modality="cbt", current_message=message)
+    ctx.memory_output = {}
+    ctx.state_output = {
+        "current_concern": message,
+        "known_information": [f"[Current Statement] {message}"],
+        "unknown_information": unknown_information,
+        "confidence": 0.5,
+    }
+    return UncertaintyAgent().run(ctx).payload
+
+
+def test_browser_qa_empty_history_does_not_block_distress_reply():
+    """A first-session profile with no history must not route ordinary
+    distress to UNCERTAIN: "due to exams" and "mental pressure" are
+    CLEAR so the pipeline gives the coping step."""
+    empty_profile_unknowns = [
+        "growth_experiences (empty or not provided)",
+        "main_problem (not in profile or context)",
+        "known_static_traits (not populated)",
+        "core_demands (not in profile or context)",
+    ]
+    for msg in ("due to exams", "mental pressure"):
+        out = _uncertainty_for(msg, empty_profile_unknowns)
+        assert out["status"] == "CLEAR", (msg, out)
+        assert out["clarification_required"] is False, (msg, out)
+
+
+def test_browser_qa_cbt_field_still_blocks_when_missing():
+    """Control: a missing CBT field that shapes the intervention
+    (automatic_thoughts) still routes UNCERTAIN — only the empty
+    history slot was de-gated, not the whole gate."""
+    out = _uncertainty_for(
+        "due to exams",
+        ["automatic_thoughts (not in profile or context)"],
+    )
+    assert out["status"] == "UNCERTAIN", out
+    assert out["clarification_required"] is True, out
+
+
+def _clarification_for(message, risk_severity, missing_information):
+    ctx = AgentContext(case_id="browser-qa", modality="cbt", current_message=message)
+    ctx.uncertainty_output = {
+        "status": "CLEAR",
+        "clarification_required": False,
+        "uncertainty_types": ["none"],
+        "uncertain_fields": [],
+        "missing_information": missing_information,
+        "priority": "LOW",
+    }
+    ctx.risk_output = {"severity": risk_severity}
+    return ClarificationAgent().run(ctx).payload
+
+
+def test_browser_qa_moderate_safety_gap_still_asks_safety_question():
+    """Guard for the A-1 fix: at MODERATE risk, an unanswered safety
+    slot in a no-intake visit must still produce the safety question,
+    even though the uncertainty agent reports CLEAR (the orchestrator
+    routes such turns UNCERTAIN; the clarification agent must not stand
+    down on CLEAR here)."""
+    out = _clarification_for(
+        "I'm worried about my exams next week and just feel overwhelmed.",
+        "MODERATE",
+        [
+            "growth_experiences (empty or not provided)",
+            "main_problem (not in profile or context)",
+            "medical_history (safety status absent)",
+        ],
+    )
+    assert out["clarification_required"] is True, out
+    assert "professional psychological evaluation" in out["question"], out
+
+
+def test_browser_qa_low_risk_stands_down_despite_safety_gap():
+    """Control: at LOW risk the same unanswered safety slot does NOT
+    force a question — the distress turn proceeds to the coping step."""
+    out = _clarification_for(
+        "due to exams",
+        "LOW",
+        [
+            "growth_experiences (empty or not provided)",
+            "main_problem (not in profile or context)",
+            "medical_history (safety status absent)",
+        ],
+    )
+    assert out["clarification_required"] is False, out
+    assert out["question"] == "", out

@@ -246,7 +246,17 @@ class UncertaintyAgent(Agent):
         concern_relevant_unresolved = False
         if current_concern and current_concern != "(unavailable)":
             for field_name in uncertain_fields:
-                if field_name in ("growth_experiences", "medical_history", "automatic_thoughts", "conditional_assumptions", "consequence"):
+                # Browser QA 2026-11-25, scenario A: "growth_experiences"
+                # (past experiences, almost always empty without intake)
+                # used to block everyday distress ("due to exams", "mental
+                # pressure") from getting a coping step — the system asked
+                # a clarification question ("Around when did this feeling
+                # start to emerge?") instead. Past experiences are intake
+                # completeness, not something needed to give a coping step
+                # for current distress, so they do not block. Safety
+                # (medical_history) and the CBT fields that shape the
+                # intervention still block.
+                if field_name in ("medical_history", "automatic_thoughts", "conditional_assumptions", "consequence"):
                     concern_relevant_unresolved = True
                     break
 
