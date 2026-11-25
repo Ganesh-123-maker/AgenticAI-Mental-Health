@@ -8,7 +8,7 @@ import re
 from typing import List
 
 from .base import Message
-from sample.utils import META_QUESTION_RESPONSE, is_meta_question
+from sample.utils import META_QUESTION_RESPONSE, direct_question_response, is_meta_question
 
 
 # Coping steps rendered from the micro-skill library
@@ -25,7 +25,12 @@ _COPING_STEPS = (
     # because of my exams") must be answered for the symptom, not the cause.
     # "exam" is last, so it only fires when no symptom is named.
     (
-        ("sleep", "insomnia", "awake", "lying awake", "can't fall asleep", "cannot fall asleep", "waking up"),
+        ("sleep", "insomnia", "awake", "lying awake", "can't fall asleep", "cannot fall asleep", "waking up",
+         # Hinglish (browser QA 2026-11-25, scenario G): "mujhe neend nahi
+         # aati" (I can't sleep) fell to the default reply because "neend"
+         # matched no theme. "neend"/"nind" are the Roman-Hindi words for
+         # sleep.
+         "neend", "nind"),
         "It sounds like sleep has been hard to come by lately.",
         "Keep a fixed wind-down routine tonight: same bedtime, no screens for 30 minutes before bed, and 5 minutes of slow breathing once you are in bed.",
         "CBT stage1 id 520 (Assess treatment efficacy with a sleep diary) / BT stage2 id 1005 (Assign and schedule daily relaxation-training practice)",
@@ -90,8 +95,12 @@ def _distress_reply(last_user: str, messages: List[Message]) -> str:
     follow-up question about how it went or what got in the way.
     """
     user_lower = str(last_user or "").lower()
-    if is_meta_question(last_user):
-        return META_QUESTION_RESPONSE
+    # direct_question_response covers both identity questions ("what is
+    # this", "are you a doctor") and "what should I do" (browser QA
+    # 2026-11-25, scenario B) with a plain direct answer.
+    _dq = direct_question_response(last_user)
+    if _dq is not None:
+        return _dq
     reflection, step = _DEFAULT_DISTRESS
     for keywords, refl, stp, _src in _COPING_STEPS:
         if any(k in user_lower for k in keywords):

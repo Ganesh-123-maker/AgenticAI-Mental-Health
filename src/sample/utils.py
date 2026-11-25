@@ -233,6 +233,46 @@ def is_meta_question(text: str) -> bool:
     return any(pat.search(msg) for pat in _META_QUESTION_RES)
 
 
+# "What should I do" questions (browser QA 2026-11-25, scenario B): a
+# standalone "what should I do" is a request for guidance, not an identity
+# question, so it gets its own direct answer instead of the identity reply
+# and instead of a generic coping-step reply. It is kept separate from
+# is_meta_question so the existing test asserting that "what should I do
+# about my exam?" is not a meta-question stays true.
+_ADVICE_QUESTION_RES = (
+    re.compile(r"\bwhat should i do\b", re.IGNORECASE),
+)
+
+ADVICE_QUESTION_RESPONSE = (
+    "Tell me a bit more about what's weighing on you right now — for "
+    "example, exams, sleep, or something else — and I can suggest one "
+    "small, doable step to try this week. I'm a research prototype, not a "
+    "therapist or a crisis service, so I can't give medical advice, but I "
+    "can help you think it through. If you feel unsafe or are thinking of "
+    "harming yourself, please contact someone you trust now, or call "
+    "Tele-MANAS on 14416 or 112 in India, or 988 in the US."
+)
+
+
+def direct_question_response(text: str):
+    """Return the direct answer for a system/advice question, or None.
+
+    Identity questions ("what is this", "are you a doctor") get
+    META_QUESTION_RESPONSE; "what should I do" gets ADVICE_QUESTION_RESPONSE.
+    Anything else returns None. Callers use this instead of checking
+    is_meta_question and returning META_QUESTION_RESPONSE directly, so both
+    kinds of direct question are answered plainly.
+    """
+    msg = (text or "").strip()
+    if not msg:
+        return None
+    if any(pat.search(msg) for pat in _ADVICE_QUESTION_RES):
+        return ADVICE_QUESTION_RESPONSE
+    if any(pat.search(msg) for pat in _META_QUESTION_RES):
+        return META_QUESTION_RESPONSE
+    return None
+
+
 def _strip_code_fence(text: str) -> str:
     raw = text.strip()
     if raw.startswith("```"):

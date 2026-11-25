@@ -32,6 +32,7 @@ from sample.utils import (
     HARM_TO_OTHERS_BOUNDARY_RESPONSE,
     META_QUESTION_RESPONSE,
     PRESCRIPTION_BOUNDARY_RESPONSE,
+    direct_question_response,
     extract_tag_content,
     format_transcript,
     is_explicit_prescription_request,
@@ -270,7 +271,15 @@ class PsychAgentWebBackend:
             # gets a direct, plain answer with the prototype disclosure
             # before any agent or LLM call — same treatment as the
             # prescription / harm-to-others boundaries. Route stays CLEAR.
-            if is_meta_question(user_query):
+            # direct_question_response also covers "what should I do"
+            # (browser QA 2026-11-25, scenario B).
+            # BUT: a HIGH risk carried from a prior turn in this visit
+            # (sticky risk, scenario E) must NOT be overridden by a direct
+            # answer. If the session is latched HIGH, fall through to the
+            # pipeline so the fixed safety reply is returned instead.
+            _dq = direct_question_response(user_query)
+            _carried = self._carried_risk_severity(psych_context)
+            if _dq is not None and _carried != "HIGH":
                 prev_longitudinal = (
                     psych_context.profile_payload.get("longitudinal_risk")
                     if psych_context and isinstance(psych_context.profile_payload, dict)
@@ -278,7 +287,7 @@ class PsychAgentWebBackend:
                 )
                 carried = self._carried_risk_severity(psych_context)
                 return {
-                    "text": META_QUESTION_RESPONSE,
+                    "text": _dq,
                     "end": False,
                     "agent_trace": [{
                         "agent": "web_engine",

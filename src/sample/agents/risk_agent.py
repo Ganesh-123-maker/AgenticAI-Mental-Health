@@ -116,17 +116,32 @@ RISK_SIGNALS: Tuple[RiskSignal, ...] = (
             "wish i wasn't here", "wish i just wasn't here",
             "wish i wasnt here", "wish i weren't here",
             "if i just wasn't here",
-            "wasn't here anymore", "weren't here anymore"),
+            "wasn't here anymore", "weren't here anymore",
+            # Method + intent (browser QA 2026-11-25, scenario D): "i have
+            # pills and i want to take them all" scored LOW — it names a
+            # method (pills) and an intent to take them all. "take them
+            # all" / "take all the pills" is an overdose intent, and
+            # "overdose" on its own is a method word. These are HIGH.
+            "overdose", "take them all", "take all the pills",
+            "take all my pills"),
         zh=("suicide", "want to die", "do not want to live", "end my life", "end one's own life",
             # Indirect / farewell forms (audit 2026-11-25, §A). Standard
             # expressions, not native-speaker-validated (see the class
             # docstring caveat).
             "我想死", "不想活了", "我想结束一切", "这是我最后的信息"),
         # Roman-script Hindi: "don't want to live" (both attested shapes),
-        # plus indirect / farewell forms (audit 2026-11-25, §A).
+        # plus indirect / farewell forms (audit 2026-11-25, §A), plus
+        # browser-QA forms (2026-11-25, scenario C): "jeene ka mann nahi
+        # hai" (I don't feel like living) and "sab khatam kar dena chahta
+        # hu" (I want to end everything — the "kar dena" shape; the
+        # "karna" shape was already present).
         hi=("jeena nahi chahiye", "jeena hi nahi chahiye",
             "marna chahta hoon", "marna chahti hoon", "mar jaana chahta hoon",
             "sab khatam karna chahta hoon", "sab khatam karna chahti hoon",
+            "sab khatam kar dena chahta hu", "sab khatam kar dena chahti hu",
+            "sab khatam kar dena chahta hoon", "sab khatam kar dena chahti hoon",
+            "jeene ka mann nahi hai", "jeene ka man nahi hai",
+            "jeene ka mann nahi he", "jeene ka man nahi he",
             "aakhri message", "aakhri sandesh"),
         # Spanish: no desire to keep living; tired of existing; wish to disappear.
         # Plus indirect / farewell forms (audit 2026-11-25, §A).
@@ -255,7 +270,14 @@ RISK_SIGNALS: Tuple[RiskSignal, ...] = (
         # ("Are you having thoughts of ending your life?") and the answer
         # decides. See orchestrator / clarification / reassessment.
         en=("hard to live", "hard to keep living", "difficult to live",
-            "tired of everything", "tired of everythinng", "so tired of everything"),
+            "tired of everything", "tired of everythinng", "so tired of everything",
+            # Giving-up phrasing (browser QA 2026-11-25, scenario C): "i can't
+            # do this anymore" scored LOW. It is ambiguous — "this" can be a
+            # task or life itself — so it routes to the direct safety
+            # question, like the other forms here.
+            "can't do this anymore", "cant do this anymore",
+            "can't do it anymore", "cant do it anymore",
+            "can't take it anymore", "cant take it anymore"),
         zh=("活着太难了", "我受够了"),
         hi=("jeena mushkil hai", "jeena mushkil he",
             "sab se thak gaya", "sab se thak gayi"),
@@ -478,6 +500,21 @@ def _find_token_signal(text: str, token: str) -> Optional[str]:
     return "negated" if found_negated else None
 
 
+# Place-context exclusion for the ambiguous "hard/difficult to live" forms
+# (browser QA 2026-11-25, scenario F): "hard to live in this city" is
+# about the cost of living / city life, not self-harm, and must NOT trigger
+# the safety question. The exclusion only covers a concrete place after
+# "live in" (city/town/village/country/place/area/here/there). It does NOT
+# cover "hard to live in this world" (existential, stays ambiguous) and it
+# does NOT affect any HIGH form — a message that also names a HIGH signal
+# still routes HIGH-RISK.
+_LIVE_PLACE_EXCLUSION_RE = re.compile(
+    r"\b(hard|difficult) to live in (this |the |a )?(city|town|village|country|place|area|state|here|there)\b",
+    re.IGNORECASE,
+)
+_LIVE_PLACE_FORMS = ("hard to live", "difficult to live")
+
+
 def _match_signal(text: str, signal: RiskSignal) -> Tuple[Optional[str], Optional[str]]:
     """Match a language-independent risk concept against text.
 
@@ -498,6 +535,12 @@ def _match_signal(text: str, signal: RiskSignal) -> Tuple[Optional[str], Optiona
         for candidate in en_texts:
             hit = _find_signal(candidate, form)
             if hit == "affirmed":
+                # Place-context exclusion: "hard to live in this city" is
+                # not a risk signal (see _LIVE_PLACE_EXCLUSION_RE). Skip
+                # only this form; other forms in the same concept still
+                # count, and HIGH concepts are unaffected.
+                if form in _LIVE_PLACE_FORMS and _LIVE_PLACE_EXCLUSION_RE.search(candidate):
+                    continue
                 return form, "affirmed"
             if hit == "negated" and negated_form is None:
                 negated_form = form

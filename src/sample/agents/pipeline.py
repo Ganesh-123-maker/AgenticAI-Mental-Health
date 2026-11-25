@@ -28,7 +28,7 @@ from .risk_agent import RiskAgent
 from .safety_supervisor import SafetySupervisor, build_safe_fallback
 from .state_agent import StateAgent
 from .uncertainty_agent import UncertaintyAgent
-from ..utils import HARM_TO_OTHERS_BOUNDARY_RESPONSE, META_QUESTION_RESPONSE, PRESCRIPTION_BOUNDARY_RESPONSE, is_explicit_prescription_request, is_harm_to_others_instruction_request, is_meta_question
+from ..utils import HARM_TO_OTHERS_BOUNDARY_RESPONSE, META_QUESTION_RESPONSE, PRESCRIPTION_BOUNDARY_RESPONSE, direct_question_response, is_explicit_prescription_request, is_harm_to_others_instruction_request, is_meta_question
 
 logger = logging.getLogger(__name__)
 
@@ -225,14 +225,21 @@ def run_pipeline(
     # with the prototype disclosure — not the counselling echo. No agent
     # run and no counselling generation. (The web engine enforces this
     # before calling the pipeline; this covers direct/batch callers.)
-    if is_meta_question(ctx.current_message):
+    # direct_question_response covers both identity questions and
+    # "what should I do" (browser QA 2026-11-25, scenario B).
+    # BUT: a HIGH risk carried from a prior turn (sticky risk, scenario E)
+    # must NOT be overridden by a direct answer — fall through so the
+    # fixed safety reply is returned instead.
+    _dq = direct_question_response(ctx.current_message)
+    _carried = str((ctx.metadata or {}).get("carried_risk_severity") or "").upper()
+    if _dq is not None and _carried != "HIGH":
         trail.append({
             "agent": "pipeline",
             "step": "scope_boundary",
             "reason": "meta_question",
         })
         return {
-            "response": META_QUESTION_RESPONSE,
+            "response": _dq,
             "response_is_placeholder": False,
             "response_source": "scope_boundary",
             "route": "CLEAR",
@@ -538,14 +545,21 @@ async def run_pipeline_async(
 
     # Audit 2026-11-25 (§E): as in run_pipeline — a question about the
     # system itself gets the direct prototype-disclosure answer.
-    if is_meta_question(ctx.current_message):
+    # direct_question_response also covers "what should I do"
+    # (browser QA 2026-11-25, scenario B).
+    # BUT: a HIGH risk carried from a prior turn (sticky risk, scenario E)
+    # must NOT be overridden by a direct answer — fall through so the
+    # fixed safety reply is returned instead.
+    _dq = direct_question_response(ctx.current_message)
+    _carried = str((ctx.metadata or {}).get("carried_risk_severity") or "").upper()
+    if _dq is not None and _carried != "HIGH":
         trail.append({
             "agent": "pipeline",
             "step": "scope_boundary",
             "reason": "meta_question",
         })
         return {
-            "response": (META_QUESTION_RESPONSE, META_QUESTION_RESPONSE),
+            "response": (_dq, _dq),
             "route": "CLEAR",
             "next_agent": "counseling_agent",
             "verdict": "ALLOW",
